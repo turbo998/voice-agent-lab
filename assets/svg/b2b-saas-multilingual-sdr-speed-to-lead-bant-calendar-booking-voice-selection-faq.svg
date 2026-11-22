@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad409" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentGrad409" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="50%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #818CF8; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad409)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad409)"/>
+  <text x="52" y="52" class="title">B2B SaaS Multilingual SDR Speed-to-Lead, BANT Qualification &amp; AE Calendar Voice Architecture</text>
+  <text x="52" y="76" class="subtitle">FCC TCPA Consent &amp; DNC Hard Lock (0% Unconsented Dial) · 28s Speed-to-Lead (3.9x Connect Rate) · 0ms Enterprise AE Live Bridge</text>
+  <rect x="984" y="38" width="248" height="32" rx="16" fill="#6366F1"/>
+  <text x="1002" y="59" class="badge">B2B-SAAS-SDR-SPEED-TO-LEAD-01</text>
+
+  <!-- Left Column: Web Form Webhook, CRM Enrichment & Dialer -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. Inbound Webhook, Enrichment &amp; Dialer</text>
+  <text x="48" y="164" class="card-sub">Salesforce / HubSpot · ZoomInfo / 6sense · Chili Piper</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#6366F1" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">Sub-30s Speed-to-Lead Trigger Bus</text>
+  <text x="64" y="224" class="body">• Fires on "Request Demo / Pricing" web form submit</text>
+  <text x="64" y="242" class="body">• Selects native language by country/browser locale</text>
+  <text x="64" y="260" class="mono">Form_To_Ring_Latency = 28.0s (While Prospect at Desk)</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">ZoomInfo / Clearbit &amp; CRM Context Pre-Load</text>
+  <text x="64" y="340" class="body">• Enriches employee count, industry, AWS/Azure stack</text>
+  <text x="64" y="358" class="body">• Checks if domain is already an existing customer</text>
+  <text x="64" y="376" class="mono">Enriched_Profile = "FinTech, 850 Emp, Uses Snowflake"</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">TCPA Consent, DNC &amp; Timezone Registry</text>
+  <text x="64" y="462" class="body">• TrustedForm / Jornaya opt-in certificate verification</text>
+  <text x="64" y="480" class="body">• National/Internal DNC &amp; 8AM-9PM recipient local time</text>
+  <text x="64" y="498" class="mono">Consent_Status = OptIn_Verified | Local_Hour = 14:20</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">Territory AE Calendar &amp; Round-Robin Bus</text>
+  <text x="64" y="584" class="body">• Microsoft Graph / Google Calendar free-busy slots</text>
+  <text x="64" y="602" class="body">• Territory mapping (EMEA / APAC / US-Enterprise)</text>
+  <text x="64" y="620" class="mono">Assigned_AE = "Sarah_Chen_Enterprise_West"</text>
+
+  <!-- Center Column: 3-Layer Deterministic SDR & TCPA Gate -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#6366F1" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic TCPA, BANT &amp; Calendar Gate</text>
+  <text x="456" y="164" class="card-sub">Zero TCPA Violation · Zero Unauthorized Discount · 0ms AE Bridge</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: FCC TCPA / GDPR Consent &amp; DNC Hard Lock</text>
+  <text x="472" y="224" class="body">• Blocks outbound dial if TrustedForm consent token is</text>
+  <text x="472" y="242" class="body">  missing, number is on DNC, or outside 8AM-9PM window</text>
+  <text x="472" y="260" class="body">• Discloses AI identity on Turn 1 &amp; honors 0ms opt-out</text>
+  <text x="472" y="280" class="mono">Unconsented_Or_AfterHours_Dial_Rate = 0.0% (Hard Locked)</text>
+  <text x="472" y="298" class="mono">Opt_Out_DNC_Suppression_Latency = 0ms</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: Enriched BANT / MEDDIC &amp; Calendar Gate</text>
+  <text x="472" y="374" class="body">• Skips already-enriched fields; asks 3 concise questions</text>
+  <text x="472" y="392" class="body">  (Use Case, Timeline, Seat Volume) &amp; blocks fake prices</text>
+  <text x="472" y="410" class="body">• Books exact AE + SE calendar invite while on the phone</text>
+  <text x="472" y="430" class="mono">Lead_To_Booked_SQL_Meeting_Rate = 48.5% (vs 14% Email)</text>
+  <text x="472" y="448" class="mono">Unauthorized_Custom_Discount_Promise = 0.0%</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Fortune-500 Whale &amp; Live AE Warm Bridge</text>
+  <text x="472" y="524" class="body">• Detects Strategic Enterprise account (&gt;2,000 seats),</text>
+  <text x="472" y="542" class="body">  existing customer support issue, or live AE online</text>
+  <text x="472" y="560" class="body">• Pings assigned AE on Slack/Teams for 0ms live warm</text>
+  <text x="472" y="578" class="body">  transfer ("Sarah is available right now—bridging her")</text>
+  <text x="472" y="600" class="mono">if (strategicEnterpriseWhaleOrLiveAeReady) -&gt; 0ms Bridge</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 18ms | Whale_Live_Transfer = 100%</text>
+
+  <!-- Right Column: Pipeline Generation & Revenue ROI -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. CRM Writeback &amp; Pipeline Velocity ROI</text>
+  <text x="892" y="164" class="card-sub">Salesforce MEDDIC Notes · Calendar Invite · Show Rate</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Zero-Touch Salesforce / HubSpot MEDDIC Sync</text>
+  <text x="908" y="224" class="body">• Populates Pain, Timeline, Current Vendor &amp; Seat Count</text>
+  <text x="908" y="242" class="body">• Sends calendar invite + tailored case-study PDF</text>
+  <text x="908" y="260" class="body">• Confirms attendee acceptance while still on the call</text>
+  <text x="908" y="282" class="mono">Booked_Meeting_Show_Rate = 88.4% (vs 58% Web Link)</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#6366F1" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">24/7 EMEA / APAC / LATAM Native Coverage</text>
+  <text x="908" y="366" class="body">• Qualifies Japanese, German, French &amp; Portuguese</text>
+  <text x="908" y="384" class="body">  inbound leads at 2:00 AM US time in native language</text>
+  <text x="908" y="402" class="body">• Routes non-SQL students/job-seekers to self-serve docs</text>
+  <text x="908" y="424" class="mono">AE_Calendar_Wasted_Unqualified_Demos = -79%</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (10k Inbound Leads)</text>
+  <text x="908" y="520" class="body">• Human SDR Team (4.2h avg lag): $160,000 / 10k leads</text>
+  <text x="908" y="538" class="body">• 28s AI Speed-to-Lead SDR (Rec): $1,120 / 10k leads</text>
+  <text x="908" y="556" class="body">• Email-Only Nurture Sequence: 14% conversion (slow)</text>
+  <text x="908" y="578" class="mono">Qualified_SQL_Pipeline_Multiplier = 3.4x More Meetings</text>
+  <text x="908" y="596" class="mono">TCPA_Violations = 0 | Cost_Per_Booked_SQL = $0.23</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateB2bSaasMultilingualSdrLeadVoiceGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — B2B SaaS Multilingual SDR Speed-to-Lead Voice Copilot</text>
+  <text x="52" y="718" class="body">Call opted-in demo leads within 28 seconds while they are still on your pricing page, enrich firmographics first, and lock TCPA/DNC gates in code.</text>
+</svg>

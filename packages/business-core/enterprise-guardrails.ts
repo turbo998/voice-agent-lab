@@ -11065,6 +11065,37 @@ export function evaluateEnterpriseItHelpdeskServiceNowVoiceGuard(input: {
   };
 }
 
+export interface B2bSaasMultilingualSdrLeadVoiceEvaluation {
+  policyCode: "B2B-SAAS-SDR-SPEED-TO-LEAD-01";
+  outboundDialAndAeCalendarBookingAuthorized: boolean;
+  tcpaDncViolationOrUnauthorizedDiscountBlocked: boolean;
+  strategicWhaleAeOrCsmBridged: boolean;
+}
+
+/**
+ * Deterministic B2B SaaS Multilingual SDR Speed-to-Lead (Salesforce / HubSpot / Chili Piper / ZoomInfo) FCC TCPA Opt-In & DNC Window Lock, BANT/Pricing Gate & 0ms Whale AE Guard (`B2B-SAAS-SDR-SPEED-TO-LEAD-01`).
+ */
+export function evaluateB2bSaasMultilingualSdrLeadVoiceGuard(input: {
+  tcpaOptInConsentAndDncTimeWindowVerified: boolean;
+  bantQualifiedAndZeroUnauthorizedDiscountVerified: boolean;
+  strategicWhaleOrExistingCustomerSupportPreemption: boolean;
+}): B2bSaasMultilingualSdrLeadVoiceEvaluation {
+  return {
+    policyCode: "B2B-SAAS-SDR-SPEED-TO-LEAD-01",
+    outboundDialAndAeCalendarBookingAuthorized:
+      input.tcpaOptInConsentAndDncTimeWindowVerified &&
+      input.bantQualifiedAndZeroUnauthorizedDiscountVerified &&
+      !input.strategicWhaleOrExistingCustomerSupportPreemption,
+    tcpaDncViolationOrUnauthorizedDiscountBlocked:
+      !input.tcpaOptInConsentAndDncTimeWindowVerified ||
+      !input.bantQualifiedAndZeroUnauthorizedDiscountVerified ||
+      input.strategicWhaleOrExistingCustomerSupportPreemption,
+    strategicWhaleAeOrCsmBridged:
+      input.strategicWhaleOrExistingCustomerSupportPreemption,
+  };
+}
+
+
 
 
 
