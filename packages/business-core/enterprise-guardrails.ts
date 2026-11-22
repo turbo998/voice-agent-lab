@@ -10195,6 +10195,37 @@ export function evaluateB2bFieldSalesTradeshowCpqVoiceGuard(input: {
   };
 }
 
+export interface BloodCenterOrganTransplantUnosVoiceEvaluation {
+  policyCode: "BLOOD-ORGAN-TRANSPLANT-VOICE-01";
+  bloodReleaseAndDonorBookingAuthorized: boolean;
+  aboMismatchOrDonorDeferralViolationBlocked: boolean;
+  coldIschemiaCascadeOrBloodQuarantineBridged: boolean;
+}
+
+/**
+ * Deterministic Blood Center, Plasma & Organ Transplant (AABB / ISBT 128 / UNOS) Checksum & Crossmatch Lock, FDA DHQ Deferral Gate & 0ms Cold-Ischemia / PDI Quarantine Guard (`BLOOD-ORGAN-TRANSPLANT-VOICE-01`).
+ */
+export function evaluateBloodCenterOrganTransplantUnosVoiceGuard(input: {
+  isbt128ChecksumAndDualAboHlaCrossmatchVerified: boolean;
+  fdaAabbDonorDeferralAndIntervalRulesPassed: boolean;
+  coldIschemiaOrganCascadeOrPostDonationSyncopePreemption: boolean;
+}): BloodCenterOrganTransplantUnosVoiceEvaluation {
+  return {
+    policyCode: "BLOOD-ORGAN-TRANSPLANT-VOICE-01",
+    bloodReleaseAndDonorBookingAuthorized:
+      input.isbt128ChecksumAndDualAboHlaCrossmatchVerified &&
+      input.fdaAabbDonorDeferralAndIntervalRulesPassed &&
+      !input.coldIschemiaOrganCascadeOrPostDonationSyncopePreemption,
+    aboMismatchOrDonorDeferralViolationBlocked:
+      !input.isbt128ChecksumAndDualAboHlaCrossmatchVerified ||
+      !input.fdaAabbDonorDeferralAndIntervalRulesPassed ||
+      input.coldIschemiaOrganCascadeOrPostDonationSyncopePreemption,
+    coldIschemiaCascadeOrBloodQuarantineBridged:
+      input.coldIschemiaOrganCascadeOrPostDonationSyncopePreemption,
+  };
+}
+
+
 
 
 

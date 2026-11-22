@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（379 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（380 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -420,3 +420,4 @@
 377. **高端康养社区、护理院与认知症照护中心（Senior Living, Assisted Living & Memory Care：PointClickCare / MatrixCare / 泰康之家模式）适老化声学补偿、防重复服药（eMAR）、防走失（WanderGuard）与卫浴零镜头防跌倒语音架构（`PointClickCare eMAR` 给药时间戳核对 `0%` 失智重复服药与生前预嘱 `DNR/POLST` 硬锁、老年性耳聋 `0.85x` 降调辅音增强提听清率至 `96.8%` 与夜间黄昏综合征认可疗法门禁、卫浴 `60GHz` 毫米波跌倒 `0ms` 主动开麦下达抗凝药原地禁动令并缩救援至 `<28s`）方案**：[中文](./senior-living-assisted-memory-care-wanderguard-emar-fall-voice-selection-faq.md) | [EN](./senior-living-assisted-memory-care-wanderguard-emar-fall-voice-selection-faq.en.md)
 378. **全球影视短剧出海、企业培训与高管演讲多语种 AI 视频译制配音（AI Video Dubbing：Azure Speech Video Translation vs. ElevenLabs Dubbing Studio vs. HeyGen 选型）等时音节对齐（Isochrony）、背景音效保留与 `C2PA` 声权合规架构（演员/高管声权加密授权令牌 `SAG-AFTRA` 与 `C2PA` 合成水印硬锁、合成前 `±6%` 等时音节重写消除 `1.4x` 花栗鼠倍速失真与 `Demucs` 背景音乐音效 `M&E` 分轨保留门禁、目标国宗教/文化禁忌与品牌词禁译 `0ms` 锁定审核并省 `97.4%` 译制成本）方案**：[中文](./global-video-localization-ai-dubbing-isochrony-lip-sync-c2pa-voice-selection-faq.md) | [EN](./global-video-localization-ai-dubbing-isochrony-lip-sync-c2pa-voice-selection-faq.en.md)
 379. **B2B 外勤大客户销售、国际展会扫码留资与语音报价（Trade-Show Badge Lead Capture & Voice-to-CPQ：Cvent / Salesforce CPQ / 汉诺威工博会与进博会模式）离线防丢单、底价保密硬锁与毛利底线语音副驾架构（双边录音同意检测无授权 `50ms` 内存清零与公共展台内部成本底价 `COGS` 物理剥离硬锁、展馆断网端侧加密 `SQLite` 暂存转发将线索跟进从 5 天缩至 `12分钟` 与 `Salesforce CPQ` 捆绑校验门禁、超权限特批折扣与非标法务条款 `0ms` 拦截外发并直推 `Deal Desk` 审批）方案**：[中文](./b2b-field-sales-tradeshow-lead-capture-cpq-margin-floor-voice-copilot-selection-faq.md) | [EN](./b2b-field-sales-tradeshow-lead-capture-cpq-margin-floor-voice-copilot-selection-faq.en.md)
+380. **血液中心、单采血浆站与器官移植网络（AABB / ISBT 128 / UNOS DonorNet / COTRS / 红十字血液中心模式）稀有血型应急征召、献血者健康延期筛查（Donor Deferral）、`ISBT 128` 交叉配血锁与器官冷缺血（Cold Ischemia Time）语音调度架构（`ISBT 128` 13位条码模37校验与双医护 `ABO/Rh/HLA` 复诵及供受双盲匿名硬锁、`FDA/AABB` 锁定 `SSML` 问卷与异维A酸/阿司匹林洗脱期计算压降 `64.2%` 现场淘汰门禁、凌晨供体器官冷缺血并发强呼省 `44分钟 CIT` 与献血后高热 `0ms` 冻结在库血袋）方案**：[中文](./blood-center-plasma-organ-transplant-unos-crossmatch-cold-ischemia-voice-selection-faq.md) | [EN](./blood-center-plasma-organ-transplant-unos-crossmatch-cold-ischemia-voice-selection-faq.en.md)
