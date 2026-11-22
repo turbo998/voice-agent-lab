@@ -11365,6 +11365,37 @@ export function evaluateSupplyChainAribaCoupaVendorVoiceGuard(input: {
   };
 }
 
+export interface EnterpriseFieldServiceFslDispatchEvaluation {
+  policyCode: "FIELD-SERVICE-FSL-DISPATCH-01";
+  techDispatchAndVoiceDebriefAuthorized: boolean;
+  missingVanPartOrExpiredCertOrNoAccessBlocked: boolean;
+  emergencyLifeSafetyOrHospitalP1CrewBridged: boolean;
+}
+
+/**
+ * Deterministic Enterprise Field Service Management (Salesforce FSL / Dynamics 365 FS / ServiceMax) Van-Stock Part & Tech Certification Hard Lock, T-60m Access Confirm & 15s Backfill Gate & 0ms Gas/Entrapment/ICU P1 Guard (`FIELD-SERVICE-FSL-DISPATCH-01`).
+ */
+export function evaluateEnterpriseFieldServiceFslDispatchGuard(input: {
+  vanStockPartAvailableAndTechCertValid: boolean;
+  customerAccessConfirmedOrSlotBackfilled: boolean;
+  gasLeakEntrapmentOrHospitalP1DownPreemption: boolean;
+}): EnterpriseFieldServiceFslDispatchEvaluation {
+  return {
+    policyCode: "FIELD-SERVICE-FSL-DISPATCH-01",
+    techDispatchAndVoiceDebriefAuthorized:
+      input.vanStockPartAvailableAndTechCertValid &&
+      input.customerAccessConfirmedOrSlotBackfilled &&
+      !input.gasLeakEntrapmentOrHospitalP1DownPreemption,
+    missingVanPartOrExpiredCertOrNoAccessBlocked:
+      !input.vanStockPartAvailableAndTechCertValid ||
+      !input.customerAccessConfirmedOrSlotBackfilled ||
+      input.gasLeakEntrapmentOrHospitalP1DownPreemption,
+    emergencyLifeSafetyOrHospitalP1CrewBridged:
+      input.gasLeakEntrapmentOrHospitalP1DownPreemption,
+  };
+}
+
+
 
 
 

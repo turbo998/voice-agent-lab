@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（418 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（419 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -459,3 +459,4 @@
 416. **2026 主流企业级云联络中心（CCaaS）与实时语音 AI 横向选型指南：Genesys Cloud CX vs. Amazon Connect vs. NICE CXone vs. Microsoft Dynamics 365 Contact Center vs. Five9（前门 `BYOC SBC` 直接终结 `65%` AI 自助通话免除 `$0.025/分钟` 平台媒体分流附加税降本 `46.2%` 年省 `$137.5万`、转人工 `<150ms` 注入 `CTI` 随路上下文与已核身标识实现 `0%` 重复核身并缩减坐席 `AHT 85秒`、目标队列 `EWT > 180秒` `0ms` 拦截盲转死队列并切换虚拟排队原位回拨）方案**：[中文](./ccaas-genesys-amazon-connect-nice-cxone-dynamics365-voice-ai-migration-selection-faq.md) | [EN](./ccaas-genesys-amazon-connect-nice-cxone-dynamics365-voice-ai-migration-selection-faq.en.md)
 417. **商业对公银行、集团司库与财资管理（Commercial Banking & Corporate Treasury：J.P. Morgan Access / 花旗 CitiDirect / 招行企业网银 / Kyriba 模式）大额电汇（Fedwire / SWIFT）防 BEC 诈骗双人回拨、支票 Positive Pay 异常止付与跨境汇款追踪语音架构（`UCC Article 4A` 强制单向主叫《预留印鉴卡》第二签字人+`<80ms` 反 AI 克隆声纹+`FIDO2` 联签实现 `$0` BEC 诈骗并将放行耗时从 `2.5小时` 缩至 `3.2分钟`、支票 `Positive Pay` `11:00 AM` 截单前梯次追呼达 `99.4%` 准时率与 `SWIFT gpi UETR` 查账分流 `78.4%`、涉诈电汇 `0ms` 触发 `camt.056` 止付召回）方案**：[中文](./commercial-banking-treasury-ach-wire-verification-positive-pay-voice-selection-faq.md) | [EN](./commercial-banking-treasury-ach-wire-verification-positive-pay-voice-selection-faq.en.md)
 418. **大型制造与零售全球供应链采购协同（Global Supply Chain & Direct Procurement：SAP Ariba / Coupa / Kinaxis RapidResponse / S/4HANA MM 模式）供应商交期自动催交（PO/ASN 缺料预警）、三单匹配（3-Way Match）对账、防篡改供应商银行账号硬锁与断供危机语音架构（`SOX 404` 供应商银行主数据 `XK02/BP` 语音只读 `$0` 改卡诈骗与 `<=3%` 价格容差硬锁、28语种 `T-7d/T-48h` 长尾供应商 `ASN` 催交提可视率至 `98.4%` 砍掉 `54.8%` 突发逾期与 `75秒` 三单匹配对账分流 `76.5%`、工厂库存 `DoS < 48小时` 停线预警 `0ms` 预填备选二供 `AVL` 拆单并直通寻源经理）方案**：[中文](./global-supply-chain-procurement-sap-ariba-coupa-vendor-expediting-voice-selection-faq.md) | [EN](./global-supply-chain-procurement-sap-ariba-coupa-vendor-expediting-voice-selection-faq.en.md)
+419. **大型企业现场服务管理与上门工程师智能调度（Enterprise Field Service Management：Salesforce Field Service / Microsoft Dynamics 365 Field Service / ServiceMax 模式）随车备件齐套率（First-Time Fix）硬锁、上门前 `T-60m` 防跑空门禁与工程师免提结单语音架构（通话中 `WebRTC` 5秒实拍铭牌报错码校验随车后备箱备件 `Van Stock` 与特种证将首次修复率 `FTFR` 从 `71%` 提至 `91.8%` 省 `$39.3万/万单`、出发前 `T-60m` 在场确认与爽约 `15秒` 候补工单回填砍掉 `82.5%` 跑空浪费、技师 `30秒` 车载免提语音结单日增 `1.4单` 与电梯困人/ICU停机 `0ms` 抢修）方案**：[中文](./enterprise-field-service-dispatch-dynamics365-salesforce-fsl-sla-voice-selection-faq.md) | [EN](./enterprise-field-service-dispatch-dynamics365-salesforce-fsl-sla-voice-selection-faq.en.md)
