@@ -10975,6 +10975,37 @@ export function evaluateCrossBorderEcommerceRmaRefundVoiceGuard(input: {
   };
 }
 
+export interface AirlineHotelIrropsMassRebookingVoiceEvaluation {
+  policyCode: "AIRLINE-HOTEL-IRROPS-CONCIERGE-01";
+  involuntaryTicketReissueAndHotelHoldAuthorized: boolean;
+  seatRaceConditionOrSubMctOrInvalidEu261Blocked: boolean;
+  specialAssistanceUmnrOrVipDeskBridged: boolean;
+}
+
+/**
+ * Deterministic Airline & Hotel Mass IRROPS Rebooking (Amadeus Altéa / Sabre / Opera Cloud PMS) 120s Atomic Seat Soft-Lock & MCT Gate, EU261/DOT Delay-Code Gate & 0ms UMNR/WCHC/VIP Guard (`AIRLINE-HOTEL-IRROPS-CONCIERGE-01`).
+ */
+export function evaluateAirlineHotelIrropsMassRebookingVoiceGuard(input: {
+  atomicSeatHoldAndAirportMctBaggageVerified: boolean;
+  eu261DotControllableDelayRuleMatched: boolean;
+  umnrOrWheelchairMedaOrVipEscalationPreemption: boolean;
+}): AirlineHotelIrropsMassRebookingVoiceEvaluation {
+  return {
+    policyCode: "AIRLINE-HOTEL-IRROPS-CONCIERGE-01",
+    involuntaryTicketReissueAndHotelHoldAuthorized:
+      input.atomicSeatHoldAndAirportMctBaggageVerified &&
+      input.eu261DotControllableDelayRuleMatched &&
+      !input.umnrOrWheelchairMedaOrVipEscalationPreemption,
+    seatRaceConditionOrSubMctOrInvalidEu261Blocked:
+      !input.atomicSeatHoldAndAirportMctBaggageVerified ||
+      !input.eu261DotControllableDelayRuleMatched ||
+      input.umnrOrWheelchairMedaOrVipEscalationPreemption,
+    specialAssistanceUmnrOrVipDeskBridged:
+      input.umnrOrWheelchairMedaOrVipEscalationPreemption,
+  };
+}
+
+
 
 
 

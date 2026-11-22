@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（405 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（406 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -446,3 +446,4 @@
 403. **车险与健康险 7×24h 全天候智能报案定损（Insurance FNOL — First Notice of Loss：Guidewire ClaimCenter / Duck Creek + 语音多模态核损模式）免责条款硬锁、反欺诈/代位求偿与人伤急诊 `0ms` 升级语音架构（权利保留声明 `Reservation of Rights` 与 `0%` 越权承诺包赔硬锁、电话不断流联动 `WebRTC` 实拍 `17位 VIN` 与车损 `EXIF` 防伪将报案从 `18.5分钟` 压至 `3.2分钟` 并实现 `68.5%` 小额直赔 `STP`、人伤/气囊弹出与暴雨涉水防二次点火 `0ms` 抢占）方案**：[中文](./insurance-fnol-auto-health-claims-multimodal-triage-guidewire-voice-selection-faq.md) | [EN](./insurance-fnol-auto-health-claims-multimodal-triage-guidewire-voice-selection-faq.en.md)
 404. **2026 四大云服务与独立最佳组合实时语音 AI 全栈对标选型指南：Microsoft Azure (Voice Live / GPT-Realtime / ACS) vs. AWS (Amazon Nova Sonic / Connect) vs. Google Cloud (Gemini Live / Chirp 3 / CCAI) vs. 独立最佳组合 (Deepgram + ElevenLabs + LiveKit)（同辖区数据主权 `GDPR/HIPAA` 与零数据留存 `ZDR` 硬锁、`MCP` 工具协议跨云 `99.8%` 零改代码移植与 `PTU` 基荷+溢出省 `34%` 成本、主云 `>850ms` 超时或 `429` 限流时通话中途 `0ms` 无感切换备云达 `99.995%` 可用性）方案**：[中文](./multicloud-voice-ai-azure-aws-nova-sonic-gcp-gemini-live-connect-selection-faq.md) | [EN](./multicloud-voice-ai-azure-aws-nova-sonic-gcp-gemini-live-connect-selection-faq.en.md)
 405. **跨境电商与全球零售多语种退换货（RMA）、逆向物流免寄回即时退款（Returnless Instant Refund）与尺码换货挽单语音导购架构（Shopify Plus / Salesforce Commerce Cloud / Loop Returns / Stripe 模式：实付净额上限 `Refund <= Net_Paid` 与原支付 Token 幂等 `0%` 超额退款硬锁、28语种对话式尺码诊断将 `44.2%` 退货转化为换货留存并结合 `COGS < 逆向运费` 精算节省 `29%` 物流亏损、锂电池鼓包禁运与产品安全投诉 `0ms` 熔断转专席）方案**：[中文](./cross-border-ecommerce-multilingual-rma-returns-instant-refund-voice-selection-faq.md) | [EN](./cross-border-ecommerce-multilingual-rma-returns-instant-refund-voice-selection-faq.en.md)
+406. **航空公司与连锁酒店集团大面积航变（IRROPS）万路并发重订票、欧盟 EU261 / 美国 DOT 自动退赔核算与白金常旅客语音礼宾架构（Amadeus Altéa / Sabre / Oracle Opera Cloud PMS 模式：播报前 `120秒` 原子级预占座软锁与机场最短衔接时间 `MCT`/签证/行李 `0%` 误机硬锁、运控中心 `WX vs MX` 官方延误代码驱动 `EU261` 酒店房卡二维码秒发与目的地酒店 `Opera PMS` 自动延后保房、无陪儿童 `UMNR` 与轮椅 `WCHC` 旅客 `0ms` 专席接管）方案**：[中文](./airline-hotel-irrops-mass-rebooking-eu261-loyalty-concierge-voice-selection-faq.md) | [EN](./airline-hotel-irrops-mass-rebooking-eu261-loyalty-concierge-voice-selection-faq.en.md)
