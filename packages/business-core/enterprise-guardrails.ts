@@ -10165,6 +10165,37 @@ export function evaluateGlobalVideoDubbingIsochronyC2paVoiceGuard(input: {
   };
 }
 
+export interface B2bFieldSalesTradeshowCpqVoiceEvaluation {
+  policyCode: "B2B-FIELD-SALES-CPQ-VOICE-01";
+  crmLeadSyncAndQuoteSendAuthorized: boolean;
+  wiretapBreachOrFloorPriceLeakBlocked: boolean;
+  belowFloorDealDeskOrLegalApprovalBridged: boolean;
+}
+
+/**
+ * Deterministic B2B Field Sales & Trade-Show Lead Capture Two-Party Consent / Floor-Price Shield, Offline Expo Queue / CPQ Gate & 0ms Deal-Desk Guard (`B2B-FIELD-SALES-CPQ-VOICE-01`).
+ */
+export function evaluateB2bFieldSalesTradeshowCpqVoiceGuard(input: {
+  twoPartyConsentAndConfidentialFloorPriceProtected: boolean;
+  offlineExpoQueueSyncedAndCpqMarginGdprVerified: boolean;
+  belowFloorDiscountOrCustomLegalClauseEscalation: boolean;
+}): B2bFieldSalesTradeshowCpqVoiceEvaluation {
+  return {
+    policyCode: "B2B-FIELD-SALES-CPQ-VOICE-01",
+    crmLeadSyncAndQuoteSendAuthorized:
+      input.twoPartyConsentAndConfidentialFloorPriceProtected &&
+      input.offlineExpoQueueSyncedAndCpqMarginGdprVerified &&
+      !input.belowFloorDiscountOrCustomLegalClauseEscalation,
+    wiretapBreachOrFloorPriceLeakBlocked:
+      !input.twoPartyConsentAndConfidentialFloorPriceProtected ||
+      !input.offlineExpoQueueSyncedAndCpqMarginGdprVerified ||
+      input.belowFloorDiscountOrCustomLegalClauseEscalation,
+    belowFloorDealDeskOrLegalApprovalBridged:
+      input.belowFloorDiscountOrCustomLegalClauseEscalation,
+  };
+}
+
+
 
 
 
