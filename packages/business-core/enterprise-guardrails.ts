@@ -10525,6 +10525,37 @@ export function evaluateGlobalMobilityEorVisaTaxVoiceGuard(input: {
   };
 }
 
+export interface VoiceOrchestrationFramework2026SelectionEvaluation {
+  policyCode: "VOICE-ORCHESTRATION-FRAMEWORK-2026-01";
+  orchestrationPipelineAndToolCommitAuthorized: boolean;
+  publicWrapperPiiLeakOrStaleEpochToolBlocked: boolean;
+  backupModelFailoverOrCcaasSipTransferBridged: boolean;
+}
+
+/**
+ * Deterministic 2026 Voice Orchestration Framework (LiveKit Agents vs. Pipecat vs. Azure ACS vs. Vapi/Retell) VPC Sovereignty Lock, Turn-Epoch Barge-In Fencing & 0ms Failover/SIP Guard (`VOICE-ORCHESTRATION-FRAMEWORK-2026-01`).
+ */
+export function evaluateVoiceOrchestrationFramework2026SelectionGuard(input: {
+  vpcDataSovereigntyAndHipaaPciBoundaryVerified: boolean;
+  turnEpochBargeInFencingAndToolCancelVerified: boolean;
+  primaryModelDegradedOrCcaasSipTransferPreemption: boolean;
+}): VoiceOrchestrationFramework2026SelectionEvaluation {
+  return {
+    policyCode: "VOICE-ORCHESTRATION-FRAMEWORK-2026-01",
+    orchestrationPipelineAndToolCommitAuthorized:
+      input.vpcDataSovereigntyAndHipaaPciBoundaryVerified &&
+      input.turnEpochBargeInFencingAndToolCancelVerified &&
+      !input.primaryModelDegradedOrCcaasSipTransferPreemption,
+    publicWrapperPiiLeakOrStaleEpochToolBlocked:
+      !input.vpcDataSovereigntyAndHipaaPciBoundaryVerified ||
+      !input.turnEpochBargeInFencingAndToolCancelVerified ||
+      input.primaryModelDegradedOrCcaasSipTransferPreemption,
+    backupModelFailoverOrCcaasSipTransferBridged:
+      input.primaryModelDegradedOrCcaasSipTransferPreemption,
+  };
+}
+
+
 
 
 

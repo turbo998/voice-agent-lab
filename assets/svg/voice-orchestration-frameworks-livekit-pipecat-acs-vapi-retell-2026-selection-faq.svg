@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad391" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentGrad391" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="50%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #38BDF8; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad391)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad391)"/>
+  <text x="52" y="52" class="title">2026 Voice Orchestration Frameworks: LiveKit Agents vs. Pipecat vs. Azure ACS vs. Vapi / Retell AI</text>
+  <text x="52" y="76" class="subtitle">Data-Sovereignty &amp; VPC Lock (Zero Regulated PII on Public SaaS) · Sub-500ms Turn-Taking &amp; TCO Gate · 0ms CCaaS SIP Transfer</text>
+  <rect x="984" y="38" width="248" height="32" rx="16" fill="#3B82F6"/>
+  <text x="1000" y="59" class="badge">VOICE-ORCHESTRATION-FRAMEWORK-2026-01</text>
+
+  <!-- Left Column: 4 Framework Archetypes -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. Four Voice Orchestration Archetypes (2026)</text>
+  <text x="48" y="164" class="card-sub">Open-Source Media vs. Cloud PaaS vs. Managed Wrapper</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">Track 1: LiveKit Agents (WebRTC SFU + Worker)</text>
+  <text x="64" y="224" class="body">• Global edge WebRTC SFU + stateful Python/Node workers</text>
+  <text x="64" y="242" class="body">• Best for mobile/web multimodal (voice + video + avatar)</text>
+  <text x="64" y="260" class="mono">Orchestration_Overhead = $0.004 - $0.008 / min</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">Track 2: Pipecat (Frame-Based DAG Pipeline)</text>
+  <text x="64" y="340" class="body">• Vendor-neutral Python frame pipeline (40+ STT/LLM/TTS)</text>
+  <text x="64" y="358" class="body">• Full self-hosted VPC control &amp; custom C++/ONNX VAD</text>
+  <text x="64" y="376" class="mono">Orchestration_Overhead = $0.002 / min (Self-Hosted K8s)</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#06B6D4" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">Track 3: Azure ACS Call Automation + Twilio</text>
+  <text x="64" y="462" class="body">• Carrier PSTN Direct Routing, Teams Phone &amp; SIP trunks</text>
+  <text x="64" y="480" class="body">• Native HIPAA / FedRAMP High / PCI-DSS boundary</text>
+  <text x="64" y="498" class="mono">PSTN_And_Media_Stream = $0.010 - $0.015 / min</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">Track 4: Vapi / Retell AI / Bland (Managed SaaS)</text>
+  <text x="64" y="584" class="body">• 1-day PoC velocity with built-in dashboard &amp; analytics</text>
+  <text x="64" y="602" class="body">• Platform wrapper markup: +$0.05 to $0.09/min over BYO</text>
+  <text x="64" y="620" class="mono">10M_Min_Annual_Wrapper_Tax = +$500,000 / year</text>
+
+  <!-- Center Column: 3-Layer Deterministic Framework Selection Gate -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#3B82F6" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic Framework &amp; Runtime Gate</text>
+  <text x="456" y="164" class="card-sub">VPC Sovereignty Lock · Epoch Barge-In · TCO Break-Even</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: Data Sovereignty &amp; VPC Boundary Lock</text>
+  <text x="472" y="224" class="body">• Blocks unapproved multi-tenant wrapper SaaS when</text>
+  <text x="472" y="242" class="body">  HIPAA, PCI-DSS, FINRA or sovereign VPC residency applies</text>
+  <text x="472" y="260" class="body">• Enforces private-link STT/LLM/TTS inside customer tenant</text>
+  <text x="472" y="280" class="mono">Unauthorized_Public_Wrapper_PII_Leak = 0.0%</text>
+  <text x="472" y="298" class="mono">Private_VPC_Media_Termination = 100% Enforced</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: Turn-Detection &amp; Barge-In Epoch Fencing</text>
+  <text x="472" y="374" class="body">• Combines Silero/WebRTC VAD with semantic EOU model</text>
+  <text x="472" y="392" class="body">• Increments Turn_Epoch_ID on barge-in to cancel stale</text>
+  <text x="472" y="410" class="body">  TTS audio frames &amp; in-flight unconfirmed tool calls</text>
+  <text x="472" y="430" class="mono">Stale_Tool_Call_Commit_After_BargeIn = 0.0%</text>
+  <text x="472" y="448" class="mono">End_Of_Turn_Voice_Latency_P50 = 410ms</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Provider Failover &amp; CCaaS SIP Bridge</text>
+  <text x="472" y="524" class="body">• Detects primary STT/LLM/TTS timeout (&gt;900ms) or</text>
+  <text x="472" y="542" class="body">  customer escalation request during live conversation</text>
+  <text x="472" y="560" class="body">• Hot-swaps backup provider or executes SIP REFER / ACS</text>
+  <text x="472" y="578" class="body">  contextual transfer to Genesys / Nice / Teams queue</text>
+  <text x="472" y="600" class="mono">if (providerDegradedOrEscalation) -&gt; 0ms Failover/SIP</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 26ms | Multi_Vendor_Uptime = 99.99%</text>
+
+  <!-- Right Column: TCO Break-Even & Reference Blueprint -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. Enterprise TCO &amp; Architecture Blueprint</text>
+  <text x="892" y="164" class="card-sub">100k Min/Mo Break-Even · Hybrid ACS + LiveKit/Pipecat</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Target Enterprise Reference Stack</text>
+  <text x="908" y="224" class="body">• Telephony Ingress: Azure ACS / Twilio Elastic SIP</text>
+  <text x="908" y="242" class="body">• Web/App Multimodal Ingress: LiveKit SFU Edge</text>
+  <text x="908" y="260" class="body">• Orchestration Worker: Pipecat / LiveKit Agents in AKS</text>
+  <text x="908" y="282" class="mono">Total_All_In_Unit_Cost = $0.048 / min (Cascaded)</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Build vs. Buy TCO Crossover Threshold</text>
+  <text x="908" y="366" class="body">• &lt; 50k min/mo: Vapi / Retell AI wins on time-to-market</text>
+  <text x="908" y="384" class="body">• &gt;= 150k min/mo: Self-hosted LiveKit/Pipecat + ACS saves</text>
+  <text x="908" y="402" class="body">  52% to 68% by eliminating per-minute wrapper markups</text>
+  <text x="908" y="424" class="mono">Annual_Savings_At_5M_Min = $275,000 / year</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (10k 3-Min Calls)</text>
+  <text x="908" y="520" class="body">• Pipecat + ACS (AKS): $1,440 / 30k min ($0.048/min)</text>
+  <text x="908" y="538" class="body">• LiveKit Agents + ACS: $1,560 / 30k min ($0.052/min)</text>
+  <text x="908" y="556" class="body">• Managed SaaS Wrapper: $3,600 / 30k min ($0.120/min)</text>
+  <text x="908" y="578" class="mono">Vendor_Lock_In_Risk = 0% (Hot-Swap STT/LLM/TTS)</text>
+  <text x="908" y="596" class="mono">Barge_In_Cancel = 35ms | Multi-Region SLA = 99.99%</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateVoiceOrchestrationFramework2026SelectionGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — 2026 Real-Time Voice Orchestration Framework Selection</text>
+  <text x="52" y="718" class="body">Use Vapi/Retell for rapid &lt;50k-min/mo PoCs; graduate to Azure ACS + LiveKit Agents or Pipecat in private AKS/VPC for &gt;150k-min/mo scale and strict compliance.</text>
+</svg>

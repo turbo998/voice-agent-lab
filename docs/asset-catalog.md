@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（390 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（391 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -431,3 +431,4 @@
 388. **居家安宁疗护、姑息医学与临终关怀（Home Hospice & Palliative Care：VITAS / Amedisys / WellSky / Netsmart / 医保居家安宁病房模式）急救舒适包（Comfort Kit）吗啡滴定间隔硬锁、生前预嘱（POLST/DNR）免误拨 911 拦截与夜间注册护士（RN）守护语音架构（高浓度硫酸吗啡 `Roxanol 20mg/mL` 滴管刻度 `0.25mL=5mg` 双单位复诵与给药间隔 `0%` 20倍过量硬锁、`POLST/DNR` 生前预嘱守护降 `89%` 非必要 911 插管急诊转运、难治性爆发痛与预期居家离世 `0ms` 切换 `135 WPM` 哀伤关怀轨并直通值班 RN 派单）方案**：[中文](./home-hospice-palliative-care-comfort-kit-opioid-lock-polst-dnr-voice-selection-faq.md) | [EN](./home-hospice-palliative-care-comfort-kit-opioid-lock-polst-dnr-voice-selection-faq.en.md)
 389. **政府采购、公共资源交易中心与央国企招投标（Public Procurement & Sealed-Bid Evaluation Room：FAR Part 15 / EU Directive 2014/24/EU / 远程异地“双盲”评标模式）暗标供应商身份脱敏硬锁、技术/商务双信封物理隔离与围标串标/倾向性诱导 `0ms` 纪检监察审计语音架构（HSM 双信封隔离与暗标企业/专利特征 `0%` 泄密硬锁、实质性废标星号条款 `★` `8.2秒` 全书防漏看反查与【招标条款+投标页码】双证据锚定、跨评标舱中性 TTS 变声中继与倾向性拉票诱导 `0ms` 静音熔断报见证监督席）方案**：[中文](./public-procurement-sealed-bid-evaluation-blind-scoring-anti-collusion-voice-selection-faq.md) | [EN](./public-procurement-sealed-bid-evaluation-blind-scoring-anti-collusion-voice-selection-faq.en.md)
 390. **跨国企业全球人才流动、名义雇主（Global Mobility, Employer of Record & Immigration：Deel / Rippling / Fragomen / Vialto Partners / Workday 模式）工作签证（H-1B LCA / EU Blue Card）实质性变更硬锁、`183 天` 常设机构（Permanent Establishment, PE）税务红线与海关入境受阻（CBP Secondary Inspection）`0ms` 移民律师直通语音架构（`Matter of Simeio` H-1B 跨都会区 `MSA` 与旅游签编码 `0%` 违章硬锁、OECD 第 5 条常设机构 `PE` 签署权与 `183天` 滚动税务门禁、机场海关 `CBP Secondary Inspection` 与 `221(g)` 拒签 `0ms` 附带 `G-28/I-797` 直通 24/7 持牌移民律师）方案**：[中文](./global-mobility-eor-visa-immigration-h1b-lca-permanent-establishment-voice-selection-faq.md) | [EN](./global-mobility-eor-visa-immigration-h1b-lca-permanent-establishment-voice-selection-faq.en.md)
+391. **2026 实时语音开发与编排框架横向选型指南：LiveKit Agents vs. Pipecat vs. Azure Communication Services (ACS) Call Automation vs. Vapi / Retell AI（强监管私有 `VPC` 数据不出域与严禁明文 `PII` 流经多租户 Wrapper SaaS 硬锁、`Turn_Epoch_ID` `35ms` 打断清空与在途过时工具调用 `100%` 拦截门禁、月超 `15万分钟` 自建 AKS 较商业包装平台降本 `57%–60%` 盈亏平衡测算与 `0ms` 跨厂商模型热备/SIP 转人工）方案**：[中文](./voice-orchestration-frameworks-livekit-pipecat-acs-vapi-retell-2026-selection-faq.md) | [EN](./voice-orchestration-frameworks-livekit-pipecat-acs-vapi-retell-2026-selection-faq.en.md)
