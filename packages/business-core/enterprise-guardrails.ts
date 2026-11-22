@@ -10615,6 +10615,37 @@ export function evaluateRealtimeVoiceBargeInFillerHandoffGuard(input: {
   };
 }
 
+export interface AiSalesMedrepRoleplayCoachingVoiceEvaluation {
+  policyCode: "AI-SALES-MEDREP-ROLEPLAY-COACH-01";
+  certificationPassAndCrmReadinessAuthorized: boolean;
+  sycophanticCapitulationOrOffLabelViolationBlocked: boolean;
+  complianceRedlineHaltOrEnablementLeadBridged: boolean;
+}
+
+/**
+ * Deterministic AI Sales Roleplay, Pharma MedRep Detailing & Interview Coaching (Gong / Mindtickle / Veeva) Anti-Sycophancy Objection Lock, FDA Off-Label Red-Line Gate & EEOC Bias-Free Rubric Guard (`AI-SALES-MEDREP-ROLEPLAY-COACH-01`).
+ */
+export function evaluateAiSalesMedrepRoleplayCoachingVoiceGuard(input: {
+  personaAntiSycophancyAndObjectionGatesSatisfied: boolean;
+  zeroOffLabelOrFinancialComplianceBreachVerified: boolean;
+  regulatoryRedlineOrBiasAuditDisputePreemption: boolean;
+}): AiSalesMedrepRoleplayCoachingVoiceEvaluation {
+  return {
+    policyCode: "AI-SALES-MEDREP-ROLEPLAY-COACH-01",
+    certificationPassAndCrmReadinessAuthorized:
+      input.personaAntiSycophancyAndObjectionGatesSatisfied &&
+      input.zeroOffLabelOrFinancialComplianceBreachVerified &&
+      !input.regulatoryRedlineOrBiasAuditDisputePreemption,
+    sycophanticCapitulationOrOffLabelViolationBlocked:
+      !input.personaAntiSycophancyAndObjectionGatesSatisfied ||
+      !input.zeroOffLabelOrFinancialComplianceBreachVerified ||
+      input.regulatoryRedlineOrBiasAuditDisputePreemption,
+    complianceRedlineHaltOrEnablementLeadBridged:
+      input.regulatoryRedlineOrBiasAuditDisputePreemption,
+  };
+}
+
+
 
 
 
