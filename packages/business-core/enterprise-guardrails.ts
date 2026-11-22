@@ -11095,6 +11095,37 @@ export function evaluateB2bSaasMultilingualSdrLeadVoiceGuard(input: {
   };
 }
 
+export interface AutomotiveSmartCockpitFourZoneVoiceEvaluation {
+  policyCode: "AUTOMOTIVE-SMART-COCKPIT-VOICE-01";
+  cabinSomeIpControlAndManualResponseAuthorized: boolean;
+  inMotionHazardOrRearChildOverrideBlocked: boolean;
+  ecallPsapAndDriverHapticWakeTriggered: boolean;
+}
+
+/**
+ * Deterministic Automotive Smart Cockpit 4-Zone Voice Assistant (Snapdragon 8295 / NVIDIA Thor + Cloud VLM) ISO 26262 Speed/Gear & Rear-Child RBAC Lock, Edge-NPU Offload Gate & 0ms NG-eCall/DMS Guard (`AUTOMOTIVE-SMART-COCKPIT-VOICE-01`).
+ */
+export function evaluateAutomotiveSmartCockpitFourZoneVoiceGuard(input: {
+  iso26262SpeedGearAndZoneRbacVerified: boolean;
+  edgeNpuOfflineOrGroundedManualRouted: boolean;
+  airbagEcallOrDriverMicrosleepPreemption: boolean;
+}): AutomotiveSmartCockpitFourZoneVoiceEvaluation {
+  return {
+    policyCode: "AUTOMOTIVE-SMART-COCKPIT-VOICE-01",
+    cabinSomeIpControlAndManualResponseAuthorized:
+      input.iso26262SpeedGearAndZoneRbacVerified &&
+      input.edgeNpuOfflineOrGroundedManualRouted &&
+      !input.airbagEcallOrDriverMicrosleepPreemption,
+    inMotionHazardOrRearChildOverrideBlocked:
+      !input.iso26262SpeedGearAndZoneRbacVerified ||
+      !input.edgeNpuOfflineOrGroundedManualRouted ||
+      input.airbagEcallOrDriverMicrosleepPreemption,
+    ecallPsapAndDriverHapticWakeTriggered:
+      input.airbagEcallOrDriverMicrosleepPreemption,
+  };
+}
+
+
 
 
 
