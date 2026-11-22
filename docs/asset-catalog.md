@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（370 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（371 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -411,3 +411,4 @@
 368. **大型商业综合体、购物中心与国际机场商业区（万象城 / 恒隆广场 / Westfield / 樟宜机场星耀模式）多模态导视屏语音寻路、小票积分秒级补登、母婴/无障碍调度与失物招领（Lost & Found）架构（屏前朝向锚定名店地标口语路线与婴儿车/轮椅 100% 强制垂直直梯硬锁、失物招领“非公开细节反向核身”`0%` 冒领与小票 `SHA-256` 防重刷停车券门禁、儿童走失 `0ms` 静默 `Code Adam` 封锁全馆出口严禁公共广播与地库道闸 `<12s` 模糊车牌脱困）方案**：[中文](./shopping-mall-airport-commercial-complex-wayfinding-loyalty-lost-found-voice-selection-faq.md) | [EN](./shopping-mall-airport-commercial-complex-wayfinding-loyalty-lost-found-voice-selection-faq.en.md)
 369. **企业级智能外呼平台（Twilio Programmable Voice vs. Azure Communication Services vs. Vonage + LiveKit/Pipecat）全球号码信誉保护（STIR/SHAKEN A级签名与品牌来电显示）、`<380ms` 投机式信箱识别（Speculative AMD）与防封号架构（`STIR/SHAKEN Level-A` 签名、品牌 Logo 显示与单号 `<=50通/日` 反雪鞋温控硬锁提真人接通率至 `50.4%`、`<380ms` 投机式零死寂问候与 `900–2200Hz` 滴声对齐留言压降 `78%` 挂断门禁、运营商 `SIP 603/607/608` 标记 `0ms` 冷却申诉与口头退订全局 `DNC` 熔断）方案**：[中文](./outbound-voice-stir-shaken-caller-id-reputation-spam-remediation-architecture-selection-faq.md) | [EN](./outbound-voice-stir-shaken-caller-id-reputation-spam-remediation-architecture-selection-faq.en.md)
 370. **2026 企业级实时语音与多模态基座大模型深度横评与选型指南（OpenAI GPT-4o / Mini-Realtime vs. Azure Voice Live vs. Google Gemini 2.0 Flash Live vs. AWS Nova Sonic vs. Deepgram + Claude/GPT 级联：5,000+ 专有热词副轨与法定条款 `0ms` 切换 `SHA-256` 锁定 `SSML` 硬锁、`N-3` 滑动窗口历史音频转文本裁剪与 75/25 大小模型路由省 `66.7%` 成本门禁、算术/账单确定性代码验算与 `<220ms` 跨云热切）方案**：[中文](./enterprise-realtime-voice-foundation-models-2026-gpt-gemini-nova-cascaded-selection-faq.md) | [EN](./enterprise-realtime-voice-foundation-models-2026-gpt-gemini-nova-cascaded-selection-faq.en.md)
+371. **跨国工业装备与高端医疗器械售后（西门子 / 施耐德电气 / 卡特彼勒 / 迈瑞医疗 / 汇川技术全球大客户技术支持中心模式）多模态 AR 远程专家语音协作、单机序列号 BOM 备件消歧与停机 SLA 抢占架构（480V 电柜开柜前强制核验 `LOTO` 挂锁与 `0V` 母线放电硬锁、单机实装台账 `As-Maintained Serial BOM` 校验 `ECO` 版本与铭牌 `OCR` 压降 `91.8%` 错件门禁、白金大客户整线停摆 `Sev-1 Line-Down` `0ms` 锁前置仓现货并直连三线首席专家 AR 桥）方案**：[中文](./industrial-oem-aftersales-ar-remote-expert-bom-part-disambiguation-voice-selection-faq.md) | [EN](./industrial-oem-aftersales-ar-remote-expert-bom-part-disambiguation-voice-selection-faq.en.md)

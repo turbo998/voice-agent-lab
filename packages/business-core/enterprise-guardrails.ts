@@ -9925,6 +9925,37 @@ export function evaluateRealtimeVoiceFoundationModel2026SelectionGuard(input: {
   };
 }
 
+export interface IndustrialOemAftersalesArPartVoiceEvaluation {
+  policyCode: "INDUSTRIAL-OEM-AFTERSALES-VOICE-01";
+  remoteTriageAndSparePartOrderAuthorized: boolean;
+  liveCabinetShockRiskOrWrongBomRevisionBlocked: boolean;
+  sev1LineDownCourierAndTier3ArExpertBridged: boolean;
+}
+
+/**
+ * Deterministic Industrial OEM Aftersales Pre-Cabinet LOTO Zero-Energy Lock, As-Maintained Serial BOM / ECO Gate & 0ms Sev-1 Line-Down AR Expert Guard (`INDUSTRIAL-OEM-AFTERSALES-VOICE-01`).
+ */
+export function evaluateIndustrialOemAftersalesArPartVoiceGuard(input: {
+  lotoZeroEnergyAndOperatorCertVerifiedBeforeCabinetTriage: boolean;
+  asMaintainedSerialBomAndEcoCompatibilityMatched: boolean;
+  sev1LineDownSlaOrMedicalDeviceEmergencyPreemption: boolean;
+}): IndustrialOemAftersalesArPartVoiceEvaluation {
+  return {
+    policyCode: "INDUSTRIAL-OEM-AFTERSALES-VOICE-01",
+    remoteTriageAndSparePartOrderAuthorized:
+      input.lotoZeroEnergyAndOperatorCertVerifiedBeforeCabinetTriage &&
+      input.asMaintainedSerialBomAndEcoCompatibilityMatched &&
+      !input.sev1LineDownSlaOrMedicalDeviceEmergencyPreemption,
+    liveCabinetShockRiskOrWrongBomRevisionBlocked:
+      !input.lotoZeroEnergyAndOperatorCertVerifiedBeforeCabinetTriage ||
+      !input.asMaintainedSerialBomAndEcoCompatibilityMatched ||
+      input.sev1LineDownSlaOrMedicalDeviceEmergencyPreemption,
+    sev1LineDownCourierAndTier3ArExpertBridged:
+      input.sev1LineDownSlaOrMedicalDeviceEmergencyPreemption,
+  };
+}
+
+
 
 
 
