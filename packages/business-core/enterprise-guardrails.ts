@@ -10315,6 +10315,37 @@ export function evaluateCustomsBrokerageHtsExportControlVoiceGuard(input: {
   };
 }
 
+export interface PrivateBankingFamilyOfficeLombardVoiceEvaluation {
+  policyCode: "PRIVATE-BANK-FAMILY-OFFICE-01";
+  nightDeskOrderAndCollateralPledgeAuthorized: boolean;
+  mnpiViolationOrRealNameLeakBlocked: boolean;
+  closeOutLiquidationOrNightDeskTraderBridged: boolean;
+}
+
+/**
+ * Deterministic Private Banking & UHNW Family Office (Avaloq / Temenos) MNPI Firewall & Numbered-Account Pseudonym Lock, Lombard LTV / 5-Element Readback Gate & 0ms Night-Desk Guard (`PRIVATE-BANK-FAMILY-OFFICE-01`).
+ */
+export function evaluatePrivateBankingFamilyOfficeLombardVoiceGuard(input: {
+  mnpiRestrictedListClearedAndNumberedAccountPseudonymLocked: boolean;
+  fiveElementOrderReadbackAndLombardLtvHaircutVerified: boolean;
+  closeOutMarginBreachOrLargeBlockNightDeskPreemption: boolean;
+}): PrivateBankingFamilyOfficeLombardVoiceEvaluation {
+  return {
+    policyCode: "PRIVATE-BANK-FAMILY-OFFICE-01",
+    nightDeskOrderAndCollateralPledgeAuthorized:
+      input.mnpiRestrictedListClearedAndNumberedAccountPseudonymLocked &&
+      input.fiveElementOrderReadbackAndLombardLtvHaircutVerified &&
+      !input.closeOutMarginBreachOrLargeBlockNightDeskPreemption,
+    mnpiViolationOrRealNameLeakBlocked:
+      !input.mnpiRestrictedListClearedAndNumberedAccountPseudonymLocked ||
+      !input.fiveElementOrderReadbackAndLombardLtvHaircutVerified ||
+      input.closeOutMarginBreachOrLargeBlockNightDeskPreemption,
+    closeOutLiquidationOrNightDeskTraderBridged:
+      input.closeOutMarginBreachOrLargeBlockNightDeskPreemption,
+  };
+}
+
+
 
 
 
