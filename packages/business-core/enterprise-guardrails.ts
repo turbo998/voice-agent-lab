@@ -11185,6 +11185,37 @@ export function evaluateEnterpriseVoiceObservabilityOtelGuard(input: {
   };
 }
 
+export interface WealthManagementRoboAdvisorVoiceEvaluation {
+  policyCode: "WEALTH-ROBO-ADVISOR-SUITABILITY-01";
+  rebalanceAndTaxHarvestTradeAuthorized: boolean;
+  suitabilityMismatchOrWashSaleOrYieldPromiseBlocked: boolean;
+  panicLiquidationCfpAndSenior4512Bridged: boolean;
+}
+
+/**
+ * Deterministic Wealth Management & Robo-Advisor (Morgan Stanley / Charles Schwab / BlackRock Aladdin) SEC Reg BI R1-R5 Suitability & Zero-Promissory Lock, IRS 30-Day Wash-Sale Gate & 0ms Panic-Liquidation / FINRA 4512 CFP Guard (`WEALTH-ROBO-ADVISOR-SUITABILITY-01`).
+ */
+export function evaluateWealthManagementRoboAdvisorVoiceGuard(input: {
+  regBiRiskTierMatchedAndZeroYieldGuaranteeVerified: boolean;
+  washSaleClearedAndDualChannelConfirmed: boolean;
+  panicAllToCashOrSeniorExploitationPreemption: boolean;
+}): WealthManagementRoboAdvisorVoiceEvaluation {
+  return {
+    policyCode: "WEALTH-ROBO-ADVISOR-SUITABILITY-01",
+    rebalanceAndTaxHarvestTradeAuthorized:
+      input.regBiRiskTierMatchedAndZeroYieldGuaranteeVerified &&
+      input.washSaleClearedAndDualChannelConfirmed &&
+      !input.panicAllToCashOrSeniorExploitationPreemption,
+    suitabilityMismatchOrWashSaleOrYieldPromiseBlocked:
+      !input.regBiRiskTierMatchedAndZeroYieldGuaranteeVerified ||
+      !input.washSaleClearedAndDualChannelConfirmed ||
+      input.panicAllToCashOrSeniorExploitationPreemption,
+    panicLiquidationCfpAndSenior4512Bridged:
+      input.panicAllToCashOrSeniorExploitationPreemption,
+  };
+}
+
+
 
 
 

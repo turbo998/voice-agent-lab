@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad413" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentGrad413" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="50%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #34D399; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad413)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad413)"/>
+  <text x="52" y="52" class="title">Wealth Management &amp; Robo-Advisor Portfolio Rebalance, Tax-Loss Harvesting &amp; Reg BI Voice Architecture</text>
+  <text x="52" y="76" class="subtitle">SEC Reg BI / FINRA 2111 R1-R5 Suitability Hard Lock (0% Mismatched Pitch) · IRS 30-Day Wash-Sale Gate · 0ms Panic-Sell CFP Bridge</text>
+  <rect x="980" y="38" width="252" height="32" rx="16" fill="#10B981"/>
+  <text x="996" y="59" class="badge">WEALTH-ROBO-ADVISOR-SUITABILITY-01</text>
+
+  <!-- Left Column: Investor Voice Line, KYC & Portfolio Engine -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. Investor Voice Concierge &amp; Portfolio Bus</text>
+  <text x="48" y="164" class="card-sub">Charles Schwab / Morgan Stanley / Aladdin · Salesforce FSC</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">Inbound &amp; Proactive Outbound Advisory Voice</text>
+  <text x="64" y="224" class="body">• Quarterly portfolio review &amp; drift rebalance outreach</text>
+  <text x="64" y="242" class="body">• Market-volatility reassurance during S&amp;P -4% drops</text>
+  <text x="64" y="260" class="mono">Investor_KYC = "Tier_R3_Balanced | Expires_2027-04"</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">BlackRock Aladdin / Portfolio Drift &amp; Tax Engine</text>
+  <text x="64" y="340" class="body">• Target 60/40 equity-bond drift (&gt;5% band breach)</text>
+  <text x="64" y="358" class="body">• Tax-loss harvesting ETF pair (`VTI -&gt; ITOT`) &amp; wash-sale</text>
+  <text x="64" y="376" class="mono">Harvestable_Tax_Loss = -$4,850 (Wash_Sale_Clear = True)</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">SEC Reg BI / FINRA 2111 Suitability Matrix</text>
+  <text x="64" y="462" class="body">• Maps client R1-R5 risk score vs product risk rating</text>
+  <text x="64" y="480" class="body">• Checks liquidity horizon, age &amp; concentration (&lt;10%)</text>
+  <text x="64" y="498" class="mono">Product_Risk = R3_ETF &lt;= Client_KYC_Cap = R3</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">FINRA Rule 4512 Senior Investor Protection</text>
+  <text x="64" y="584" class="body">• Trusted-contact registry &amp; uncharacteristic withdrawal</text>
+  <text x="64" y="602" class="body">• SEC Rule 17a-4 WORM dual-channel audio + text archive</text>
+  <text x="64" y="620" class="mono">Compliance = SEC_RegBI_And_FINRA_Rule_2111_4512</text>
+
+  <!-- Center Column: 3-Layer Deterministic Suitability & Tax Gate -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic Reg BI, Wash-Sale &amp; Panic Gate</text>
+  <text x="456" y="164" class="card-sub">Zero R-Tier Mismatch · Zero Guaranteed Return · 0ms CFP Bridge</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: SEC Reg BI / R1-R5 Suitability Hard Lock</text>
+  <text x="472" y="224" class="body">• Blocks any mention or order of products where</text>
+  <text x="472" y="242" class="body">  `Product_Risk_Tier &gt; Client_KYC_Tier` or KYC expired</text>
+  <text x="472" y="260" class="body">• Strips 100% of forward-looking yield guarantees</text>
+  <text x="472" y="280" class="mono">Suitability_Tier_Mismatch_Rate = 0.0% (Hard Locked)</text>
+  <text x="472" y="298" class="mono">Promissory_Return_Language_Leak = 0.0%</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: IRS 30-Day Wash-Sale &amp; Dual-Confirm Gate</text>
+  <text x="472" y="374" class="body">• Verifies zero identical security buys in +/-30d across</text>
+  <text x="472" y="392" class="body">  taxable + IRA accounts before tax-loss harvest swap</text>
+  <text x="472" y="410" class="body">• Requires voice readback + mobile app biometric tap</text>
+  <text x="472" y="430" class="mono">IRS_Wash_Sale_Disallowance_Error = 0.0%</text>
+  <text x="472" y="448" class="mono">Mass_Affluent_Rebalance_Adoption = +52% Lift</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Flash-Crash Panic &amp; FINRA 4512 Bridge</text>
+  <text x="472" y="524" class="body">• Detects panic all-to-cash liquidation ("Sell all my</text>
+  <text x="472" y="542" class="body">  401k/stocks now!"), early IRA penalty or senior scam</text>
+  <text x="472" y="560" class="body">• Pauses auto-liquidation in 0ms; models tax/penalty</text>
+  <text x="472" y="578" class="body">  impact &amp; bridges licensed human CFP advisor immediately</text>
+  <text x="472" y="600" class="mono">if (panicAllToCashOrSeniorExploitation) -&gt; 0ms CFP_Desk</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 17ms | Panic_Churn_Saved = 64%</text>
+
+  <!-- Right Column: Advisory Execution & Wealth KPIs -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. Dual-Recording &amp; AUM Retention ROI</text>
+  <text x="892" y="164" class="card-sub">SEC 17a-4 Dual-Record · CFP Copilot · AUM Growth</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Automated Dual-Recording (双录) &amp; Prospectus</text>
+  <text x="908" y="224" class="body">•Synchronizes verbatim risk-disclosure TTS with mobile</text>
+  <text x="908" y="242" class="body">  prospectus scroll &amp; investor voice confirmation</text>
+  <text x="908" y="260" class="body">• Cuts dual-recording failure/rework from 19% to 0.3%</text>
+  <text x="908" y="282" class="mono">Dual_Recording_First_Pass_Yield = 99.7%</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Mass-Affluent ($100k-$1M) Proactive Coverage</text>
+  <text x="908" y="366" class="body">• Scales personalized quarterly voice check-ins to</text>
+  <text x="908" y="384" class="body">  500,000 mass-affluent clients human FAs can't reach</text>
+  <text x="908" y="402" class="body">• Captures idle cash sweep &amp; IRA contribution deadlines</text>
+  <text x="908" y="424" class="mono">Advisor_Book_Capacity_Multiplier = 4.5x Clients/CFP</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (10k Advisory Calls)</text>
+  <text x="908" y="520" class="body">• Human CFP Outreach: $380,000 / 10k calls ($38/call)</text>
+  <text x="908" y="538" class="body">• Hybrid RegBI+Aladdin Voice: $1,350 / 10k calls (Rec)</text>
+  <text x="908" y="556" class="body">• Unguarded Finance LLM: $2,200 + FINRA fine risk</text>
+  <text x="908" y="578" class="mono">Retained_AUM_During_Market_Drawdown = +$42M / 10k Calls</text>
+  <text x="908" y="596" class="mono">Reg_BI_Breaches = 0 | Tax_Alpha_Generated = +1.18% Yr</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateWealthManagementRoboAdvisorVoiceGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — Wealth Management &amp; Retail Advisory Voice Copilot</text>
+  <text x="52" y="718" class="body">Enforce R1-R5 KYC suitability &amp; IRS wash-sale gates in deterministic code, never guarantee yields, and bridge CFPs on panic liquidations.</text>
+</svg>
