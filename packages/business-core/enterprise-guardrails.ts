@@ -11275,6 +11275,37 @@ export function evaluateTelecomIspOutageEsimSimSwapVoiceGuard(input: {
   };
 }
 
+export interface CcaasPlatformVoiceAiMigrationEvaluation {
+  policyCode: "CCAAS-PLATFORM-MIGRATION-2026-01";
+  byocSelfServiceAndWarmCtiHandoffAuthorized: boolean;
+  mediaForkingDoubleTaxOrBlankScreenTransferBlocked: boolean;
+  virtualQueueCallbackOrRegionFailoverBridged: boolean;
+}
+
+/**
+ * Deterministic 2026 Enterprise CCaaS (Genesys Cloud CX vs. Amazon Connect vs. NICE CXone vs. Dynamics 365 CC) Front-Door BYOC Anti-Double-Billing Lock, <150ms CTI Context Screen-Pop Gate & 0ms Queue EWT>180s Callback Guard (`CCAAS-PLATFORM-MIGRATION-2026-01`).
+ */
+export function evaluateCcaasPlatformVoiceAiMigrationGuard(input: {
+  frontDoorByocZeroDoubleBillingVerified: boolean;
+  ctiContextPacketAndKycScreenPopSynced: boolean;
+  targetQueueEwtOver180sOrCcaasRegionDownPreemption: boolean;
+}): CcaasPlatformVoiceAiMigrationEvaluation {
+  return {
+    policyCode: "CCAAS-PLATFORM-MIGRATION-2026-01",
+    byocSelfServiceAndWarmCtiHandoffAuthorized:
+      input.frontDoorByocZeroDoubleBillingVerified &&
+      input.ctiContextPacketAndKycScreenPopSynced &&
+      !input.targetQueueEwtOver180sOrCcaasRegionDownPreemption,
+    mediaForkingDoubleTaxOrBlankScreenTransferBlocked:
+      !input.frontDoorByocZeroDoubleBillingVerified ||
+      !input.ctiContextPacketAndKycScreenPopSynced ||
+      input.targetQueueEwtOver180sOrCcaasRegionDownPreemption,
+    virtualQueueCallbackOrRegionFailoverBridged:
+      input.targetQueueEwtOver180sOrCcaasRegionDownPreemption,
+  };
+}
+
+
 
 
 
