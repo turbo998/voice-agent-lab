@@ -10555,6 +10555,37 @@ export function evaluateVoiceOrchestrationFramework2026SelectionGuard(input: {
   };
 }
 
+export interface EnterpriseTtsVoiceCloningAvatarSelectionEvaluation {
+  policyCode: "ENTERPRISE-TTS-CLONING-AVATAR-01";
+  ttsSynthesisAndAvatarVisemeStreamAuthorized: boolean;
+  unconsentedVoiceCloneOrMarkdownArtifactBlocked: boolean;
+  backupTtsFailoverOrAudioOnlyAvatarFallbackTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise TTS, Brand Voice Cloning & Real-Time Avatar (Azure CNV / ElevenLabs / Deepgram Aura-2 / CosyVoice) Biometric Consent & Watermark Hard Lock, SSML/Markdown Sanitizer Gate & 0ms Lip-Sync Fallback Guard (`ENTERPRISE-TTS-CLONING-AVATAR-01`).
+ */
+export function evaluateEnterpriseTtsVoiceCloningAvatarSelectionGuard(input: {
+  speakerBiometricConsentAndC2paWatermarkVerified: boolean;
+  markdownStrippedAndSsmlLexiconNormalized: boolean;
+  ttsLatencySpikeOrAvatarLipSyncDriftPreemption: boolean;
+}): EnterpriseTtsVoiceCloningAvatarSelectionEvaluation {
+  return {
+    policyCode: "ENTERPRISE-TTS-CLONING-AVATAR-01",
+    ttsSynthesisAndAvatarVisemeStreamAuthorized:
+      input.speakerBiometricConsentAndC2paWatermarkVerified &&
+      input.markdownStrippedAndSsmlLexiconNormalized &&
+      !input.ttsLatencySpikeOrAvatarLipSyncDriftPreemption,
+    unconsentedVoiceCloneOrMarkdownArtifactBlocked:
+      !input.speakerBiometricConsentAndC2paWatermarkVerified ||
+      !input.markdownStrippedAndSsmlLexiconNormalized ||
+      input.ttsLatencySpikeOrAvatarLipSyncDriftPreemption,
+    backupTtsFailoverOrAudioOnlyAvatarFallbackTriggered:
+      input.ttsLatencySpikeOrAvatarLipSyncDriftPreemption,
+  };
+}
+
+
 
 
 

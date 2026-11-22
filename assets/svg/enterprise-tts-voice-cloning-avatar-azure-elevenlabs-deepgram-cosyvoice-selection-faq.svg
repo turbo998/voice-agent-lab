@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad392" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#2E1065"/>
+    </linearGradient>
+    <linearGradient id="accentGrad392" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="50%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #C084FC; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad392)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad392)"/>
+  <text x="52" y="52" class="title">Enterprise TTS, Brand Voice Cloning &amp; Real-Time Avatar: Azure vs. ElevenLabs vs. Deepgram vs. CosyVoice</text>
+  <text x="52" y="76" class="subtitle">Voice-Talent Consent &amp; C2PA Watermark Lock (0% Unconsented Clone) · Sub-150ms TTFA &amp; SSML Lexicon Gate · &lt;35ms Avatar Lip-Sync</text>
+  <rect x="990" y="38" width="242" height="32" rx="16" fill="#8B5CF6"/>
+  <text x="1008" y="59" class="badge">ENTERPRISE-TTS-CLONING-AVATAR-01</text>
+
+  <!-- Left Column: 4 TTS & Avatar Engine Tiers -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. Four TTS, Voice Cloning &amp; Avatar Tiers</text>
+  <text x="48" y="164" class="card-sub">Enterprise Governance vs. Emotional Prosody vs. Latency</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#06B6D4" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">Tier 1: Azure AI Speech (CNV + Avatar)</text>
+  <text x="64" y="224" class="body">• Custom Neural Voice (CNV) with gated speaker consent</text>
+  <text x="64" y="242" class="body">• 140+ locales, full SSML/IPA &amp; WebRTC Photo/Custom Avatar</text>
+  <text x="64" y="260" class="mono">TTFA = 120ms | Cost = ~$15-$24 / 1M chars</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#8B5CF6" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">Tier 2: ElevenLabs Flash v2.5 / Multilingual</text>
+  <text x="64" y="340" class="body">• Benchmark emotional expressiveness &amp; breathing realism</text>
+  <text x="64" y="358" class="body">• Flash v2.5 reaches ~75ms model latency (32+ languages)</text>
+  <text x="64" y="376" class="mono">TTFA = 95ms-135ms | Cost = ~$50-$99 / 1M chars</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">Tier 3: Deepgram Aura-2 / Cartesia Sonic</text>
+  <text x="64" y="462" class="body">• Ultra-fast telephony/contact-center turn-taking engines</text>
+  <text x="64" y="480" class="body">• Co-located with STT on same WebSocket for minimum RTT</text>
+  <text x="64" y="498" class="mono">TTFA = 80ms-110ms | Cost = ~$15-$30 / 1M chars</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">Tier 4: CosyVoice 2 / Fish Speech 1.5 (Self-Hosted)</text>
+  <text x="64" y="584" class="body">• Air-gapped GPU VPC deployment (L40S / H100 TensorRT)</text>
+  <text x="64" y="602" class="body">• Zero per-character API fee; requires custom safety gate</text>
+  <text x="64" y="620" class="mono">Self_Hosted_GPU_TCO = ~$3.80 / 1M chars @ High Util</text>
+
+  <!-- Center Column: 3-Layer Deterministic TTS & Avatar Gate -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic Cloning, Lexicon &amp; Sync Gate</text>
+  <text x="456" y="164" class="card-sub">Zero Unconsented Clone · 100% SSML IPA · &lt;35ms Viseme</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: Biometric Consent &amp; Watermark Hard Lock</text>
+  <text x="472" y="224" class="body">• Requires cryptographic verbal consent statement match</text>
+  <text x="472" y="242" class="body">• Embeds imperceptible synth watermark + C2PA manifest</text>
+  <text x="472" y="260" class="body">• Blocks open zero-shot voice cloning on arbitrary clips</text>
+  <text x="472" y="280" class="mono">Unauthorized_Voice_Clone_Creation = 0.0% (Hard Locked)</text>
+  <text x="472" y="298" class="mono">EU_AI_Act_Art50_Watermark = 100% Embedded</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: SSML IPA Lexicon &amp; Markdown Stripper Gate</text>
+  <text x="472" y="374" class="body">• Strips raw Markdown (`**`, `#`, tables) before TTS stream</text>
+  <text x="472" y="392" class="body">• Injects custom IPA/phoneme dictionary for drug/brand</text>
+  <text x="472" y="410" class="body">  names &amp; forces `<say-as interpret-as="digits">` on IDs</text>
+  <text x="472" y="430" class="mono">Brand_And_Drug_Pronunciation_Accuracy = 99.9%</text>
+  <text x="472" y="448" class="mono">Markdown_Artifact_Readout_Rate = 0.0%</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Avatar Drift / TTS Spike Fallback</text>
+  <text x="472" y="524" class="body">• Monitors audio-to-viseme lip-sync drift (&gt;45ms) or</text>
+  <text x="472" y="542" class="body">  cloud TTS TTFA spike (&gt;450ms) / GPU frame drop (&lt;20fps)</text>
+  <text x="472" y="560" class="body">• Hot-switches to low-latency audio-only / backup TTS in</text>
+  <text x="472" y="578" class="body">  0ms or shifts avatar to idle-listening pose seamlessly</text>
+  <text x="472" y="600" class="mono">if (ttsLatencySpikeOrAvatarDesync) -&gt; 0ms Fallback</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 21ms | Lip_Sync_Offset = 24ms</text>
+
+  <!-- Right Column: Deployment Matrix & KPIs -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. Enterprise Routing &amp; TCO Blueprint</text>
+  <text x="892" y="164" class="card-sub">Multi-Tier TTS Router · WebRTC Avatar · Cost Control</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Workload-Matched TTS &amp; Avatar Selection</text>
+  <text x="908" y="224" class="body">• Global Contact Center &amp; Regulated: Azure CNV / Deepgram</text>
+  <text x="908" y="242" class="body">• VIP Concierge &amp; Luxury Storytelling: ElevenLabs Flash</text>
+  <text x="908" y="260" class="body">• Air-Gapped On-Prem High Volume: CosyVoice 2 TensorRT</text>
+  <text x="908" y="282" class="mono">Phrase_Cache_Hit_Ratio = 38% (Zero TTS Cost on Greetings)</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#06B6D4" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Real-Time Avatar Architecture (2D/3D vs Video)</text>
+  <text x="908" y="366" class="body">• Cloud WebRTC Video Avatar (Azure Avatar / HeyGen / Tavus)</text>
+  <text x="908" y="384" class="body">• Client-Side 3D/Live2D Driven by 55-Blendshape Visemes</text>
+  <text x="908" y="402" class="body">• Cuts server GPU rendering cost by 88% on mobile kiosks</text>
+  <text x="908" y="424" class="mono">Viseme_Blendshape_Bandwidth = 12 kbps vs 4 Mbps Video</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#8B5CF6" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (10M Chars ~ 200h)</text>
+  <text x="908" y="520" class="body">• Self-Hosted CosyVoice 2: $38 / 10M chars (GPU amortized)</text>
+  <text x="908" y="538" class="body">• Azure AI Speech / Deepgram: $150 / 10M chars (Rec Core)</text>
+  <text x="908" y="556" class="body">• ElevenLabs Enterprise: $500-$990 / 10M chars (VIP Tier)</text>
+  <text x="908" y="578" class="mono">Hybrid_Tiered_Routing_Savings = -62% TTS Spend</text>
+  <text x="908" y="596" class="mono">Unconsented_Clones = 0 | Acronym_Errors = 0.0%</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateEnterpriseTtsVoiceCloningAvatarSelectionGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — Enterprise TTS, Brand Voice Cloning &amp; Real-Time Avatar Selection</text>
+  <text x="52" y="718" class="body">Combine Azure AI Speech CNV / Deepgram Aura-2 for high-volume SSML-controlled telephony with ElevenLabs for VIP emotional tracks and CosyVoice for air-gapped VPCs.</text>
+</svg>
