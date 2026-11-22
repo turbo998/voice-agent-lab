@@ -11455,6 +11455,37 @@ export function evaluateUtilityElectricGasAmiOutageVoiceGuard(input: {
   };
 }
 
+export interface PropertyManagementYardiFairHousingVoiceEvaluation {
+  policyCode: "PROPERTY-REAL-ESTATE-YARDI-FHA-01";
+  tourBookingAndWorkOrderAuthorized: boolean;
+  fhaSteeringOrUnverifiedSmartLockPinBlocked: boolean;
+  burstPipeIoTValveShutoffAndOnCallSuperBridged: boolean;
+}
+
+/**
+ * Deterministic Property Management & Multifamily Leasing (Yardi Voyager / RealPage / AppFolio / SmartRent) HUD Fair Housing Act (FHA) & Smart-Lock ID Lock, DIY Maintenance Gate & 0ms Burst-Pipe Valve Shutoff Guard (`PROPERTY-REAL-ESTATE-YARDI-FHA-01`).
+ */
+export function evaluatePropertyManagementYardiFairHousingVoiceGuard(input: {
+  fairHousingNeutralAndSmartLockIdVerified: boolean;
+  yardiAvailabilitySyncedAndDiyTriageCompleted: boolean;
+  burstPipeFloodWinterNoHeatOrGasPreemption: boolean;
+}): PropertyManagementYardiFairHousingVoiceEvaluation {
+  return {
+    policyCode: "PROPERTY-REAL-ESTATE-YARDI-FHA-01",
+    tourBookingAndWorkOrderAuthorized:
+      input.fairHousingNeutralAndSmartLockIdVerified &&
+      input.yardiAvailabilitySyncedAndDiyTriageCompleted &&
+      !input.burstPipeFloodWinterNoHeatOrGasPreemption,
+    fhaSteeringOrUnverifiedSmartLockPinBlocked:
+      !input.fairHousingNeutralAndSmartLockIdVerified ||
+      !input.yardiAvailabilitySyncedAndDiyTriageCompleted ||
+      input.burstPipeFloodWinterNoHeatOrGasPreemption,
+    burstPipeIoTValveShutoffAndOnCallSuperBridged:
+      input.burstPipeFloodWinterNoHeatOrGasPreemption,
+  };
+}
+
+
 
 
 
