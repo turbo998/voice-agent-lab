@@ -10795,6 +10795,37 @@ export function evaluateHybridDualTrackS2sCascadedRouterGuard(input: {
   };
 }
 
+export interface MunicipalWaterWastewaterScadaVoiceEvaluation {
+  policyCode: "WATER-WASTEWATER-SCADA-VOICE-01";
+  limsLogAndCtAdvisoryAuthorized: boolean;
+  directPlcChemicalWriteOrUnverifiedDriftBlocked: boolean;
+  h2sChlorineEgressAndChiefOperatorBridged: boolean;
+}
+
+/**
+ * Deterministic Municipal Water & Wastewater SCADA (Wonderware / Ignition / Hach) Purdue L3.5 Zero-PLC-Write Chemical Lock, LIMS Drift/CSO Gate & 0ms H2S/Cl2 Egress Guard (`WATER-WASTEWATER-SCADA-VOICE-01`).
+ */
+export function evaluateMunicipalWaterWastewaterScadaVoiceGuard(input: {
+  purdueL35ReadOnlyAndZeroPlcChemicalWriteVerified: boolean;
+  ctDisinfectionAndLimsTitrationCrossChecked: boolean;
+  h2sOrChlorineGasAlarmOrTurbidityBreachPreemption: boolean;
+}): MunicipalWaterWastewaterScadaVoiceEvaluation {
+  return {
+    policyCode: "WATER-WASTEWATER-SCADA-VOICE-01",
+    limsLogAndCtAdvisoryAuthorized:
+      input.purdueL35ReadOnlyAndZeroPlcChemicalWriteVerified &&
+      input.ctDisinfectionAndLimsTitrationCrossChecked &&
+      !input.h2sOrChlorineGasAlarmOrTurbidityBreachPreemption,
+    directPlcChemicalWriteOrUnverifiedDriftBlocked:
+      !input.purdueL35ReadOnlyAndZeroPlcChemicalWriteVerified ||
+      !input.ctDisinfectionAndLimsTitrationCrossChecked ||
+      input.h2sOrChlorineGasAlarmOrTurbidityBreachPreemption,
+    h2sChlorineEgressAndChiefOperatorBridged:
+      input.h2sOrChlorineGasAlarmOrTurbidityBreachPreemption,
+  };
+}
+
+
 
 
 

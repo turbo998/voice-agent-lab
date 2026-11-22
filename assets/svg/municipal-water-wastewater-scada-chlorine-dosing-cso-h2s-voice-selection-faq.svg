@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad400" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#083344"/>
+    </linearGradient>
+    <linearGradient id="accentGrad400" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="50%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #22D3EE; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad400)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad400)"/>
+  <text x="52" y="52" class="title">Municipal Water &amp; Wastewater SCADA Chlorine-Dosing Lock, CSO &amp; H2S Safety Voice Architecture</text>
+  <text x="52" y="76" class="subtitle">EPA SDWA / NIST 800-82 Chemical Overfeed Hard Lock (0% Caustic/Fluoride Surge) · CSO Wet-Well Gate · 0ms H2S / Cl2 Egress Alert</text>
+  <rect x="984" y="38" width="248" height="32" rx="16" fill="#06B6D4"/>
+  <text x="1000" y="59" class="badge">WATER-WASTEWATER-SCADA-VOICE-01</text>
+
+  <!-- Left Column: Plant Floor, Lab LIMS & SCADA Historian -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. Water/Wastewater Plant &amp; SCADA Bus</text>
+  <text x="48" y="164" class="card-sub">AVEVA Wonderware / Ignition · Hach Online Analyzers</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#06B6D4" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">85dB Blower Room &amp; Wet-Well Voice Edge</text>
+  <text x="64" y="224" class="body">• Intrinsically safe Class I Div 1 (ATEX) bone-conduction</text>
+  <text x="64" y="242" class="body">• Filters aeration turbo-blower &amp; centrifuge roar</text>
+  <text x="64" y="260" class="mono">Tag_And_Residual_WER = 0.5% @ 85dB Blower Noise</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">Online Water Quality &amp; Dosing Analyzer Loop</text>
+  <text x="64" y="340" class="body">• Free chlorine (0.2-4.0 mg/L), Fluoride (&lt;0.7 mg/L), pH</text>
+  <text x="64" y="358" class="body">• Turbidity (&lt;0.3 NTU), Dissolved Oxygen &amp; Ammonia-N</text>
+  <text x="64" y="376" class="mono">Clearwell_Cl2 = 1.45 mg/L | Finished_pH = 7.42</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">CSO Wet-Weather Tunnel &amp; Lift-Station Bus</text>
+  <text x="64" y="462" class="body">• Deep-tunnel storage capacity, bar-screen dP &amp; influent MGD</text>
+  <text x="64" y="480" class="body">• EPA NPDES permit wet-weather blending &amp; overflow log</text>
+  <text x="64" y="498" class="mono">Influent_Surge = 240 MGD (Wet-Weather Peak Mode)</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">Confined-Space 4-Gas &amp; Cl2 Leak Sensors</text>
+  <text x="64" y="584" class="body">• Personal multi-gas clip (H2S, CH4 LEL, CO, O2%)</text>
+  <text x="64" y="602" class="body">• Ton-container chlorine room gas detector (&gt;=0.5 ppm)</text>
+  <text x="64" y="620" class="mono">Safety_Bus = H2S_ppm | Cl2_ppm | O2_Percent</text>
+
+  <!-- Center Column: 3-Layer Deterministic Water SCADA Gate -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#06B6D4" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic Chemical &amp; CSO Safety Gate</text>
+  <text x="456" y="164" class="card-sub">Zero Chemical Overfeed · NIST 800-82 DMZ · 0ms H2S Alert</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: EPA SDWA Chemical Overfeed Hard Lock</text>
+  <text x="472" y="224" class="body">• Air-gapped from PLC write registers (Zero Direct Voice</text>
+  <text x="472" y="242" class="body">  Pump Actuation — prevents Oldsmar-style NaOH/F- surge)</text>
+  <text x="472" y="260" class="body">• Enforces CT calculation &amp; dual-operator readback</text>
+  <text x="472" y="280" class="mono">Unauthorized_Chemical_Setpoint_Write = 0.0% (Hard Locked)</text>
+  <text x="472" y="298" class="mono">CT_Disinfection_Formula_Accuracy = 100.0%</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: CSO Storage Routing &amp; Lab LIMS Gate</text>
+  <text x="472" y="374" class="body">• Validates benchtop titration readback against Hach</text>
+  <text x="472" y="392" class="body">  online analyzer drift before logging LIMS entry</text>
+  <text x="472" y="410" class="body">• Maximizes tunnel storage before any NPDES CSO weir spill</text>
+  <text x="472" y="430" class="mono">Avoidable_CSO_Untreated_Bypass = -44% Reduction</text>
+  <text x="472" y="448" class="mono">Hands_Free_Lab_And_Round_Log_Speed = 3.2x Faster</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms H2S Confined-Space &amp; Cl2 Leak Preemption</text>
+  <text x="472" y="524" class="body">• Detects wet-well H2S &gt;= 10 ppm, O2 &lt; 19.5%, Methane</text>
+  <text x="472" y="542" class="body">  &gt; 10% LEL, or chlorine room leak (&gt;= 0.5 ppm)</text>
+  <text x="472" y="560" class="body">• Preempts headset in 0ms; commands immediate SCBA/tripod</text>
+  <text x="472" y="578" class="body">  egress, confirms caustic scrubber start &amp; bridges CPO</text>
+  <text x="472" y="600" class="mono">if (h2sOrChlorineGasAlarmOrTurbidityBreach) -&gt; 0ms Egress</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 22ms | Life_Safety_Egress = 0ms</text>
+
+  <!-- Right Column: Utility Operations & Compliance KPIs -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. LIMS / CMMS Sync &amp; EPA Audit Trail</text>
+  <text x="892" y="164" class="card-sub">Purdue Level 3.5 DMZ · NPDES Report · Chief Operator</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Purdue Model Level 3.5 Read-Only Historian Sync</text>
+  <text x="908" y="224" class="body">• Queries OSIsoft PI / Canary Historian via unidirectional</text>
+  <text x="908" y="242" class="body">  replica in DMZ (zero inbound path to Level 1 PLCs)</text>
+  <text x="908" y="260" class="body">• Auto-populates LIMS grab-sample &amp; Maximo work orders</text>
+  <text x="908" y="282" class="mono">NIST_SP_800_82_OT_Isolation = 100% Compliant</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Chief Plant Operator (CPO) &amp; EPA 24h Notice</text>
+  <text x="908" y="366" class="body">• Immediate CPO bridge on filter turbidity &gt; 0.3 NTU</text>
+  <text x="908" y="384" class="body">• Drafts mandatory 24-hour EPA/State oral notice packet</text>
+  <text x="908" y="402" class="body">• Confirms confined-space attendant man-down rescue</text>
+  <text x="908" y="424" class="mono">SDWA_And_NPDES_Reporting_On_Time = 100.0%</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#06B6D4" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (10k Plant Logs)</text>
+  <text x="908" y="520" class="body">• Cascaded DMZ+LIMS Gate: $820 / 10k logs (100% OT safe)</text>
+  <text x="908" y="538" class="body">• Hybrid ATEX+Historian: $1,260 / 10k logs (Recommended)</text>
+  <text x="908" y="556" class="body">• Direct-to-SCADA Voice LLM: $2,150 + Oldsmar OT risk</text>
+  <text x="908" y="578" class="mono">Operator_Round_And_Titration_Time = -58% Faster</text>
+  <text x="908" y="596" class="mono">OT_PLC_Write_Breaches = 0 | H2S_Egress_Alert = 0ms</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateMunicipalWaterWastewaterScadaVoiceGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — Municipal Water &amp; Wastewater Treatment SCADA Voice Copilot</text>
+  <text x="52" y="718" class="body">Enforce Purdue Level 3.5 DMZ read-only boundaries: voice AI must never write directly to Level-1 chemical dosing PLCs and must preempt on H2S/Cl2 gas alarms.</text>
+</svg>
