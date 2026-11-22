@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad401" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentGrad401" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="50%" stop-color="#14B8A6"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #818CF8; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad401)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad401)"/>
+  <text x="52" y="52" class="title">Funeral Home, Mortuary &amp; Crematorium Chain-of-Custody, Pacemaker Lock &amp; FTC Rule Voice Architecture</text>
+  <text x="52" y="76" class="subtitle">3-Point Cremation Disc &amp; Pacemaker Explode-Prevention Lock (0% Wrong-Body/Explosion) · FTC 16 CFR 453 GPL Gate · 0ms Coroner Hold</text>
+  <rect x="984" y="38" width="248" height="32" rx="16" fill="#6366F1"/>
+  <text x="1002" y="59" class="badge">FUNERAL-MORTUARY-CREMATION-01</text>
+
+  <!-- Left Column: 24/7 First-Call Intake & Mortuary Prep Bus -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. 24/7 First-Call &amp; Crematorium Telemetry</text>
+  <text x="48" y="164" class="card-sub">SCI Dignity / Gather / CRäKN · Matthews Cremation</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#6366F1" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">24/7 Bereaved Family First-Call Intake</text>
+  <text x="64" y="224" class="body">• 130 WPM compassionate cadence for grieving families</text>
+  <text x="64" y="242" class="body">• Captures place of passing, hospice RN or hospital ward</text>
+  <text x="64" y="260" class="mono">First_Call_Dispatch_Speed = 42s (24/7 Mortuary Van)</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#14B8A6" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">Chain-of-Custody QR Ankle Band &amp; Steel Disc</text>
+  <text x="64" y="340" class="body">• Hospital release tag -&gt; Cooler bay -&gt; Prep room -&gt; Retort</text>
+  <text x="64" y="358" class="body">• Stamped stainless-steel cremation ID disc (#CR-88412)</text>
+  <text x="64" y="376" class="mono">Chain_Of_Custody_Match = Ankle_QR == Steel_Disc == NOK</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">Pacemaker / ICD &amp; Radioisotope Scanner</text>
+  <text x="64" y="462" class="body">• Handheld metal/magnetometer + medical chart screening</text>
+  <text x="64" y="480" class="body">• Flags cardiac pacemakers, spinal pumps &amp; I-125/Lu-177</text>
+  <text x="64" y="498" class="mono">Implant_Status = Removed_And_Logged | Active_Hazard</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">FTC 16 CFR Part 453 General Price List (GPL)</text>
+  <text x="64" y="584" class="body">• Itemized Direct Cremation, Immediate Burial &amp; Caskets</text>
+  <text x="64" y="602" class="body">• Statutory embalming-not-required legal disclosure</text>
+  <text x="64" y="620" class="mono">Compliance = FTC_Funeral_Rule_16CFR453</text>
+
+  <!-- Center Column: 3-Layer Deterministic Mortuary & FTC Gate -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#6366F1" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic Cremation &amp; FTC Rule Gate</text>
+  <text x="456" y="164" class="card-sub">Zero Wrong-Body · Zero Retort Explosion · 100% FTC GPL</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: 3-Point ID &amp; Pacemaker Removal Hard Lock</text>
+  <text x="472" y="224" class="body">• Keeps cremation retort door solenoid locked until:</text>
+  <text x="472" y="242" class="body">  (1) Dual-voiceprint readback of Steel Disc + Ankle QR</text>
+  <text x="472" y="260" class="body">  (2) Pacemaker/radioisotope explant verified + 48h permit</text>
+  <text x="472" y="280" class="mono">Wrong_Decedent_Identification_Rate = 0.0% (Hard Locked)</text>
+  <text x="472" y="298" class="mono">Retort_Pacemaker_Explosion_Rate = 0.0%</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#14B8A6" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: FTC 16 CFR 453 Telephone GPL Gate</text>
+  <text x="472" y="374" class="body">• Answers itemized GPL price questions immediately</text>
+  <text x="472" y="392" class="body">  WITHOUT forcing caller to give name/phone number first</text>
+  <text x="472" y="410" class="body">• Blocks false claims that law requires embalming/casket</text>
+  <text x="472" y="430" class="mono">FTC_Undercover_Price_Audit_Pass_Rate = 100.0%</text>
+  <text x="472" y="448" class="mono">Illegal_Embalming_Bundling_Claim = 0.0%</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Coroner Hold &amp; NOK Dispute Preemption</text>
+  <text x="472" y="524" class="body">• Detects unattended/trauma death requiring Medical</text>
+  <text x="472" y="542" class="body">  Examiner (ME) jurisdiction, sibling cremation objection</text>
+  <text x="472" y="560" class="body">  or urgent religious burial timeline (&lt;24h Islamic/Jewish)</text>
+  <text x="472" y="578" class="body">• Halts prep/cremation in 0ms &amp; bridges Funeral Director</text>
+  <text x="472" y="600" class="mono">if (coronerHoldOrNokDispute) -&gt; 0ms Funeral_Director</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 24ms | Disposition_Hold = 0ms</text>
+
+  <!-- Right Column: Crematorium PLC & Family Trust KPIs -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. Retort Interlock &amp; Bereavement Audit</text>
+  <text x="892" y="164" class="card-sub">Matthews Retort PLC · EDRS Death Cert · WORM Log</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#14B8A6" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Matthews Cremation Retort PLC Interlock</text>
+  <text x="908" y="224" class="body">• Releases chamber door lock only after 10-point check</text>
+  <text x="908" y="242" class="body">• Tracks Steel ID Disc from retort to processing &amp; urn</text>
+  <text x="908" y="260" class="body">• Seals dual-operator voiceprint + photo to WORM vault</text>
+  <text x="908" y="282" class="mono">Chain_Of_Custody_Audit_Completeness = 100.0%</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#6366F1" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Licensed Funeral Director &amp; Religious Care</text>
+  <text x="908" y="366" class="body">• Expedites Tahara / Janazah &lt;24h ritual wash &amp; burial</text>
+  <text x="908" y="384" class="body">• Verifies majority Next-of-Kin statutory priority order</text>
+  <text x="908" y="402" class="body">• Automated EDRS vital-statistics spelling verification</text>
+  <text x="908" y="424" class="mono">Death_Certificate_Amendment_Rate = -84% Reduction</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (10k First-Calls/Logs)</text>
+  <text x="908" y="520" class="body">• Cascaded GPL+Custody Gate: $780 / 10k calls (100% FTC)</text>
+  <text x="908" y="538" class="body">• Hybrid Compassionate+Gate: $1,210 / 10k calls (Rec)</text>
+  <text x="908" y="556" class="body">• Unfiltered Voice Bot: $2,050 + $53k/violation FTC fine</text>
+  <text x="908" y="578" class="mono">Avoided_FTC_Penalty = $53,088 / Undercover Call Breach</text>
+  <text x="908" y="596" class="mono">Pacemaker_Blasts = 0 | Wrong_Custody_Events = 0</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateFuneralMortuaryCrematoriumFtcVoiceGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — Funeral Home, Mortuary &amp; Crematorium Voice Copilot</text>
+  <text x="52" y="718" class="body">Enforce dual-voiceprint cremation ID &amp; pacemaker-removal locks on the retort door, and disclose itemized FTC GPL prices without gating on caller identity.</text>
+</svg>

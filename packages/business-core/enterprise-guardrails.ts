@@ -10825,6 +10825,37 @@ export function evaluateMunicipalWaterWastewaterScadaVoiceGuard(input: {
   };
 }
 
+export interface FuneralMortuaryCrematoriumFtcVoiceEvaluation {
+  policyCode: "FUNERAL-MORTUARY-CREMATION-01";
+  retortUnlockAndGplDisclosureAuthorized: boolean;
+  wrongCustodyOrUnremovedPacemakerOrFtcGateBlocked: boolean;
+  coronerHoldOrFuneralDirectorBridged: boolean;
+}
+
+/**
+ * Deterministic Funeral Home, Mortuary & Crematorium (SCI / Gather / Matthews Retort) 3-Point Chain-of-Custody & Pacemaker Removal Lock, FTC 16 CFR 453 GPL Gate & 0ms Coroner/Director Guard (`FUNERAL-MORTUARY-CREMATION-01`).
+ */
+export function evaluateFuneralMortuaryCrematoriumFtcVoiceGuard(input: {
+  threePointCremationIdAndPacemakerRemovalVerified: boolean;
+  ftcGeneralPriceListDisclosedWithoutIdentityGate: boolean;
+  coronerHoldOrNokDisputePreemption: boolean;
+}): FuneralMortuaryCrematoriumFtcVoiceEvaluation {
+  return {
+    policyCode: "FUNERAL-MORTUARY-CREMATION-01",
+    retortUnlockAndGplDisclosureAuthorized:
+      input.threePointCremationIdAndPacemakerRemovalVerified &&
+      input.ftcGeneralPriceListDisclosedWithoutIdentityGate &&
+      !input.coronerHoldOrNokDisputePreemption,
+    wrongCustodyOrUnremovedPacemakerOrFtcGateBlocked:
+      !input.threePointCremationIdAndPacemakerRemovalVerified ||
+      !input.ftcGeneralPriceListDisclosedWithoutIdentityGate ||
+      input.coronerHoldOrNokDisputePreemption,
+    coronerHoldOrFuneralDirectorBridged:
+      input.coronerHoldOrNokDisputePreemption,
+  };
+}
+
+
 
 
 

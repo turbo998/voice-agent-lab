@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（400 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（401 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -441,3 +441,4 @@
 398. **规模化牧场、智慧奶牛养殖与兽医防疫（Precision Dairy & Livestock Veterinary：DeLaval DelPro / Lely Horizon / DairyComp 305 / BoviSync 模式）抗生素休药期（Milk/Meat Withdrawal）冷缸倒奶电磁阀闭锁、免提耳标配种助产与一类疫病（口蹄疫 FMD / H5N1）`0ms` 生物安全封场语音架构（兽医免提录入抗生素 `<80ms` 直锁挤奶厅三通废弃阀 `0%` 污染30吨冷缸、蓝牙 `15位 ISO RFID` 电子耳标与口述号双因子防误打流产针提妊检效率 `+64%`、疑似口蹄疫水泡或 `H5N1` 异常黄奶 `0ms` 锁死牧场运奶车道闸并直通总兽医）方案**：[中文](./livestock-dairy-veterinary-antibiotic-milk-withdrawal-biosecurity-voice-selection-faq.md) | [EN](./livestock-dairy-veterinary-antibiotic-milk-withdrawal-biosecurity-voice-selection-faq.en.md)
 399. **原生端到端语音大模型（Speech-to-Speech）vs. 级联架构（STT + LLM + TTS）vs. 混合双轨动态路由架构（Hybrid Dual-Track Router）终极选型指南（同通电话内 `30% S2S` 极速情绪破冰轨与 `70%` 级联受控轨 `14ms` 动态切换、凡涉金额/药量/双录免责声明 `100%` 强制级联发声前文本拦截与 `SSML` 音标锁定、3轮滑动窗口音频转文本蒸馏削减 `62%` 长通话 Token 成本并较纯 S2S 全栈降本 `58%`）方案**：[中文](./hybrid-dual-track-s2s-cascaded-dynamic-routing-voice-selection-faq.md) | [EN](./hybrid-dual-track-s2s-cascaded-dynamic-routing-voice-selection-faq.en.md)
 400. **城市供水厂、污水处理与市政水务调度（Municipal Water & Wastewater Treatment SCADA：AVEVA Wonderware / Ignition / Xylem / 威立雅 Veolia 模式）次氯酸钠/氟化物投加防过量硬锁、雨洪合流制溢流（CSO）调蓄门禁与有限空间硫化氢（$H_2S \ge 10\text{ ppm}$）`0ms` 逃生抢占语音架构（`Purdue Level 3.5` 单向只读隔离与 `0%` 加药计量泵 PLC 直写硬锁、免提 `LIMS` 滴定与在线探头 `>15%` 漂移交叉校验及暴雨 `CSO` 削减 `44%` 溢流、格栅湿井剧毒 $H_2S \ge 10\text{ ppm}$ 与漏氯 `0ms` 防爆骨传导耳麦撤离警报）方案**：[中文](./municipal-water-wastewater-scada-chlorine-dosing-cso-h2s-voice-selection-faq.md) | [EN](./municipal-water-wastewater-scada-chlorine-dosing-cso-h2s-voice-selection-faq.en.md)
+401. **殡仪馆、生命礼仪服务与火化场（Funeral Home, Mortuary & Crematorium：SCI Dignity Memorial / Gather / CRäKN / 民政智慧殡葬模式）遗体交接链（Chain-of-Custody）金属火化牌三方声纹复诵、心脏起搏器/放射性粒子防爆硬锁与 FTC 殡葬法规（16 CFR Part 453）透明报价语音架构（踝带码==不锈钢火化圆牌==签字火化证及胸部起搏器磁力清零与火化炉门电磁锁双声纹 `0%` 错火化/炸炉硬锁、美国 `FTC 16 CFR 453` 零留资门槛电话分项报价免 `$53,088` 罚单、无见证非预期居家死亡 `0ms` 法医管辖权留置并转持证殡仪主任）方案**：[中文](./funeral-mortuary-crematorium-chain-of-custody-pacemaker-ftc-rule-voice-selection-faq.md) | [EN](./funeral-mortuary-crematorium-chain-of-custody-pacemaker-ftc-rule-voice-selection-faq.en.md)
