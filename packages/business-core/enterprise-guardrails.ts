@@ -11515,6 +11515,37 @@ export function evaluateHigherEdUniversityAdmissionsFerpaVoiceGuard(input: {
   };
 }
 
+export interface EnterpriseVoiceSecurityDeepfakePciEvaluation {
+  policyCode: "VOICE-SECURITY-DEEPFAKE-PCI-2026-01";
+  tokenizedPaymentAndJwtToolAuthorized: boolean;
+  deepfakeOrPlaintextPanOrIdorBlocked: boolean;
+  sessionTokenRevokedAndFraudSocBridged: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice AI Security (ISO 30107-3 Anti-Deepfake PAD, PCI-DSS v4.0 Edge SBC DTMF Clamping & OWASP Agentic Server-JWT Anti-IDOR) Guard (`VOICE-SECURITY-DEEPFAKE-PCI-2026-01`).
+ */
+export function evaluateEnterpriseVoiceSecurityDeepfakePciGuard(input: {
+  padLivenessVerifiedAndToolIdJwtBound: boolean;
+  pciEdgeDtmfClampedAndZeroPanInLlm: boolean;
+  deepfakeSpoofJailbreakOrTollFraudPreemption: boolean;
+}): EnterpriseVoiceSecurityDeepfakePciEvaluation {
+  return {
+    policyCode: "VOICE-SECURITY-DEEPFAKE-PCI-2026-01",
+    tokenizedPaymentAndJwtToolAuthorized:
+      input.padLivenessVerifiedAndToolIdJwtBound &&
+      input.pciEdgeDtmfClampedAndZeroPanInLlm &&
+      !input.deepfakeSpoofJailbreakOrTollFraudPreemption,
+    deepfakeOrPlaintextPanOrIdorBlocked:
+      !input.padLivenessVerifiedAndToolIdJwtBound ||
+      !input.pciEdgeDtmfClampedAndZeroPanInLlm ||
+      input.deepfakeSpoofJailbreakOrTollFraudPreemption,
+    sessionTokenRevokedAndFraudSocBridged:
+      input.deepfakeSpoofJailbreakOrTollFraudPreemption,
+  };
+}
+
+
 
 
 

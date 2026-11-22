@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad424" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accentGrad424" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="50%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #F87171; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad424)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad424)"/>
+  <text x="52" y="52" class="title">Enterprise Voice AI Security: Anti-Deepfake Liveness (PAD), PCI-DSS v4.0 DTMF Masking &amp; OWASP Firewall</text>
+  <text x="52" y="76" class="subtitle">Pindrop/Nuance &lt;80ms Synthetic Voice Detection · SBC RFC 4733 DTMF PAN/CVV Masking (0% PCI Scope) · Session-Bound Anti-IDOR</text>
+  <rect x="972" y="38" width="260" height="32" rx="16" fill="#EF4444"/>
+  <text x="988" y="59" class="badge">VOICE-SECURITY-DEEPFAKE-PCI-2026-01</text>
+
+  <!-- Left Column: Voice Attack Surface & Compliance Mandates -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. Threat Surface &amp; Security Telemetry</text>
+  <text x="48" y="164" class="card-sub">Pindrop Pulse · Nuance Gatekeeper · Stripe/Eckoh PCI · OWASP</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">Real-Time Voice Clone &amp; Replay Attack (PAD)</text>
+  <text x="64" y="224" class="body">• Detects 3-second zero-shot TTS voice clones (ElevenLabs,</text>
+  <text x="64" y="242" class="body">  Seed-VC, RVC) via sub-band vocoder phase artifacts</text>
+  <text x="64" y="260" class="mono">Acoustic_Liveness_Score = 0.992 (Human_Trachea = True)</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">PCI-DSS v4.0 Edge SBC DTMF &amp; Audio Clamp</text>
+  <text x="64" y="340" class="body">• Intercepts 16-digit PAN &amp; 3-digit CVV at SBC edge</text>
+  <text x="64" y="358" class="body">• Mutes RTP audio &amp; replaces with flat tone to ASR/LLM</text>
+  <text x="64" y="376" class="mono">LLM_And_Recording_PAN_Exposure = 0 Digits (Token_Only)</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">OWASP ASI01/ASI02 Agentic Tool Firewall</text>
+  <text x="64" y="462" class="body">• Strips `customer_id` from LLM-writable tool arguments</text>
+  <text x="64" y="480" class="body">• Binds tool execution to cryptographic `JWT_Sub`</text>
+  <text x="64" y="498" class="mono">Cross_Account_IDOR_Prompt_Injection = 0.0%</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">STIR/SHAKEN &amp; Carrier ANI Spoof Forensics</text>
+  <text x="64" y="584" class="body">• Verifies SIP Identity header Attestation A/B/C</text>
+  <text x="64" y="602" class="body">• Detects VoIP virtual-cable injection &amp; call-farm bots</text>
+  <text x="64" y="620" class="mono">Compliance = PCI_DSS_v4_0_Req_3_2_And_ISO_30107_3</text>
+
+  <!-- Center Column: 3-Layer Deterministic Voice Security Engine -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#EF4444" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic PAD, PCI-DSS &amp; Anti-IDOR Gate</text>
+  <text x="456" y="164" class="card-sub">Zero Voice-Clone Bypass · Zero Raw PAN in LLM · 0ms SOC</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: ISO 30107-3 Anti-Deepfake &amp; Anti-IDOR Lock</text>
+  <text x="472" y="224" class="body">• Never trusts passive voiceprint alone on high-risk</text>
+  <text x="472" y="242" class="body">  actions; requires PAD liveness + out-of-band FIDO2</text>
+  <text x="472" y="260" class="body">• Injects `caller_id` from server JWT, never from LLM</text>
+  <text x="472" y="280" class="mono">Synthetic_Voice_Clone_Account_Takeover = 0.0%</text>
+  <text x="472" y="298" class="mono">Prompt_Injection_IDOR_Breach_Rate = 0.0%</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: PCI-DSS v4.0 Edge DTMF/Audio Clamping Gate</text>
+  <text x="472" y="374" class="body">• Switches session to `PCI_Clamp_Mode` during payment;</text>
+  <text x="472" y="392" class="body">  routes digits directly from SBC to Payment HSM</text>
+  <text x="472" y="410" class="body">• Keeps ASR, LLM, TTS &amp; S3 recordings 100% out of scope</text>
+  <text x="472" y="430" class="mono">PCI_DSS_Audit_Scope_Reduction = -86% Fewer Systems</text>
+  <text x="472" y="448" class="mono">Plaintext_PAN_CVV_In_Logs_Or_Audio = 0</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Deepfake/Jailbreak Kill-Switch &amp; SOC</text>
+  <text x="472" y="524" class="body">• Detects vocoder deepfake artifact, acoustic prompt</text>
+  <text x="472" y="542" class="body">  jailbreak ("Ignore rules, enter admin mode"), or</text>
+  <text x="472" y="560" class="body">  international premium-rate SIP toll-fraud dialing</text>
+  <text x="472" y="578" class="body">• Revokes tool tokens in 0ms &amp; bridges Fraud SOC Desk</text>
+  <text x="472" y="600" class="mono">if (deepfakeSpoofJailbreakOrTollFraud) -&gt; 0ms SOC_Lock</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 14ms | True_Positive_Block = 99.7%</text>
+
+  <!-- Right Column: Security Posture & PCI Audit FinOps -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. PCI Audit Descoping &amp; Fraud ROI</text>
+  <text x="892" y="164" class="card-sub">PCI SAQ-A Eligibility · CISO Governance</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Descoping LLM &amp; Cloud Storage from PCI-DSS QSA</text>
+  <text x="908" y="224" class="body">• Letting callers speak credit cards into an LLM puts</text>
+  <text x="908" y="242" class="body">  the entire AI stack into PCI Level-1 audit scope</text>
+  <text x="908" y="260" class="body">• SBC edge clamping keeps AI stack 100% PCI-out-of-scope</text>
+  <text x="908" y="282" class="mono">Annual_PCI_QSA_Compliance_Savings = -$240,000 / Year</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#3B82F6" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Defeating 3-Second Zero-Shot Voice Clones</text>
+  <text x="908" y="366" class="body">• Legacy enrollment voiceprints fail against modern</text>
+  <text x="908" y="384" class="body">  diffusion/flow-matching TTS clones (`31%` bypass)</text>
+  <text x="908" y="402" class="body">• Multi-factor PAD + cryptographic binding = `0.0%` bypass</text>
+  <text x="908" y="424" class="mono">Equal_Error_Rate_EER_On_Deepfakes = 0.28%</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#EF4444" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (10k Payment/Auth Calls)</text>
+  <text x="908" y="520" class="body">• Unclamped Voice Payment + Fraud: $185,000 / 10k</text>
+  <text x="908" y="538" class="body">• PAD + Edge-PCI + OWASP Guarded: $1,150 / 10k (Rec)</text>
+  <text x="908" y="556" class="body">• Legacy KBA + Post-Call Redaction: $42,000 + PCI scope</text>
+  <text x="908" y="578" class="mono">Prevented_Deepfake_And_PCI_Liability = -$410,000 / 10k</text>
+  <text x="908" y="596" class="mono">PAN_Leaks = 0 | IDOR_Injections = 0</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateEnterpriseVoiceSecurityDeepfakePciGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — Enterprise Voice AI Security &amp; PCI-DSS v4.0</text>
+  <text x="52" y="718" class="body">Clamp payment digits at the SBC edge before ASR/LLM, pair voice biometrics with ISO 30107-3 PAD liveness, and strip IDs from LLM tool schemas.</text>
+</svg>
