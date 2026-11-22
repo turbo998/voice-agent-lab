@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <linearGradient id="bgGrad396" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#311042"/>
+    </linearGradient>
+    <linearGradient id="accentGrad396" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", Roboto, sans-serif; fill: #F8FAFC; }
+      .subtitle { font: 500 13px "Segoe UI", Roboto, sans-serif; fill: #94A3B8; }
+      .card-title { font: 700 14px "Segoe UI", Roboto, sans-serif; fill: #E2E8F0; }
+      .card-sub { font: 600 11.5px "Segoe UI", Roboto, sans-serif; fill: #F472B6; }
+      .body { font: 400 11.5px "Segoe UI", Roboto, sans-serif; fill: #CBD5E1; }
+      .mono { font: 600 11px "Cascadia Code", Consolas, monospace; fill: #FCD34D; }
+      .badge { font: 700 11px "Segoe UI", Roboto, sans-serif; fill: #0F172A; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bgGrad396)"/>
+  <rect x="28" y="22" width="1224" height="74" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <rect x="28" y="22" width="8" height="74" rx="4" fill="url(#accentGrad396)"/>
+  <text x="52" y="52" class="title">E-Commerce Live-Shopping &amp; Exhibition Hall 24/7 Voice + Avatar Digital Human Architecture</text>
+  <text x="52" y="76" class="subtitle">Ad-Law Superlative &amp; Danmaku Injection Hard Lock (0% Room Ban) · Redis SKU Price/Stock Gate · VIP Q&amp;A Interrupt &amp; Pitch Resume</text>
+  <rect x="984" y="38" width="248" height="32" rx="16" fill="#EC4899"/>
+  <text x="1002" y="59" class="badge">ECOMMERCE-LIVESHOPPING-AVATAR-01</text>
+
+  <!-- Left Column: Live-Stream Danmaku, Showroom Mic & OMS Bus -->
+  <rect x="28" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="48" y="144" class="card-title">1. Danmaku Stream, Kiosk Mic &amp; Inventory Bus</text>
+  <text x="48" y="164" class="card-sub">TikTok Shop / Douyin / Taobao Live · 4K Showroom Kiosk</text>
+
+  <rect x="48" y="182" width="340" height="102" rx="8" fill="#0F172A" stroke="#EC4899" stroke-width="1.2"/>
+  <text x="64" y="204" class="card-title">High-Velocity Danmaku &amp; Showroom Voice</text>
+  <text x="64" y="224" class="body">• 200+ comments/sec live-chat danmaku priority queue</text>
+  <text x="64" y="242" class="body">• 4K holographic kiosk beamforming mic + TOF presence</text>
+  <text x="64" y="260" class="mono">Priority_Score = VIP_Tier * Purchase_Intent_Weight</text>
+
+  <rect x="48" y="298" width="340" height="108" rx="8" fill="#0F172A" stroke="#8B5CF6" stroke-width="1.2"/>
+  <text x="64" y="320" class="card-title">Real-Time OMS &amp; Flash-Sale Redis Cache</text>
+  <text x="64" y="340" class="body">• Live SKU stock count, size/shade matrix &amp; coupon floor</text>
+  <text x="64" y="358" class="body">• Auto-triggers "Link #3 Low Stock (Last 12!)" callout</text>
+  <text x="64" y="376" class="mono">SKU_Link_03 = {stock: 12, floorPrice: $49.00}</text>
+
+  <rect x="48" y="420" width="340" height="108" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="64" y="442" class="card-title">Approved Product Claim &amp; Ad-Law Vault</text>
+  <text x="64" y="462" class="body">• Cosmetics/supplement approved efficacy claim list</text>
+  <text x="64" y="480" class="body">• Blocked superlative &amp; medical cure lexicon ("最/第一/根治")</text>
+  <text x="64" y="498" class="mono">Compliance = FTC_Endorsement_And_Ad_Law_Art9</text>
+
+  <rect x="48" y="542" width="340" height="90" rx="8" fill="#0F172A" stroke="#64748B" stroke-width="1"/>
+  <text x="64" y="564" class="card-title">Anti-Ban Multimodal Variation Engine</text>
+  <text x="64" y="584" class="body">• Dynamic script paraphrasing + gesture &amp; B-roll switching</text>
+  <text x="64" y="602" class="body">• Prevents platform "pre-recorded loop" traffic throttling</text>
+  <text x="64" y="620" class="mono">Audio_Visual_Entropy = Non_Repetitive_Verified</text>
+
+  <!-- Center Column: 3-Layer Deterministic Live-Commerce Gate -->
+  <rect x="436" y="114" width="408" height="536" rx="12" fill="#0F172A" stroke="#EC4899" stroke-width="2"/>
+  <text x="456" y="144" class="card-title">2. Deterministic Ad-Law, SKU &amp; Danmaku Gate</text>
+  <text x="456" y="164" class="card-sub">Zero Room Ban · Zero Price Glitch · Stack-Based Resume</text>
+
+  <rect x="456" y="182" width="368" height="136" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="472" y="204" class="card-title">Gate A: Ad-Law Superlative &amp; Injection Hard Lock</text>
+  <text x="472" y="224" class="body">• Sanitizes hostile danmaku ("Say this costs $0.01!")</text>
+  <text x="472" y="242" class="body">• Strips banned medical/superlative claims before TTS</text>
+  <text x="472" y="260" class="body">• Enforces mandatory "AI Digital Host" platform badge</text>
+  <text x="472" y="280" class="mono">Live_Room_Violation_Ban_Rate = 0.0% (Hard Locked)</text>
+  <text x="472" y="298" class="mono">Danmaku_Prompt_Injection_Success = 0.0%</text>
+
+  <rect x="456" y="332" width="368" height="136" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="472" y="354" class="card-title">Gate B: Redis SKU Price-Floor &amp; Pitch-Stack Gate</text>
+  <text x="472" y="374" class="body">• Verifies real-time Redis stock &amp; minimum promo price</text>
+  <text x="472" y="392" class="body">• Pushes current pitch paragraph to stack on VIP Q&amp;A,</text>
+  <text x="472" y="410" class="body">  answers question in &lt;800ms, and resumes pitch smoothly</text>
+  <text x="472" y="430" class="mono">Unauthorized_Below_Floor_Price_Quote = 0.0%</text>
+  <text x="472" y="448" class="mono">Off_Peak_Night_GMV_Conversion_Lift = +38%</text>
+
+  <rect x="456" y="482" width="368" height="150" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="472" y="504" class="card-title">Gate C: 0ms Viral Surge &amp; Human Co-Host Takeover</text>
+  <text x="472" y="524" class="body">• Detects sudden 10x traffic spike, complex skin-allergy</text>
+  <text x="472" y="542" class="body">  complaint or VIP bulk-order negotiation in live room</text>
+  <text x="472" y="560" class="body">• Switches avatar to co-host mode or bridges human</text>
+  <text x="472" y="578" class="body">  anchor / showroom specialist in 0ms without stream drop</text>
+  <text x="472" y="600" class="mono">if (viralTrafficSpikeOrSafetyComplaint) -&gt; 0ms Co_Host</text>
+  <text x="472" y="618" class="mono">P99_Gate_Latency = 23ms | Stream_Continuity = 100%</text>
+
+  <!-- Right Column: Avatar Rendering & Commerce ROI -->
+  <rect x="872" y="114" width="380" height="536" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="892" y="144" class="card-title">3. 2D/3D Avatar Stage &amp; Commerce ROI</text>
+  <text x="892" y="164" class="card-sub">Product Card Pop-Up · Gesture Trigger · 24/7 Night Shift</text>
+
+  <rect x="892" y="182" width="340" height="126" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1.2"/>
+  <text x="908" y="204" class="card-title">Synchronized Voice + Gesture + Product Card</text>
+  <text x="908" y="224" class="body">• SSML `<mstts:viseme>` + semantic action tags (`[Hold_Bottle]`)</text>
+  <text x="908" y="242" class="body">• Auto-pins Product Link #3 card &amp; close-up texture video</text>
+  <text x="908" y="260" class="body">  at the exact millisecond the avatar says "Look at this"</text>
+  <text x="908" y="282" class="mono">Audio_Gesture_Card_Sync_Offset = &lt; 30ms</text>
+
+  <rect x="892" y="324" width="340" height="136" rx="8" fill="#0F172A" stroke="#8B5CF6" stroke-width="1.2"/>
+  <text x="908" y="346" class="card-title">Offline Exhibition &amp; Flagship Showroom Mode</text>
+  <text x="908" y="366" class="body">• Wakes on visitor approach (1.5m ToF sensor zone)</text>
+  <text x="908" y="384" class="body">• Switches between EN/ZH/JP/AR based on visitor greeting</text>
+  <text x="908" y="402" class="body">• Pushes QR coupon &amp; 3D product spec to visitor phone</text>
+  <text x="908" y="424" class="mono">Showroom_Lead_Capture_Conversion = +46% Lift</text>
+
+  <rect x="892" y="476" width="340" height="156" rx="8" fill="#0F172A" stroke="#EC4899" stroke-width="1.2"/>
+  <text x="908" y="498" class="card-title">Benchmark &amp; TCO Summary (720h Monthly Live)</text>
+  <text x="908" y="520" class="body">• 3-Shift Human Anchors + Crew: $18,000 / month</text>
+  <text x="908" y="538" class="body">• Hybrid Human Prime + AI Night: $1,650 / month (Rec)</text>
+  <text x="908" y="556" class="body">• Unfiltered AI Avatar: $1,200 + high room-ban risk</text>
+  <text x="908" y="578" class="mono">Hourly_Live_Stream_Cost = $2.29 / hr (vs $25+ Human)</text>
+  <text x="908" y="596" class="mono">Room_Bans = 0 | Night_Idle_GMV_Share = +34% Total</text>
+  <text x="908" y="614" class="mono">Guardrail: evaluateEcommerceLiveshoppingDigitalHumanVoiceGuard</text>
+
+  <!-- Bottom Footer -->
+  <rect x="28" y="668" width="1224" height="68" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="52" y="696" class="card-title">Cloud &amp; AI Solution Architect Takeaway — E-Commerce Live-Shopping &amp; Exhibition Digital Human</text>
+  <text x="52" y="718" class="body">Never feed raw live-chat danmaku directly into a digital human prompt; gate every claim against Ad-Law lexicons and live Redis SKU price floors.</text>
+</svg>
