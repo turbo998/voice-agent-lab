@@ -9985,6 +9985,37 @@ export function evaluateEapMentalHealthZeroHrLeakVoiceGuard(input: {
   };
 }
 
+export interface SmartPortContainerTerminalTosVoiceEvaluation {
+  policyCode: "SMART-PORT-CONTAINER-TOS-01";
+  gateBarrierAndCraneLiftAuthorized: boolean;
+  unreleasedCustomsBoxOrLockedTwistlockBlocked: boolean;
+  highWindTieDownOrHazmatTowerBridged: boolean;
+}
+
+/**
+ * Deterministic Smart Port & Container Terminal (Navis N4 TOS) ISO 6346 Check-Digit / Customs / SOLAS VGM Lock, 4-Twistlock Release Gate & 0ms Gale/HazMat Guard (`SMART-PORT-CONTAINER-TOS-01`).
+ */
+export function evaluateSmartPortContainerTerminalTosVoiceGuard(input: {
+  iso6346CheckDigitAndCustomsSolasVgmVerified: boolean;
+  chassisTwistlocksUnlockedAndDriverInCabVerified: boolean;
+  highWindCraneTieDownOrImdgHazmatSpillPreemption: boolean;
+}): SmartPortContainerTerminalTosVoiceEvaluation {
+  return {
+    policyCode: "SMART-PORT-CONTAINER-TOS-01",
+    gateBarrierAndCraneLiftAuthorized:
+      input.iso6346CheckDigitAndCustomsSolasVgmVerified &&
+      input.chassisTwistlocksUnlockedAndDriverInCabVerified &&
+      !input.highWindCraneTieDownOrImdgHazmatSpillPreemption,
+    unreleasedCustomsBoxOrLockedTwistlockBlocked:
+      !input.iso6346CheckDigitAndCustomsSolasVgmVerified ||
+      !input.chassisTwistlocksUnlockedAndDriverInCabVerified ||
+      input.highWindCraneTieDownOrImdgHazmatSpillPreemption,
+    highWindTieDownOrHazmatTowerBridged:
+      input.highWindCraneTieDownOrImdgHazmatSpillPreemption,
+  };
+}
+
+
 
 
 
