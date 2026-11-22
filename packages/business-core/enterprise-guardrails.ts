@@ -11335,6 +11335,37 @@ export function evaluateCommercialBankingTreasuryWireVoiceGuard(input: {
   };
 }
 
+export interface SupplyChainAribaCoupaVendorVoiceEvaluation {
+  policyCode: "SUPPLY-CHAIN-ARIBA-COUPA-VOICE-01";
+  asnUpdateAndInvoiceReleaseAuthorized: boolean;
+  vendorBankEditOrOverCapPriceBlocked: boolean;
+  lineDownSecondaryAvlAndBuyerBridged: boolean;
+}
+
+/**
+ * Deterministic Global Supply Chain & Procurement (SAP Ariba / Coupa / Kinaxis / S/4HANA MM) SOX 404 Vendor Bank Lock & <=3% Tolerance Cap, Multilingual T-7d/T-48h ASN & 3-Way Match Gate & 0ms <48h Line-Down Dual-Source Guard (`SUPPLY-CHAIN-ARIBA-COUPA-VOICE-01`).
+ */
+export function evaluateSupplyChainAribaCoupaVendorVoiceGuard(input: {
+  vendorBankChangeBlockedAndPriceToleranceWithinCap: boolean;
+  asnTrackingSyncedAndThreeWayMatchReconciled: boolean;
+  criticalLineDownShortageOrForceMajeurePreemption: boolean;
+}): SupplyChainAribaCoupaVendorVoiceEvaluation {
+  return {
+    policyCode: "SUPPLY-CHAIN-ARIBA-COUPA-VOICE-01",
+    asnUpdateAndInvoiceReleaseAuthorized:
+      input.vendorBankChangeBlockedAndPriceToleranceWithinCap &&
+      input.asnTrackingSyncedAndThreeWayMatchReconciled &&
+      !input.criticalLineDownShortageOrForceMajeurePreemption,
+    vendorBankEditOrOverCapPriceBlocked:
+      !input.vendorBankChangeBlockedAndPriceToleranceWithinCap ||
+      !input.asnTrackingSyncedAndThreeWayMatchReconciled ||
+      input.criticalLineDownShortageOrForceMajeurePreemption,
+    lineDownSecondaryAvlAndBuyerBridged:
+      input.criticalLineDownShortageOrForceMajeurePreemption,
+  };
+}
+
+
 
 
 

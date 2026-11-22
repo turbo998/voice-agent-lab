@@ -34,7 +34,7 @@
 
 ---
 
-## 三、架构师核心选型指南（417 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（418 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -458,3 +458,4 @@
 415. **电信运营商与千兆光纤宽带客服（Telecom & Fiber ISP：Verizon / T-Mobile / AT&T / 中国移动/电信 OSS/BSS 模式）光猫远程自愈（TR-069/USP）、eSIM 换机写卡、防 SIM 卡劫持（FCC CPNI）硬锁与携号转网挽留语音架构（`FCC CPNI` 防 SIM 卡劫持严禁口头 KBA 补换卡强制 `Passkey/3D活体`+原卡 `24h` 预警 `0%` 盗号硬锁、振铃前读取 `OLT` 光衰并在通话中下发 `TR-069` `45秒` 远程切换拥塞信道自愈 `69.5%` 宽带故障砍掉 `48.4%` 无效上门省 `$23.3万/万通`、`E911` 失联与医疗维生宽带断网 `0ms` 下发 5G 灾备并直通 NOC）方案**：[中文](./telecom-isp-fiber-outage-esim-sim-swap-fraud-retention-voice-selection-faq.md) | [EN](./telecom-isp-fiber-outage-esim-sim-swap-fraud-retention-voice-selection-faq.en.md)
 416. **2026 主流企业级云联络中心（CCaaS）与实时语音 AI 横向选型指南：Genesys Cloud CX vs. Amazon Connect vs. NICE CXone vs. Microsoft Dynamics 365 Contact Center vs. Five9（前门 `BYOC SBC` 直接终结 `65%` AI 自助通话免除 `$0.025/分钟` 平台媒体分流附加税降本 `46.2%` 年省 `$137.5万`、转人工 `<150ms` 注入 `CTI` 随路上下文与已核身标识实现 `0%` 重复核身并缩减坐席 `AHT 85秒`、目标队列 `EWT > 180秒` `0ms` 拦截盲转死队列并切换虚拟排队原位回拨）方案**：[中文](./ccaas-genesys-amazon-connect-nice-cxone-dynamics365-voice-ai-migration-selection-faq.md) | [EN](./ccaas-genesys-amazon-connect-nice-cxone-dynamics365-voice-ai-migration-selection-faq.en.md)
 417. **商业对公银行、集团司库与财资管理（Commercial Banking & Corporate Treasury：J.P. Morgan Access / 花旗 CitiDirect / 招行企业网银 / Kyriba 模式）大额电汇（Fedwire / SWIFT）防 BEC 诈骗双人回拨、支票 Positive Pay 异常止付与跨境汇款追踪语音架构（`UCC Article 4A` 强制单向主叫《预留印鉴卡》第二签字人+`<80ms` 反 AI 克隆声纹+`FIDO2` 联签实现 `$0` BEC 诈骗并将放行耗时从 `2.5小时` 缩至 `3.2分钟`、支票 `Positive Pay` `11:00 AM` 截单前梯次追呼达 `99.4%` 准时率与 `SWIFT gpi UETR` 查账分流 `78.4%`、涉诈电汇 `0ms` 触发 `camt.056` 止付召回）方案**：[中文](./commercial-banking-treasury-ach-wire-verification-positive-pay-voice-selection-faq.md) | [EN](./commercial-banking-treasury-ach-wire-verification-positive-pay-voice-selection-faq.en.md)
+418. **大型制造与零售全球供应链采购协同（Global Supply Chain & Direct Procurement：SAP Ariba / Coupa / Kinaxis RapidResponse / S/4HANA MM 模式）供应商交期自动催交（PO/ASN 缺料预警）、三单匹配（3-Way Match）对账、防篡改供应商银行账号硬锁与断供危机语音架构（`SOX 404` 供应商银行主数据 `XK02/BP` 语音只读 `$0` 改卡诈骗与 `<=3%` 价格容差硬锁、28语种 `T-7d/T-48h` 长尾供应商 `ASN` 催交提可视率至 `98.4%` 砍掉 `54.8%` 突发逾期与 `75秒` 三单匹配对账分流 `76.5%`、工厂库存 `DoS < 48小时` 停线预警 `0ms` 预填备选二供 `AVL` 拆单并直通寻源经理）方案**：[中文](./global-supply-chain-procurement-sap-ariba-coupa-vendor-expediting-voice-selection-faq.md) | [EN](./global-supply-chain-procurement-sap-ariba-coupa-vendor-expediting-voice-selection-faq.en.md)
