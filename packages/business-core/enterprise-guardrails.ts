@@ -11395,6 +11395,37 @@ export function evaluateEnterpriseFieldServiceFslDispatchGuard(input: {
   };
 }
 
+export interface EnterpriseVoiceRagKnowledgeCitationEvaluation {
+  policyCode: "ENTERPRISE-VOICE-RAG-LATENCY-01";
+  spokenRagAnswerAndScreenTableAuthorized: boolean;
+  expiredPolicyOrRawTableBloatBlocked: boolean;
+  lowConfidenceAbstentionAndSpecialistBridged: boolean;
+}
+
+/**
+ * Deterministic Enterprise Real-Time Voice RAG (Azure AI Search / Pinecone / Qdrant) Bitemporal Effective-Date & Tenant RBAC Lock, <135ms Speculative Spoken-Card Gate & 0ms <0.78 Abstention Guard (`ENTERPRISE-VOICE-RAG-LATENCY-01`).
+ */
+export function evaluateEnterpriseVoiceRagKnowledgeCitationGuard(input: {
+  bitemporalEffectiveDateAndRbacVerified: boolean;
+  speculativeSpokenCardUnder135msSynced: boolean;
+  rerankScoreUnder078OrPolicyConflictPreemption: boolean;
+}): EnterpriseVoiceRagKnowledgeCitationEvaluation {
+  return {
+    policyCode: "ENTERPRISE-VOICE-RAG-LATENCY-01",
+    spokenRagAnswerAndScreenTableAuthorized:
+      input.bitemporalEffectiveDateAndRbacVerified &&
+      input.speculativeSpokenCardUnder135msSynced &&
+      !input.rerankScoreUnder078OrPolicyConflictPreemption,
+    expiredPolicyOrRawTableBloatBlocked:
+      !input.bitemporalEffectiveDateAndRbacVerified ||
+      !input.speculativeSpokenCardUnder135msSynced ||
+      input.rerankScoreUnder078OrPolicyConflictPreemption,
+    lowConfidenceAbstentionAndSpecialistBridged:
+      input.rerankScoreUnder078OrPolicyConflictPreemption,
+  };
+}
+
+
 
 
 
