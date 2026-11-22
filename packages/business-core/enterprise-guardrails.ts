@@ -9745,6 +9745,37 @@ export function evaluateVoiceScreenShareDomRedactionGuard(input: {
   };
 }
 
+export interface ContactCenterTier1AgentAssistAutoAcwEvaluation {
+  policyCode: "CC-TIER1-AGENT-ASSIST-ACW-01";
+  agentAssistAndAutoAcwCommitAuthorized: boolean;
+  selfEchoPollutionOrUnverifiedAcwBlocked: boolean;
+  inCallComplianceRedBannerAndSupervisorBridged: boolean;
+}
+
+/**
+ * Deterministic Contact Center Copilot Stereo Dual-Channel (Ch0/Ch1) Isolation, <=25-Word Micro-Cue Card / 3s Evidence-Anchored Auto-ACW & 0ms In-Call Compliance Cure Guard (`CC-TIER1-AGENT-ASSIST-ACW-01`).
+ */
+export function evaluateContactCenterTier1AgentAssistAutoAcwGuard(input: {
+  stereoDualChannelSplitAndPreRingContextCardHydrated: boolean;
+  microCueCardUnder25WordsAndEvidenceAnchoredAutoAcwVerified: boolean;
+  inCallComplianceOmissionOrSevereEscalationSupervisorAlert: boolean;
+}): ContactCenterTier1AgentAssistAutoAcwEvaluation {
+  return {
+    policyCode: "CC-TIER1-AGENT-ASSIST-ACW-01",
+    agentAssistAndAutoAcwCommitAuthorized:
+      input.stereoDualChannelSplitAndPreRingContextCardHydrated &&
+      input.microCueCardUnder25WordsAndEvidenceAnchoredAutoAcwVerified &&
+      !input.inCallComplianceOmissionOrSevereEscalationSupervisorAlert,
+    selfEchoPollutionOrUnverifiedAcwBlocked:
+      !input.stereoDualChannelSplitAndPreRingContextCardHydrated ||
+      !input.microCueCardUnder25WordsAndEvidenceAnchoredAutoAcwVerified ||
+      input.inCallComplianceOmissionOrSevereEscalationSupervisorAlert,
+    inCallComplianceRedBannerAndSupervisorBridged:
+      input.inCallComplianceOmissionOrSevereEscalationSupervisorAlert,
+  };
+}
+
+
 
 
 

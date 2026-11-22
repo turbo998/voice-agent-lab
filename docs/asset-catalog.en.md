@@ -34,7 +34,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (364 Bilingual Guides)
+## 3. Solution Architect Selection Guides (365 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -405,3 +405,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 362. **Fitness, Gym & Wellness Chains (Mindbody / ClubReady / 24h Clubs) Class Booking, PAR-Q+ Screening, FTC Click-to-Cancel & AED Emergency Voice Architecture: ACSM PAR-Q+ & Digital Waiver Lock, FTC Click-to-Cancel Zero-Dark-Pattern Gate (34.2% Freeze Saves / $0 Fines) & 0ms Gym-Floor AED Unlock / Rhabdomyolysis 911 Bridge**: [EN](./fitness-gym-wellness-mindbody-ftc-cancel-aed-emergency-voice-selection-faq.en.md) | [中文](./fitness-gym-wellness-mindbody-ftc-cancel-aed-emergency-voice-selection-faq.md)
 363. **Commercial Packaging, Print & Label Supply Chain (Esko WebCenter / ePS Pace) Artwork Proof Lock, Pre-Press Preflight & 0ms Recall Halt Voice Architecture: Signed PDF/X-4 Proof SHA-256 Press Lock ($0 Unproofed Scrap), Bleed/Die-Line/GS1 Preflight Gate (-61% Proof Delay) & 0ms Allergen/Pharma Misprint JDF Press Halt**: [EN](./packaging-print-supply-chain-artwork-proof-label-recall-voice-selection-faq.en.md) | [中文](./packaging-print-supply-chain-artwork-proof-label-recall-voice-selection-faq.md)
 364. **Enterprise Voice + Live Screen-Sharing Co-Pilot (Client-Side DOM Redaction, Delta-Frame Throttling & Anti-Visual-Injection) Architecture: Pre-Upload Browser DOM Password/PAN Blur Lock (0% Secret Leaks), Event-Driven SoM Delta-Frame Gate (-88.5% Vision Tokens) & 0ms Visual Prompt-Injection / Destructive-Click Manual Firewall**: [EN](./enterprise-voice-multimodal-screen-sharing-dom-redaction-copilot-selection-faq.en.md) | [中文](./enterprise-voice-multimodal-screen-sharing-dom-redaction-copilot-selection-faq.md)
+365. **Enterprise Contact Center Copilot: Tier-1 AI Deflection, Real-Time Agent Assist & 3-Second Auto-ACW Full-Stack Selection & ROI Guide (Microsoft D365 Contact Center vs. Amazon Connect Q vs. Genesys Copilot vs. Custom Stereo STT + SLM): Ch0/Ch1 Stereo Isolation & Pre-Ring 4-Slot Context Lock (0% Self-Echo), <=25-Word Micro-Card + 1-Click Action & 3s Auto-ACW Gate (-89.4% Wrap-Up) & 0ms In-Call Compliance Cure (-85.2% TCO)**: [EN](./contact-center-tier1-deflection-realtime-agent-assist-auto-acw-roi-selection-faq.en.md) | [中文](./contact-center-tier1-deflection-realtime-agent-assist-auto-acw-roi-selection-faq.md)
