@@ -9955,6 +9955,37 @@ export function evaluateIndustrialOemAftersalesArPartVoiceGuard(input: {
   };
 }
 
+export interface EapMentalHealthZeroHrLeakVoiceEvaluation {
+  policyCode: "EAP-MENTAL-HEALTH-VOICE-01";
+  eapTriageAndTherapistBookingAuthorized: boolean;
+  employerHrPrivacyLeakOrUnlicensedTherapyBlocked: boolean;
+  acuteCrisisWarmHoldAndClinicianBridged: boolean;
+}
+
+/**
+ * Deterministic Employee Assistance Program (EAP) Cryptographic Zero-HR-Leak Firewall, Tearful-Speech 1,800ms Patience / Non-Diagnostic Gate & 0ms Crisis Warm-Hold Bridge (`EAP-MENTAL-HEALTH-VOICE-01`).
+ */
+export function evaluateEapMentalHealthZeroHrLeakVoiceGuard(input: {
+  zeroEmployerHrIdentityLeakAndKAnonymityEnforced: boolean;
+  nonDiagnosticBoundaryAndTearfulPatienceWindowActive: boolean;
+  acuteSuicideSelfHarmCrisisWarmHoldClinicianBridge: boolean;
+}): EapMentalHealthZeroHrLeakVoiceEvaluation {
+  return {
+    policyCode: "EAP-MENTAL-HEALTH-VOICE-01",
+    eapTriageAndTherapistBookingAuthorized:
+      input.zeroEmployerHrIdentityLeakAndKAnonymityEnforced &&
+      input.nonDiagnosticBoundaryAndTearfulPatienceWindowActive &&
+      !input.acuteSuicideSelfHarmCrisisWarmHoldClinicianBridge,
+    employerHrPrivacyLeakOrUnlicensedTherapyBlocked:
+      !input.zeroEmployerHrIdentityLeakAndKAnonymityEnforced ||
+      !input.nonDiagnosticBoundaryAndTearfulPatienceWindowActive ||
+      input.acuteSuicideSelfHarmCrisisWarmHoldClinicianBridge,
+    acuteCrisisWarmHoldAndClinicianBridged:
+      input.acuteSuicideSelfHarmCrisisWarmHoldClinicianBridge,
+  };
+}
+
+
 
 
 
