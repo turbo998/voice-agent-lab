@@ -10735,6 +10735,37 @@ export function evaluateWildfireIcsAirTacticalEvacVoiceGuard(input: {
   };
 }
 
+export interface LivestockDairyAntibioticWithdrawalVoiceEvaluation {
+  policyCode: "LIVESTOCK-DAIRY-VET-WITHDRAWAL-01";
+  herdTreatmentAndParlorReleaseAuthorized: boolean;
+  antibioticTankContaminationOrWrongCowTagBlocked: boolean;
+  biosecurityQuarantineGateAndChiefVetBridged: boolean;
+}
+
+/**
+ * Deterministic Precision Dairy & Livestock Veterinary (DeLaval / Lely / DairyComp 305) FDA PMO Bulk-Tank Antibiotic Diversion Lock, ISO RFID EID Dual-Tag Gate & 0ms FMD/H5N1 Biosecurity Guard (`LIVESTOCK-DAIRY-VET-WITHDRAWAL-01`).
+ */
+export function evaluateLivestockDairyAntibioticWithdrawalVoiceGuard(input: {
+  parlorDumpValveLockedAndWithdrawalVerified: boolean;
+  rfidEidMatchesSpokenVisualTagAndPedigreeSafe: boolean;
+  notifiableDiseaseSuspectedOrDystociaPreemption: boolean;
+}): LivestockDairyAntibioticWithdrawalVoiceEvaluation {
+  return {
+    policyCode: "LIVESTOCK-DAIRY-VET-WITHDRAWAL-01",
+    herdTreatmentAndParlorReleaseAuthorized:
+      input.parlorDumpValveLockedAndWithdrawalVerified &&
+      input.rfidEidMatchesSpokenVisualTagAndPedigreeSafe &&
+      !input.notifiableDiseaseSuspectedOrDystociaPreemption,
+    antibioticTankContaminationOrWrongCowTagBlocked:
+      !input.parlorDumpValveLockedAndWithdrawalVerified ||
+      !input.rfidEidMatchesSpokenVisualTagAndPedigreeSafe ||
+      input.notifiableDiseaseSuspectedOrDystociaPreemption,
+    biosecurityQuarantineGateAndChiefVetBridged:
+      input.notifiableDiseaseSuspectedOrDystociaPreemption,
+  };
+}
+
+
 
 
 
