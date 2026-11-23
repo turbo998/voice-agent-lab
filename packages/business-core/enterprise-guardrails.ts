@@ -11965,6 +11965,36 @@ export function evaluateTravelAirlineIrropsHotelPmsConcierge2026Guard(input: {
   };
 }
 
+export interface ComplianceRecordingPciRedactionAutoQa2026Evaluation {
+  policyCode: "COMPLIANCE-RECORDING-PCI-REDACTION-AUTO-QA-2026-01";
+  wormArchiveAndQaPassAuthorized: boolean;
+  unredactedDiskPanOrMonoCrosstalkBlocked: boolean;
+  brokenPromiseRemediationTicketTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Compliance Recording, Pre-Storage In-RAM PCI/PII Redaction & 100% Automated Post-Call QA (In-RAM Word-Timestamp Audio Zeroing & WORM Seal, Stereo Split Fast STT RTF=0.057, 30s Spoken-Promise vs. CRM Ticket Reconciler) Guard (`COMPLIANCE-RECORDING-PCI-REDACTION-AUTO-QA-2026-01`).
+ */
+export function evaluateComplianceRecordingPciRedactionAutoQa2026Guard(input: {
+  preStorageInRamPciPiiAudioRedactedAndWormSealed: boolean;
+  stereoChannelSplitOrExplicitDiarizationEnabled: boolean;
+  spokenPromiseVsCrmTicketMismatchOrComplianceBreach: boolean;
+}): ComplianceRecordingPciRedactionAutoQa2026Evaluation {
+  return {
+    policyCode: "COMPLIANCE-RECORDING-PCI-REDACTION-AUTO-QA-2026-01",
+    wormArchiveAndQaPassAuthorized:
+      input.preStorageInRamPciPiiAudioRedactedAndWormSealed &&
+      input.stereoChannelSplitOrExplicitDiarizationEnabled &&
+      !input.spokenPromiseVsCrmTicketMismatchOrComplianceBreach,
+    unredactedDiskPanOrMonoCrosstalkBlocked:
+      !input.preStorageInRamPciPiiAudioRedactedAndWormSealed ||
+      !input.stereoChannelSplitOrExplicitDiarizationEnabled ||
+      input.spokenPromiseVsCrmTicketMismatchOrComplianceBreach,
+    brokenPromiseRemediationTicketTriggered:
+      input.spokenPromiseVsCrmTicketMismatchOrComplianceBreach,
+  };
+}
+
 
 
 
