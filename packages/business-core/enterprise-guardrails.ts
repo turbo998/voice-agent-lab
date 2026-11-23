@@ -11875,6 +11875,36 @@ export function evaluateAutomotiveSmartHardwareEdgeCloudVoice2026Guard(input: {
   };
 }
 
+export interface BfsiWealthDualRecordingInsuranceFnol2026Evaluation {
+  policyCode: "BFSI-WEALTH-DUAL-RECORDING-INSURANCE-FNOL-2026-01";
+  dualRecordingAndClaimStpCommitAuthorized: boolean;
+  suitabilityMismatchOrCoverageEstoppelOrFakePhotoBlocked: boolean;
+  bodilyInjuryEmsOrFloodLockOrElderHoldTriggered: boolean;
+}
+
+/**
+ * Deterministic BFSI Wealth Smart Dual-Recording & 24/7 Insurance Multimodal FNOL (R1-R5 Suitability & Locked-SSML Anti-Estoppel Gate, 20s Clause Checkpoint Replay & Live WebRTC VIN/EXIF Check, 0ms Bodily-Injury/Flood/Elder-Scam Preemption) Guard (`BFSI-WEALTH-DUAL-RECORDING-INSURANCE-FNOL-2026-01`).
+ */
+export function evaluateBfsiWealthDualRecordingInsuranceFnol2026Guard(input: {
+  suitabilityMatchedAndLockedSsmlWithAntiEstoppelVerified: boolean;
+  clauseCheckpointSignedAndLiveExifVinAuthenticated: boolean;
+  bodilyInjuryFloodStallOrElderCoercionPreemption: boolean;
+}): BfsiWealthDualRecordingInsuranceFnol2026Evaluation {
+  return {
+    policyCode: "BFSI-WEALTH-DUAL-RECORDING-INSURANCE-FNOL-2026-01",
+    dualRecordingAndClaimStpCommitAuthorized:
+      input.suitabilityMatchedAndLockedSsmlWithAntiEstoppelVerified &&
+      input.clauseCheckpointSignedAndLiveExifVinAuthenticated &&
+      !input.bodilyInjuryFloodStallOrElderCoercionPreemption,
+    suitabilityMismatchOrCoverageEstoppelOrFakePhotoBlocked:
+      !input.suitabilityMatchedAndLockedSsmlWithAntiEstoppelVerified ||
+      !input.clauseCheckpointSignedAndLiveExifVinAuthenticated ||
+      input.bodilyInjuryFloodStallOrElderCoercionPreemption,
+    bodilyInjuryEmsOrFloodLockOrElderHoldTriggered:
+      input.bodilyInjuryFloodStallOrElderCoercionPreemption,
+  };
+}
+
 
 
 

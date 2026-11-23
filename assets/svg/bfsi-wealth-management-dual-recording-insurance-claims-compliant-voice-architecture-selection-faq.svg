@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bgGrad437" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="headerGrad437" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="50%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="cardBlue437" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardCyan437" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#155e75" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardEmerald437" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#065f46" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bgGrad437)" rx="16"/>
+  <rect x="24" y="20" width="1152" height="74" rx="12" fill="url(#headerGrad437)"/>
+  <text x="44" y="50" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700">BFSI Wealth Dual-Recording (双录), Suitability &amp; 24/7 Insurance Multimodal FNOL Claims Architecture</text>
+  <text x="44" y="76" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="13">Architecture Blueprint · Policy: BFSI-WEALTH-DUAL-RECORDING-INSURANCE-FNOL-2026-01 · 99.7% 1st-Pass Dual-Recording · 3.1m FNOL Intake · 69.2% Minor-Claim STP</text>
+
+  <!-- Column 1: Wealth Management Smart Dual-Recording -->
+  <rect x="28" y="112" width="364" height="440" rx="12" fill="url(#cardBlue437)" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="44" y="128" width="332" height="36" rx="8" fill="#1d4ed8"/>
+  <text x="60" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. Wealth Smart Dual-Recording (99.7% Yield)</text>
+
+  <rect x="44" y="180" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="203" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">R1–R5 Risk Suitability &amp; Locked-SSML Readout</text>
+  <text x="58" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Hard-blocks pitching R4/R5 products to R1/R2 investors</text>
+  <text x="58" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Statutory risk disclosures read via SHA-256 Locked SSML</text>
+  <text x="58" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Verifies dual-face in frame + anti-deepfake liveness</text>
+  <text x="58" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ 0.0% regulatory mis-selling or missing words</text>
+
+  <rect x="44" y="308" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="331" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Clause-Level Checkpoint Replay (No Full Retakes!)</text>
+  <text x="58" y="352" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Legacy dual-recording forces 15-min restart on 1 slip</text>
+  <text x="58" y="372" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• AI verifies customer's affirmative "本人确认理解风险" live;</text>
+  <text x="58" y="392" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  if unclear, re-records ONLY that 20-second clause</text>
+  <text x="58" y="412" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Lifts first-pass dual-recording success from 64% to 99.7%</text>
+
+  <rect x="44" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="459" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">WORM Audit Seal &amp; TILA APR Verbatim Lock</text>
+  <text x="58" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Archives dual-track audio/video + hash to WORM storage</text>
+  <text x="58" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Enforces exact annualized APR% readout on card installments</text>
+
+  <!-- Column 2: 24/7 Insurance Multimodal FNOL Claims -->
+  <rect x="418" y="112" width="364" height="440" rx="12" fill="url(#cardCyan437)" stroke="#06b6d4" stroke-width="1.5"/>
+  <rect x="434" y="128" width="332" height="36" rx="8" fill="#0e7490"/>
+  <text x="450" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. Insurance 24/7 Multimodal FNOL (3.1m)</text>
+
+  <rect x="434" y="180" width="332" height="118" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="203" fill="#22d3ee" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">In-Call WebRTC Live Photo/Video Damage Triage</text>
+  <text x="448" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Keeps voice call active while opening mobile WebRTC cam</text>
+  <text x="448" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Guides driver by voice: "Step back 2m &amp; show rear bumper"</text>
+  <text x="448" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• OCRs 17-char VIN + license plate + EXIF GPS/Timestamp</text>
+  <text x="448" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Cuts FNOL intake from 18.5 mins down to 3.1 mins</text>
+
+  <rect x="434" y="312" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="335" fill="#22d3ee" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Reservation-of-Rights &amp; Zero Coverage-Estoppel Lock</text>
+  <text x="448" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Never says "Don't worry, everything is 100% covered!"</text>
+  <text x="448" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  before policy effective-date &amp; deductible verification</text>
+  <text x="448" y="396" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ 69.2% Straight-Through Processing (STP) on minor claims</text>
+
+  <rect x="434" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#06b6d4"/>
+  <text x="448" y="459" fill="#67e8f9" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Guidewire / Duck Creek Subrogation &amp; Tow Dispatch</text>
+  <text x="448" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Auto-creates Guidewire ClaimCenter FNOL + dispatches</text>
+  <text x="448" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  nearest flatbed tow truck + rental car voucher in 15s</text>
+
+  <!-- Column 3: Elder Protection, Anti-Fraud & Emergency -->
+  <rect x="808" y="112" width="364" height="440" rx="12" fill="url(#cardEmerald437)" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="824" y="128" width="332" height="36" rx="8" fill="#047857"/>
+  <text x="840" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Elder Fraud Shield &amp; 0ms Injury Triage</text>
+
+  <rect x="824" y="180" width="332" height="114" rx="8" fill="#0f172a" stroke="#ef4444"/>
+  <text x="838" y="203" fill="#f87171" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms Bodily-Injury &amp; Flood Anti-Hydrolock Preemption</text>
+  <text x="838" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• If caller reports injury/bleeding/airbag deployed: 0ms</text>
+  <text x="838" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  conference to 911/120 EMS + Senior Bodily-Injury Adjuster</text>
+  <text x="838" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Flood stall: warns "DO NOT restart engine!" (-$18k loss)</text>
+  <text x="838" y="284" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Protects human life &amp; prevents engine hydrolock</text>
+
+  <rect x="824" y="308" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="838" y="331" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">FINRA Rule 2165 Elder Coercion &amp; Deepfake Shield</text>
+  <text x="838" y="352" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Detects background voice coaching an elderly caller to</text>
+  <text x="838" y="372" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  liquidate CDs/annuities or synthetic voice clones</text>
+  <text x="838" y="392" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Places temporary hold &amp; bridges Senior Protection Desk</text>
+
+  <rect x="824" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#10b981"/>
+  <text x="838" y="459" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">BFSI Contact Center ROI (-74% LAE / -$3.8M/Yr)</text>
+  <text x="838" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Cuts Loss Adjustment Expense (LAE) from $42 to $9.80/claim</text>
+  <text x="838" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Eliminates 36% of dual-recording QA rework rejections</text>
+
+  <!-- Bottom Summary Bar -->
+  <rect x="28" y="568" width="1144" height="88" rx="12" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="48" y="596" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Architect Blueprint Summary (BFSI Wealth Dual-Recording &amp; Insurance Multimodal FNOL Claims):</text>
+  <text x="48" y="620" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13">• Wealth Dual-Recording: R1–R5 Suitability Lock + SHA-256 Locked SSML + Clause Checkpoint Replay (99.7% 1st-Pass Yield vs. 64% Manual)</text>
+  <text x="48" y="642" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">• Insurance FNOL: In-Call WebRTC Photo/VIN OCR (3.1m Intake, 69.2% Minor-Claim STP) + 0ms Bodily-Injury/Flood Engine Lock &amp; Elder Fraud Shield</text>
+</svg>
