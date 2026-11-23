@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **77 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **481 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (480 Bilingual Guides)
+## 3. Solution Architect Selection Guides (481 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (77 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (458 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -524,3 +524,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 478. **Title Insurance, Real Estate Escrow Closing, ALTA Anti-Wire-Fraud & Seller-Impersonation Lock Voice AI Selection Guide: ALTA Pillar 3 Zero Verbal/Email Wire Edit & CertifID Lock (0 $280k BEC Wire Thefts), Vacant-Land Seller Impersonation Tax-Roll Postcard & MISMO RON Gate, 140ms Qualia/SoftPro Schedule B-I Status (83.4% Deflection, -$188k/10k Calls) & <100ms FBI IC3 RAT Wire Recall**: [EN](./title-insurance-escrow-closing-alta-wire-fraud-seller-impersonation-voice-selection-faq.en.md) | [中文](./title-insurance-escrow-closing-alta-wire-fraud-seller-impersonation-voice-selection-faq.md)
 479. **Healthcare Linen & Commercial Industrial Laundry, HLAC / OSHA 1910.1030 Sharps, Telemetry Recovery & Chlorine-Gas Lock Voice AI Selection Guide: 130ms UHF-RFID Pre-Press Cardiac Telemetry & Surgical Tray Intercept (-88.6% Crushed Gear Claims, -$194k/10k Calls), Zero Bleach+Acid Chlorine Gas (Cl2) & <100°F Oily-Towel Cool-Down Fire Lock, AAMI 75-Wash Gown Cap & <100ms Needlestick <2h PEP / Hospital Trace**: [EN](./healthcare-linen-commercial-laundry-hlac-osha-1910-1030-sharps-voice-selection-faq.en.md) | [中文](./healthcare-linen-commercial-laundry-hlac-osha-1910-1030-sharps-voice-selection-faq.md)
 480. **Cold-Storage & Blast-Freezer Warehousing, IIAR Ammonia PSM, FDA FSMA Pulp-Temp Gate & -25°F Freezer Entrapment Voice AI Selection Guide: FDA FSMA 21 CFR § 1.908 Core Pulp-Temp & Rite-Hite Dok-Lok Gate (0 Thawed-Load Claims), Hands-Free -25°F Voice Picking (-92.4% Catch-Weight Errors, -$226k/10k Sessions), CA Room >=19.5% O2 Lock & <100ms IIAR Ammonia King-Valve / Upwind Evacuation**: [EN](./cold-storage-reefer-warehouse-iiar-ammonia-leak-fda-fsma-voice-selection-faq.en.md) | [中文](./cold-storage-reefer-warehouse-iiar-ammonia-leak-fda-fsma-voice-selection-faq.md)
+481. **Elevator & Escalator Cabin Intercom, ASME A17.1 Entrapment Triage, Zero Door-Prying Lock & Fire-Rescue Voice AI Selection Guide: ASME A17.4 Zero Door-Prying/Roof-Hatch & Drop-Key LOTO Lock (0 Hoistway Shear Fatalities), 120ms Otis ONE/KONE 24/7 IoT & ASME A17.1-2022 Deaf Touchscreen/Video Gate (-64.8% False $320 Truck Rolls, -$218k/10k Calls) & <100ms Medical Entrapment / Escalator Comb-Plate Brake Stop**: [EN](./elevator-escalator-dispatch-asme-a17-cabin-entrapment-fire-recall-voice-selection-faq.en.md) | [中文](./elevator-escalator-dispatch-asme-a17-cabin-entrapment-fire-recall-voice-selection-faq.md)

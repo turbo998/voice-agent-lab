@@ -13195,6 +13195,36 @@ export function evaluateColdStorageAmmoniaFsmaFreezerVoice2026Guard(input: {
   };
 }
 
+export interface ElevatorEscalatorAsmeA17RescueVoice2026Evaluation {
+  policyCode: "ELEVATOR-ESCALATOR-ASME-A17-RESCUE-VOICE-2026-01";
+  iotDoorResetAndTechnicianDispatchAuthorized: boolean;
+  doorPryingOrUnlotoDropKeyOrSilentCallHangupBlocked: boolean;
+  fireHeavyRescueMedicalOrEscalatorCombBrakePreempted: boolean;
+}
+
+/**
+ * Deterministic Elevator & Escalator Cabin Intercom & ASME A17.1 Rescue Voice (ASME A17.4 Zero Door-Prying/Roof-Hatch Exit + Mainline LOTO Drop-Key Lock, ASME A17.1-2022 Deaf/HoH Touchscreen Text & Cabin Video Gate + 120ms Otis ONE / KONE 24/7 Door-Zone Telemetry, 0ms Medical/Heat Entrapment 911 Fire Heavy-Rescue & Escalator Comb-Plate Brake Trip) Guard (`ELEVATOR-ESCALATOR-ASME-A17-RESCUE-VOICE-2026-01`).
+ */
+export function evaluateElevatorEscalatorAsmeA17RescueVoice2026Guard(input: {
+  zeroDoorPryingRoofHatchAndDropKeyMainlineLotoEnforced: boolean;
+  asmeA17MultimodalTextVideoAndDoorZoneTelemetryChecked: boolean;
+  medicalHeatEntrapmentOrEscalatorCombPlateCaughtDetected: boolean;
+}): ElevatorEscalatorAsmeA17RescueVoice2026Evaluation {
+  return {
+    policyCode: "ELEVATOR-ESCALATOR-ASME-A17-RESCUE-VOICE-2026-01",
+    iotDoorResetAndTechnicianDispatchAuthorized:
+      input.zeroDoorPryingRoofHatchAndDropKeyMainlineLotoEnforced &&
+      input.asmeA17MultimodalTextVideoAndDoorZoneTelemetryChecked &&
+      !input.medicalHeatEntrapmentOrEscalatorCombPlateCaughtDetected,
+    doorPryingOrUnlotoDropKeyOrSilentCallHangupBlocked:
+      !input.zeroDoorPryingRoofHatchAndDropKeyMainlineLotoEnforced ||
+      !input.asmeA17MultimodalTextVideoAndDoorZoneTelemetryChecked ||
+      input.medicalHeatEntrapmentOrEscalatorCombPlateCaughtDetected,
+    fireHeavyRescueMedicalOrEscalatorCombBrakePreempted:
+      input.medicalHeatEntrapmentOrEscalatorCombPlateCaughtDetected,
+  };
+}
+
 
 
 
