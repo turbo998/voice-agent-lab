@@ -11695,6 +11695,36 @@ export function evaluateOmnichannelBargeInFillerMultiAgent2026Guard(input: {
   };
 }
 
+export interface VoiceOrchestrationLivekitPipecatAcsVapi2026Evaluation {
+  policyCode: "VOICE-ORCHESTRATION-LIVEKIT-PIPECAT-ACS-VAPI-2026-01";
+  orchestrationSessionAndVpcToolAuthorized: boolean;
+  publicWrapperPiiLeakOrUngracefulPodKillBlocked: boolean;
+  secondaryProviderHotSwapTriggered: boolean;
+}
+
+/**
+ * Deterministic Real-Time Voice Orchestration Frameworks (LiveKit Agents vs. Pipecat vs. Azure ACS Call Automation vs. Vapi/Retell) Private VPC Sovereignty Lock, Stateful K8s Graceful Pod Drain & 0ms Multi-Vendor Failover Guard (`VOICE-ORCHESTRATION-LIVEKIT-PIPECAT-ACS-VAPI-2026-01`).
+ */
+export function evaluateVoiceOrchestrationLivekitPipecatAcsVapi2026Guard(input: {
+  privateVpcSovereigntyAndZeroWrapperPiiLeakLocked: boolean;
+  statefulK8sGracefulDrainAndSipReferReleaseActive: boolean;
+  primaryProviderOutageOrLatencySpikePreemption: boolean;
+}): VoiceOrchestrationLivekitPipecatAcsVapi2026Evaluation {
+  return {
+    policyCode: "VOICE-ORCHESTRATION-LIVEKIT-PIPECAT-ACS-VAPI-2026-01",
+    orchestrationSessionAndVpcToolAuthorized:
+      input.privateVpcSovereigntyAndZeroWrapperPiiLeakLocked &&
+      input.statefulK8sGracefulDrainAndSipReferReleaseActive &&
+      !input.primaryProviderOutageOrLatencySpikePreemption,
+    publicWrapperPiiLeakOrUngracefulPodKillBlocked:
+      !input.privateVpcSovereigntyAndZeroWrapperPiiLeakLocked ||
+      !input.statefulK8sGracefulDrainAndSipReferReleaseActive ||
+      input.primaryProviderOutageOrLatencySpikePreemption,
+    secondaryProviderHotSwapTriggered:
+      input.primaryProviderOutageOrLatencySpikePreemption,
+  };
+}
+
 
 
 

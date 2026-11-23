@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（430 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（431 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -474,3 +474,4 @@
 428. **智能联络中心全链路升级（Contact Center Copilot：AI 首线智能接待 + 带上下文无损转人工 Warm Handoff + 坐席实时话术推荐与自动小结）架构设计与平台选型指南（前门 `BYOC` 边缘分流终结 `68.4%` 常规咨询省 `64.4%` 全栈成本、振铃前 `<150ms` 注入 `Handoff_Context_Packet` 锁定 `kyc_verified=true` 实现 `0%` 重复核身并缩减坐席 `AHT 82秒`、`Ch0/Ch1` 双声道物理分轨 `<320ms` 推送 `<=25字` 话术微卡片 + 挂机 `3秒` 自动生成工单小结压降 `88.4%` 话后整理耗时）方案**：[中文](./contact-center-copilot-inbound-triage-warm-handoff-agent-assist-architecture-selection-faq.md) | [EN](./contact-center-copilot-inbound-triage-warm-handoff-agent-assist-architecture-selection-faq.en.md)
 429. **原生端到端语音大模型（GPT-Realtime / Gemini Live / Nova Sonic）vs. 级联架构（STT + LLM + TTS）vs. 混合双轨架构 2026 终极选型指南（同通电话 `30%` 共情轮走 `310ms` 原生 `S2S` + `70%` 报价/利率/药量/写库轮 `<15ms` 强制切入发声前 `2ms` 正则核对级联与锁定 `SSML` 实现 `100%` 数字合规、跨轨统一品牌音色 `99.2%` 听感一致、结合 `3轮` 音频转文本修剪将 12 分钟长通话成本从 `$0.120/分` 压至 `$0.044/分` 降本 `63.3%`）方案**：[中文](./enterprise-voice-native-s2s-vs-cascaded-stt-llm-tts-hybrid-routing-2026-selection-faq.md) | [EN](./enterprise-voice-native-s2s-vs-cascaded-stt-llm-tts-hybrid-routing-2026-selection-faq.en.md)
 430. **端到端实时语音应用架构设计指南：多渠道接入（WebRTC / SIP）→ 语义打断（Barge-In）与慢速 API/RAG 异步安抚话术 → 多智能体转接与合规录音质检（声学+语义过滤“嗯/好的”附和词将误打断率从 `24.5%` 压至 `0.7%` 并按已听毫秒偏移截断上下文与 `Turn_Epoch_ID` 写栅栏 `0%` 过时脏写、慢速 ERP/RAG `T+650ms` 自动播报上下文安抚话术降 `79.2%` 等待挂机率、`42ms` 作用域子智能体切换提工具准确率至 `97.4%`）方案**：[中文](./realtime-voice-barge-in-turn-detection-slow-api-rag-filler-handoff-architecture-selection-faq.md) | [EN](./realtime-voice-barge-in-turn-detection-slow-api-rag-filler-handoff-architecture-selection-faq.en.md)
+431. **实时语音开发与编排框架选型对比：LiveKit Agents vs. Pipecat vs. Azure Communication Services (ACS) vs. Twilio Voice / Vapi / Retell AI（确立月通话 `12万分钟` 自建盈亏平衡点、强监管私有 `VPC` 部署 `LiveKit / Pipecat + ACS BYOC` 消除 `$0.06/分` 商业套壳税将全栈单价从 `$0.115/分` 压至 `$0.041/分` 年省 `$444万` 且内网工具延迟降至 `15ms`、K8s 有状态 `preStop` 1800s 优雅排水 `0%` 发版掉线与 `0ms` 跨云模型热切）方案**：[中文](./voice-agent-orchestration-livekit-pipecat-azure-acs-twilio-vapi-retell-tco-selection-faq.md) | [EN](./voice-agent-orchestration-livekit-pipecat-azure-acs-twilio-vapi-retell-tco-selection-faq.en.md)
