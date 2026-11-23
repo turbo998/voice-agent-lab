@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（437 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（438 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -481,3 +481,4 @@
 435. **电商直播（7×24h 品牌自播）与线下展厅实时语音数字人（Voice + Avatar）导购架构设计与选型指南（`80%` 预烘焙切片 + `20%` 实时 `Push/Pop` 压栈插答将夜间开播成本从 `$35/时` 压至 `$2.15/时` 并提闲时 GMV 转化 `+39.4%`、公屏弹幕防注入清洗与《广告法》极限词正则拦截及 `<15ms` Redis 库存/底价硬锁 `0%` 违禁封号、展厅 `ToF <1.5m + 正脸注视` 将路人误唤醒压至 `0.5%` 并实现离场 `3秒` 隐私清零）方案**：[中文](./ecommerce-livestream-showroom-kiosk-interactive-voice-avatar-digital-human-selection-faq.md) | [EN](./ecommerce-livestream-showroom-kiosk-interactive-voice-avatar-digital-human-selection-faq.en.md)
 436. **车载智能座舱与智能硬件（AI 眼镜 / 陪伴机器人 / 全屋中控）端云协同多模态语音助手架构设计与选型指南（`ISO 26262` 非驻车挡禁开后备箱/关大灯与四音区儿童锁 `0%` 越权误动作硬锁、端侧 NPU `<155ms` 离线承接 `78%` 车控/设备指令保障地库/隧道 `100%` 可用并为百万台设备年省 `$1,188万` 云成本、AI 眼镜指代词单帧抽拍续航延至 `8.5h` 及气囊碰撞 `NG-eCall`/`DMS` 闭眼 `0ms` 抢占）方案**：[中文](./automotive-in-cabin-smart-hardware-edge-cloud-multimodal-voice-assistant-selection-faq.md) | [EN](./automotive-in-cabin-smart-hardware-edge-cloud-multimodal-voice-assistant-selection-faq.en.md)
 437. **金融银行与保险行业实时语音应用落地方案：财富管理智能双录（Dual-Recording）、适当性核验与 7×24h 车险/健康险多模态报案理赔（FNOL）架构设计与选型指南（`R1–R5` 风险适当性硬锁与 `SHA-256` 锁定 `SSML` 逐字播报 + `20秒` 段落断点重录将双录一次通过率从 `64%` 提至 `99.7%`、理赔前置权利保留声明与通话内 `WebRTC` 实拍 `VIN/EXIF` 核验将报案从 `18.5分` 缩至 `3.1分` 达 `69.2%` 自动直赔并压降 `76.7%` LAE、暴雨涉水 `0ms` 禁二次点火与高龄反电诈止付）方案**：[中文](./bfsi-wealth-management-dual-recording-insurance-claims-compliant-voice-architecture-selection-faq.md) | [EN](./bfsi-wealth-management-dual-recording-insurance-claims-compliant-voice-architecture-selection-faq.en.md)
+438. **医疗健康行业实时语音应用落地方案：院前智能分诊预约（Patient Triage）、诊室环境病历生成（Ambient Clinical Scribe）与慢病随访（RPM）架构设计与选型指南（`Schmitt-Thompson` 循证分诊将亚专科挂错率从 `14.2%` 压至 `0.4%`、主诊医师注册声纹分离 `DER=1.6%` 剔除家属闲聊并锁死“未口述体征 `0%` 编造 + 医生人工签章”为医生日省 `2.1小时` 病历时间、急性胸痛/卒中与心衰单日增重 `>=1.5kg` `0ms` 急诊护士抢占降 `32.4%` 再入院）方案**：[中文](./healthcare-patient-triage-ambient-clinical-scribe-chronic-rpm-voice-architecture-selection-faq.md) | [EN](./healthcare-patient-triage-ambient-clinical-scribe-chronic-rpm-voice-architecture-selection-faq.en.md)

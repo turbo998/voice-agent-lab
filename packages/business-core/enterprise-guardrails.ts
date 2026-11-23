@@ -11905,6 +11905,36 @@ export function evaluateBfsiWealthDualRecordingInsuranceFnol2026Guard(input: {
   };
 }
 
+export interface HealthcareTriageAmbientScribeRpm2026Evaluation {
+  policyCode: "HEALTHCARE-TRIAGE-AMBIENT-SCRIBE-RPM-2026-01";
+  triageSlotAndPreliminarySoapDraftAuthorized: boolean;
+  unspokenExamFabricationOrScheduleIiOrFamilyCrosstalkBlocked: boolean;
+  redFlagEmergencyRnOrChfCareManagerBridged: boolean;
+}
+
+/**
+ * Deterministic Healthcare Patient Access Triage, Ambient Clinical Scribe (SOAP) & Chronic Care RPM (Schmitt-Thompson Protocol & Zero Unspoken Exam Fabrication Lock, 1.6% DER Physician Voiceprint & Safe Rx/LASA Gate, 0ms Red-Flag RN/EMS Preemption) Guard (`HEALTHCARE-TRIAGE-AMBIENT-SCRIBE-RPM-2026-01`).
+ */
+export function evaluateHealthcareTriageAmbientScribeRpm2026Guard(input: {
+  schmittThompsonProtocolAndZeroUnspokenExamFabricationLocked: boolean;
+  physicianVoiceprintDiarizedAndRxLabScheduleVerified: boolean;
+  redFlagChestPainStrokeOrChfWeightSpikePreemption: boolean;
+}): HealthcareTriageAmbientScribeRpm2026Evaluation {
+  return {
+    policyCode: "HEALTHCARE-TRIAGE-AMBIENT-SCRIBE-RPM-2026-01",
+    triageSlotAndPreliminarySoapDraftAuthorized:
+      input.schmittThompsonProtocolAndZeroUnspokenExamFabricationLocked &&
+      input.physicianVoiceprintDiarizedAndRxLabScheduleVerified &&
+      !input.redFlagChestPainStrokeOrChfWeightSpikePreemption,
+    unspokenExamFabricationOrScheduleIiOrFamilyCrosstalkBlocked:
+      !input.schmittThompsonProtocolAndZeroUnspokenExamFabricationLocked ||
+      !input.physicianVoiceprintDiarizedAndRxLabScheduleVerified ||
+      input.redFlagChestPainStrokeOrChfWeightSpikePreemption,
+    redFlagEmergencyRnOrChfCareManagerBridged:
+      input.redFlagChestPainStrokeOrChfWeightSpikePreemption,
+  };
+}
+
 
 
 

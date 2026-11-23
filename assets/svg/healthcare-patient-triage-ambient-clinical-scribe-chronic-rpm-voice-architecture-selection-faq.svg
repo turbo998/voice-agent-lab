@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bgGrad438" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="headerGrad438" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="50%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="cardEmerald438" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#065f46" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardSky438" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c4a6e" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardBlue438" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bgGrad438)" rx="16"/>
+  <rect x="24" y="20" width="1152" height="74" rx="12" fill="url(#headerGrad438)"/>
+  <text x="44" y="50" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700">Healthcare Voice AI: Patient Access Triage, Ambient Clinical Scribe (SOAP) &amp; Chronic RPM</text>
+  <text x="44" y="76" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="13">Architecture Blueprint · Policy: HEALTHCARE-TRIAGE-AMBIENT-SCRIBE-RPM-2026-01 · 0.4% Specialty Mismatch · -2.1h/Day Physician Pajama Time · -32% CHF Readmission</text>
+
+  <!-- Column 1: Patient Access Triage & Scheduling -->
+  <rect x="28" y="112" width="364" height="440" rx="12" fill="url(#cardEmerald438)" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="44" y="128" width="332" height="36" rx="8" fill="#047857"/>
+  <text x="60" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. Patient Access Triage &amp; FHIR Scheduling</text>
+
+  <rect x="44" y="180" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="203" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Schmitt-Thompson Evidence-Based Triage Protocol</text>
+  <text x="58" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Never allows open-ended LLM clinical diagnosis!</text>
+  <text x="58" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Walks deterministic symptom decision trees &amp; maps to</text>
+  <text x="58" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  Epic / Oracle Health HL7 FHIR R4 PractitionerRole</text>
+  <text x="58" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Cuts wrong-subspecialty booking from 14.2% to 0.4%</text>
+
+  <rect x="44" y="308" width="332" height="114" rx="8" fill="#0f172a" stroke="#ef4444"/>
+  <text x="58" y="331" fill="#f87171" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms Red-Flag Symptom Emergency RN / EMS Bridge</text>
+  <text x="58" y="352" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Crushing chest pain, radiating left-arm numbness,</text>
+  <text x="58" y="372" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  slurred speech (FAST stroke), or pediatric high fever</text>
+  <text x="58" y="392" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">⚡ 0ms abort clinic booking → Bridge Triage RN / 911/120</text>
+
+  <rect x="44" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="459" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Waitlist Backfill &amp; Prep Instruction Readback</text>
+  <text x="58" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Auto-backfills 87.2% of 48h cancellations; locks NPO</text>
+  <text x="58" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  fasting &amp; anticoagulant hold instructions via SSML</text>
+
+  <!-- Column 2: Ambient Clinical Scribe (SOAP & ICD-10) -->
+  <rect x="418" y="112" width="364" height="440" rx="12" fill="url(#cardSky438)" stroke="#0ea5e9" stroke-width="1.5"/>
+  <rect x="434" y="128" width="332" height="36" rx="8" fill="#0369a1"/>
+  <text x="450" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. Ambient Clinical Scribe (SOAP + EHR)</text>
+
+  <rect x="434" y="180" width="332" height="118" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="203" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Dragon Copilot / DAX vs. Abridge vs. Custom Speech</text>
+  <text x="448" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Enrolled Physician Voiceprint + Patient/Family Diarization</text>
+  <text x="448" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Filters out family small talk; structures HPI, ROS, PE &amp; Plan</text>
+  <text x="448" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Links every ICD-10 / CPT code to verbatim audio quote</text>
+  <text x="448" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Saves physicians 2.1 hours/day of after-hours EHR typing</text>
+
+  <rect x="434" y="312" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="335" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Physician Sign-Off Lock (Zero Direct EHR Commit)</text>
+  <text x="448" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Ambient scribe writes ONLY to `DocumentReference (Draft)`</text>
+  <text x="448" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks hallucinated negative findings ("lungs clear")</text>
+  <text x="448" y="396" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">  unless explicitly spoken by the physician during exam</text>
+
+  <rect x="434" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#0ea5e9"/>
+  <text x="448" y="459" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">HIPAA BAA + Verbal Recording Consent Gate</text>
+  <text x="448" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Captures patient verbal consent in first 10s; auto-deletes</text>
+  <text x="448" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  raw audio after physician signs SOAP note (ZDR)</text>
+
+  <!-- Column 3: Chronic Disease RPM & Rx Refill -->
+  <rect x="808" y="112" width="364" height="440" rx="12" fill="url(#cardBlue438)" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="824" y="128" width="332" height="36" rx="8" fill="#1d4ed8"/>
+  <text x="840" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Chronic Care RPM &amp; Safe Rx Refill</text>
+
+  <rect x="824" y="180" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="838" y="203" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Post-Discharge 72h &amp; Chronic RPM Voice Check-In</text>
+  <text x="838" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Calls CHF / COPD / Post-Op patients in native dialect</text>
+  <text x="838" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Collects daily weight, BP, SpO2 &amp; medication adherence</text>
+  <text x="838" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Detects CHF weight spike &gt;=1.5kg/24h → Alerts Care RN</text>
+  <text x="838" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Reduces 30-day hospital readmissions by -32.4%</text>
+
+  <rect x="824" y="308" width="332" height="114" rx="8" fill="#0f172a" stroke="#ef4444"/>
+  <text x="838" y="331" fill="#f87171" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">DEA Schedule-II &amp; Overdue Lab Rx Refill Firewall</text>
+  <text x="838" y="352" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Hard-blocks automated refills of Schedule-II narcotics</text>
+  <text x="838" y="372" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Checks FHIR Observation for overdue K+/eGFR renal labs</text>
+  <text x="838" y="392" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ 0.0% unsafe automated prescription renewals</text>
+
+  <rect x="824" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#3b82f6"/>
+  <text x="838" y="459" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">LASA Drug Phonetic &amp; Dosage Readback Lock</text>
+  <text x="838" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Disambiguates Look-Alike/Sound-Alike drugs (Celebrex vs.</text>
+  <text x="838" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  Celexa) by requiring indication + mg strength readback</text>
+
+  <!-- Bottom Summary Bar -->
+  <rect x="28" y="568" width="1144" height="88" rx="12" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+  <text x="48" y="596" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Architect Blueprint Summary (Healthcare Triage, Ambient Clinical Scribe &amp; Chronic RPM):</text>
+  <text x="48" y="620" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13">• Patient Access: Schmitt-Thompson Triage + FHIR R4 Slot Match (0.4% Mismatch) + 0ms Red-Flag RN Bridge · RPM: -32.4% 30-Day Readmissions</text>
+  <text x="48" y="642" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">• Ambient Scribe: Enrolled Physician Voiceprint (1.6% DER) + Zero Unspoken Exam Fabrication + Physician Sign-Off Gate (-2.1h/Day EHR Burden)</text>
+</svg>
