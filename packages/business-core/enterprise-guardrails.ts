@@ -12085,6 +12085,36 @@ export function evaluateEnterpriseItHrZeroTrustVoiceCopilot2026Guard(input: {
   };
 }
 
+export interface CrossBorderEcommerceParcelCustomsVoice2026Evaluation {
+  policyCode: "CROSS-BORDER-ECOMMERCE-PARCEL-CUSTOMS-VOICE-2026-01";
+  rmaExchangeRefundAndLockerDropAuthorized: boolean;
+  overRefundOrCardSwapOrUnconsentedLockerBlocked: boolean;
+  swollenBatteryHazmatOrFraudHoldTriggered: boolean;
+}
+
+/**
+ * Deterministic Cross-Border E-Commerce 28-Lang Care, Return-to-Exchange & Global Parcel/Customs Voice AI (Net-Paid Refund Cap & Original-Tender Lock, Returnless Math & Pre-Arrival Locker Consent, 0ms Swollen-Battery Air-Return Block) Guard (`CROSS-BORDER-ECOMMERCE-PARCEL-CUSTOMS-VOICE-2026-01`).
+ */
+export function evaluateCrossBorderEcommerceParcelCustomsVoice2026Guard(input: {
+  refundWithinNetPaidAndOriginalPaymentTokenLocked: boolean;
+  returnlessEconomicsAndPreArrivalLockerConsentVerified: boolean;
+  swollenLithiumBatteryHazmatOrHighFraudPreemption: boolean;
+}): CrossBorderEcommerceParcelCustomsVoice2026Evaluation {
+  return {
+    policyCode: "CROSS-BORDER-ECOMMERCE-PARCEL-CUSTOMS-VOICE-2026-01",
+    rmaExchangeRefundAndLockerDropAuthorized:
+      input.refundWithinNetPaidAndOriginalPaymentTokenLocked &&
+      input.returnlessEconomicsAndPreArrivalLockerConsentVerified &&
+      !input.swollenLithiumBatteryHazmatOrHighFraudPreemption,
+    overRefundOrCardSwapOrUnconsentedLockerBlocked:
+      !input.refundWithinNetPaidAndOriginalPaymentTokenLocked ||
+      !input.returnlessEconomicsAndPreArrivalLockerConsentVerified ||
+      input.swollenLithiumBatteryHazmatOrHighFraudPreemption,
+    swollenBatteryHazmatOrFraudHoldTriggered:
+      input.swollenLithiumBatteryHazmatOrHighFraudPreemption,
+  };
+}
+
 
 
 
