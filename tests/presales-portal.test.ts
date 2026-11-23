@@ -411,6 +411,7 @@ import {
   evaluateCompliantOutboundSdrAmdTcpa2026Guard,
   evaluateEnterpriseItHrZeroTrustVoiceCopilot2026Guard,
   evaluateCrossBorderEcommerceParcelCustomsVoice2026Guard,
+  evaluateFieldSalesWealthPharmaInpersonCopilot2026Guard,
   evaluateVoicePromptMarkdownSanitizerGuard,
   evaluateWarehousePickByVoiceColdChainGuard,
   evaluateWealthDualRecordingGuard,
@@ -432,11 +433,11 @@ test("bilingual READMEs, asset catalogs, and core SA whitepapers exist with clea
     },
     {
       relPath: "docs/asset-catalog.md",
-      mustContain: ["444 篇", "solution-architecture.md", "azure-speech-diarization-poc.md", "benchmark-cards.html", "voxcpm2-benchmark-cards.zh-CN.html", "voxcpm2-workbench.html"],
+      mustContain: ["445 篇", "solution-architecture.md", "azure-speech-diarization-poc.md", "benchmark-cards.html", "voxcpm2-benchmark-cards.zh-CN.html", "voxcpm2-workbench.html"],
     },
     {
       relPath: "docs/asset-catalog.en.md",
-      mustContain: ["444 Bilingual Guides", "solution-architecture.en.md", "azure-speech-diarization-poc.en.md", "benchmark-cards.html", "voxcpm2-benchmark-cards.html", "voxcpm2-workbench.html"],
+      mustContain: ["445 Bilingual Guides", "solution-architecture.en.md", "azure-speech-diarization-poc.en.md", "benchmark-cards.html", "voxcpm2-benchmark-cards.html", "voxcpm2-workbench.html"],
     },
     {
       relPath: "docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md",
@@ -496,13 +497,13 @@ test("bilingual READMEs, asset catalogs, and core SA whitepapers exist with clea
   }
 });
 
-test("444 Enterprise Voice AI selection guides maintain 1:1 zh-CN/en parity and exclude narrow RFC bloat", async () => {
+test("445 Enterprise Voice AI selection guides maintain 1:1 zh-CN/en parity and exclude narrow RFC bloat", async () => {
   const docEntries = await readdir(resolve(repoRoot, "docs"));
   const zhFaqFiles = docEntries.filter((f) => f.endsWith("-faq.md")).sort();
   const enFaqFiles = docEntries.filter((f) => f.endsWith("-faq.en.md")).sort();
 
-  assert.equal(zhFaqFiles.length, 444, `Expected 444 curated zh-CN selection guides, found ${zhFaqFiles.length}`);
-  assert.equal(enFaqFiles.length, 444, `Expected 444 curated English selection guides, found ${enFaqFiles.length}`);
+  assert.equal(zhFaqFiles.length, 445, `Expected 445 curated zh-CN selection guides, found ${zhFaqFiles.length}`);
+  assert.equal(enFaqFiles.length, 445, `Expected 445 curated English selection guides, found ${enFaqFiles.length}`);
 
   for (const zhFile of zhFaqFiles) {
     const expectedEn = zhFile.replace(/-faq\.md$/, "-faq.en.md");
@@ -4516,4 +4517,13 @@ test("deterministic enterprise guardrails enforce vertical industry safety (coho
   assert.equal(crossBorderEcommerceParcelCustomsVoice2026Guard.rmaExchangeRefundAndLockerDropAuthorized, false);
   assert.equal(crossBorderEcommerceParcelCustomsVoice2026Guard.overRefundOrCardSwapOrUnconsentedLockerBlocked, true);
   assert.equal(crossBorderEcommerceParcelCustomsVoice2026Guard.swollenBatteryHazmatOrFraudHoldTriggered, true);
+
+  const fieldSalesWealthPharmaInpersonCopilot2026Guard = evaluateFieldSalesWealthPharmaInpersonCopilot2026Guard({
+    twoPartyConsentVerifiedOrSoloCarDebriefMode: false,
+    repVoiceprintAnchoredAndOfflineAesEncrypted: false,
+    adverseEventOffLabelOrBelowFloorQuotePreemption: true,
+  });
+  assert.equal(fieldSalesWealthPharmaInpersonCopilot2026Guard.crmCallReportAndCpqQuoteDraftAuthorized, false);
+  assert.equal(fieldSalesWealthPharmaInpersonCopilot2026Guard.unconsentedRecordingOrOffLabelPitchOrMnpiLeakBlocked, true);
+  assert.equal(fieldSalesWealthPharmaInpersonCopilot2026Guard.pharmaPv24hReportOrMslMirfOrDealDeskTriggered, true);
 });

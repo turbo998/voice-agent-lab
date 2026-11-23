@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bgGrad445" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="headerGrad445" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f766e"/>
+      <stop offset="50%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="cardTeal445" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#115e59" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardBlue445" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardPurple445" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4c1d95" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bgGrad445)" rx="16"/>
+  <rect x="24" y="20" width="1152" height="74" rx="12" fill="url(#headerGrad445)"/>
+  <text x="44" y="50" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700">Field Sales, Wealth Advisor &amp; Pharma MSL In-Person Visit Mobile Voice Copilot Architecture</text>
+  <text x="44" y="76" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="13">Architecture Blueprint · Policy: FIELD-SALES-WEALTH-PHARMA-INPERSON-COPILOT-2026-01 · 50ms Two-Party Consent Lock · 96.4% CRM Fill Rate · 45s Car Debrief</text>
+
+  <!-- Column 1: Two-Party Consent & Offline Badge/Mobile Capture -->
+  <rect x="28" y="112" width="364" height="440" rx="12" fill="url(#cardTeal445)" stroke="#14b8a6" stroke-width="1.5"/>
+  <rect x="44" y="128" width="332" height="36" rx="8" fill="#0f766e"/>
+  <text x="60" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. Two-Party Consent &amp; Offline Edge Capture</text>
+
+  <rect x="44" y="180" width="332" height="118" rx="8" fill="#0f172a" stroke="#ef4444"/>
+  <text x="58" y="203" fill="#f87171" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Two-Party Wiretap Consent &amp; 50ms RAM Wipe Lock</text>
+  <text x="58" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Recording in-person meetings without consent violates</text>
+  <text x="58" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  CA/FL/EU two-party wiretap &amp; hospital privacy laws!</text>
+  <text x="58" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• If client says "No recording", wipes RAM in 50ms &amp; pivots</text>
+  <text x="58" y="284" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">  to Post-Visit 45-Second Solo Car Voice Debrief Mode</text>
+
+  <rect x="44" y="312" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="335" fill="#2dd4bf" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Enrolled Rep Voiceprint + Cafe Noise Diarization</text>
+  <text x="58" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Smart AI badge / mobile app anchors rep's voiceprint</text>
+  <text x="58" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Separates Rep vs. Client vs. Waiter/Barista (1.8% DER)</text>
+  <text x="58" y="396" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ AES-256 offline SQLite spooling in hospital basements</text>
+
+  <rect x="44" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#14b8a6"/>
+  <text x="58" y="459" fill="#5eead4" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Pre-Visit 60-Second Audio Briefing in Car</text>
+  <text x="58" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Speaks 60s personalized client/HCP briefing over CarPlay</text>
+  <text x="58" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  before rep walks into the hospital or client office</text>
+
+  <!-- Column 2: 45-Second Car Debrief & CRM Auto-Fill -->
+  <rect x="418" y="112" width="364" height="440" rx="12" fill="url(#cardBlue445)" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="434" y="128" width="332" height="36" rx="8" fill="#1d4ed8"/>
+  <text x="450" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. 45s Post-Visit Car Debrief &amp; CRM Sync</text>
+
+  <rect x="434" y="180" width="332" height="118" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="203" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Interactive 3-Question Voice Debrief (45 Seconds)</text>
+  <text x="448" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Rep gets in car after meeting &amp; talks for 45 seconds</text>
+  <text x="448" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• AI asks 2 targeted follow-ups to complete MEDDIC /</text>
+  <text x="448" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  Veeva Call Report / Wealth KYC fields automatically</text>
+  <text x="448" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Lifts same-day CRM completion from 31% to 96.4%</text>
+
+  <rect x="434" y="312" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="335" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Voice-to-CPQ Quote &amp; Follow-Up Email Draft</text>
+  <text x="448" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Generates Salesforce CPQ quote draft, sample request &amp;</text>
+  <text x="448" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  personalized follow-up email before rep leaves parking lot</text>
+  <text x="448" y="396" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Cuts post-visit follow-up lag from 48 hours to 3 minutes</text>
+
+  <rect x="434" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#3b82f6"/>
+  <text x="448" y="459" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Rep 1-Tap Sign-Off Before CRM Commit</text>
+  <text x="448" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Stages structured JSON in Salesforce / Veeva CRM /</text>
+  <text x="448" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  Dynamics 365 for rep 1-tap approval (+1.2 visits/day)</text>
+
+  <!-- Column 3: Pharma PV / Wealth Compliance Guard -->
+  <rect x="808" y="112" width="364" height="440" rx="12" fill="url(#cardPurple445)" stroke="#8b5cf6" stroke-width="1.5"/>
+  <rect x="824" y="128" width="332" height="36" rx="8" fill="#6d28d9"/>
+  <text x="840" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Pharma PV / Off-Label &amp; Wealth Guardrails</text>
+
+  <rect x="824" y="180" width="332" height="118" rx="8" fill="#0f172a" stroke="#ef4444"/>
+  <text x="838" y="203" fill="#f87171" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms Adverse Event (AE / PV) &amp; Off-Label MIRF Trigger</text>
+  <text x="838" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Doctor mentions patient side effect ("Two patients had</text>
+  <text x="838" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  rash on your drug") → 0ms flags ICH E2B(R3) PV report</text>
+  <text x="838" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Unsolicited off-label question auto-routes to Medical</text>
+  <text x="838" y="284" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">  Science Liaison (MSL) MIRF queue (0% FDA OPDP violation)</text>
+
+  <rect x="824" y="312" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="838" y="335" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Wealth MNPI &amp; Below-Floor Discount Firewall</text>
+  <text x="838" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Quarantines Material Non-Public Info (MNPI) from CRM</text>
+  <text x="838" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks outbound quote emails below CPQ margin floor</text>
+  <text x="838" y="396" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Routes exception discounts to Deal Desk in 0ms</text>
+
+  <rect x="824" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#8b5cf6"/>
+  <text x="838" y="459" fill="#ddd6fe" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">1,000-Rep Field Force ROI (-5.5h/Wk Admin Typing)</text>
+  <text x="838" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Saves each field rep 5.5 hours/week of evening CRM work</text>
+  <text x="838" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Captures 3.2x more competitive &amp; clinical field insights</text>
+
+  <!-- Bottom Summary Bar -->
+  <rect x="28" y="568" width="1144" height="88" rx="12" fill="#0f172a" stroke="#14b8a6" stroke-width="1.5"/>
+  <text x="48" y="596" fill="#2dd4bf" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Architect Blueprint Summary (Field Sales, Wealth Advisor &amp; Pharma MSL In-Person Voice Copilot):</text>
+  <text x="48" y="620" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13">• Dual Capture Modes: Mode A (Consented Meeting Diarization, 50ms Wipe on Refusal) + Mode B (45s Post-Visit Car Voice Debrief)</text>
+  <text x="48" y="642" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">• CRM &amp; Compliance: 96.4% Same-Day Salesforce/Veeva Fill Rate + 0ms Pharma Adverse Event (E2B) &amp; Off-Label MSL Routing</text>
+</svg>

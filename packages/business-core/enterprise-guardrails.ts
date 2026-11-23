@@ -12115,6 +12115,36 @@ export function evaluateCrossBorderEcommerceParcelCustomsVoice2026Guard(input: {
   };
 }
 
+export interface FieldSalesWealthPharmaInpersonCopilot2026Evaluation {
+  policyCode: "FIELD-SALES-WEALTH-PHARMA-INPERSON-COPILOT-2026-01";
+  crmCallReportAndCpqQuoteDraftAuthorized: boolean;
+  unconsentedRecordingOrOffLabelPitchOrMnpiLeakBlocked: boolean;
+  pharmaPv24hReportOrMslMirfOrDealDeskTriggered: boolean;
+}
+
+/**
+ * Deterministic Field Sales, Wealth Advisor & Pharma MSL In-Person Visit Mobile Voice Copilot (Two-Party Consent 50ms Wipe or Solo Car Debrief, 1.8% DER Rep Voiceprint & Offline AES-256 Queue, 0ms Pharma 24h PV AE & Off-Label MSL Routing) Guard (`FIELD-SALES-WEALTH-PHARMA-INPERSON-COPILOT-2026-01`).
+ */
+export function evaluateFieldSalesWealthPharmaInpersonCopilot2026Guard(input: {
+  twoPartyConsentVerifiedOrSoloCarDebriefMode: boolean;
+  repVoiceprintAnchoredAndOfflineAesEncrypted: boolean;
+  adverseEventOffLabelOrBelowFloorQuotePreemption: boolean;
+}): FieldSalesWealthPharmaInpersonCopilot2026Evaluation {
+  return {
+    policyCode: "FIELD-SALES-WEALTH-PHARMA-INPERSON-COPILOT-2026-01",
+    crmCallReportAndCpqQuoteDraftAuthorized:
+      input.twoPartyConsentVerifiedOrSoloCarDebriefMode &&
+      input.repVoiceprintAnchoredAndOfflineAesEncrypted &&
+      !input.adverseEventOffLabelOrBelowFloorQuotePreemption,
+    unconsentedRecordingOrOffLabelPitchOrMnpiLeakBlocked:
+      !input.twoPartyConsentVerifiedOrSoloCarDebriefMode ||
+      !input.repVoiceprintAnchoredAndOfflineAesEncrypted ||
+      input.adverseEventOffLabelOrBelowFloorQuotePreemption,
+    pharmaPv24hReportOrMslMirfOrDealDeskTriggered:
+      input.adverseEventOffLabelOrBelowFloorQuotePreemption,
+  };
+}
+
 
 
 
