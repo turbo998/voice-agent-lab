@@ -12685,6 +12685,36 @@ export function evaluateCommercialTruckingFmcsaHosRoadsideVoice2026Guard(input: 
   };
 }
 
+export interface ClinicalTrialRecruitmentEcoaSaeVoice2026Evaluation {
+  policyCode: "CLINICAL-TRIAL-RECRUITMENT-ECOA-SAE-VOICE-2026-01";
+  irbPreScreenAndVerbatim21Cfr11EcoaAuthorized: boolean;
+  scaleParaphraseOrTherapeuticPromiseOrImpDoseChangeBlocked: boolean;
+  sae24hPvClockAndPrincipalInvestigatorBridged: boolean;
+}
+
+/**
+ * Deterministic Clinical Trials Recruitment, FDA 21 CFR Part 11 eCOA & 24h SAE Voice (IRB 21 CFR Part 50 Zero Efficacy Promise + Anti-Gaming I/E Washout, Verbatim Validated ePRO/eCOA Scale Lock + 21 CFR Part 11 ALCOA+ Audio Hash & Zero IMP Dose Change, <150ms ICH E6(R3) SAE/Hospitalization/Pregnancy 24h PV Clock & PI Bridge) Guard (`CLINICAL-TRIAL-RECRUITMENT-ECOA-SAE-VOICE-2026-01`).
+ */
+export function evaluateClinicalTrialRecruitmentEcoaSaeVoice2026Guard(input: {
+  irbZeroMisconceptionAndAntiGamingWashoutVerified: boolean;
+  verbatimEcoaScale21Cfr11SignedAndZeroImpDoseAdvice: boolean;
+  saeHospitalizationPregnancyOrSevereReactionDetected: boolean;
+}): ClinicalTrialRecruitmentEcoaSaeVoice2026Evaluation {
+  return {
+    policyCode: "CLINICAL-TRIAL-RECRUITMENT-ECOA-SAE-VOICE-2026-01",
+    irbPreScreenAndVerbatim21Cfr11EcoaAuthorized:
+      input.irbZeroMisconceptionAndAntiGamingWashoutVerified &&
+      input.verbatimEcoaScale21Cfr11SignedAndZeroImpDoseAdvice &&
+      !input.saeHospitalizationPregnancyOrSevereReactionDetected,
+    scaleParaphraseOrTherapeuticPromiseOrImpDoseChangeBlocked:
+      !input.irbZeroMisconceptionAndAntiGamingWashoutVerified ||
+      !input.verbatimEcoaScale21Cfr11SignedAndZeroImpDoseAdvice ||
+      input.saeHospitalizationPregnancyOrSevereReactionDetected,
+    sae24hPvClockAndPrincipalInvestigatorBridged:
+      input.saeHospitalizationPregnancyOrSevereReactionDetected,
+  };
+}
+
 
 
 

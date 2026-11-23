@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg464" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070e1a"/>
+      <stop offset="50%" stop-color="#0d1e33"/>
+      <stop offset="100%" stop-color="#071222"/>
+    </linearGradient>
+    <linearGradient id="cyan464" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emerald464" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amber464" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="rose464" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg464)"/>
+  <rect x="24" y="20" width="1152" height="640" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="1112" height="72" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="68" font-family="Segoe UI, Inter, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">
+    Clinical Trials Recruitment, FDA 21 CFR Part 11 eCOA &amp; 24h SAE Voice Architecture (2026)
+  </text>
+  <text x="68" y="94" font-family="Segoe UI, Inter, sans-serif" font-size="13" fill="#94a3b8">
+    IRB-Approved Verbatim Pre-Screen &amp; Zero Therapeutic Misconception • Validated ePRO/eCOA Scale Integrity • 0ms SAE/SUSAR &amp; Unblinding Lock
+  </text>
+  <rect x="920" y="52" width="216" height="36" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1028" y="75" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700" fill="#a7f3d0">
+    CLINICAL-TRIAL-SAE-2026-01
+  </text>
+
+  <!-- Column 1: IRB-Compliant Recruitment & I/E Pre-Screening -->
+  <rect x="44" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#0284c7" stroke-width="1.5"/>
+  <rect x="44" y="128" width="356" height="40" rx="12" fill="url(#cyan464)"/>
+  <text x="222" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    1. IRB-Approved Recruitment &amp; I/E Pre-Screen
+  </text>
+
+  <rect x="62" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">Zero Coercion &amp; Therapeutic Misconception</text>
+  <text x="76" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Enforces IRB-approved script (21 CFR Part 50)</text>
+  <text x="76" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Blocks claiming investigational drug is "proven,</text>
+  <text x="76" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  safe, or guaranteed to cure" or leading with</text>
+  <text x="76" y="281" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  coercive cash stipend headlines</text>
+
+  <rect x="62" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Inclusion / Exclusion (I/E) Washout Logic</text>
+  <text x="76" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Screens HbA1c, eGFR, prior biologic washout</text>
+  <text x="76" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  windows (e.g., &gt;90 days) &amp; concomitant meds</text>
+  <text x="76" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Never hides exclusion criteria so caller can</text>
+  <text x="76" y="405" font-family="Segoe UI, Inter, sans-serif" fill="#38bdf8">  "game" answers to qualify for stipend</text>
+
+  <rect x="62" y="432" width="320" height="100" rx="8" fill="#0c4a6e" stroke="#0284c7"/>
+  <text x="76" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#7dd3fc">Veeva Vault CTMS / Medidata Site Booking</text>
+  <text x="76" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">• Books qualified subjects directly onto Clinical</text>
+  <text x="76" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">  Research Coordinator (CRC) Visit-1 calendar</text>
+  <text x="76" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#7dd3fc">• Cuts screen-failure rate at site by -48.6%</text>
+
+  <!-- Column 2: FDA 21 CFR Part 11 Validated eCOA / ePRO Diary -->
+  <rect x="422" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#059669" stroke-width="1.5"/>
+  <rect x="422" y="128" width="356" height="40" rx="12" fill="url(#emerald464)"/>
+  <text x="600" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    2. FDA 21 CFR Part 11 Validated eCOA / ePRO
+  </text>
+
+  <rect x="440" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#34d399">Verbatim Validated Psychometric Scale Lock</text>
+  <text x="454" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Reads copyright-validated ePRO instruments</text>
+  <text x="454" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  (PHQ-9, WOMAC, EQ-5D, NRS Pain) word-for-word</text>
+  <text x="454" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#38bdf8">• Zero LLM paraphrasing (which invalidates FDA</text>
+  <text x="454" y="281" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  psychometric equivalence &amp; primary endpoint!)</text>
+
+  <rect x="440" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">21 CFR Part 11 ALCOA+ Immutable Audit Trail</text>
+  <text x="454" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Cryptographically binds Subject PIN + Voice</text>
+  <text x="454" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  Audio Hash + UTC Timestamp to CDISC ODM record</text>
+  <text x="454" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Enforces diary window (no back-filling expired</text>
+  <text x="454" y="405" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  days to prevent "parking-lot compliance")</text>
+
+  <rect x="440" y="432" width="320" height="100" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="454" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#6ee7b7">Double-Blind Study Integrity Firewall</text>
+  <text x="454" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">• Zero access to IRT/RTSM randomization arm</text>
+  <text x="454" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">• Blocks speculating whether side effect means</text>
+  <text x="454" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#6ee7b7">  subject is on Active Drug vs Placebo</text>
+
+  <!-- Column 3: 0ms SAE / SUSAR Pharmacovigilance & Emergency Unblind -->
+  <rect x="800" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#e11d48" stroke-width="1.5"/>
+  <rect x="800" y="128" width="356" height="40" rx="12" fill="url(#rose464)"/>
+  <text x="978" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    3. 0ms SAE / SUSAR &amp; Emergency Unblinding
+  </text>
+
+  <rect x="818" y="184" width="320" height="114" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+  <text x="832" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fb7185">ICH E6(R3) / 21 CFR 312.32 SAE Detector</text>
+  <text x="832" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Detects ER visit, hospitalization, pregnancy,</text>
+  <text x="832" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  chest pain, jaundice, or severe reaction during</text>
+  <text x="832" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">  any routine diary or scheduling call</text>
+  <text x="832" y="283" font-family="Segoe UI, Inter, sans-serif" fill="#fb7185">• Starts mandatory 24-hour Sponsor PV clock</text>
+
+  <rect x="818" y="312" width="320" height="106" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="334" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">0ms Principal Investigator (PI) &amp; ER Bridge</text>
+  <text x="832" y="354" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Bridges On-Call Principal Investigator / Medical</text>
+  <text x="832" y="373" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  Monitor in 0ms; auto-drafts MedDRA E2B(R3) XML</text>
+  <text x="832" y="392" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• Emergency IRT Unblinding gated strictly to PI/ER</text>
+
+  <rect x="818" y="432" width="320" height="100" rx="8" fill="#4c0519" stroke="#f43f5e"/>
+  <text x="832" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fda4af">Zero Unapproved Dose Modification</text>
+  <text x="832" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">• Blocks AI from telling subject to skip, halve,</text>
+  <text x="832" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">  or double study IMP dose without PI order</text>
+  <text x="832" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#fda4af">• 100% FDA GCP / ICH E6(R3) inspection ready</text>
+
+  <!-- Bottom Telemetry Bar -->
+  <rect x="44" y="564" width="1112" height="76" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#38bdf8">
+    Benchmark &amp; Sponsor/CRO ROI (10,000 Clinical Trial Pre-Screen &amp; eCOA Calls):
+  </text>
+  <text x="560" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="600" fill="#34d399">
+    Site Screen-Fail Rate: -48.6% (-$440k/10k) • eCOA Diary Adherence: 96.4% • Late SAEs: 0
+  </text>
+  <text x="68" y="618" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" fill="#94a3b8">
+    Guardrail ID: evaluateClinicalTrialRecruitmentEcoaSaeVoice2026Guard • Policy: CLINICAL-TRIAL-RECRUITMENT-ECOA-SAE-VOICE-2026-01
+  </text>
+</svg>

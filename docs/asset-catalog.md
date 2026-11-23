@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（463 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（464 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -507,3 +507,4 @@
 461. **连锁托育与幼儿园（Early Childhood Daycare & Preschool）法院抚养权禁令与授权接送门禁锁、法定师生配比（State Licensing Ratio）与过敏肾上腺素笔（EpiPen）`0ms` 急救实时语音架构设计与选型指南（100% 严禁电话口头临时换接送人强制走 App 生物识别+6位动态码、法院抚养权限制令 `110ms` 双盲零披露且物理剥夺开大门权限、实时核验婴儿班 `1:4`/幼班 `1:10` 法定配比与停退烧药满 `24h` 复园、以及教室花生过敏 `<100ms` 秒播专属 `EpiPen Jr` 柜号每万通增收学费 `+$22.8万`）方案**：[中文](./childcare-daycare-authorized-pickup-custody-epipen-licensing-voice-selection-faq.md) | [EN](./childcare-daycare-authorized-pickup-custody-epipen-licensing-voice-selection-faq.en.md)
 462. **殡仪馆、陵园与生命礼仪服务（Funeral Home, Mortuary & Cemetery Services）24 小时遗体接运调度、联邦《殡葬规则》（`FTC 16 CFR Part 453`）透明报价、火化前心脏起搏器（Pacemaker）防爆核查与法医管辖实时语音架构设计与选型指南（`110 WPM` 庄重哀伤声学清零欢快口癖、`FTC 16 CFR 453` 免留名电话直报 `GPL` 单项价并声明替代容器与非强制防腐规避 `$51,744/次` 罚单、非监护居家去世必转法医 `Coroner` 放行、以及起搏器/放射源摘除与顺位近亲属全员电签双重锁死火化炉每万通挽回产值 `+$38.5万`）方案**：[中文](./funeral-home-mortuary-ftc-funeral-rule-pacemaker-cremation-voice-selection-faq.md) | [EN](./funeral-home-mortuary-ftc-funeral-rule-pacemaker-cremation-voice-selection-faq.en.md)
 463. **干线重卡车队与冷链货运（Commercial Trucking Fleet & Cold-Chain Freight）联邦法定驾驶时长（`FMCSA HOS`）反强迫锁、高速爆胎/冷机抢修、大件限高（`13'6"`）与危化品泄漏（`PHMSA ERG`）实时语音架构设计与选型指南（`130ms` 校验 `Samsara ELD` 11h/14h 工时与 `49 CFR § 390.6` 零强迫疲劳驾驶锁、`PC*MILER` 商用车 `>=13'6"` 限高路网防撞桥、18轮爆胎视觉核验与冷机停机换挂接力 `Repower` 将路肩等待从 `3.8h` 缩至 `1.4h` 每万通省 `$32万` 冷链货损、以及严禁电话口头改址防盗货）方案**：[中文](./commercial-trucking-fleet-fmcsa-hos-eld-roadside-breakdown-voice-selection-faq.md) | [EN](./commercial-trucking-fleet-fmcsa-hos-eld-roadside-breakdown-voice-selection-faq.en.md)
+464. **医药临床试验（Clinical Trials, CRO & DCT）受试者入排预筛、伦理委员会（IRB）零诱导锁、电子结局语音日记（`FDA 21 CFR Part 11` eCOA）与严重不良事件（SAE `24h` 药物警戒）实时语音架构设计与选型指南（`IRB 21 CFR Part 50` 零疗效承诺与防套题洗脱期预筛压降 `48.6%` 现场筛败率每万通省 `$44万`、`ePRO / eCOA` 验证量表 `100%` 原文逐字锁定与 `SHA-256` 音频哈希存证提依从性至 `96.4%`、双盲试验防破盲锁与严禁擅改试验药剂量、以及提及住院/怀孕 `<150ms` 启动 `24h SAE` 计时并直连值班 PI）方案**：[中文](./clinical-trials-patient-recruitment-ecoa-fda-21cfr11-sae-voice-selection-faq.md) | [EN](./clinical-trials-patient-recruitment-ecoa-fda-21cfr11-sae-voice-selection-faq.en.md)
