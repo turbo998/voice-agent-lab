@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bgGrad436" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="headerGrad436" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0369a1"/>
+      <stop offset="50%" stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="cardBlue436" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardCyan436" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#155e75" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardEmerald436" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#065f46" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bgGrad436)" rx="16"/>
+  <rect x="24" y="20" width="1152" height="74" rx="12" fill="url(#headerGrad436)"/>
+  <text x="44" y="50" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700">Automotive Smart Cockpit &amp; Smart Hardware Edge-Cloud Multimodal Voice Assistant Architecture</text>
+  <text x="44" y="76" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="13">Architecture Blueprint · Policy: AUTOMOTIVE-SMART-HARDWARE-EDGE-CLOUD-VOICE-2026-01 · 155ms Edge NPU · 78% Cloud Offload · 0% Unsafe In-Motion Actuation</text>
+
+  <!-- Column 1: 4-Zone Acoustic & ISO 26262 Safety Lock -->
+  <rect x="28" y="112" width="364" height="440" rx="12" fill="url(#cardBlue436)" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="44" y="128" width="332" height="36" rx="8" fill="#1d4ed8"/>
+  <text x="60" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. 4-Zone Acoustic &amp; ISO 26262 Safety Lock</text>
+
+  <rect x="44" y="180" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="203" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">4-Zone Beamforming &amp; Seat-Scoped RBAC</text>
+  <text x="58" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Zone 1 (Driver), Zone 2 (Front Pass), Zones 3/4 (Rear)</text>
+  <text x="58" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• "Turn on my seat heater" maps automatically to Zone ID</text>
+  <text x="58" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Child Lock blocks Rear Zones 3/4 from opening windows/</text>
+  <text x="58" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">  sunroof or changing navigation destination (0% hijack)</text>
+
+  <rect x="44" y="308" width="332" height="114" rx="8" fill="#0f172a" stroke="#ef4444"/>
+  <text x="58" y="331" fill="#f87171" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">ISO 26262 Vehicle Speed &amp; Gear State Firewall</text>
+  <text x="58" y="352" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• LLM never writes CAN/SOME-IP bus directly!</text>
+  <text x="58" y="372" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• When Gear != P or Speed &gt; 0 km/h: hard-blocks trunk</text>
+  <text x="58" y="392" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  release, charge-port open, headlights-off &amp; video play</text>
+  <text x="58" y="412" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ 0.0% unsafe in-motion vehicle actuation</text>
+
+  <rect x="44" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="459" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Wake-Word-Free Gaze + Lipsync VAD (Smart Glasses/Car)</text>
+  <text x="58" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Combines cabin DMS lip-movement with acoustic VAD</text>
+  <text x="58" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  to ignore podcast/radio voices &amp; passenger side-chat</text>
+
+  <!-- Column 2: Edge NPU vs. Cloud VLM Hybrid Routing -->
+  <rect x="418" y="112" width="364" height="440" rx="12" fill="url(#cardCyan436)" stroke="#06b6d4" stroke-width="1.5"/>
+  <rect x="434" y="128" width="332" height="36" rx="8" fill="#0e7490"/>
+  <text x="450" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. Edge NPU (78%) + Cloud Multimodal (22%)</text>
+
+  <rect x="434" y="180" width="332" height="118" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="203" fill="#22d3ee" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Edge Tier (78% Commands — 155ms Offline NPU)</text>
+  <text x="448" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Runs quantized 1.5B–3B SLM + Edge ASR/TTS on</text>
+  <text x="448" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  Qualcomm SA8295P / NVIDIA Thor / Wearable DSP</text>
+  <text x="448" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Handles HVAC, windows, seat, media, local nav &amp; manual</text>
+  <text x="448" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ 100% availability in underground garages &amp; tunnels</text>
+
+  <rect x="434" y="312" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="335" fill="#22d3ee" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Cloud Tier (22% Queries — Multimodal VLM + Live Search)</text>
+  <text x="448" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• "What building is that on the right?" (Exterior camera + GPS)</text>
+  <text x="448" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• "What does this dashboard warning light mean?"</text>
+  <text x="448" y="396" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Grounded against exact vehicle VIN owner's manual</text>
+
+  <rect x="434" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#06b6d4"/>
+  <text x="448" y="459" fill="#67e8f9" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Speculative Tunnel Failover (&gt;450ms Cellular Drop)</text>
+  <text x="448" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Starts Edge NPU &amp; Cloud in parallel; if 5G drops entering</text>
+  <text x="448" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  a tunnel, Edge NPU responds in 0ms with 0 dead air</text>
+
+  <!-- Column 3: Smart Hardware Power & Emergency eCall -->
+  <rect x="808" y="112" width="364" height="440" rx="12" fill="url(#cardEmerald436)" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="824" y="128" width="332" height="36" rx="8" fill="#047857"/>
+  <text x="840" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Wearable Power Gate &amp; 0ms NG-eCall</text>
+
+  <rect x="824" y="180" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="838" y="203" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">AI Smart Glasses &amp; Companion Hardware Battery Gate</text>
+  <text x="838" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Sub-1mW DSP keyword spotter wakes Wi-Fi/BLE radio</text>
+  <text x="838" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Captures single 720p keyframe ONLY on visual deictic</text>
+  <text x="838" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  words ("look at this", "translate this menu")</text>
+  <text x="838" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Extends AI glasses battery life from 1.2h to 8.5h</text>
+
+  <rect x="824" y="308" width="332" height="114" rx="8" fill="#0f172a" stroke="#ef4444"/>
+  <text x="838" y="331" fill="#f87171" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms Airbag NG-eCall &amp; DMS Microsleep Preemption</text>
+  <text x="838" y="352" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Airbag deployment / crash sensor or DMS &gt;2.5s eyes-closed</text>
+  <text x="838" y="372" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Preempts all entertainment/chat audio in 0ms</text>
+  <text x="838" y="392" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">⚡ Triggers seat-belt haptic wake or bridges E911 PSAP</text>
+
+  <rect x="824" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#10b981"/>
+  <text x="838" y="459" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">1M-Vehicle Fleet FinOps (-$11.8M/Yr Cloud Savings)</text>
+  <text x="838" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Offloading 78% of commands to Edge NPU cuts monthly</text>
+  <text x="838" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  cloud cellular + token cost from $1.28/car to $0.29/car</text>
+
+  <!-- Bottom Summary Bar -->
+  <rect x="28" y="568" width="1144" height="88" rx="12" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="48" y="596" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Architect Blueprint Summary (Automotive In-Cabin &amp; Smart Hardware Edge-Cloud Voice AI):</text>
+  <text x="48" y="620" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13">• Edge NPU (78% Traffic, 155ms Offline): Vehicle/device controls, local nav &amp; manual lookup · Cloud VLM (22% Traffic): Camera vision &amp; live web search</text>
+  <text x="48" y="642" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">• Safety &amp; FinOps: ISO 26262 Speed/Gear Firewall + 4-Zone Child RBAC + 0ms Crash/DMS Preemption (Saves $11.8M/Yr per 1M Connected Devices)</text>
+</svg>

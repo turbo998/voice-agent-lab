@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（435 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（436 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -479,3 +479,4 @@
 433. **跨国企业实时多语种同声传译（Live Simultaneous Interpretation）、万人全员大会与会议纪要架构设计与选型指南（`Azure Live Interpreter + Personal Voice` 跨 70+ 语种保留高管原声将 6 语种同传从 `$4,500/时` 压至 `$16.80/时` 降本 `99.6%`、日/德/韩 `SOV` 句尾否定词动态 `Wait-k` `0%` 极性反转与“万/亿 vs Million/Billion”量纲核验 `99.7%` 准确硬锁、多波束+声纹分离 `DER=1.9%` 绑定原话时间戳纪要与闭门涉密议题 `0ms` 内存擦除）方案**：[中文](./multinational-live-simultaneous-interpretation-townhall-meeting-minutes-architecture-selection-faq.md) | [EN](./multinational-live-simultaneous-interpretation-townhall-meeting-minutes-architecture-selection-faq.en.md)
 434. **AI 金牌销售对练（Sales Roleplay）、模拟面试与语言陪练应用架构设计与选型指南（前台 `350ms` 原生 `S2S Actor` + 后台旁路异步评分 `Critic` 双环解耦、抗讨好异议状态锁 `0%` 过早妥协认输、绑定原话毫秒时间戳 `BARS` 量表 `Kappa=0.94` 与 `Azure GOP` 音素级发音诊断/`EEOC` 面试去口音公平锁、金融保本/药代超适应症钓鱼诱饵 `0ms` 红牌中断及单场 `$0.38` 较真人主管降本 `99.1%`）方案**：[中文](./ai-sales-sparring-mock-interview-language-tutor-actor-critic-voice-architecture-selection-faq.md) | [EN](./ai-sales-sparring-mock-interview-language-tutor-actor-critic-voice-architecture-selection-faq.en.md)
 435. **电商直播（7×24h 品牌自播）与线下展厅实时语音数字人（Voice + Avatar）导购架构设计与选型指南（`80%` 预烘焙切片 + `20%` 实时 `Push/Pop` 压栈插答将夜间开播成本从 `$35/时` 压至 `$2.15/时` 并提闲时 GMV 转化 `+39.4%`、公屏弹幕防注入清洗与《广告法》极限词正则拦截及 `<15ms` Redis 库存/底价硬锁 `0%` 违禁封号、展厅 `ToF <1.5m + 正脸注视` 将路人误唤醒压至 `0.5%` 并实现离场 `3秒` 隐私清零）方案**：[中文](./ecommerce-livestream-showroom-kiosk-interactive-voice-avatar-digital-human-selection-faq.md) | [EN](./ecommerce-livestream-showroom-kiosk-interactive-voice-avatar-digital-human-selection-faq.en.md)
+436. **车载智能座舱与智能硬件（AI 眼镜 / 陪伴机器人 / 全屋中控）端云协同多模态语音助手架构设计与选型指南（`ISO 26262` 非驻车挡禁开后备箱/关大灯与四音区儿童锁 `0%` 越权误动作硬锁、端侧 NPU `<155ms` 离线承接 `78%` 车控/设备指令保障地库/隧道 `100%` 可用并为百万台设备年省 `$1,188万` 云成本、AI 眼镜指代词单帧抽拍续航延至 `8.5h` 及气囊碰撞 `NG-eCall`/`DMS` 闭眼 `0ms` 抢占）方案**：[中文](./automotive-in-cabin-smart-hardware-edge-cloud-multimodal-voice-assistant-selection-faq.md) | [EN](./automotive-in-cabin-smart-hardware-edge-cloud-multimodal-voice-assistant-selection-faq.en.md)

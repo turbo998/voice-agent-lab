@@ -11845,6 +11845,36 @@ export function evaluateEcommerceLivestreamShowroomAvatar2026Guard(input: {
   };
 }
 
+export interface AutomotiveSmartHardwareEdgeCloudVoice2026Evaluation {
+  policyCode: "AUTOMOTIVE-SMART-HARDWARE-EDGE-CLOUD-VOICE-2026-01";
+  cabinAndHardwareActuationAuthorized: boolean;
+  unsafeInMotionOrRearChildOverrideOrBatteryDrainBlocked: boolean;
+  ecallCrashOrDmsWakePreemptionTriggered: boolean;
+}
+
+/**
+ * Deterministic Automotive Smart Cockpit & Smart Hardware Edge-Cloud Multimodal Voice Assistant (ISO 26262 Speed/Gear Firewall & 4-Zone Child RBAC, 155ms Edge-NPU 78% Offload & Event-Driven Vision, 0ms NG-eCall/DMS Preemption) Guard (`AUTOMOTIVE-SMART-HARDWARE-EDGE-CLOUD-VOICE-2026-01`).
+ */
+export function evaluateAutomotiveSmartHardwareEdgeCloudVoice2026Guard(input: {
+  iso26262SpeedGearLockedAndFourZoneChildRbacVerified: boolean;
+  edgeNpuOfflineRoutedAndEventDrivenVisionThrottled: boolean;
+  airbagEcallCrashOrDmsMicrosleepPreemption: boolean;
+}): AutomotiveSmartHardwareEdgeCloudVoice2026Evaluation {
+  return {
+    policyCode: "AUTOMOTIVE-SMART-HARDWARE-EDGE-CLOUD-VOICE-2026-01",
+    cabinAndHardwareActuationAuthorized:
+      input.iso26262SpeedGearLockedAndFourZoneChildRbacVerified &&
+      input.edgeNpuOfflineRoutedAndEventDrivenVisionThrottled &&
+      !input.airbagEcallCrashOrDmsMicrosleepPreemption,
+    unsafeInMotionOrRearChildOverrideOrBatteryDrainBlocked:
+      !input.iso26262SpeedGearLockedAndFourZoneChildRbacVerified ||
+      !input.edgeNpuOfflineRoutedAndEventDrivenVisionThrottled ||
+      input.airbagEcallCrashOrDmsMicrosleepPreemption,
+    ecallCrashOrDmsWakePreemptionTriggered:
+      input.airbagEcallCrashOrDmsMicrosleepPreemption,
+  };
+}
+
 
 
 
