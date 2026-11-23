@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg469" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19"/>
+      <stop offset="50%" stop-color="#0d1b31"/>
+      <stop offset="100%" stop-color="#071222"/>
+    </linearGradient>
+    <linearGradient id="cyan469" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emerald469" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amber469" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="rose469" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg469)"/>
+  <rect x="24" y="20" width="1152" height="640" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="1112" height="72" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="68" font-family="Segoe UI, Inter, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">
+    Self-Storage REIT, SCRA Military Lien-Auction Lock &amp; Unmanned Gate Voice Architecture (2026)
+  </text>
+  <text x="68" y="94" font-family="Segoe UI, Inter, sans-serif" font-size="13" fill="#94a3b8">
+    50 U.S.C. § 3958 SCRA Active-Duty Military Auction Lock • Full-Balance Lien Cure &amp; Overlock Release • Nokē Smart-Lock &amp; 0ms Roll-Door Entrapment
+  </text>
+  <rect x="920" y="52" width="216" height="36" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1028" y="75" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700" fill="#a7f3d0">
+    STORAGE-SCRA-LIEN-2026-01
+  </text>
+
+  <!-- Column 1: SCRA Military Lien Lock & Statutory Auction Cure -->
+  <rect x="44" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#e11d48" stroke-width="1.5"/>
+  <rect x="44" y="128" width="356" height="40" rx="12" fill="url(#rose469)"/>
+  <text x="222" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    1. 50 U.S.C. § 3958 SCRA &amp; Lien Auction Cure
+  </text>
+
+  <rect x="62" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+  <text x="76" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fb7185">DoD DMDC SCRA Active-Duty Auction Lock</text>
+  <text x="76" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Federal crime (50 USC § 3958) to enforce a</text>
+  <text x="76" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  storage lien or auction a deployed military</text>
+  <text x="76" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">  member's unit without a federal court order</text>
+  <text x="76" y="281" font-family="Segoe UI, Inter, sans-serif" fill="#fb7185">• 120ms DoD DMDC check + 6% interest cap</text>
+
+  <rect x="62" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Pre-Auction Redemption &amp; Partial-Pay Lock</text>
+  <text x="76" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Blocks unapproved partial payments during</text>
+  <text x="76" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  statutory lien notice period (which voids</text>
+  <text x="76" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  30-day newspaper/online auction legal clock)</text>
+  <text x="76" y="405" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• Full-balance cure auto-releases Nokē overlock</text>
+
+  <rect x="62" y="432" width="320" height="100" rx="8" fill="#4c0519" stroke="#f43f5e"/>
+  <text x="76" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fda4af">Zero Unverified Gate-Code / Padlock Cut</text>
+  <text x="76" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">• Never reads out PTI/Nokē gate code or books</text>
+  <text x="76" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">  lock-cut without Gov Photo ID + 3D Liveness</text>
+  <text x="76" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#fda4af">• Prevents estranged-spouse unit burglary</text>
+
+  <!-- Column 2: 3D Cubic-Foot Sizing & Unmanned Move-In -->
+  <rect x="422" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#0284c7" stroke-width="1.5"/>
+  <rect x="422" y="128" width="356" height="40" rx="12" fill="url(#cyan469)"/>
+  <text x="600" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    2. Unmanned Move-In, Unit Sizing &amp; Nokē Smart-Lock
+  </text>
+
+  <rect x="440" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">Room-Inventory to Unit-Size Calculator</text>
+  <text x="454" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Converts "King bed, sectional sofa, 25 boxes,</text>
+  <text x="454" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  washer/dryer" into exact 10x15 Climate-Control</text>
+  <text x="454" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• Queries SiteLink / Yardi Breeze / Storable</text>
+  <text x="454" y="281" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  drive-up vs elevator unit pricing in 140ms</text>
+
+  <rect x="440" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">60-Second Contactless Kiosk Move-In</text>
+  <text x="454" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Texts lease + tenant-protection plan + ID scan</text>
+  <text x="454" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Provisions PTI Falcon / Nokē Smart Entry BLE</text>
+  <text x="454" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  key immediately while customer is in U-Haul</text>
+  <text x="454" y="405" font-family="Segoe UI, Inter, sans-serif" fill="#38bdf8">• Lifts after-hours move-in conversion by +46.8%</text>
+
+  <rect x="440" y="432" width="320" height="100" rx="8" fill="#0c4a6e" stroke="#0284c7"/>
+  <text x="454" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#7dd3fc">Gate Anti-Passback &amp; Roll-Up Door Jam Fix</text>
+  <text x="454" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">• Resolves PTI "Already Inside Facility" passback</text>
+  <text x="454" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">  lock after verifying live gate camera plate</text>
+  <text x="454" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#7dd3fc">• Coaches foot-step latch release on roll doors</text>
+
+  <!-- Column 3: HazMat/Habitation Ban & 0ms Lock-In Rescue -->
+  <rect x="800" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#059669" stroke-width="1.5"/>
+  <rect x="800" y="128" width="356" height="40" rx="12" fill="url(#emerald469)"/>
+  <text x="978" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    3. HazMat/Habitation Ban &amp; 0ms Lock-In Rescue
+  </text>
+
+  <rect x="818" y="184" width="320" height="114" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#34d399">Prohibited HazMat, Fuel &amp; Habitation Filter</text>
+  <text x="832" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Blocks storing propane tanks, gasoline, fireworks,</text>
+  <text x="832" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  lithium e-bike battery charging, or perishable food</text>
+  <text x="832" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">• Enforces drain-fuel rule for Boat/RV/Motorcycle</text>
+  <text x="832" y="283" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• Strictly prohibits sleeping/living inside units</text>
+
+  <rect x="818" y="312" width="320" height="106" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="334" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">0ms After-Hours Gate Lock-In &amp; Unit Entrapment</text>
+  <text x="832" y="354" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Tenant trapped inside perimeter gate after</text>
+  <text x="832" y="373" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  10:00 PM curfew or inside closed roll-up door</text>
+  <text x="832" y="392" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• 0ms emergency egress release + SOC video verify</text>
+
+  <rect x="818" y="432" width="320" height="100" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="832" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#6ee7b7">Climate-Control Humidity &amp; Pipe-Freeze Watch</text>
+  <text x="832" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">• Monitors wine/art storage &lt;55% RH &amp; 55°F–78°F</text>
+  <text x="832" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">• Alerts HVAC vendor before mold/freeze claims</text>
+  <text x="832" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#6ee7b7">• Cuts unmanned facility OPEX by -58.4%</text>
+
+  <!-- Bottom Telemetry Bar -->
+  <rect x="44" y="564" width="1112" height="76" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#38bdf8">
+    Benchmark &amp; Self-Storage REIT ROI (10,000 Unmanned Facility &amp; Lien Calls):
+  </text>
+  <text x="545" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="600" fill="#34d399">
+    After-Hours Move-Ins: +46.8% (+$210k Revenue) • SCRA Auction Fines: 0 • Lien Cure: +38.4%
+  </text>
+  <text x="68" y="618" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" fill="#94a3b8">
+    Guardrail ID: evaluateSelfStorageScraLienGateVoice2026Guard • Policy: SELF-STORAGE-SCRA-LIEN-GATE-VOICE-2026-01
+  </text>
+</svg>

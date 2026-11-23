@@ -12835,6 +12835,36 @@ export function evaluateBloodBankFda630UnosTransplantVoice2026Guard(input: {
   };
 }
 
+export interface SelfStorageScraLienGateVoice2026Evaluation {
+  policyCode: "SELF-STORAGE-SCRA-LIEN-GATE-VOICE-2026-01";
+  unmannedMoveInAndFullCureOverlockReleaseAuthorized: boolean;
+  scraMilitaryAuctionOrPartialLienPayOrUnverifiedPinBlocked: boolean;
+  afterHoursGateLockInOrRollDoorEntrapmentEgressOpened: boolean;
+}
+
+/**
+ * Deterministic Self-Storage REIT, SCRA Military Lien-Auction Lock & Unmanned Gate Voice (50 U.S.C. 3958 DoD DMDC Active-Duty Auction Freeze + Full-Balance Lien Cure Only, 3D Liveness Gate PIN & HazMat/Anti-Habitation Attested, 0ms After-Hours Curfew Gate Lock-In / Roll-Up Door Entrapment Egress) Guard (`SELF-STORAGE-SCRA-LIEN-GATE-VOICE-2026-01`).
+ */
+export function evaluateSelfStorageScraLienGateVoice2026Guard(input: {
+  dodDmdcScraClearedAndFullBalanceLienCureVerified: boolean;
+  biometricGatePinVerifiedAndHazMatAntiHabitationAttested: boolean;
+  afterHoursCurfewLockInOrRollDoorEntrapmentDetected: boolean;
+}): SelfStorageScraLienGateVoice2026Evaluation {
+  return {
+    policyCode: "SELF-STORAGE-SCRA-LIEN-GATE-VOICE-2026-01",
+    unmannedMoveInAndFullCureOverlockReleaseAuthorized:
+      input.dodDmdcScraClearedAndFullBalanceLienCureVerified &&
+      input.biometricGatePinVerifiedAndHazMatAntiHabitationAttested &&
+      !input.afterHoursCurfewLockInOrRollDoorEntrapmentDetected,
+    scraMilitaryAuctionOrPartialLienPayOrUnverifiedPinBlocked:
+      !input.dodDmdcScraClearedAndFullBalanceLienCureVerified ||
+      !input.biometricGatePinVerifiedAndHazMatAntiHabitationAttested ||
+      input.afterHoursCurfewLockInOrRollDoorEntrapmentDetected,
+    afterHoursGateLockInOrRollDoorEntrapmentEgressOpened:
+      input.afterHoursCurfewLockInOrRollDoorEntrapmentDetected,
+  };
+}
+
 
 
 

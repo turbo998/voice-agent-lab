@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（468 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（469 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -512,3 +512,4 @@
 466. **大型建筑工程与市政施工现场（Commercial Construction Jobsite & Heavy Civil）地下管线开挖前核验（`811 Call-Before-You-Dig`）、商品混凝土 `90分钟` 报废与禁私加水锁（`ASTM C94`）与深基坑/触电 `0ms` 救援实时语音架构设计与选型指南（`140ms` 校验州 `811` 全管线商 `Marked/Clear` 与 `18英寸` 人工探沟实现 `0` 挖断赔偿、混凝土超 `90m/300转` 禁浇与 `100%` 禁私自加水砍掉 `82.4%` 废灰、英/西双语免提同步 `Procore` 每天省施工员 `1.8h`、以及挖机触碰高压线 `<100ms` 强喊“留在驾驶室防跨步电压”每万次省 `$42.8万`）方案**：[中文](./construction-jobsite-811-utility-dig-ticket-astm-c94-concrete-procore-voice-selection-faq.md) | [EN](./construction-jobsite-811-utility-dig-ticket-astm-c94-concrete-procore-voice-selection-faq.en.md)
 467. **豪华邮轮与远洋客轮（Cruise Line Cabin Concierge & Maritime Hospitality）船载边缘抗断网、岸上观光“船上时间 vs 港口时间”防误船锁、`SOLAS` 弃船演习门禁与诺如病毒（`CDC VSP`）隔离实时语音架构设计与选型指南（船载机房 L40S 边缘自治在峡湾卫星断网时保持 `380ms` 响应分流总台 `81.6%` 排队、岸上游双报船上时间与港口时间且自由行不承诺等船、腹泻呕吐 `100%` 触发 `CDC VSP` 留舱隔离派免费护士上门防诺如扩散、以及人员落水 `Code Oscar` `<80ms` 直通驾驶台每万通增收节支 `+$41.5万`）方案**：[中文](./cruise-line-cabin-concierge-solas-muster-shore-excursion-norovirus-voice-selection-faq.md) | [EN](./cruise-line-cabin-concierge-solas-muster-shore-excursion-norovirus-voice-selection-faq.en.md)
 468. **血液中心、单采血浆站与器官移植网络（Blood Bank, Plasma Centers & UNOS Organ Transplant）`FDA 21 CFR 630` 致畸药物/间隔期预筛、献血后晕厥与枸橼酸盐中毒抢占、以及 `UNOS` 供体器官冷缺血时间（Cold Ischemia Time）调度实时语音架构设计与选型指南（`FDA 21 CFR 630` 全血 `>=56天`/血浆 `>=48h` 与异维A酸/阿维A酯致畸药预筛砍掉 `64.8%` 现场空椅子率、献血后发热回告 `PDI` `<5秒` 自动冻结 `ISBT 128` 血袋、献血眩晕首句强令“平躺抬腿”降 `88.4%` 摔伤、以及 `UNOS` 供体器官 `180s` 升级与 `ABO/Cross-Clamp` 双复诵压降 `44.2%` 冷缺血废弃每万通省 `$36.2万`）方案**：[中文](./blood-bank-plasma-donor-fda-deferral-unos-organ-transplant-voice-selection-faq.md) | [EN](./blood-bank-plasma-donor-fda-deferral-unos-organ-transplant-voice-selection-faq.en.md)
+469. **自助仓储与无人迷你仓（Self-Storage REITs & Unmanned Mini-Storage）现役军人《军人民事救济法》（`SCRA 50 U.S.C. § 3958`）禁拍锁、法定留置权拍卖（Lien Sale）赎回与无人门禁（PTI / Nokē）实时语音架构设计与选型指南（`120ms` 核验国防部 `DoD DMDC` 现役军人身份 `100%` 冻结无令剪锁拍卖并锁 `6%` 利率上限、留置权拍卖期拦截破坏公告期的部分还款并在全额结清后 `3秒` 自动撤拍解开 `Nokē` 蓝牙电子加锁、60秒算仓型发钥匙提晚间即租转化率 `+46.8%` 每万通增收节支 `+$34.2万`、以及宵禁被困园区 `<100ms` 开启单向逃生出闸）方案**：[中文](./self-storage-facility-scra-military-lien-auction-gate-access-voice-selection-faq.md) | [EN](./self-storage-facility-scra-military-lien-auction-gate-access-voice-selection-faq.en.md)
