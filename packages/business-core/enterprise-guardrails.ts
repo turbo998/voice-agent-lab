@@ -12025,6 +12025,36 @@ export function evaluateQsrDrivethruRetailVoiceOrdering2026Guard(input: {
   };
 }
 
+export interface CompliantOutboundSdrAmdTcpa2026Evaluation {
+  policyCode: "COMPLIANT-OUTBOUND-SDR-AMD-TCPA-2026-01";
+  outboundDialAndCalendarBookingAuthorized: boolean;
+  tcpaTimezoneViolationOrThirdPartyDebtLeakOr3sDeadAirBlocked: boolean;
+  globalDncCommitOrDidQuarantineTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Compliant Outbound Voice AI (Pre-Dial Consent, AreaCode∩Zip 8AM-9PM & 7-in-7 Lock, STIR/SHAKEN Level-A & <380ms Speculative AMD, 0ms Global DNC Opt-Out & SIP 608 Quarantine) Guard (`COMPLIANT-OUTBOUND-SDR-AMD-TCPA-2026-01`).
+ */
+export function evaluateCompliantOutboundSdrAmdTcpa2026Guard(input: {
+  preDialConsentDualTimezoneAndFrequencyCapVerified: boolean;
+  stirShakenBrandedAndSpeculativeAmdUnder380ms: boolean;
+  dncOptOutRequestedOrCarrierSpamFlagPreemption: boolean;
+}): CompliantOutboundSdrAmdTcpa2026Evaluation {
+  return {
+    policyCode: "COMPLIANT-OUTBOUND-SDR-AMD-TCPA-2026-01",
+    outboundDialAndCalendarBookingAuthorized:
+      input.preDialConsentDualTimezoneAndFrequencyCapVerified &&
+      input.stirShakenBrandedAndSpeculativeAmdUnder380ms &&
+      !input.dncOptOutRequestedOrCarrierSpamFlagPreemption,
+    tcpaTimezoneViolationOrThirdPartyDebtLeakOr3sDeadAirBlocked:
+      !input.preDialConsentDualTimezoneAndFrequencyCapVerified ||
+      !input.stirShakenBrandedAndSpeculativeAmdUnder380ms ||
+      input.dncOptOutRequestedOrCarrierSpamFlagPreemption,
+    globalDncCommitOrDidQuarantineTriggered:
+      input.dncOptOutRequestedOrCarrierSpamFlagPreemption,
+  };
+}
+
 
 
 

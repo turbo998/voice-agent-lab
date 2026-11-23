@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bgGrad442" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="headerGrad442" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1d4ed8"/>
+      <stop offset="50%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="cardBlue442" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardCyan442" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#155e75" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardEmerald442" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#065f46" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bgGrad442)" rx="16"/>
+  <rect x="24" y="20" width="1152" height="74" rx="12" fill="url(#headerGrad442)"/>
+  <text x="44" y="50" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700">Enterprise Compliant Outbound Voice AI: Speed-to-Lead SDR, &lt;380ms Speculative AMD &amp; TCPA/STIR-SHAKEN</text>
+  <text x="44" y="76" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="13">Architecture Blueprint · Policy: COMPLIANT-OUTBOUND-SDR-AMD-TCPA-2026-01 · 51.2% Live Answer Rate · -78% 3s Hang-Ups · $0 Statutory Fines</text>
+
+  <!-- Column 1: Pre-Dial TCPA/FDCPA & Caller-ID Reputation -->
+  <rect x="28" y="112" width="364" height="440" rx="12" fill="url(#cardBlue442)" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="44" y="128" width="332" height="36" rx="8" fill="#1d4ed8"/>
+  <text x="60" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. Pre-Dial TCPA Lock &amp; Caller-ID Reputation</text>
+
+  <rect x="44" y="180" width="332" height="118" rx="8" fill="#0f172a" stroke="#ef4444"/>
+  <text x="58" y="203" fill="#f87171" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Pre-Dial TCPA / FDCPA Reg F Statutory Firewall</text>
+  <text x="58" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Verifies TrustedForm / prior express written consent token</text>
+  <text x="58" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Intersects recipient Area-Code AND Billing-Zip timezone</text>
+  <text x="58" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  (Strict 8:00 AM–9:00 PM local window + 7-in-7 frequency cap)</text>
+  <text x="58" y="284" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ $0 TCPA ($1,500/call) or FDCPA statutory penalties</text>
+
+  <rect x="44" y="312" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="335" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">STIR/SHAKEN Level-A + Branded Calling (CNAM/Logo)</text>
+  <text x="58" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Cryptographic A-level attestation + verified brand logo</text>
+  <text x="58" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Caps DID velocity at &lt;=50 calls/day/number (no snowshoeing)</text>
+  <text x="58" y="396" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Lifts live human answer rate from 16% to 51.2%</text>
+
+  <rect x="44" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#3b82f6"/>
+  <text x="58" y="459" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Carrier SIP 603/607/608 Spam Flag Quarantine</text>
+  <text x="58" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Auto-retires any DID receiving carrier analytics rejection</text>
+  <text x="58" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  in 0ms and submits automated remediation ticket</text>
+
+  <!-- Column 2: <380ms Speculative AMD & Voicemail Sync -->
+  <rect x="418" y="112" width="364" height="440" rx="12" fill="url(#cardCyan442)" stroke="#06b6d4" stroke-width="1.5"/>
+  <rect x="434" y="128" width="332" height="36" rx="8" fill="#0e7490"/>
+  <text x="450" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. &lt;380ms Speculative AMD (Zero Dead Air)</text>
+
+  <rect x="434" y="180" width="332" height="118" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="203" fill="#22d3ee" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Why Legacy 3-Second Blocking AMD Fails</text>
+  <text x="448" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Traditional AMD stays silent for 2.5s–3.5s after pickup</text>
+  <text x="448" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  to classify Human vs. Machine → 68% of humans hang up!</text>
+  <text x="448" y="264" fill="#22d3ee" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">Speculative AMD Solution (&lt;380ms):</text>
+  <text x="448" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Speaks warm greeting immediately at 350ms ("Hi Alex!")</text>
+
+  <rect x="434" y="312" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="335" fill="#22d3ee" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Parallel Acoustic Voicemail &amp; Beep Detector</text>
+  <text x="448" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• If incoming audio continues past 1.8s with voicemail</text>
+  <text x="448" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  cadence or 900–2200Hz beep tone, silently pivots to</text>
+  <text x="448" y="396" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">  leave a crisp 18-second post-beep voicemail message</text>
+
+  <rect x="434" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#06b6d4"/>
+  <text x="448" y="459" fill="#67e8f9" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">28-Second Speed-to-Lead Web Form Callback</text>
+  <text x="448" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Dials prospect 28s after web demo request while still on</text>
+  <text x="448" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  pricing page → Lifts SQL meeting conversion to 48.5%</text>
+
+  <!-- Column 3: BANT Booking, Mini-Miranda & 0ms DNC -->
+  <rect x="808" y="112" width="364" height="440" rx="12" fill="url(#cardEmerald442)" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="824" y="128" width="332" height="36" rx="8" fill="#047857"/>
+  <text x="840" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. BANT / Mini-Miranda &amp; 0ms DNC Breaker</text>
+
+  <rect x="824" y="180" width="332" height="118" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="838" y="203" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Right-Party Contact (RPC) Gate Before Debt/PII</text>
+  <text x="838" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• For billing reminders / collections: NEVER mentions debt</text>
+  <text x="838" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  or account status in voicemail or before verifying RPC!</text>
+  <text x="838" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Reads locked Mini-Miranda only after identity confirmed</text>
+  <text x="838" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ 0.0% third-party debt disclosure violations</text>
+
+  <rect x="824" y="312" width="332" height="110" rx="8" fill="#0f172a" stroke="#ef4444"/>
+  <text x="838" y="335" fill="#f87171" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms Global Do-Not-Call (DNC) Opt-Out Circuit Breaker</text>
+  <text x="838" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• If recipient says "Stop calling me / Take me off your list":</text>
+  <text x="838" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Zero sales pushback! Writes global DNC ledger in 0ms,</text>
+  <text x="838" y="396" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">  speaks 4-word polite ack &amp; disconnects immediately</text>
+
+  <rect x="824" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#10b981"/>
+  <text x="838" y="459" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">In-Call AE Calendar Lock &amp; Whale Live Transfer</text>
+  <text x="838" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Books AE calendar invite while still on phone (88.4% show</text>
+  <text x="838" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  rate) or 0ms live-bridges Fortune-500 Whale leads</text>
+
+  <!-- Bottom Summary Bar -->
+  <rect x="28" y="568" width="1144" height="88" rx="12" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="48" y="596" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Architect Blueprint Summary (Enterprise Compliant Outbound Voice AI — SDR, Retention &amp; Early Collections):</text>
+  <text x="48" y="620" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13">• Pre-Dial Governance: TrustedForm Consent + AreaCode∩Zip 8AM-9PM Lock + STIR/SHAKEN Level-A Branded Calling (51.2% Live Answer Rate)</text>
+  <text x="48" y="642" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">• In-Call Execution: &lt;380ms Speculative AMD (-78% 3s Hang-Ups) + RPC Gate + 0ms Global DNC Breaker ($0.22 per Booked SQL Meeting)</text>
+</svg>
