@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（479 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（480 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -523,3 +523,4 @@
 477. **重型工程机械、高空作业车与起重机租赁（Heavy Equipment, Aerial Boom/Scissor Lift & Mobile Crane Rental）`OSHA 1926.1408` 高压线净空与力矩载荷表（Load-Chart）防倾覆锁、停租报停（Off-Rent）拍照核验与吊臂触电/液压射伤 `0ms` 抢占实时语音架构设计与选型指南（三维 `Load-Chart` `重量×水平跨距×高度` 选型与室内 `100%` 禁柴油机防翻车及 `CO` 中毒、`140ms` `Trackunit CAN-Bus` 秒解急停/5°倾角假故障与停租拍照锁砍掉 `72.8%` 技师/平板拖车空跑每万通省 `$21.4万`、以及吊臂触碰高压线 `<100ms` 跨步电压并脚跳离规程与 `3,000 PSI` 液压喷射伤手外科直达）方案**：[中文](./heavy-equipment-crane-rental-osha-1926-powerline-load-chart-voice-selection-faq.md) | [EN](./heavy-equipment-crane-rental-osha-1926-powerline-load-chart-voice-selection-faq.en.md)
 478. **房产产权保险、交易托管过户与远程公证交割（Title Insurance, Real Estate Escrow Closing & `RON`）美国土地产权协会（`ALTA`）防电汇诈骗铁律、空地冒名盗卖（Seller Impersonation Fraud）生物识别锁与 `FBI IC3` 电汇追回 `0ms` 抢占实时语音架构设计与选型指南（`ALTA Pillar 3` `100%` 严禁口头/邮件变更电汇账号并强制 `CertifID` 门户核验防 `$280k` BEC 电诈、无贷款空置土地四重防冒名盗卖锁、`140ms` `Qualia/SoftPro` `Schedule B-I` 清障状态播报分流 `83.4%` 催问电话每万通省 `$18.8万`、以及买方误汇黑客账户 `<100ms` 汇出行 `Fedwire Recall` 与 `FBI IC3 RAT` 冻结抢占）方案**：[中文](./title-insurance-escrow-closing-alta-wire-fraud-seller-impersonation-voice-selection-faq.md) | [EN](./title-insurance-escrow-closing-alta-wire-fraud-seller-impersonation-voice-selection-faq.en.md)
 479. **医院医用织物洗涤、酒店布草与工业洗消工厂（Healthcare Linen, Hospitality & Commercial Industrial Laundry）`HLAC` 热力消毒与漂白水+酸洗剂禁混（防剧毒氯气 `Cl2`）锁、被单裹入心电遥测盒/手术器械拦截与分拣台针刺伤（`OSHA 1910.1030` `PEP <2h`）`0ms` 抢占实时语音架构设计与选型指南（`130ms` 锁定病区污衣笼车 `UHF-RFID` 在进 `50 Bar` 压水机前截留 `$3,500` 心电遥测盒与手术器械削减 `88.6%` 赔偿每万通省 `$19.4万`、次氯酸钠漂白水+酸洗剂 `100%` 禁混防剧毒氯气与含油毛巾 `<100°F` 冷风防自燃锁、以及分拣台针刺伤 `<100ms` 反查来源医院病区并启动黄金 2 小时 `HIV/HBV PEP` 阻断）方案**：[中文](./healthcare-linen-commercial-laundry-hlac-osha-1910-1030-sharps-voice-selection-faq.md) | [EN](./healthcare-linen-commercial-laundry-hlac-osha-1910-1030-sharps-voice-selection-faq.en.md)
+480. **超低温冷链仓储、速冻隧道与冷藏集装箱堆场（Cold-Storage, `-25°F` Blast-Freezer Warehousing & Reefer Logistics）国际氨制冷学会（`IIAR / OSHA 1910.119`）液氨泄漏逆风疏散锁、《食品安全现代化法》（`FDA FSMA`）肉芯探针超温拒收与 `-25°F` 深冷库困人 `0ms` 抢占实时语音架构设计与选型指南（`FDA FSMA 21 CFR § 1.908` 蓝牙探针强制核验中心肉芯温度 `<=0°F/38°F` 防化冻变质货混入背锅赔付、`-25°F` 免脱防寒手套抗 `82dB` 风机语音拣选削减 `92.4%` 抄码称重差错每万次省 `$22.6万`、以及货叉撞管无水液氨泄漏 `<100ms` 关断主供液阀并结合屋顶风向标广播逆风逃生门）方案**：[中文](./cold-storage-reefer-warehouse-iiar-ammonia-leak-fda-fsma-voice-selection-faq.md) | [EN](./cold-storage-reefer-warehouse-iiar-ammonia-leak-fda-fsma-voice-selection-faq.en.md)

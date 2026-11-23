@@ -13165,6 +13165,36 @@ export function evaluateHealthcareLaundryHlacOsha1030Voice2026Guard(input: {
   };
 }
 
+export interface ColdStorageAmmoniaFsmaFreezerVoice2026Evaluation {
+  policyCode: "COLD-STORAGE-AMMONIA-FSMA-FREEZER-VOICE-2026-01";
+  freezerPutAwayAndVoicePickAuthorized: boolean;
+  warmPulpTempOrUnlockedDokLokOrLowO2CaRoomEntryBlocked: boolean;
+  ammoniaKingValveUpwindEvacOrBlastFreezerRescuePreempted: boolean;
+}
+
+/**
+ * Deterministic Cold-Storage & Blast-Freezer Warehouse Voice (FDA FSMA 21 CFR § 1.908 Core Pulp-Temp <=0°F/38°F + TempTale Logger + Rite-Hite Dok-Lok Green Restraint, Controlled-Atmosphere CA Room >=19.5% O2 Lock + Hands-Free -25°F Catch-Weight Voice Picking, 0ms IIAR/OSHA 1910.119 Anhydrous Ammonia King-Valve Cut + Upwind Evacuation & -25°F Freezer Entrapment Rescue) Guard (`COLD-STORAGE-AMMONIA-FSMA-FREEZER-VOICE-2026-01`).
+ */
+export function evaluateColdStorageAmmoniaFsmaFreezerVoice2026Guard(input: {
+  fsmaCorePulpTempInSpecAndDokLokGreenVerified: boolean;
+  caRoomOxygenAbove19Point5AndCatchWeightReadbackConfirmed: boolean;
+  anhydrousAmmoniaLeakOrBlastFreezerEntrapmentDetected: boolean;
+}): ColdStorageAmmoniaFsmaFreezerVoice2026Evaluation {
+  return {
+    policyCode: "COLD-STORAGE-AMMONIA-FSMA-FREEZER-VOICE-2026-01",
+    freezerPutAwayAndVoicePickAuthorized:
+      input.fsmaCorePulpTempInSpecAndDokLokGreenVerified &&
+      input.caRoomOxygenAbove19Point5AndCatchWeightReadbackConfirmed &&
+      !input.anhydrousAmmoniaLeakOrBlastFreezerEntrapmentDetected,
+    warmPulpTempOrUnlockedDokLokOrLowO2CaRoomEntryBlocked:
+      !input.fsmaCorePulpTempInSpecAndDokLokGreenVerified ||
+      !input.caRoomOxygenAbove19Point5AndCatchWeightReadbackConfirmed ||
+      input.anhydrousAmmoniaLeakOrBlastFreezerEntrapmentDetected,
+    ammoniaKingValveUpwindEvacOrBlastFreezerRescuePreempted:
+      input.anhydrousAmmoniaLeakOrBlastFreezerEntrapmentDetected,
+  };
+}
+
 
 
 
