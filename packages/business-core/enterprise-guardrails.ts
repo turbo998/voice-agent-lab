@@ -12055,6 +12055,36 @@ export function evaluateCompliantOutboundSdrAmdTcpa2026Guard(input: {
   };
 }
 
+export interface EnterpriseItHrZeroTrustVoiceCopilot2026Evaluation {
+  policyCode: "ENTERPRISE-IT-HR-ZERO-TRUST-VOICE-COPILOT-2026-01";
+  tapIssuanceDexHealAndBenefitsActionAuthorized: boolean;
+  verbalKbaVishingOrAdminResetOrPayrollDiversionBlocked: boolean;
+  socEdrContainmentOrConfidentialEthicsVaultBridged: boolean;
+}
+
+/**
+ * Deterministic Enterprise IT Service Desk (ServiceNow/Entra/DEX) & HR Shared Services (Workday) Zero-Trust Voice Copilot (Entra Verified ID Liveness & Privileged-Role Lock, 54s Signed DEX Self-Healing & Anti-Payroll-Diversion/HIPAA Mask, 0ms EDR/Ethics Preemption) Guard (`ENTERPRISE-IT-HR-ZERO-TRUST-VOICE-COPILOT-2026-01`).
+ */
+export function evaluateEnterpriseItHrZeroTrustVoiceCopilot2026Guard(input: {
+  verifiedIdBiometricAndNonPrivilegedRoleConfirmed: boolean;
+  edrHostCleanAndPayrollChangeBlockedWithHipaaMask: boolean;
+  edrRansomwareIsolatedOrEthicsHarassmentCrisisPreemption: boolean;
+}): EnterpriseItHrZeroTrustVoiceCopilot2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-IT-HR-ZERO-TRUST-VOICE-COPILOT-2026-01",
+    tapIssuanceDexHealAndBenefitsActionAuthorized:
+      input.verifiedIdBiometricAndNonPrivilegedRoleConfirmed &&
+      input.edrHostCleanAndPayrollChangeBlockedWithHipaaMask &&
+      !input.edrRansomwareIsolatedOrEthicsHarassmentCrisisPreemption,
+    verbalKbaVishingOrAdminResetOrPayrollDiversionBlocked:
+      !input.verifiedIdBiometricAndNonPrivilegedRoleConfirmed ||
+      !input.edrHostCleanAndPayrollChangeBlockedWithHipaaMask ||
+      input.edrRansomwareIsolatedOrEthicsHarassmentCrisisPreemption,
+    socEdrContainmentOrConfidentialEthicsVaultBridged:
+      input.edrRansomwareIsolatedOrEthicsHarassmentCrisisPreemption,
+  };
+}
+
 
 
 
