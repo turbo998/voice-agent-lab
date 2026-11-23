@@ -12295,6 +12295,36 @@ export function evaluateLegacyPbxCcaasZeroDowntimeVoiceAi2026Guard(input: {
   };
 }
 
+export interface RealEstatePropertyFhaEmergencyMaintenance2026Evaluation {
+  policyCode: "REAL-ESTATE-PROPERTY-FHA-EMERGENCY-MAINTENANCE-2026-01";
+  fhaLeasingTourAndMaintenanceDispatchAuthorized: boolean;
+  fhaSteeringOrSquatterPinLeakOrConstructiveEvictionBlocked: boolean;
+  elevatorEntrapmentOrGasFireCentralStationBridged: boolean;
+}
+
+/**
+ * Deterministic Real Estate & Property Management FHA Leasing & Emergency Maintenance (HUD Fair Housing Act Anti-Steering + 3D Liveness Geofenced Tour PIN, Valve-Shutoff Guided P1/P3 Triage & No Constructive-Eviction Lockout, 0ms ASME A17.1 Elevator Entrapment / Gas Preemption) Guard (`REAL-ESTATE-PROPERTY-FHA-EMERGENCY-MAINTENANCE-2026-01`).
+ */
+export function evaluateRealEstatePropertyFhaEmergencyMaintenance2026Guard(input: {
+  hudFhaNeutralityAnd3dLivenessGeofenceTourVerified: boolean;
+  valveShutoffCoachedAndNoConstructiveEvictionLockout: boolean;
+  elevatorEntrapmentOrGasFireCoAlarmPreemption: boolean;
+}): RealEstatePropertyFhaEmergencyMaintenance2026Evaluation {
+  return {
+    policyCode: "REAL-ESTATE-PROPERTY-FHA-EMERGENCY-MAINTENANCE-2026-01",
+    fhaLeasingTourAndMaintenanceDispatchAuthorized:
+      input.hudFhaNeutralityAnd3dLivenessGeofenceTourVerified &&
+      input.valveShutoffCoachedAndNoConstructiveEvictionLockout &&
+      !input.elevatorEntrapmentOrGasFireCoAlarmPreemption,
+    fhaSteeringOrSquatterPinLeakOrConstructiveEvictionBlocked:
+      !input.hudFhaNeutralityAnd3dLivenessGeofenceTourVerified ||
+      !input.valveShutoffCoachedAndNoConstructiveEvictionLockout ||
+      input.elevatorEntrapmentOrGasFireCoAlarmPreemption,
+    elevatorEntrapmentOrGasFireCentralStationBridged:
+      input.elevatorEntrapmentOrGasFireCoAlarmPreemption,
+  };
+}
+
 
 
 

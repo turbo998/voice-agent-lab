@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（450 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（451 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -494,3 +494,4 @@
 448. **电信运营商（Telco & Broadband ISP）家庭宽带远程自愈（TR-069 / PON 告警诊断）、摄像头辅助连线（Visual IVR）与 SIM 卡补换卡（SIM-Swap）防欺诈实时语音架构设计与选型指南（`150ms` 调取 OLT 光猫告警区分电源松动 `Dying-Gasp` 与光纤断裂 `LOS` + 免 App 浏览器摄像头 `600ms` 识别插错网线口砍掉 `64.2%` 无效装维上门省 `$18.4万/万通`、重启光猫后 `95秒` 自动回拨测速、以及 `CPNI PIN + 3D活体 + CAMARA 72h` 零信任防 SIM-Swap 劫持）方案**：[中文](./telecom-broadband-isp-tr069-self-healing-visual-ivr-sim-swap-voice-selection-faq.md) | [EN](./telecom-broadband-isp-tr069-self-healing-visual-ivr-sim-swap-voice-selection-faq.en.md)
 449. **连锁药房与特药药房（Retail & Specialty Pharmacy）处方药续开（Rx Refill）、易混淆药品（ISMP LASA）双因子防错与医保预先授权（PBM Prior Authorization）实时语音架构设计与选型指南（个人活跃处方库收敛 + ISMP 音似药“剂量+适应症”双因子复诵实现 `0%` 错配率、DEA 二类管制药禁自动续开、`160ms` 解析 `NCPDP D.0 Reject 75/79` 自动触发 `CoverMyMeds ePA` 压降 `81.4%` 药师电话打扰、以及 `2°C–8°C` 冷链生物制剂签收窗确认降低 `89.2%` 脱冷报废）方案**：[中文](./retail-pharmacy-rx-refill-lasa-drug-safety-pbm-prior-auth-voice-selection-faq.md) | [EN](./retail-pharmacy-rx-refill-lasa-drug-safety-pbm-prior-auth-voice-selection-faq.en.md)
 450. **存量呼叫中心与企业总机（Cisco UCCE / Avaya Aura / Genesys Cloud / Amazon Connect / Microsoft Teams Phone）零停机接入实时语音大模型架构设计与选型指南（保留原运营商号码与 Verint 录音通过企业 SBC 旁路环回 `3周` 灰度上线、转人工瞬间释放 AI 媒体腿消除 `100%` 双倍占线费、`36字节 UUID + 内网 Redis 45ms` 破解老交换机 `128B` 上下文截断实现 `99.98%` 弹屏、以及 `800ms` 存活熔断回退传统 IVR 与 `E911` 硬件旁路）方案**：[中文](./legacy-pbx-ccaas-cisco-avaya-genesys-teams-zero-downtime-voice-ai-integration-selection-faq.md) | [EN](./legacy-pbx-ccaas-cisco-avaya-genesys-teams-zero-downtime-voice-ai-integration-selection-faq.en.md)
+451. **商业地产与长租公寓物业（Real Estate & Property Management / PropTech）招租看房、《公平住房法》（FHA）反歧视合规与爆管/困梯/断暖紧急工程派单实时语音架构设计与选型指南（7×24 招租预约提转化率 `+43.6%` 且 HUD 公平住房零主观引导 + 导盲犬/ESA 免押金、身份证 `3D活体+100m围栏` 杜绝霸房客、凌晨爆管 `60秒` 语音指导关角阀砍掉 `61.8%` 水损与 `68.4%` 夜间 `$320` 无效加班上门省 `$19.2万/万通`、以及电梯困人 `0ms` 强转中控室）方案**：[中文](./real-estate-property-management-fha-leasing-emergency-hvac-plumbing-voice-selection-faq.md) | [EN](./real-estate-property-management-fha-leasing-emergency-hvac-plumbing-voice-selection-faq.en.md)
