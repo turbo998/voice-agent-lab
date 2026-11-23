@@ -11725,6 +11725,36 @@ export function evaluateVoiceOrchestrationLivekitPipecatAcsVapi2026Guard(input: 
   };
 }
 
+export interface VoiceSttTtsCloningAvatar2026Evaluation {
+  policyCode: "VOICE-STT-TTS-CLONING-AVATAR-2026-01";
+  acousticSynthesisAndAvatarStreamAuthorized: boolean;
+  unconsentedCloneOrRawMarkdownReadoutBlocked: boolean;
+  visemeClientOffloadOrIdleSleepTriggered: boolean;
+}
+
+/**
+ * Deterministic 2026 STT, TTS, Brand Voice Cloning & Avatar (Azure AI Speech vs. ElevenLabs vs. Deepgram vs. Open-Source) Biometric Speaker Consent & C2PA Lock, <2ms Pre-TTS Markdown/SSML Lexicon Gate & Client Viseme / 15s Idle Sleep Guard (`VOICE-STT-TTS-CLONING-AVATAR-2026-01`).
+ */
+export function evaluateVoiceSttTtsCloningAvatar2026Guard(input: {
+  speakerBiometricConsentAndC2paWatermarkLocked: boolean;
+  preTtsMarkdownSanitizedAndSsmlLexiconApplied: boolean;
+  unconsentedVoiceCloneOrIdleCloudAvatarGpuWastePreemption: boolean;
+}): VoiceSttTtsCloningAvatar2026Evaluation {
+  return {
+    policyCode: "VOICE-STT-TTS-CLONING-AVATAR-2026-01",
+    acousticSynthesisAndAvatarStreamAuthorized:
+      input.speakerBiometricConsentAndC2paWatermarkLocked &&
+      input.preTtsMarkdownSanitizedAndSsmlLexiconApplied &&
+      !input.unconsentedVoiceCloneOrIdleCloudAvatarGpuWastePreemption,
+    unconsentedCloneOrRawMarkdownReadoutBlocked:
+      !input.speakerBiometricConsentAndC2paWatermarkLocked ||
+      !input.preTtsMarkdownSanitizedAndSsmlLexiconApplied ||
+      input.unconsentedVoiceCloneOrIdleCloudAvatarGpuWastePreemption,
+    visemeClientOffloadOrIdleSleepTriggered:
+      input.unconsentedVoiceCloneOrIdleCloudAvatarGpuWastePreemption,
+  };
+}
+
 
 
 

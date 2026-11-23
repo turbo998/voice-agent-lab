@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bgGrad432" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="headerGrad432" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="50%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="cardSky432" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c4a6e" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardIndigo432" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#312e81" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardEmerald432" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#065f46" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bgGrad432)" rx="16"/>
+  <rect x="24" y="20" width="1152" height="74" rx="12" fill="url(#headerGrad432)"/>
+  <text x="44" y="50" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700">2026 STT, TTS, Brand Voice Cloning &amp; Avatar: Azure Speech vs. ElevenLabs vs. Deepgram vs. Open-Source</text>
+  <text x="44" y="76" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="13">Architecture Blueprint · Policy: VOICE-STT-TTS-CLONING-AVATAR-2026-01 · 100% Consent + C2PA Watermark · 99.8% IPA Term Accuracy · -86% Client Viseme Avatar</text>
+
+  <!-- Column 1: Streaming STT Selection -->
+  <rect x="28" y="112" width="364" height="440" rx="12" fill="url(#cardSky432)" stroke="#0ea5e9" stroke-width="1.5"/>
+  <rect x="44" y="128" width="332" height="36" rx="8" fill="#0369a1"/>
+  <text x="60" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. Streaming STT (Azure vs. Deepgram vs. Whisper)</text>
+
+  <rect x="44" y="180" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="203" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Azure AI Speech STT (Custom Speech + Live Interpreter)</text>
+  <text x="58" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 140+ locales, zh-EN-Yue intra-sentence code-switching</text>
+  <text x="58" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Dynamic PhraseListGrammar (10,000+ SKU/medical terms)</text>
+  <text x="58" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Disconnected edge Docker container for air-gapped sites</text>
+  <text x="58" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Best for global multilingual, APAC dialects &amp; compliance</text>
+
+  <rect x="44" y="308" width="332" height="106" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="331" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Deepgram Nova-3 Streaming STT</text>
+  <text x="58" y="352" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Ultra-low ~160ms streaming latency &amp; endpointing</text>
+  <text x="58" y="372" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Competitive $0.0043–$0.0077/min English/EU pricing</text>
+  <text x="58" y="394" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">• Strong choice for North America English speed-first lines</text>
+
+  <rect x="44" y="428" width="332" height="106" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="451" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Open-Source Whisper-large-v3-turbo / SenseVoice</text>
+  <text x="58" y="472" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• ~$0.0015/min on self-hosted L40S/A10G GPUs at scale</text>
+  <text x="58" y="492" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Requires Silero VAD wrapper to prevent silence hallucinations</text>
+
+  <!-- Column 2: TTS & Brand Voice Cloning -->
+  <rect x="418" y="112" width="364" height="440" rx="12" fill="url(#cardIndigo432)" stroke="#6366f1" stroke-width="1.5"/>
+  <rect x="434" y="128" width="332" height="36" rx="8" fill="#4338ca"/>
+  <text x="450" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. TTS &amp; Brand Voice Cloning Comparison</text>
+
+  <rect x="434" y="180" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="203" fill="#818cf8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Azure AI Speech (Neural HD / Custom Neural Voice)</text>
+  <text x="448" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Full SSML &lt;phoneme&gt;, &lt;say-as&gt;, &lt;mstts:express-as&gt; control</text>
+  <text x="448" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Cryptographic speaker consent verification + C2PA watermark</text>
+  <text x="448" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Flat ~$0.015/min ($15/1M chars) + 99.9% enterprise SLA</text>
+  <text x="448" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ #1 for regulated enterprise brand voices &amp; exact pronunciation</text>
+
+  <rect x="434" y="308" width="332" height="106" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="331" fill="#818cf8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">ElevenLabs (Flash v2.5 / Multilingual v2) &amp; Aura-2</text>
+  <text x="448" y="352" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• ElevenLabs: ~75ms Flash latency, top emotional expressiveness</text>
+  <text x="448" y="372" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Higher cost ($0.05–$0.09/min); Deepgram Aura-2 ~$0.015/min</text>
+  <text x="448" y="394" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">• Pre-TTS Markdown/Symbol Sanitizer required to stop raw syntax readouts</text>
+
+  <rect x="434" y="428" width="332" height="106" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="451" fill="#818cf8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Open-Source TTS (CosyVoice 2 / VoxCPM2 / Fish Speech)</text>
+  <text x="448" y="472" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Zero-shot 3s voice cloning &amp; 48kHz expressive batch dubbing</text>
+  <text x="448" y="492" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• ~$0.003/min on self-hosted GPU pool (&gt;500k min/mo batch)</text>
+
+  <!-- Column 3: Interactive Avatar & Tiered Routing -->
+  <rect x="808" y="112" width="364" height="440" rx="12" fill="url(#cardEmerald432)" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="824" y="128" width="332" height="36" rx="8" fill="#047857"/>
+  <text x="840" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Digital Human Avatar &amp; Tiered FinOps</text>
+
+  <rect x="824" y="180" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="838" y="203" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Cloud WebRTC Pixel Avatar (Azure Avatar / HeyGen / Tavus)</text>
+  <text x="838" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Photorealistic 1080p/4K 2D/3D studio human video stream</text>
+  <text x="838" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Best for: Flagship showroom kiosks, VIP wealth concierge</text>
+  <text x="838" y="264" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Cloud GPU rendering cost: $0.10 – $0.50 / minute</text>
+  <text x="838" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Auto-sleep to idle loop after 15s silence (-72% GPU burn)</text>
+
+  <rect x="824" y="308" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="838" y="331" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Client-Side Viseme Avatar (55 ARKit Blendshapes)</text>
+  <text x="838" y="352" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Azure TTS emits WordBoundary + Viseme IDs at $0 extra fee!</text>
+  <text x="838" y="372" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Renders 60fps 3D/Live2D avatar on user's phone/browser GPU</text>
+  <text x="838" y="394" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ 22ms lip-sync latency at $0.015/min (-88% vs. cloud video)</text>
+
+  <rect x="824" y="432" width="332" height="102" rx="8" fill="#0f172a" stroke="#10b981"/>
+  <text x="838" y="455" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Pre-TTS Sanitizer &amp; Phrase Cache Guardrail</text>
+  <text x="838" y="476" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Strips "**", "#", URLs &amp; normalizes "$1,250.50" before TTS</text>
+  <text x="838" y="496" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Caches Top 500 greetings/prompts in Redis (-42% TTS bill)</text>
+
+  <!-- Bottom Summary Bar -->
+  <rect x="28" y="568" width="1144" height="88" rx="12" fill="#0f172a" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="48" y="596" fill="#818cf8" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Architect Selection Matrix (STT / TTS / Voice Cloning / Digital Human Avatar):</text>
+  <text x="48" y="620" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13">• Enterprise Regulated Hotline: Azure Speech STT (PhraseList) + Azure Neural HD / CNV TTS (Locked SSML + C2PA) · Emotional Sales/Media: ElevenLabs Flash v2.5</text>
+  <text x="48" y="642" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">• High-Concurrency Mobile Avatar: Azure TTS Viseme Events + Client WebGL/Unity (-88% Cost) · 4K Showroom Kiosk: Cloud WebRTC Avatar + 15s Idle Sleep</text>
+</svg>
