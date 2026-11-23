@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（427 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（428 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -471,3 +471,4 @@
 425. **快递物流、同城即时配送与末端派件（Last-Mile Parcel & Express Delivery：顺丰 SF Express / UPS / FedEx / DHL / 京东物流模式）派前智能电联（上门 vs 快递柜同意锁）、虚拟隐私小号（AXB）与高值件签收码（OTP）硬锁语音架构（`AXB` 虚拟号隐私脱敏与未获收件人明确同意物理锁死巴枪“入柜”按钮免擅投罚款及高值件 `6位OTP` 当面签收 `0%` 冒领硬锁、派前 `T-30m` 批量电联提前 `45分钟` 原子预占丰巢格口将首次派送成功率提至 `96.8%` 并为小哥日省 `48分钟` 拨号时间、小哥碰撞与冷链超温 `0ms` 调度邻近骑手接力）方案**：[中文](./logistics-last-mile-delivery-parcel-redelivery-cod-driver-voice-selection-faq.md) | [EN](./logistics-last-mile-delivery-parcel-redelivery-cod-driver-voice-selection-faq.en.md)
 426. **企业级实时语音 AI 成本精算与容量规划（Voice AI FinOps：Azure OpenAI PTU vs. PAYGO 拐点、3 轮音频 Token 滑动压缩与大小模型分层路由降本 `64.2%` 选型指南）（`3轮` 滑动窗口自动将 `<=N-3` 轮原始音频蒸馏为紧凑文本消除 `$O(N^2)$` 二次方膨胀并冻结前缀达 `94.6%` 缓存命中率、`P65` 基荷采购 `PTU` 配合 `>=92%` 水位 `0ms` 溢出 `PAYGO` 及 `72%` 常规轮次卸载至 `SLM` 将全栈单价从 `$0.145/分` 压至 `$0.039/分` 年省 `$840万+`、`18秒` 空噪僵尸电话与 Bot 互聊 `0ms` 熔断）方案**：[中文](./enterprise-voice-finops-ptu-paygo-token-compaction-tco-calculator-selection-faq.md) | [EN](./enterprise-voice-finops-ptu-paygo-token-compaction-tco-calculator-selection-faq.en.md)
 427. **清华 OpenBMB VoxCPM2（2B 扩散自回归连续语音模型）vs. Microsoft Azure AI Speech 与 2026 主流 TTS 横向基准评测与企业选型架构（`16kHz→48kHz` 非对称 `AudioVAE v2` 与 `LocDiT` 双重 `CFG` 源码核查、11 段官方样音 `1024-pt` Welch 频谱 `90.9%` 超宽带激活与耳语零样本克隆保持、合规披露/PCI/SLA `99.9%` 锁定 Azure AI Speech + 离线高表现力批量合成降本 `81%` 混合路由）方案**：[中文](./voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) | [EN](./voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md)
+428. **智能联络中心全链路升级（Contact Center Copilot：AI 首线智能接待 + 带上下文无损转人工 Warm Handoff + 坐席实时话术推荐与自动小结）架构设计与平台选型指南（前门 `BYOC` 边缘分流终结 `68.4%` 常规咨询省 `64.4%` 全栈成本、振铃前 `<150ms` 注入 `Handoff_Context_Packet` 锁定 `kyc_verified=true` 实现 `0%` 重复核身并缩减坐席 `AHT 82秒`、`Ch0/Ch1` 双声道物理分轨 `<320ms` 推送 `<=25字` 话术微卡片 + 挂机 `3秒` 自动生成工单小结压降 `88.4%` 话后整理耗时）方案**：[中文](./contact-center-copilot-inbound-triage-warm-handoff-agent-assist-architecture-selection-faq.md) | [EN](./contact-center-copilot-inbound-triage-warm-handoff-agent-assist-architecture-selection-faq.en.md)

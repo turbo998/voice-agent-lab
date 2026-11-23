@@ -11605,6 +11605,36 @@ export function evaluateEnterpriseVoiceFinopsPtuTcoGuard(input: {
   };
 }
 
+export interface ContactCenterCopilotWarmHandoffEvaluation {
+  policyCode: "CONTACT-CENTER-COPILOT-WARM-HANDOFF-2026-01";
+  warmHandoffAndLiveAgentCopilotAuthorized: boolean;
+  repeatKycOrSelfEchoOrWallOfTextBlocked: boolean;
+  frustrationEscapeOrVirtualCallbackTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Contact Center Copilot (AI Tier-1 Deflection, Pre-Ring <150ms Context Screen-Pop & Zero-Repeat KYC Lock, Ch0/Ch1 Stereo Agent Assist 25-Word Micro-Card & 3s Auto-ACW) Guard (`CONTACT-CENTER-COPILOT-WARM-HANDOFF-2026-01`).
+ */
+export function evaluateContactCenterCopilotWarmHandoffGuard(input: {
+  preRingContextPopAndKycVerifiedLocked: boolean;
+  stereoAgentAssistMicroCardAndAutoAcwSynced: boolean;
+  callerFrustrationOrQueueCongestionPreemption: boolean;
+}): ContactCenterCopilotWarmHandoffEvaluation {
+  return {
+    policyCode: "CONTACT-CENTER-COPILOT-WARM-HANDOFF-2026-01",
+    warmHandoffAndLiveAgentCopilotAuthorized:
+      input.preRingContextPopAndKycVerifiedLocked &&
+      input.stereoAgentAssistMicroCardAndAutoAcwSynced &&
+      !input.callerFrustrationOrQueueCongestionPreemption,
+    repeatKycOrSelfEchoOrWallOfTextBlocked:
+      !input.preRingContextPopAndKycVerifiedLocked ||
+      !input.stereoAgentAssistMicroCardAndAutoAcwSynced ||
+      input.callerFrustrationOrQueueCongestionPreemption,
+    frustrationEscapeOrVirtualCallbackTriggered:
+      input.callerFrustrationOrQueueCongestionPreemption,
+  };
+}
+
 
 
 
