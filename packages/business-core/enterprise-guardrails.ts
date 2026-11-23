@@ -11635,6 +11635,36 @@ export function evaluateContactCenterCopilotWarmHandoffGuard(input: {
   };
 }
 
+export interface VoiceS2sCascadedHybrid2026Evaluation {
+  policyCode: "VOICE-S2S-CASCADED-HYBRID-2026-01";
+  hybridDualTrackAudioEmissionAuthorized: boolean;
+  unverifiedS2sNumberOrPersonaShiftOrAudioBloatBlocked: boolean;
+  deterministicCascadeFallbackTriggered: boolean;
+}
+
+/**
+ * Deterministic Native Speech-to-Speech (S2S) vs. Controlled Cascaded (STT+LLM+TTS) vs. Hybrid Dual-Track Router (Pre-Emission ERP Number Lock, Unified Brand Voice Persona & 3-Turn Audio Pruning) Guard (`VOICE-S2S-CASCADED-HYBRID-2026-01`).
+ */
+export function evaluateVoiceS2sCascadedHybrid2026Guard(input: {
+  regulatedTurnRoutedToPreVerifiedCascadeAndSsmlLocked: boolean;
+  unifiedBrandVoicePersonaAndThreeTurnAudioPruned: boolean;
+  s2sLatencySpikeOrNumericMismatchPreemption: boolean;
+}): VoiceS2sCascadedHybrid2026Evaluation {
+  return {
+    policyCode: "VOICE-S2S-CASCADED-HYBRID-2026-01",
+    hybridDualTrackAudioEmissionAuthorized:
+      input.regulatedTurnRoutedToPreVerifiedCascadeAndSsmlLocked &&
+      input.unifiedBrandVoicePersonaAndThreeTurnAudioPruned &&
+      !input.s2sLatencySpikeOrNumericMismatchPreemption,
+    unverifiedS2sNumberOrPersonaShiftOrAudioBloatBlocked:
+      !input.regulatedTurnRoutedToPreVerifiedCascadeAndSsmlLocked ||
+      !input.unifiedBrandVoicePersonaAndThreeTurnAudioPruned ||
+      input.s2sLatencySpikeOrNumericMismatchPreemption,
+    deterministicCascadeFallbackTriggered:
+      input.s2sLatencySpikeOrNumericMismatchPreemption,
+  };
+}
+
 
 
 
