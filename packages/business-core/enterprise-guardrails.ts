@@ -11935,6 +11935,36 @@ export function evaluateHealthcareTriageAmbientScribeRpm2026Guard(input: {
   };
 }
 
+export interface TravelAirlineIrropsHotelPmsConcierge2026Evaluation {
+  policyCode: "TRAVEL-AIRLINE-IRROPS-HOTEL-PMS-CONCIERGE-2026-01";
+  ticketReissueAndOperaPmsActionAuthorized: boolean;
+  unlockedSeatRaceOrSubMctOrGuestRoomLeakBlocked: boolean;
+  umnrSpecialAssistanceOrHotelModBridged: boolean;
+}
+
+/**
+ * Deterministic Travel & Hospitality Airline Mass IRROPS Rebooking & Hotel Opera PMS Multilingual Concierge (Pre-Speech 120s Seat Soft-Lock & Airport MCT/Visa Gate, Zero Guest-Room Disclosure & Extension==Room Auth, 0ms UMNR/WCHC/Life-Safety Preemption) Guard (`TRAVEL-AIRLINE-IRROPS-HOTEL-PMS-CONCIERGE-2026-01`).
+ */
+export function evaluateTravelAirlineIrropsHotelPmsConcierge2026Guard(input: {
+  preSpeech120sSeatSoftLockAndAirportMctVisaVerified: boolean;
+  zeroGuestRoomDisclosureAndRoomExtensionMatched: boolean;
+  umnrWheelchairMedaOrHotelLifeSafetyPreemption: boolean;
+}): TravelAirlineIrropsHotelPmsConcierge2026Evaluation {
+  return {
+    policyCode: "TRAVEL-AIRLINE-IRROPS-HOTEL-PMS-CONCIERGE-2026-01",
+    ticketReissueAndOperaPmsActionAuthorized:
+      input.preSpeech120sSeatSoftLockAndAirportMctVisaVerified &&
+      input.zeroGuestRoomDisclosureAndRoomExtensionMatched &&
+      !input.umnrWheelchairMedaOrHotelLifeSafetyPreemption,
+    unlockedSeatRaceOrSubMctOrGuestRoomLeakBlocked:
+      !input.preSpeech120sSeatSoftLockAndAirportMctVisaVerified ||
+      !input.zeroGuestRoomDisclosureAndRoomExtensionMatched ||
+      input.umnrWheelchairMedaOrHotelLifeSafetyPreemption,
+    umnrSpecialAssistanceOrHotelModBridged:
+      input.umnrWheelchairMedaOrHotelLifeSafetyPreemption,
+  };
+}
+
 
 
 
