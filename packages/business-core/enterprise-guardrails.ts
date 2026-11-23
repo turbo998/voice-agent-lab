@@ -12745,6 +12745,36 @@ export function evaluateCpaTaxFirmIrc7216ExtensionLevyVoice2026Guard(input: {
   };
 }
 
+export interface ConstructionJobsite811ConcreteProcoreVoice2026Evaluation {
+  policyCode: "CONSTRUCTION-JOBSITE-811-CONCRETE-PROCORE-VOICE-2026-01";
+  excavationAndConcretePourAndProcoreLogAuthorized: boolean;
+  unmarked811DigOrExpiredWateredConcreteOrUnapprovedRebarBlocked: boolean;
+  powerLineStepPotentialOrTrenchGasRescuePreempted: boolean;
+}
+
+/**
+ * Deterministic Commercial Construction Jobsite, 811 Dig Ticket, ASTM C94 Concrete & Procore Voice (State 811 Positive-Response All-Clear + OSHA 1926 >=5ft Trench Shield Verified, ASTM C94 <=90m/300-Rev + Zero Unapproved Water Addition & PE RFI Lock, 0ms Power-Line Step-Potential / Gas Strike / Trench Collapse Preemption) Guard (`CONSTRUCTION-JOBSITE-811-CONCRETE-PROCORE-VOICE-2026-01`).
+ */
+export function evaluateConstructionJobsite811ConcreteProcoreVoice2026Guard(input: {
+  state811PositiveResponseAllMarkedAndOshaTrenchShieldVerified: boolean;
+  astmC94Within90mZeroUnapprovedWaterAndPeRfiSigned: boolean;
+  overheadPowerLineStrikeGasHitOrTrenchCollapseDetected: boolean;
+}): ConstructionJobsite811ConcreteProcoreVoice2026Evaluation {
+  return {
+    policyCode: "CONSTRUCTION-JOBSITE-811-CONCRETE-PROCORE-VOICE-2026-01",
+    excavationAndConcretePourAndProcoreLogAuthorized:
+      input.state811PositiveResponseAllMarkedAndOshaTrenchShieldVerified &&
+      input.astmC94Within90mZeroUnapprovedWaterAndPeRfiSigned &&
+      !input.overheadPowerLineStrikeGasHitOrTrenchCollapseDetected,
+    unmarked811DigOrExpiredWateredConcreteOrUnapprovedRebarBlocked:
+      !input.state811PositiveResponseAllMarkedAndOshaTrenchShieldVerified ||
+      !input.astmC94Within90mZeroUnapprovedWaterAndPeRfiSigned ||
+      input.overheadPowerLineStrikeGasHitOrTrenchCollapseDetected,
+    powerLineStepPotentialOrTrenchGasRescuePreempted:
+      input.overheadPowerLineStrikeGasHitOrTrenchCollapseDetected,
+  };
+}
+
 
 
 
