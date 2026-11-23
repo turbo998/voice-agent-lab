@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（446 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（447 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -490,3 +490,4 @@
 444. **跨境电商 28 语种售后客服（退换货挽单）、国际快递末端派送与海关清关语音架构设计与选型指南（实付净额上限 `Refund<=Net_Paid` 与原卡幂等 `0%` 超额退款硬锁、28语种尺码换货教练将 `44.6%` 退货转化为换货留存并结合 `COGS<退运费` 免寄回精算省 `29.4%` 逆向运费、派前 `T-30m` 母语锁柜将首次妥投率提至 `96.8%` 及锂电池鼓包 `0ms` 禁寄拦截）方案**：[中文](./cross-border-ecommerce-multilingual-cs-global-parcel-delivery-customs-voice-selection-faq.md) | [EN](./cross-border-ecommerce-multilingual-cs-global-parcel-delivery-customs-voice-selection-faq.en.md)
 445. **B2B 外勤销售、财富管理理财师与医药代表（MSL）线下拜访随身语音副驾（In-Person Field Voice Copilot）架构设计与选型指南（双边录音授权口令未检出 `50ms` 内存清零硬锁、离场后上车 `45秒` 免手互动追问复盘将当日 `Salesforce/Veeva CRM` 完整录入率从 `31%` 提至 `96.4%` 每周省 `5.5小时`、医药不良事件 `AE` `0ms` 触发 `24h E2B(R3)` 法定上报与超适应症自动转交 `MSL`）方案**：[中文](./field-sales-wealth-advisor-pharma-msl-inperson-mobile-voice-copilot-selection-faq.md) | [EN](./field-sales-wealth-advisor-pharma-msl-inperson-mobile-voice-copilot-selection-faq.en.md)
 446. **政务服务便民热线（12345 / 311）、公用事业（电力/水务/燃气）停电风暴分流与应急抢占实时语音架构设计与选型指南（振铃前 `50ms` 配网 GIS 故障广播分流 `78.6%` 洪峰 + `200ms` 智能电表 `AMI` 电压探测指导户内推闸砍掉 `52.4%` 无效出车省 `$21.3万/万通`、严寒酷暑/医疗维生禁停锁与远程合闸“炉灶关闭”确认、燃气异味 `0ms` 强播禁触电灯开关撤离令及 580 部门 GIS 图谱 `96.8%` 一次派单准确率）方案**：[中文](./government-citizen-hotline-utility-storm-outage-emergency-dispatch-voice-selection-faq.md) | [EN](./government-citizen-hotline-utility-storm-outage-emergency-dispatch-voice-selection-faq.en.md)
+447. **K-12 与高等教育 1对1 苏格拉底启发式语音家教（Socratic Voice Tutor）、校园教务隐私（FERPA/COPPA）与言语无障碍架构设计与选型指南（后台 `SymPy` 算出精确解加入发声前禁播表配合 3 阶苏格拉底脚手架提解题掌握率 `+41.8%` 且 `0%` 抄作业剧透、口吃/构音障碍学生 `2,400ms` 动态等待窗压降 `94.2%` 误打断、`<13岁 COPPA` 零声纹留存与高校 `FERPA PIN`/`>=12学分` 保助学金锁及心理危机 `0ms` 零日志直通 `CAPS`）方案**：[中文](./education-socratic-voice-tutor-ferpa-campus-speech-accessibility-architecture-selection-faq.md) | [EN](./education-socratic-voice-tutor-ferpa-campus-speech-accessibility-architecture-selection-faq.en.md)

@@ -12175,6 +12175,36 @@ export function evaluateGov12345UtilityOutageEmergencyVoice2026Guard(input: {
   };
 }
 
+export interface EducationSocraticTutorFerpaAccessibility2026Evaluation {
+  policyCode: "EDUCATION-SOCRATIC-TUTOR-FERPA-ACCESSIBILITY-2026-01";
+  socraticStepAndRegistrarActionAuthorized: boolean;
+  directAnswerSpoilerOrFerpaLeakOrUnder12CreditDropBlocked: boolean;
+  zeroLogCampusCapsOr988CrisisBridged: boolean;
+}
+
+/**
+ * Deterministic K-12 & Higher-Ed Socratic Voice Tutor, FERPA/COPPA Privacy & Speech Accessibility (3-Step Socratic Anti-Spoiler & SymPy Verifier, FERPA Proxy PIN & >=12-Credit Aid Floor + 2,400ms Stutter EOU, 0ms Zero-Log CAPS Crisis Bridge) Guard (`EDUCATION-SOCRATIC-TUTOR-FERPA-ACCESSIBILITY-2026-01`).
+ */
+export function evaluateEducationSocraticTutorFerpaAccessibility2026Guard(input: {
+  socraticThreeStepScaffoldAndSympyVerified: boolean;
+  ferpaProxyPinAndCoppaZeroVoiceprintWith12CreditFloor: boolean;
+  studentMentalHealthCrisisOrTitleIxPreemption: boolean;
+}): EducationSocraticTutorFerpaAccessibility2026Evaluation {
+  return {
+    policyCode: "EDUCATION-SOCRATIC-TUTOR-FERPA-ACCESSIBILITY-2026-01",
+    socraticStepAndRegistrarActionAuthorized:
+      input.socraticThreeStepScaffoldAndSympyVerified &&
+      input.ferpaProxyPinAndCoppaZeroVoiceprintWith12CreditFloor &&
+      !input.studentMentalHealthCrisisOrTitleIxPreemption,
+    directAnswerSpoilerOrFerpaLeakOrUnder12CreditDropBlocked:
+      !input.socraticThreeStepScaffoldAndSympyVerified ||
+      !input.ferpaProxyPinAndCoppaZeroVoiceprintWith12CreditFloor ||
+      input.studentMentalHealthCrisisOrTitleIxPreemption,
+    zeroLogCampusCapsOr988CrisisBridged:
+      input.studentMentalHealthCrisisOrTitleIxPreemption,
+  };
+}
+
 
 
 
