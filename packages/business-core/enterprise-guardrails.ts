@@ -11665,6 +11665,36 @@ export function evaluateVoiceS2sCascadedHybrid2026Guard(input: {
   };
 }
 
+export interface OmnichannelBargeInFillerMultiAgent2026Evaluation {
+  policyCode: "OMNICHANNEL-BARGE-IN-FILLER-MULTI-AGENT-2026-01";
+  turnOrchestrationAndToolCommitAuthorized: boolean;
+  falseCutoffOrStaleWriteOrDeadAirBlocked: boolean;
+  asyncSmsOrHumanTimeoutFallbackTriggered: boolean;
+}
+
+/**
+ * Deterministic End-to-End Real-Time Voice Orchestration (Backchannel-Immune Semantic Barge-In, Heard-Word Truncation & Turn-Epoch Write Fence, T+650ms Slow-API Filler & 42ms Scoped Multi-Agent Handoff) Guard (`OMNICHANNEL-BARGE-IN-FILLER-MULTI-AGENT-2026-01`).
+ */
+export function evaluateOmnichannelBargeInFillerMultiAgent2026Guard(input: {
+  backchannelFilteredAndHeardWordTruncatedWithEpochFence: boolean;
+  slowApiFillerAt650msAndZeroPreToolHallucination: boolean;
+  multiAgentPingPongLoopOrApiTimeoutPreemption: boolean;
+}): OmnichannelBargeInFillerMultiAgent2026Evaluation {
+  return {
+    policyCode: "OMNICHANNEL-BARGE-IN-FILLER-MULTI-AGENT-2026-01",
+    turnOrchestrationAndToolCommitAuthorized:
+      input.backchannelFilteredAndHeardWordTruncatedWithEpochFence &&
+      input.slowApiFillerAt650msAndZeroPreToolHallucination &&
+      !input.multiAgentPingPongLoopOrApiTimeoutPreemption,
+    falseCutoffOrStaleWriteOrDeadAirBlocked:
+      !input.backchannelFilteredAndHeardWordTruncatedWithEpochFence ||
+      !input.slowApiFillerAt650msAndZeroPreToolHallucination ||
+      input.multiAgentPingPongLoopOrApiTimeoutPreemption,
+    asyncSmsOrHumanTimeoutFallbackTriggered:
+      input.multiAgentPingPongLoopOrApiTimeoutPreemption,
+  };
+}
+
 
 
 
