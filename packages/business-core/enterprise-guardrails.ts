@@ -12235,6 +12235,36 @@ export function evaluateTelecomBroadbandTr069VisualIvrSimSwap2026Guard(input: {
   };
 }
 
+export interface RetailPharmacyRxRefillLasaPbmPriorAuth2026Evaluation {
+  policyCode: "RETAIL-PHARMACY-RX-REFILL-LASA-PBM-PRIOR-AUTH-2026-01";
+  rxRefillAndEpaAndColdChainDispatchAuthorized: boolean;
+  lasaWrongDrugOrC2AutoRefillOrUnlicensedDdiBlocked: boolean;
+  rphCounselingOr911PoisonControlBridged: boolean;
+}
+
+/**
+ * Deterministic Retail & Specialty Pharmacy Rx Refill, ISMP LASA Drug Safety & PBM Prior Auth (ISMP LASA Dual-Factor Strength/Indication + Non-Schedule-II Check, NCPDP D.0 ePA & 2C-8C Cold-Chain Window Confirmed, OBRA-90 RPh Counseling & 0ms Anaphylaxis/Overdose Preemption) Guard (`RETAIL-PHARMACY-RX-REFILL-LASA-PBM-PRIOR-AUTH-2026-01`).
+ */
+export function evaluateRetailPharmacyRxRefillLasaPbmPriorAuth2026Guard(input: {
+  ismpLasaDualFactorVerifiedAndNonSchedule2: boolean;
+  ncpdpD0ParsedAndColdChainDeliveryWindowConfirmed: boolean;
+  obra90ClinicalQuestionOrAnaphylaxisOverdoseDetected: boolean;
+}): RetailPharmacyRxRefillLasaPbmPriorAuth2026Evaluation {
+  return {
+    policyCode: "RETAIL-PHARMACY-RX-REFILL-LASA-PBM-PRIOR-AUTH-2026-01",
+    rxRefillAndEpaAndColdChainDispatchAuthorized:
+      input.ismpLasaDualFactorVerifiedAndNonSchedule2 &&
+      input.ncpdpD0ParsedAndColdChainDeliveryWindowConfirmed &&
+      !input.obra90ClinicalQuestionOrAnaphylaxisOverdoseDetected,
+    lasaWrongDrugOrC2AutoRefillOrUnlicensedDdiBlocked:
+      !input.ismpLasaDualFactorVerifiedAndNonSchedule2 ||
+      !input.ncpdpD0ParsedAndColdChainDeliveryWindowConfirmed ||
+      input.obra90ClinicalQuestionOrAnaphylaxisOverdoseDetected,
+    rphCounselingOr911PoisonControlBridged:
+      input.obra90ClinicalQuestionOrAnaphylaxisOverdoseDetected,
+  };
+}
+
 
 
 
