@@ -12145,6 +12145,36 @@ export function evaluateFieldSalesWealthPharmaInpersonCopilot2026Guard(input: {
   };
 }
 
+export interface Gov12345UtilityOutageEmergencyVoice2026Evaluation {
+  policyCode: "GOV-12345-UTILITY-OUTAGE-EMERGENCY-VOICE-2026-01";
+  utilityReconnectAndMunicipalTicketAuthorized: boolean;
+  moratoriumBreachOrFalseTruckRollOrWrongAgencyBlocked: boolean;
+  gasOdorEvacAndEmergencyDispatchBridged: boolean;
+}
+
+/**
+ * Deterministic Government 12345/311 Citizen Hotline & Utility Outage/Emergency Voice AI (PUC Shutoff Moratorium & Stove-Off Reconnect Lock, 200ms AMI Meter Ping & 580-Agency GIS Ownership Match, 0ms Gas-Odor Anti-Spark Evacuation) Guard (`GOV-12345-UTILITY-OUTAGE-EMERGENCY-VOICE-2026-01`).
+ */
+export function evaluateGov12345UtilityOutageEmergencyVoice2026Guard(input: {
+  shutoffMoratoriumRespectedAndStoveOffConfirmed: boolean;
+  amiMeterPingedAndGisAgencyOwnershipMatched: boolean;
+  gasOdorDownedWireOrCoAlarmPreemption: boolean;
+}): Gov12345UtilityOutageEmergencyVoice2026Evaluation {
+  return {
+    policyCode: "GOV-12345-UTILITY-OUTAGE-EMERGENCY-VOICE-2026-01",
+    utilityReconnectAndMunicipalTicketAuthorized:
+      input.shutoffMoratoriumRespectedAndStoveOffConfirmed &&
+      input.amiMeterPingedAndGisAgencyOwnershipMatched &&
+      !input.gasOdorDownedWireOrCoAlarmPreemption,
+    moratoriumBreachOrFalseTruckRollOrWrongAgencyBlocked:
+      !input.shutoffMoratoriumRespectedAndStoveOffConfirmed ||
+      !input.amiMeterPingedAndGisAgencyOwnershipMatched ||
+      input.gasOdorDownedWireOrCoAlarmPreemption,
+    gasOdorEvacAndEmergencyDispatchBridged:
+      input.gasOdorDownedWireOrCoAlarmPreemption,
+  };
+}
+
 
 
 
