@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（460 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（461 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -504,3 +504,4 @@
 458. **康养社区与居家养老（Senior Living, Aging-in-Place & Memory Care）适老化慢语速与助听器频段增强、认知症（Dementia）怀旧安抚护栏、防重服药与跌倒/脑卒中（FAST Stroke）`0ms` 护理直连实时语音架构设计与选型指南（`115 WPM` 慢语速 + `1–3kHz` 助听器防啸叫 EQ + `2,200ms` 寻词停顿窗提理解率 `+44.8%`、确认疗法 50 次重复提问零厌烦、`PointClickCare eMAR` 100% 拦截失忆双倍重服药、以及卫浴 `60GHz` 雷达跌倒 `0ms` 主动免提问询将救援从 `42m` 缩至 `18s` 每万次省 `$40.3万`）方案**：[中文](./senior-living-aging-in-place-dementia-companion-fall-stroke-voice-selection-faq.md) | [EN](./senior-living-aging-in-place-dementia-companion-fall-stroke-voice-selection-faq.en.md)
 459. **连锁口腔与正畸医疗集团（Dental DSO & Orthodontics）口底蜂窝织炎（Ludwig's Angina）与恒牙全脱位（`60分钟` 黄金牛奶浸泡）急诊抢占、ADA CDT 牙科保险实时核验与牙椅排班（Dentrix / Open Dental）实时语音架构设计与选型指南（下颌颈部肿胀气道红旗 `0ms` 强转医院急诊、恒牙脱位指导“捏牙冠浸冷牛奶”提成活率 `+58.4%`、`170ms` 校验 `X12 270/271` 满6个月零1天洗牙频次砍掉 `79.4%` 拒付、心脏瓣膜术前抗生素核验与每万通挽回产值 `+$24.8万`）方案**：[中文](./dental-dso-orthodontics-ludwig-angina-triage-cdt-insurance-voice-selection-faq.md) | [EN](./dental-dso-orthodontics-ludwig-angina-triage-cdt-insurance-voice-selection-faq.en.md)
 460. **新能源超充桩网络（EV Charging `OCPP 2.0.1`）、户用光伏储能（Solar + BESS）与虚拟电厂（VPP 调峰）远程拔枪解锁、直流电弧锁死与医疗保底电量实时语音架构设计与选型指南（`OCPP 2.0.1` 确认 `0.0A/<60V` 后远程解锁配合双手托枪卸力指导砍掉 `66.8%` `$220` 无效出车省 `$19.8万/万通`、光伏逆变器 `UL 1699B AFCI` 直流电弧故障 `100%` 禁远程重启防屋顶火灾、VPP 医疗维生与台风 `100% Storm-Watch` 备电底线、以及储能锂电池热失控 `0ms` 强播禁入车库撤离令）方案**：[中文](./ev-charging-ocpp-solar-battery-virtual-power-plant-vpp-voice-selection-faq.md) | [EN](./ev-charging-ocpp-solar-battery-virtual-power-plant-vpp-voice-selection-faq.en.md)
+461. **连锁托育与幼儿园（Early Childhood Daycare & Preschool）法院抚养权禁令与授权接送门禁锁、法定师生配比（State Licensing Ratio）与过敏肾上腺素笔（EpiPen）`0ms` 急救实时语音架构设计与选型指南（100% 严禁电话口头临时换接送人强制走 App 生物识别+6位动态码、法院抚养权限制令 `110ms` 双盲零披露且物理剥夺开大门权限、实时核验婴儿班 `1:4`/幼班 `1:10` 法定配比与停退烧药满 `24h` 复园、以及教室花生过敏 `<100ms` 秒播专属 `EpiPen Jr` 柜号每万通增收学费 `+$22.8万`）方案**：[中文](./childcare-daycare-authorized-pickup-custody-epipen-licensing-voice-selection-faq.md) | [EN](./childcare-daycare-authorized-pickup-custody-epipen-licensing-voice-selection-faq.en.md)

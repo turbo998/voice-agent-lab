@@ -12595,6 +12595,36 @@ export function evaluateEvChargingOcppSolarVppVoice2026Guard(input: {
   };
 }
 
+export interface ChildcareDaycarePickupRatioAllergyVoice2026Evaluation {
+  policyCode: "CHILDCARE-DAYCARE-PICKUP-RATIO-ALLERGY-VOICE-2026-01";
+  enrollmentTourAndRatioSafeDropInAuthorized: boolean;
+  verbalPickupOrCustodyBreachOrOverRatioBlocked: boolean;
+  classroomEpiPenActionPlanAnd911Bridged: boolean;
+}
+
+/**
+ * Deterministic Early Childhood Daycare & Preschool Authorized Pickup, Custody Gate & Licensing Ratio Voice (Zero Verbal Pickup Delegation + Court Custody Shield & Zero Door-Buzz Relay, State Teacher-Child Ratio 1:4/1:10 + 24h Unmedicated Fever Check, 0ms Classroom EpiPen Jr Action Plan & 911/Parent Bridge) Guard (`CHILDCARE-DAYCARE-PICKUP-RATIO-ALLERGY-VOICE-2026-01`).
+ */
+export function evaluateChildcareDaycarePickupRatioAllergyVoice2026Guard(input: {
+  appBiometricPickupPinVerifiedNoCustodyRestrictionAndZeroDoorBuzz: boolean;
+  stateTeacherChildRatioAnd24hUnmedicatedFeverCleared: boolean;
+  classroomAnaphylaxisEpiPenChokingOrSeizureEmergency: boolean;
+}): ChildcareDaycarePickupRatioAllergyVoice2026Evaluation {
+  return {
+    policyCode: "CHILDCARE-DAYCARE-PICKUP-RATIO-ALLERGY-VOICE-2026-01",
+    enrollmentTourAndRatioSafeDropInAuthorized:
+      input.appBiometricPickupPinVerifiedNoCustodyRestrictionAndZeroDoorBuzz &&
+      input.stateTeacherChildRatioAnd24hUnmedicatedFeverCleared &&
+      !input.classroomAnaphylaxisEpiPenChokingOrSeizureEmergency,
+    verbalPickupOrCustodyBreachOrOverRatioBlocked:
+      !input.appBiometricPickupPinVerifiedNoCustodyRestrictionAndZeroDoorBuzz ||
+      !input.stateTeacherChildRatioAnd24hUnmedicatedFeverCleared ||
+      input.classroomAnaphylaxisEpiPenChokingOrSeizureEmergency,
+    classroomEpiPenActionPlanAnd911Bridged:
+      input.classroomAnaphylaxisEpiPenChokingOrSeizureEmergency,
+  };
+}
+
 
 
 
