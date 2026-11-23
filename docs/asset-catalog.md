@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（462 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（463 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -506,3 +506,4 @@
 460. **新能源超充桩网络（EV Charging `OCPP 2.0.1`）、户用光伏储能（Solar + BESS）与虚拟电厂（VPP 调峰）远程拔枪解锁、直流电弧锁死与医疗保底电量实时语音架构设计与选型指南（`OCPP 2.0.1` 确认 `0.0A/<60V` 后远程解锁配合双手托枪卸力指导砍掉 `66.8%` `$220` 无效出车省 `$19.8万/万通`、光伏逆变器 `UL 1699B AFCI` 直流电弧故障 `100%` 禁远程重启防屋顶火灾、VPP 医疗维生与台风 `100% Storm-Watch` 备电底线、以及储能锂电池热失控 `0ms` 强播禁入车库撤离令）方案**：[中文](./ev-charging-ocpp-solar-battery-virtual-power-plant-vpp-voice-selection-faq.md) | [EN](./ev-charging-ocpp-solar-battery-virtual-power-plant-vpp-voice-selection-faq.en.md)
 461. **连锁托育与幼儿园（Early Childhood Daycare & Preschool）法院抚养权禁令与授权接送门禁锁、法定师生配比（State Licensing Ratio）与过敏肾上腺素笔（EpiPen）`0ms` 急救实时语音架构设计与选型指南（100% 严禁电话口头临时换接送人强制走 App 生物识别+6位动态码、法院抚养权限制令 `110ms` 双盲零披露且物理剥夺开大门权限、实时核验婴儿班 `1:4`/幼班 `1:10` 法定配比与停退烧药满 `24h` 复园、以及教室花生过敏 `<100ms` 秒播专属 `EpiPen Jr` 柜号每万通增收学费 `+$22.8万`）方案**：[中文](./childcare-daycare-authorized-pickup-custody-epipen-licensing-voice-selection-faq.md) | [EN](./childcare-daycare-authorized-pickup-custody-epipen-licensing-voice-selection-faq.en.md)
 462. **殡仪馆、陵园与生命礼仪服务（Funeral Home, Mortuary & Cemetery Services）24 小时遗体接运调度、联邦《殡葬规则》（`FTC 16 CFR Part 453`）透明报价、火化前心脏起搏器（Pacemaker）防爆核查与法医管辖实时语音架构设计与选型指南（`110 WPM` 庄重哀伤声学清零欢快口癖、`FTC 16 CFR 453` 免留名电话直报 `GPL` 单项价并声明替代容器与非强制防腐规避 `$51,744/次` 罚单、非监护居家去世必转法医 `Coroner` 放行、以及起搏器/放射源摘除与顺位近亲属全员电签双重锁死火化炉每万通挽回产值 `+$38.5万`）方案**：[中文](./funeral-home-mortuary-ftc-funeral-rule-pacemaker-cremation-voice-selection-faq.md) | [EN](./funeral-home-mortuary-ftc-funeral-rule-pacemaker-cremation-voice-selection-faq.en.md)
+463. **干线重卡车队与冷链货运（Commercial Trucking Fleet & Cold-Chain Freight）联邦法定驾驶时长（`FMCSA HOS`）反强迫锁、高速爆胎/冷机抢修、大件限高（`13'6"`）与危化品泄漏（`PHMSA ERG`）实时语音架构设计与选型指南（`130ms` 校验 `Samsara ELD` 11h/14h 工时与 `49 CFR § 390.6` 零强迫疲劳驾驶锁、`PC*MILER` 商用车 `>=13'6"` 限高路网防撞桥、18轮爆胎视觉核验与冷机停机换挂接力 `Repower` 将路肩等待从 `3.8h` 缩至 `1.4h` 每万通省 `$32万` 冷链货损、以及严禁电话口头改址防盗货）方案**：[中文](./commercial-trucking-fleet-fmcsa-hos-eld-roadside-breakdown-voice-selection-faq.md) | [EN](./commercial-trucking-fleet-fmcsa-hos-eld-roadside-breakdown-voice-selection-faq.en.md)

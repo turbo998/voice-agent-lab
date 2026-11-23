@@ -12655,6 +12655,36 @@ export function evaluateFuneralHomeFtcRuleCremationSafetyVoice2026Guard(input: {
   };
 }
 
+export interface CommercialTruckingFmcsaHosRoadsideVoice2026Evaluation {
+  policyCode: "COMMERCIAL-TRUCKING-FMCSA-HOS-ROADSIDE-VOICE-2026-01";
+  truckDispatchRoadsideAndLumperAuthorized: boolean;
+  hosCoercionOrLowBridgeRouteOrCargoTheftDiversionBlocked: boolean;
+  jackknifeBrakeFireOrPhmsaChemtrecBridged: boolean;
+}
+
+/**
+ * Deterministic Commercial Trucking Fleet, FMCSA HOS/ELD, Roadside Breakdown & HazMat Voice (FMCSA 49 CFR 395 HOS + 390.6 Anti-Coercion & Zero Laden Personal-Conveyance, PC*MILER >=13'6" Bridge Clearance & Zero Verbal Address Diversion, 0ms Jackknife/Brake-Fire/PHMSA ERG CHEMTREC Preemption) Guard (`COMMERCIAL-TRUCKING-FMCSA-HOS-ROADSIDE-VOICE-2026-01`).
+ */
+export function evaluateCommercialTruckingFmcsaHosRoadsideVoice2026Guard(input: {
+  fmcsaHosClearedZeroCoercionAndCommercial13ft6GisUsed: boolean;
+  zeroVerbalAddressDiversionAndEldGeofenceVerified: boolean;
+  jackknifeWheelFireOrPhmsaHazMatSpillDetected: boolean;
+}): CommercialTruckingFmcsaHosRoadsideVoice2026Evaluation {
+  return {
+    policyCode: "COMMERCIAL-TRUCKING-FMCSA-HOS-ROADSIDE-VOICE-2026-01",
+    truckDispatchRoadsideAndLumperAuthorized:
+      input.fmcsaHosClearedZeroCoercionAndCommercial13ft6GisUsed &&
+      input.zeroVerbalAddressDiversionAndEldGeofenceVerified &&
+      !input.jackknifeWheelFireOrPhmsaHazMatSpillDetected,
+    hosCoercionOrLowBridgeRouteOrCargoTheftDiversionBlocked:
+      !input.fmcsaHosClearedZeroCoercionAndCommercial13ft6GisUsed ||
+      !input.zeroVerbalAddressDiversionAndEldGeofenceVerified ||
+      input.jackknifeWheelFireOrPhmsaHazMatSpillDetected,
+    jackknifeBrakeFireOrPhmsaChemtrecBridged:
+      input.jackknifeWheelFireOrPhmsaHazMatSpillDetected,
+  };
+}
+
 
 
 
