@@ -13045,6 +13045,36 @@ export function evaluatePublicTransitAdaParatransitRailVoice2026Guard(input: {
   };
 }
 
+export interface MarinaYachtClubUsCgEsdVoice2026Evaluation {
+  policyCode: "MARINA-YACHT-CLUB-USCG-ESD-VOICE-2026-01";
+  transientSlipAndDryStackLaunchAuthorized: boolean;
+  lowTideKeelGroundingOrDishSoapSpillFineOrMissingDrainPlugBlocked: boolean;
+  esdShorePowerBreakerCutOrSinkingPumpPreempted: boolean;
+}
+
+/**
+ * Deterministic Marina, Yacht Club & Boatyard Dockmaster Voice (NOAA MLLW Draft + Catamaran Beam + True LOA Slip Lock, USCG 46 CFR § 25.40 4-Min Gasoline Bilge Blower + Clean Water Act 40 CFR § 110.4 Zero-Dish-Soap Fuel-Spill Lock + Dry-Stack Drain-Plug Gate, 0ms Electric Shock Drowning ESD Breaker Trip & Sinking Vessel Dewatering) Guard (`MARINA-YACHT-CLUB-USCG-ESD-VOICE-2026-01`).
+ */
+export function evaluateMarinaYachtClubUsCgEsdVoice2026Guard(input: {
+  mllwDraftCatamaranBeamAndShorePowerMatched: boolean;
+  bilgeBlower4MinZeroDishSoapAndDrainPlugVerified: boolean;
+  electricShockDrowningTinglingOrVesselSinkingDetected: boolean;
+}): MarinaYachtClubUsCgEsdVoice2026Evaluation {
+  return {
+    policyCode: "MARINA-YACHT-CLUB-USCG-ESD-VOICE-2026-01",
+    transientSlipAndDryStackLaunchAuthorized:
+      input.mllwDraftCatamaranBeamAndShorePowerMatched &&
+      input.bilgeBlower4MinZeroDishSoapAndDrainPlugVerified &&
+      !input.electricShockDrowningTinglingOrVesselSinkingDetected,
+    lowTideKeelGroundingOrDishSoapSpillFineOrMissingDrainPlugBlocked:
+      !input.mllwDraftCatamaranBeamAndShorePowerMatched ||
+      !input.bilgeBlower4MinZeroDishSoapAndDrainPlugVerified ||
+      input.electricShockDrowningTinglingOrVesselSinkingDetected,
+    esdShorePowerBreakerCutOrSinkingPumpPreempted:
+      input.electricShockDrowningTinglingOrVesselSinkingDetected,
+  };
+}
+
 
 
 
