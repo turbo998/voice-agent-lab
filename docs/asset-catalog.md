@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（473 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（474 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -517,3 +517,4 @@
 471. **联网报警与安防监控中心（Monitored Security Alarm Central Stations / UL 827）双呼核警标准（`TMA CS-V-01 ECV`）、静默胁迫暗语（Silent Duress Codeword 假撤防真派特警）与 `ASAP-to-PSAP` 911 直连实时语音架构设计与选型指南（入室挟持报出静默胁迫暗语时 `100%` 播放平静假撤防语音稳住歹徒并 `0ms` 静默直推 911 `AVS-01 Level 4` 特警出警、`TMA CS-V-01` 双呼+10秒短视频砍掉 `76.4%` 误报罚单每万次省 `$24.6万`、`NFPA 72` 商业火警与一氧化碳 `100%` 禁电话撤消、以及 `2.1秒` `ASAP-to-PSAP` 数字直写 911 CAD）方案**：[中文](./home-commercial-security-alarm-tma-ecv-silent-duress-psap-voice-selection-faq.md) | [EN](./home-commercial-security-alarm-tma-ecv-silent-duress-psap-voice-selection-faq.en.md)
 472. **房贷存续期管理与按揭服务机构（Mortgage Servicing, Subservicers & GSE Compliance）消费者金融保护局《X条例》（`CFPB Reg X 12 CFR § 1024.41`）禁双轨止赎锁、托管账户税保涨价拆解（Escrow Analysis）与结清电汇（Payoff Wire）防电诈实时语音架构设计与选型指南（`12 CFR § 1024.41` 交齐纾困申请包后 `100%` 物理冻结双轨法拍威胁并直连专属 `SPOC`、破产法第362条零催收静默锁、`150ms` 拆解固定利率房贷托管账户房产税/保险涨幅分流 `83.8%` 投诉每万通省 `$19.6万`、以及赎楼结清电汇零口头改账号防 `$350k` BEC 电诈）方案**：[中文](./mortgage-servicing-cfpb-respa-loss-mitigation-escrow-wire-fraud-voice-selection-faq.md) | [EN](./mortgage-servicing-cfpb-respa-loss-mitigation-escrow-wire-fraud-voice-selection-faq.en.md)
 473. **市政环卫、固废回收与危废清运车队（Waste Management, Recycling & Hazardous Waste Fleet）垃圾压缩车锂电池/煤气罐混投防爆锁、车载镜头（Routeware / 3rd Eye）漏收举证、大件箱（Roll-Off）超重禁吊与热荷载起火（Hot Load）`0ms` 抢占实时语音架构设计与选型指南（`100%` 拦截电动自行车锂电池/丙烷气罐进入 `2,500 PSI` 压缩车防 `$400k` 烧车与分拣厂大火、`140ms` 调取车载抓拍时间戳照片砍掉 `74.2%` `$95` 无效掉头补收每万通省 `$23.8万`、纯混凝土/泥土大件箱强制锁定 `<=10码` 矮箱防 `35吨` 超重断臂、以及后厢冒烟 `<100ms` 导航避开高压线空旷场紧急卸料）方案**：[中文](./waste-management-recycling-rcra-hazmat-lithium-battery-truck-fire-voice-selection-faq.md) | [EN](./waste-management-recycling-rcra-hazmat-lithium-battery-truck-fire-voice-selection-faq.en.md)
+474. **生物制药无菌洁净室与细胞基因治疗（Biopharma `ISO-5 / Grade A` Aseptic Cleanroom & `CAR-T` GMP Manufacturing）免提电子批记录（`MES eBR`）、`FDA 21 CFR Part 11` 双人语音复核、自体细胞身份链（`COI`）与液氮缺氧 `0ms` 抢占实时语音架构设计与选型指南（双手不离无菌隔离器手套免提录入 `PAS-X eBR` 砍掉 `91.4%` 抽手触屏污染干预、`FDA 21 CFR Part 11 / ALCOA+` 双操作员独立声纹+动态码复核实现飞检 `0` 开单、自体 `CAR-T` 患者 `COI` 三方互锁防 `$450k` 混批与 `OOS` 超标工序硬锁每万次省 `$41.2万`、以及液氮间 `<19.5% O2` `<100ms` 强排风撤离）方案**：[中文](./biopharma-iso5-cleanroom-mes-batch-record-fda-21cfr11-deviation-voice-selection-faq.md) | [EN](./biopharma-iso5-cleanroom-mes-batch-record-fda-21cfr11-deviation-voice-selection-faq.en.md)

@@ -12985,6 +12985,36 @@ export function evaluateWasteManagementLithiumRcraRollOffVoice2026Guard(input: {
   };
 }
 
+export interface BiopharmaCleanroomMes21Cfr11Voice2026Evaluation {
+  policyCode: "BIOPHARMA-CLEANROOM-MES-21CFR11-VOICE-2026-01";
+  mesBatchStepCommitAndAdvanceAuthorized: boolean;
+  singlePersonDualSignOrSilentOverwriteOrOosBypassBlocked: boolean;
+  ln2LowOxygenEvacOrIsolatorBreachPumpHaltPreempted: boolean;
+}
+
+/**
+ * Deterministic Biopharma ISO-5 Cleanroom, MES eBR & FDA 21 CFR Part 11 Voice (ALCOA+ Append-Only Audit Trail + Dual-Verifier e-Signature + CAR-T Chain-of-Identity Lock, Digit-by-Digit Readback + OOS/OOT Veeva QMS Step Freeze, 0ms LN2 <19.5% O2 Evacuation & Isolator Breach Fill-Pump Halt) Guard (`BIOPHARMA-CLEANROOM-MES-21CFR11-VOICE-2026-01`).
+ */
+export function evaluateBiopharmaCleanroomMes21Cfr11Voice2026Guard(input: {
+  fda21Cfr11DualSignAlcoaPlusAndCarTCoiVerified: boolean;
+  digitReadbackConfirmedAndInSpecZeroUnapprovedOos: boolean;
+  ln2OxygenBelow19Point5OrIsolatorGloveBreachDetected: boolean;
+}): BiopharmaCleanroomMes21Cfr11Voice2026Evaluation {
+  return {
+    policyCode: "BIOPHARMA-CLEANROOM-MES-21CFR11-VOICE-2026-01",
+    mesBatchStepCommitAndAdvanceAuthorized:
+      input.fda21Cfr11DualSignAlcoaPlusAndCarTCoiVerified &&
+      input.digitReadbackConfirmedAndInSpecZeroUnapprovedOos &&
+      !input.ln2OxygenBelow19Point5OrIsolatorGloveBreachDetected,
+    singlePersonDualSignOrSilentOverwriteOrOosBypassBlocked:
+      !input.fda21Cfr11DualSignAlcoaPlusAndCarTCoiVerified ||
+      !input.digitReadbackConfirmedAndInSpecZeroUnapprovedOos ||
+      input.ln2OxygenBelow19Point5OrIsolatorGloveBreachDetected,
+    ln2LowOxygenEvacOrIsolatorBreachPumpHaltPreempted:
+      input.ln2OxygenBelow19Point5OrIsolatorGloveBreachDetected,
+  };
+}
+
 
 
 
