@@ -13105,6 +13105,36 @@ export function evaluateHeavyEquipmentCraneRentalOshaVoice2026Guard(input: {
   };
 }
 
+export interface TitleEscrowClosingAltaWireVoice2026Evaluation {
+  policyCode: "TITLE-ESCROW-CLOSING-ALTA-WIRE-VOICE-2026-01";
+  closingSchedulingAndCurativeStatusAuthorized: boolean;
+  verbalWireEditOrVacantLandImpersonationOrReversibleAchBlocked: boolean;
+  fbiIc3FedwireRecallOrGapLienFreezePreempted: boolean;
+}
+
+/**
+ * Deterministic Title Insurance, Real Estate Escrow Closing & ALTA Anti-Wire-Fraud Voice (Zero Verbal/Email Wire Change + CertifID/Closinglock Portal + State Good-Funds Fedwire Only, Vacant-Land Seller Impersonation Tax-Roll Postcard & MISMO RON Lock + Homestead Spouse Check, 0ms Spoofed-Wire Sent FBI IC3 RAT / Fedwire Recall & Gap Lis Pendens Freeze) Guard (`TITLE-ESCROW-CLOSING-ALTA-WIRE-VOICE-2026-01`).
+ */
+export function evaluateTitleEscrowClosingAltaWireVoice2026Guard(input: {
+  zeroVerbalWireEditCertifIdVerifiedAndGoodFundsFedwireOnly: boolean;
+  vacantLandSellerTaxPostcardRonAndHomesteadSpouseVerified: boolean;
+  fraudulentWireSentOrLastHourGapLisPendensDetected: boolean;
+}): TitleEscrowClosingAltaWireVoice2026Evaluation {
+  return {
+    policyCode: "TITLE-ESCROW-CLOSING-ALTA-WIRE-VOICE-2026-01",
+    closingSchedulingAndCurativeStatusAuthorized:
+      input.zeroVerbalWireEditCertifIdVerifiedAndGoodFundsFedwireOnly &&
+      input.vacantLandSellerTaxPostcardRonAndHomesteadSpouseVerified &&
+      !input.fraudulentWireSentOrLastHourGapLisPendensDetected,
+    verbalWireEditOrVacantLandImpersonationOrReversibleAchBlocked:
+      !input.zeroVerbalWireEditCertifIdVerifiedAndGoodFundsFedwireOnly ||
+      !input.vacantLandSellerTaxPostcardRonAndHomesteadSpouseVerified ||
+      input.fraudulentWireSentOrLastHourGapLisPendensDetected,
+    fbiIc3FedwireRecallOrGapLienFreezePreempted:
+      input.fraudulentWireSentOrLastHourGapLisPendensDetected,
+  };
+}
+
 
 
 
