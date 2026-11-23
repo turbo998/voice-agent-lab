@@ -12805,6 +12805,36 @@ export function evaluateCruiseLineSolasExcursionNorovirusVoice2026Guard(input: {
   };
 }
 
+export interface BloodBankFda630UnosTransplantVoice2026Evaluation {
+  policyCode: "BLOOD-BANK-FDA630-UNOS-TRANSPLANT-VOICE-2026-01";
+  donorBookingAndUnosOrganCoordinationAuthorized: boolean;
+  teratogenIntervalBreachOrReactiveResultReadoutBlocked: boolean;
+  pdiIsbt128QuarantineOrSyncopeUnosSurgeonPreempted: boolean;
+}
+
+/**
+ * Deterministic Blood Bank, Plasma Donor (FDA 21 CFR 630) & UNOS Organ Transplant Voice (FDA 21 CFR 630 >=56d/48h Interval + Teratogenic Drug Deferral & Zero Reactive Result Readout, UNOS Dual-Factor ABO/Cross-Clamp Readback + Recipient NPO Confirmed, <5s ISBT 128 PDI Quarantine & 0ms Syncope/Citrate SOS) Guard (`BLOOD-BANK-FDA630-UNOS-TRANSPLANT-VOICE-2026-01`).
+ */
+export function evaluateBloodBankFda630UnosTransplantVoice2026Guard(input: {
+  fda630IntervalAndTeratogenClearedWithZeroReactiveReadout: boolean;
+  unosAboCrossClampReadbackAndRecipientNpoVerified: boolean;
+  postDonationFeverPdiSyncopeOrCitrateToxicityDetected: boolean;
+}): BloodBankFda630UnosTransplantVoice2026Evaluation {
+  return {
+    policyCode: "BLOOD-BANK-FDA630-UNOS-TRANSPLANT-VOICE-2026-01",
+    donorBookingAndUnosOrganCoordinationAuthorized:
+      input.fda630IntervalAndTeratogenClearedWithZeroReactiveReadout &&
+      input.unosAboCrossClampReadbackAndRecipientNpoVerified &&
+      !input.postDonationFeverPdiSyncopeOrCitrateToxicityDetected,
+    teratogenIntervalBreachOrReactiveResultReadoutBlocked:
+      !input.fda630IntervalAndTeratogenClearedWithZeroReactiveReadout ||
+      !input.unosAboCrossClampReadbackAndRecipientNpoVerified ||
+      input.postDonationFeverPdiSyncopeOrCitrateToxicityDetected,
+    pdiIsbt128QuarantineOrSyncopeUnosSurgeonPreempted:
+      input.postDonationFeverPdiSyncopeOrCitrateToxicityDetected,
+  };
+}
+
 
 
 
