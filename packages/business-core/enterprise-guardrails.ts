@@ -12475,6 +12475,36 @@ export function evaluateSportsVenueAdaTicketingSuiteVoice2026Guard(input: {
   };
 }
 
+export interface AgTechCooperativeFifraCropInsuranceVoice2026Evaluation {
+  policyCode: "AGTECH-COOPERATIVE-FIFRA-CROP-INSURANCE-VOICE-2026-01";
+  fifraSprayDispatchAndGrainHedgeAuthorized: boolean;
+  offLabelRateOrWindDriftOrPrematureDiskingBlocked: boolean;
+  siloAmmonia911OrStateVetBiosecurityBridged: boolean;
+}
+
+/**
+ * Deterministic AgTech, Farm Cooperative, EPA FIFRA Pesticide & USDA Crop Insurance Voice (EPA FIFRA Exact Label Rate + RUP Applicator License & Wind <=10mph Check, USDA RMA 72h Notice of Loss + No-Disking Warning & 4-Factor CBOT Grain Hedge Readback, 0ms Silo Entrapment / Anhydrous Ammonia / HPAI State Vet Bridge) Guard (`AGTECH-COOPERATIVE-FIFRA-CROP-INSURANCE-VOICE-2026-01`).
+ */
+export function evaluateAgTechCooperativeFifraCropInsuranceVoice2026Guard(input: {
+  epaFifraLabelMatchedRupLicensedAndWindUnder10Mph: boolean;
+  usdaRma72hIntactFieldWarnedAndCbot4FactorConfirmed: boolean;
+  siloEntrapmentAnhydrousLeakOrReportableHerdDisease: boolean;
+}): AgTechCooperativeFifraCropInsuranceVoice2026Evaluation {
+  return {
+    policyCode: "AGTECH-COOPERATIVE-FIFRA-CROP-INSURANCE-VOICE-2026-01",
+    fifraSprayDispatchAndGrainHedgeAuthorized:
+      input.epaFifraLabelMatchedRupLicensedAndWindUnder10Mph &&
+      input.usdaRma72hIntactFieldWarnedAndCbot4FactorConfirmed &&
+      !input.siloEntrapmentAnhydrousLeakOrReportableHerdDisease,
+    offLabelRateOrWindDriftOrPrematureDiskingBlocked:
+      !input.epaFifraLabelMatchedRupLicensedAndWindUnder10Mph ||
+      !input.usdaRma72hIntactFieldWarnedAndCbot4FactorConfirmed ||
+      input.siloEntrapmentAnhydrousLeakOrReportableHerdDisease,
+    siloAmmonia911OrStateVetBiosecurityBridged:
+      input.siloEntrapmentAnhydrousLeakOrReportableHerdDisease,
+  };
+}
+
 
 
 

@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（456 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（457 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -500,3 +500,4 @@
 454. **连锁宠物医院与动物急诊中心（Veterinary Hospital & Pet ER）致命毒物/胃扭转（ASPCA Poison / GDV Bloat）`0ms` 抢占、狂犬疫苗合规与多宠诊疗排班（ezyVet / Cornerstone PIMS）实时语音架构设计与选型指南（猫百合/泰诺与狗木糖醇/胃扭转 `<15秒` 急诊推屏提早 `18m` 备台、100% 封杀人用止痛药与居家盲目灌双氧水、多宠家庭“名字+物种+体重”消歧与 `12个月 VCPR` 处方锁、以及已故宠物 `Deceased` 100% 禁发催打疫苗外呼）方案**：[中文](./veterinary-hospital-pet-poison-emergency-triage-pims-voice-selection-faq.md) | [EN](./veterinary-hospital-pet-poison-emergency-triage-pims-voice-selection-faq.en.md)
 455. **律师事务所与企业法务（Law Firm Client Intake & Legal Tech）潜在委托人收案分诊、利益冲突隔离墙（ABA Model Rule 1.18）、诉讼时效（SOL）倒计时与严禁非法法律意见（UPL）实时语音架构设计与选型指南（未通过 `180ms` `Intapp / Clio` 股权穿透冲突审查前 `100%` 锁死案情倾诉实现 `0` 律所回避污染、100% 拦截赔偿金额承诺与非法法律意见 `Zero UPL`、周末晚间实时引导签署 `DocuSign` 委托合同提转化率 `+52.4%`、以及诉讼时效 `<30天` 预警与拒案自动存证《不予代理函》）方案**：[中文](./law-firm-client-intake-aba-conflict-check-statute-of-limitations-voice-selection-faq.md) | [EN](./law-firm-client-intake-aba-conflict-check-statute-of-limitations-voice-selection-faq.en.md)
 456. **大型体育场馆、主题乐园与演艺票务（Sports Stadiums, Theme Parks & Live Entertainment Venues）ADA 无障碍轮椅席平价配座、暴雨延期洪峰改签与 VIP 包厢实时语音架构设计与选型指南（`DOJ ADA 28 CFR § 36.302(f)` 1轮椅+3相邻陪同座跨区平价锁且零残疾证追问、FTC 首句全包总价、雷暴暂停 `50ms` 广播分流 `84.6%` 6万人洪峰、VIP 包厢 `92dB` 点餐增收 `+28.4%` 联动记分牌第3节结束自动禁酒、以及看台急症 `20ms` 映射最近通道口 `<140s` 到场）方案**：[中文](./sports-stadium-theme-park-concert-ada-ticketing-vip-suite-voice-selection-faq.md) | [EN](./sports-stadium-theme-park-concert-ada-ticketing-vip-suite-voice-selection-faq.en.md)
+457. **现代农业与农资合作社（AgTech, Farm Cooperatives & Precision Ag）病虫害问诊、限制使用农药（EPA FIFRA RUP）合规锁、农机故障（ISOBUS）与农业保险（USDA RMA `72小时` 报损）实时语音架构设计与选型指南（100% 锁定 `EPA Reg. No.` 官方标签剂量与 `RUP` 持证施药员证号、田间风速 `>10 mph` 自动拦截除草剂飞防杜绝邻田漂移药害、收割机驾驶室免提解码 `J1939 SPN/FMI` 缩短 `36.8%` 停机、以及 `USDA RMA 72h` 报灾强提醒查勘放行前禁翻耕每万通省 `$26.5万`）方案**：[中文](./agriculture-agtech-cooperative-epa-pesticide-usda-crop-insurance-voice-selection-faq.md) | [EN](./agriculture-agtech-cooperative-epa-pesticide-usda-crop-insurance-voice-selection-faq.en.md)
