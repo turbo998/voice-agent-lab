@@ -12535,6 +12535,36 @@ export function evaluateSeniorLivingDementiaFallStrokeVoice2026Guard(input: {
   };
 }
 
+export interface DentalDsoLudwigAnginaCdtVoice2026Evaluation {
+  policyCode: "DENTAL-DSO-LUDWIG-ANGINA-CDT-VOICE-2026-01";
+  dentrixDualColumnBookingAndCdtEstimateAuthorized: boolean;
+  frequencyDenialOrUncheckedAhaPreMedOrUnexaminedRxBlocked: boolean;
+  ludwigAnginaHospitalErOrAvulsedToothSlotPreempted: boolean;
+}
+
+/**
+ * Deterministic Dental DSO & Orthodontics Emergency Triage, ADA CDT Insurance & Chair-Fill Voice (EDI X12 270/271 6M+1D CDT Frequency + Annual Max Check, AHA Prosthetic Heart-Valve Antibiotic Pre-Med Confirmed & Zero Unexamined Antibiotic Rx, 0ms Ludwig's Angina Hospital ER / 60m Avulsed Permanent Tooth Cold-Milk Preemption) Guard (`DENTAL-DSO-LUDWIG-ANGINA-CDT-VOICE-2026-01`).
+ */
+export function evaluateDentalDsoLudwigAnginaCdtVoice2026Guard(input: {
+  x12Cdt6Month1DayFrequencyAndAnnualMaxVerified: boolean;
+  ahaHeartValvePreMedConfirmedAndZeroUnexaminedRx: boolean;
+  ludwigAnginaAirwaySwellingOrPermanentToothAvulsion: boolean;
+}): DentalDsoLudwigAnginaCdtVoice2026Evaluation {
+  return {
+    policyCode: "DENTAL-DSO-LUDWIG-ANGINA-CDT-VOICE-2026-01",
+    dentrixDualColumnBookingAndCdtEstimateAuthorized:
+      input.x12Cdt6Month1DayFrequencyAndAnnualMaxVerified &&
+      input.ahaHeartValvePreMedConfirmedAndZeroUnexaminedRx &&
+      !input.ludwigAnginaAirwaySwellingOrPermanentToothAvulsion,
+    frequencyDenialOrUncheckedAhaPreMedOrUnexaminedRxBlocked:
+      !input.x12Cdt6Month1DayFrequencyAndAnnualMaxVerified ||
+      !input.ahaHeartValvePreMedConfirmedAndZeroUnexaminedRx ||
+      input.ludwigAnginaAirwaySwellingOrPermanentToothAvulsion,
+    ludwigAnginaHospitalErOrAvulsedToothSlotPreempted:
+      input.ludwigAnginaAirwaySwellingOrPermanentToothAvulsion,
+  };
+}
+
 
 
 
