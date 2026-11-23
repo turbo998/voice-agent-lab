@@ -12895,6 +12895,36 @@ export function evaluateMunicipalWaterEpaBoilLeadAmiVoice2026Guard(input: {
   };
 }
 
+export interface SecurityAlarmTmaEcvSilentDuressVoice2026Evaluation {
+  policyCode: "SECURITY-ALARM-TMA-ECV-SILENT-DURESS-VOICE-2026-01";
+  ecvFalseAlarmCancelAndTroubleSilenceAuthorized: boolean;
+  duressTipOffOrFireCoPhoneCancelOrVerbalDisarmBlocked: boolean;
+  silentDuressSwatOrAsapToPsap911Dispatched: boolean;
+}
+
+/**
+ * Deterministic Monitored Security Alarm (UL 827), TMA CS-V-01 ECV & Silent Duress Voice (TMA CS-V-01 2-Call ECV + Exact Safe Passcode Verified, Zero Inbound Verbal Disarm/Walk-Test & NFPA 72 Fire/CO Non-Cancel Lock, 0ms Silent Duress Codeword Stealth SWAT/911 ASAP-to-PSAP Dispatch) Guard (`SECURITY-ALARM-TMA-ECV-SILENT-DURESS-VOICE-2026-01`).
+ */
+export function evaluateSecurityAlarmTmaEcvSilentDuressVoice2026Guard(input: {
+  tmaEcvSafePasscodeVerifiedAndNonFireCoSignal: boolean;
+  zeroVerbalPanelDisarmOrUnauthenticatedWalkTest: boolean;
+  silentDuressCodewordWrongPasscode2xOrFireCoTriggered: boolean;
+}): SecurityAlarmTmaEcvSilentDuressVoice2026Evaluation {
+  return {
+    policyCode: "SECURITY-ALARM-TMA-ECV-SILENT-DURESS-VOICE-2026-01",
+    ecvFalseAlarmCancelAndTroubleSilenceAuthorized:
+      input.tmaEcvSafePasscodeVerifiedAndNonFireCoSignal &&
+      input.zeroVerbalPanelDisarmOrUnauthenticatedWalkTest &&
+      !input.silentDuressCodewordWrongPasscode2xOrFireCoTriggered,
+    duressTipOffOrFireCoPhoneCancelOrVerbalDisarmBlocked:
+      !input.tmaEcvSafePasscodeVerifiedAndNonFireCoSignal ||
+      !input.zeroVerbalPanelDisarmOrUnauthenticatedWalkTest ||
+      input.silentDuressCodewordWrongPasscode2xOrFireCoTriggered,
+    silentDuressSwatOrAsapToPsap911Dispatched:
+      input.silentDuressCodewordWrongPasscode2xOrFireCoTriggered,
+  };
+}
+
 
 
 

@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg471" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19"/>
+      <stop offset="50%" stop-color="#0d1b32"/>
+      <stop offset="100%" stop-color="#071222"/>
+    </linearGradient>
+    <linearGradient id="cyan471" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emerald471" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amber471" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="rose471" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg471)"/>
+  <rect x="24" y="20" width="1152" height="640" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="1112" height="72" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="68" font-family="Segoe UI, Inter, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">
+    Monitored Security Alarm (UL 827), TMA CS-V-01 ECV &amp; Silent Duress Voice Architecture (2026)
+  </text>
+  <text x="68" y="94" font-family="Segoe UI, Inter, sans-serif" font-size="13" fill="#94a3b8">
+    Silent Duress Codeword Stealth SWAT Dispatch • TMA CS-V-01 2-Call ECV + AVS-01 Scoring • ASAP-to-PSAP 911 Nlets • Zero Verbal Disarm
+  </text>
+  <rect x="920" y="52" width="216" height="36" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1028" y="75" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700" fill="#a7f3d0">
+    SECURITY-TMA-ECV-2026-01
+  </text>
+
+  <!-- Column 1: Silent Duress Codeword Stealth Dispatch -->
+  <rect x="44" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#e11d48" stroke-width="1.5"/>
+  <rect x="44" y="128" width="356" height="40" rx="12" fill="url(#rose471)"/>
+  <text x="222" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    1. Silent Duress Codeword Stealth Dispatch
+  </text>
+
+  <rect x="62" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+  <text x="76" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fb7185">Stealth "Fake Cancel + Silent Police" Mode</text>
+  <text x="76" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Homeowner held at gunpoint speaks Duress</text>
+  <text x="76" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  Passcode (e.g., "Redwood" vs normal "Oakwood")</text>
+  <text x="76" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">• AI replies calmly: "Thank you, alarm cancelled,</text>
+  <text x="76" y="281" font-family="Segoe UI, Inter, sans-serif" fill="#fb7185">  have a good evening" while 0ms dispatching Police!</text>
+
+  <rect x="62" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Zero Tip-Off to Armed Intruder</text>
+  <text x="76" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Never asks "Are you under duress?" or emits</text>
+  <text x="76" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  alarm tones on panel speaker after duress word</text>
+  <text x="76" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Keeps silent 1-way listen-in audio channel open</text>
+  <text x="76" y="405" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  for UL 827 Central Station &amp; SWAT tactical feed</text>
+
+  <rect x="62" y="432" width="320" height="100" rx="8" fill="#4c0519" stroke="#f43f5e"/>
+  <text x="76" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fda4af">Wrong-Passcode Escalation Lock</text>
+  <text x="76" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">• If person in house gives wrong verbal passcode</text>
+  <text x="76" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">  2x: blocks cancellation &amp; escalates to Priority</text>
+  <text x="76" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#fda4af">  Police Dispatch (prevents burglar cancellation)</text>
+
+  <!-- Column 2: TMA CS-V-01 ECV & AVS-01 Alarm Scoring -->
+  <rect x="422" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#0284c7" stroke-width="1.5"/>
+  <rect x="422" y="128" width="356" height="40" rx="12" fill="url(#cyan471)"/>
+  <text x="600" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    2. TMA CS-V-01 2-Call ECV &amp; AVS-01 Scoring
+  </text>
+
+  <rect x="440" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">TMA CS-V-01 Enhanced Call Verification (ECV)</text>
+  <text x="454" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Dials Primary + Secondary Responsible Party</text>
+  <text x="454" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  numbers in parallel within 3 seconds of trigger</text>
+  <text x="454" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• Texts 10-second alarm clip link for 1-tap</text>
+  <text x="454" y="281" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  "Dog / Cleaner False Alarm" vs "Send Police"</text>
+
+  <rect x="440" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">TMA AVS-01 Alarm Validation Scoring (0–4)</text>
+  <text x="454" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Level 0: No call/data • Level 1: Call attempt</text>
+  <text x="454" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Level 2: Multi-zone/glass-break + video motion</text>
+  <text x="454" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Level 3/4: Confirmed human intruder / life threat</text>
+  <text x="454" y="405" font-family="Segoe UI, Inter, sans-serif" fill="#38bdf8">• Transmits via TMA ASAP-to-PSAP to 911 CAD in 2s</text>
+
+  <rect x="440" y="432" width="320" height="100" rx="8" fill="#0c4a6e" stroke="#0284c7"/>
+  <text x="454" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#7dd3fc">False-Alarm Fine Elimination (-76.4%)</text>
+  <text x="454" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">• Avoids $150–$500 municipal false-alarm fines</text>
+  <text x="454" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">• Satisfies Verified-Response city ordinances</text>
+  <text x="454" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#7dd3fc">• Saves $246,000 per 10,000 alarm activations</text>
+
+  <!-- Column 3: NFPA 72 Fire/CO Lock & Zero Verbal Disarm -->
+  <rect x="800" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#059669" stroke-width="1.5"/>
+  <rect x="800" y="128" width="356" height="40" rx="12" fill="url(#emerald471)"/>
+  <text x="978" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    3. NFPA 72 Fire/CO Lock &amp; Zero Verbal Disarm
+  </text>
+
+  <rect x="818" y="184" width="320" height="114" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#34d399">NFPA 72 Commercial Fire &amp; CO Non-Cancel</text>
+  <text x="832" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Commercial Waterflow / Pull-Station Fire Alarm</text>
+  <text x="832" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  &amp; symptomatic Carbon Monoxide (CO) alarms</text>
+  <text x="832" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">• 100% hard-blocks telephone cancellation!</text>
+  <text x="832" y="283" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• Dispatches Fire Dept before calling premises</text>
+
+  <rect x="818" y="312" width="320" height="106" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="334" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Zero Inbound Verbal Panel Disarm</text>
+  <text x="832" y="354" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Blocks inbound caller from disarming panel</text>
+  <text x="832" y="373" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  or placing store into "Walk-Test / Bypass" mode</text>
+  <text x="832" y="392" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  without Verbal Passcode + App MFA / Installer ID</text>
+
+  <rect x="818" y="432" width="320" height="100" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="832" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#6ee7b7">Low-Battery Chirp &amp; Zone-Bypass Self-Heal</text>
+  <text x="832" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">• Silences 3 AM CR123A sensor low-battery</text>
+  <text x="832" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">  trouble beeps for 7 days &amp; ships replacement</text>
+  <text x="832" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#6ee7b7">• Deflects 83.2% of routine panel trouble calls</text>
+
+  <!-- Bottom Telemetry Bar -->
+  <rect x="44" y="564" width="1112" height="76" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#38bdf8">
+    Benchmark &amp; Central Station ROI (10,000 Alarm Activations &amp; Support Calls):
+  </text>
+  <text x="550" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="600" fill="#34d399">
+    False Police Dispatches: -76.4% (-$246k/10k) • Duress Stealth Rate: 100% • PSAP Latency: 2.1s
+  </text>
+  <text x="68" y="618" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" fill="#94a3b8">
+    Guardrail ID: evaluateSecurityAlarmTmaEcvSilentDuressVoice2026Guard • Policy: SECURITY-ALARM-TMA-ECV-SILENT-DURESS-VOICE-2026-01
+  </text>
+</svg>

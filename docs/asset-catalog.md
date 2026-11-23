@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（470 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（471 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -514,3 +514,4 @@
 468. **血液中心、单采血浆站与器官移植网络（Blood Bank, Plasma Centers & UNOS Organ Transplant）`FDA 21 CFR 630` 致畸药物/间隔期预筛、献血后晕厥与枸橼酸盐中毒抢占、以及 `UNOS` 供体器官冷缺血时间（Cold Ischemia Time）调度实时语音架构设计与选型指南（`FDA 21 CFR 630` 全血 `>=56天`/血浆 `>=48h` 与异维A酸/阿维A酯致畸药预筛砍掉 `64.8%` 现场空椅子率、献血后发热回告 `PDI` `<5秒` 自动冻结 `ISBT 128` 血袋、献血眩晕首句强令“平躺抬腿”降 `88.4%` 摔伤、以及 `UNOS` 供体器官 `180s` 升级与 `ABO/Cross-Clamp` 双复诵压降 `44.2%` 冷缺血废弃每万通省 `$36.2万`）方案**：[中文](./blood-bank-plasma-donor-fda-deferral-unos-organ-transplant-voice-selection-faq.md) | [EN](./blood-bank-plasma-donor-fda-deferral-unos-organ-transplant-voice-selection-faq.en.md)
 469. **自助仓储与无人迷你仓（Self-Storage REITs & Unmanned Mini-Storage）现役军人《军人民事救济法》（`SCRA 50 U.S.C. § 3958`）禁拍锁、法定留置权拍卖（Lien Sale）赎回与无人门禁（PTI / Nokē）实时语音架构设计与选型指南（`120ms` 核验国防部 `DoD DMDC` 现役军人身份 `100%` 冻结无令剪锁拍卖并锁 `6%` 利率上限、留置权拍卖期拦截破坏公告期的部分还款并在全额结清后 `3秒` 自动撤拍解开 `Nokē` 蓝牙电子加锁、60秒算仓型发钥匙提晚间即租转化率 `+46.8%` 每万通增收节支 `+$34.2万`、以及宵禁被困园区 `<100ms` 开启单向逃生出闸）方案**：[中文](./self-storage-facility-scra-military-lien-auction-gate-access-voice-selection-faq.md) | [EN](./self-storage-facility-scra-military-lien-auction-gate-access-voice-selection-faq.en.md)
 470. **城市水务、自来水厂与污水管网（Municipal Water, Wastewater Utility & EPA SDWA）一级煮沸水通告（Boil-Water vs 硝酸盐禁煮锁）、铅管普查（`EPA LCRR`）拍照识管与智能水表（AMI）暗漏审计实时语音架构设计与选型指南（严格区分大肠杆菌“滚沸1分钟”与硝酸盐/藻毒素“严禁烧开防婴儿蓝婴症”、爆管失压 `0ms` 优先外呼辖区血液透析中心、`150ms` 审计 `Itron/Sensus AMI` 凌晨2-4点连续底流抓马桶暗漏与硬币/磁铁拍照识铅管砍掉 `68.2%` `$160` 外勤上门每万通省 `$22.4万`、以及 `AWIA` 100% 物理隔离水厂加药 SCADA）方案**：[中文](./municipal-water-wastewater-epa-boil-water-lead-service-line-scada-voice-selection-faq.md) | [EN](./municipal-water-wastewater-epa-boil-water-lead-service-line-scada-voice-selection-faq.en.md)
+471. **联网报警与安防监控中心（Monitored Security Alarm Central Stations / UL 827）双呼核警标准（`TMA CS-V-01 ECV`）、静默胁迫暗语（Silent Duress Codeword 假撤防真派特警）与 `ASAP-to-PSAP` 911 直连实时语音架构设计与选型指南（入室挟持报出静默胁迫暗语时 `100%` 播放平静假撤防语音稳住歹徒并 `0ms` 静默直推 911 `AVS-01 Level 4` 特警出警、`TMA CS-V-01` 双呼+10秒短视频砍掉 `76.4%` 误报罚单每万次省 `$24.6万`、`NFPA 72` 商业火警与一氧化碳 `100%` 禁电话撤消、以及 `2.1秒` `ASAP-to-PSAP` 数字直写 911 CAD）方案**：[中文](./home-commercial-security-alarm-tma-ecv-silent-duress-psap-voice-selection-faq.md) | [EN](./home-commercial-security-alarm-tma-ecv-silent-duress-psap-voice-selection-faq.en.md)
