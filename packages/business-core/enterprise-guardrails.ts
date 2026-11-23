@@ -12925,6 +12925,36 @@ export function evaluateSecurityAlarmTmaEcvSilentDuressVoice2026Guard(input: {
   };
 }
 
+export interface MortgageServicingRespaEscrowWireVoice2026Evaluation {
+  policyCode: "MORTGAGE-SERVICING-RESPA-ESCROW-WIRE-VOICE-2026-01";
+  escrowAnalysisAndPmiOrPayoffQuoteAuthorized: boolean;
+  respaDualTrackingOrBankruptcyStayViolationOrVerbalWireBlocked: boolean;
+  assignedSpocOrSuccessorInInterestDeskBridged: boolean;
+}
+
+/**
+ * Deterministic Mortgage Servicing, CFPB Reg X Dual-Tracking Lock, Escrow & Wire-Fraud Voice (CFPB 12 CFR 1024.41 Anti-Dual-Tracking + 11 U.S.C. 362 Bankruptcy Stay Lock, 150ms Escrow Tax/HOI Diff + RESPA 60d Transfer Grace & Zero Verbal Payoff Wire Change, 12 CFR 1024.40 SPOC / Garn-St Germain Successor Bridge) Guard (`MORTGAGE-SERVICING-RESPA-ESCROW-WIRE-VOICE-2026-01`).
+ */
+export function evaluateMortgageServicingRespaEscrowWireVoice2026Guard(input: {
+  cfpbRegXNoDualTrackingAndBankruptcyStayRespected: boolean;
+  escrowDiffAuditedRespa60dGraceAndZeroVerbalWireChange: boolean;
+  lossMitSpocNeededOrSuccessorInInterestDetected: boolean;
+}): MortgageServicingRespaEscrowWireVoice2026Evaluation {
+  return {
+    policyCode: "MORTGAGE-SERVICING-RESPA-ESCROW-WIRE-VOICE-2026-01",
+    escrowAnalysisAndPmiOrPayoffQuoteAuthorized:
+      input.cfpbRegXNoDualTrackingAndBankruptcyStayRespected &&
+      input.escrowDiffAuditedRespa60dGraceAndZeroVerbalWireChange &&
+      !input.lossMitSpocNeededOrSuccessorInInterestDetected,
+    respaDualTrackingOrBankruptcyStayViolationOrVerbalWireBlocked:
+      !input.cfpbRegXNoDualTrackingAndBankruptcyStayRespected ||
+      !input.escrowDiffAuditedRespa60dGraceAndZeroVerbalWireChange ||
+      input.lossMitSpocNeededOrSuccessorInInterestDetected,
+    assignedSpocOrSuccessorInInterestDeskBridged:
+      input.lossMitSpocNeededOrSuccessorInInterestDetected,
+  };
+}
+
 
 
 
