@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（453 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（454 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -497,3 +497,4 @@
 451. **商业地产与长租公寓物业（Real Estate & Property Management / PropTech）招租看房、《公平住房法》（FHA）反歧视合规与爆管/困梯/断暖紧急工程派单实时语音架构设计与选型指南（7×24 招租预约提转化率 `+43.6%` 且 HUD 公平住房零主观引导 + 导盲犬/ESA 免押金、身份证 `3D活体+100m围栏` 杜绝霸房客、凌晨爆管 `60秒` 语音指导关角阀砍掉 `61.8%` 水损与 `68.4%` 夜间 `$320` 无效加班上门省 `$19.2万/万通`、以及电梯困人 `0ms` 强转中控室）方案**：[中文](./real-estate-property-management-fha-leasing-emergency-hvac-plumbing-voice-selection-faq.md) | [EN](./real-estate-property-management-fha-leasing-emergency-hvac-plumbing-voice-selection-faq.en.md)
 452. **工业制造、石油化工与风电现场维保（Industrial Manufacturing & Oil/Gas Field Service）免提语音工单（SAP PM / IBM Maximo）、`95dB` 骨传导抗噪与上锁挂牌（OSHA LOTO）安全实时语音架构设计与选型指南（ATEX 防爆骨传导颅骨振动门控将 `95dB` 车间误打断压至 `0.3%`、`OSHA 1910.147` 挂锁扫码 + `OPC-UA 0 RPM/0 Bar` 零能量核验 + OEM 扭矩表格直读实现 `0` 违章拆机、无网塔筒/锅炉舱端侧离线 `SQLite` 同步缩短 `38.4%` MTTR 每万单省 `$41万` 停机损失）方案**：[中文](./industrial-manufacturing-oil-gas-handsfree-ehs-loto-cmms-voice-selection-faq.md) | [EN](./industrial-manufacturing-oil-gas-handsfree-ehs-loto-cmms-voice-selection-faq.en.md)
 453. **民航机坪过站保障（Aviation Ramp Turnaround）、海运集装箱码头（Maritime Port Terminal TOS）与危化品冷链堆场对讲网关（RoIP PTT）与实时语音架构设计与选型指南（TETRA/DMR 半双工 `250ms` 发射预缓冲 + `180ms` 松键尾音抑制实现 `99.8%` 首字完整率、集卡闸口 `5ms` `ISO 6346 Modulo-11` 箱号校验位验算将过闸滞留从 `11.4m` 压至 `2.1m`、`IMO IMDG` 危险品隔离与冷藏箱正负号双锁及每万次作业省 `$34万` 延误罚金）方案**：[中文](./aviation-ground-ops-maritime-port-terminal-roip-hazmat-voice-selection-faq.md) | [EN](./aviation-ground-ops-maritime-port-terminal-roip-hazmat-voice-selection-faq.en.md)
+454. **连锁宠物医院与动物急诊中心（Veterinary Hospital & Pet ER）致命毒物/胃扭转（ASPCA Poison / GDV Bloat）`0ms` 抢占、狂犬疫苗合规与多宠诊疗排班（ezyVet / Cornerstone PIMS）实时语音架构设计与选型指南（猫百合/泰诺与狗木糖醇/胃扭转 `<15秒` 急诊推屏提早 `18m` 备台、100% 封杀人用止痛药与居家盲目灌双氧水、多宠家庭“名字+物种+体重”消歧与 `12个月 VCPR` 处方锁、以及已故宠物 `Deceased` 100% 禁发催打疫苗外呼）方案**：[中文](./veterinary-hospital-pet-poison-emergency-triage-pims-voice-selection-faq.md) | [EN](./veterinary-hospital-pet-poison-emergency-triage-pims-voice-selection-faq.en.md)

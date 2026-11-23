@@ -12385,6 +12385,36 @@ export function evaluateAviationRampMaritimePortRoipVoice2026Guard(input: {
   };
 }
 
+export interface VeterinaryHospitalToxinTriagePimsVoice2026Evaluation {
+  policyCode: "VETERINARY-HOSPITAL-TOXIN-TRIAGE-PIMS-VOICE-2026-01";
+  pimsMultiPetBookingAndRxRefillAuthorized: boolean;
+  humanMedAdviceOrExpiredVcprOrDeceasedPetRecallBlocked: boolean;
+  petErToxinGdvAlertOrComfortRoomBridged: boolean;
+}
+
+/**
+ * Deterministic Veterinary Hospital, Pet Poison/GDV Emergency Triage & PIMS Scheduling (Multi-Pet Name/Species/Weight + 12-Month VCPR & Rabies Verified, Zero Human NSAID/Tylenol/Home-Peroxide & Deceased-Pet Recall Suppressed, 0ms Feline Lily / Canine Xylitol / GDV Bloat / Blocked-Tom Pet ER Preemption) Guard (`VETERINARY-HOSPITAL-TOXIN-TRIAGE-PIMS-VOICE-2026-01`).
+ */
+export function evaluateVeterinaryHospitalToxinTriagePimsVoice2026Guard(input: {
+  multiPetWeightDisambiguatedAnd12MonthVcprRabiesValid: boolean;
+  zeroHumanMedOrPeroxideAndDeceasedRecallSuppressed: boolean;
+  speciesLethalToxinGdvBlockedTomOrEuthanasiaDetected: boolean;
+}): VeterinaryHospitalToxinTriagePimsVoice2026Evaluation {
+  return {
+    policyCode: "VETERINARY-HOSPITAL-TOXIN-TRIAGE-PIMS-VOICE-2026-01",
+    pimsMultiPetBookingAndRxRefillAuthorized:
+      input.multiPetWeightDisambiguatedAnd12MonthVcprRabiesValid &&
+      input.zeroHumanMedOrPeroxideAndDeceasedRecallSuppressed &&
+      !input.speciesLethalToxinGdvBlockedTomOrEuthanasiaDetected,
+    humanMedAdviceOrExpiredVcprOrDeceasedPetRecallBlocked:
+      !input.multiPetWeightDisambiguatedAnd12MonthVcprRabiesValid ||
+      !input.zeroHumanMedOrPeroxideAndDeceasedRecallSuppressed ||
+      input.speciesLethalToxinGdvBlockedTomOrEuthanasiaDetected,
+    petErToxinGdvAlertOrComfortRoomBridged:
+      input.speciesLethalToxinGdvBlockedTomOrEuthanasiaDetected,
+  };
+}
+
 
 
 
