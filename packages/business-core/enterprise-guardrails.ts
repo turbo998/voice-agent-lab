@@ -12715,6 +12715,36 @@ export function evaluateClinicalTrialRecruitmentEcoaSaeVoice2026Guard(input: {
   };
 }
 
+export interface CpaTaxFirmIrc7216ExtensionLevyVoice2026Evaluation {
+  policyCode: "CPA-TAX-FIRM-IRC7216-EXTENSION-LEVY-VOICE-2026-01";
+  organizerDiffAndForm4868ExtensionAuthorized: boolean;
+  irc7216UnauthorizedDisclosureOrUnwarnedPayDelayOrCircular230Blocked: boolean;
+  irsLevyNoticeCpaOrScamDefenseBridged: boolean;
+}
+
+/**
+ * Deterministic CPA Tax Firm, IRC Section 7216 Privacy Gate, K-1/1099 Chase & IRS Levy Voice (IRC 26 USC 7216 Signed Rev. Proc. 2013-14 Consent + MFS Spouse Isolation, Form 4868 "Extension to File != Extension to Pay" Warning + FBAR >$10k Screen & Circular 230 Gate, 0ms IRS LT11/CP504 Levy CPA/EA Bridge) Guard (`CPA-TAX-FIRM-IRC7216-EXTENSION-LEVY-VOICE-2026-01`).
+ */
+export function evaluateCpaTaxFirmIrc7216ExtensionLevyVoice2026Guard(input: {
+  irc7216SignedConsentAndMfsSpouseIsolated: boolean;
+  form4868PayByApril15WarnedFbarScreenedAndZeroCircular230Shelter: boolean;
+  irsLt11Cp504LevyNoticeOrImpersonationScamDetected: boolean;
+}): CpaTaxFirmIrc7216ExtensionLevyVoice2026Evaluation {
+  return {
+    policyCode: "CPA-TAX-FIRM-IRC7216-EXTENSION-LEVY-VOICE-2026-01",
+    organizerDiffAndForm4868ExtensionAuthorized:
+      input.irc7216SignedConsentAndMfsSpouseIsolated &&
+      input.form4868PayByApril15WarnedFbarScreenedAndZeroCircular230Shelter &&
+      !input.irsLt11Cp504LevyNoticeOrImpersonationScamDetected,
+    irc7216UnauthorizedDisclosureOrUnwarnedPayDelayOrCircular230Blocked:
+      !input.irc7216SignedConsentAndMfsSpouseIsolated ||
+      !input.form4868PayByApril15WarnedFbarScreenedAndZeroCircular230Shelter ||
+      input.irsLt11Cp504LevyNoticeOrImpersonationScamDetected,
+    irsLevyNoticeCpaOrScamDefenseBridged:
+      input.irsLt11Cp504LevyNoticeOrImpersonationScamDetected,
+  };
+}
+
 
 
 
