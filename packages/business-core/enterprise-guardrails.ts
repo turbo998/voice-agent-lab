@@ -12265,6 +12265,36 @@ export function evaluateRetailPharmacyRxRefillLasaPbmPriorAuth2026Guard(input: {
   };
 }
 
+export interface LegacyPbxCcaasZeroDowntimeVoiceAi2026Evaluation {
+  policyCode: "LEGACY-PBX-CCAAS-ZERO-DOWNTIME-VOICE-AI-2026-01";
+  canaryAiRoutingAndRedisScreenPopAuthorized: boolean;
+  tromboningWasteOrPingPongLoopOrContextTruncationBlocked: boolean;
+  sbc800msLegacyIvrFailoverOrE911BypassTriggered: boolean;
+}
+
+/**
+ * Deterministic Legacy PBX & CCaaS (Cisco/Avaya/Genesys/Connect/Teams) Zero-Downtime Voice AI Integration (AI Media-Leg Release on Transfer + Anti-Loop Hop Stamp, 36B UUID + 45ms Redis Screen-Pop, 800ms SBC Survivability Failover & E911 Bypass) Guard (`LEGACY-PBX-CCAAS-ZERO-DOWNTIME-VOICE-AI-2026-01`).
+ */
+export function evaluateLegacyPbxCcaasZeroDowntimeVoiceAi2026Guard(input: {
+  aiMediaLegReleasedOnTransferAndAntiLoopStamped: boolean;
+  uuid36ByteRedisContextHydratedUnder45ms: boolean;
+  aiGatewayTimeoutOver800msOrE911Dialed: boolean;
+}): LegacyPbxCcaasZeroDowntimeVoiceAi2026Evaluation {
+  return {
+    policyCode: "LEGACY-PBX-CCAAS-ZERO-DOWNTIME-VOICE-AI-2026-01",
+    canaryAiRoutingAndRedisScreenPopAuthorized:
+      input.aiMediaLegReleasedOnTransferAndAntiLoopStamped &&
+      input.uuid36ByteRedisContextHydratedUnder45ms &&
+      !input.aiGatewayTimeoutOver800msOrE911Dialed,
+    tromboningWasteOrPingPongLoopOrContextTruncationBlocked:
+      !input.aiMediaLegReleasedOnTransferAndAntiLoopStamped ||
+      !input.uuid36ByteRedisContextHydratedUnder45ms ||
+      input.aiGatewayTimeoutOver800msOrE911Dialed,
+    sbc800msLegacyIvrFailoverOrE911BypassTriggered:
+      input.aiGatewayTimeoutOver800msOrE911Dialed,
+  };
+}
+
 
 
 

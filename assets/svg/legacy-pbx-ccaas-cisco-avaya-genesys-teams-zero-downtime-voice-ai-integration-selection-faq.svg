@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg450" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19"/>
+      <stop offset="50%" stop-color="#0d1b30"/>
+      <stop offset="100%" stop-color="#071222"/>
+    </linearGradient>
+    <linearGradient id="cyan450" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emerald450" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amber450" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="rose450" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg450)"/>
+  <rect x="24" y="20" width="1152" height="640" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="1112" height="72" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="68" font-family="Segoe UI, Inter, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">
+    Legacy PBX &amp; CCaaS (Cisco/Avaya/Genesys/Connect/Teams) Zero-Downtime Voice AI Integration (2026)
+  </text>
+  <text x="68" y="94" font-family="Segoe UI, Inter, sans-serif" font-size="13" fill="#94a3b8">
+    BYO-Carrier SBC Edge • Passive Media Forking (Agent Assist) vs Full-Duplex AI Leg • Out-of-Band Context Key • 800ms SIP Survivability Failover
+  </text>
+  <rect x="920" y="52" width="216" height="36" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1028" y="75" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700" fill="#a7f3d0">
+    LEGACY-PBX-CCAAS-2026-01
+  </text>
+
+  <!-- Column 1: Three Non-Disruptive Integration Patterns -->
+  <rect x="44" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#0284c7" stroke-width="1.5"/>
+  <rect x="44" y="128" width="356" height="40" rx="12" fill="url(#cyan450)"/>
+  <text x="222" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    1. Three Zero-Rip-and-Replace Topologies
+  </text>
+
+  <rect x="62" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">Pattern A: Passive Media Forking (Assist)</text>
+  <text x="76" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• AudioCodes / Oracle SBC or Genesys AudioHook</text>
+  <text x="76" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Streams stereo Rx/Tx PCM over WebSocket</text>
+  <text x="76" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• Zero call-drop risk if AI crashes (Read-Only)</text>
+  <text x="76" y="281" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">• Ideal for Phase-1 Real-Time Agent Copilot</text>
+
+  <rect x="62" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Pattern B: SBC Hairpin / Virtual Agent Leg</text>
+  <text x="76" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Keep existing AT&amp;T/Verizon TFNs &amp; Cisco/Avaya</text>
+  <text x="76" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Route specific DNIS/VDN to AI via SBC trunk</text>
+  <text x="76" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• AI acts as Tier-1 virtual agent; transfers back</text>
+  <text x="76" y="405" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#38bdf8">• Supports canary rollout (5% → 25% → 100%)</text>
+
+  <rect x="62" y="432" width="320" height="100" rx="8" fill="#0c4a6e" stroke="#0284c7"/>
+  <text x="76" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#7dd3fc">Pattern C: Native Cloud CCaaS Connector</text>
+  <text x="76" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">• Genesys Cloud AudioConnector / Amazon Connect</text>
+  <text x="76" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">• Microsoft Teams Phone Direct Routing + ACS</text>
+  <text x="76" y="512" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#7dd3fc">• Preserves unified WFM (Verint / Calabrio) &amp; CDR</text>
+
+  <!-- Column 2: Codec Bridging & Out-of-Band Context Bus -->
+  <rect x="422" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#059669" stroke-width="1.5"/>
+  <rect x="422" y="128" width="356" height="40" rx="12" fill="url(#emerald450)"/>
+  <text x="600" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    2. 8kHz→24kHz Audio &amp; Context Bus Screen-Pop
+  </text>
+
+  <rect x="440" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#34d399">Zero-Jitter Narrowband/Wideband Bridge</text>
+  <text x="454" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Legacy PBX uses 8kHz G.711 (PCMU/PCMA)</text>
+  <text x="454" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Hardware DSP / SIMD resampler to 16/24kHz PCM</text>
+  <text x="454" y="264" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#38bdf8">• Adds &lt;8ms transcoding overhead (no double</text>
+  <text x="454" y="281" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">  Opus-to-G.711 lossy compression artifacts)</text>
+
+  <rect x="440" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">128-Byte Correlation Key + Redis Context</text>
+  <text x="454" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Legacy trunks truncate payload &gt;128 bytes</text>
+  <text x="454" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Pass compact 36-byte UUID in Call-Transfer</text>
+  <text x="454" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Agent Finesse / Workspace pulls full 8KB JSON</text>
+  <text x="454" y="405" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">  summary + sentiment from Redis in 45ms</text>
+
+  <rect x="440" y="432" width="320" height="100" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="454" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#6ee7b7">Tromboning Elimination (Call Release)</text>
+  <text x="454" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">• Releases AI media leg upon warm transfer</text>
+  <text x="454" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">• Prevents paying double per-minute trunk fees</text>
+  <text x="454" y="512" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#6ee7b7">  during 15-minute human agent conversations</text>
+
+  <!-- Column 3: 800ms Survivability & WFM/QM Governance -->
+  <rect x="800" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#e11d48" stroke-width="1.5"/>
+  <rect x="800" y="128" width="356" height="40" rx="12" fill="url(#rose450)"/>
+  <text x="978" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    3. 800ms Failover, E911 &amp; WFM Alignment
+  </text>
+
+  <rect x="818" y="184" width="320" height="114" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+  <text x="832" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fb7185">800ms SBC Circuit-Breaker Survivability</text>
+  <text x="832" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Monitors AI gateway heartbeat every 500ms</text>
+  <text x="832" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• If cloud LLM/STT times out (&gt;800ms), SBC</text>
+  <text x="832" y="264" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  auto-fails over to legacy Cisco CVP / Avaya</text>
+  <text x="832" y="283" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#fb7185">• Guarantees 99.999% voice trunk availability</text>
+
+  <rect x="818" y="312" width="320" height="106" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="334" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Loop-Transfer &amp; Ping-Pong Prevention</text>
+  <text x="832" y="354" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Stamps transferred call with X-AI-Hop-Count=1</text>
+  <text x="832" y="373" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Prevents ACD overflow rule from sending human-</text>
+  <text x="832" y="392" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">  escalated caller back into the AI IVR loop</text>
+
+  <rect x="818" y="432" width="320" height="100" rx="8" fill="#4c0519" stroke="#f43f5e"/>
+  <text x="832" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fda4af">Kari's Law / RAY BAUM's Act E911 Bypass</text>
+  <text x="832" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">• Internal PBX extensions dialing 911/999/112</text>
+  <text x="832" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">  bypass AI gateway 100% at SBC routing layer</text>
+  <text x="832" y="512" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#fda4af">• Preserves PIDF-LO dispatchable floor location</text>
+
+  <!-- Bottom Telemetry Bar -->
+  <rect x="44" y="564" width="1112" height="76" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#38bdf8">
+    Benchmark &amp; Migration ROI (2,000-Seat Enterprise Contact Center):
+  </text>
+  <text x="530" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="600" fill="#34d399">
+    Go-Live Time: 14 Months → 3 Weeks • Tromboning Trunk Waste: -100% • Context Screen-Pop: 99.98%
+  </text>
+  <text x="68" y="618" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" fill="#94a3b8">
+    Guardrail ID: evaluateLegacyPbxCcaasZeroDowntimeVoiceAi2026Guard • Policy: LEGACY-PBX-CCAAS-ZERO-DOWNTIME-VOICE-AI-2026-01
+  </text>
+</svg>
