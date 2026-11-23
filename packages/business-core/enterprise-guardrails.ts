@@ -12565,6 +12565,36 @@ export function evaluateDentalDsoLudwigAnginaCdtVoice2026Guard(input: {
   };
 }
 
+export interface EvChargingOcppSolarVppVoice2026Evaluation {
+  policyCode: "EV-CHARGING-OCPP-SOLAR-VPP-VOICE-2026-01";
+  ocppZeroAmpUnlockAndVppOptOutAuthorized: boolean;
+  underLoadUnlockOrAfciRemoteResetOrMedicalReserveDrainBlocked: boolean;
+  bessThermalRunawayEvacAndFireHazmatBridged: boolean;
+}
+
+/**
+ * Deterministic EV Charging (OCPP 2.0.1), Solar/Battery (BESS) & Virtual Power Plant (VPP) Voice (OCPP 2.0.1 0.0A & <60V Verified Unlock + Zero HV Enclosure DIY, UL 1699B Solar DC Arc-Fault AFCI Remote-Reset Block & VPP >=30%/100% Medical/Storm Reserve Floor, 0ms BESS Thermal Runaway Upwind Evacuation) Guard (`EV-CHARGING-OCPP-SOLAR-VPP-VOICE-2026-01`).
+ */
+export function evaluateEvChargingOcppSolarVppVoice2026Guard(input: {
+  ocppZeroAmpUnder60vVerifiedAndZeroHvDiy: boolean;
+  noSolarAfciFaultAndVppMedicalStormReserveProtected: boolean;
+  bessThermalRunawayOffGasOrChargerSmokeDetected: boolean;
+}): EvChargingOcppSolarVppVoice2026Evaluation {
+  return {
+    policyCode: "EV-CHARGING-OCPP-SOLAR-VPP-VOICE-2026-01",
+    ocppZeroAmpUnlockAndVppOptOutAuthorized:
+      input.ocppZeroAmpUnder60vVerifiedAndZeroHvDiy &&
+      input.noSolarAfciFaultAndVppMedicalStormReserveProtected &&
+      !input.bessThermalRunawayOffGasOrChargerSmokeDetected,
+    underLoadUnlockOrAfciRemoteResetOrMedicalReserveDrainBlocked:
+      !input.ocppZeroAmpUnder60vVerifiedAndZeroHvDiy ||
+      !input.noSolarAfciFaultAndVppMedicalStormReserveProtected ||
+      input.bessThermalRunawayOffGasOrChargerSmokeDetected,
+    bessThermalRunawayEvacAndFireHazmatBridged:
+      input.bessThermalRunawayOffGasOrChargerSmokeDetected,
+  };
+}
+
 
 
 
