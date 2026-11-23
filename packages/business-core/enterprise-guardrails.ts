@@ -12865,6 +12865,36 @@ export function evaluateSelfStorageScraLienGateVoice2026Guard(input: {
   };
 }
 
+export interface MunicipalWaterEpaBoilLeadAmiVoice2026Evaluation {
+  policyCode: "MUNICIPAL-WATER-EPA-BOIL-LEAD-AMI-VOICE-2026-01";
+  amiLeakAdjustmentAndLslInventoryAuthorized: boolean;
+  nitrateBoilingAdviceOrScadaWriteOrUncheckedReconnectBlocked: boolean;
+  dialysisAlertOrChemicalOdorSsoPreempted: boolean;
+}
+
+/**
+ * Deterministic Municipal Water & Wastewater Utility, EPA Boil-Water & Lead-Line Voice (EPA SDWA Microbial Boil vs Nitrate/Toxin Do-Not-Boil Split + 100% AWIA SCADA Air-Gap, AMI 2AM Flow Audit + All Taps Off Confirmed Before Remote Valve Turn-On, 0ms Dialysis Priority Alert & Chemical-Odor / Clean Water Act SSO Preemption) Guard (`MUNICIPAL-WATER-EPA-BOIL-LEAD-AMI-VOICE-2026-01`).
+ */
+export function evaluateMunicipalWaterEpaBoilLeadAmiVoice2026Guard(input: {
+  limsBoilVsDoNotBoilMatchedAndAwiaScadaReadOnly: boolean;
+  ami2AmFlowAuditedAndAllIndoorTapsClosedForReconnect: boolean;
+  chemicalTapOdorMainBreakDialysisOrSewerOverflowDetected: boolean;
+}): MunicipalWaterEpaBoilLeadAmiVoice2026Evaluation {
+  return {
+    policyCode: "MUNICIPAL-WATER-EPA-BOIL-LEAD-AMI-VOICE-2026-01",
+    amiLeakAdjustmentAndLslInventoryAuthorized:
+      input.limsBoilVsDoNotBoilMatchedAndAwiaScadaReadOnly &&
+      input.ami2AmFlowAuditedAndAllIndoorTapsClosedForReconnect &&
+      !input.chemicalTapOdorMainBreakDialysisOrSewerOverflowDetected,
+    nitrateBoilingAdviceOrScadaWriteOrUncheckedReconnectBlocked:
+      !input.limsBoilVsDoNotBoilMatchedAndAwiaScadaReadOnly ||
+      !input.ami2AmFlowAuditedAndAllIndoorTapsClosedForReconnect ||
+      input.chemicalTapOdorMainBreakDialysisOrSewerOverflowDetected,
+    dialysisAlertOrChemicalOdorSsoPreempted:
+      input.chemicalTapOdorMainBreakDialysisOrSewerOverflowDetected,
+  };
+}
+
 
 
 
