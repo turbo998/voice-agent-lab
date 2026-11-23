@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bgGrad433" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="headerGrad433" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f766e"/>
+      <stop offset="50%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+    <linearGradient id="cardTeal433" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#115e59" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardBlue433" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardIndigo433" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#312e81" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bgGrad433)" rx="16"/>
+  <rect x="24" y="20" width="1152" height="74" rx="12" fill="url(#headerGrad433)"/>
+  <text x="44" y="50" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700">Multinational Live Simultaneous Interpretation, Global Town Hall &amp; Structured Meeting Minutes</text>
+  <text x="44" y="76" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="13">Architecture Blueprint · Policy: LIVE-SIMULTANEOUS-INTERPRETATION-MINUTES-2026-01 · 1.8s SOV Wait-k Lag · 99.7% Unit/Glossary Lock · $16.80/Hr vs. $4,500 Booth</text>
+
+  <!-- Column 1: Live Simultaneous Interpretation -->
+  <rect x="28" y="112" width="364" height="440" rx="12" fill="url(#cardTeal433)" stroke="#14b8a6" stroke-width="1.5"/>
+  <rect x="44" y="128" width="332" height="36" rx="8" fill="#0f766e"/>
+  <text x="60" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. Live Simultaneous Interpretation (&lt;1.8s Lag)</text>
+
+  <rect x="44" y="180" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="203" fill="#2dd4bf" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Azure AI Speech Live Interpreter + Personal Voice</text>
+  <text x="58" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Translates 70+ spoken languages in real time</text>
+  <text x="58" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Preserves CEO/Speaker's own vocal timbre across languages</text>
+  <text x="58" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Fan-out 1-to-10,000+ employee audio tracks via CDN/WebRTC</text>
+  <text x="58" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ $16.80/hr all-in vs. $4,500+ human interpreter booths</text>
+
+  <rect x="44" y="308" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="331" fill="#2dd4bf" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Dynamic Wait-k Clauses for SOV Languages (JA/DE/KO)</text>
+  <text x="58" y="352" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Japanese/German put negation verbs at the very end</text>
+  <text x="58" y="372" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Holds synthesis until verb polarity is confirmed (~2.1s)</text>
+  <text x="58" y="392" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ 0.0% "Approve vs. Reject" polarity reversal errors</text>
+
+  <rect x="44" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#ef4444"/>
+  <text x="58" y="459" fill="#f87171" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Wan / Yi / Oku vs. Million / Billion Scale Lock</text>
+  <text x="58" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 10,000-unit base (万/亿) vs. 1,000-unit base (M/B) verifier</text>
+  <text x="58" y="500" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Eliminates 10x financial revenue translation blunders</text>
+
+  <!-- Column 2: Multi-Speaker Diarization & Glossary -->
+  <rect x="418" y="112" width="364" height="440" rx="12" fill="url(#cardBlue433)" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="434" y="128" width="332" height="36" rx="8" fill="#1d4ed8"/>
+  <text x="450" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. Boardroom Diarization &amp; Enterprise Glossary</text>
+
+  <rect x="434" y="180" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="203" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Multi-Mic Array + Enrolled Voiceprint Diarization</text>
+  <text x="448" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Combines room beamforming with speaker voiceprint IDs</text>
+  <text x="448" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Attributes every sentence to exact participant name/role</text>
+  <text x="448" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Diarization Error Rate (DER) reduced to 1.9%</text>
+  <text x="448" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Zero speaker misattribution on board resolutions</text>
+
+  <rect x="434" y="308" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="331" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Do-Not-Translate Codeword &amp; Product Glossary</text>
+  <text x="448" y="352" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Locks project codewords ("Project Apollo", SKU codes)</text>
+  <text x="448" y="372" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Prevents literal mistranslation of executive names &amp; KPIs</text>
+  <text x="448" y="394" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ 99.7% corporate terminology translation accuracy</text>
+
+  <rect x="434" y="432" width="332" height="102" rx="8" fill="#0f172a" stroke="#3b82f6"/>
+  <text x="448" y="455" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Live Bilingual Caption Wall &amp; Teams/Zoom Overlay</text>
+  <text x="448" y="476" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Sub-600ms streaming captions + finalized semantic correction</text>
+  <text x="448" y="496" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Scan QR code in auditorium to listen in 12 languages</text>
+
+  <!-- Column 3: Structured Minutes & Action-Item Sync -->
+  <rect x="808" y="112" width="364" height="440" rx="12" fill="url(#cardIndigo433)" stroke="#6366f1" stroke-width="1.5"/>
+  <rect x="824" y="128" width="332" height="36" rx="8" fill="#4338ca"/>
+  <text x="840" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Evidence-Bound Minutes &amp; Privacy Vault</text>
+
+  <rect x="824" y="180" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="838" y="203" fill="#818cf8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Timestamp-Anchored Structured Meeting Minutes</text>
+  <text x="838" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Extracts Decisions, Risks &amp; Action Items (Owner + Due Date)</text>
+  <text x="838" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Every bullet links to exact audio timestamp &amp; quote</text>
+  <text x="838" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 1-Click Host Approval syncs tasks to Jira / Planner / Loop</text>
+  <text x="838" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Cuts post-meeting minutes prep from 90 mins to 45 secs</text>
+
+  <rect x="824" y="308" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="838" y="331" fill="#818cf8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Attendee-Scoped RBAC &amp; Late-Joiner Catch-Up</text>
+  <text x="838" y="352" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Late joiners only see summary from their join timestamp</text>
+  <text x="838" y="372" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• External guests blocked from internal RAG tool lookups</text>
+  <text x="838" y="394" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ 0.0% pre-join or cross-tenant confidential leak</text>
+
+  <rect x="824" y="432" width="332" height="102" rx="8" fill="#0f172a" stroke="#f59e0b"/>
+  <text x="838" y="455" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms "Off-the-Record / Legal Privilege" RAM Wipe</text>
+  <text x="838" y="476" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Spoken "Pause Recording / Privileged Session" halts STT</text>
+  <text x="838" y="496" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  and purges cloud buffers in 0ms with ZDR attestation</text>
+
+  <!-- Bottom Summary Bar -->
+  <rect x="28" y="568" width="1144" height="88" rx="12" fill="#0f172a" stroke="#14b8a6" stroke-width="1.5"/>
+  <text x="48" y="596" fill="#2dd4bf" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Architect Platform Selection Summary (Simultaneous Interpretation &amp; Meeting Intelligence):</text>
+  <text x="48" y="620" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13">• Enterprise Teams / Town Hall (10,000+ listeners, 70+ langs): Azure AI Speech Live Interpreter + Personal Voice ($16.80/hr vs. $4,500 human booth)</text>
+  <text x="48" y="642" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">• Boardroom &amp; M&amp;A Reviews: Multi-Mic Voiceprint Diarization (1.9% DER) + SOV Wait-k Polarity Lock + Timestamp-Anchored Jira/Loop Minutes</text>
+</svg>

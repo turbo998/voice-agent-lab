@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（432 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（433 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -476,3 +476,4 @@
 430. **端到端实时语音应用架构设计指南：多渠道接入（WebRTC / SIP）→ 语义打断（Barge-In）与慢速 API/RAG 异步安抚话术 → 多智能体转接与合规录音质检（声学+语义过滤“嗯/好的”附和词将误打断率从 `24.5%` 压至 `0.7%` 并按已听毫秒偏移截断上下文与 `Turn_Epoch_ID` 写栅栏 `0%` 过时脏写、慢速 ERP/RAG `T+650ms` 自动播报上下文安抚话术降 `79.2%` 等待挂机率、`42ms` 作用域子智能体切换提工具准确率至 `97.4%`）方案**：[中文](./realtime-voice-barge-in-turn-detection-slow-api-rag-filler-handoff-architecture-selection-faq.md) | [EN](./realtime-voice-barge-in-turn-detection-slow-api-rag-filler-handoff-architecture-selection-faq.en.md)
 431. **实时语音开发与编排框架选型对比：LiveKit Agents vs. Pipecat vs. Azure Communication Services (ACS) vs. Twilio Voice / Vapi / Retell AI（确立月通话 `12万分钟` 自建盈亏平衡点、强监管私有 `VPC` 部署 `LiveKit / Pipecat + ACS BYOC` 消除 `$0.06/分` 商业套壳税将全栈单价从 `$0.115/分` 压至 `$0.041/分` 年省 `$444万` 且内网工具延迟降至 `15ms`、K8s 有状态 `preStop` 1800s 优雅排水 `0%` 发版掉线与 `0ms` 跨云模型热切）方案**：[中文](./voice-agent-orchestration-livekit-pipecat-azure-acs-twilio-vapi-retell-tco-selection-faq.md) | [EN](./voice-agent-orchestration-livekit-pipecat-azure-acs-twilio-vapi-retell-tco-selection-faq.en.md)
 432. **语音识别（STT）、语音合成（TTS）、品牌音色克隆与实时数字人（Avatar）2026 横向选型指南：Azure AI Speech vs. ElevenLabs vs. Deepgram vs. 开源 Whisper/CosyVoice/Fish Speech（配音员活体口令授权与 `C2PA` 隐式声学水印 `0%` 侵权硬锁、发声前 `<2ms` 剥离 Markdown 符号与 `SSML <phoneme>/<say-as>` 词典达 `99.9%` 术语准确率、手机端免费 `55维 Viseme` 口型流本地渲染将数字人成本从 `$0.220/分` 压至 `$0.016/分` 降本 `92.7%`）方案**：[中文](./enterprise-stt-tts-voice-cloning-avatar-azure-elevenlabs-deepgram-cosyvoice-2026-selection-faq.md) | [EN](./enterprise-stt-tts-voice-cloning-avatar-azure-elevenlabs-deepgram-cosyvoice-2026-selection-faq.en.md)
+433. **跨国企业实时多语种同声传译（Live Simultaneous Interpretation）、万人全员大会与会议纪要架构设计与选型指南（`Azure Live Interpreter + Personal Voice` 跨 70+ 语种保留高管原声将 6 语种同传从 `$4,500/时` 压至 `$16.80/时` 降本 `99.6%`、日/德/韩 `SOV` 句尾否定词动态 `Wait-k` `0%` 极性反转与“万/亿 vs Million/Billion”量纲核验 `99.7%` 准确硬锁、多波束+声纹分离 `DER=1.9%` 绑定原话时间戳纪要与闭门涉密议题 `0ms` 内存擦除）方案**：[中文](./multinational-live-simultaneous-interpretation-townhall-meeting-minutes-architecture-selection-faq.md) | [EN](./multinational-live-simultaneous-interpretation-townhall-meeting-minutes-architecture-selection-faq.en.md)

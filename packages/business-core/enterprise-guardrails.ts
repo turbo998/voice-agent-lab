@@ -11755,6 +11755,36 @@ export function evaluateVoiceSttTtsCloningAvatar2026Guard(input: {
   };
 }
 
+export interface LiveSimultaneousInterpretationMinutes2026Evaluation {
+  policyCode: "LIVE-SIMULTANEOUS-INTERPRETATION-MINUTES-2026-01";
+  simultaneousAudioAndMinutesSyncAuthorized: boolean;
+  sovPolarityReversalOrScaleErrorOrUnquotedTaskBlocked: boolean;
+  offRecordRamPurgeAndIngestionHaltTriggered: boolean;
+}
+
+/**
+ * Deterministic Multinational Live Simultaneous Interpretation, Global Town Hall & Structured Meeting Minutes (SOV Wait-k Polarity & Wan/Yi Scale Lock, 1.9% DER Voiceprint Diarization & Evidence-Quoted Host Approval, 0ms Off-the-Record Purge) Guard (`LIVE-SIMULTANEOUS-INTERPRETATION-MINUTES-2026-01`).
+ */
+export function evaluateLiveSimultaneousInterpretationMinutes2026Guard(input: {
+  sovPolarityWaitKAndNumericScaleVerified: boolean;
+  voiceprintDiarizationAndEvidenceBoundActionItemsLocked: boolean;
+  privilegedOffRecordOrPreJoinLeakPreemption: boolean;
+}): LiveSimultaneousInterpretationMinutes2026Evaluation {
+  return {
+    policyCode: "LIVE-SIMULTANEOUS-INTERPRETATION-MINUTES-2026-01",
+    simultaneousAudioAndMinutesSyncAuthorized:
+      input.sovPolarityWaitKAndNumericScaleVerified &&
+      input.voiceprintDiarizationAndEvidenceBoundActionItemsLocked &&
+      !input.privilegedOffRecordOrPreJoinLeakPreemption,
+    sovPolarityReversalOrScaleErrorOrUnquotedTaskBlocked:
+      !input.sovPolarityWaitKAndNumericScaleVerified ||
+      !input.voiceprintDiarizationAndEvidenceBoundActionItemsLocked ||
+      input.privilegedOffRecordOrPreJoinLeakPreemption,
+    offRecordRamPurgeAndIngestionHaltTriggered:
+      input.privilegedOffRecordOrPreJoinLeakPreemption,
+  };
+}
+
 
 
 
