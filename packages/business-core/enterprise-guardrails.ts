@@ -11785,6 +11785,36 @@ export function evaluateLiveSimultaneousInterpretationMinutes2026Guard(input: {
   };
 }
 
+export interface AiSalesSparringMockInterviewTutor2026Evaluation {
+  policyCode: "AI-SALES-SPARRING-MOCK-INTERVIEW-TUTOR-2026-01";
+  sparringProgressionAndScorecardCommitAuthorized: boolean;
+  sycophancyFoldOrUnquotedScoreOrAccentBiasBlocked: boolean;
+  regulatoryBaitRedCardHaltTriggered: boolean;
+}
+
+/**
+ * Deterministic AI Sales Roleplay Sparring, Structured Mock Interview & Language Tutor (Anti-Sycophancy Objection State Lock, Decoupled Async Critic & Timestamp-Quoted BARS/Phoneme GOP, 0ms Regulatory Bait Red-Card) Guard (`AI-SALES-SPARRING-MOCK-INTERVIEW-TUTOR-2026-01`).
+ */
+export function evaluateAiSalesSparringMockInterviewTutor2026Guard(input: {
+  antiSycophancyObjectionLockedAndAsyncCriticDecoupled: boolean;
+  timestampAnchoredRubricAndAccentNeutralOrPhonemeGop: boolean;
+  regulatoryBaitOffLabelOrGuaranteedReturnBreach: boolean;
+}): AiSalesSparringMockInterviewTutor2026Evaluation {
+  return {
+    policyCode: "AI-SALES-SPARRING-MOCK-INTERVIEW-TUTOR-2026-01",
+    sparringProgressionAndScorecardCommitAuthorized:
+      input.antiSycophancyObjectionLockedAndAsyncCriticDecoupled &&
+      input.timestampAnchoredRubricAndAccentNeutralOrPhonemeGop &&
+      !input.regulatoryBaitOffLabelOrGuaranteedReturnBreach,
+    sycophancyFoldOrUnquotedScoreOrAccentBiasBlocked:
+      !input.antiSycophancyObjectionLockedAndAsyncCriticDecoupled ||
+      !input.timestampAnchoredRubricAndAccentNeutralOrPhonemeGop ||
+      input.regulatoryBaitOffLabelOrGuaranteedReturnBreach,
+    regulatoryBaitRedCardHaltTriggered:
+      input.regulatoryBaitOffLabelOrGuaranteedReturnBreach,
+  };
+}
+
 
 
 

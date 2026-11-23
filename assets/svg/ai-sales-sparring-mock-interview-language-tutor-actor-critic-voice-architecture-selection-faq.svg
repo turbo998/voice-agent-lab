@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bgGrad434" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="headerGrad434" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="50%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="cardAmber434" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#78350f" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardBlue434" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardEmerald434" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#065f46" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bgGrad434)" rx="16"/>
+  <rect x="24" y="20" width="1152" height="74" rx="12" fill="url(#headerGrad434)"/>
+  <text x="44" y="50" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700">AI Sales Roleplay Sparring, Structured Mock Interview &amp; Language Coaching (Actor-Critic Architecture)</text>
+  <text x="44" y="76" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="13">Architecture Blueprint · Policy: AI-SALES-SPARRING-MOCK-INTERVIEW-TUTOR-2026-01 · 350ms S2S Persona Actor · 0% Sycophancy · 0.94 Rubric Kappa · $0.38/Session</text>
+
+  <!-- Column 1: Fast Loop S2S Persona Actor -->
+  <rect x="28" y="112" width="364" height="440" rx="12" fill="url(#cardAmber434)" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="44" y="128" width="332" height="36" rx="8" fill="#b45309"/>
+  <text x="60" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. Fast Loop: 350ms S2S Persona Actor</text>
+
+  <rect x="44" y="180" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="203" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Realistic Buyer / Interviewer Personas</text>
+  <text x="58" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Skeptical CFO ("Your competitor is 30% cheaper")</text>
+  <text x="58" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Busy Physician (2-minute elevator medical detailing)</text>
+  <text x="58" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• STAR Behavioral Interviewer &amp; CEFR Language Partner</text>
+  <text x="58" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Native S2S (GPT-Realtime / Voice Live) at 350ms P50</text>
+
+  <rect x="44" y="308" width="332" height="114" rx="8" fill="#0f172a" stroke="#ef4444"/>
+  <text x="58" y="331" fill="#f87171" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Anti-Sycophancy Objection State Lock</text>
+  <text x="58" y="352" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Standard LLMs are too polite &amp; fold after 1 weak excuse!</text>
+  <text x="58" y="372" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• State machine locks `objection_resolved = false` until</text>
+  <text x="58" y="392" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  rep delivers quantified ROI proof + competitive diff</text>
+  <text x="58" y="412" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ 0.0% premature AI capitulation during sparring</text>
+
+  <rect x="44" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="459" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Adaptive Pause Window for Learners (1,400ms)</text>
+  <text x="58" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Extends EOU silence threshold for L2 language learners</text>
+  <text x="58" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  &amp; interviewees thinking through complex answers</text>
+
+  <!-- Column 2: Slow Loop Async Critic & Pronunciation GOP -->
+  <rect x="418" y="112" width="364" height="440" rx="12" fill="url(#cardBlue434)" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="434" y="128" width="332" height="36" rx="8" fill="#1d4ed8"/>
+  <text x="450" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. Slow Loop: Async Critic &amp; Phoneme GOP</text>
+
+  <rect x="434" y="180" width="332" height="118" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="203" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Out-of-Band Reasoning Critic (0ms Voice Lag)</text>
+  <text x="448" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Evaluates every turn asynchronously against MEDDIC /</text>
+  <text x="448" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  SPIN / STAR rubric without blocking live speech</text>
+  <text x="448" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Injects whisper state hints into Actor's next turn</text>
+  <text x="448" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Decouples 350ms acting from deep rubric grading</text>
+
+  <rect x="434" y="312" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="335" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Azure Speech Pronunciation Assessment (GOP)</text>
+  <text x="448" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Scores Phoneme Accuracy, Fluency, Prosody &amp; WPM</text>
+  <text x="448" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Detects filler-word ratio ("um/uh/那个") &amp; talk-to-listen</text>
+  <text x="448" y="396" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Essential for CEFR language coaching &amp; pitch polish</text>
+
+  <rect x="434" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#3b82f6"/>
+  <text x="448" y="459" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Timestamp-Quoted BARS Scorecard (Kappa = 0.94)</text>
+  <text x="448" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Every 1–5 score cites exact transcript quote &amp; timestamp</text>
+  <text x="448" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Provides side-by-side "What You Said vs. Gold Answer"</text>
+
+  <!-- Column 3: Compliance Trap & EEOC Fairness -->
+  <rect x="808" y="112" width="364" height="440" rx="12" fill="url(#cardEmerald434)" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="824" y="128" width="332" height="36" rx="8" fill="#047857"/>
+  <text x="840" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Compliance Trap &amp; EEOC Fairness</text>
+
+  <rect x="824" y="180" width="332" height="118" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="838" y="203" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms Regulatory Red-Line Auto-Fail Trap</text>
+  <text x="838" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• AI buyer intentionally baits rep ("Can this drug cure X?" /</text>
+  <text x="838" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  "Can you guarantee 12% principal return?")</text>
+  <text x="838" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• If trainee makes off-label or guaranteed-return claim:</text>
+  <text x="838" y="284" fill="#f87171" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">⚡ 0ms Red-Card Halt + Immediate Coaching Remediation</text>
+
+  <rect x="824" y="312" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="838" y="335" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">EEOC / EU AI Act Accent-Blind Interview Scoring</text>
+  <text x="838" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• For job interviews: strips regional accent &amp; pitch features</text>
+  <text x="838" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Grades strictly on verified STAR competency content</text>
+  <text x="838" y="396" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Disparate Impact Ratio &gt;= 0.96 across demographics</text>
+
+  <rect x="824" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#10b981"/>
+  <text x="838" y="459" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">100x Training ROI ($0.38 vs. $45 Manager Time)</text>
+  <text x="838" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Cuts new-hire ramp time from 90 days down to 38 days</text>
+  <text x="838" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Syncs pass certification directly to Workday / Veeva LMS</text>
+
+  <!-- Bottom Summary Bar -->
+  <rect x="28" y="568" width="1144" height="88" rx="12" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="48" y="596" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Architect Blueprint Summary (AI Sales Sparring, Mock Interview &amp; Language Coaching):</text>
+  <text x="48" y="620" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13">• Fast Loop (Actor): Native S2S (GPT-Realtime / Voice Live) + Anti-Sycophancy State Lock · Slow Loop (Critic): Out-of-Band Rubric Grader + Phoneme GOP</text>
+  <text x="48" y="642" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">• Governance: 0ms Off-Label/Guaranteed-Return Red-Card Trap + EEOC Accent-Neutral Interview Evaluation ($0.38 per 10-Min Sparring Session)</text>
+</svg>
