@@ -12955,6 +12955,36 @@ export function evaluateMortgageServicingRespaEscrowWireVoice2026Guard(input: {
   };
 }
 
+export interface WasteManagementLithiumRcraRollOffVoice2026Evaluation {
+  policyCode: "WASTE-MANAGEMENT-LITHIUM-RCRA-ROLLOFF-VOICE-2026-01";
+  bulkPickupAndRollOffDispatchAuthorized: boolean;
+  lithiumCompactorFireOrOverweight30YdConcreteOrBlindGoBackBlocked: boolean;
+  hotLoadSafeDumpLotOrBinSleeperRescuePreempted: boolean;
+}
+
+/**
+ * Deterministic Waste Management, Lithium-Battery Fire Gate, Roll-Off & EPA RCRA Voice (Zero Li-Ion/Propane/RCRA HazMat in Compactor + EPA Section 608 Freon Flatbed, Routeware/3rd-Eye Curb Photo Proof + Concrete <=10-Yard Roll-Off Weight Lock, 0ms Hot-Load Packer Fire Safe-Dump GIS & Bin-Sleeper Halt) Guard (`WASTE-MANAGEMENT-LITHIUM-RCRA-ROLLOFF-VOICE-2026-01`).
+ */
+export function evaluateWasteManagementLithiumRcraRollOffVoice2026Guard(input: {
+  zeroLiIonPropaneInCompactorAndRcraFreonCompliant: boolean;
+  hopperCameraCheckedAndConcreteCappedAt10YardLevelFill: boolean;
+  compactorHotLoadSmokeOrPersonInFrontLoadBinDetected: boolean;
+}): WasteManagementLithiumRcraRollOffVoice2026Evaluation {
+  return {
+    policyCode: "WASTE-MANAGEMENT-LITHIUM-RCRA-ROLLOFF-VOICE-2026-01",
+    bulkPickupAndRollOffDispatchAuthorized:
+      input.zeroLiIonPropaneInCompactorAndRcraFreonCompliant &&
+      input.hopperCameraCheckedAndConcreteCappedAt10YardLevelFill &&
+      !input.compactorHotLoadSmokeOrPersonInFrontLoadBinDetected,
+    lithiumCompactorFireOrOverweight30YdConcreteOrBlindGoBackBlocked:
+      !input.zeroLiIonPropaneInCompactorAndRcraFreonCompliant ||
+      !input.hopperCameraCheckedAndConcreteCappedAt10YardLevelFill ||
+      input.compactorHotLoadSmokeOrPersonInFrontLoadBinDetected,
+    hotLoadSafeDumpLotOrBinSleeperRescuePreempted:
+      input.compactorHotLoadSmokeOrPersonInFrontLoadBinDetected,
+  };
+}
+
 
 
 
