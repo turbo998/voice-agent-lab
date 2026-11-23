@@ -12415,6 +12415,36 @@ export function evaluateVeterinaryHospitalToxinTriagePimsVoice2026Guard(input: {
   };
 }
 
+export interface LawFirmIntakeAbaConflictSolVoice2026Evaluation {
+  policyCode: "LAW-FIRM-INTAKE-ABA-CONFLICT-SOL-VOICE-2026-01";
+  stage2FactIntakeAndDocuSignRetainerAuthorized: boolean;
+  aba118ConflictTaintOrUplAdviceOrUnloggedDeclinationBlocked: boolean;
+  custodyRaidOrUrgentSolPartnerBridged: boolean;
+}
+
+/**
+ * Deterministic Law Firm Client Intake, ABA Rule 1.18 Conflict Screen & Statute-of-Limitations Voice (ABA Rule 1.18 Pre-Fact Conflict Clearance in Intapp/Clio, Zero Unauthorized Practice of Law UPL & Logged Non-Engagement Notice, 0ms Police Custody / Raid / <30d SOL Partner Preemption) Guard (`LAW-FIRM-INTAKE-ABA-CONFLICT-SOL-VOICE-2026-01`).
+ */
+export function evaluateLawFirmIntakeAbaConflictSolVoice2026Guard(input: {
+  aba118ConflictClearedBeforeFactNarrative: boolean;
+  zeroUplValuationAndNonEngagementNoticeLogged: boolean;
+  policeCustodyDawnRaidOrSolUnder30DaysPreemption: boolean;
+}): LawFirmIntakeAbaConflictSolVoice2026Evaluation {
+  return {
+    policyCode: "LAW-FIRM-INTAKE-ABA-CONFLICT-SOL-VOICE-2026-01",
+    stage2FactIntakeAndDocuSignRetainerAuthorized:
+      input.aba118ConflictClearedBeforeFactNarrative &&
+      input.zeroUplValuationAndNonEngagementNoticeLogged &&
+      !input.policeCustodyDawnRaidOrSolUnder30DaysPreemption,
+    aba118ConflictTaintOrUplAdviceOrUnloggedDeclinationBlocked:
+      !input.aba118ConflictClearedBeforeFactNarrative ||
+      !input.zeroUplValuationAndNonEngagementNoticeLogged ||
+      input.policeCustodyDawnRaidOrSolUnder30DaysPreemption,
+    custodyRaidOrUrgentSolPartnerBridged:
+      input.policeCustodyDawnRaidOrSolUnder30DaysPreemption,
+  };
+}
+
 
 
 

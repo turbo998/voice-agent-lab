@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg455" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19"/>
+      <stop offset="50%" stop-color="#0d1b32"/>
+      <stop offset="100%" stop-color="#071222"/>
+    </linearGradient>
+    <linearGradient id="cyan455" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emerald455" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amber455" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="rose455" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg455)"/>
+  <rect x="24" y="20" width="1152" height="640" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="1112" height="72" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="68" font-family="Segoe UI, Inter, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">
+    Law Firm Client Intake, ABA Rule 1.18 Conflict Screen &amp; Statute-of-Limitations Voice Architecture (2026)
+  </text>
+  <text x="68" y="94" font-family="Segoe UI, Inter, sans-serif" font-size="13" fill="#94a3b8">
+    ABA Model Rule 1.18 Pre-Fact Conflict Gate • Zero Unauthorized Practice of Law (UPL) • SOL Countdown &amp; Custody Arrest 0ms Attorney Bridge
+  </text>
+  <rect x="920" y="52" width="216" height="36" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1028" y="75" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700" fill="#a7f3d0">
+    LEGAL-ABA118-SOL-2026-01
+  </text>
+
+  <!-- Column 1: ABA Model Rule 1.18 Conflict-of-Interest Gate -->
+  <rect x="44" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#0284c7" stroke-width="1.5"/>
+  <rect x="44" y="128" width="356" height="40" rx="12" fill="url(#cyan455)"/>
+  <text x="222" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    1. ABA Rule 1.18 Pre-Fact Conflict Firewall
+  </text>
+
+  <rect x="62" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">Identity &amp; Adverse-Party First Gate</text>
+  <text x="76" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Collects ONLY caller name, adverse party</text>
+  <text x="76" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  name &amp; matter type in Phase 1</text>
+  <text x="76" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• Blocks caller from spilling confidential strategy</text>
+  <text x="76" y="281" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  before Intapp / Elite 3E / Clio conflict check</text>
+
+  <rect x="62" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">180ms Intapp / Clio Fuzzy Entity Match</text>
+  <text x="76" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Checks corporate parent/subsidiary tree &amp;</text>
+  <text x="76" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  phonetic Soundex/Metaphone spelling variants</text>
+  <text x="76" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• If Adverse Party == Active Firm Client: halts</text>
+  <text x="76" y="405" font-family="Segoe UI, Inter, sans-serif" fill="#38bdf8">  intake immediately without tainting firm partners</text>
+
+  <rect x="62" y="432" width="320" height="100" rx="8" fill="#0c4a6e" stroke="#0284c7"/>
+  <text x="76" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#7dd3fc">Ethical Wall &amp; Non-Engagement Notice</text>
+  <text x="76" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">• Seals conflicted call audio in isolated vault</text>
+  <text x="76" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">• Never reveals that adverse party is a client</text>
+  <text x="76" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#7dd3fc">• Prevents $500k+ firm disqualification motions</text>
+
+  <!-- Column 2: 24/7 Mass-Tort / PI Qualification & Retainer -->
+  <rect x="422" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#059669" stroke-width="1.5"/>
+  <rect x="422" y="128" width="356" height="40" rx="12" fill="url(#emerald455)"/>
+  <text x="600" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    2. 24/7 Case Qualification, Evidence &amp; Retainer
+  </text>
+
+  <rect x="440" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#34d399">Structured PI / Employment / M&amp;A Matrix</text>
+  <text x="454" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Evaluates liability, commercial policy limits,</text>
+  <text x="454" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  ER treatment within 72h &amp; police report ID</text>
+  <text x="454" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#38bdf8">• Texts link to upload crash photos &amp; police PDF</text>
+  <text x="454" y="281" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• Populates Filevine / Litify / Clio Matter fields</text>
+
+  <rect x="440" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Attorney-Approved Fee Retainer (DocuSign)</text>
+  <text x="454" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Never sends contingency retainer before conflict</text>
+  <text x="454" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  pass + intake rubric threshold + bar state match</text>
+  <text x="454" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Walks caller through state-mandated contingency</text>
+  <text x="454" y="405" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  disclosures while live on the call (+52% sign rate)</text>
+
+  <rect x="440" y="432" width="320" height="100" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="454" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#6ee7b7">Privilege-Preserving Zero-Training Vault</text>
+  <text x="454" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">• Zero third-party model training on intake audio</text>
+  <text x="454" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">• Customer-Managed Keys (CMK) per matter ID</text>
+  <text x="454" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#6ee7b7">• Preserves Attorney-Client Privilege under FRE 502</text>
+
+  <!-- Column 3: Zero UPL, SOL Countdown & Custody Preemption -->
+  <rect x="800" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#e11d48" stroke-width="1.5"/>
+  <rect x="800" y="128" width="356" height="40" rx="12" fill="url(#rose455)"/>
+  <text x="978" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    3. Zero UPL, SOL Lock &amp; Custody Arrest Bridge
+  </text>
+
+  <rect x="818" y="184" width="320" height="114" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+  <text x="832" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fb7185">Zero Unauthorized Practice of Law (UPL)</text>
+  <text x="832" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Mandatory opening disclaimer: AI Intake Assistant,</text>
+  <text x="832" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  no attorney-client relationship until signed</text>
+  <text x="832" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">• Hard-blocks AI from predicting case settlement</text>
+  <text x="832" y="283" font-family="Segoe UI, Inter, sans-serif" fill="#fb7185">  dollar value or advising on legal strategy/pleas</text>
+
+  <rect x="818" y="312" width="320" height="106" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="334" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Statute of Limitations (SOL) &lt;30d Alert</text>
+  <text x="832" y="354" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Calculates incident date vs state SOL &amp; 90-day</text>
+  <text x="832" y="373" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  Government Tort Claim Notice deadline</text>
+  <text x="832" y="392" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• If &lt;30 days remaining: immediate partner alert</text>
+
+  <rect x="818" y="432" width="320" height="100" rx="8" fill="#4c0519" stroke="#f43f5e"/>
+  <text x="832" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fda4af">0ms Police Custody / TRO / Warrant Bridge</text>
+  <text x="832" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">• Caller in police interrogation, DOJ/FBI raid,</text>
+  <text x="832" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">  or domestic violence TRO emergency</text>
+  <text x="832" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#fda4af">• 0ms bridge to On-Call Criminal/Defense Partner</text>
+
+  <!-- Bottom Telemetry Bar -->
+  <rect x="44" y="564" width="1112" height="76" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#38bdf8">
+    Benchmark &amp; Law Firm ROI (10,000 Prospective Client Intake Calls):
+  </text>
+  <text x="515" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="600" fill="#34d399">
+    After-Hours Signed Retainers: +52.4% • ABA 1.18 Conflict Taint: 0 • Malpractice SOL Misses: 0
+  </text>
+  <text x="68" y="618" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" fill="#94a3b8">
+    Guardrail ID: evaluateLawFirmIntakeAbaConflictSolVoice2026Guard • Policy: LAW-FIRM-INTAKE-ABA-CONFLICT-SOL-VOICE-2026-01
+  </text>
+</svg>
