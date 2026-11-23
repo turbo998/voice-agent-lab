@@ -12325,6 +12325,36 @@ export function evaluateRealEstatePropertyFhaEmergencyMaintenance2026Guard(input
   };
 }
 
+export interface IndustrialManufacturingLotoCmmsVoice2026Evaluation {
+  policyCode: "INDUSTRIAL-MANUFACTURING-LOTO-CMMS-VOICE-2026-01";
+  repairStepAndSapPmWorkOrderCommitAuthorized: boolean;
+  unverifiedLotoOrHallucinatedTorqueOrPlcWriteBlocked: boolean;
+  h2sGasOrManDownEhsRescueBroadcasted: boolean;
+}
+
+/**
+ * Deterministic Industrial Manufacturing & Oil/Gas Hands-Free CMMS, 95dB Noise & OSHA LOTO (OSHA 1910.147 LOTO Padlock + OPC-UA 0 RPM/0 Bar + Spoken Zero-Energy Check, Exact OEM Table Torque Readback & Zero PLC Write, 0ms H2S Gas / Man-Down EHS SOS) Guard (`INDUSTRIAL-MANUFACTURING-LOTO-CMMS-VOICE-2026-01`).
+ */
+export function evaluateIndustrialManufacturingLotoCmmsVoice2026Guard(input: {
+  oshaLotoPadlockScannedAndOpcUaZeroEnergyVerified: boolean;
+  exactOemTorqueReadbackConfirmedAndReadOnlyPlc: boolean;
+  h2sGasAlarmOrImuManDownDetected: boolean;
+}): IndustrialManufacturingLotoCmmsVoice2026Evaluation {
+  return {
+    policyCode: "INDUSTRIAL-MANUFACTURING-LOTO-CMMS-VOICE-2026-01",
+    repairStepAndSapPmWorkOrderCommitAuthorized:
+      input.oshaLotoPadlockScannedAndOpcUaZeroEnergyVerified &&
+      input.exactOemTorqueReadbackConfirmedAndReadOnlyPlc &&
+      !input.h2sGasAlarmOrImuManDownDetected,
+    unverifiedLotoOrHallucinatedTorqueOrPlcWriteBlocked:
+      !input.oshaLotoPadlockScannedAndOpcUaZeroEnergyVerified ||
+      !input.exactOemTorqueReadbackConfirmedAndReadOnlyPlc ||
+      input.h2sGasAlarmOrImuManDownDetected,
+    h2sGasOrManDownEhsRescueBroadcasted:
+      input.h2sGasAlarmOrImuManDownDetected,
+  };
+}
+
 
 
 
