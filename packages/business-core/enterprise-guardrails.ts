@@ -11815,6 +11815,36 @@ export function evaluateAiSalesSparringMockInterviewTutor2026Guard(input: {
   };
 }
 
+export interface EcommerceLivestreamShowroomAvatar2026Evaluation {
+  policyCode: "ECOMMERCE-LIVESTREAM-SHOWROOM-AVATAR-2026-01";
+  avatarPitchAndLiveQaAuthorized: boolean;
+  adLawViolationOrOutOfStockPitchOrPasserbyWakeBlocked: boolean;
+  walkAwayPrivacyWipeOrHumanHostTakeoverTriggered: boolean;
+}
+
+/**
+ * Deterministic E-Commerce 24/7 Livestream & Smart Showroom Voice + Avatar (Ad-Law Superlative & <15ms Redis Stock/Price-Floor Lock, Push/Pop Script Stack & <25ms Tri-Modal Sync, ToF+Gaze Wake & 3s Walk-Away Wipe) Guard (`ECOMMERCE-LIVESTREAM-SHOWROOM-AVATAR-2026-01`).
+ */
+export function evaluateEcommerceLivestreamShowroomAvatar2026Guard(input: {
+  adLawSuperlativeBlockedAndRedisStockPriceVerified: boolean;
+  scriptPushPopResumedAndTriModalCardSynced: boolean;
+  danmakuInjectionOrVisitorWalkAwayPrivacyWipePreemption: boolean;
+}): EcommerceLivestreamShowroomAvatar2026Evaluation {
+  return {
+    policyCode: "ECOMMERCE-LIVESTREAM-SHOWROOM-AVATAR-2026-01",
+    avatarPitchAndLiveQaAuthorized:
+      input.adLawSuperlativeBlockedAndRedisStockPriceVerified &&
+      input.scriptPushPopResumedAndTriModalCardSynced &&
+      !input.danmakuInjectionOrVisitorWalkAwayPrivacyWipePreemption,
+    adLawViolationOrOutOfStockPitchOrPasserbyWakeBlocked:
+      !input.adLawSuperlativeBlockedAndRedisStockPriceVerified ||
+      !input.scriptPushPopResumedAndTriModalCardSynced ||
+      input.danmakuInjectionOrVisitorWalkAwayPrivacyWipePreemption,
+    walkAwayPrivacyWipeOrHumanHostTakeoverTriggered:
+      input.danmakuInjectionOrVisitorWalkAwayPrivacyWipePreemption,
+  };
+}
+
 
 
 

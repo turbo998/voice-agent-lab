@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（434 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（435 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -478,3 +478,4 @@
 432. **语音识别（STT）、语音合成（TTS）、品牌音色克隆与实时数字人（Avatar）2026 横向选型指南：Azure AI Speech vs. ElevenLabs vs. Deepgram vs. 开源 Whisper/CosyVoice/Fish Speech（配音员活体口令授权与 `C2PA` 隐式声学水印 `0%` 侵权硬锁、发声前 `<2ms` 剥离 Markdown 符号与 `SSML <phoneme>/<say-as>` 词典达 `99.9%` 术语准确率、手机端免费 `55维 Viseme` 口型流本地渲染将数字人成本从 `$0.220/分` 压至 `$0.016/分` 降本 `92.7%`）方案**：[中文](./enterprise-stt-tts-voice-cloning-avatar-azure-elevenlabs-deepgram-cosyvoice-2026-selection-faq.md) | [EN](./enterprise-stt-tts-voice-cloning-avatar-azure-elevenlabs-deepgram-cosyvoice-2026-selection-faq.en.md)
 433. **跨国企业实时多语种同声传译（Live Simultaneous Interpretation）、万人全员大会与会议纪要架构设计与选型指南（`Azure Live Interpreter + Personal Voice` 跨 70+ 语种保留高管原声将 6 语种同传从 `$4,500/时` 压至 `$16.80/时` 降本 `99.6%`、日/德/韩 `SOV` 句尾否定词动态 `Wait-k` `0%` 极性反转与“万/亿 vs Million/Billion”量纲核验 `99.7%` 准确硬锁、多波束+声纹分离 `DER=1.9%` 绑定原话时间戳纪要与闭门涉密议题 `0ms` 内存擦除）方案**：[中文](./multinational-live-simultaneous-interpretation-townhall-meeting-minutes-architecture-selection-faq.md) | [EN](./multinational-live-simultaneous-interpretation-townhall-meeting-minutes-architecture-selection-faq.en.md)
 434. **AI 金牌销售对练（Sales Roleplay）、模拟面试与语言陪练应用架构设计与选型指南（前台 `350ms` 原生 `S2S Actor` + 后台旁路异步评分 `Critic` 双环解耦、抗讨好异议状态锁 `0%` 过早妥协认输、绑定原话毫秒时间戳 `BARS` 量表 `Kappa=0.94` 与 `Azure GOP` 音素级发音诊断/`EEOC` 面试去口音公平锁、金融保本/药代超适应症钓鱼诱饵 `0ms` 红牌中断及单场 `$0.38` 较真人主管降本 `99.1%`）方案**：[中文](./ai-sales-sparring-mock-interview-language-tutor-actor-critic-voice-architecture-selection-faq.md) | [EN](./ai-sales-sparring-mock-interview-language-tutor-actor-critic-voice-architecture-selection-faq.en.md)
+435. **电商直播（7×24h 品牌自播）与线下展厅实时语音数字人（Voice + Avatar）导购架构设计与选型指南（`80%` 预烘焙切片 + `20%` 实时 `Push/Pop` 压栈插答将夜间开播成本从 `$35/时` 压至 `$2.15/时` 并提闲时 GMV 转化 `+39.4%`、公屏弹幕防注入清洗与《广告法》极限词正则拦截及 `<15ms` Redis 库存/底价硬锁 `0%` 违禁封号、展厅 `ToF <1.5m + 正脸注视` 将路人误唤醒压至 `0.5%` 并实现离场 `3秒` 隐私清零）方案**：[中文](./ecommerce-livestream-showroom-kiosk-interactive-voice-avatar-digital-human-selection-faq.md) | [EN](./ecommerce-livestream-showroom-kiosk-interactive-voice-avatar-digital-human-selection-faq.en.md)

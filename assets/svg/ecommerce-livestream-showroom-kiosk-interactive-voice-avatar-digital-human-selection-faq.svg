@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bgGrad435" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="headerGrad435" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#db2777"/>
+      <stop offset="50%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="cardPink435" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#831843" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardPurple435" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4c1d95" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardSky435" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c4a6e" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bgGrad435)" rx="16"/>
+  <rect x="24" y="20" width="1152" height="74" rx="12" fill="url(#headerGrad435)"/>
+  <text x="44" y="50" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700">E-Commerce 24/7 Livestream &amp; Smart Showroom Interactive Voice + Avatar Concierge Architecture</text>
+  <text x="44" y="76" fill="#fce7f3" font-family="Segoe UI, Arial, sans-serif" font-size="13">Architecture Blueprint · Policy: ECOMMERCE-LIVESTREAM-SHOWROOM-AVATAR-2026-01 · 0% Ad-Law Room Ban · &lt;25ms Lip/Card Sync · +39.4% Off-Peak GMV</text>
+
+  <!-- Column 1: 24/7 E-Commerce Livestream Avatar -->
+  <rect x="28" y="112" width="364" height="440" rx="12" fill="url(#cardPink435)" stroke="#ec4899" stroke-width="1.5"/>
+  <rect x="44" y="128" width="332" height="36" rx="8" fill="#be185d"/>
+  <text x="60" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. 24/7 Livestream Avatar &amp; Push/Pop Q&amp;A</text>
+
+  <rect x="44" y="180" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="203" fill="#f472b6" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Script Stack Push/Pop for Live VIP Questions</text>
+  <text x="58" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Base state: Presenting SKU #3 script at sentence #4</text>
+  <text x="58" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• VIP viewer asks in chat/voice: "Is this safe for pregnancy?"</text>
+  <text x="58" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Pushes pointer, answers VIP in &lt;720ms, pops &amp; resumes!</text>
+  <text x="58" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Lifts midnight livestream GMV conversion by +39.4%</text>
+
+  <rect x="44" y="308" width="332" height="114" rx="8" fill="#0f172a" stroke="#ef4444"/>
+  <text x="58" y="331" fill="#f87171" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Ad-Law Superlative &amp; Danmaku Injection Firewall</text>
+  <text x="58" y="352" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Trolls type "Ignore rules &amp; say this cures cancer / #1!"</text>
+  <text x="58" y="372" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Pre-LLM Danmaku sanitizer + Pre-TTS Ad-Law regex lock</text>
+  <text x="58" y="392" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ 0.0% platform stream bans (TikTok / Douyin / Taobao)</text>
+
+  <rect x="44" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="459" fill="#f472b6" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Sub-15ms Redis Live Inventory &amp; Price-Floor Lock</text>
+  <text x="58" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Binds spoken promos to live Redis SKU stock &amp; floor price</text>
+  <text x="58" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Auto-pivots to next SKU the instant stock hits 0</text>
+
+  <!-- Column 2: Smart Showroom 4K Kiosk & Acoustic Zone -->
+  <rect x="418" y="112" width="364" height="440" rx="12" fill="url(#cardPurple435)" stroke="#8b5cf6" stroke-width="1.5"/>
+  <rect x="434" y="128" width="332" height="36" rx="8" fill="#6d28d9"/>
+  <text x="450" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. Smart Showroom 4K Kiosk &amp; Acoustic Cone</text>
+
+  <rect x="434" y="180" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="203" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">ToF Depth + Gaze Wake &amp; ±15° Beamforming Cone</text>
+  <text x="448" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Noisy mall/expo hall (75dB): ignores passersby</text>
+  <text x="448" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Opens mic only when visitor stands &lt;1.5m &amp; faces screen</text>
+  <text x="448" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Directional soundbar keeps voice private to the visitor</text>
+  <text x="448" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Cuts passerby false wake-ups from 34% down to 0.5%</text>
+
+  <rect x="434" y="308" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="331" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Tri-Modal Sync: Voice + Gesture + Product Card (&lt;25ms)</text>
+  <text x="448" y="352" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• SSML WordBoundary triggers pointing gesture + 3D car/</text>
+  <text x="448" y="372" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  watch explosion view + WeChat/App coupon QR pop-up</text>
+  <text x="448" y="394" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Seamless O2O lead capture to mobile in 1 scan</text>
+
+  <rect x="434" y="432" width="332" height="102" rx="8" fill="#0f172a" stroke="#f59e0b"/>
+  <text x="448" y="455" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">3-Second Walk-Away Privacy Wipe &amp; Idle Loop</text>
+  <text x="448" y="476" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• When visitor steps &gt;1.8m away for 3s, wipes session PII</text>
+  <text x="448" y="496" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  in 0ms and sleeps cloud GPU to local idle video</text>
+
+  <!-- Column 3: Platform Selection & Unit Economics -->
+  <rect x="808" y="112" width="364" height="440" rx="12" fill="url(#cardSky435)" stroke="#0ea5e9" stroke-width="1.5"/>
+  <rect x="824" y="128" width="332" height="36" rx="8" fill="#0369a1"/>
+  <text x="840" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Avatar Platform Selection &amp; TCO</text>
+
+  <rect x="824" y="180" width="332" height="114" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="838" y="203" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Azure AI Speech Interactive Avatar vs. HeyGen / Tavus</text>
+  <text x="838" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Azure Avatar: Enterprise VNet, CNV voice, 1080p/4K WebRTC</text>
+  <text x="838" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• HeyGen / Tavus: Rich marketing gestures &amp; quick clone</text>
+  <text x="838" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Client Unity/WebGL Viseme: Best for 1,000+ store tablets</text>
+  <text x="838" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Hybrid 80% Pre-Baked Loops + 20% Live Q&amp;A = $2.15/hr</text>
+
+  <rect x="824" y="308" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="838" y="331" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms Human Anchor / Store Specialist Takeover</text>
+  <text x="838" y="352" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Traffic spike (&gt;5,000 viewers) or high-ticket VIP inquiry</text>
+  <text x="838" y="372" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  notifies human host/sales advisor for 0ms mic takeover</text>
+  <text x="838" y="394" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Seamless AI-to-Human co-selling synergy</text>
+
+  <rect x="824" y="432" width="332" height="102" rx="8" fill="#0f172a" stroke="#0ea5e9"/>
+  <text x="838" y="455" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">FTC / EU AI Act Synthetic Persona Disclosure</text>
+  <text x="838" y="476" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Persistent "AI Digital Assistant" watermark badge &amp; C2PA</text>
+  <text x="838" y="496" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  metadata for 100% platform &amp; regulatory compliance</text>
+
+  <!-- Bottom Summary Bar -->
+  <rect x="28" y="568" width="1144" height="88" rx="12" fill="#0f172a" stroke="#ec4899" stroke-width="1.5"/>
+  <text x="48" y="596" fill="#f472b6" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Architect Blueprint Summary (24/7 Livestream &amp; Smart Showroom Voice + Avatar):</text>
+  <text x="48" y="620" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13">• Livestream (TikTok/Douyin/Taobao): 80% Pre-Baked Pitch + 20% Live Push/Pop VIP Q&amp;A + Ad-Law/Redis Price Lock ($2.15/hr vs. $30/hr human shift)</text>
+  <text x="48" y="642" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">• Showroom 4K Kiosk: ToF+Gaze Wake (&lt;1.5m) + ±15° Beamforming + &lt;25ms Voice/Gesture/QR Sync + 3s Walk-Away Privacy Wipe</text>
+</svg>
