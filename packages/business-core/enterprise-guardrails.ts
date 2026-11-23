@@ -13015,6 +13015,36 @@ export function evaluateBiopharmaCleanroomMes21Cfr11Voice2026Guard(input: {
   };
 }
 
+export interface PublicTransitAdaParatransitRailVoice2026Evaluation {
+  policyCode: "PUBLIC-TRANSIT-ADA-PARATRANSIT-RAIL-VOICE-2026-01";
+  adaParatransitBookingAndWillCallDispatchAuthorized: boolean;
+  ftaCapacityDenialOrPcaFeeOrWrongLiftOrUnfairNoShowBlocked: boolean;
+  railOccThirdRailPowerCutOrStrandedAdaRescuePreempted: boolean;
+}
+
+/**
+ * Deterministic Public Transit, FTA 49 CFR § 37.131 ADA Paratransit & Rail OCC Voice (Zero Next-Day Capacity Denial + ±60m Window / WAV Overflow + Zero Trip-Purpose Check + $0 PCA Fare, 1,000-lb Lift Match + 5-Min Dwell No-Show Audit + Step-Free Elevator Reroute, 0ms Rail OCC Track-Trespass Power-Cut & Stranded-Rider Rescue) Guard (`PUBLIC-TRANSIT-ADA-PARATRANSIT-RAIL-VOICE-2026-01`).
+ */
+export function evaluatePublicTransitAdaParatransitRailVoice2026Guard(input: {
+  ftaZeroCapacityDenialZeroPurposeCheckAndFreePcaEnforced: boolean;
+  heavyLiftMatchedNoShowDwellAuditedAndElevatorChecked: boolean;
+  railTrackTrespassOrStrandedDialysisRiderDetected: boolean;
+}): PublicTransitAdaParatransitRailVoice2026Evaluation {
+  return {
+    policyCode: "PUBLIC-TRANSIT-ADA-PARATRANSIT-RAIL-VOICE-2026-01",
+    adaParatransitBookingAndWillCallDispatchAuthorized:
+      input.ftaZeroCapacityDenialZeroPurposeCheckAndFreePcaEnforced &&
+      input.heavyLiftMatchedNoShowDwellAuditedAndElevatorChecked &&
+      !input.railTrackTrespassOrStrandedDialysisRiderDetected,
+    ftaCapacityDenialOrPcaFeeOrWrongLiftOrUnfairNoShowBlocked:
+      !input.ftaZeroCapacityDenialZeroPurposeCheckAndFreePcaEnforced ||
+      !input.heavyLiftMatchedNoShowDwellAuditedAndElevatorChecked ||
+      input.railTrackTrespassOrStrandedDialysisRiderDetected,
+    railOccThirdRailPowerCutOrStrandedAdaRescuePreempted:
+      input.railTrackTrespassOrStrandedDialysisRiderDetected,
+  };
+}
+
 
 
 
