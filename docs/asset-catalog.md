@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（447 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（448 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -491,3 +491,4 @@
 445. **B2B 外勤销售、财富管理理财师与医药代表（MSL）线下拜访随身语音副驾（In-Person Field Voice Copilot）架构设计与选型指南（双边录音授权口令未检出 `50ms` 内存清零硬锁、离场后上车 `45秒` 免手互动追问复盘将当日 `Salesforce/Veeva CRM` 完整录入率从 `31%` 提至 `96.4%` 每周省 `5.5小时`、医药不良事件 `AE` `0ms` 触发 `24h E2B(R3)` 法定上报与超适应症自动转交 `MSL`）方案**：[中文](./field-sales-wealth-advisor-pharma-msl-inperson-mobile-voice-copilot-selection-faq.md) | [EN](./field-sales-wealth-advisor-pharma-msl-inperson-mobile-voice-copilot-selection-faq.en.md)
 446. **政务服务便民热线（12345 / 311）、公用事业（电力/水务/燃气）停电风暴分流与应急抢占实时语音架构设计与选型指南（振铃前 `50ms` 配网 GIS 故障广播分流 `78.6%` 洪峰 + `200ms` 智能电表 `AMI` 电压探测指导户内推闸砍掉 `52.4%` 无效出车省 `$21.3万/万通`、严寒酷暑/医疗维生禁停锁与远程合闸“炉灶关闭”确认、燃气异味 `0ms` 强播禁触电灯开关撤离令及 580 部门 GIS 图谱 `96.8%` 一次派单准确率）方案**：[中文](./government-citizen-hotline-utility-storm-outage-emergency-dispatch-voice-selection-faq.md) | [EN](./government-citizen-hotline-utility-storm-outage-emergency-dispatch-voice-selection-faq.en.md)
 447. **K-12 与高等教育 1对1 苏格拉底启发式语音家教（Socratic Voice Tutor）、校园教务隐私（FERPA/COPPA）与言语无障碍架构设计与选型指南（后台 `SymPy` 算出精确解加入发声前禁播表配合 3 阶苏格拉底脚手架提解题掌握率 `+41.8%` 且 `0%` 抄作业剧透、口吃/构音障碍学生 `2,400ms` 动态等待窗压降 `94.2%` 误打断、`<13岁 COPPA` 零声纹留存与高校 `FERPA PIN`/`>=12学分` 保助学金锁及心理危机 `0ms` 零日志直通 `CAPS`）方案**：[中文](./education-socratic-voice-tutor-ferpa-campus-speech-accessibility-architecture-selection-faq.md) | [EN](./education-socratic-voice-tutor-ferpa-campus-speech-accessibility-architecture-selection-faq.en.md)
+448. **电信运营商（Telco & Broadband ISP）家庭宽带远程自愈（TR-069 / PON 告警诊断）、摄像头辅助连线（Visual IVR）与 SIM 卡补换卡（SIM-Swap）防欺诈实时语音架构设计与选型指南（`150ms` 调取 OLT 光猫告警区分电源松动 `Dying-Gasp` 与光纤断裂 `LOS` + 免 App 浏览器摄像头 `600ms` 识别插错网线口砍掉 `64.2%` 无效装维上门省 `$18.4万/万通`、重启光猫后 `95秒` 自动回拨测速、以及 `CPNI PIN + 3D活体 + CAMARA 72h` 零信任防 SIM-Swap 劫持）方案**：[中文](./telecom-broadband-isp-tr069-self-healing-visual-ivr-sim-swap-voice-selection-faq.md) | [EN](./telecom-broadband-isp-tr069-self-healing-visual-ivr-sim-swap-voice-selection-faq.en.md)

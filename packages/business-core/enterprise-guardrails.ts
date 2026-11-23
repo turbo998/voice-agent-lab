@@ -12205,6 +12205,36 @@ export function evaluateEducationSocraticTutorFerpaAccessibility2026Guard(input:
   };
 }
 
+export interface TelecomBroadbandTr069VisualIvrSimSwap2026Evaluation {
+  policyCode: "TELECOM-BROADBAND-TR069-VISUAL-IVR-SIM-SWAP-2026-01";
+  tr069HealAndRoamingCreditAndEsimAuthorized: boolean;
+  falseTruckRollOrSimSwapFraudOrMedicalPotsDropBlocked: boolean;
+  fiberSpliceDispatchOr24hSimCoolingTriggered: boolean;
+}
+
+/**
+ * Deterministic Telecom & Broadband ISP Home Fiber Self-Healing, Visual IVR & Anti-SIM-Swap (150ms OLT Dying-Gasp vs LOS + Medical-POTS Safe TR-069 Reboot, CPNI PIN + 3D Liveness + CAMARA 72h SIM-Swap Gate & <=$50 Roaming Diff, LOS Fiber-Cut Dispatch & 24h SIM Cooling Lock) Guard (`TELECOM-BROADBAND-TR069-VISUAL-IVR-SIM-SWAP-2026-01`).
+ */
+export function evaluateTelecomBroadbandTr069VisualIvrSimSwap2026Guard(input: {
+  oltDyingGaspVerifiedAndNoActiveMedicalPotsLine: boolean;
+  cpniPin3dLivenessCamara72hVerifiedAndCreditUnder50: boolean;
+  oltLosFiberCutOrHighRiskSimSwapDetected: boolean;
+}): TelecomBroadbandTr069VisualIvrSimSwap2026Evaluation {
+  return {
+    policyCode: "TELECOM-BROADBAND-TR069-VISUAL-IVR-SIM-SWAP-2026-01",
+    tr069HealAndRoamingCreditAndEsimAuthorized:
+      input.oltDyingGaspVerifiedAndNoActiveMedicalPotsLine &&
+      input.cpniPin3dLivenessCamara72hVerifiedAndCreditUnder50 &&
+      !input.oltLosFiberCutOrHighRiskSimSwapDetected,
+    falseTruckRollOrSimSwapFraudOrMedicalPotsDropBlocked:
+      !input.oltDyingGaspVerifiedAndNoActiveMedicalPotsLine ||
+      !input.cpniPin3dLivenessCamara72hVerifiedAndCreditUnder50 ||
+      input.oltLosFiberCutOrHighRiskSimSwapDetected,
+    fiberSpliceDispatchOr24hSimCoolingTriggered:
+      input.oltLosFiberCutOrHighRiskSimSwapDetected,
+  };
+}
+
 
 
 
