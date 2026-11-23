@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bgGrad441" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="headerGrad441" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="50%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="cardAmber441" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#78350f" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardBlue441" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cardEmerald441" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#065f46" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bgGrad441)" rx="16"/>
+  <rect x="24" y="20" width="1152" height="74" rx="12" fill="url(#headerGrad441)"/>
+  <text x="44" y="50" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700">QSR Drive-Thru, Smart Restaurant &amp; Retail Store Noise-Resilient Voice Ordering Architecture</text>
+  <text x="44" y="76" fill="#fef3c7" font-family="Segoe UI, Arial, sans-serif" font-size="13">Architecture Blueprint · Policy: QSR-DRIVETHRU-RETAIL-VOICE-ORDERING-2026-01 · 80dB Diesel Noise Isolation · 97.6% Modifier DAG Accuracy · +$1.85 AOV Lift</text>
+
+  <!-- Column 1: 80dB Drive-Thru Acoustic & Loop Sensor -->
+  <rect x="28" y="112" width="364" height="440" rx="12" fill="url(#cardAmber441)" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="44" y="128" width="332" height="36" rx="8" fill="#b45309"/>
+  <text x="60" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. 80dB Drive-Thru Post &amp; Acoustic Cone</text>
+
+  <rect x="44" y="180" width="332" height="118" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="203" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Inductive Loop Wake + 4-Mic Diesel Denoising</text>
+  <text x="58" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Opens mic ONLY when pavement magnetic loop detects</text>
+  <text x="58" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  vehicle stopped at ordering post (0 wind/siren false wake)</text>
+  <text x="58" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Cancels 80dB diesel engine idle &amp; highway traffic</text>
+  <text x="58" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Captures both driver &amp; passenger window cross-orders</text>
+
+  <rect x="44" y="312" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="58" y="335" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Mid-Sentence Mind-Change &amp; Modifier DAG</text>
+  <text x="58" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• "Two spicy chicken combos—wait, make one grilled, no</text>
+  <text x="58" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  mayo, sub onion rings, and a half-sweet oat latte"</text>
+  <text x="58" y="396" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ Updates live Order Cart AST in &lt;280ms (97.6% accuracy)</text>
+
+  <rect x="44" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#f59e0b"/>
+  <text x="58" y="459" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Live Digital Menu Board (ODMB) Cart Sync</text>
+  <text x="58" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Highlights each spoken item &amp; modifier on outdoor screen</text>
+  <text x="58" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  within 60ms so driver visually confirms before driving up</text>
+
+  <!-- Column 2: POS 86'd Inventory, Allergen Lock & Upsell -->
+  <rect x="418" y="112" width="364" height="440" rx="12" fill="url(#cardBlue441)" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="434" y="128" width="332" height="36" rx="8" fill="#1d4ed8"/>
+  <text x="450" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. POS 86'd Stock, Allergen Lock &amp; Upsell</text>
+
+  <rect x="434" y="180" width="332" height="118" rx="8" fill="#0f172a" stroke="#ef4444"/>
+  <text x="448" y="203" fill="#f87171" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Anaphylaxis Allergen &amp; Shared-Fryer Hard Lock</text>
+  <text x="448" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Never guesses ingredient allergens ("Is this peanut-free?")</text>
+  <text x="448" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Queries authoritative POS Allergen Matrix + reads mandatory</text>
+  <text x="448" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  shared-fryer cross-contact warning &amp; tags KDS in RED</text>
+  <text x="448" y="284" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ 0.0% unverified allergen claims or unlabeled KDS tickets</text>
+
+  <rect x="434" y="312" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="448" y="335" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Real-Time POS "86'd" Out-of-Stock &amp; Daypart Gate</text>
+  <text x="448" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Syncs with NCR Aloha / Oracle Simphony / Toast POS</text>
+  <text x="448" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks breakfast items after 10:30 AM &amp; sold-out SKUs,</text>
+  <text x="448" y="396" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">  instantly pitching highest-margin in-stock alternative</text>
+
+  <rect x="434" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#3b82f6"/>
+  <text x="448" y="459" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">1-Offer Weather/Daypart Upsell (+$1.85 Ticket Lift)</text>
+  <text x="448" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Humans offer upsells on 22% of cars; AI offers on 100%!</text>
+  <text x="448" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Strictly capped at 1 natural 6-word offer (+28% take rate)</text>
+
+  <!-- Column 3: Edge Resilience & 0ms Crew Headset Takeover -->
+  <rect x="808" y="112" width="364" height="440" rx="12" fill="url(#cardEmerald441)" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="824" y="128" width="332" height="36" rx="8" fill="#047857"/>
+  <text x="840" y="151" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Store Edge NPU &amp; 0ms Crew Takeover</text>
+
+  <rect x="824" y="180" width="332" height="118" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="838" y="203" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Silent 1-Turn Crew Headset Takeover (&lt;150ms)</text>
+  <text x="838" y="224" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• If confidence &lt; 0.82 or 1st clarification fails, alerts</text>
+  <text x="838" y="244" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">  crew wireless headset (HME / Panasonic) in 0ms</text>
+  <text x="838" y="264" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Crew member taps headset or fixes 1 item on POS screen</text>
+  <text x="838" y="284" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">  without driver ever knowing AI handed off (99.4% speed)</text>
+
+  <rect x="824" y="312" width="332" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="838" y="335" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Store Edge Box Offline Continuity (Lunch Rush Safe)</text>
+  <text x="838" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Runs local edge container + quantized menu SLM in store</text>
+  <text x="838" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Writes directly to local LAN POS &amp; Kitchen Display (KDS)</text>
+  <text x="838" y="396" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600">✓ 22s faster lane throughput (-1.4 FTE labor per shift)</text>
+
+  <rect x="824" y="436" width="332" height="98" rx="8" fill="#0f172a" stroke="#10b981"/>
+  <text x="838" y="459" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">1,000-Store Chain ROI (+$42k/Store/Yr Net Impact)</text>
+  <text x="838" y="480" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• SoundHound / Presto SaaS vs. Hybrid Store Edge + Cloud</text>
+  <text x="838" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• $0.018/order AI cost vs. +$1.85 average ticket upsell lift</text>
+
+  <!-- Bottom Summary Bar -->
+  <rect x="28" y="568" width="1144" height="88" rx="12" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="48" y="596" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Architect Blueprint Summary (QSR Drive-Thru, Smart Restaurant &amp; Retail Store Voice Ordering):</text>
+  <text x="48" y="620" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13">• Acoustic &amp; Cart Layer: Inductive-Loop Wake + 80dB Diesel Denoising + &lt;280ms Modifier Cart AST + Live ODMB Screen Sync (97.6% Order Accuracy)</text>
+  <text x="48" y="642" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">• POS &amp; Safety Layer: Live 86'd Stock &amp; Daypart Lock + Mandatory Allergen/Fryer Warning + 1-Turn Crew Headset Assist (+$1.85 AOV Lift)</text>
+</svg>

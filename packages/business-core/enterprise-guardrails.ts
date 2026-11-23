@@ -11995,6 +11995,36 @@ export function evaluateComplianceRecordingPciRedactionAutoQa2026Guard(input: {
   };
 }
 
+export interface QsrDrivethruRetailVoiceOrdering2026Evaluation {
+  policyCode: "QSR-DRIVETHRU-RETAIL-VOICE-ORDERING-2026-01";
+  posCartCommitAndKdsDispatchAuthorized: boolean;
+  soldOut86dItemOrUnguardedAllergenOrFalseWakeBlocked: boolean;
+  silentCrewHeadsetTakeoverTriggered: boolean;
+}
+
+/**
+ * Deterministic QSR Drive-Thru, Smart Restaurant & Retail Store Voice Ordering (Inductive-Loop Wake & <280ms Modifier AST + Live POS 86'd Stock Lock, Verified Allergen Matrix & Red KDS Tag, 0ms Silent Crew HME Headset Takeover) Guard (`QSR-DRIVETHRU-RETAIL-VOICE-ORDERING-2026-01`).
+ */
+export function evaluateQsrDrivethruRetailVoiceOrdering2026Guard(input: {
+  inductiveLoopActiveAndModifierAstSyncedWithPosStock: boolean;
+  allergenMatrixDisclosedAndSingleUpsellCapped: boolean;
+  lowConfidenceOrSecondClarificationCrewHeadsetPreemption: boolean;
+}): QsrDrivethruRetailVoiceOrdering2026Evaluation {
+  return {
+    policyCode: "QSR-DRIVETHRU-RETAIL-VOICE-ORDERING-2026-01",
+    posCartCommitAndKdsDispatchAuthorized:
+      input.inductiveLoopActiveAndModifierAstSyncedWithPosStock &&
+      input.allergenMatrixDisclosedAndSingleUpsellCapped &&
+      !input.lowConfidenceOrSecondClarificationCrewHeadsetPreemption,
+    soldOut86dItemOrUnguardedAllergenOrFalseWakeBlocked:
+      !input.inductiveLoopActiveAndModifierAstSyncedWithPosStock ||
+      !input.allergenMatrixDisclosedAndSingleUpsellCapped ||
+      input.lowConfidenceOrSecondClarificationCrewHeadsetPreemption,
+    silentCrewHeadsetTakeoverTriggered:
+      input.lowConfidenceOrSecondClarificationCrewHeadsetPreemption,
+  };
+}
+
 
 
 
