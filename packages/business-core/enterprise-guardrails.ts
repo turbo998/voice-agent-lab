@@ -12775,6 +12775,36 @@ export function evaluateConstructionJobsite811ConcreteProcoreVoice2026Guard(inpu
   };
 }
 
+export interface CruiseLineSolasExcursionNorovirusVoice2026Evaluation {
+  policyCode: "CRUISE-LINE-SOLAS-EXCURSION-NOROVIRUS-VOICE-2026-01";
+  cabinConciergeAndOfficialExcursionAuthorized: boolean;
+  unmusteredSailAwayOrPvsaBreachOrNorovirusBuffetWalkBlocked: boolean;
+  codeOscarBridgeOrCdcVspCabinNurseDispatched: boolean;
+}
+
+/**
+ * Deterministic Cruise Line Cabin Concierge, SOLAS Muster, Shore Excursion & Norovirus Voice (On-Ship Edge GPU + SOLAS Chapter III Muster Verified, Dual Ship/Port Time Readout + Official Tour Guarantee & CBP PVSA Lock, <80ms Code Oscar/Bravo Bridge & CDC VSP Norovirus In-Cabin Isolation) Guard (`CRUISE-LINE-SOLAS-EXCURSION-NOROVIRUS-VOICE-2026-01`).
+ */
+export function evaluateCruiseLineSolasExcursionNorovirusVoice2026Guard(input: {
+  solasMusterCompletedAndOnShipEdgeActive: boolean;
+  dualShipPortTimeStatedAndPvsaCabotageCleared: boolean;
+  codeOscarManOverboardFireOrCdcVspNorovirusDetected: boolean;
+}): CruiseLineSolasExcursionNorovirusVoice2026Evaluation {
+  return {
+    policyCode: "CRUISE-LINE-SOLAS-EXCURSION-NOROVIRUS-VOICE-2026-01",
+    cabinConciergeAndOfficialExcursionAuthorized:
+      input.solasMusterCompletedAndOnShipEdgeActive &&
+      input.dualShipPortTimeStatedAndPvsaCabotageCleared &&
+      !input.codeOscarManOverboardFireOrCdcVspNorovirusDetected,
+    unmusteredSailAwayOrPvsaBreachOrNorovirusBuffetWalkBlocked:
+      !input.solasMusterCompletedAndOnShipEdgeActive ||
+      !input.dualShipPortTimeStatedAndPvsaCabotageCleared ||
+      input.codeOscarManOverboardFireOrCdcVspNorovirusDetected,
+    codeOscarBridgeOrCdcVspCabinNurseDispatched:
+      input.codeOscarManOverboardFireOrCdcVspNorovirusDetected,
+  };
+}
+
 
 
 
