@@ -12355,6 +12355,36 @@ export function evaluateIndustrialManufacturingLotoCmmsVoice2026Guard(input: {
   };
 }
 
+export interface AviationRampMaritimePortRoipVoice2026Evaluation {
+  policyCode: "AVIATION-RAMP-MARITIME-PORT-ROIP-VOICE-2026-01";
+  acdmTurnaroundAndPortGateSlotAuthorized: boolean;
+  atcClearanceIntrusionOrInvalidIso6346OrImdgConflictBlocked: boolean;
+  rampStopPushbackOrCraneTwistlockPreempted: boolean;
+}
+
+/**
+ * Deterministic Aviation Ramp Turnaround, Maritime Port Terminal & IMDG HazMat RoIP Voice (Half-Duplex PTT 250ms Pre-Buffer + Fuel Dual-Readback & ATC Air-Gap, ISO 6346 Modulo-11 Check-Digit + IMO IMDG Segregation & Reefer Sign Match, 0ms Ramp Pushback/Fuel-Spill/Twistlock Stop) Guard (`AVIATION-RAMP-MARITIME-PORT-ROIP-VOICE-2026-01`).
+ */
+export function evaluateAviationRampMaritimePortRoipVoice2026Guard(input: {
+  halfDuplexPttSyncedFuelReadbackAndAtcAirGapped: boolean;
+  iso6346Modulo11ValidAndImdgReeferSignVerified: boolean;
+  rampStopPushbackFuelSpillOrTwistlockEmergency: boolean;
+}): AviationRampMaritimePortRoipVoice2026Evaluation {
+  return {
+    policyCode: "AVIATION-RAMP-MARITIME-PORT-ROIP-VOICE-2026-01",
+    acdmTurnaroundAndPortGateSlotAuthorized:
+      input.halfDuplexPttSyncedFuelReadbackAndAtcAirGapped &&
+      input.iso6346Modulo11ValidAndImdgReeferSignVerified &&
+      !input.rampStopPushbackFuelSpillOrTwistlockEmergency,
+    atcClearanceIntrusionOrInvalidIso6346OrImdgConflictBlocked:
+      !input.halfDuplexPttSyncedFuelReadbackAndAtcAirGapped ||
+      !input.iso6346Modulo11ValidAndImdgReeferSignVerified ||
+      input.rampStopPushbackFuelSpillOrTwistlockEmergency,
+    rampStopPushbackOrCraneTwistlockPreempted:
+      input.rampStopPushbackFuelSpillOrTwistlockEmergency,
+  };
+}
+
 
 
 

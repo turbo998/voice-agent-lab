@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg453" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19"/>
+      <stop offset="50%" stop-color="#0d1d35"/>
+      <stop offset="100%" stop-color="#071222"/>
+    </linearGradient>
+    <linearGradient id="cyan453" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emerald453" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amber453" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="rose453" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg453)"/>
+  <rect x="24" y="20" width="1152" height="640" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="1112" height="72" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="68" font-family="Segoe UI, Inter, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">
+    Aviation Ramp Turnaround, Maritime Port Terminal &amp; IMDG HazMat RoIP Voice Architecture (2026)
+  </text>
+  <text x="68" y="94" font-family="Segoe UI, Inter, sans-serif" font-size="13" fill="#94a3b8">
+    TETRA/DMR RoIP Half-Duplex PTT Gateway • ISO 6346 Container Check-Digit &amp; NATO Phonetics • IMDG HazMat Segregation • 0ms Ramp FOD/Jet-Blast Stop
+  </text>
+  <rect x="920" y="52" width="216" height="36" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1028" y="75" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700" fill="#a7f3d0">
+    AVIATION-PORT-ROIP-2026-01
+  </text>
+
+  <!-- Column 1: TETRA/DMR RoIP & Airport Ramp Turnaround -->
+  <rect x="44" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#0284c7" stroke-width="1.5"/>
+  <rect x="44" y="128" width="356" height="40" rx="12" fill="url(#cyan453)"/>
+  <text x="222" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    1. TETRA/DMR RoIP &amp; Aircraft Turnaround
+  </text>
+
+  <rect x="62" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">Half-Duplex PTT Key-Up / Squelch Tail Sync</text>
+  <text x="76" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Bridges Motorola DMR / Airbus TETRA via RoIP</text>
+  <text x="76" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Waits for COR/PTT-Release squelch tail + 180ms</text>
+  <text x="76" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• Pre-buffers 250ms TX key-up so first syllable</text>
+  <text x="76" y="281" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">  is never clipped on walkie-talkie repeaters</text>
+
+  <rect x="62" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">A-CDM Ramp Turnaround Milestone Extraction</text>
+  <text x="76" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Listens to fueling, catering, de-icing &amp; baggage</text>
+  <text x="76" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  talkgroups under 105dB APU jet noise</text>
+  <text x="76" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Updates Amadeus Altéa / SITA A-CDM TOBT</text>
+  <text x="76" y="405" font-family="Segoe UI, Inter, sans-serif" fill="#38bdf8">• Fuel load requires dual-factor kg/liters readback</text>
+
+  <rect x="62" y="432" width="320" height="100" rx="8" fill="#0c4a6e" stroke="#0284c7"/>
+  <text x="76" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#7dd3fc">Delay-Minute Penalty Reduction ($100/min)</text>
+  <text x="76" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">• Spots missing wheelchair or catering truck 18m</text>
+  <text x="76" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">  before departure; auto-pages ramp lead</text>
+  <text x="76" y="512" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#7dd3fc">• Saves 4.6 delay mins/turnaround (-$340k/10k)</text>
+
+  <!-- Column 2: Maritime Port TOS, ISO 6346 & Gate Kiosk -->
+  <rect x="422" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#059669" stroke-width="1.5"/>
+  <rect x="422" y="128" width="356" height="40" rx="12" fill="url(#emerald453)"/>
+  <text x="600" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    2. Port Terminal Gate Kiosk &amp; ISO 6346 TOS Sync
+  </text>
+
+  <rect x="440" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#34d399">ISO 6346 Modulo-11 Container Check-Digit</text>
+  <text x="454" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Validates 4-letter prefix + 6 digits + check digit</text>
+  <text x="454" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  (e.g., MSKU 388140-7) in 5ms via Modulo-11</text>
+  <text x="454" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#38bdf8">• Fuses gate OCR camera with drayage driver voice</text>
+  <text x="454" y="281" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• 0% wrong-container crane picks in Navis N4 TOS</text>
+
+  <rect x="440" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Multilingual Truck Gate &amp; TWIC Verification</text>
+  <text x="454" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Supports 18 driver languages at port pedestal</text>
+  <text x="454" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Resolves Customs Hold / Demurrage / Seal mismatch</text>
+  <text x="454" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Issues RTG yard block slot (e.g., Block C4, Row 12)</text>
+  <text x="454" y="405" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• Cuts truck gate dwell time from 11.4m to 2.1m</text>
+
+  <rect x="440" y="432" width="320" height="100" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="454" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#6ee7b7">Reefer Cold-Chain Setpoint Dual Lock</text>
+  <text x="454" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">• Distinguishes Minus (-18°C frozen) vs Plus (+2°C</text>
+  <text x="454" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">  chilled pharma/produce) against Navis N4 EDI</text>
+  <text x="454" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#6ee7b7">• Blocks sign-confused reefer plug-in settings</text>
+
+  <!-- Column 3: IMDG HazMat Segregation & Ramp Emergency Stop -->
+  <rect x="800" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#e11d48" stroke-width="1.5"/>
+  <rect x="800" y="128" width="356" height="40" rx="12" fill="url(#rose453)"/>
+  <text x="978" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    3. IMDG HazMat Segregation &amp; 0ms Ramp Stop
+  </text>
+
+  <rect x="818" y="184" width="320" height="114" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+  <text x="832" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fb7185">IMO IMDG Code HazMat Segregation Matrix</text>
+  <text x="832" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Cross-checks UN Number &amp; Class (e.g., Class 3</text>
+  <text x="832" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  Flammable vs Class 5.1 Oxidizer) before yard slot</text>
+  <text x="832" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">• Hard-blocks incompatible adjacent stowage</text>
+  <text x="832" y="283" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#fb7185">• Zero AI authority on ATC / Pilot runway clearances</text>
+
+  <rect x="818" y="312" width="320" height="106" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="334" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">0ms Ramp Fuel-Spill / Wingtip / Man-Overboard</text>
+  <text x="832" y="354" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Detects "Stop pushback!", "Fuel spill", "Wingtip</text>
+  <text x="832" y="373" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  clearance", or "Container twistlock stuck"</text>
+  <text x="832" y="392" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• 0ms priority preemption across all RoIP channels</text>
+
+  <rect x="818" y="432" width="320" height="100" rx="8" fill="#4c0519" stroke="#f43f5e"/>
+  <text x="832" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fda4af">SOLAS VGM Weight &amp; Load-Sheet Guard</text>
+  <text x="832" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">• Blocks container crane lift without Verified Gross</text>
+  <text x="832" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">  Mass (SOLAS VGM) &amp; aircraft ULD weight match</text>
+  <text x="832" y="512" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#fda4af">• 100% IATA IGOM &amp; IMO IMDG audit compliance</text>
+
+  <!-- Bottom Telemetry Bar -->
+  <rect x="44" y="564" width="1112" height="76" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#38bdf8">
+    Benchmark &amp; Operations ROI (10,000 Flights / Port Gate Transactions):
+  </text>
+  <text x="530" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="600" fill="#34d399">
+    Gate Dwell: 11.4m → 2.1m • Turnaround Delay Saved: -$340,000/10k Ops • ISO 6346 / IMDG Errors: 0
+  </text>
+  <text x="68" y="618" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" fill="#94a3b8">
+    Guardrail ID: evaluateAviationRampMaritimePortRoipVoice2026Guard • Policy: AVIATION-RAMP-MARITIME-PORT-ROIP-VOICE-2026-01
+  </text>
+</svg>
