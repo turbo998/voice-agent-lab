@@ -12445,6 +12445,36 @@ export function evaluateLawFirmIntakeAbaConflictSolVoice2026Guard(input: {
   };
 }
 
+export interface SportsVenueAdaTicketingSuiteVoice2026Evaluation {
+  policyCode: "SPORTS-VENUE-ADA-TICKETING-SUITE-VOICE-2026-01";
+  adaTicketOrderAndSuiteFnbAuthorized: boolean;
+  adaMedicalInterrogationOrPostCutoffAlcoholOrJunkFeeBlocked: boolean;
+  codeAdamLostChildOrVomitoryEmsDispatched: boolean;
+}
+
+/**
+ * Deterministic Sports Stadium, Theme Park & Live Venue ADA Ticketing & VIP Suite Voice (DOJ ADA 28 CFR 36.302(f) 1+3 Companion Price Parity + Zero Medical Proof & FTC All-In Pricing, Live Game-Clock Alcohol Cutoff Before Q4/8th Inning, 0ms Code Adam Lost Child / Section-to-Vomitory EMS Dispatch) Guard (`SPORTS-VENUE-ADA-TICKETING-SUITE-VOICE-2026-01`).
+ */
+export function evaluateSportsVenueAdaTicketingSuiteVoice2026Guard(input: {
+  dojAdaCompanionParityAndZeroMedicalInterrogationWithAllInPrice: boolean;
+  withinGameClockAlcoholWindowAndSafeTixVerified: boolean;
+  codeAdamLostChildOrInBowlMedicalEmergency: boolean;
+}): SportsVenueAdaTicketingSuiteVoice2026Evaluation {
+  return {
+    policyCode: "SPORTS-VENUE-ADA-TICKETING-SUITE-VOICE-2026-01",
+    adaTicketOrderAndSuiteFnbAuthorized:
+      input.dojAdaCompanionParityAndZeroMedicalInterrogationWithAllInPrice &&
+      input.withinGameClockAlcoholWindowAndSafeTixVerified &&
+      !input.codeAdamLostChildOrInBowlMedicalEmergency,
+    adaMedicalInterrogationOrPostCutoffAlcoholOrJunkFeeBlocked:
+      !input.dojAdaCompanionParityAndZeroMedicalInterrogationWithAllInPrice ||
+      !input.withinGameClockAlcoholWindowAndSafeTixVerified ||
+      input.codeAdamLostChildOrInBowlMedicalEmergency,
+    codeAdamLostChildOrVomitoryEmsDispatched:
+      input.codeAdamLostChildOrInBowlMedicalEmergency,
+  };
+}
+
 
 
 
