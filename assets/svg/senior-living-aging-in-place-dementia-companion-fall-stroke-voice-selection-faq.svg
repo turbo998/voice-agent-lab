@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg458" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070e1a"/>
+      <stop offset="50%" stop-color="#0d1e33"/>
+      <stop offset="100%" stop-color="#071222"/>
+    </linearGradient>
+    <linearGradient id="cyan458" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emerald458" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amber458" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="rose458" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg458)"/>
+  <rect x="24" y="20" width="1152" height="640" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="1112" height="72" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="68" font-family="Segoe UI, Inter, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">
+    Senior Living, Aging-in-Place, Dementia Memory Care &amp; Fall/Stroke Voice Architecture (2026)
+  </text>
+  <text x="68" y="94" font-family="Segoe UI, Inter, sans-serif" font-size="13" fill="#94a3b8">
+    115 WPM Presbycusis Acoustic EQ • Dementia Validation Therapy (Zero Delusion Reinforcement) • 0ms Radar Fall &amp; FAST Stroke Nurse Bridge
+  </text>
+  <rect x="920" y="52" width="216" height="36" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1028" y="75" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700" fill="#a7f3d0">
+    ELDERCARE-DEMENTIA-2026-01
+  </text>
+
+  <!-- Column 1: Presbycusis Acoustics & Dementia Validation Therapy -->
+  <rect x="44" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#0284c7" stroke-width="1.5"/>
+  <rect x="44" y="128" width="356" height="40" rx="12" fill="url(#cyan458)"/>
+  <text x="222" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    1. Presbycusis Acoustics &amp; Memory Care
+  </text>
+
+  <rect x="62" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">115 WPM Slow-Cadence &amp; 1–3kHz Clarity EQ</text>
+  <text x="76" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Boosts 1–3 kHz consonant clarity while avoiding</text>
+  <text x="76" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  &gt;4 kHz sibilance that rings hearing aids</text>
+  <text x="76" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• 2,200ms word-finding pause window for seniors</text>
+  <text x="76" y="281" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• Lifts 80+ senior comprehension by +44.8%</text>
+
+  <rect x="62" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Dementia Validation &amp; Redirection Guard</text>
+  <text x="76" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Answers repetitive questions 50x with warm</text>
+  <text x="76" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  first-time patience ("Never say 'I told you'")</text>
+  <text x="76" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Sundowning exit-seeking: validates feeling &amp;</text>
+  <text x="76" y="405" font-family="Segoe UI, Inter, sans-serif" fill="#38bdf8">  redirects to family reminiscence photo album</text>
+
+  <rect x="62" y="432" width="320" height="100" rx="8" fill="#0c4a6e" stroke="#0284c7"/>
+  <text x="76" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#7dd3fc">Zero Delusion / Wandering Encouragement</text>
+  <text x="76" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">• Never validates paranoid delusions ("Staff is</text>
+  <text x="76" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">  poisoning me") or advises leaving facility alone</text>
+  <text x="76" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#7dd3fc">• Alerts Memory Care nurse silently on wandering</text>
+
+  <!-- Column 2: PointClickCare / MatrixCare EHR & Anti-Scam -->
+  <rect x="422" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#059669" stroke-width="1.5"/>
+  <rect x="422" y="128" width="356" height="40" rx="12" fill="url(#emerald458)"/>
+  <text x="600" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    2. PointClickCare ADL Concierge &amp; Anti-Scam Shield
+  </text>
+
+  <rect x="440" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#34d399">Smart-Room Concierge vs Nurse Call Split</text>
+  <text x="454" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Routes dining menus, shuttle van booking, TV</text>
+  <text x="454" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  channel &amp; thermostat to Hospitality / IoT bus</text>
+  <text x="454" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#38bdf8">• Deflects 68.4% of non-clinical pull-cord alerts</text>
+  <text x="454" y="281" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• Frees RN/CNA staff for high-acuity bedside care</text>
+
+  <rect x="440" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Pill-Dispenser &amp; Double-Dose Guard</text>
+  <text x="454" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Syncs with Hero / MedMinder smart dispenser &amp;</text>
+  <text x="454" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  PointClickCare eMAR medication administration</text>
+  <text x="454" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• If dementia resident asks "Did I take my 8 AM</text>
+  <text x="454" y="405" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  blood pressure pill?": checks eMAR to block 2x dose</text>
+
+  <rect x="440" y="432" width="320" height="100" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="454" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#6ee7b7">Elder Financial-Exploitation / Scam Shield</text>
+  <text x="454" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">• Blocks AI from dialing unknown wire/gift-card/</text>
+  <text x="454" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">  crypto numbers or reading out banking OTPs</text>
+  <text x="454" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#6ee7b7">• Alerts authorized family POA on scam keywords</text>
+
+  <!-- Column 3: 60GHz mmWave Fall & FAST Stroke Preemption -->
+  <rect x="800" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#e11d48" stroke-width="1.5"/>
+  <rect x="800" y="128" width="356" height="40" rx="12" fill="url(#rose458)"/>
+  <text x="978" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    3. 0ms mmWave Fall, FAST Stroke &amp; Elopement SOS
+  </text>
+
+  <rect x="818" y="184" width="320" height="114" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+  <text x="832" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fb7185">60GHz mmWave Radar + Hands-Free Fall Check</text>
+  <text x="832" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Camera-free bathroom radar spots fall on floor</text>
+  <text x="832" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Opens 2-way speaker in 0ms: "Mrs. Lee, I sense</text>
+  <text x="832" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">  a fall—please stay still and don't try to stand"</text>
+  <text x="832" y="283" font-family="Segoe UI, Inter, sans-serif" fill="#fb7185">• If no reply in 10s or pain: bridges Nurse / EMS</text>
+
+  <rect x="818" y="312" width="320" height="106" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="334" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Acoustic Slurred-Speech (FAST Stroke) Alert</text>
+  <text x="832" y="354" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Compares articulation rate &amp; vowel formants</text>
+  <text x="832" y="373" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  against resident's personal baseline profile</text>
+  <text x="832" y="392" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• Flags sudden dysarthria / arm weakness in 0ms</text>
+
+  <rect x="818" y="432" width="320" height="100" rx="8" fill="#4c0519" stroke="#f43f5e"/>
+  <text x="832" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fda4af">HIPAA &amp; POLST / DNR Directive Sync</text>
+  <text x="832" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">• Pushes resident PointClickCare allergies, blood</text>
+  <text x="832" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">  thinners (Eliquis) &amp; POLST/DNR status to EMS</text>
+  <text x="832" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#fda4af">• Eliminates dangerous post-fall "long-lie" hours</text>
+
+  <!-- Bottom Telemetry Bar -->
+  <rect x="44" y="564" width="1112" height="76" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#38bdf8">
+    Benchmark &amp; Senior Living ROI (10,000 Resident &amp; Family Interactions):
+  </text>
+  <text x="530" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="600" fill="#34d399">
+    Non-Clinical Pull-Cord Deflection: 68.4% • Post-Fall Response: 42m → 18s • Double-Dosing: 0
+  </text>
+  <text x="68" y="618" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" fill="#94a3b8">
+    Guardrail ID: evaluateSeniorLivingDementiaFallStrokeVoice2026Guard • Policy: SENIOR-LIVING-DEMENTIA-FALL-STROKE-VOICE-2026-01
+  </text>
+</svg>

@@ -12505,6 +12505,36 @@ export function evaluateAgTechCooperativeFifraCropInsuranceVoice2026Guard(input:
   };
 }
 
+export interface SeniorLivingDementiaFallStrokeVoice2026Evaluation {
+  policyCode: "SENIOR-LIVING-DEMENTIA-FALL-STROKE-VOICE-2026-01";
+  geriatricConciergeAndReminiscenceAuthorized: boolean;
+  doubleDosingOrDelusionValidationOrFinancialScamBlocked: boolean;
+  mmWaveFallNurseOrFastStrokeEmsBridged: boolean;
+}
+
+/**
+ * Deterministic Senior Living, Aging-in-Place, Dementia Memory Care & Fall/Stroke Voice (115 WPM Presbycusis EQ + Validation Therapy Zero Delusion Reinforcement, PointClickCare eMAR Double-Dose Check & Elder-Scam Wire Block, 0ms 60GHz mmWave Fall / FAST Slurred-Speech Stroke Nurse/EMS Bridge) Guard (`SENIOR-LIVING-DEMENTIA-FALL-STROKE-VOICE-2026-01`).
+ */
+export function evaluateSeniorLivingDementiaFallStrokeVoice2026Guard(input: {
+  presbycusis115WpmAndValidationTherapyWithoutDelusion: boolean;
+  pointClickCareEmarCheckedAndElderScamWireBlocked: boolean;
+  mmWaveBathroomFallOrFastStrokeDysarthriaDetected: boolean;
+}): SeniorLivingDementiaFallStrokeVoice2026Evaluation {
+  return {
+    policyCode: "SENIOR-LIVING-DEMENTIA-FALL-STROKE-VOICE-2026-01",
+    geriatricConciergeAndReminiscenceAuthorized:
+      input.presbycusis115WpmAndValidationTherapyWithoutDelusion &&
+      input.pointClickCareEmarCheckedAndElderScamWireBlocked &&
+      !input.mmWaveBathroomFallOrFastStrokeDysarthriaDetected,
+    doubleDosingOrDelusionValidationOrFinancialScamBlocked:
+      !input.presbycusis115WpmAndValidationTherapyWithoutDelusion ||
+      !input.pointClickCareEmarCheckedAndElderScamWireBlocked ||
+      input.mmWaveBathroomFallOrFastStrokeDysarthriaDetected,
+    mmWaveFallNurseOrFastStrokeEmsBridged:
+      input.mmWaveBathroomFallOrFastStrokeDysarthriaDetected,
+  };
+}
+
 
 
 
