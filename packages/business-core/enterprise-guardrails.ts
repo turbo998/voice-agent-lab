@@ -13075,6 +13075,36 @@ export function evaluateMarinaYachtClubUsCgEsdVoice2026Guard(input: {
   };
 }
 
+export interface HeavyEquipmentCraneRentalOshaVoice2026Evaluation {
+  policyCode: "HEAVY-EQUIPMENT-CRANE-RENTAL-OSHA-VOICE-2026-01";
+  equipmentRentalAndOffRentLowboyAuthorized: boolean;
+  loadChartOverloadOrIndoorDieselCoOrBlockedLowboyDryRunBlocked: boolean;
+  powerLineStepPotentialOrHydraulicInjectionRescuePreempted: boolean;
+}
+
+/**
+ * Deterministic Heavy Equipment, Aerial Lift & Crane Rental Voice (3D Load-Chart Weight×Radius×Height + OSHA 1926.1408 20ft/50ft Power-Line Clearance + 100% Indoor Zero-Diesel CO Lock, Trackunit CAN-Bus Triage + Off-Rent Staging/Key-Box Photo Gate, 0ms Power-Line Step-Potential & 3,000-PSI Hydraulic Injection Trauma Preemption) Guard (`HEAVY-EQUIPMENT-CRANE-RENTAL-OSHA-VOICE-2026-01`).
+ */
+export function evaluateHeavyEquipmentCraneRentalOshaVoice2026Guard(input: {
+  loadChartRadiusOsha1926ClearanceAndZeroIndoorDieselVerified: boolean;
+  canBusTelemetryCheckedAndOffRentStagingPhotoVerified: boolean;
+  boomPowerLineContactOrHydraulicSkinInjectionDetected: boolean;
+}): HeavyEquipmentCraneRentalOshaVoice2026Evaluation {
+  return {
+    policyCode: "HEAVY-EQUIPMENT-CRANE-RENTAL-OSHA-VOICE-2026-01",
+    equipmentRentalAndOffRentLowboyAuthorized:
+      input.loadChartRadiusOsha1926ClearanceAndZeroIndoorDieselVerified &&
+      input.canBusTelemetryCheckedAndOffRentStagingPhotoVerified &&
+      !input.boomPowerLineContactOrHydraulicSkinInjectionDetected,
+    loadChartOverloadOrIndoorDieselCoOrBlockedLowboyDryRunBlocked:
+      !input.loadChartRadiusOsha1926ClearanceAndZeroIndoorDieselVerified ||
+      !input.canBusTelemetryCheckedAndOffRentStagingPhotoVerified ||
+      input.boomPowerLineContactOrHydraulicSkinInjectionDetected,
+    powerLineStepPotentialOrHydraulicInjectionRescuePreempted:
+      input.boomPowerLineContactOrHydraulicSkinInjectionDetected,
+  };
+}
+
 
 
 

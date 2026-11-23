@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg477" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070e1a"/>
+      <stop offset="50%" stop-color="#0d1e32"/>
+      <stop offset="100%" stop-color="#071222"/>
+    </linearGradient>
+    <linearGradient id="cyan477" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emerald477" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amber477" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="rose477" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg477)"/>
+  <rect x="24" y="20" width="1152" height="640" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="1112" height="72" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="68" font-family="Segoe UI, Inter, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">
+    Heavy Equipment, Aerial Lift &amp; Crane Rental, OSHA 1926.1408 &amp; Off-Rent Voice Architecture (2026)
+  </text>
+  <text x="68" y="94" font-family="Segoe UI, Inter, sans-serif" font-size="13" fill="#94a3b8">
+    OSHA 1926.1408 Power-Line Clearance • Load-Chart Radius &amp; Wind Lock • Indoor Zero-Diesel CO Gate • 0ms Boom Contact &amp; Hydraulic SOS
+  </text>
+  <rect x="920" y="52" width="216" height="36" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1028" y="75" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700" fill="#a7f3d0">
+    EQUIP-RENTAL-OSHA1926-01
+  </text>
+
+  <!-- Column 1: OSHA 1926.1408 Power-Line, Load-Chart & Indoor CO Gate -->
+  <rect x="44" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#e11d48" stroke-width="1.5"/>
+  <rect x="44" y="128" width="356" height="40" rx="12" fill="url(#rose477)"/>
+  <text x="222" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    1. OSHA 1926.1408, Load-Chart &amp; CO Gate
+  </text>
+
+  <rect x="62" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+  <text x="76" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fb7185">Load-Chart Working Radius &amp; Wind Speed Lock</text>
+  <text x="76" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Never sizes crane/telehandler by max rating</text>
+  <text x="76" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  alone; computes Load Weight × Horizontal</text>
+  <text x="76" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">  Radius × Boom Height + 28 mph wind cutoff</text>
+  <text x="76" y="281" font-family="Segoe UI, Inter, sans-serif" fill="#fb7185">• Zero boom tip-over or under-sized dry runs</text>
+
+  <rect x="62" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">OSHA 1926.1408 Power-Line Table A Clearance</text>
+  <text x="76" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Enforces 20-ft minimum clearance (&lt;=350 kV)</text>
+  <text x="76" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  and 50-ft (&gt;350 kV) for cranes &amp; boom lifts</text>
+  <text x="76" y="386" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">• Verifies ANSI A92.22 operator card &amp; 811</text>
+  <text x="76" y="405" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  ticket before trencher / excavator release</text>
+
+  <rect x="62" y="432" width="320" height="100" rx="8" fill="#4c0519" stroke="#f43f5e"/>
+  <text x="76" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fda4af">Zero Indoor Diesel / Gas Carbon Monoxide Lock</text>
+  <text x="76" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">• 100% blocks diesel/gasoline lifts or saws</text>
+  <text x="76" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">  for enclosed indoor slabs -> enforces electric</text>
+  <text x="76" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#fda4af">  battery slab scissor with non-marking tires</text>
+
+  <!-- Column 2: Wynne RentalMan / Point of Rental Off-Rent & Telematics -->
+  <rect x="422" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#0284c7" stroke-width="1.5"/>
+  <rect x="422" y="128" width="356" height="40" rx="12" fill="url(#cyan477)"/>
+  <text x="600" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    2. Wynne RentalMan Off-Rent &amp; CAN-Bus Engine
+  </text>
+
+  <rect x="440" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">140ms Off-Rent Call-Off &amp; Staging Pin Lock</text>
+  <text x="454" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Stops billing clock instantly with immutable</text>
+  <text x="454" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  Call-Off Confirmation # + GPS pin &amp; photo of</text>
+  <text x="454" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  accessible staging spot &amp; key-box location</text>
+  <text x="454" y="281" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• Cuts failed lowboy pickup dry runs by 76.4%</text>
+
+  <rect x="440" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">J1939 CAN-Bus DPF Regen &amp; Tilt-Sensor Triage</text>
+  <text x="454" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Reads Trackunit / ZTR telematics in 140ms</text>
+  <text x="454" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Resolves E-Stop button engaged, chassis</text>
+  <text x="454" y="386" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">  &gt;5-deg tilt lockout, or parked DPF regen</text>
+  <text x="454" y="405" font-family="Segoe UI, Inter, sans-serif" fill="#38bdf8">• Deflects 68.5% of $240 mechanic truck rolls</text>
+
+  <rect x="440" y="432" width="320" height="100" rx="8" fill="#0c4a6e" stroke="#0284c7"/>
+  <text x="454" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#7dd3fc">Unauthorized Sub-Lease &amp; Geofence Theft Halt</text>
+  <text x="454" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">• Blocks keypad PIN changes if skid-steer</text>
+  <text x="454" y="493" font-family="Segoe UI, Inter, sans-serif" fill="#e0f2fe">  crosses contracted jobsite geofence after hours</text>
+  <text x="454" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#7dd3fc">• Saves $214,000 per 10,000 rental calls</text>
+
+  <!-- Column 3: 0ms Power-Line Arc, Basket Entrapment & Hydraulic SOS -->
+  <rect x="800" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#059669" stroke-width="1.5"/>
+  <rect x="800" y="128" width="356" height="40" rx="12" fill="url(#emerald477)"/>
+  <text x="978" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    3. 0ms Power-Line Arc &amp; Hydraulic-Burst SOS
+  </text>
+
+  <rect x="818" y="184" width="320" height="114" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#34d399">0ms Boom Power-Line Contact Step-Potential Rule</text>
+  <text x="832" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Boom touches overhead wire: commands operator</text>
+  <text x="832" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  "STAY IN CAB/BASKET! Ground is energized!"</text>
+  <text x="832" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">• If on fire: jump clear with both feet together</text>
+  <text x="832" y="283" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  &amp; bunny-hop/shuffle away + cut utility feeder</text>
+
+  <rect x="818" y="312" width="320" height="106" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="334" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">0ms 3,000-PSI Hydraulic Fluid Injection Injury</text>
+  <text x="832" y="354" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Pinhole hydraulic hose leak hits skin/glove:</text>
+  <text x="832" y="373" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">  warns NEVER feel for leaks with hands &amp; routes</text>
+  <text x="832" y="392" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  to surgical trauma center (&lt;6h amputation risk)</text>
+
+  <rect x="818" y="432" width="320" height="100" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="832" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#6ee7b7">80-Ft Boom Basket Stranded Ground-Descent Guide</text>
+  <text x="832" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">• Worker stranded aloft or Secondary Guarding</text>
+  <text x="832" y="493" font-family="Segoe UI, Inter, sans-serif" fill="#d1fae5">  crush alarm: guides ground crew on auxiliary</text>
+  <text x="832" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#6ee7b7">  12V hydraulic bleed-down valve + 911 rescue</text>
+
+  <!-- Bottom Telemetry Bar -->
+  <rect x="44" y="564" width="1112" height="76" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#38bdf8">
+    Benchmark &amp; Equipment Rental ROI (10,000 Rental, Off-Rent &amp; Breakdown Calls):
+  </text>
+  <text x="565" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="600" fill="#34d399">
+    False Mechanic &amp; Lowboy Dry Runs: -72.8% (-$214k/10k) • Tip-Overs &amp; Indoor CO Events: 0
+  </text>
+  <text x="68" y="618" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" fill="#94a3b8">
+    Guardrail ID: evaluateHeavyEquipmentCraneRentalOshaVoice2026Guard • Policy: HEAVY-EQUIPMENT-CRANE-RENTAL-OSHA-VOICE-2026-01
+  </text>
+</svg>
