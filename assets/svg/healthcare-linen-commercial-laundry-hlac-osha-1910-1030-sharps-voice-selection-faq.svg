@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg479" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070e1a"/>
+      <stop offset="50%" stop-color="#0d1e32"/>
+      <stop offset="100%" stop-color="#071222"/>
+    </linearGradient>
+    <linearGradient id="cyan479" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emerald479" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amber479" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="rose479" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg479)"/>
+  <rect x="24" y="20" width="1152" height="640" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="1112" height="72" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="68" font-family="Segoe UI, Inter, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">
+    Healthcare Linen &amp; Commercial Laundry, HLAC / OSHA 1910.1030 &amp; Chlorine Lock Voice Architecture (2026)
+  </text>
+  <text x="68" y="94" font-family="Segoe UI, Inter, sans-serif" font-size="13" fill="#94a3b8">
+    HLAC Negative-Pressure &amp; Thermal-Disinfection Gate • UHF-RFID Scrub &amp; Telemetry Recovery • Bleach+Acid Cl2 Lock • 0ms Needlestick PEP &amp; CBW SOS
+  </text>
+  <rect x="920" y="52" width="216" height="36" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1028" y="75" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="12" font-weight="700" fill="#a7f3d0">
+    LAUNDRY-HLAC-OSHA1030-01
+  </text>
+
+  <!-- Column 1: HLAC / CDC Thermal Disinfection & Chemical Cl2 Lock -->
+  <rect x="44" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#e11d48" stroke-width="1.5"/>
+  <rect x="44" y="128" width="356" height="40" rx="12" fill="url(#rose479)"/>
+  <text x="222" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    1. HLAC Disinfection &amp; Chlorine-Gas Gate
+  </text>
+
+  <rect x="62" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+  <text x="76" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fb7185">CDC / HLAC 160°F × 25-Min Thermal-PAA Gate</text>
+  <text x="76" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Blocks releasing ICU/OR linen carts if CBW</text>
+  <text x="76" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  tunnel temperature drops &lt;160°F (71°C) or</text>
+  <text x="76" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">  peracetic acid (PAA) / chlorine ppm fails</text>
+  <text x="76" y="281" font-family="Segoe UI, Inter, sans-serif" fill="#fb7185">• Enforces soiled-to-clean negative airflow</text>
+
+  <rect x="62" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Zero Bleach + Sour-Acid Chlorine Gas (Cl2) Lock</text>
+  <text x="76" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• 100% interlocks Ecolab / Diversey chemical</text>
+  <text x="76" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  manifold: never manifolds Sodium Hypochlorite</text>
+  <text x="76" y="386" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">  (Bleach) with Laundry Sour (Acid) or</text>
+  <text x="76" y="405" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  incompatible drum hookups (deadly Cl2 gas!)</text>
+
+  <rect x="62" y="432" width="320" height="100" rx="8" fill="#4c0519" stroke="#f43f5e"/>
+  <text x="76" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fda4af">Spontaneous-Combustion Dryer Cool-Down Lock</text>
+  <text x="76" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">• Kitchen / spa towels with cooking/massage oil</text>
+  <text x="76" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">  require mandatory cool-down cycle &lt;100°F</text>
+  <text x="76" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#fda4af">  before cart stacking (prevents exothermic fire)</text>
+
+  <!-- Column 2: UHF-RFID Scrub Quota & Cardiac Telemetry Recovery -->
+  <rect x="422" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#0284c7" stroke-width="1.5"/>
+  <rect x="422" y="128" width="356" height="40" rx="12" fill="url(#cyan479)"/>
+  <text x="600" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    2. UHF-RFID Linen &amp; Telemetry Recovery
+  </text>
+
+  <rect x="440" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">130ms Cardiac Telemetry &amp; OR Instrument Hold</text>
+  <text x="454" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Nurse calls: "$3,500 Philips cardiac telemetry</text>
+  <text x="454" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  transmitter or surgical tray wrapped in bedsheet!"</text>
+  <text x="454" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• Pings soiled-sort X-ray / RF scanner belt</text>
+  <text x="454" y="281" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  before 50-bar hydraulic water-extraction press</text>
+
+  <rect x="440" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">UHF-RFID OR Barrier Gown Wash-Cycle Cap</text>
+  <text x="454" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Tracks AAMI PB70 Level 3/4 reusable surgical</text>
+  <text x="454" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  gown lifecycle (e.g., max 75 washes)</text>
+  <text x="454" y="386" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">• Auto-retires gowns exceeding barrier limit &amp;</text>
+  <text x="454" y="405" font-family="Segoe UI, Inter, sans-serif" fill="#38bdf8">  dispatches emergency ICU/ER par-level carts</text>
+
+  <rect x="440" y="432" width="320" height="100" rx="8" fill="#0c4a6e" stroke="#0284c7"/>
+  <text x="454" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#7dd3fc">Hospital Soiled-Bag Sharps Feedback Loop</text>
+  <text x="454" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">• Traces biohazard syringe/scalpel found in</text>
+  <text x="454" y="493" font-family="Segoe UI, Inter, sans-serif" fill="#e0f2fe">  soiled bag back to exact hospital unit RFID</text>
+  <text x="454" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#7dd3fc">• Saves $194,000 per 10,000 laundry calls</text>
+
+  <!-- Column 3: 0ms OSHA 1910.1030 Needlestick PEP & CBW Tunnel SOS -->
+  <rect x="800" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#059669" stroke-width="1.5"/>
+  <rect x="800" y="128" width="356" height="40" rx="12" fill="url(#emerald479)"/>
+  <text x="978" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    3. 0ms Needlestick PEP &amp; CBW Tunnel SOS
+  </text>
+
+  <rect x="818" y="184" width="320" height="114" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#34d399">0ms OSHA 1910.1030 Soiled-Sort Needlestick PEP</text>
+  <text x="832" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Sorter pricked by bloody needle/scalpel on</text>
+  <text x="832" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  conveyor: halts belt to secure sharp + routes</text>
+  <text x="832" y="264" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">  worker for &lt;2-Hour HIV/HBV Post-Exposure</text>
+  <text x="832" y="283" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  Prophylaxis (PEP) &amp; hospital source-patient trace</text>
+
+  <rect x="818" y="312" width="320" height="106" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="334" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">0ms CBW Steam Tunnel &amp; 50-Bar Press LOTO Stop</text>
+  <text x="832" y="354" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">• Worker clearing jam inside 180°F tunnel</text>
+  <text x="832" y="373" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">  washer, hydraulic extractor press, or flatwork</text>
+  <text x="832" y="392" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  ironer: 0ms trips PLC steam/hydraulic LOTO</text>
+
+  <rect x="818" y="432" width="320" height="100" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="832" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#6ee7b7">C. diff / Candida auris Outbreak Cart Isolation</text>
+  <text x="832" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">• Enforces sporicidal wash formula &amp; cart</text>
+  <text x="832" y="493" font-family="Segoe UI, Inter, sans-serif" fill="#d1fae5">  tunnel washer validation before clean loading</text>
+  <text x="832" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#6ee7b7">• 100% HLAC, JCAHO &amp; OSHA 1910.1030 compliant</text>
+
+  <!-- Bottom Telemetry Bar -->
+  <rect x="44" y="564" width="1112" height="76" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#38bdf8">
+    Benchmark &amp; Healthcare Laundry ROI (10,000 Hospital Linen &amp; Plant Calls):
+  </text>
+  <text x="550" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="600" fill="#34d399">
+    Recovered Telemetry/Instruments: +$194k/10k • Chlorine Gas &amp; Dryer Fires: 0
+  </text>
+  <text x="68" y="618" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" fill="#94a3b8">
+    Guardrail ID: evaluateHealthcareLaundryHlacOsha1030Voice2026Guard • Policy: HEALTHCARE-LAUNDRY-HLAC-OSHA1030-VOICE-2026-01
+  </text>
+</svg>

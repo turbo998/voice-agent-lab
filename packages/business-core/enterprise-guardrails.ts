@@ -13135,6 +13135,36 @@ export function evaluateTitleEscrowClosingAltaWireVoice2026Guard(input: {
   };
 }
 
+export interface HealthcareLaundryHlacOsha1030Voice2026Evaluation {
+  policyCode: "HEALTHCARE-LAUNDRY-HLAC-OSHA1030-VOICE-2026-01";
+  cleanLinenReleaseAndTelemetryInterceptAuthorized: boolean;
+  bleachAcidChlorineMixOrHotOilyTowelOrOverwashedGownBlocked: boolean;
+  needlestickPepHospitalTraceOrCbwTunnelLotoPreempted: boolean;
+}
+
+/**
+ * Deterministic Healthcare Linen & Commercial Industrial Laundry Voice (HLAC 160°F×25m / PAA Disinfection + AAMI PB70 <=75-Wash OR Gown Cap + 130ms UHF-RFID Pre-Press Telemetry Intercept, Zero Bleach+Sour-Acid Chlorine Gas Cl2 Lock + <100°F Oily-Towel Cool-Down Fire Gate, 0ms OSHA 1910.1030 Needlestick <2h PEP & CBW Tunnel/Press LOTO Halt) Guard (`HEALTHCARE-LAUNDRY-HLAC-OSHA1030-VOICE-2026-01`).
+ */
+export function evaluateHealthcareLaundryHlacOsha1030Voice2026Guard(input: {
+  hlacThermalPaaVerifiedAndAamiGownUnder75Washes: boolean;
+  zeroBleachAcidMixAndOilyTowelCoolDownBelow100F: boolean;
+  soiledSortNeedlestickOrCbwTunnelEntrapmentDetected: boolean;
+}): HealthcareLaundryHlacOsha1030Voice2026Evaluation {
+  return {
+    policyCode: "HEALTHCARE-LAUNDRY-HLAC-OSHA1030-VOICE-2026-01",
+    cleanLinenReleaseAndTelemetryInterceptAuthorized:
+      input.hlacThermalPaaVerifiedAndAamiGownUnder75Washes &&
+      input.zeroBleachAcidMixAndOilyTowelCoolDownBelow100F &&
+      !input.soiledSortNeedlestickOrCbwTunnelEntrapmentDetected,
+    bleachAcidChlorineMixOrHotOilyTowelOrOverwashedGownBlocked:
+      !input.hlacThermalPaaVerifiedAndAamiGownUnder75Washes ||
+      !input.zeroBleachAcidMixAndOilyTowelCoolDownBelow100F ||
+      input.soiledSortNeedlestickOrCbwTunnelEntrapmentDetected,
+    needlestickPepHospitalTraceOrCbwTunnelLotoPreempted:
+      input.soiledSortNeedlestickOrCbwTunnelEntrapmentDetected,
+  };
+}
+
 
 
 
