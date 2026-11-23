@@ -12625,6 +12625,36 @@ export function evaluateChildcareDaycarePickupRatioAllergyVoice2026Guard(input: 
   };
 }
 
+export interface FuneralHomeFtcRuleCremationSafetyVoice2026Evaluation {
+  policyCode: "FUNERAL-HOME-FTC-RULE-CREMATION-SAFETY-VOICE-2026-01";
+  firstCallRemovalAndRetortScheduleAuthorized: boolean;
+  ftc453PriceWithholdingOrUnattendedRemovalOrPacemakerRetortBlocked: boolean;
+  coronerPoliceOrReligiousRapidBurialDirectorBridged: boolean;
+}
+
+/**
+ * Deterministic Funeral Home, Mortuary Chain-of-Custody & FTC Funeral Rule Voice (FTC 16 CFR Part 453 Anonymous GPL Price Readout + Non-Required Embalming/Alt-Container Disclosure, Attended Hospice/MD Pronouncement + Pacemaker Explanted & Statutory Next-of-Kin Signed, Unattended Coroner Death or 24h Religious Rapid-Burial Director Bridge) Guard (`FUNERAL-HOME-FTC-RULE-CREMATION-SAFETY-VOICE-2026-01`).
+ */
+export function evaluateFuneralHomeFtcRuleCremationSafetyVoice2026Guard(input: {
+  ftc453AnonymousGplQuotedWithEmbalmingAltContainerDisclosures: boolean;
+  attendedPronouncementPacemakerExplantedAndNextOfKinSigned: boolean;
+  unattendedCoronerDeathOr24hReligiousRapidBurial: boolean;
+}): FuneralHomeFtcRuleCremationSafetyVoice2026Evaluation {
+  return {
+    policyCode: "FUNERAL-HOME-FTC-RULE-CREMATION-SAFETY-VOICE-2026-01",
+    firstCallRemovalAndRetortScheduleAuthorized:
+      input.ftc453AnonymousGplQuotedWithEmbalmingAltContainerDisclosures &&
+      input.attendedPronouncementPacemakerExplantedAndNextOfKinSigned &&
+      !input.unattendedCoronerDeathOr24hReligiousRapidBurial,
+    ftc453PriceWithholdingOrUnattendedRemovalOrPacemakerRetortBlocked:
+      !input.ftc453AnonymousGplQuotedWithEmbalmingAltContainerDisclosures ||
+      !input.attendedPronouncementPacemakerExplantedAndNextOfKinSigned ||
+      input.unattendedCoronerDeathOr24hReligiousRapidBurial,
+    coronerPoliceOrReligiousRapidBurialDirectorBridged:
+      input.unattendedCoronerDeathOr24hReligiousRapidBurial,
+  };
+}
+
 
 
 
