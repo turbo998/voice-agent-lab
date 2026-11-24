@@ -13345,6 +13345,37 @@ export function evaluateEndToEndEnterpriseVoiceReferenceArch2026Guard(input: {
   };
 }
 
+export interface BfsiBankingInsuranceClaimsOutboundVoice2026Evaluation {
+  policyCode: "BFSI-BANKING-INSURANCE-CLAIMS-OUTBOUND-VOICE-2026-01";
+  bankingTransactionAndInsuranceFnolStpAuthorized: boolean;
+  mismatchedRiskPitchOrCoverageEstoppelOrIllegalDialBlocked: boolean;
+  finra2165HoldOrEmergencyRoadsideOrImmediateDncHaltTriggered: boolean;
+}
+
+/**
+ * Deterministic BFSI Banking, Wealth Dual-Recording, Insurance Multimodal FNOL Claims & Compliant Outbound Voice (R1-R5 Suitability + SHA-256 Locked-SSML Statutory Disclosure, Anti-Estoppel Zero Coverage Promise + TCPA AreaCode/Zip & FDCPA Reg F 7-in-7 Gate, 0ms FINRA 2165 Elder Hold / Highway Safety / Global DNC Halt) Guard (`BFSI-BANKING-INSURANCE-CLAIMS-OUTBOUND-VOICE-2026-01`).
+ */
+export function evaluateBfsiBankingInsuranceClaimsOutboundVoice2026Guard(input: {
+  suitabilityMatchedAndLockedSsmlStatutoryDisclosureVerified: boolean;
+  antiEstoppelZeroCoveragePromiseAndTcpaQuietHoursEnforced: boolean;
+  elderFinancialExploitationOrHighwayBodilyInjuryOrDncOptOutDetected: boolean;
+}): BfsiBankingInsuranceClaimsOutboundVoice2026Evaluation {
+  return {
+    policyCode: "BFSI-BANKING-INSURANCE-CLAIMS-OUTBOUND-VOICE-2026-01",
+    bankingTransactionAndInsuranceFnolStpAuthorized:
+      input.suitabilityMatchedAndLockedSsmlStatutoryDisclosureVerified &&
+      input.antiEstoppelZeroCoveragePromiseAndTcpaQuietHoursEnforced &&
+      !input.elderFinancialExploitationOrHighwayBodilyInjuryOrDncOptOutDetected,
+    mismatchedRiskPitchOrCoverageEstoppelOrIllegalDialBlocked:
+      !input.suitabilityMatchedAndLockedSsmlStatutoryDisclosureVerified ||
+      !input.antiEstoppelZeroCoveragePromiseAndTcpaQuietHoursEnforced ||
+      input.elderFinancialExploitationOrHighwayBodilyInjuryOrDncOptOutDetected,
+    finra2165HoldOrEmergencyRoadsideOrImmediateDncHaltTriggered:
+      input.elderFinancialExploitationOrHighwayBodilyInjuryOrDncOptOutDetected,
+  };
+}
+
+
 
 
 
