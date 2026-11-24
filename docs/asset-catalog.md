@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **482 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **483 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（482 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（483 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -66,7 +66,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（459 篇）
+### 3.3 高价值企业行业解决方案蓝图（460 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -526,3 +526,4 @@
 480. **超低温冷链仓储、速冻隧道与冷藏集装箱堆场（Cold-Storage, `-25°F` Blast-Freezer Warehousing & Reefer Logistics）国际氨制冷学会（`IIAR / OSHA 1910.119`）液氨泄漏逆风疏散锁、《食品安全现代化法》（`FDA FSMA`）肉芯探针超温拒收与 `-25°F` 深冷库困人 `0ms` 抢占实时语音架构设计与选型指南（`FDA FSMA 21 CFR § 1.908` 蓝牙探针强制核验中心肉芯温度 `<=0°F/38°F` 防化冻变质货混入背锅赔付、`-25°F` 免脱防寒手套抗 `82dB` 风机语音拣选削减 `92.4%` 抄码称重差错每万次省 `$22.6万`、以及货叉撞管无水液氨泄漏 `<100ms` 关断主供液阀并结合屋顶风向标广播逆风逃生门）方案**：[中文](./cold-storage-reefer-warehouse-iiar-ammonia-leak-fda-fsma-voice-selection-faq.md) | [EN](./cold-storage-reefer-warehouse-iiar-ammonia-leak-fda-fsma-voice-selection-faq.en.md)
 481. **电梯与自动扶梯应急监控中心及维保调度（Elevator & Escalator Cabin Intercom, IoT Predictive Maintenance & Dispatch）美国机械工程师学会《电梯安全规范》（`ASME A17.1`）轿厢困人音视频/聋哑多模态交互、严禁扒门防坠井死锁与物联网控制器（`Otis ONE / KONE 24/7`）秒级平层放人实时语音架构设计与选型指南（`ASME A17.4` 困人首句 `100%` 严令切勿扒门/钻轿顶并严禁保安无 `LOTO` 私用三角钥匙防剪切坠井、`120ms` 物联网控制器遥测与 `ASME A17.1-2022` 听障触屏/视频核验砍掉 `64.8%` `$320` 冤枉急修出车每万通省 `$21.8万`、以及医疗/高温困人与自动扶梯梳齿板夹人 `<100ms` 911 消防重型破拆直连）方案**：[中文](./elevator-escalator-dispatch-asme-a17-cabin-entrapment-fire-recall-voice-selection-faq.md) | [EN](./elevator-escalator-dispatch-asme-a17-cabin-entrapment-fire-recall-voice-selection-faq.en.md)
 482. **2026 实时语音与多模态最新能力突破追踪：全双工原生语音并行工具调用（Native S2S Parallel Tool-Calling）、端侧声学-语义联合判停（`<35ms` Smart-Turn v2）与混合双轨架构设计与选型指南（`<35ms` 端侧声学韵律+语义完整度联合判停砍掉 `89.4%` 报卡号误抢话与附和词 `嗯/uh-huh` 误截断、`Turn-Epoch` 单调递增写栅栏 + `item.truncate` 真实已播音频对齐实现改口后旧工具 `0%` 幽灵写库、`T+600ms` 零冷场垫音压降 `79.6%` 盲等挂机、以及单通电话内 S2S ↔ 受控级联 SSML `0ms` 热切换配合 3 轮音频上下文裁剪直降 `63.8%` 长通话成本每万小时省 `$26.4万`）方案**：[中文](./voice-ai-2026-breakthroughs-full-duplex-tool-calling-edge-turn-taking-selection-faq.md) | [EN](./voice-ai-2026-breakthroughs-full-duplex-tool-calling-edge-turn-taking-selection-faq.en.md)
+483. **主流实时语音开发平台与编排框架 2026 横向选型对比：Azure Voice Live (`ACS + GPT-Realtime`) vs. `Twilio ConversationRelay` vs. 开源 `LiveKit Agents / Pipecat` vs. 托管商业平台 (`Retell / Vapi / Bland`) 延迟、并发、打断体验与 12 万分钟 TCO 拐点架构指南（锁定 `120,000 分钟/月` 从 `$0.115/min` 托管 Wrapper 迁向 `$0.042/min` 云原生/自建编排的黄金拐点在 50 万分钟/月下每年净省 `$43.8万`、企业私有 VNet/VPC 数据不出域消除公网 Webhook `120ms` 折返税、K8s `preStop` 1800秒优雅排空实现发版缩容 `0%` 掉线、以及 `<200ms` 多模型跨云故障热切换）方案**：[中文](./azure-voice-live-twilio-conversationrelay-livekit-pipecat-retell-vapi-bland-selection-faq.md) | [EN](./azure-voice-live-twilio-conversationrelay-livekit-pipecat-retell-vapi-bland-selection-faq.en.md)

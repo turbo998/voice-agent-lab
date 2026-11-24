@@ -13255,6 +13255,37 @@ export function evaluateVoiceAi2026FullDuplexBreakthroughsGuard(input: {
   };
 }
 
+export interface VoicePlatformLiveKitPipecatAcsTwilioRetell2026Evaluation {
+  policyCode: "VOICE-PLATFORM-LIVEKIT-PIPECAT-ACS-TWILIO-RETELL-2026-01";
+  enterpriseVoiceOrchestrationRouteAuthorized: boolean;
+  publicSaasWrapperPiiExposureOrColdDropBlocked: boolean;
+  selfHostedLiveKitAcsMigrationOrHotFailoverTriggered: boolean;
+}
+
+/**
+ * Deterministic 2026 Enterprise Voice Platforms & Orchestration Frameworks (Azure Voice Live / ACS vs Twilio ConversationRelay vs LiveKit Agents / Pipecat vs Retell/Vapi/Bland: Private VNet/VPC Sovereignty Lock, K8s preStop 1800s Zero-Drop Call Drain, 120k Min/Mo TCO Break-Even & <200ms Multi-Vendor Failover) Guard (`VOICE-PLATFORM-LIVEKIT-PIPECAT-ACS-TWILIO-RETELL-2026-01`).
+ */
+export function evaluateVoicePlatformLiveKitPipecatAcsTwilioRetell2026Guard(input: {
+  privateVpcDataResidencyAndZeroWrapperPiiLeakVerified: boolean;
+  k8sPreStopZeroDropCallDrainAndProviderFailoverActive: boolean;
+  wrapperPlatformFeeExceedsTcoInflectionOrVendorOutageDetected: boolean;
+}): VoicePlatformLiveKitPipecatAcsTwilioRetell2026Evaluation {
+  return {
+    policyCode: "VOICE-PLATFORM-LIVEKIT-PIPECAT-ACS-TWILIO-RETELL-2026-01",
+    enterpriseVoiceOrchestrationRouteAuthorized:
+      input.privateVpcDataResidencyAndZeroWrapperPiiLeakVerified &&
+      input.k8sPreStopZeroDropCallDrainAndProviderFailoverActive &&
+      !input.wrapperPlatformFeeExceedsTcoInflectionOrVendorOutageDetected,
+    publicSaasWrapperPiiExposureOrColdDropBlocked:
+      !input.privateVpcDataResidencyAndZeroWrapperPiiLeakVerified ||
+      !input.k8sPreStopZeroDropCallDrainAndProviderFailoverActive ||
+      input.wrapperPlatformFeeExceedsTcoInflectionOrVendorOutageDetected,
+    selfHostedLiveKitAcsMigrationOrHotFailoverTriggered:
+      input.wrapperPlatformFeeExceedsTcoInflectionOrVendorOutageDetected,
+  };
+}
+
+
 
 
 
