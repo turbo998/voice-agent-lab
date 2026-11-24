@@ -13315,6 +13315,37 @@ export function evaluateEnterpriseIvrModernizationCopilot2026Guard(input: {
   };
 }
 
+export interface EndToEndEnterpriseVoiceReferenceArch2026Evaluation {
+  policyCode: "END-TO-END-ENTERPRISE-VOICE-REFERENCE-ARCH-2026-01";
+  endToEndVoicePipelineAndCrmTransactionAuthorized: boolean;
+  bystanderVoiceTriggerOrDuplicateErpMutationBlocked: boolean;
+  otelCircuitBreakerFailoverOrPostCallQaReconciliationTriggered: boolean;
+}
+
+/**
+ * Deterministic 5-Layer End-to-End Enterprise Voice Reference Architecture (WebRTC/ACS Primary-Speaker Isolation + 15s ICE Continuity, Zero-LLM-Identity JWT Binding + Two-Phase Prepare->Confirm Idempotent CRM Saga, 7-Hop OpenTelemetry Latency Circuit Breaker & T+30s Spoken-Promise Reconciler) Guard (`END-TO-END-ENTERPRISE-VOICE-REFERENCE-ARCH-2026-01`).
+ */
+export function evaluateEndToEndEnterpriseVoiceReferenceArch2026Guard(input: {
+  primarySpeakerIsolationAndWiFi5gSessionContinuityVerified: boolean;
+  twoPhaseIdempotentCrmToolCommitAndInRamPiiScrubbingActive: boolean;
+  sevenHopOtelLatencyBreachOrSpokenPromiseMismatchDetected: boolean;
+}): EndToEndEnterpriseVoiceReferenceArch2026Evaluation {
+  return {
+    policyCode: "END-TO-END-ENTERPRISE-VOICE-REFERENCE-ARCH-2026-01",
+    endToEndVoicePipelineAndCrmTransactionAuthorized:
+      input.primarySpeakerIsolationAndWiFi5gSessionContinuityVerified &&
+      input.twoPhaseIdempotentCrmToolCommitAndInRamPiiScrubbingActive &&
+      !input.sevenHopOtelLatencyBreachOrSpokenPromiseMismatchDetected,
+    bystanderVoiceTriggerOrDuplicateErpMutationBlocked:
+      !input.primarySpeakerIsolationAndWiFi5gSessionContinuityVerified ||
+      !input.twoPhaseIdempotentCrmToolCommitAndInRamPiiScrubbingActive ||
+      input.sevenHopOtelLatencyBreachOrSpokenPromiseMismatchDetected,
+    otelCircuitBreakerFailoverOrPostCallQaReconciliationTriggered:
+      input.sevenHopOtelLatencyBreachOrSpokenPromiseMismatchDetected,
+  };
+}
+
+
 
 
 

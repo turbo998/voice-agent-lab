@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 484 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 484 Guides](#-2-484-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 485 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 485 Guides](#-2-485-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 484 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 485 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (461 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (462 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -558,6 +558,7 @@ flowchart LR
 482. **2026 Real-Time Voice & Multimodal AI Capability Breakthroughs: Full-Duplex Parallel Tool-Calling, Sub-35ms Acoustic-Semantic Turn-Taking (Smart-Turn v2) & Hybrid Dual-Track Selection Guide: <35ms Prosody+Syntax Turn-Taking (-89.4% False Cutoffs & 100% Backchannel Immunity), Turn-Epoch Monotonic Write Fence + item.truncate Sync (0% Stale Tool Commits), T+600ms Zero-Dead-Air Pacing (-79.6% Hang-Ups), and In-Call S2S ↔ Locked-SSML Switch + 3-Turn Audio Pruning (-63.8% Long-Call Token TCO, -$264k/10k Hrs)**: [EN](./docs/voice-ai-2026-breakthroughs-full-duplex-tool-calling-edge-turn-taking-selection-faq.en.md) | [中文](./docs/voice-ai-2026-breakthroughs-full-duplex-tool-calling-edge-turn-taking-selection-faq.md)
 483. **2026 Real-Time Voice Platforms & Orchestration Frameworks Head-to-Head Selection Guide (Azure Voice Live / ACS vs. Twilio ConversationRelay vs. Open-Source LiveKit Agents / Pipecat vs. Retell / Vapi / Bland): 120k Min/Mo TCO Break-Even ($0.042/min vs $0.115/min, -$438k/Yr at 500k Min/Mo), Private VNet/VPC Data Sovereignty (<12ms Internal DB Calls, 0% Wrapper PII Leak), K8s preStop 1800s Zero-Drop Call Drain (0% Scale-In Drops) & <200ms Multi-Vendor Failover**: [EN](./docs/azure-voice-live-twilio-conversationrelay-livekit-pipecat-retell-vapi-bland-selection-faq.en.md) | [中文](./docs/azure-voice-live-twilio-conversationrelay-livekit-pipecat-retell-vapi-bland-selection-faq.md)
 484. **Enterprise Contact Center IVR Modernization Full-Stack Selection Guide (AI Tier-1 Receptionist, Zero-Repeat Warm Handoff & Real-Time Agent Assist Copilot): Front-Door BYOC SBC 68.4% Self-Service Deflection & SIP REFER Media-Leg Release (-100% Tromboning Tax), 36B UUID + <150ms Redis 8KB Signed-KYC Screen-Pop & 6s Whisper (-84s Human AHT, 0% Repeat KYC), Ch0/Ch1 Stereo <=25-Word Micro-Cards & 3s Auto-ACW (95s → 8s Wrap-Up, -$312k/10k Calls)**: [EN](./docs/enterprise-ivr-modernization-ai-receptionist-warm-handoff-agent-assist-selection-faq.en.md) | [中文](./docs/enterprise-ivr-modernization-ai-receptionist-warm-handoff-agent-assist-selection-faq.md)
+485. **End-to-End Enterprise Real-Time Voice Reference Architecture Blueprint (WebRTC/ACS Ingress → Stream Gateway → S2S/Cascade → Two-Phase CRM Tools → 7-Hop OpenTelemetry & Post-Call QA): Primary-Speaker Isolation (-93.6% Bystander Cutoffs) + 15s ICE Continuity (98.4% Recovery), Zero-LLM-Identity JWT Binding (0% IDOR) + Two-Phase Prepare→Confirm CRM Saga (0% Duplicate Writes), <2ms Pre-TTS Sanitizer & 7-Hop OTel (45s MTTR, -$294k/10k Hrs)**: [EN](./docs/end-to-end-enterprise-voice-reference-architecture-webrtc-acs-s2s-crm-observability-selection-faq.en.md) | [中文](./docs/end-to-end-enterprise-voice-reference-architecture-webrtc-acs-s2s-crm-observability-selection-faq.md)
 
 ---
 
