@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 504 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 504 篇选型指南](#-二504-篇企业级语音架构选型指南中英双语) |
+| **🧭 505 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 505 篇选型指南](#-二505-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、504 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、505 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（481 篇）
+### 3.3 高价值企业行业解决方案蓝图（482 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -578,6 +578,7 @@ flowchart LR
 502. **企业干线物流、快递最后一公里与车队调度（Logistics、Last-Mile Delivery & Fleet Dispatch）免提语音协同、动态改派与签收防盗架构选型指南（包裹尺寸匹配 + 快递柜格口实时预占 + `<800ms` 巴枪同步将首次妥投率从 `81.0%` 提至 `95.6%`、`75dB` 车速联动免提司机 Copilot 自动重约 WMS 月台砍掉 `71.0%` 压车费、以及 `<=500m` 电子围栏改址锁与高值件 6 位 OTP 签收门禁实现 `0.00%` 途中截胡每万小时净省 `$34.0万`）方案**：[中文](./docs/logistics-last-mile-delivery-fleet-dispatch-handsfree-pod-voice-selection-faq.md) | [EN](./docs/logistics-last-mile-delivery-fleet-dispatch-handsfree-pod-voice-selection-faq.en.md)
 503. **跨国企业全员会议智能、Teams/Zoom 实时语音参会 Agent 与 CRM/Jira 零幻觉行动项同步（Enterprise Meeting Intelligence、Live Voice Copilot & Grounded CRM Sync）架构选型指南（`"@Atlas"` 显式唤醒门禁 + `<4.5s` 一句话口播配 Adaptive Card 卡片实现 `0.0%` 会议误抢话、参会人最小权限交集锁实现外部来宾在场 `0.00%` 底价外泄、混合会议室预注册声纹融合将归因率从 `61.0%` 提至 `98.6%`、以及头脑风暴过滤与两阶段卡片审批每万小时净省 `$29.5万`）方案**：[中文](./docs/enterprise-meeting-intelligence-teams-zoom-live-voice-agent-crm-sync-selection-faq.md) | [EN](./docs/enterprise-meeting-intelligence-teams-zoom-live-voice-agent-crm-sync-selection-faq.en.md)
 504. **汽车 4S 店、新能源车企售后维保预约、道路救援（Roadside Assistance）与试驾邀约实时语音 Agent（Automotive Dealership DMS、Connected-VIN Triage & Test-Drive Concierge）架构选型指南（DMS 四维原子锁【工位+高压技师+召回备件+代步车】将到店缺件白跑率从 `19.4%` 压至 `0.0%`、`8秒` 车联网 `VIN` 遥测区分 12V 小电瓶亏电砍掉 `58.4%` 无效 `$220` 平板拖车并 `100%` 锁死四驱电车严禁托轮拖行、以及 `<30s` 极速试驾外呼将到店率从 `42.0%` 提至 `79.5%` 每万小时创效 `$38.5万`）方案**：[中文](./docs/automotive-dealership-dms-service-booking-roadside-triage-test-drive-voice-selection-faq.md) | [EN](./docs/automotive-dealership-dms-service-booking-roadside-triage-test-drive-voice-selection-faq.en.md)
+505. **企业实时语音跨区域主活容灾、S2S-级联无感热降级与零断连会话状态迁移（Multi-Region High Availability、650ms Watchdog Failover & Zero-Drop Session Continuity）架构选型指南（边缘媒体锚点 SFU 与无状态 AI 容器解耦将故障掉线率从 `100%` 压至 `0.06%`（`99.994%` 存活率）、每轮 `<12ms` 跨区 Redis 快照与工具幂等发件箱实现 `0.0%` 失忆重问与零重复扣款、`650ms` 首包看门狗同主权对冲切流、以及 S2S→同音色级联→边缘三级优雅降级每万小时规避 `$37.0万` 宕机损失）方案**：[中文](./docs/enterprise-voice-ai-multi-region-ha-s2s-cascade-failover-session-continuity-selection-faq.md) | [EN](./docs/enterprise-voice-ai-multi-region-ha-s2s-cascade-failover-session-continuity-selection-faq.en.md)
 
 ---
 

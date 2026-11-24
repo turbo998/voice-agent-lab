@@ -13915,6 +13915,37 @@ export function evaluateAutomotiveDealershipDmsRoadsideVoice2026Guard(input: {
   };
 }
 
+export interface VoiceAiMultiRegionHaGracefulDegradation2026Evaluation {
+  policyCode: "VOICE-AI-MULTI-REGION-HA-GRACEFUL-DEGRADATION-2026-01";
+  zeroDropVoiceSessionContinuityAuthorized: boolean;
+  coupledPodCallDropOrCrossSovereignDataLeakBlocked: boolean;
+  sixFiftyMsWatchdogHedgedFailoverOrSameVoiceCascadeTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Multi-Region Voice AI High Availability (Decoupled Edge Media SFU, <12ms Per-Turn Redis Checkpoint + Idempotent Tool Outbox, 650ms Watchdog Geo-Sovereign Failover & 3-Tier Same-Voice S2S-to-Cascade Degradation) Guard (`VOICE-AI-MULTI-REGION-HA-GRACEFUL-DEGRADATION-2026-01`).
+ */
+export function evaluateVoiceAiMultiRegionHaGracefulDegradation2026Guard(input: {
+  decoupledEdgeMediaSfuAndPerTurnRedisOutboxActive: boolean;
+  geoSovereignFailoverPairAndUnifiedBrandVoiceVerified: boolean;
+  primaryRegionTtftExceeds650msOrPodEvictionDetected: boolean;
+}): VoiceAiMultiRegionHaGracefulDegradation2026Evaluation {
+  return {
+    policyCode: "VOICE-AI-MULTI-REGION-HA-GRACEFUL-DEGRADATION-2026-01",
+    zeroDropVoiceSessionContinuityAuthorized:
+      input.decoupledEdgeMediaSfuAndPerTurnRedisOutboxActive &&
+      input.geoSovereignFailoverPairAndUnifiedBrandVoiceVerified &&
+      !input.primaryRegionTtftExceeds650msOrPodEvictionDetected,
+    coupledPodCallDropOrCrossSovereignDataLeakBlocked:
+      !input.decoupledEdgeMediaSfuAndPerTurnRedisOutboxActive ||
+      !input.geoSovereignFailoverPairAndUnifiedBrandVoiceVerified ||
+      input.primaryRegionTtftExceeds650msOrPodEvictionDetected,
+    sixFiftyMsWatchdogHedgedFailoverOrSameVoiceCascadeTriggered:
+      input.primaryRegionTtftExceeds650msOrPodEvictionDetected,
+  };
+}
+
+
 
 
 
