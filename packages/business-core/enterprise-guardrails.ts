@@ -13675,6 +13675,37 @@ export function evaluateMultiAgentVoiceSwarmOrchestration2026Guard(input: {
   };
 }
 
+export interface VoiceNativeRagPhoneticPrefetch2026Evaluation {
+  policyCode: "VOICE-NATIVE-RAG-PHONETIC-PREFETCH-2026-01";
+  groundedSpokenRagResponseAuthorized: boolean;
+  homophoneZeroRecallOrStalePolicyHallucinationBlocked: boolean;
+  deterministicAbstentionAndSpecialistCallbackTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice-Native RAG (T-300ms Speculative Partial-ASR Pre-Fetch + 3-Way Phonetic Homophone Hybrid RRF, Bitemporal Effective-Date Filter + Ingestion-Compiled 35-Word Spoken Cards, <0.78 Confidence Deterministic Abstention & Expired-Policy Lock) Guard (`VOICE-NATIVE-RAG-PHONETIC-PREFETCH-2026-01`).
+ */
+export function evaluateVoiceNativeRagPhoneticPrefetch2026Guard(input: {
+  speculativePartialAsrPrefetchAndPhoneticHybridRecallVerified: boolean;
+  bitemporalPolicyEffectiveDateAndPreCompiledSpokenCardActive: boolean;
+  ragConfidenceBelow0Point78OrExpiredPolicyVersionDetected: boolean;
+}): VoiceNativeRagPhoneticPrefetch2026Evaluation {
+  return {
+    policyCode: "VOICE-NATIVE-RAG-PHONETIC-PREFETCH-2026-01",
+    groundedSpokenRagResponseAuthorized:
+      input.speculativePartialAsrPrefetchAndPhoneticHybridRecallVerified &&
+      input.bitemporalPolicyEffectiveDateAndPreCompiledSpokenCardActive &&
+      !input.ragConfidenceBelow0Point78OrExpiredPolicyVersionDetected,
+    homophoneZeroRecallOrStalePolicyHallucinationBlocked:
+      !input.speculativePartialAsrPrefetchAndPhoneticHybridRecallVerified ||
+      !input.bitemporalPolicyEffectiveDateAndPreCompiledSpokenCardActive ||
+      input.ragConfidenceBelow0Point78OrExpiredPolicyVersionDetected,
+    deterministicAbstentionAndSpecialistCallbackTriggered:
+      input.ragConfidenceBelow0Point78OrExpiredPolicyVersionDetected,
+  };
+}
+
+
 
 
 

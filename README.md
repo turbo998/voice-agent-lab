@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 496 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 496 篇选型指南](#-二496-篇企业级语音架构选型指南中英双语) |
+| **🧭 497 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 497 篇选型指南](#-二497-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、496 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、497 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（473 篇）
+### 3.3 高价值企业行业解决方案蓝图（474 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -570,6 +570,7 @@ flowchart LR
 494. **零售与电商客服（Shopify Plus / Salesforce Commerce / SAP OMS）查物流（WISMO）、退换货挽留（Return-to-Exchange Save）与反欺诈秒退实时语音架构选型指南（`110ms` 查件 + 签收实景图推送分流 `81.4%` WISMO 并砍掉 `54.2%` 假丢件重发、尺码智能推荐将 `44.6%` 退货转化为免运费换货每万通保住 `+$15.2万` GMV、实付净额上限与原支付卡强绑定锁实现 `$0` 超退套现、以及逆向运费 `> COGS` 免寄回精算与鼓包锂电池 `0ms` 禁寄每万通增效 `$29.6万`）方案**：[中文](./docs/ecommerce-retail-wismo-order-tracking-rma-returns-exchange-save-voice-selection-faq.md) | [EN](./docs/ecommerce-retail-wismo-order-tracking-rma-returns-exchange-save-voice-selection-faq.en.md)
 495. **智慧医疗院前预约导诊（Patient Access & Epic FHIR Scheduling）、处方续配（Rx Refill）与诊室环境病历自动生成（Ambient Clinical Scribe）实时语音架构选型指南（胸痛/卒中红旗 `<100ms` 熔断排期直连急诊护士、`Schmitt-Thompson` 亚专科匹配将挂错号率从 `14%` 压至 `0.4%` 且退号 `15秒` 自动回填 `86.5%`、`DEA Schedule-II` 管制药与化验窗口续配硬锁、以及诊室医生声纹分离 `1.6% DER` + 零未口述查体编造锁每天省医生 `2.1小时` 病历时间每万次增效 `$37.2万`）方案**：[中文](./docs/healthcare-patient-access-scheduling-rx-refill-ambient-scribe-voice-selection-faq.md) | [EN](./docs/healthcare-patient-access-scheduling-rx-refill-ambient-scribe-voice-selection-faq.en.md)
 496. **企业多智能体实时语音协同编排（Multi-Agent Voice Swarm / Sub-Agent Handoff Graph：LiveKit Agents vs. Pipecat Flows vs. LangGraph）架构选型指南（将 80 工具巨型 Prompt 拆解为每个专家子智能体 `<=6个` 正交工具将调用准确率从 `61%` 提至 `97.6%` 并省 `58.4%` Token、`42ms` 内存级单一人设同音色静默交接消除假转接等待、高危节点前置 `kyc_verified` 鉴权契约锁、以及复合意图压栈与 `<=2跳` 防乒乓死循环熔断器每万通省 `$26.8万`）方案**：[中文](./docs/enterprise-multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-selection-faq.md) | [EN](./docs/enterprise-multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-selection-faq.en.md)
+497. **企业语音原生知识检索（Voice-Native RAG：Azure AI Search / Pinecone / Qdrant）投机式预取、同音字音素混合检索与口语摘要卡架构选型指南（`T-300ms` 流式 Partial-ASR 投机式预检索将句末净增延迟从 `1,850ms` 压至 `85ms`、稠密向量+BM25+拼音/Metaphone 音素三路 RRF 将同音错别字召回率从 `64%` 提至 `98.2%`、入库预编译 `<=35字` 口语播报卡砍掉 `88.4%` RAG Token、以及双时态生效日期过滤与 `<0.78` 诚实拒答每万小时省 `$28.2万`）方案**：[中文](./docs/voice-native-rag-phonetic-hybrid-search-speculative-prefetch-selection-faq.md) | [EN](./docs/voice-native-rag-phonetic-hybrid-search-speculative-prefetch-selection-faq.en.md)
 
 ---
 
