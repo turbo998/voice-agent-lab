@@ -14065,6 +14065,37 @@ export function evaluateGovernment311UtilityOutageCitizenVoice2026Guard(input: {
   };
 }
 
+export interface EnterpriseOutboundVoiceAmdTcpaReputation2026Evaluation {
+  policyCode: "ENTERPRISE-OUTBOUND-VOICE-AMD-TCPA-REPUTATION-2026-01";
+  outboundSipDialAndLiveGreetingAuthorized: boolean;
+  curfewReassignedNumberOrVoicemailTokenBurnBlocked: boolean;
+  zeroMsGlobalDncWriteOrCachedVoicemailDropTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Outbound Voice AI (<650ms Dual-Stage Acoustic AMD + Post-Beep Cached Voicemail Drop, STIR/SHAKEN Level-A Branded Caller ID, Pre-Dial TCPA 1:1 Consent + FCC RND + Area-Code/Zip-Code Curfew Intersection & 0ms Zero-Rebuttal Global DNC Opt-Out) Guard (`ENTERPRISE-OUTBOUND-VOICE-AMD-TCPA-REPUTATION-2026-01`).
+ */
+export function evaluateEnterpriseOutboundVoiceAmdTcpaReputation2026Guard(input: {
+  tcpaConsentRndAndDualTimezoneCurfewVerified: boolean;
+  stirShakenLevelAAndDualStageAmdConfigured: boolean;
+  calleeOptOutRequestedOrVoicemailCadenceOver1Point8sDetected: boolean;
+}): EnterpriseOutboundVoiceAmdTcpaReputation2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-OUTBOUND-VOICE-AMD-TCPA-REPUTATION-2026-01",
+    outboundSipDialAndLiveGreetingAuthorized:
+      input.tcpaConsentRndAndDualTimezoneCurfewVerified &&
+      input.stirShakenLevelAAndDualStageAmdConfigured &&
+      !input.calleeOptOutRequestedOrVoicemailCadenceOver1Point8sDetected,
+    curfewReassignedNumberOrVoicemailTokenBurnBlocked:
+      !input.tcpaConsentRndAndDualTimezoneCurfewVerified ||
+      !input.stirShakenLevelAAndDualStageAmdConfigured ||
+      input.calleeOptOutRequestedOrVoicemailCadenceOver1Point8sDetected,
+    zeroMsGlobalDncWriteOrCachedVoicemailDropTriggered:
+      input.calleeOptOutRequestedOrVoicemailCadenceOver1Point8sDetected,
+  };
+}
+
+
 
 
 
