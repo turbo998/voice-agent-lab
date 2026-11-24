@@ -14365,6 +14365,37 @@ export function evaluateCorporateTravelExpenseConcurFcpaVoice2026Guard(input: {
   };
 }
 
+export interface EnterpriseProcurementApHelpdeskBecVoice2026Evaluation {
+  policyCode: "ENTERPRISE-PROCUREMENT-AP-HELPDESK-BEC-VOICE-2026-01";
+  threeWayMatchDisclosureAndAsnSyncAuthorized: boolean;
+  voiceBankMasterSwapOrAutonomousPoPriceEditBlocked: boolean;
+  erpPaymentSecurityFreezeOrCategoryBuyerAlertTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Procurement & Accounts Payable (AP) Helpdesk Voice AI (<350ms SAP Ariba/Coupa 3-Way Match Variance Explainer, 0ms Anti-BEC Read-Only Bank-Master Lock, Dynamic Early-Payment Discounting & T-5 Day PO Expediting) Guard (`ENTERPRISE-PROCUREMENT-AP-HELPDESK-BEC-VOICE-2026-01`).
+ */
+export function evaluateEnterpriseProcurementApHelpdeskBecVoice2026Guard(input: {
+  vendorTinPoAuthenticatedAndBankMasterReadOnlyLocked: boolean;
+  threeWayMatchDiffAndZeroAutonomousPoPriceMutationActive: boolean;
+  voiceBankRoutingSwapOrSupplierPriceHikeAttempted: boolean;
+}): EnterpriseProcurementApHelpdeskBecVoice2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-PROCUREMENT-AP-HELPDESK-BEC-VOICE-2026-01",
+    threeWayMatchDisclosureAndAsnSyncAuthorized:
+      input.vendorTinPoAuthenticatedAndBankMasterReadOnlyLocked &&
+      input.threeWayMatchDiffAndZeroAutonomousPoPriceMutationActive &&
+      !input.voiceBankRoutingSwapOrSupplierPriceHikeAttempted,
+    voiceBankMasterSwapOrAutonomousPoPriceEditBlocked:
+      !input.vendorTinPoAuthenticatedAndBankMasterReadOnlyLocked ||
+      !input.threeWayMatchDiffAndZeroAutonomousPoPriceMutationActive ||
+      input.voiceBankRoutingSwapOrSupplierPriceHikeAttempted,
+    erpPaymentSecurityFreezeOrCategoryBuyerAlertTriggered:
+      input.voiceBankRoutingSwapOrSupplierPriceHikeAttempted,
+  };
+}
+
+
 
 
 

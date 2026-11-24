@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg520" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070b14"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad520" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad520" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amberGrad520" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="roseGrad520" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+    <style>
+      .title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 21px; font-weight: 800; fill: #f8fafc; }
+      .subtitle { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .card-title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13.5px; font-weight: 700; fill: #f1f5f9; }
+      .body-text { font-family: 'Segoe UI', system-ui, sans-serif; sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .mono { font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 10.5px; fill: #38bdf8; }
+      .badge { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 10.5px; font-weight: 700; fill: #ffffff; }
+      .kpi-num { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 18px; font-weight: 800; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg520)" rx="14"/>
+
+  <!-- Header -->
+  <rect x="24" y="18" width="1152" height="64" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.5"/>
+  <rect x="38" y="30" width="142" height="24" rx="6" fill="url(#emeraldGrad520)"/>
+  <text x="109" y="46" text-anchor="middle" class="badge">AP &amp; ARIBA · #520</text>
+  <text x="194" y="44" class="title">Enterprise Procurement &amp; AP Helpdesk Voice AI: 3-Way Match, PO Expediting &amp; BEC Lock</text>
+  <text x="194" y="65" class="subtitle">SAP Ariba/Coupa 3-Way Match Variance Explainer (83.5% AP Deflection) + 0ms Anti-BEC IBAN/ACH Lock + Dynamic Discounting (-$350k/10k Hrs)</text>
+
+  <!-- Column 1: SAP / Coupa 3-Way Match Variance Resolution -->
+  <g transform="translate(24, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#cyanGrad520)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">1. 3-Way Match Variance &amp; Invoice Status</text>
+
+    <rect x="14" y="48" width="340" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#38bdf8">Pinpoints Exact 3-Way Match Hold Reason</text>
+    <text x="26" y="86" class="body-text">• Diffs PO (ME23N) vs. Goods Receipt (MIGO) vs.</text>
+    <text x="26" y="102" class="body-text">  Invoice (MIRO) in SAP S/4HANA / Ariba / Coupa</text>
+    <text x="26" y="122" class="mono">Explains Exact Qty / Unit-Price Variance in &lt;350ms</text>
+
+    <rect x="14" y="148" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="168" class="card-title" fill="#34d399">1-Tap Credit-Memo / ASN Cure Link</text>
+    <text x="26" y="186" class="body-text">• Texts supplier portal deep-link to submit missing</text>
+    <text x="26" y="202" class="body-text">  packing slip or credit memo for the 20-unit diff</text>
+    <text x="26" y="222" class="mono" fill="#6ee7b7">Deflects 83.5% of Inbound Vendor AP Inquiries</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#fbbf24">Dynamic Early-Payment Discount Offer</text>
+    <text x="26" y="288" class="body-text">• For approved clean invoices due in 45 days,</text>
+    <text x="26" y="304" class="body-text">  offers 1.8% early-pay discount for 48h ACH release</text>
+    <text x="26" y="322" class="mono" fill="#fde68a">Generates 14%+ Annualized Treasury Working-Capital ROI</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="366" class="card-title" fill="#6ee7b7">Exact ACH / Wire Trace Number Readback</text>
+    <text x="26" y="384" class="body-text">Provides settled payment date &amp; bank trace ID</text>
+    <text x="26" y="400" class="mono" fill="#a7f3d0">only after vendor TIN + PO verification</text>
+  </g>
+
+  <!-- Column 2: Zero-Trust Anti-BEC Bank Account & IBAN Swap Defense -->
+  <g transform="translate(416, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#e11d48" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#roseGrad520)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">2. Anti-BEC Vendor Bank-Swap Fraud Lock</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#fb7185" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#fb7185">0ms Block on Voice Bank/IBAN Changes</text>
+    <text x="26" y="86" class="body-text">• Fraudsters impersonate suppliers to divert $150k</text>
+    <text x="26" y="102" class="body-text">  ACH/wire payments to new bank routing numbers!</text>
+    <text x="26" y="122" class="mono" fill="#fda4af">Voice Agent Has ZERO Write Access to Bank Master!</text>
+
+    <rect x="14" y="150" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#34d399">Out-of-Band Portal MFA + Treasury Callback</text>
+    <text x="26" y="188" class="body-text">• Directs banking updates strictly to MFA Vendor</text>
+    <text x="26" y="204" class="body-text">  Portal + mandatory human Treasury callback to</text>
+    <text x="26" y="224" class="mono" fill="#6ee7b7">historical phone on file (0.00% BEC Wire Fraud)</text>
+
+    <rect x="14" y="252" width="340" height="86" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="272" class="card-title" fill="#38bdf8">Vendor Identity &amp; PO Cross-Authentication</text>
+    <text x="26" y="290" class="body-text">• Requires matching Vendor ID + Tax ID last-4 +</text>
+    <text x="26" y="306" class="body-text">  exact PO number before disclosing invoice status</text>
+    <text x="26" y="324" class="mono">Prevents Competitor Price &amp; Volume Espionage</text>
+
+    <rect x="14" y="348" width="340" height="66" rx="8" fill="#4c0519" stroke="#f43f5e" stroke-width="1"/>
+    <text x="26" y="368" class="card-title" fill="#fda4af">Flags Urgent Wire-Redirect Social Engineering</text>
+    <text x="26" y="386" class="body-text">Emits instant ERP fraud hold &amp; SOC alert on</text>
+    <text x="26" y="402" class="mono" fill="#fda4af">any spoken request to change remittance routing</text>
+  </g>
+
+  <!-- Column 3: Proactive PO Expediting & ASN Supply-Chain Sync -->
+  <g transform="translate(808, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#059669" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#emeraldGrad520)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">3. Proactive PO Expediting &amp; ASN Sync</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#34d399">Automated T-5 Day Outbound PO Check-In</text>
+    <text x="26" y="86" class="body-text">• Calls Tier-1/2 suppliers 5 days before critical</text>
+    <text x="26" y="102" class="body-text">  factory delivery dates when ASN is still missing</text>
+    <text x="26" y="122" class="mono" fill="#6ee7b7">Captures Tracking # &amp; Updates SAP MRP in Real Time</text>
+
+    <rect x="14" y="150" width="340" height="90" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#fbbf24">Partial-Shipment &amp; Delay Buyer Escalation</text>
+    <text x="26" y="188" class="body-text">• If supplier reports a 4-day delay or short ship,</text>
+    <text x="26" y="204" class="body-text">  calculates safety-stock impact &amp; alerts category</text>
+    <text x="26" y="222" class="mono" fill="#fde68a">buyer to trigger secondary supplier allocation</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#38bdf8">Zero Unauthorized PO Price / Qty Mutation</text>
+    <text x="26" y="288" class="body-text">• If supplier demands a +12% unit price increase</text>
+    <text x="26" y="304" class="body-text">  on the call, stages buyer approval card—never</text>
+    <text x="26" y="322" class="mono">mutates approved ERP PO price autonomously!</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#1e1b4b" stroke="#34d399" stroke-width="1.2"/>
+    <text x="26" y="366" class="card-title" fill="#6ee7b7">Guardrail: PROCUREMENT-AP-VOICE-2026-01</text>
+    <text x="26" y="384" class="mono" fill="#f8fafc">evaluateEnterpriseProcurementApHelpdeskBecGuard</text>
+    <text x="26" y="402" class="body-text">83.5% AP Deflection · -$350k/10k Hrs Fraud &amp; Yield</text>
+  </g>
+
+  <!-- Bottom KPI Bar -->
+  <rect x="24" y="542" width="1152" height="118" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="44" y="568" class="card-title" fill="#38bdf8">Enterprise Procurement &amp; AP Helpdesk Voice AI Benchmarks (per 10,000 Operating Hours)</text>
+
+  <g transform="translate(44, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Vendor AP Inquiry Deflection</text>
+    <text x="16" y="50" class="kpi-num" fill="#38bdf8">31.0% → 83.5% (3-Way Diff)</text>
+  </g>
+  <g transform="translate(324, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Voice BEC Bank-Swap Fraud</text>
+    <text x="16" y="50" class="kpi-num" fill="#fb7185">0.00% (Read-Only Master)</text>
+  </g>
+  <g transform="translate(604, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">On-Time ASN Capture Rate</text>
+    <text x="16" y="50" class="kpi-num" fill="#34d399">62.0% → 95.4% (T-5 Call)</text>
+  </g>
+  <g transform="translate(884, 582)">
+    <rect width="272" height="62" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="16" y="24" class="body-text">Fraud Avoided &amp; Discount Yield</text>
+    <text x="16" y="50" class="kpi-num" fill="#6ee7b7">-$350,000 / 10k Hours</text>
+  </g>
+</svg>
