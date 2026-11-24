@@ -14095,6 +14095,37 @@ export function evaluateEnterpriseOutboundVoiceAmdTcpaReputation2026Guard(input:
   };
 }
 
+export interface EnterprisePciDssV4VoicePaymentTokenization2026Evaluation {
+  policyCode: "ENTERPRISE-PCI-DSS-V4-VOICE-PAYMENT-TOKENIZATION-2026-01";
+  saqATokenizedVoicePaymentSettlementAuthorized: boolean;
+  rawPanInAiContextOrDuplicateBargeInChargeBlocked: boolean;
+  edgeRecorderPauseRingBufferScrubOrWalletPushTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise PCI-DSS v4.0 Voice Payment (Edge SBC Media/DTMF Clamping for SAQ-A De-Scoping, <15ms Blurted-PAN Recorder Pause & 8s Ring Buffer Scrub, 11s In-Call Apple/Google Pay Webhook Sync & Two-Phase Idempotent Settlement) Guard (`ENTERPRISE-PCI-DSS-V4-VOICE-PAYMENT-TOKENIZATION-2026-01`).
+ */
+export function evaluateEnterprisePciDssV4VoicePaymentTokenization2026Guard(input: {
+  edgeSbcDtmfClampingAndZeroRawPanInLlmVerified: boolean;
+  twoPhaseAmountReadbackAndIdempotencyKeyLocked: boolean;
+  unclampedSpokenPanDigitsOrDuplicateChargeAttempted: boolean;
+}): EnterprisePciDssV4VoicePaymentTokenization2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-PCI-DSS-V4-VOICE-PAYMENT-TOKENIZATION-2026-01",
+    saqATokenizedVoicePaymentSettlementAuthorized:
+      input.edgeSbcDtmfClampingAndZeroRawPanInLlmVerified &&
+      input.twoPhaseAmountReadbackAndIdempotencyKeyLocked &&
+      !input.unclampedSpokenPanDigitsOrDuplicateChargeAttempted,
+    rawPanInAiContextOrDuplicateBargeInChargeBlocked:
+      !input.edgeSbcDtmfClampingAndZeroRawPanInLlmVerified ||
+      !input.twoPhaseAmountReadbackAndIdempotencyKeyLocked ||
+      input.unclampedSpokenPanDigitsOrDuplicateChargeAttempted,
+    edgeRecorderPauseRingBufferScrubOrWalletPushTriggered:
+      input.unclampedSpokenPanDigitsOrDuplicateChargeAttempted,
+  };
+}
+
+
 
 
 

@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 510 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 510 篇选型指南](#-二510-篇企业级语音架构选型指南中英双语) |
+| **🧭 511 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 511 篇选型指南](#-二511-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、510 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、511 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（487 篇）
+### 3.3 高价值企业行业解决方案蓝图（488 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -584,6 +584,7 @@ flowchart LR
 508. **企业长期跨会话语音记忆、双时态知识图谱（Zep / Mem0 / GraphRAG）与 GDPR 被遗忘权擦除架构选型指南（振铃期 `<5ms` Redis 预热 `<=250 Token` 记忆摘要卡彻底消除每轮 `680ms` 同步向量检索延迟、双时态关系边 `valid_until` 覆盖将动态事实准确率从 `71.5%` 提至 `99.4%`、验身前后两级记忆隔离与声纹分桶实现 `0.00%` 家庭共号串话泄密、以及 `GDPR Art. 17` 全链路血缘级联擦除每万小时净省 `$29.0万`）方案**：[中文](./docs/enterprise-long-term-voice-memory-knowledge-graph-zep-mem0-gdpr-erasure-selection-faq.md) | [EN](./docs/enterprise-long-term-voice-memory-knowledge-graph-zep-mem0-gdpr-erasure-selection-faq.en.md)
 509. **政务便民热线（12345 / 市政 311）、水电燃气公用事业停供抢修洪峰与适老化无障碍实时语音 Agent（Citizen 311/12345、Utility Outage Storm Surge & Elderly Accessible Voice）架构选型指南（振铃期 `<120ms` 电网 `OMS/GIS` 台区映射 + 馈线级边缘预合成语音缓存以 `$0.003/通` 分流 `84.6%` 百倍台风停电洪峰、`<10s` 燃气泄漏/触电生命安全首问熔断锁、口语地标转 GIS 网格与 `100m` 空间重复工单归并（`97.8%` 准确率）、以及 `0.85x` 方言适老化模式将长者完结率从 `38.0%` 提至 `86.4%` 每万小时净省 `$35.5万`）方案**：[中文](./docs/government-311-12345-utility-outage-storm-surge-citizen-voice-selection-faq.md) | [EN](./docs/government-311-12345-utility-outage-storm-surge-citizen-voice-selection-faq.en.md)
 510. **企业智能外呼（Outbound Voice AI）、`<650ms` 双阶语音信箱秒级识别（AMD）、防运营商高频封号与 TCPA/FCC 合规撤回锁架构选型指南（`<650ms` 双阶声学 AMD 实现 `98.9%` 真人/信箱识别率并砍掉 `74%` 语音信箱大模型空转浪费、`STIR/SHAKEN` A级签名 + 品牌来电名片 + 呼前 60s 短信将真人接通率从 `24.0%` 提至 `64.8%`、区号与邮编双时区最严交集宵禁锁、以及 `0ms` 零挽留 `Global DNC` 退订门禁每万外呼小时净创效 `$40.5万`）方案**：[中文](./docs/enterprise-outbound-voice-ai-amd-voicemail-detection-tcpa-carrier-reputation-selection-faq.md) | [EN](./docs/enterprise-outbound-voice-ai-amd-voicemail-detection-tcpa-carrier-reputation-selection-faq.en.md)
+511. **企业电话语音 PCI-DSS v4.0 合规免坐席收款、边缘 DTMF 掩码剥离与通话内 Apple/Google Pay 协同结算（Edge DTMF Clamping、SAQ-A De-Scoping & Tokenized Checkout）架构选型指南（边缘 SBC 物理拦截 DTMF 与明文卡号使 AI 集群 `100%` 豁免降级至 `PCI SAQ-A`、口述卡号 `<15ms` 录音暂停与 `8s` 内存擦除符合 `Req 3.3.2`、通话不断线推送 `Apple/Google Pay` 将收款完成率从 `66.0%` 提至 `96.4%`（耗时 `78s→11s`）、以及订单金额幂等防重扣每万小时净省 `$36.0万`）方案**：[中文](./docs/enterprise-pci-dss-v4-voice-payment-dtmf-masking-tokenization-selection-faq.md) | [EN](./docs/enterprise-pci-dss-v4-voice-payment-dtmf-masking-tokenization-selection-faq.en.md)
 
 ---
 

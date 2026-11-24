@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg511" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070b14"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad511" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad511" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amberGrad511" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad511" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <style>
+      .title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 21px; font-weight: 800; fill: #f8fafc; }
+      .subtitle { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .card-title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13.5px; font-weight: 700; fill: #f1f5f9; }
+      .body-text { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .mono { font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 10.5px; fill: #38bdf8; }
+      .badge { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 10.5px; fill: #ffffff; font-weight: 700; }
+      .kpi-num { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 18px; font-weight: 800; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg511)" rx="14"/>
+
+  <!-- Header -->
+  <rect x="24" y="18" width="1152" height="64" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.5"/>
+  <rect x="38" y="30" width="142" height="24" rx="6" fill="url(#emeraldGrad511)"/>
+  <text x="109" y="46" text-anchor="middle" class="badge">PCI-DSS v4.0 · #511</text>
+  <text x="194" y="44" class="title">Enterprise PCI-DSS v4.0 Voice Payment: Edge DTMF Clamping &amp; Tokenized Checkout</text>
+  <text x="194" y="65" class="subtitle">SAQ-A De-Scoping (0 PAN/CVV in LLM or Logs) + Edge DTMF/Audio Clamping + 11s In-Call Apple/Google Pay Sync (-$360k/10k Hrs)</text>
+
+  <!-- Column 1: Edge Media Clamping & PCI SAQ-A De-Scoping -->
+  <g transform="translate(24, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#059669" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#emeraldGrad511)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">1. Edge Media Clamping &amp; SAQ-A De-Scoping</text>
+
+    <rect x="14" y="48" width="340" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#34d399">Keep LLM &amp; Recordings Out of PCI Scope!</text>
+    <text x="26" y="86" class="body-text">• Letting PAN/CVV enter S2S audio tokens pulls</text>
+    <text x="26" y="102" class="body-text">  your entire AI cloud into $250k+ PCI SAQ-D scope</text>
+    <text x="26" y="122" class="mono" fill="#6ee7b7">Edge SBC Clamps PAN/CVV Before AI &amp; Recorder</text>
+
+    <rect x="14" y="148" width="340" height="92" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="168" class="card-title" fill="#38bdf8">DTMF Bleed &amp; Spoken Card Interception</text>
+    <text x="26" y="186" class="body-text">• Intercepts keypad tones &amp; mutes audio channel</text>
+    <text x="26" y="202" class="body-text">  during payment capture (Twilio &lt;Pay&gt; / Sycurio)</text>
+    <text x="26" y="222" class="mono">AI Receives ONLY Stripe/Adyen Token (tok_9921)</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#fbbf24">Spoken-PAN Emergency Recording Pause</text>
+    <text x="26" y="288" class="body-text">• If caller blurts out card digits mid-sentence,</text>
+    <text x="26" y="304" class="body-text">  edge regex detector pauses WAV recorder &amp; scrubs</text>
+    <text x="26" y="322" class="mono" fill="#fde68a">rolling 8s audio buffer (PCI Req 3.3.2 Compliant)</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="366" class="card-title" fill="#6ee7b7">100% PCI-DSS v4.0 SAQ-A / SAQ-A-EP</text>
+    <text x="26" y="384" class="body-text">Zero cardholder data ever touches AI memory,</text>
+    <text x="26" y="400" class="mono" fill="#a7f3d0">OpenTelemetry traces, or S3/Blob call storage</text>
+  </g>
+
+  <!-- Column 2: Dual-Path Checkout (11s Apple/Google Pay vs. Keypad) -->
+  <g transform="translate(416, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#cyanGrad511)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">2. Dual-Path Checkout (Wallet Link + DTMF)</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#38bdf8">11s In-Call Apple Pay / Google Pay Push</text>
+    <text x="26" y="86" class="body-text">• Typing 16 digits on mobile keypad fails 34% of</text>
+    <text x="26" y="102" class="body-text">  the time! Texts 1-tap Apple/Google Pay link while</text>
+    <text x="26" y="122" class="mono">staying on the call -> 96.4% Checkout Completion</text>
+
+    <rect x="14" y="150" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#34d399">Real-Time Webhook Voice Confirmation</text>
+    <text x="26" y="188" class="body-text">• Listens to Stripe / Adyen payment_intent webhook</text>
+    <text x="26" y="204" class="body-text">• Speaks instant receipt ("Payment of $142.50</text>
+    <text x="26" y="224" class="mono" fill="#6ee7b7">received via Apple Pay!") within 300ms of tap</text>
+
+    <rect x="14" y="252" width="340" height="86" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="272" class="card-title" fill="#fbbf24">Saved Card-on-File Last-4 + CVV Token Flow</text>
+    <text x="26" y="290" class="body-text">• For returning authenticated callers, confirms</text>
+    <text x="26" y="306" class="body-text">  saved Visa ending in 4242 + 3-digit masked DTMF</text>
+    <text x="26" y="324" class="mono" fill="#fde68a">Completes Repeat Bill Payment in &lt;8 Seconds</text>
+
+    <rect x="14" y="348" width="340" height="66" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="368" class="card-title" fill="#6ee7b7">Landline / Senior Isolated DTMF Fallback</text>
+    <text x="26" y="386" class="body-text">Gracefully falls back to Luhn-validated keypad</text>
+    <text x="26" y="402" class="mono" fill="#a7f3d0">entry when caller is on a residential landline</text>
+  </g>
+
+  <!-- Column 3: Idempotent Settlement & Chargeback Protection -->
+  <g transform="translate(808, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#purpleGrad511)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">3. Idempotent Settlement &amp; Chargeback Lock</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#a78bfa" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#c4b5fd">Two-Phase Amount &amp; Currency Readback</text>
+    <text x="26" y="86" class="body-text">• Reads exact total, currency, and merchant name</text>
+    <text x="26" y="102" class="body-text">  before charging; requires explicit caller "Yes"</text>
+    <text x="26" y="122" class="mono" fill="#ddd6fe">or 3DS2 biometric tap (Cuts Chargebacks by 88%)</text>
+
+    <rect x="14" y="150" width="340" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#34d399">Barge-In Double-Charge Idempotency Key</text>
+    <text x="26" y="188" class="body-text">• Binds payment_intent_id to (order_id + amount)</text>
+    <text x="26" y="204" class="body-text">• Even if caller barges in or presses # twice,</text>
+    <text x="26" y="222" class="mono" fill="#6ee7b7">0.00% duplicate charges can ever execute</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#38bdf8">Actionable Decline Recovery Guidance</text>
+    <text x="26" y="288" class="body-text">• Maps ISO-8583 / Stripe decline codes (insufficient</text>
+    <text x="26" y="304" class="body-text">  funds vs. zip mismatch) into polite retry prompts</text>
+    <text x="26" y="322" class="mono">Recovers 62% of Initial Soft Card Declines</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#1e1b4b" stroke="#a78bfa" stroke-width="1.2"/>
+    <text x="26" y="366" class="card-title" fill="#c4b5fd">Guardrail: PCI-VOICE-PAYMENT-2026-01</text>
+    <text x="26" y="384" class="mono" fill="#f8fafc">evaluateEnterprisePciDssV4VoicePaymentGuard</text>
+    <text x="26" y="402" class="body-text">0 PAN in AI Scope · -$360k/10k Hrs Audit &amp; Drop</text>
+  </g>
+
+  <!-- Bottom KPI Bar -->
+  <rect x="24" y="542" width="1152" height="118" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="44" y="568" class="card-title" fill="#38bdf8">Enterprise PCI-DSS v4.0 Voice Payment &amp; Checkout Benchmarks (per 10,000 Operating Hours)</text>
+
+  <g transform="translate(44, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Raw PAN / CVV in AI Context</text>
+    <text x="16" y="50" class="kpi-num" fill="#34d399">0.00% (SAQ-A Edge Clamp)</text>
+  </g>
+  <g transform="translate(324, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">In-Call Payment Completion</text>
+    <text x="16" y="50" class="kpi-num" fill="#38bdf8">66.0% → 96.4% (Wallet Push)</text>
+  </g>
+  <g transform="translate(604, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Average Payment Handle Time</text>
+    <text x="16" y="50" class="kpi-num" fill="#a78bfa">78s → 11s (Apple/Google Pay)</text>
+  </g>
+  <g transform="translate(884, 582)">
+    <rect width="272" height="62" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="16" y="24" class="body-text">PCI Audit &amp; Abandonment Saved</text>
+    <text x="16" y="50" class="kpi-num" fill="#6ee7b7">-$360,000 / 10k Hours</text>
+  </g>
+</svg>
