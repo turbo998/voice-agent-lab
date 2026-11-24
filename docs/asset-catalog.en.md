@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **483 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **484 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (483 Bilingual Guides)
+## 3. Solution Architect Selection Guides (484 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (460 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (461 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -527,3 +527,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 481. **Elevator & Escalator Cabin Intercom, ASME A17.1 Entrapment Triage, Zero Door-Prying Lock & Fire-Rescue Voice AI Selection Guide: ASME A17.4 Zero Door-Prying/Roof-Hatch & Drop-Key LOTO Lock (0 Hoistway Shear Fatalities), 120ms Otis ONE/KONE 24/7 IoT & ASME A17.1-2022 Deaf Touchscreen/Video Gate (-64.8% False $320 Truck Rolls, -$218k/10k Calls) & <100ms Medical Entrapment / Escalator Comb-Plate Brake Stop**: [EN](./elevator-escalator-dispatch-asme-a17-cabin-entrapment-fire-recall-voice-selection-faq.en.md) | [中文](./elevator-escalator-dispatch-asme-a17-cabin-entrapment-fire-recall-voice-selection-faq.md)
 482. **2026 Real-Time Voice & Multimodal AI Capability Breakthroughs: Full-Duplex Parallel Tool-Calling, Sub-35ms Acoustic-Semantic Turn-Taking (Smart-Turn v2) & Hybrid Dual-Track Selection Guide: <35ms Prosody+Syntax Turn-Taking (-89.4% False Cutoffs & 100% Backchannel Immunity), Turn-Epoch Monotonic Write Fence + item.truncate Sync (0% Stale Tool Commits), T+600ms Zero-Dead-Air Pacing (-79.6% Hang-Ups), and In-Call S2S ↔ Locked-SSML Switch + 3-Turn Audio Pruning (-63.8% Long-Call Token TCO, -$264k/10k Hrs)**: [EN](./voice-ai-2026-breakthroughs-full-duplex-tool-calling-edge-turn-taking-selection-faq.en.md) | [中文](./voice-ai-2026-breakthroughs-full-duplex-tool-calling-edge-turn-taking-selection-faq.md)
 483. **2026 Real-Time Voice Platforms & Orchestration Frameworks Head-to-Head Selection Guide (Azure Voice Live / ACS vs. Twilio ConversationRelay vs. Open-Source LiveKit Agents / Pipecat vs. Retell / Vapi / Bland): 120k Min/Mo TCO Break-Even ($0.042/min vs $0.115/min, -$438k/Yr at 500k Min/Mo), Private VNet/VPC Data Sovereignty (<12ms Internal DB Calls, 0% Wrapper PII Leak), K8s preStop 1800s Zero-Drop Call Drain (0% Scale-In Drops) & <200ms Multi-Vendor Failover**: [EN](./azure-voice-live-twilio-conversationrelay-livekit-pipecat-retell-vapi-bland-selection-faq.en.md) | [中文](./azure-voice-live-twilio-conversationrelay-livekit-pipecat-retell-vapi-bland-selection-faq.md)
+484. **Enterprise Contact Center IVR Modernization Full-Stack Selection Guide (AI Tier-1 Receptionist, Zero-Repeat Warm Handoff & Real-Time Agent Assist Copilot): Front-Door BYOC SBC 68.4% Self-Service Deflection & SIP REFER Media-Leg Release (-100% Tromboning Tax), 36B UUID + <150ms Redis 8KB Signed-KYC Screen-Pop & 6s Whisper (-84s Human AHT, 0% Repeat KYC), Ch0/Ch1 Stereo <=25-Word Micro-Cards & 3s Auto-ACW (95s → 8s Wrap-Up, -$312k/10k Calls)**: [EN](./enterprise-ivr-modernization-ai-receptionist-warm-handoff-agent-assist-selection-faq.en.md) | [中文](./enterprise-ivr-modernization-ai-receptionist-warm-handoff-agent-assist-selection-faq.md)

@@ -13285,6 +13285,37 @@ export function evaluateVoicePlatformLiveKitPipecatAcsTwilioRetell2026Guard(inpu
   };
 }
 
+export interface EnterpriseIvrModernizationCopilot2026Evaluation {
+  policyCode: "ENTERPRISE-IVR-MODERNIZATION-COPILOT-2026-01";
+  aiTier1SelfServiceAndAutoAcwWrapUpAuthorized: boolean;
+  repeatKycQuestionOrMediaHairpinTaxBlocked: boolean;
+  instantZeroRepeatWarmHandoffWithWhisperTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Contact Center IVR Modernization, Zero-Repeat Warm Handoff & Real-Time Agent Assist Copilot (Pre-Ring Signed KYC Context Packet + SIP REFER AI Media-Leg Release, Ch0/Ch1 Stereo Isolation + <=25-Word Micro-Card & 3s Auto-ACW, 0ms 2-Turn Clarification Loop Breaker & Whisper Transfer) Guard (`ENTERPRISE-IVR-MODERNIZATION-COPILOT-2026-01`).
+ */
+export function evaluateEnterpriseIvrModernizationCopilot2026Guard(input: {
+  preRingKycContextPacketAndSipMediaLegReleaseVerified: boolean;
+  stereoChannelSplitAndMicroCardUnder25WordsEnforced: boolean;
+  twoTurnClarificationLoopOrAngryCallerEscalationDetected: boolean;
+}): EnterpriseIvrModernizationCopilot2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-IVR-MODERNIZATION-COPILOT-2026-01",
+    aiTier1SelfServiceAndAutoAcwWrapUpAuthorized:
+      input.preRingKycContextPacketAndSipMediaLegReleaseVerified &&
+      input.stereoChannelSplitAndMicroCardUnder25WordsEnforced &&
+      !input.twoTurnClarificationLoopOrAngryCallerEscalationDetected,
+    repeatKycQuestionOrMediaHairpinTaxBlocked:
+      !input.preRingKycContextPacketAndSipMediaLegReleaseVerified ||
+      !input.stereoChannelSplitAndMicroCardUnder25WordsEnforced ||
+      input.twoTurnClarificationLoopOrAngryCallerEscalationDetected,
+    instantZeroRepeatWarmHandoffWithWhisperTriggered:
+      input.twoTurnClarificationLoopOrAngryCallerEscalationDetected,
+  };
+}
+
+
 
 
 
