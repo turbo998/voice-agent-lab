@@ -13975,6 +13975,37 @@ export function evaluateQsrDriveThruRestaurantPosVoice2026Guard(input: {
   };
 }
 
+export interface EnterpriseHrRecruitingVoiceScreenEeoc2026Evaluation {
+  policyCode: "ENTERPRISE-HR-RECRUITING-VOICE-SCREEN-EEOC-2026-01";
+  recruitingVoiceScreenAndAtsBookingAuthorized: boolean;
+  protectedClassInquiryAcousticBiasOrAutoRejectionBlocked: boolean;
+  adaAccommodationSwitchOrHumanRecruiterReviewTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise AI Recruiting Phone Screen, Workday/Greenhouse ATS Sync & EEOC / EU-AI-Act Annex III Compliance (Protected-Class & Salary-History Firewall, 100% Accent/Pitch-Blind Semantic BARS Grader, ADA Accommodation Opt-Out & Human-in-the-Loop Rejection Gate) Guard (`ENTERPRISE-HR-RECRUITING-VOICE-SCREEN-EEOC-2026-01`).
+ */
+export function evaluateEnterpriseHrRecruitingVoiceScreenEeoc2026Guard(input: {
+  protectedClassFirewallAndSalaryHistoryBanVerified: boolean;
+  accentBlindSemanticBarsAndHumanRejectionReviewEnforced: boolean;
+  acousticEmotionScoringOrProtectedTraitProbingAttempted: boolean;
+}): EnterpriseHrRecruitingVoiceScreenEeoc2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-HR-RECRUITING-VOICE-SCREEN-EEOC-2026-01",
+    recruitingVoiceScreenAndAtsBookingAuthorized:
+      input.protectedClassFirewallAndSalaryHistoryBanVerified &&
+      input.accentBlindSemanticBarsAndHumanRejectionReviewEnforced &&
+      !input.acousticEmotionScoringOrProtectedTraitProbingAttempted,
+    protectedClassInquiryAcousticBiasOrAutoRejectionBlocked:
+      !input.protectedClassFirewallAndSalaryHistoryBanVerified ||
+      !input.accentBlindSemanticBarsAndHumanRejectionReviewEnforced ||
+      input.acousticEmotionScoringOrProtectedTraitProbingAttempted,
+    adaAccommodationSwitchOrHumanRecruiterReviewTriggered:
+      input.acousticEmotionScoringOrProtectedTraitProbingAttempted,
+  };
+}
+
+
 
 
 

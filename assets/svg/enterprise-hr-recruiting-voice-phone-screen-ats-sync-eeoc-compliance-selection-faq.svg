@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg507" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070b14"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad507" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad507" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amberGrad507" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad507" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <style>
+      .title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 21px; font-weight: 800; fill: #f8fafc; }
+      .subtitle { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .card-title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13.5px; font-weight: 700; fill: #f1f5f9; }
+      .body-text { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .mono { font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 10.5px; fill: #38bdf8; }
+      .badge { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 10.5px; font-weight: 700; fill: #ffffff; }
+      .kpi-num { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 18px; font-weight: 800; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg507)" rx="14"/>
+
+  <!-- Header -->
+  <rect x="24" y="18" width="1152" height="64" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.5"/>
+  <rect x="38" y="30" width="142" height="24" rx="6" fill="url(#purpleGrad507)"/>
+  <text x="109" y="46" text-anchor="middle" class="badge">HR TALENT · #507</text>
+  <text x="194" y="44" class="title">Enterprise AI Recruiting Phone Screen, ATS Sync &amp; EEOC / EU-AI-Act Compliance</text>
+  <text x="194" y="65" class="subtitle">&lt;60s Post-Apply Voice Screen (5.2d → 14m Time-to-Screen) + Protected-Class Question Firewall + Accent-Blind BARS Rubric (-$280k/10k Hrs)</text>
+
+  <!-- Column 1: <60s 24/7 Candidate Voice Screen & ATS Sync -->
+  <g transform="translate(24, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#cyanGrad507)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">1. &lt;60s 24/7 Voice Screen &amp; ATS Integration</text>
+
+    <rect x="14" y="48" width="340" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#38bdf8">Instant Post-Apply Voice Screen (&lt;60s)</text>
+    <text x="26" y="86" class="body-text">• 62% of frontline/hourly candidates apply after</text>
+    <text x="26" y="102" class="body-text">  6 PM or on weekends when recruiters are offline</text>
+    <text x="26" y="122" class="mono">Cuts Time-to-First-Screen from 5.2 Days to 14 Mins</text>
+
+    <rect x="14" y="148" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="168" class="card-title" fill="#34d399">Deterministic Knock-Out &amp; Comp Alignment</text>
+    <text x="26" y="186" class="body-text">• Verifies shift schedule, work authorization, active</text>
+    <text x="26" y="202" class="body-text">  licenses (RN / CDL / Forklift), and pay band fit</text>
+    <text x="26" y="222" class="mono" fill="#6ee7b7">Answers Candidate Role/Benefits FAQs via Approved KB</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#fbbf24">Instant Hiring-Manager Calendar Lock</text>
+    <text x="26" y="288" class="body-text">• Qualified candidates book onsite/video interviews</text>
+    <text x="26" y="304" class="body-text">  on the same call via Workday / Greenhouse + Graph</text>
+    <text x="26" y="322" class="mono" fill="#fde68a">Lifts Final Interview Show-Up from 54% to 88.4%</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="366" class="card-title" fill="#6ee7b7">Patient Turn-Taking (750ms Thinking Pause)</text>
+    <text x="26" y="384" class="body-text">Never interrupts nervous candidates pausing to</text>
+    <text x="26" y="400" class="mono" fill="#a7f3d0">recall past project or work history examples</text>
+  </g>
+
+  <!-- Column 2: EEOC / EU AI Act Protected-Class & Bias Firewall -->
+  <g transform="translate(416, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#purpleGrad507)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">2. EEOC &amp; EU AI Act Annex III Bias Shield</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#a78bfa" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#c4b5fd">Protected-Class Question Firewall (0ms)</text>
+    <text x="26" y="86" class="body-text">• Hard-blocks LLM from asking about age, pregnancy,</text>
+    <text x="26" y="102" class="body-text">  childcare, religion, disability, or arrest record</text>
+    <text x="26" y="122" class="mono" fill="#ddd6fe">Asks Job-Requirement Ability Only ("Lift 40 lbs?")</text>
+
+    <rect x="14" y="150" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#34d399">100% Accent &amp; Pitch-Blind Rubric Scoring</text>
+    <text x="26" y="188" class="body-text">• EU AI Act bans emotion/prosody scoring in hiring!</text>
+    <text x="26" y="204" class="body-text">• Evaluates strictly on normalized semantic text</text>
+    <text x="26" y="224" class="mono" fill="#6ee7b7">against 5-Point Job-Competency BARS Rubric</text>
+
+    <rect x="14" y="252" width="340" height="86" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="272" class="card-title" fill="#38bdf8">Protected-Attribute Scrub Before Grading</text>
+    <text x="26" y="290" class="body-text">• If candidate volunteers protected info ("After my</text>
+    <text x="26" y="306" class="body-text">  maternity leave..."), redacts it before rubric</text>
+    <text x="26" y="324" class="mono">scoring &amp; ATS summary generation (0.0% Disparate Impact)</text>
+
+    <rect x="14" y="348" width="340" height="66" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="368" class="card-title" fill="#6ee7b7">NYC Local Law 144 / AEDT Audit Trail</text>
+    <text x="26" y="386" class="body-text">Logs exact rubric weights, question bank version,</text>
+    <text x="26" y="402" class="mono" fill="#a7f3d0">and adverse-impact ratio telemetry per cohort</text>
+  </g>
+
+  <!-- Column 3: ADA Accommodation, Human-in-the-Loop & Guardrail -->
+  <g transform="translate(808, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#059669" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#emeraldGrad507)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">3. ADA Accommodation &amp; Human Final Gate</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#34d399">Mandatory AI Disclosure &amp; ADA Opt-Out</text>
+    <text x="26" y="86" class="body-text">• Discloses AI interviewer upfront and offers</text>
+    <text x="26" y="102" class="body-text">  1-click switch to Text Chat or Human Recruiter</text>
+    <text x="26" y="122" class="mono" fill="#6ee7b7">for speech/hearing accommodations with zero penalty</text>
+
+    <rect x="14" y="150" width="340" height="90" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#fbbf24">Zero Auto-Rejection Without Human Review</text>
+    <text x="26" y="188" class="body-text">• EU AI Act Annex III Human-in-the-Loop rule:</text>
+    <text x="26" y="204" class="body-text">  AI recommends disposition &amp; attaches [mm:ss]</text>
+    <text x="26" y="222" class="mono" fill="#fde68a">evidence clips; recruiter approves final rejection</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#38bdf8">Pay-Transparency Band Lock (No Lowballing)</text>
+    <text x="26" y="288" class="body-text">• Proactively shares statutory pay range (CO/NY/CA</text>
+    <text x="26" y="304" class="body-text">  pay transparency laws) and never asks illegal</text>
+    <text x="26" y="322" class="mono">"prior salary history" questions!</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#1e1b4b" stroke="#34d399" stroke-width="1.2"/>
+    <text x="26" y="366" class="card-title" fill="#6ee7b7">Guardrail: HR-RECRUITING-VOICE-2026-01</text>
+    <text x="26" y="384" class="mono" fill="#f8fafc">evaluateEnterpriseHrRecruitingVoiceScreenEeocGuard</text>
+    <text x="26" y="402" class="body-text">0 EEOC Violations · -$280k/10k Hrs Recruiter Time</text>
+  </g>
+
+  <!-- Bottom KPI Bar -->
+  <rect x="24" y="542" width="1152" height="118" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="44" y="568" class="card-title" fill="#38bdf8">Enterprise AI Recruiting Phone Screen &amp; Compliance Benchmarks (per 10,000 Recruiting Hours)</text>
+
+  <g transform="translate(44, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Time-to-First-Screen</text>
+    <text x="16" y="50" class="kpi-num" fill="#38bdf8">5.2 Days → 14 Mins (24/7)</text>
+  </g>
+  <g transform="translate(324, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">HM Interview Show-Up Rate</text>
+    <text x="16" y="50" class="kpi-num" fill="#34d399">54.0% → 88.4% (Instant Book)</text>
+  </g>
+  <g transform="translate(604, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Illegal EEOC / Salary History Qs</text>
+    <text x="16" y="50" class="kpi-num" fill="#a78bfa">0.00% (Hard Schema Lock)</text>
+  </g>
+  <g transform="translate(884, 582)">
+    <rect width="272" height="62" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="16" y="24" class="body-text">Recruiter Labor &amp; Agency Saved</text>
+    <text x="16" y="50" class="kpi-num" fill="#6ee7b7">-$280,000 / 10k Hours</text>
+  </g>
+</svg>
