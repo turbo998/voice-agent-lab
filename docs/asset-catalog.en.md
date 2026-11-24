@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **500 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **501 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (500 Bilingual Guides)
+## 3. Solution Architect Selection Guides (501 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (477 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (478 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -544,3 +544,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 498. **Enterprise Voice AI FinOps & Capacity Sizing Guide (P65 Azure PTU + 0ms PAYGO Spillover, 3-Turn Audio Compaction & Zombie-Call Breakers): P65 Base PTU + 0ms APIM PAYGO Spillover (88% PTU Utilization, 0% HTTP 429 Drops), 3-Turn Rolling Audio-to-Text Compaction (-63.8% Long-Call Burn), 94.6% Prefix Cache Lock, 72% SLM Tiering & 18s Zombie-Call / $2.50 Wallet Breaker ($0.145/min → $0.039/min, -$1.06M/10M Min)**: [EN](./enterprise-voice-ai-finops-azure-ptu-paygo-spillover-audio-compaction-selection-faq.en.md) | [中文](./enterprise-voice-ai-finops-azure-ptu-paygo-spillover-audio-compaction-selection-faq.md)
 499. **Enterprise Voice AI Security, Audio Jailbreak Defense, Deepfake Anti-Spoofing & Output Guardrails Guide: First-1.2s ASVspoof-5 Vocoder Liveness + FIDO2 OOB Step-Up (72% → 99.6% Voice Clone Block), <24ms Dual-Plane Audio/Text Prompt Shield (14.2% → 0.08% Jailbreak), 0ms Session-Bound JWT Tool Sandbox (0.00% IDOR) & <18ms Pre-TTS Output Firewall (-$425k/10k Hrs)**: [EN](./enterprise-voice-ai-security-audio-jailbreak-deepfake-liveness-output-guardrails-selection-faq.en.md) | [中文](./enterprise-voice-ai-security-audio-jailbreak-deepfake-liveness-output-guardrails-selection-faq.md)
 500. **Enterprise Voice AI EvalOps, 500-Call Acoustic CI/CD Regression, 7-Hop OpenTelemetry Observability & 100% Post-Call QA Guide: <4m 500-Call 12-Persona Acoustic CI Gate (18% → 96.8% Bug Catch), 7-Hop W3C traceparent Voice Flamegraph (4.5h → <10s MTTR), $0.004/Call 100% Post-Call Groundedness QA & Auto-Curated Golden Flywheel (-$310k/10k Hrs)**: [EN](./enterprise-voice-ai-evalops-automated-regression-post-call-qa-observability-selection-faq.en.md) | [中文](./enterprise-voice-ai-evalops-automated-regression-post-call-qa-observability-selection-faq.md)
+501. **Enterprise Telecom & ISP Voice AI Guide (Broadband Remote Self-Healing, Bill-Shock Re-Rating & Anti-SIM-Swap Lock): <150ms Ringback ONT Probe + 8s Reboot Pacing + Camera LED Vision (-64.2% $180 Truck Rolls), Deterministic BSS Invoice Diff & Retroactive Roaming Pass Re-Rating (41% → 89.2% Churn Save) & Zero-Trust FIDO2 Anti-SIM-Swap Lock (0.00% Voice Hijack, -$395k/10k Hrs)**: [EN](./telco-isp-broadband-self-healing-bill-dispute-sim-swap-voice-selection-faq.en.md) | [中文](./telco-isp-broadband-self-healing-bill-dispute-sim-swap-voice-selection-faq.md)

@@ -13795,6 +13795,37 @@ export function evaluateVoiceAiEvalopsAutomatedRegressionObservability2026Guard(
   };
 }
 
+export interface TelcoBroadbandSelfHealingSimSwapVoice2026Evaluation {
+  policyCode: "TELCO-BROADBAND-SELF-HEALING-SIM-SWAP-VOICE-2026-01";
+  telcoBroadbandHealAndBillingActionAuthorized: boolean;
+  kbaOnlySimSwapOrUnauthorizedBillCreditBlocked: boolean;
+  outOfBandPasskeyStepUpOrLedCameraTriageTriggered: boolean;
+}
+
+/**
+ * Deterministic Telecom & ISP Broadband Remote Self-Healing (<150ms Ringback ONT Probe + 8s Reboot Pacing + Camera LED Check), BSS Retroactive Roaming Re-Rating & Zero-Trust Anti-SIM-Swap Guard (`TELCO-BROADBAND-SELF-HEALING-SIM-SWAP-VOICE-2026-01`).
+ */
+export function evaluateTelcoBroadbandSelfHealingSimSwapVoice2026Guard(input: {
+  ringbackOntTelemetryAndDeterministicBssReRatingVerified: boolean;
+  twoPhaseVerbalTariffReadbackConfirmed: boolean;
+  esimSwapOrPortOutRequestedWithoutFido2PasskeyOrBiometricId: boolean;
+}): TelcoBroadbandSelfHealingSimSwapVoice2026Evaluation {
+  return {
+    policyCode: "TELCO-BROADBAND-SELF-HEALING-SIM-SWAP-VOICE-2026-01",
+    telcoBroadbandHealAndBillingActionAuthorized:
+      input.ringbackOntTelemetryAndDeterministicBssReRatingVerified &&
+      input.twoPhaseVerbalTariffReadbackConfirmed &&
+      !input.esimSwapOrPortOutRequestedWithoutFido2PasskeyOrBiometricId,
+    kbaOnlySimSwapOrUnauthorizedBillCreditBlocked:
+      !input.ringbackOntTelemetryAndDeterministicBssReRatingVerified ||
+      !input.twoPhaseVerbalTariffReadbackConfirmed ||
+      input.esimSwapOrPortOutRequestedWithoutFido2PasskeyOrBiometricId,
+    outOfBandPasskeyStepUpOrLedCameraTriageTriggered:
+      input.esimSwapOrPortOutRequestedWithoutFido2PasskeyOrBiometricId,
+  };
+}
+
+
 
 
 

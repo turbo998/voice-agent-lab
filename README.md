@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 500 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 500 篇选型指南](#-二500-篇企业级语音架构选型指南中英双语) |
+| **🧭 501 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 501 篇选型指南](#-二501-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、500 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、501 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（477 篇）
+### 3.3 高价值企业行业解决方案蓝图（478 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -574,6 +574,7 @@ flowchart LR
 498. **企业实时语音 AI 容量规划与成本精算（Voice AI FinOps：Azure PTU 预留容量 vs. PAYGO 溢出、3 轮音频上下文压缩与小模型分级路由）架构选型指南（`P65` 日间基荷 PTU + `0ms` APIM PAYGO 弹性溢流消除夜间 `62%` 空置浪费并实现 `0%` 429 掉线、3 轮滑动窗口音频转文本压缩砍掉 `63.8%` 长通话二次方成本、`94.6%` 前缀缓存锁 + `72%` 常规轮次 SLM 分流、以及 `18秒` 僵尸死话与 `$2.50` 钱包熔断将单价从 `$0.145/min` 压至 `$0.039/min` 每千万分钟净省 `$106万`）方案**：[中文](./docs/enterprise-voice-ai-finops-azure-ptu-paygo-spillover-audio-compaction-selection-faq.md) | [EN](./docs/enterprise-voice-ai-finops-azure-ptu-paygo-spillover-audio-compaction-selection-faq.en.md)
 499. **企业实时语音安全、防提示词注入、深度伪造声纹活体防御与输出围栏（Enterprise Voice AI Security：Audio Jailbreak Defense、Deepfake Liveness & Output Guardrails）架构选型指南（前 `1.2s` 多光谱声码器伪影活体检测 + `FIDO2` 带外密码学核验将 3 秒 AI 克隆音重放拦截率从 `72%` 提至 `99.6%`、`<24ms` 声学+文本双平面越狱护盾将越狱率从 `14.2%` 压至 `0.08%`、`0ms` 会话绑定 `JWT sub` 工具沙箱实现 `0.00%` 跨客户 IDOR 越权、以及 `<18ms` TTS 前置输出防火墙与 RTP 毫秒断流每万小时规避 `$42.5万` 资损）方案**：[中文](./docs/enterprise-voice-ai-security-audio-jailbreak-deepfake-liveness-output-guardrails-selection-faq.md) | [EN](./docs/enterprise-voice-ai-security-audio-jailbreak-deepfake-liveness-output-guardrails-selection-faq.en.md)
 500. **企业实时语音全生命周期评测、500 路合成语音 CI/CD 回归、7 跳全链路可观测性与 100% 全量录音质检（Voice AI EvalOps & Observability）架构选型指南（发版前 `<4分钟` 500 路 12 人设声学并发 CI 门禁将缺陷捕获率从 `18%` 提至 `96.8%`、W3C `traceparent` 7 跳语音火焰图将慢通话排障 MTTR 从 `4.5小时` 压至 `<10秒`、离峰 `$0.004/通` `100%` 全量事实对齐质检与失败切片自动脱敏回流黄金测试集每万小时净省 `$31.0万`）方案**：[中文](./docs/enterprise-voice-ai-evalops-automated-regression-post-call-qa-observability-selection-faq.md) | [EN](./docs/enterprise-voice-ai-evalops-automated-regression-post-call-qa-observability-selection-faq.en.md)
+501. **企业电信与宽带运营商（Telco & ISP）智能语音客服、宽带故障远程自愈、账单争议重算与防 SIM 卡掉包劫持（Broadband Self-Healing、Bill Shock Re-Rating & Anti-SIM-Swap）架构选型指南（振铃期 `<150ms` 预查光猫 `TR-069/USP` 遥测 + 多模态摄像头拍 `PON/LOS` 红灯砍掉 `64.2%` 无效 `$180` 上门派单、BSS 账单 Diff 与追溯漫游包重算将客户留存率从 `41%` 提至 `89.2%`、以及零信任 `FIDO2 Passkey` 防 SIM 卡掉包锁实现 `0.00%` 语音盗卡每万小时净省 `$39.5万`）方案**：[中文](./docs/telco-isp-broadband-self-healing-bill-dispute-sim-swap-voice-selection-faq.md) | [EN](./docs/telco-isp-broadband-self-healing-bill-dispute-sim-swap-voice-selection-faq.en.md)
 
 ---
 

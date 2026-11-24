@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg501" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070b14"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad501" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad501" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amberGrad501" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="roseGrad501" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+    <style>
+      .title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 21px; font-weight: 800; fill: #f8fafc; }
+      .subtitle { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .card-title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13.5px; font-weight: 700; fill: #f1f5f9; }
+      .body-text { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .mono { font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 10.5px; fill: #38bdf8; }
+      .badge { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 10.5px; font-weight: 700; fill: #ffffff; }
+      .kpi-num { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 18px; font-weight: 800; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg501)" rx="14"/>
+
+  <!-- Header -->
+  <rect x="24" y="18" width="1152" height="64" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.5"/>
+  <rect x="38" y="30" width="138" height="24" rx="6" fill="url(#cyanGrad501)"/>
+  <text x="107" y="46" text-anchor="middle" class="badge">TELCO &amp; ISP · #501</text>
+  <text x="190" y="44" class="title">Telco &amp; ISP Voice AI: Broadband Self-Healing, Bill Shock Resolution &amp; SIM-Swap Defense</text>
+  <text x="190" y="65" class="subtitle">Pre-Answer CPE Telemetry Triage (-64% Truck Rolls) + Deterministic Roaming Re-Rating (Amdocs/CSG) + Zero-Trust Anti-SIM-Swap Lock (-$395k/10k Hrs)</text>
+
+  <!-- Column 1: Broadband & Wi-Fi Remote Self-Healing -->
+  <g transform="translate(24, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#cyanGrad501)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">1. Broadband &amp; Wi-Fi Remote Self-Healing</text>
+
+    <rect x="14" y="48" width="340" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#38bdf8">Pre-Answer ANI-to-CPE Telemetry Probe</text>
+    <text x="26" y="86" class="body-text">• Queries fiber ONT status &amp; area outage map</text>
+    <text x="26" y="102" class="body-text">  during ringback (&lt;150ms before greeting)</text>
+    <text x="26" y="122" class="mono">Proactive Outage Deflection OR Targeted Reset</text>
+
+    <rect x="14" y="148" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="168" class="card-title" fill="#34d399">Async Router Reboot &amp; Guided Pacing</text>
+    <text x="26" y="186" class="body-text">• Remote CPE reboot takes 15-25s over TR-069/USP</text>
+    <text x="26" y="202" class="body-text">• Streams 8s progress updates + SMS fallback link</text>
+    <text x="26" y="222" class="mono" fill="#6ee7b7">Cuts $180 Unnecessary Field Truck Rolls by 64.2%</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#fbbf24">Multimodal Router LED Camera Triage</text>
+    <text x="26" y="288" class="body-text">• If remote telemetry is unreachable, sends 1-tap</text>
+    <text x="26" y="304" class="body-text">  WebRTC camera link to inspect LOS/PON red LEDs</text>
+    <text x="26" y="322" class="mono" fill="#fde68a">Distinguishes Unplugged Cord vs. Cut Fiber</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="366" class="card-title" fill="#6ee7b7">78.4% First-Call Self-Healing Resolution</text>
+    <text x="26" y="384" class="body-text">Resolves DNS, Wi-Fi channel congestion, and DHCP</text>
+    <text x="26" y="400" class="mono" fill="#a7f3d0">leases without Tier-2 tech support escalation</text>
+  </g>
+
+  <!-- Column 2: Deterministic Bill Shock & Plan Re-Rating -->
+  <g transform="translate(416, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#059669" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#emeraldGrad501)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">2. Bill Shock &amp; Retroactive Plan Re-Rating</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#34d399">Automated Invoice Diff Explained in 20s</text>
+    <text x="26" y="86" class="body-text">• Diffs current vs. prior month BSS invoice JSON</text>
+    <text x="26" y="102" class="body-text">  (Amdocs / CSG / Netcracker) before speaking</text>
+    <text x="26" y="122" class="mono" fill="#6ee7b7">Pinpoints Exact Roaming / One-Time Fee Delta</text>
+
+    <rect x="14" y="150" width="340" height="92" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#38bdf8">Deterministic Retroactive Pass Math</text>
+    <text x="26" y="188" class="body-text">• Never let the LLM invent arbitrary bill credits!</text>
+    <text x="26" y="204" class="body-text">• BSS engine re-rates $240 roaming into $50 Travel</text>
+    <text x="26" y="224" class="mono">Pass -> Exact $190 Credit + 89% Churn Save Rate</text>
+
+    <rect x="14" y="252" width="340" height="86" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="272" class="card-title" fill="#fbbf24">Delegated Credit Authority Ceiling</text>
+    <text x="26" y="290" class="body-text">• Code-enforced per-tenure credit cap (e.g. &lt;=$75</text>
+    <text x="26" y="306" class="body-text">  goodwill or verified retroactive bundle diff)</text>
+    <text x="26" y="324" class="mono" fill="#fde68a">0.0% Unauthorized Revenue Leakage</text>
+
+    <rect x="14" y="348" width="340" height="66" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="368" class="card-title" fill="#6ee7b7">Two-Phase Verbal Contract Readback</text>
+    <text x="26" y="386" class="body-text">Requires explicit caller "Yes" after reading monthly</text>
+    <text x="26" y="402" class="mono" fill="#a7f3d0">rate &amp; term before committing BSS plan change</text>
+  </g>
+
+  <!-- Column 3: Zero-Trust Anti-SIM-Swap & Port-Out Guard -->
+  <g transform="translate(808, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#e11d48" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#roseGrad501)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">3. Anti-SIM-Swap &amp; Port-Out Fraud Lock</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#fb7185" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#fb7185">Zero-Trust eSIM EID / IMEI Swap Gate</text>
+    <text x="26" y="86" class="body-text">• Attackers use stolen SSNs to request eSIM swaps</text>
+    <text x="26" y="102" class="body-text">  and hijack bank SMS 2FA codes within minutes</text>
+    <text x="26" y="122" class="mono" fill="#fda4af">Knowledge KBA (SSN/DOB) Is NEVER Sufficient!</text>
+
+    <rect x="14" y="150" width="340" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#34d399">Cryptographic Passkey + Old-Device Check</text>
+    <text x="26" y="188" class="body-text">• Requires FIDO2 passkey on registered device OR</text>
+    <text x="26" y="204" class="body-text">  gov-ID liveness selfie + 24h multi-channel hold</text>
+    <text x="26" y="222" class="mono" fill="#6ee7b7">100% Blocks Voice-Channel SIM-Swap Hijacking</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#38bdf8">Number Transfer PIN (NTP) Port-Out Lock</text>
+    <text x="26" y="288" class="body-text">• Never reads out Port-Out PINs over voice audio</text>
+    <text x="26" y="304" class="body-text">• Delivers NTP strictly into authenticated carrier</text>
+    <text x="26" y="322" class="mono">app inbox after port-freeze verification</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#1e1b4b" stroke="#fb7185" stroke-width="1.2"/>
+    <text x="26" y="366" class="card-title" fill="#fda4af">Guardrail: TELCO-ISP-VOICE-2026-01</text>
+    <text x="26" y="384" class="mono" fill="#f8fafc">evaluateTelcoBroadbandSelfHealingSimSwapGuard</text>
+    <text x="26" y="402" class="body-text">-64.2% Truck Rolls · -$395k/10k Hrs Total Savings</text>
+  </g>
+
+  <!-- Bottom KPI Bar -->
+  <rect x="24" y="542" width="1152" height="118" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="44" y="568" class="card-title" fill="#38bdf8">Telco &amp; ISP Voice AI Operational &amp; Fraud Benchmarks (per 10,000 Operating Hours)</text>
+
+  <g transform="translate(44, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Unnecessary $180 Truck Rolls</text>
+    <text x="16" y="50" class="kpi-num" fill="#38bdf8">-64.2% (Remote CPE Heal)</text>
+  </g>
+  <g transform="translate(324, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Bill-Shock Churn Save Rate</text>
+    <text x="16" y="50" class="kpi-num" fill="#34d399">41% → 89.2% (Auto Re-Rate)</text>
+  </g>
+  <g transform="translate(604, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Voice SIM-Swap Fraud Success</text>
+    <text x="16" y="50" class="kpi-num" fill="#fb7185">0.00% (OOB Passkey Lock)</text>
+  </g>
+  <g transform="translate(884, 582)">
+    <rect width="272" height="62" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="16" y="24" class="body-text">Net Savings per 10,000 Hours</text>
+    <text x="16" y="50" class="kpi-num" fill="#6ee7b7">-$395,000 / 10k Hours</text>
+  </g>
+</svg>
