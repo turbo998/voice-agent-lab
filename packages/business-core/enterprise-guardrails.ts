@@ -14005,6 +14005,37 @@ export function evaluateEnterpriseHrRecruitingVoiceScreenEeoc2026Guard(input: {
   };
 }
 
+export interface EnterpriseLongTermVoiceMemoryGraphGdpr2026Evaluation {
+  policyCode: "ENTERPRISE-LONG-TERM-VOICE-MEMORY-GRAPH-GDPR-2026-01";
+  postAuthVoiceMemoryHydrationAuthorized: boolean;
+  preAuthHouseholdLeakOrStaleFactContradictionBlocked: boolean;
+  gdprLineageCascadeTombstonePurgeTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Long-Term Voice Memory (<5ms Ringback <=250-Token Memory Card, Bitemporal Knowledge Graph valid_until Supersession, Two-Tier Pre-Auth/Post-Auth Household Speaker Lock & <500ms GDPR Art. 17 Lineage Cascade Purge) Guard (`ENTERPRISE-LONG-TERM-VOICE-MEMORY-GRAPH-GDPR-2026-01`).
+ */
+export function evaluateEnterpriseLongTermVoiceMemoryGraphGdpr2026Guard(input: {
+  ringbackCardAndBitemporalFactSupersessionActive: boolean;
+  postAuthSpeakerPartitionVerifiedBeforeTier1Unlock: boolean;
+  gdprErasureRequestedOrUnauthenticatedTier1AccessAttempted: boolean;
+}): EnterpriseLongTermVoiceMemoryGraphGdpr2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-LONG-TERM-VOICE-MEMORY-GRAPH-GDPR-2026-01",
+    postAuthVoiceMemoryHydrationAuthorized:
+      input.ringbackCardAndBitemporalFactSupersessionActive &&
+      input.postAuthSpeakerPartitionVerifiedBeforeTier1Unlock &&
+      !input.gdprErasureRequestedOrUnauthenticatedTier1AccessAttempted,
+    preAuthHouseholdLeakOrStaleFactContradictionBlocked:
+      !input.ringbackCardAndBitemporalFactSupersessionActive ||
+      !input.postAuthSpeakerPartitionVerifiedBeforeTier1Unlock ||
+      input.gdprErasureRequestedOrUnauthenticatedTier1AccessAttempted,
+    gdprLineageCascadeTombstonePurgeTriggered:
+      input.gdprErasureRequestedOrUnauthenticatedTier1AccessAttempted,
+  };
+}
+
+
 
 
 

@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **507 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **508 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（507 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（508 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -66,7 +66,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（484 篇）
+### 3.3 高价值企业行业解决方案蓝图（485 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -551,3 +551,4 @@
 505. **企业实时语音跨区域主活容灾、S2S-级联无感热降级与零断连会话状态迁移（Multi-Region High Availability、650ms Watchdog Failover & Zero-Drop Session Continuity）架构选型指南（边缘媒体锚点 SFU 与无状态 AI 容器解耦将故障掉线率从 `100%` 压至 `0.06%`（`99.994%` 存活率）、每轮 `<12ms` 跨区 Redis 快照与工具幂等发件箱实现 `0.0%` 失忆重问与零重复扣款、`650ms` 首包看门狗同主权对冲切流、以及 S2S→同音色级联→边缘三级优雅降级每万小时规避 `$37.0万` 宕机损失）方案**：[中文](./enterprise-voice-ai-multi-region-ha-s2s-cascade-failover-session-continuity-selection-faq.md) | [EN](./enterprise-voice-ai-multi-region-ha-s2s-cascade-failover-session-continuity-selection-faq.en.md)
 506. **连锁餐饮、汽车得来速（QSR Drive-Thru）与门店电话点餐抗噪语音 Agent、复杂忌口加料状态机与 POS 沽清同步（80dB Beamforming、Modifier DAG & POS 86-Item Sync）架构选型指南（`80dB` 主驾车窗波束成形声学锥 + 单品 `>6件` 数量异常二次确认锁终结“幽灵 180 块鸡块”、确定性 `Modifier DAG` 与 `Toast/NCR` POS 沽清（`86'd`）实时同步将点单准确率从 `92.4%` 提至 `99.2%`、以及 `<=3.5s` 单次黄金加购将客单价提升 `+14.2%` 每万小时创效 `$32.5万`）方案**：[中文](./qsr-drive-thru-restaurant-voice-ordering-modifier-upsell-pos-sync-selection-faq.md) | [EN](./qsr-drive-thru-restaurant-voice-ordering-modifier-upsell-pos-sync-selection-faq.en.md)
 507. **企业人力资源招聘初筛（AI Recruiting Phone Screen）、蓝领与校招批量语音面试、ATS 自动排期与零偏见合规（Workday/Greenhouse Sync & EEOC / EU-AI-Act Guardrails）架构选型指南（投递后 `<60s` 全天候语音初筛与用人经理日历当场锁位将初筛周期从 `5.2天` 缩至 `14分钟` 并将复试到场率从 `54.0%` 提至 `88.4%`、`0ms` 受保护特征与过往薪资禁问锁、`100%` 口音与音高盲测的纯语义 `BARS` 量表评分符合欧盟 `EU AI Act Annex III`、以及 `ADA` 无障碍切换与人工终审每万小时净省 `$28.0万`）方案**：[中文](./enterprise-hr-recruiting-voice-phone-screen-ats-sync-eeoc-compliance-selection-faq.md) | [EN](./enterprise-hr-recruiting-voice-phone-screen-ats-sync-eeoc-compliance-selection-faq.en.md)
+508. **企业长期跨会话语音记忆、双时态知识图谱（Zep / Mem0 / GraphRAG）与 GDPR 被遗忘权擦除架构选型指南（振铃期 `<5ms` Redis 预热 `<=250 Token` 记忆摘要卡彻底消除每轮 `680ms` 同步向量检索延迟、双时态关系边 `valid_until` 覆盖将动态事实准确率从 `71.5%` 提至 `99.4%`、验身前后两级记忆隔离与声纹分桶实现 `0.00%` 家庭共号串话泄密、以及 `GDPR Art. 17` 全链路血缘级联擦除每万小时净省 `$29.0万`）方案**：[中文](./enterprise-long-term-voice-memory-knowledge-graph-zep-mem0-gdpr-erasure-selection-faq.md) | [EN](./enterprise-long-term-voice-memory-knowledge-graph-zep-mem0-gdpr-erasure-selection-faq.en.md)

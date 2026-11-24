@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **507 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **508 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (507 Bilingual Guides)
+## 3. Solution Architect Selection Guides (508 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (484 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (485 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -551,3 +551,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 505. **Enterprise Multi-Region Voice AI High Availability, <650ms S2S-to-Cascade Failover & Zero-Drop Session Continuity Guide: Decoupled Edge Media SFU (100% → 0.06% Fault Call Drop, 99.994% Survival), <12ms Per-Turn Redis Checkpoint + Idempotent Tool Outbox (0.0% Context Amnesia / Double Charge), 650ms Watchdog Geo-Sovereign Failover & 3-Tier Same-Voice Degradation (-$370k/10k Hrs)**: [EN](./enterprise-voice-ai-multi-region-ha-s2s-cascade-failover-session-continuity-selection-faq.en.md) | [中文](./enterprise-voice-ai-multi-region-ha-s2s-cascade-failover-session-continuity-selection-faq.md)
 506. **QSR Drive-Thru & Restaurant Voice Ordering Guide (80dB Beamforming, Modifier DAG & Live POS 86 Sync): 80dB Driver-Window Acoustic Cone + Qty <=6 Sanity Lock (0.0% Runaway Carts), Deterministic Modifier DAG + Live Toast/NCR 86-Item Sync (92.4% → 99.2% Order Accuracy, -22s Lane Time) & 1-Shot <=3.5s Upsell (+14.2% AOV, -$325k/10k Hrs)**: [EN](./qsr-drive-thru-restaurant-voice-ordering-modifier-upsell-pos-sync-selection-faq.en.md) | [中文](./qsr-drive-thru-restaurant-voice-ordering-modifier-upsell-pos-sync-selection-faq.md)
 507. **Enterprise AI Recruiting Phone Screen, ATS Calendar Sync & EEOC / EU-AI-Act Compliance Guide: <60s 24/7 Post-Apply Voice Screen + Instant HM Calendar Lock (5.2d → 14m Time-to-Screen, 54.0% → 88.4% Show-Up), 0ms Protected-Class & Salary-History Firewall, 100% Accent/Pitch-Blind Semantic BARS Grader (EU AI Act Annex III) & ADA Opt-Out (-$280k/10k Hrs)**: [EN](./enterprise-hr-recruiting-voice-phone-screen-ats-sync-eeoc-compliance-selection-faq.en.md) | [中文](./enterprise-hr-recruiting-voice-phone-screen-ats-sync-eeoc-compliance-selection-faq.md)
+508. **Enterprise Long-Term Voice Memory, Bitemporal Knowledge Graph (Zep/Mem0) & GDPR Right-to-Erasure Guide: <5ms Ringback <=250-Token Memory Card (680ms → <5ms Turn Lag), Bitemporal Fact Supersession (71.5% → 99.4% Temporal Accuracy), Two-Tier Pre-Auth Household Lock (0.00% Shared-Phone Leaks) & <500ms GDPR Art. 17 Lineage Cascade Purge (-$290k/10k Hrs)**: [EN](./enterprise-long-term-voice-memory-knowledge-graph-zep-mem0-gdpr-erasure-selection-faq.en.md) | [中文](./enterprise-long-term-voice-memory-knowledge-graph-zep-mem0-gdpr-erasure-selection-faq.md)
