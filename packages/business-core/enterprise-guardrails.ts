@@ -14185,6 +14185,37 @@ export function evaluateEnterpriseOmnichannelVoiceVisualCobrowsing2026Guard(inpu
   };
 }
 
+export interface EnterpriseVoiceMcpStreamingToolGateway2026Evaluation {
+  policyCode: "ENTERPRISE-VOICE-MCP-STREAMING-TOOL-GATEWAY-2026-01";
+  voiceMcpToolInvocationAuthorized: boolean;
+  unprunedSchemaBloatToolPoisoningOrSharedKeyBlocked: boolean;
+  bargeInMcpCancelOrTwoPhaseDestructiveConfirmTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice-Native Model Context Protocol (MCP) Gateway (<45ms Streamable-HTTP Pool, <=6 Tools/Node Schema Pruning, <=120-Token Spoken Response Projection, CI-Pinned SHA-256 Schema Hash Lock & OAuth 2.1 OBO Token Exchange) Guard (`ENTERPRISE-VOICE-MCP-STREAMING-TOOL-GATEWAY-2026-01`).
+ */
+export function evaluateEnterpriseVoiceMcpStreamingToolGateway2026Guard(input: {
+  prunedMax6ToolsAndSha256SchemaHashPinned: boolean;
+  oauth21OboTokenAnd120TokenResponseProjectionActive: boolean;
+  unpinnedToolPoisoningOrUnconfirmedDestructiveHintDetected: boolean;
+}): EnterpriseVoiceMcpStreamingToolGateway2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-VOICE-MCP-STREAMING-TOOL-GATEWAY-2026-01",
+    voiceMcpToolInvocationAuthorized:
+      input.prunedMax6ToolsAndSha256SchemaHashPinned &&
+      input.oauth21OboTokenAnd120TokenResponseProjectionActive &&
+      !input.unpinnedToolPoisoningOrUnconfirmedDestructiveHintDetected,
+    unprunedSchemaBloatToolPoisoningOrSharedKeyBlocked:
+      !input.prunedMax6ToolsAndSha256SchemaHashPinned ||
+      !input.oauth21OboTokenAnd120TokenResponseProjectionActive ||
+      input.unpinnedToolPoisoningOrUnconfirmedDestructiveHintDetected,
+    bargeInMcpCancelOrTwoPhaseDestructiveConfirmTriggered:
+      input.unpinnedToolPoisoningOrUnconfirmedDestructiveHintDetected,
+  };
+}
+
+
 
 
 

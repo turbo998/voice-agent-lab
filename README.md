@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 513 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 513 篇选型指南](#-二513-篇企业级语音架构选型指南中英双语) |
+| **🧭 514 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 514 篇选型指南](#-二514-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、513 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、514 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（490 篇）
+### 3.3 高价值企业行业解决方案蓝图（491 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -587,6 +587,7 @@ flowchart LR
 511. **企业电话语音 PCI-DSS v4.0 合规免坐席收款、边缘 DTMF 掩码剥离与通话内 Apple/Google Pay 协同结算（Edge DTMF Clamping、SAQ-A De-Scoping & Tokenized Checkout）架构选型指南（边缘 SBC 物理拦截 DTMF 与明文卡号使 AI 集群 `100%` 豁免降级至 `PCI SAQ-A`、口述卡号 `<15ms` 录音暂停与 `8s` 内存擦除符合 `Req 3.3.2`、通话不断线推送 `Apple/Google Pay` 将收款完成率从 `66.0%` 提至 `96.4%`（耗时 `78s→11s`）、以及订单金额幂等防重扣每万小时净省 `$36.0万`）方案**：[中文](./docs/enterprise-pci-dss-v4-voice-payment-dtmf-masking-tokenization-selection-faq.md) | [EN](./docs/enterprise-pci-dss-v4-voice-payment-dtmf-masking-tokenization-selection-faq.en.md)
 512. **商业地产、长租公寓与智慧园区（Real Estate、Multifamily Property Management & Smart Campus）7×24 招租看房预约、凌晨爆管抢修分级与门禁对讲实时语音 Agent 架构选型指南（7×24 实时对接 `Yardi/AppFolio` 房态与证件活体核验自助看房门锁将夜间看房转化率从 `39.0%` 提至 `82.6%`、`<15s` 户型图总水阀位置播报先行止损（免除 `$8,500+` 泡水损失）+ 手机视频漏水分级砍掉 `61.5%` 无效 `$240` 夜间加班出车、以及《公平住房法 FHA》零引导歧视锁每万小时净创效 `$33.0万`）方案**：[中文](./docs/real-estate-property-management-leasing-emergency-maintenance-voice-selection-faq.md) | [EN](./docs/real-estate-property-management-leasing-emergency-maintenance-voice-selection-faq.en.md)
 513. **企业全渠道声画协同（Omnichannel Voice + Visual Co-Browsing）、复杂邮箱/车架号 9 秒视觉采集与通话转微信/WhatsApp 无缝接力架构选型指南（通话内不断线推送 `180s` `PKCE` 绑定微卡片将长邮箱/17位 `VIN` 采集错误率从 `31.0%` 压至 `0.2%`（耗时 `95s→9s`）、`<200ms` WebSocket `CAS` 双向声画同步实现点击屏幕即刻触发语音确认、以及 `<400ms` 语音⇄WhatsApp/短信零失忆模态热迁移每万小时净省 `$31.5万`）方案**：[中文](./docs/enterprise-omnichannel-voice-sms-whatsapp-visual-cobrowsing-handoff-selection-faq.md) | [EN](./docs/enterprise-omnichannel-voice-sms-whatsapp-visual-cobrowsing-handoff-selection-faq.en.md)
+514. **企业实时语音大模型工具协议（Voice-Native Model Context Protocol / MCP Gateway）、`<45ms` 连接池、返回结果精简投影与 OAuth 2.1 OBO 零信任架构选型指南（`<45ms` `Streamable-HTTP` 热连接池 + 按节点动态裁剪至 `<=6` 个精简 Schema 将语音工具选择准确率从 `68.0%` 提至 `98.9%`、`<=120 Token` 口语响应投影器砍掉 `89.2%` `15KB` 原始 JSON 上下文浪费、MCP `progress/cancelled` 与语音安抚/打断双向桥接、以及 `OAuth 2.1 OBO` 客户级令牌与 `SHA-256` 描述哈希锁每万小时净省 `$30.5万`）方案**：[中文](./docs/enterprise-voice-mcp-model-context-protocol-streaming-tool-gateway-selection-faq.md) | [EN](./docs/enterprise-voice-mcp-model-context-protocol-streaming-tool-gateway-selection-faq.en.md)
 
 ---
 
