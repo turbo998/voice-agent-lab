@@ -13735,6 +13735,37 @@ export function evaluateVoiceAiFinopsPtuPaygoCompaction2026Guard(input: {
   };
 }
 
+export interface VoiceAiSecurityJailbreakDeepfakeGuardrails2026Evaluation {
+  policyCode: "VOICE-AI-SECURITY-JAILBREAK-DEEPFAKE-GUARDRAILS-2026-01";
+  zeroTrustVoiceToolAndAudioEgressAuthorized: boolean;
+  deepfakeReplayIdorOrPromptInjectionBreachBlocked: boolean;
+  rtpAudioKillSwitchAndFido2StepUpTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice AI Security, Audio Jailbreak Defense, Deepfake Liveness & Output Guardrails (ASVspoof-5 Acoustic Liveness + FIDO2 OOB Step-Up, <24ms Dual-Plane Audio/Text Prompt Shield + Spotlighting, 0ms Session-Bound JWT Tool Sandbox & <18ms Pre-TTS Output Firewall) Guard (`VOICE-AI-SECURITY-JAILBREAK-DEEPFAKE-GUARDRAILS-2026-01`).
+ */
+export function evaluateVoiceAiSecurityJailbreakDeepfakeGuardrails2026Guard(input: {
+  acousticLivenessAndSessionBoundJwtToolSandboxVerified: boolean;
+  dualPlanePromptShieldAndPreTtsPiiFirewallPassed: boolean;
+  deepfakeVocoderReplayOrAudioJailbreakDetected: boolean;
+}): VoiceAiSecurityJailbreakDeepfakeGuardrails2026Evaluation {
+  return {
+    policyCode: "VOICE-AI-SECURITY-JAILBREAK-DEEPFAKE-GUARDRAILS-2026-01",
+    zeroTrustVoiceToolAndAudioEgressAuthorized:
+      input.acousticLivenessAndSessionBoundJwtToolSandboxVerified &&
+      input.dualPlanePromptShieldAndPreTtsPiiFirewallPassed &&
+      !input.deepfakeVocoderReplayOrAudioJailbreakDetected,
+    deepfakeReplayIdorOrPromptInjectionBreachBlocked:
+      !input.acousticLivenessAndSessionBoundJwtToolSandboxVerified ||
+      !input.dualPlanePromptShieldAndPreTtsPiiFirewallPassed ||
+      input.deepfakeVocoderReplayOrAudioJailbreakDetected,
+    rtpAudioKillSwitchAndFido2StepUpTriggered:
+      input.deepfakeVocoderReplayOrAudioJailbreakDetected,
+  };
+}
+
+
 
 
 

@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **498 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **499 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（498 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（499 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -66,7 +66,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（475 篇）
+### 3.3 高价值企业行业解决方案蓝图（476 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -542,3 +542,4 @@
 496. **企业多智能体实时语音协同编排（Multi-Agent Voice Swarm / Sub-Agent Handoff Graph：LiveKit Agents vs. Pipecat Flows vs. LangGraph）架构选型指南（将 80 工具巨型 Prompt 拆解为每个专家子智能体 `<=6个` 正交工具将调用准确率从 `61%` 提至 `97.6%` 并省 `58.4%` Token、`42ms` 内存级单一人设同音色静默交接消除假转接等待、高危节点前置 `kyc_verified` 鉴权契约锁、以及复合意图压栈与 `<=2跳` 防乒乓死循环熔断器每万通省 `$26.8万`）方案**：[中文](./enterprise-multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-selection-faq.md) | [EN](./enterprise-multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-selection-faq.en.md)
 497. **企业语音原生知识检索（Voice-Native RAG：Azure AI Search / Pinecone / Qdrant）投机式预取、同音字音素混合检索与口语摘要卡架构选型指南（`T-300ms` 流式 Partial-ASR 投机式预检索将句末净增延迟从 `1,850ms` 压至 `85ms`、稠密向量+BM25+拼音/Metaphone 音素三路 RRF 将同音错别字召回率从 `64%` 提至 `98.2%`、入库预编译 `<=35字` 口语播报卡砍掉 `88.4%` RAG Token、以及双时态生效日期过滤与 `<0.78` 诚实拒答每万小时省 `$28.2万`）方案**：[中文](./voice-native-rag-phonetic-hybrid-search-speculative-prefetch-selection-faq.md) | [EN](./voice-native-rag-phonetic-hybrid-search-speculative-prefetch-selection-faq.en.md)
 498. **企业实时语音 AI 容量规划与成本精算（Voice AI FinOps：Azure PTU 预留容量 vs. PAYGO 溢出、3 轮音频上下文压缩与小模型分级路由）架构选型指南（`P65` 日间基荷 PTU + `0ms` APIM PAYGO 弹性溢流消除夜间 `62%` 空置浪费并实现 `0%` 429 掉线、3 轮滑动窗口音频转文本压缩砍掉 `63.8%` 长通话二次方成本、`94.6%` 前缀缓存锁 + `72%` 常规轮次 SLM 分流、以及 `18秒` 僵尸死话与 `$2.50` 钱包熔断将单价从 `$0.145/min` 压至 `$0.039/min` 每千万分钟净省 `$106万`）方案**：[中文](./enterprise-voice-ai-finops-azure-ptu-paygo-spillover-audio-compaction-selection-faq.md) | [EN](./enterprise-voice-ai-finops-azure-ptu-paygo-spillover-audio-compaction-selection-faq.en.md)
+499. **企业实时语音安全、防提示词注入、深度伪造声纹活体防御与输出围栏（Enterprise Voice AI Security：Audio Jailbreak Defense、Deepfake Liveness & Output Guardrails）架构选型指南（前 `1.2s` 多光谱声码器伪影活体检测 + `FIDO2` 带外密码学核验将 3 秒 AI 克隆音重放拦截率从 `72%` 提至 `99.6%`、`<24ms` 声学+文本双平面越狱护盾将越狱率从 `14.2%` 压至 `0.08%`、`0ms` 会话绑定 `JWT sub` 工具沙箱实现 `0.00%` 跨客户 IDOR 越权、以及 `<18ms` TTS 前置输出防火墙与 RTP 毫秒断流每万小时规避 `$42.5万` 资损）方案**：[中文](./enterprise-voice-ai-security-audio-jailbreak-deepfake-liveness-output-guardrails-selection-faq.md) | [EN](./enterprise-voice-ai-security-audio-jailbreak-deepfake-liveness-output-guardrails-selection-faq.en.md)

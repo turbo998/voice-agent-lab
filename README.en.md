@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 498 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 498 Guides](#-2-498-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 499 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 499 Guides](#-2-499-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 498 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 499 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (475 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (476 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -572,6 +572,7 @@ flowchart LR
 496. **Enterprise Multi-Agent Voice Swarm & Sub-Agent Handoff Graph (LiveKit Agents / Pipecat Flows / LangGraph) Selection Guide: Scoped Specialist Nodes <=6 Tools (61% → 97.6% Tool Accuracy, -58.4% Prompt Token Burn), 42ms In-Process Silent Single-Persona Handoff, Prerequisite Auth Contract Gate (0% Auth Bypass), Compound Multi-Intent Stack (94.8% Completion) & <=2-Hop Anti-Ping-Pong Breaker (-$268k/10k Calls)**: [EN](./docs/enterprise-multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-selection-faq.en.md) | [中文](./docs/enterprise-multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-selection-faq.md)
 497. **Enterprise Voice-Native RAG Architecture Selection Guide (T-300ms Speculative Partial-ASR Pre-Fetch, Phonetic Homophone Hybrid Search & 35-Word Spoken Cards): T-300ms Speculative Pre-Fetch (1,850ms → 85ms Net Lag), 3-Way Phonetic RRF (64% → 98.2% Homophone Recall), Ingestion-Time 35-Word Spoken Cards (-88.4% RAG Tokens) & Bitemporal Effective-Date / <0.78 Abstention Lock (-$282k/10k Hrs)**: [EN](./docs/voice-native-rag-phonetic-hybrid-search-speculative-prefetch-selection-faq.en.md) | [中文](./docs/voice-native-rag-phonetic-hybrid-search-speculative-prefetch-selection-faq.md)
 498. **Enterprise Voice AI FinOps & Capacity Sizing Guide (P65 Azure PTU + 0ms PAYGO Spillover, 3-Turn Audio Compaction & Zombie-Call Breakers): P65 Base PTU + 0ms APIM PAYGO Spillover (88% PTU Utilization, 0% HTTP 429 Drops), 3-Turn Rolling Audio-to-Text Compaction (-63.8% Long-Call Burn), 94.6% Prefix Cache Lock, 72% SLM Tiering & 18s Zombie-Call / $2.50 Wallet Breaker ($0.145/min → $0.039/min, -$1.06M/10M Min)**: [EN](./docs/enterprise-voice-ai-finops-azure-ptu-paygo-spillover-audio-compaction-selection-faq.en.md) | [中文](./docs/enterprise-voice-ai-finops-azure-ptu-paygo-spillover-audio-compaction-selection-faq.md)
+499. **Enterprise Voice AI Security, Audio Jailbreak Defense, Deepfake Anti-Spoofing & Output Guardrails Guide: First-1.2s ASVspoof-5 Vocoder Liveness + FIDO2 OOB Step-Up (72% → 99.6% Voice Clone Block), <24ms Dual-Plane Audio/Text Prompt Shield (14.2% → 0.08% Jailbreak), 0ms Session-Bound JWT Tool Sandbox (0.00% IDOR) & <18ms Pre-TTS Output Firewall (-$425k/10k Hrs)**: [EN](./docs/enterprise-voice-ai-security-audio-jailbreak-deepfake-liveness-output-guardrails-selection-faq.en.md) | [中文](./docs/enterprise-voice-ai-security-audio-jailbreak-deepfake-liveness-output-guardrails-selection-faq.md)
 
 ---
 
