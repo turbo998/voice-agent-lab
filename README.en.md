@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 490 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 490 Guides](#-2-490-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 491 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 491 Guides](#-2-491-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 490 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 491 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (467 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (468 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -564,6 +564,7 @@ flowchart LR
 488. **Enterprise IT Service Desk (ServiceNow / Entra ID) & HR Shared Services (Workday) Zero-Trust Voice Ticket Copilot Selection Guide: Entra Verified ID 3D Liveness & Privileged-Role Phone Reset Lock (0% Scattered Spider Vishing Breaches), 54s Pre-Signed Intune/Nexthink DEX Self-Healing (72.4% L1 Deflection, $22 → $0.11), 48h Anti-Payroll-Diversion Hold + HIPAA Manager Diagnosis Masking & <100ms Stolen-Device EDR Quarantine (-$184k/10k Calls)**: [EN](./docs/enterprise-it-helpdesk-servicenow-hr-workday-voice-ticket-copilot-selection-faq.en.md) | [中文](./docs/enterprise-it-helpdesk-servicenow-hr-workday-voice-ticket-copilot-selection-faq.md)
 489. **E-Commerce Livestream & Retail Showroom Interactive Voice + Digital Human Avatar Concierge Selection Guide: 22ms Client-Side Viseme Rendering ($0.016/min vs $0.22/min Cloud Video, -92.7% TCO), 80/20 Hybrid Clips + Push/Pop Live VIP Q&A (+39.4% Off-Peak GMV Lift), <15ms Redis Price-Floor & Pre-TTS Ad-Law Lock (0 Room Bans) & 3D ToF Gaze Wake + 3s Walk-Away PII Wipe (-$278k/10k Hrs)**: [EN](./docs/retail-ecommerce-showroom-interactive-voice-avatar-shopping-concierge-selection-faq.en.md) | [中文](./docs/retail-ecommerce-showroom-interactive-voice-avatar-shopping-concierge-selection-faq.md)
 490. **Automotive In-Cabin Cockpit & Smart Hardware (AI Glasses / Wearables) Edge-Cloud Multimodal Voice Assistant Selection Guide: 155ms Edge-NPU 78% Vehicle-Control Offload & 0ms Tunnel Fallback (100% Garage/Tunnel Availability), 4-Zone Child RBAC & ISO 26262 Speed/Gear Firewall (0% Unsafe In-Motion Actuation), and Deictic 80KB Keyframe Burst (-84% Battery Drain, 38m → 8.5h Runtime, -$318k/10k Units)**: [EN](./docs/in-cabin-cockpit-smart-hardware-edge-cloud-multimodal-voice-concierge-selection-faq.en.md) | [中文](./docs/in-cabin-cockpit-smart-hardware-edge-cloud-multimodal-voice-concierge-selection-faq.md)
+491. **Enterprise AI Sales Roleplay, Customer Service Sparring & Structured Mock Interview Platform Selection Guide: Decoupled 350ms Fast-Actor + Async Slow-Critic & Anti-Sycophancy Objection Lock (0% Premature Capitulation, -46.8% Ramp Time), <100ms Regulatory Bait Red-Card Breaker, Timestamp-Quoted BARS Grader (0.94 Kappa, $0.38 vs $45 Manager Session) & Accent-Neutral EEOC / EU AI Act Gate (-$326k/10k Sessions)**: [EN](./docs/enterprise-ai-sales-roleplay-customer-service-sparring-interview-coach-selection-faq.en.md) | [中文](./docs/enterprise-ai-sales-roleplay-customer-service-sparring-interview-coach-selection-faq.md)
 
 ---
 

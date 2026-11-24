@@ -13495,6 +13495,37 @@ export function evaluateInCabinSmartHardwareEdgeCloudVoice2026Guard(input: {
   };
 }
 
+export interface EnterpriseSalesRoleplayInterviewCoach2026Evaluation {
+  policyCode: "ENTERPRISE-SALES-ROLEPLAY-INTERVIEW-COACH-2026-01";
+  roleplayCertificationAndInterviewScoreAuthorized: boolean;
+  prematureActorCapitulationOrBiasedScoreBlocked: boolean;
+  instantComplianceRedCardHaltOrProctorFlagTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise AI Sales Roleplay, Customer Service Sparring & Structured Mock Interview Platform (Fast-Actor 350ms + Slow-Critic Decoupling & Anti-Sycophancy Objection Lock, Timestamp-Anchored BARS Rubric 0.94 Kappa & Accent-Neutral EEOC Fairness Gate, 0ms Off-Label/Regulatory Bait Red-Card Halt & Anti-Teleprompter Flag) Guard (`ENTERPRISE-SALES-ROLEPLAY-INTERVIEW-COACH-2026-01`).
+ */
+export function evaluateEnterpriseSalesRoleplayInterviewCoach2026Guard(input: {
+  actorCriticDecoupledAndAntiSycophancyObjectionLocked: boolean;
+  timestampAnchoredBarsRubricAndAccentNeutralFairnessVerified: boolean;
+  offLabelComplianceBreachOrTeleprompterCheatingDetected: boolean;
+}): EnterpriseSalesRoleplayInterviewCoach2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-SALES-ROLEPLAY-INTERVIEW-COACH-2026-01",
+    roleplayCertificationAndInterviewScoreAuthorized:
+      input.actorCriticDecoupledAndAntiSycophancyObjectionLocked &&
+      input.timestampAnchoredBarsRubricAndAccentNeutralFairnessVerified &&
+      !input.offLabelComplianceBreachOrTeleprompterCheatingDetected,
+    prematureActorCapitulationOrBiasedScoreBlocked:
+      !input.actorCriticDecoupledAndAntiSycophancyObjectionLocked ||
+      !input.timestampAnchoredBarsRubricAndAccentNeutralFairnessVerified ||
+      input.offLabelComplianceBreachOrTeleprompterCheatingDetected,
+    instantComplianceRedCardHaltOrProctorFlagTriggered:
+      input.offLabelComplianceBreachOrTeleprompterCheatingDetected,
+  };
+}
+
+
 
 
 
