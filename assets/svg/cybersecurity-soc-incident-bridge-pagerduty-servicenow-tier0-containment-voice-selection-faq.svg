@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg526" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent526" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg526)"/>
+  <rect x="24" y="24" width="1152" height="632" rx="16" fill="none" stroke="#1e293b" stroke-width="2"/>
+  <rect x="44" y="42" width="1112" height="58" rx="10" fill="#0f172a" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="64" y="70" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Enterprise Cybersecurity SOC &amp; IT Major Incident Bridge Voice AI Reference Architecture</text>
+  <text x="64" y="91" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="13">&lt;15s Cognitive Wake-Up Challenge (0% Sleep-Ack) · Four-Eyes Tier-0 Containment Lock · Anti-Scattered-Spider MFA Firewall (CYBERSECURITY-SOC-INCIDENT-BRIDGE-PAGERDUTY-VOICE-2026-01)</text>
+
+  <!-- Column 1: Cognitive Wake-Up & War-Room Bridge -->
+  <rect x="44" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="44" y="120" width="356" height="40" rx="12" fill="#1e3a8a"/>
+  <text x="62" y="145" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. &lt;15s Cognitive Wake-Up &amp; Bridge</text>
+
+  <rect x="62" y="176" width="320" height="106" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="76" y="198" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Anti-Sleep-Ack Spoken Challenge</text>
+  <text x="76" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Replaces DTMF 'Press 1' muscle-memory ack</text>
+  <text x="76" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Requires spoken service name or 3-digit PIN</text>
+  <text x="76" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Escalates to backup SRE in 45s if slurred/failed</text>
+  <text x="76" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• Cuts 3 AM Sleep-Ack from 22.4% to 0.0%</text>
+
+  <rect x="62" y="296" width="320" height="114" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="318" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">20-Second Situation Briefing &amp; Join</text>
+  <text x="76" y="338" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Summarizes blast radius, recent deploy &amp; error</text>
+  <text x="76" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Bridges responder straight into Teams/Zoom</text>
+  <text x="76" y="374" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Logs timestamped ServiceNow MIM timeline</text>
+  <text x="76" y="392" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• Cuts Sev-1 MTTA from 19.5m to 1.8m</text>
+
+  <rect x="62" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Automated Status-Page &amp; Exec Digest</text>
+  <text x="76" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Drafts 15-min cadence executive update cards</text>
+  <text x="76" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Separates internal root-cause from public copy</text>
+  <text x="76" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Captures post-mortem action owners &amp; SLAs</text>
+  <text x="76" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• Saves 42 Min/Incident in Scribe Toil</text>
+
+  <!-- Column 2: Four-Eyes Tier-0 Containment Lock -->
+  <rect x="422" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#ef4444" stroke-width="1.5"/>
+  <rect x="422" y="120" width="356" height="40" rx="12" fill="#7f1d1d"/>
+  <text x="440" y="145" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. Four-Eyes Tier-0 Containment Gate</text>
+
+  <rect x="440" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#ef4444" stroke-width="1"/>
+  <text x="454" y="198" fill="#f87171" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">CMDB Asset Criticality Classification</text>
+  <text x="454" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Checks ServiceNow CMDB Tier-0 vs. Tier-2/3</text>
+  <text x="454" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Tier-2/3 laptop: instant &lt;500ms EDR isolation</text>
+  <text x="454" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Tier-0 DC / DB / K8s: blocks solo isolation</text>
+  <text x="454" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Self-Inflicted Tier-0 Outages</text>
+
+  <rect x="440" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Dual-Control FIDO2 Co-Sign Protocol</text>
+  <text x="454" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Requires SOC Lead + Infra Owner dual sign-off</text>
+  <text x="454" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Verifies exact hostname + IP + blast radius</text>
+  <text x="454" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Stages 1-click rollback snapshot before action</text>
+  <text x="454" y="398" fill="#f87171" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100% Audited SOAR Containment</text>
+
+  <rect x="440" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Barge-In Epoch Fence on SOAR Playbooks</text>
+  <text x="454" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Aborts staged containment if analyst says 'Wait'</text>
+  <text x="454" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Prevents false-positive BGP/WAF blackholing</text>
+  <text x="454" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Immutable WORM log for cyber-insurance audit</text>
+  <text x="454" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100% Cyber-Insurance SLA Proof</text>
+
+  <!-- Column 3: Anti-Scattered-Spider MFA Firewall -->
+  <rect x="800" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="800" y="120" width="356" height="40" rx="12" fill="#064e3b"/>
+  <text x="818" y="145" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Anti-Vishing &amp; Privileged MFA Lock</text>
+
+  <rect x="818" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="832" y="198" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms Privileged-Admin Voice MFA Block</text>
+  <text x="832" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Physically blocks voice MFA reset for Admins</text>
+  <text x="832" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Defeats Scattered Spider / deepfake vishing</text>
+  <text x="832" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Requires video Verified ID + Manager FIDO2</text>
+  <text x="832" y="272" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Admin Account Takeover (ATO)</text>
+
+  <rect x="818" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Impossible-Travel &amp; MFA Fatigue Triage</text>
+  <text x="832" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Calls employee within 10s of suspicious push</text>
+  <text x="832" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• If employee says 'Not Me': revokes sessions 0ms</text>
+  <text x="832" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Isolates compromised endpoint in CrowdStrike</text>
+  <text x="832" y="398" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 12-Second Compromised-Session Kill</text>
+
+  <rect x="818" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">NIS2 / SEC 4-Day Breach Clock Tracker</text>
+  <text x="832" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Tracks EU NIS2 (24h) &amp; SEC Item 1.05 (4d) SLA</text>
+  <text x="832" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Enforces Legal Counsel privilege on bridge</text>
+  <text x="832" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Zero external speculator leak on public status</text>
+  <text x="832" y="520" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100% Regulatory Reporting Readiness</text>
+
+  <!-- Footer KPI Bar -->
+  <rect x="44" y="568" width="1112" height="68" rx="10" fill="#0f172a" stroke="url(#accent526)" stroke-width="1.5"/>
+  <text x="68" y="595" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Validated Cybersecurity SOC &amp; Major Incident Benchmark:</text>
+  <text x="68" y="618" fill="#fca5a5" font-family="Segoe UI, Arial, sans-serif" font-size="13">3 AM Sleep-Ack: 22.4% → 0.0%  |  Sev-1 MTTA: 19.5m → 1.8m  |  Tier-0 Self-Outages: 0.00%  |  Admin Vishing ATO: 0.00%</text>
+</svg>

@@ -14545,6 +14545,37 @@ export function evaluateMortgageOriginationEncompassTridServicingVoice2026Guard(
   };
 }
 
+export interface CybersecuritySocIncidentBridgePagerdutyVoice2026Evaluation {
+  policyCode: "CYBERSECURITY-SOC-INCIDENT-BRIDGE-PAGERDUTY-VOICE-2026-01";
+  warRoomBridgeAndWorkstationIsolationAuthorized: boolean;
+  sleepAckOrSoloTier0IsolationOrAdminVoiceMfaResetBlocked: boolean;
+  fourEyesFido2ApprovalOrZeroMsSessionKillTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Cybersecurity SOC & Major Incident Bridge (<15s Spoken Cognitive Wake-Up Challenge, ServiceNow CMDB Tier-0 Four-Eyes FIDO2 Containment Gate, 0ms Privileged-Admin Voice MFA Lockout & 10s MFA-Fatigue Session Kill) Guard (`CYBERSECURITY-SOC-INCIDENT-BRIDGE-PAGERDUTY-VOICE-2026-01`).
+ */
+export function evaluateCybersecuritySocIncidentBridgePagerdutyVoice2026Guard(input: {
+  spokenCognitiveWakeUpPassedAndZeroAdminVoiceMfaReset: boolean;
+  targetIsNonTier0OrFourEyesFido2CoSigned: boolean;
+  soloTier0IsolationOrEmployeeDeniedLoginOrVishingAttempted: boolean;
+}): CybersecuritySocIncidentBridgePagerdutyVoice2026Evaluation {
+  return {
+    policyCode: "CYBERSECURITY-SOC-INCIDENT-BRIDGE-PAGERDUTY-VOICE-2026-01",
+    warRoomBridgeAndWorkstationIsolationAuthorized:
+      input.spokenCognitiveWakeUpPassedAndZeroAdminVoiceMfaReset &&
+      input.targetIsNonTier0OrFourEyesFido2CoSigned &&
+      !input.soloTier0IsolationOrEmployeeDeniedLoginOrVishingAttempted,
+    sleepAckOrSoloTier0IsolationOrAdminVoiceMfaResetBlocked:
+      !input.spokenCognitiveWakeUpPassedAndZeroAdminVoiceMfaReset ||
+      !input.targetIsNonTier0OrFourEyesFido2CoSigned ||
+      input.soloTier0IsolationOrEmployeeDeniedLoginOrVishingAttempted,
+    fourEyesFido2ApprovalOrZeroMsSessionKillTriggered:
+      input.soloTier0IsolationOrEmployeeDeniedLoginOrVishingAttempted,
+  };
+}
+
+
 
 
 
