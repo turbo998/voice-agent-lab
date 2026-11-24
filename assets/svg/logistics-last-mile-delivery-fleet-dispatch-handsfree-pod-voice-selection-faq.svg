@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg502" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070b14"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad502" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad502" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amberGrad502" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad502" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <style>
+      .title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 21px; font-weight: 800; fill: #f8fafc; }
+      .subtitle { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .card-title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13.5px; font-weight: 700; fill: #f1f5f9; }
+      .body-text { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .mono { font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 10.5px; fill: #38bdf8; }
+      .badge { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 10.5px; font-weight: 700; fill: #ffffff; }
+      .kpi-num { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 18px; font-weight: 800; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg502)" rx="14"/>
+
+  <!-- Header -->
+  <rect x="24" y="18" width="1152" height="64" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.5"/>
+  <rect x="38" y="30" width="142" height="24" rx="6" fill="url(#amberGrad502)"/>
+  <text x="109" y="46" text-anchor="middle" class="badge">LOGISTICS · #502</text>
+  <text x="194" y="44" class="title">Logistics, Last-Mile Delivery &amp; Fleet Dispatch Hands-Free Voice AI Architecture</text>
+  <text x="194" y="65" class="subtitle">&lt;800ms Courier PDA Sync (95.6% First-Attempt Delivery) + 75dB Hands-Free Driver TMS Copilot + 500m Geofence &amp; POD Fraud Lock (-$340k/10k Hrs)</text>
+
+  <!-- Column 1: Last-Mile Recipient Dynamic Reroute & Locker Sync -->
+  <g transform="translate(24, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#cyanGrad502)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">1. Last-Mile Dynamic Reroute &amp; Locker Sync</text>
+
+    <rect x="14" y="48" width="340" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#38bdf8">Interactive Pre-Arrival Delivery Concierge</text>
+    <text x="26" y="86" class="body-text">• Replaces rigid press-1 robo-calls when recipient</text>
+    <text x="26" y="102" class="body-text">  is away ("Leave in East Gate locker #4 or 6 PM")</text>
+    <text x="26" y="122" class="mono">Pushes Instruction to Courier Zebra PDA in &lt;800ms</text>
+
+    <rect x="14" y="148" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="168" class="card-title" fill="#34d399">Smart Parcel Locker &amp; Time-Slot Reservation</text>
+    <text x="26" y="186" class="body-text">• Queries real-time locker bay availability (S/M/L)</text>
+    <text x="26" y="202" class="body-text">  against parcel dimensions and reserves bay</text>
+    <text x="26" y="222" class="mono" fill="#6ee7b7">Lifts First-Attempt Delivery from 81% to 95.6%</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#fbbf24">Dual-Party Number Masking (Proxy Voice)</text>
+    <text x="26" y="288" class="body-text">• Protects recipient &amp; courier personal phone numbers</text>
+    <text x="26" y="304" class="body-text">• Ephemeral session proxy expires 2h after delivery</text>
+    <text x="26" y="322" class="mono" fill="#fde68a">100% Privacy Compliance (PIPL / GDPR)</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="366" class="card-title" fill="#6ee7b7">Eliminates $14.50 Failed Re-Delivery Cost</text>
+    <text x="26" y="384" class="body-text">Slashes return-to-depot loops and customer "Where</text>
+    <text x="26" y="400" class="mono" fill="#a7f3d0">was my driver?" complaint escalations</text>
+  </g>
+
+  <!-- Column 2: 75dB Hands-Free Driver & Fleet Dispatch Copilot -->
+  <g transform="translate(416, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#d97706" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#amberGrad502)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">2. 75dB Hands-Free Driver TMS Dispatch</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#fbbf24">Zero-Tap In-Cab Voice TMS Updates (75dB SNR)</text>
+    <text x="26" y="86" class="body-text">• Drivers report dock delays, gate codes, or</text>
+    <text x="26" y="102" class="body-text">  detention time via Bluetooth PTT headset</text>
+    <text x="26" y="122" class="mono" fill="#fde68a">Updates SAP TM / Oracle OTM / Manhattan in &lt;450ms</text>
+
+    <rect x="14" y="150" width="340" height="92" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#38bdf8">Multimodal OS&amp;D Freight Exception Capture</text>
+    <text x="26" y="188" class="body-text">• For Over, Short &amp; Damaged (OS&amp;D) pallets, voice</text>
+    <text x="26" y="204" class="body-text">  agent guides 1-tap photo + waybill barcode scan</text>
+    <text x="26" y="224" class="mono">Auto-Files Structured Carrier Claim in 25 Seconds</text>
+
+    <rect x="14" y="252" width="340" height="86" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="272" class="card-title" fill="#34d399">Dynamic ETA Cascade &amp; Dock Re-Slotting</text>
+    <text x="26" y="290" class="body-text">• If highway traffic delays truck &gt;30m, negotiates</text>
+    <text x="26" y="306" class="body-text">  new warehouse receiving dock slot automatically</text>
+    <text x="26" y="324" class="mono" fill="#6ee7b7">-71% Warehouse Detention &amp; Demurrage Fees</text>
+
+    <rect x="14" y="348" width="340" height="66" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="368" class="card-title" fill="#6ee7b7">FMCSA / DOT Hands-Free Safety Compliance</text>
+    <text x="26" y="386" class="body-text">Suppresses visual PDA prompts whenever vehicle</text>
+    <text x="26" y="402" class="mono" fill="#a7f3d0">telematics speed &gt; 5 mph (Voice-Only Mode)</text>
+  </g>
+
+  <!-- Column 3: Geofence Reroute Lock & High-Value POD Guardrail -->
+  <g transform="translate(808, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#059669" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#emeraldGrad502)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">3. Geofence Lock &amp; High-Value POD Guard</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#34d399">&lt;=500m Geofence Reroute Anti-Diversion Lock</text>
+    <text x="26" y="86" class="body-text">• Attackers call to divert transit parcels to a new</text>
+    <text x="26" y="102" class="body-text">  city/street address! Voice AI restricts self-service</text>
+    <text x="26" y="122" class="mono" fill="#6ee7b7">reroutes strictly to &lt;=500m approved lockers/points</text>
+
+    <rect x="14" y="150" width="340" height="90" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#fbbf24">High-Value / Direct-Signature Waiver Block</text>
+    <text x="26" y="188" class="body-text">• If shipper waybill flags Direct Signature Required</text>
+    <text x="26" y="204" class="body-text">  (&gt;$500 electronics/pharma), blocks "leave at door"</text>
+    <text x="26" y="222" class="mono" fill="#fde68a">Enforces 6-Digit Delivery OTP or Scheduled Window</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#38bdf8">GPS + Photo Proof-of-Delivery (POD) Gate</text>
+    <text x="26" y="288" class="body-text">• Blocks voice-reported "Delivered" status unless</text>
+    <text x="26" y="304" class="body-text">  driver GPS is within 100m &amp; POD photo is uploaded</text>
+    <text x="26" y="322" class="mono">0.00% Fake Delivery Scan &amp; Cargo Diversion</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#1e1b4b" stroke="#34d399" stroke-width="1.2"/>
+    <text x="26" y="366" class="card-title" fill="#6ee7b7">Guardrail: LOGISTICS-VOICE-2026-01</text>
+    <text x="26" y="384" class="mono" fill="#f8fafc">evaluateLogisticsLastMileFleetDispatchVoiceGuard</text>
+    <text x="26" y="402" class="body-text">95.6% 1st-Attempt Delivery · -$340k/10k Hrs</text>
+  </g>
+
+  <!-- Bottom KPI Bar -->
+  <rect x="24" y="542" width="1152" height="118" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="44" y="568" class="card-title" fill="#38bdf8">Logistics, Last-Mile Delivery &amp; Fleet Dispatch Voice Benchmarks (per 10,000 Operating Hours)</text>
+
+  <g transform="translate(44, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">First-Attempt Delivery Rate</text>
+    <text x="16" y="50" class="kpi-num" fill="#34d399">81.0% → 95.6% (&lt;800ms PDA)</text>
+  </g>
+  <g transform="translate(324, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Warehouse Detention Fees</text>
+    <text x="16" y="50" class="kpi-num" fill="#38bdf8">-71.0% (Auto Dock Re-Slot)</text>
+  </g>
+  <g transform="translate(604, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Mid-Transit Parcel Diversion</text>
+    <text x="16" y="50" class="kpi-num" fill="#fbbf24">0.00% (&lt;=500m Geofence)</text>
+  </g>
+  <g transform="translate(884, 582)">
+    <rect width="272" height="62" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="16" y="24" class="body-text">Net Savings per 10,000 Hours</text>
+    <text x="16" y="50" class="kpi-num" fill="#6ee7b7">-$340,000 / 10k Hours</text>
+  </g>
+</svg>

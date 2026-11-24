@@ -13825,6 +13825,37 @@ export function evaluateTelcoBroadbandSelfHealingSimSwapVoice2026Guard(input: {
   };
 }
 
+export interface LogisticsLastMileFleetDispatchVoice2026Evaluation {
+  policyCode: "LOGISTICS-LAST-MILE-FLEET-DISPATCH-VOICE-2026-01";
+  parcelRerouteAndDriverDispatchAuthorized: boolean;
+  crossZoneDiversionOrDirectSignatureWaiverBlocked: boolean;
+  sixDigitOtpScheduledWindowOrShipperEscalationTriggered: boolean;
+}
+
+/**
+ * Deterministic Logistics, Last-Mile Delivery & Fleet Dispatch (<800ms Smart-Locker Dimension-Checked Bay Lock, 75dB Speed-Gated Hands-Free Driver TMS Copilot & <=500m Geofence / Direct-Signature OTP POD Lock) Guard (`LOGISTICS-LAST-MILE-FLEET-DISPATCH-VOICE-2026-01`).
+ */
+export function evaluateLogisticsLastMileFleetDispatchVoice2026Guard(input: {
+  lockerBayDimensionReservedAndGeofenceWithin500m: boolean;
+  driverSpeedGatedHandsFreeAndPodGpsWithin100mVerified: boolean;
+  directSignatureWaiverOrCrossZoneRerouteAttempted: boolean;
+}): LogisticsLastMileFleetDispatchVoice2026Evaluation {
+  return {
+    policyCode: "LOGISTICS-LAST-MILE-FLEET-DISPATCH-VOICE-2026-01",
+    parcelRerouteAndDriverDispatchAuthorized:
+      input.lockerBayDimensionReservedAndGeofenceWithin500m &&
+      input.driverSpeedGatedHandsFreeAndPodGpsWithin100mVerified &&
+      !input.directSignatureWaiverOrCrossZoneRerouteAttempted,
+    crossZoneDiversionOrDirectSignatureWaiverBlocked:
+      !input.lockerBayDimensionReservedAndGeofenceWithin500m ||
+      !input.driverSpeedGatedHandsFreeAndPodGpsWithin100mVerified ||
+      input.directSignatureWaiverOrCrossZoneRerouteAttempted,
+    sixDigitOtpScheduledWindowOrShipperEscalationTriggered:
+      input.directSignatureWaiverOrCrossZoneRerouteAttempted,
+  };
+}
+
+
 
 
 
