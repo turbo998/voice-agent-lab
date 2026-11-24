@@ -13525,6 +13525,37 @@ export function evaluateEnterpriseSalesRoleplayInterviewCoach2026Guard(input: {
   };
 }
 
+export interface EnterpriseSttTtsBrandVoiceCloning2026Evaluation {
+  policyCode: "ENTERPRISE-STT-TTS-BRAND-VOICE-CLONING-2026-01";
+  streamingSttTtsAndBrandVoiceSynthesisAuthorized: boolean;
+  unauthorizedVoiceCloneOrMispronouncedDomainTermBlocked: boolean;
+  secondaryTtsProviderFailoverOrConsentLockoutTriggered: boolean;
+}
+
+/**
+ * Deterministic 2026 Enterprise Streaming STT, Neural TTS & Brand Voice Cloning (Custom Speech Phrase Boost + <2ms SSML IPA Lexicon Gate, Cryptographic Biometric SpeakerConsentToken + C2PA Watermark Lock, <250ms Multi-Engine TTS Hot-Failover & Unconsented Clone Block) Guard (`ENTERPRISE-STT-TTS-BRAND-VOICE-CLONING-2026-01`).
+ */
+export function evaluateEnterpriseSttTtsBrandVoiceCloning2026Guard(input: {
+  customLexiconIpaAndHotwordBoostVerified: boolean;
+  biometricSpeakerConsentTokenAndC2paWatermarkEnforced: boolean;
+  unconsentedVoiceCloneOrProviderLatencySpikeDetected: boolean;
+}): EnterpriseSttTtsBrandVoiceCloning2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-STT-TTS-BRAND-VOICE-CLONING-2026-01",
+    streamingSttTtsAndBrandVoiceSynthesisAuthorized:
+      input.customLexiconIpaAndHotwordBoostVerified &&
+      input.biometricSpeakerConsentTokenAndC2paWatermarkEnforced &&
+      !input.unconsentedVoiceCloneOrProviderLatencySpikeDetected,
+    unauthorizedVoiceCloneOrMispronouncedDomainTermBlocked:
+      !input.customLexiconIpaAndHotwordBoostVerified ||
+      !input.biometricSpeakerConsentTokenAndC2paWatermarkEnforced ||
+      input.unconsentedVoiceCloneOrProviderLatencySpikeDetected,
+    secondaryTtsProviderFailoverOrConsentLockoutTriggered:
+      input.unconsentedVoiceCloneOrProviderLatencySpikeDetected,
+  };
+}
+
+
 
 
 

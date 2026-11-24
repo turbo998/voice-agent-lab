@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg492t" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070e1a"/>
+      <stop offset="50%" stop-color="#0d1e32"/>
+      <stop offset="100%" stop-color="#071222"/>
+    </linearGradient>
+    <linearGradient id="cyan492t" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emerald492t" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="rose492t" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg492t)"/>
+  <rect x="24" y="20" width="1152" height="640" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="1112" height="72" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="68" font-family="Segoe UI, Inter, sans-serif" font-size="19.5" font-weight="700" fill="#f8fafc">
+    2026 Streaming STT, Neural TTS &amp; Brand Voice Cloning: Azure vs. Deepgram vs. ElevenLabs vs. VoxCPM2
+  </text>
+  <text x="68" y="94" font-family="Segoe UI, Inter, sans-serif" font-size="13" fill="#94a3b8">
+    Custom Speech WFST + SSML IPA Lexicon • Biometric Speaker Consent &amp; C2PA Lock • Tiered Cloud + Self-Hosted GPU Router
+  </text>
+  <rect x="896" y="52" width="240" height="36" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1016" y="75" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700" fill="#a7f3d0">
+    STT-TTS-CLONING-2026-01
+  </text>
+
+  <!-- Column 1: Streaming STT Head-to-Head (Azure vs Deepgram Nova-3 vs Whisper-Turbo) -->
+  <rect x="44" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#0284c7" stroke-width="1.5"/>
+  <rect x="44" y="128" width="356" height="40" rx="12" fill="url(#cyan492t)"/>
+  <text x="222" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    1. Streaming STT: Azure vs. Nova-3 vs. Whisper
+  </text>
+
+  <rect x="62" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="76" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">Azure AI Custom Speech (140+ Locales &amp; BAA)</text>
+  <text x="76" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Acoustic + language model customization with</text>
+  <text x="76" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  5,000+ domain phrase-list weights</text>
+  <text x="76" y="264" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Supports Disconnected Docker Containers for</text>
+  <text x="76" y="281" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">  sovereign air-gapped BFSI/defense sites</text>
+
+  <rect x="62" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Deepgram Nova-3 (160ms Ultra-Low Latency)</text>
+  <text x="76" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Sub-180ms streaming interim/final partials</text>
+  <text x="76" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Instant keyterm prompting without model</text>
+  <text x="76" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  retraining; strong English/European telephony</text>
+  <text x="76" y="405" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#38bdf8">  accuracy at $0.0043–$0.0059 / min</text>
+
+  <rect x="62" y="432" width="320" height="100" rx="8" fill="#0c4a6e" stroke="#0284c7"/>
+  <text x="76" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#7dd3fc">Self-Hosted Whisper-Large-v3-Turbo / SenseVoice</text>
+  <text x="76" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">• Anti-Silence Hallucination Gate strips</text>
+  <text x="76" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">  "Thank you for watching" phantom outputs</text>
+  <text x="76" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#7dd3fc">• $0.0012/min on L40S GPUs at &gt;70% utilization</text>
+
+  <!-- Column 2: Neural TTS & Brand Voice Cloning (Azure CNV vs ElevenLabs vs Cartesia) -->
+  <rect x="422" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#e11d48" stroke-width="1.5"/>
+  <rect x="422" y="128" width="356" height="40" rx="12" fill="url(#rose492t)"/>
+  <text x="600" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    2. Neural TTS &amp; Brand Voice Cloning
+  </text>
+
+  <rect x="440" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+  <text x="454" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fb7185">SSML IPA Custom Lexicon Gate (99.9% Terms)</text>
+  <text x="454" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Injects &lt;phoneme alphabet="ipa"&gt; &amp; &lt;sub&gt; tags</text>
+  <text x="454" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  for brand names, drug generics &amp; polyphones</text>
+  <text x="454" y="264" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  ("重行 zhòng háng", "剥皮 bāo pí", "NVDA")</text>
+  <text x="454" y="281" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#fb7185">• Zero embarrassing brand-name mispronunciations</text>
+
+  <rect x="440" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">ElevenLabs Flash v2.5 vs. Cartesia Sonic-2</text>
+  <text x="454" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• ElevenLabs Flash v2.5 (~75ms model TTFB):</text>
+  <text x="454" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  highest emotional expressiveness &amp; acting</text>
+  <text x="454" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Cartesia Sonic-2 (~40ms SSM): ultra-fast</text>
+  <text x="454" y="405" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">  conversational turn-taking &amp; voice pacing</text>
+
+  <rect x="440" y="432" width="320" height="100" rx="8" fill="#4c0519" stroke="#f43f5e"/>
+  <text x="454" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fda4af">Biometric Consent Token &amp; C2PA Watermark</text>
+  <text x="454" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">• Requires cryptographic challenge-phrase</text>
+  <text x="454" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">  consent before activating any cloned voice</text>
+  <text x="454" y="512" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#fda4af">• 100% SAG-AFTRA / Civil Code right-of-publicity</text>
+
+  <!-- Column 3: Tiered Hybrid TTS Routing & 48kHz VoxCPM2 / CosyVoice 2 -->
+  <rect x="800" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#059669" stroke-width="1.5"/>
+  <rect x="800" y="128" width="356" height="40" rx="12" fill="url(#emerald492t)"/>
+  <text x="978" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    3. Tiered Routing &amp; 48kHz Open-Weight Pool
+  </text>
+
+  <rect x="818" y="184" width="320" height="114" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#34d399">Tiered Traffic Split (-64.8% Synthesis TCO)</text>
+  <text x="832" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Tier 1 (VIP Sales/Concierge): ElevenLabs /</text>
+  <text x="832" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  Azure HD CNV for maximum emotional warmth</text>
+  <text x="832" y="264" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Tier 2 (Regulated CS): Azure Speech / Aura-2</text>
+  <text x="832" y="283" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">• Tier 3 (High-Vol Media): Self-Hosted GPU Pool</text>
+
+  <rect x="818" y="312" width="320" height="106" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="334" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">48kHz VoxCPM2 / CosyVoice 2 GPU Sizing</text>
+  <text x="832" y="354" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• VoxCPM2 AudioVAE v2 outputs native 48kHz</text>
+  <text x="832" y="373" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  super-wideband audio (90.9% &gt;8kHz retention)</text>
+  <text x="832" y="392" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">• Break-even vs cloud TTS at &gt;180k min/month</text>
+
+  <rect x="818" y="432" width="320" height="100" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="832" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#6ee7b7">&lt;250ms Multi-Engine TTS Hot Failover</text>
+  <text x="832" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">• If primary TTS TTFB exceeds 350ms: automatically</text>
+  <text x="832" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">  synthesizes chunk on matched-timbre backup</text>
+  <text x="832" y="512" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#6ee7b7">• Saves $314,000 per 10M enterprise minutes</text>
+
+  <!-- Bottom Telemetry Bar -->
+  <rect x="44" y="564" width="1112" height="76" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#38bdf8">
+    2026 STT/TTS Benchmark (per 10,000,000 Enterprise Voice Minutes):
+  </text>
+  <text x="530" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="600" fill="#34d399">
+    Domain Term Accuracy: 99.9% • Tiered TTS TCO: -64.8% (-$314k/10M Min) • Unconsented Clones: 0
+  </text>
+  <text x="68" y="618" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" fill="#94a3b8">
+    Guardrail ID: evaluateEnterpriseSttTtsBrandVoiceCloning2026Guard • Policy: ENTERPRISE-STT-TTS-BRAND-VOICE-CLONING-2026-01
+  </text>
+</svg>

@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **491 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **492 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (491 Bilingual Guides)
+## 3. Solution Architect Selection Guides (492 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (468 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (469 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -535,3 +535,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 489. **E-Commerce Livestream & Retail Showroom Interactive Voice + Digital Human Avatar Concierge Selection Guide: 22ms Client-Side Viseme Rendering ($0.016/min vs $0.22/min Cloud Video, -92.7% TCO), 80/20 Hybrid Clips + Push/Pop Live VIP Q&A (+39.4% Off-Peak GMV Lift), <15ms Redis Price-Floor & Pre-TTS Ad-Law Lock (0 Room Bans) & 3D ToF Gaze Wake + 3s Walk-Away PII Wipe (-$278k/10k Hrs)**: [EN](./retail-ecommerce-showroom-interactive-voice-avatar-shopping-concierge-selection-faq.en.md) | [中文](./retail-ecommerce-showroom-interactive-voice-avatar-shopping-concierge-selection-faq.md)
 490. **Automotive In-Cabin Cockpit & Smart Hardware (AI Glasses / Wearables) Edge-Cloud Multimodal Voice Assistant Selection Guide: 155ms Edge-NPU 78% Vehicle-Control Offload & 0ms Tunnel Fallback (100% Garage/Tunnel Availability), 4-Zone Child RBAC & ISO 26262 Speed/Gear Firewall (0% Unsafe In-Motion Actuation), and Deictic 80KB Keyframe Burst (-84% Battery Drain, 38m → 8.5h Runtime, -$318k/10k Units)**: [EN](./in-cabin-cockpit-smart-hardware-edge-cloud-multimodal-voice-concierge-selection-faq.en.md) | [中文](./in-cabin-cockpit-smart-hardware-edge-cloud-multimodal-voice-concierge-selection-faq.md)
 491. **Enterprise AI Sales Roleplay, Customer Service Sparring & Structured Mock Interview Platform Selection Guide: Decoupled 350ms Fast-Actor + Async Slow-Critic & Anti-Sycophancy Objection Lock (0% Premature Capitulation, -46.8% Ramp Time), <100ms Regulatory Bait Red-Card Breaker, Timestamp-Quoted BARS Grader (0.94 Kappa, $0.38 vs $45 Manager Session) & Accent-Neutral EEOC / EU AI Act Gate (-$326k/10k Sessions)**: [EN](./enterprise-ai-sales-roleplay-customer-service-sparring-interview-coach-selection-faq.en.md) | [中文](./enterprise-ai-sales-roleplay-customer-service-sparring-interview-coach-selection-faq.md)
+492. **2026 Enterprise Streaming STT, Neural TTS & Brand Voice Cloning Head-to-Head Selection Guide (Azure AI Speech vs. Deepgram Nova-3/Aura-2 vs. ElevenLabs Flash v2.5 vs. Cartesia Sonic-2 vs. Open-Source Whisper / CosyVoice 2 / VoxCPM2): <2ms SSML IPA Lexicon Gate (99.9% Brand/Polyphone Accuracy), Whisper Anti-Silence-Hallucination Filter (0% Phantom Subtitles), Cryptographic SpeakerConsentToken + C2PA Lock & 3-Tier Hybrid Router (-64.8% TCO, -$314k/10M Min)**: [EN](./enterprise-stt-tts-brand-voice-cloning-azure-deepgram-elevenlabs-cartesia-voxcpm2-selection-faq.en.md) | [中文](./enterprise-stt-tts-brand-voice-cloning-azure-deepgram-elevenlabs-cartesia-voxcpm2-selection-faq.md)
