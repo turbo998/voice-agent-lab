@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 518 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 518 篇选型指南](#-二518-篇企业级语音架构选型指南中英双语) |
+| **🧭 519 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 519 篇选型指南](#-二519-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、518 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、519 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（495 篇）
+### 3.3 高价值企业行业解决方案蓝图（496 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -592,6 +592,7 @@ flowchart LR
 516. **在线教育、AI 口语外教陪练与企业培训（EdTech AI Language Tutor）、音素级发音诊断（GOP）、苏格拉底抗代写引导与未成年人 COPPA 合规架构选型指南（S2S 对话流 + 并行 `Azure Pronunciation Assessment GOP` 音素强制对齐将发音错误捕获率从 `34.0%` 提至 `97.8%`、二语学习者 `1,800ms` 句中找词停顿保护将误打断率从 `41.0%` 压至 `1.8%`、三阶苏格拉底启发式抗代写状态机、以及 FTC 修订版 `COPPA` 内存态零儿童声纹留存每万教学小时净省 `$29.5万`）方案**：[中文](./docs/edtech-language-tutor-pronunciation-gop-socratic-coppa-voice-selection-faq.md) | [EN](./docs/edtech-language-tutor-pronunciation-gop-socratic-coppa-voice-selection-faq.en.md)
 517. **企业私有化、主权云与物理隔离内网（On-Premises、Sovereign Cloud & Air-Gapped）实时语音 AI 架构、GPU 显存并发配比与 vLLM 选型指南（`2:4:2` 三池物理卡解耦【TensorRT STT + vLLM FP8 LLM + TensorRT TTS】将单台 `8x L40S` 并发能力从 `24路` 提至 `160路`（`P95 TTFA 395ms`，折旧单价仅 `$0.011/min`）、`XGrammar` 词表状态机锁死 `100.0%` 合法工具 JSON、`88%` KV-Cache 水位准入保护实现 `0.00%` OOM 掉线、以及 `Cilium eBPF` 零外联物理隔离锁每万小时净省 `$38.0万`）方案**：[中文](./docs/sovereign-cloud-on-prem-air-gapped-voice-ai-vllm-gpu-sizing-selection-faq.md) | [EN](./docs/sovereign-cloud-on-prem-air-gapped-voice-ai-vllm-gpu-sizing-selection-faq.en.md)
 518. **律所与企业法务智能案源初筛（Legal Intake Voice AI）、前置利益冲突核查（ABA Rule 1.18 Conflict Check）、诉讼时效预警与严禁非法执业（UPL）架构选型指南（Stage-0 仅收相对方名称并通过 `Clio/Intapp` `<300ms` 前置核查实现 `0.00%` 现有大客户冲突污染（`ABA Rule 1.18`）、零法律建议防火墙彻底阻断非法执业（`UPL / ABA Rule 5.5`）、确定性诉讼时效 `SOL <= 30天` 值班合伙人 `0ms` 强呼、以及 24/7 秒接将案源签约率从 `52.0%` 提至 `86.8%` 每万小时创效 `$37.5万`）方案**：[中文](./docs/legal-intake-law-firm-conflict-check-upl-guardrail-voice-selection-faq.md) | [EN](./docs/legal-intake-law-firm-conflict-check-upl-guardrail-voice-selection-faq.en.md)
+519. **企业差旅与费用报销管理（Corporate Travel & Expense：SAP Concur / Navan / Amex GBT）7×24 改签礼宾、差标自动审批与 FCPA 反舞弊语音核销架构选型指南（`<75s` 职级差标校验与未用航司退票抵用券自动冲抵将退票券回收率从 `48.0%` 提至 `94.2%` 并免除 `$38/通` TMC 夜间服务费、超标 `15m` GDS 锁座配主管 `Teams` 一键秒批、`20s` 酒店水单自动剥离个人迷你吧消费、以及 `FCPA` 公职人员招待红线锁每万小时净省 `$31.0万`）方案**：[中文](./docs/corporate-travel-expense-concur-navan-policy-vip-concierge-voice-selection-faq.md) | [EN](./docs/corporate-travel-expense-concur-navan-policy-vip-concierge-voice-selection-faq.en.md)
 
 ---
 

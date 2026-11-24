@@ -14335,6 +14335,37 @@ export function evaluateLegalIntakeConflictCheckUplVoice2026Guard(input: {
   };
 }
 
+export interface CorporateTravelExpenseConcurFcpaVoice2026Evaluation {
+  policyCode: "CORPORATE-TRAVEL-EXPENSE-CONCUR-FCPA-VOICE-2026-01";
+  policyCompliantRebookingAndExpenseSubmitAuthorized: boolean;
+  unapprovedCabinUpgradeOrFcpaPublicOfficialMealBlocked: boolean;
+  managerTeamsWaiverHoldOrLegalComplianceHoldTriggered: boolean;
+}
+
+/**
+ * Deterministic Corporate Travel & Expense (SAP Concur / Navan Job-Band Policy + Unused Airline Credit Auto-Redemption, ISO 31030 Duty-of-Care GSOC Escalation, Multimodal Hotel Folio Minibar Carve-Out & FCPA Public-Official Hospitality Gate) Guard (`CORPORATE-TRAVEL-EXPENSE-CONCUR-FCPA-VOICE-2026-01`).
+ */
+export function evaluateCorporateTravelExpenseConcurFcpaVoice2026Guard(input: {
+  jobBandPolicyAndUnusedTicketCreditRedemptionVerified: boolean;
+  hotelFolioPersonalCarveOutAndReceiptHashUnique: boolean;
+  publicOfficialMealExceedsFcpaCapOrUnapprovedFareSpikeDetected: boolean;
+}): CorporateTravelExpenseConcurFcpaVoice2026Evaluation {
+  return {
+    policyCode: "CORPORATE-TRAVEL-EXPENSE-CONCUR-FCPA-VOICE-2026-01",
+    policyCompliantRebookingAndExpenseSubmitAuthorized:
+      input.jobBandPolicyAndUnusedTicketCreditRedemptionVerified &&
+      input.hotelFolioPersonalCarveOutAndReceiptHashUnique &&
+      !input.publicOfficialMealExceedsFcpaCapOrUnapprovedFareSpikeDetected,
+    unapprovedCabinUpgradeOrFcpaPublicOfficialMealBlocked:
+      !input.jobBandPolicyAndUnusedTicketCreditRedemptionVerified ||
+      !input.hotelFolioPersonalCarveOutAndReceiptHashUnique ||
+      input.publicOfficialMealExceedsFcpaCapOrUnapprovedFareSpikeDetected,
+    managerTeamsWaiverHoldOrLegalComplianceHoldTriggered:
+      input.publicOfficialMealExceedsFcpaCapOrUnapprovedFareSpikeDetected,
+  };
+}
+
+
 
 
 
