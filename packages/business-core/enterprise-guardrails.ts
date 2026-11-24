@@ -13375,6 +13375,37 @@ export function evaluateBfsiBankingInsuranceClaimsOutboundVoice2026Guard(input: 
   };
 }
 
+export interface MultinationalMultilingualLiveInterpreterVoice2026Evaluation {
+  policyCode: "MULTINATIONAL-MULTILINGUAL-LIVE-INTERPRETER-VOICE-2026-01";
+  liveSimultaneousInterpretationAndMultilingualCsAuthorized: boolean;
+  polarityReversalOrScaleMistranslationOrUnverifiedActionBlocked: boolean;
+  zeroRetentionRamPurgeOrHumanReviewApprovalTriggered: boolean;
+}
+
+/**
+ * Deterministic Multinational 28-Language Voice Customer Service, Live Simultaneous Interpretation & Meeting Minutes (SOV Dynamic Wait-k Polarity Lock + Yi/Oku vs Million/Billion AST Verifier, Code-Switching 5k Hotword Glossary + 1.9% DER Voiceprint Diarization, 0ms Off-the-Record Privileged RAM Purge & Timestamped Jira Approval Gate) Guard (`MULTINATIONAL-MULTILINGUAL-LIVE-INTERPRETER-VOICE-2026-01`).
+ */
+export function evaluateMultinationalMultilingualLiveInterpreterVoice2026Guard(input: {
+  sovWaitKNegationAndYiMillionScaleConversionVerified: boolean;
+  codeSwitchHotwordGlossaryAndSpeakerDiarizationConfirmed: boolean;
+  offTheRecordPrivilegedSessionOrUnverifiedJiraWriteDetected: boolean;
+}): MultinationalMultilingualLiveInterpreterVoice2026Evaluation {
+  return {
+    policyCode: "MULTINATIONAL-MULTILINGUAL-LIVE-INTERPRETER-VOICE-2026-01",
+    liveSimultaneousInterpretationAndMultilingualCsAuthorized:
+      input.sovWaitKNegationAndYiMillionScaleConversionVerified &&
+      input.codeSwitchHotwordGlossaryAndSpeakerDiarizationConfirmed &&
+      !input.offTheRecordPrivilegedSessionOrUnverifiedJiraWriteDetected,
+    polarityReversalOrScaleMistranslationOrUnverifiedActionBlocked:
+      !input.sovWaitKNegationAndYiMillionScaleConversionVerified ||
+      !input.codeSwitchHotwordGlossaryAndSpeakerDiarizationConfirmed ||
+      input.offTheRecordPrivilegedSessionOrUnverifiedJiraWriteDetected,
+    zeroRetentionRamPurgeOrHumanReviewApprovalTriggered:
+      input.offTheRecordPrivilegedSessionOrUnverifiedJiraWriteDetected,
+  };
+}
+
+
 
 
 

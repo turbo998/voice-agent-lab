@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **486 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **487 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（486 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（487 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -66,7 +66,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（463 篇）
+### 3.3 高价值企业行业解决方案蓝图（464 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -530,3 +530,4 @@
 484. **企业智能联络中心 IVR 现代化升级全栈架构指南：从传统按键树（DTMF Tree）到 AI 首线语音接待（Tier-1 Deflection）、无感热转人工（Zero-Repeat Warm Handoff）与坐席实时话术推荐（Real-Time Agent Assist Copilot）（前置 BYOC SBC 拦截 `68.4%` 一线常见问询并 `SIP REFER` 释放 AI 媒体腿省 `100%` 折返税、`36B UUID + Redis 8KB` 携 `kyc_verified=true` `<150ms` 弹屏配合 6 秒耳语砍掉人工 AHT `84秒` 且重复核身 `0%`、`Ch0/Ch1` 双声道分轨 `<=25字` 胶囊微卡片 + 3 秒 `Auto-ACW` 压降 `89.2%` 话后整理每万通省 `$31.2万`）方案**：[中文](./enterprise-ivr-modernization-ai-receptionist-warm-handoff-agent-assist-selection-faq.md) | [EN](./enterprise-ivr-modernization-ai-receptionist-warm-handoff-agent-assist-selection-faq.en.md)
 485. **端到端企业实时语音系统参考架构设计蓝图：多渠道接入（`WebRTC / ACS Call Automation`）→ 语音流网关 → `S2S / 级联` 编排 → `CRM / ERP` 两阶段幂等工具调用 → 语音质量与合规可观测性（`OpenTelemetry + Post-Call QA`）（主说话人声纹分离砍掉 `93.6%` 旁人背景音误打断 + `15s` Wi-Fi↔5G 闪断恢复、服务端 JWT 强绑定防 IDOR 越权 + `Prepare→Readback→Commit` 两阶段幂等写库实现 `0%` 重复扣款、`<2ms` 预合成 Markdown 清洗、以及 7 跳 `OpenTelemetry` 45秒排障瀑布与话后 30 秒口头承诺对账每万小时省 `$29.4万`）方案**：[中文](./end-to-end-enterprise-voice-reference-architecture-webrtc-acs-s2s-crm-observability-selection-faq.md) | [EN](./end-to-end-enterprise-voice-reference-architecture-webrtc-acs-s2s-crm-observability-selection-faq.en.md)
 486. **银行金融、财富管理双录（Dual-Recording）与车险/健康险理赔（Insurance FNOL Claims）及合规外呼（Compliant Outbound）实时语音架构选型指南（S2S 自由答疑 + 法定条款 `0ms` 切 `SHA-256` 锁定 SSML 与 20 秒小节断点续播将双录一次合格率从 `64%` 提至 `99.7%`、车险报案反弃权零赔付承诺锁 + 涉水禁二次点火与通话中 WebRTC 视频直通 `Guidewire` 定损压降 `76.7%` LAE、以及 `<380ms` 投机式 AMD 配合区号∩邮编双时区 `TCPA/FDCPA` 锁每万通省 `$36.8万`）方案**：[中文](./bfsi-banking-insurance-fnol-claims-compliant-outbound-hybrid-voice-selection-faq.md) | [EN](./bfsi-banking-insurance-fnol-claims-compliant-outbound-hybrid-voice-selection-faq.en.md)
+487. **跨国企业 28 语种实时语音客服、全球全员大会（Global Town Hall）同声传译与结构化会议纪要架构选型指南（`1.2s` 免按键自动语种检测 + 句内中英粤混说 5,000 热词锁与二线专家实时双语桥砍掉 `82.4%` 小语种 BPO 空置成本、日/韩/德 `SOV` 语序动态 `Wait-k` 防否定词极性反转 + “万/亿 ↔ Million/Billion” AST 确定性换算实现 `0%` 财报数字错译、以及 `1.9% DER` 声纹分离 + 附录音时间戳引用的 Jira 待办审批与 `0ms` 闭门会议内存清零每万小时省 `$34.2万`）方案**：[中文](./multinational-multilingual-voice-customer-service-live-interpreter-meeting-minutes-selection-faq.md) | [EN](./multinational-multilingual-voice-customer-service-live-interpreter-meeting-minutes-selection-faq.en.md)
