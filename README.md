@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 481 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 481 篇选型指南](#-二481-篇企业级语音架构选型指南中英双语) |
+| **🧭 482 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 482 篇选型指南](#-二482-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、481 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、482 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（458 篇）
+### 3.3 高价值企业行业解决方案蓝图（459 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -555,6 +555,7 @@ flowchart LR
 479. **医院医用织物洗涤、酒店布草与工业洗消工厂（Healthcare Linen, Hospitality & Commercial Industrial Laundry）`HLAC` 热力消毒与漂白水+酸洗剂禁混（防剧毒氯气 `Cl2`）锁、被单裹入心电遥测盒/手术器械拦截与分拣台针刺伤（`OSHA 1910.1030` `PEP <2h`）`0ms` 抢占实时语音架构设计与选型指南（`130ms` 锁定病区污衣笼车 `UHF-RFID` 在进 `50 Bar` 压水机前截留 `$3,500` 心电遥测盒与手术器械削减 `88.6%` 赔偿每万通省 `$19.4万`、次氯酸钠漂白水+酸洗剂 `100%` 禁混防剧毒氯气与含油毛巾 `<100°F` 冷风防自燃锁、以及分拣台针刺伤 `<100ms` 反查来源医院病区并启动黄金 2 小时 `HIV/HBV PEP` 阻断）方案**：[中文](./docs/healthcare-linen-commercial-laundry-hlac-osha-1910-1030-sharps-voice-selection-faq.md) | [EN](./docs/healthcare-linen-commercial-laundry-hlac-osha-1910-1030-sharps-voice-selection-faq.en.md)
 480. **超低温冷链仓储、速冻隧道与冷藏集装箱堆场（Cold-Storage, `-25°F` Blast-Freezer Warehousing & Reefer Logistics）国际氨制冷学会（`IIAR / OSHA 1910.119`）液氨泄漏逆风疏散锁、《食品安全现代化法》（`FDA FSMA`）肉芯探针超温拒收与 `-25°F` 深冷库困人 `0ms` 抢占实时语音架构设计与选型指南（`FDA FSMA 21 CFR § 1.908` 蓝牙探针强制核验中心肉芯温度 `<=0°F/38°F` 防化冻变质货混入背锅赔付、`-25°F` 免脱防寒手套抗 `82dB` 风机语音拣选削减 `92.4%` 抄码称重差错每万次省 `$22.6万`、以及货叉撞管无水液氨泄漏 `<100ms` 关断主供液阀并结合屋顶风向标广播逆风逃生门）方案**：[中文](./docs/cold-storage-reefer-warehouse-iiar-ammonia-leak-fda-fsma-voice-selection-faq.md) | [EN](./docs/cold-storage-reefer-warehouse-iiar-ammonia-leak-fda-fsma-voice-selection-faq.en.md)
 481. **电梯与自动扶梯应急监控中心及维保调度（Elevator & Escalator Cabin Intercom, IoT Predictive Maintenance & Dispatch）美国机械工程师学会《电梯安全规范》（`ASME A17.1`）轿厢困人音视频/聋哑多模态交互、严禁扒门防坠井死锁与物联网控制器（`Otis ONE / KONE 24/7`）秒级平层放人实时语音架构设计与选型指南（`ASME A17.4` 困人首句 `100%` 严令切勿扒门/钻轿顶并严禁保安无 `LOTO` 私用三角钥匙防剪切坠井、`120ms` 物联网控制器遥测与 `ASME A17.1-2022` 听障触屏/视频核验砍掉 `64.8%` `$320` 冤枉急修出车每万通省 `$21.8万`、以及医疗/高温困人与自动扶梯梳齿板夹人 `<100ms` 911 消防重型破拆直连）方案**：[中文](./docs/elevator-escalator-dispatch-asme-a17-cabin-entrapment-fire-recall-voice-selection-faq.md) | [EN](./docs/elevator-escalator-dispatch-asme-a17-cabin-entrapment-fire-recall-voice-selection-faq.en.md)
+482. **2026 实时语音与多模态最新能力突破追踪：全双工原生语音并行工具调用（Native S2S Parallel Tool-Calling）、端侧声学-语义联合判停（`<35ms` Smart-Turn v2）与混合双轨架构设计与选型指南（`<35ms` 端侧声学韵律+语义完整度联合判停砍掉 `89.4%` 报卡号误抢话与附和词 `嗯/uh-huh` 误截断、`Turn-Epoch` 单调递增写栅栏 + `item.truncate` 真实已播音频对齐实现改口后旧工具 `0%` 幽灵写库、`T+600ms` 零冷场垫音压降 `79.6%` 盲等挂机、以及单通电话内 S2S ↔ 受控级联 SSML `0ms` 热切换配合 3 轮音频上下文裁剪直降 `63.8%` 长通话成本每万小时省 `$26.4万`）方案**：[中文](./docs/voice-ai-2026-breakthroughs-full-duplex-tool-calling-edge-turn-taking-selection-faq.md) | [EN](./docs/voice-ai-2026-breakthroughs-full-duplex-tool-calling-edge-turn-taking-selection-faq.en.md)
 
 ---
 

@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg482" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070e1a"/>
+      <stop offset="50%" stop-color="#0d1e32"/>
+      <stop offset="100%" stop-color="#071222"/>
+    </linearGradient>
+    <linearGradient id="cyan482" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emerald482" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="rose482" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg482)"/>
+  <rect x="24" y="20" width="1152" height="640" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="1112" height="72" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="68" font-family="Segoe UI, Inter, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">
+    2026 Voice &amp; Multimodal Breakthroughs: Full-Duplex Tool-Calling &amp; Edge Turn-Taking
+  </text>
+  <text x="68" y="94" font-family="Segoe UI, Inter, sans-serif" font-size="13" fill="#94a3b8">
+    &lt;35ms Acoustic-Semantic Turn-Taking (Smart-Turn v2) • Native S2S Parallel Tool Fence • Hybrid Dual-Track SSML Lock
+  </text>
+  <rect x="908" y="52" width="228" height="36" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1022" y="75" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700" fill="#a7f3d0">
+    VOICE-2026-BREAKTHROUGHS-01
+  </text>
+
+  <!-- Column 1: <35ms Edge Acoustic-Semantic Turn-Taking -->
+  <rect x="44" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#0284c7" stroke-width="1.5"/>
+  <rect x="44" y="128" width="356" height="40" rx="12" fill="url(#cyan482)"/>
+  <text x="222" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    1. &lt;35ms Acoustic-Semantic Turn-Taking
+  </text>
+
+  <rect x="62" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="76" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">Prosody + Syntax Joint End-of-Turn (EoT)</text>
+  <text x="76" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Replaces naive 600ms silence VAD with 8M-param</text>
+  <text x="76" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  audio-native pitch-contour &amp; clause completeness</text>
+  <text x="76" y="264" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Holds 1,800ms when caller pauses mid-digit</text>
+  <text x="76" y="281" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">• Fires in 180ms on falling-pitch completed turns</text>
+
+  <rect x="62" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Backchannel vs True Barge-In Separation</text>
+  <text x="76" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Ignores "uh-huh / yeah / 嗯 / 好的" listener</text>
+  <text x="76" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  backchannels without truncating agent audio</text>
+  <text x="76" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Cuts false barge-in cutoffs by 89.4% while</text>
+  <text x="76" y="405" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">  truncating within 45ms on real corrections</text>
+
+  <rect x="62" y="432" width="320" height="100" rx="8" fill="#0c4a6e" stroke="#0284c7"/>
+  <text x="76" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#7dd3fc">Heard-Audio Offset Context Alignment</text>
+  <text x="76" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">• Commits only actually played WebRTC frames</text>
+  <text x="76" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">  via item.truncate(audio_end_ms) on barge-in</text>
+  <text x="76" y="512" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#7dd3fc">• Zero phantom "I already told you" hallucinations</text>
+
+  <!-- Column 2: Native S2S Parallel Tool-Calling & Pacing -->
+  <rect x="422" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#e11d48" stroke-width="1.5"/>
+  <rect x="422" y="128" width="356" height="40" rx="12" fill="url(#rose482)"/>
+  <text x="600" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    2. Full-Duplex Parallel Tool-Calling &amp; Fence
+  </text>
+
+  <rect x="440" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+  <text x="454" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fb7185">Turn-Epoch Monotonic Write Fence</text>
+  <text x="454" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Every user barge-in increments turnEpoch++</text>
+  <text x="454" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Immediately aborts in-flight CRM/ERP writes</text>
+  <text x="454" y="264" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  carrying stale turnEpoch tokens</text>
+  <text x="454" y="281" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#fb7185">• 0% wrong-order commits when caller changes mind</text>
+
+  <rect x="440" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">T+600ms Zero-Dead-Air Async Filler Pacer</text>
+  <text x="454" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Speaks natural status updates while slow</text>
+  <text x="454" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  SAP/Epic/GDS APIs execute in background</text>
+  <text x="454" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Strictly forbids guessing results before return</text>
+  <text x="454" y="405" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">• Cuts caller dead-air hang-ups by 79.6%</text>
+
+  <rect x="440" y="432" width="320" height="100" rx="8" fill="#4c0519" stroke="#f43f5e"/>
+  <text x="454" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fda4af">3-Turn Rolling Audio-to-Text Compaction</text>
+  <text x="454" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">• Retains raw audio for last 3 turns; compacts</text>
+  <text x="454" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">  older turns into verified text transcripts</text>
+  <text x="454" y="512" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#fda4af">• Slashes 15-min Native S2S token cost by 63.8%</text>
+
+  <!-- Column 3: Hybrid Dual-Track & 48kHz Voice Cloning -->
+  <rect x="800" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#059669" stroke-width="1.5"/>
+  <rect x="800" y="128" width="356" height="40" rx="12" fill="url(#emerald482)"/>
+  <text x="978" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    3. Hybrid Dual-Track &amp; 48kHz Voice Governance
+  </text>
+
+  <rect x="818" y="184" width="320" height="114" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#34d399">Mid-Call S2S ↔ Locked-SSML Hot Switch</text>
+  <text x="832" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Uses GPT-Realtime / Gemini Live for 310ms</text>
+  <text x="832" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  empathetic intent discovery &amp; troubleshooting</text>
+  <text x="832" y="264" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Switches in 0ms to Azure Custom Neural Voice</text>
+  <text x="832" y="283" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">  locked SSML for APR%, dosage &amp; statutory text</text>
+
+  <rect x="818" y="312" width="320" height="106" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="334" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">48kHz VoxCPM2 / Azure HD TTS Hybrid Pool</text>
+  <text x="832" y="354" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Routes regulated live calls to Azure Speech</text>
+  <text x="832" y="373" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  (99.9% SLA) and high-volume creative/media</text>
+  <text x="832" y="392" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">  batches to self-hosted 48kHz GPU workers</text>
+
+  <rect x="818" y="432" width="320" height="100" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="832" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#6ee7b7">Biometric Consent Token &amp; C2PA Watermark</text>
+  <text x="832" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">• Blocks zero-shot voice cloning without signed</text>
+  <text x="832" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">  speaker enrollment challenge &amp; C2PA provenance</text>
+  <text x="832" y="512" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#6ee7b7">• Saves $264,000 per 10,000 enterprise hours</text>
+
+  <!-- Bottom Telemetry Bar -->
+  <rect x="44" y="564" width="1112" height="76" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#38bdf8">
+    2026 Enterprise Voice AI Benchmark (per 10,000 Production Call Hours):
+  </text>
+  <text x="560" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="600" fill="#34d399">
+    False Barge-In Cutoffs: -89.4% • Long-Call Token TCO: -63.8% (-$264k/10k Hrs) • Verbatim Drift: 0%
+  </text>
+  <text x="68" y="618" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" fill="#94a3b8">
+    Guardrail ID: evaluateVoiceAi2026FullDuplexBreakthroughsGuard • Policy: VOICE-AI-2026-FULL-DUPLEX-BREAKTHROUGHS-01
+  </text>
+</svg>

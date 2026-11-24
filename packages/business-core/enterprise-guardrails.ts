@@ -13225,6 +13225,37 @@ export function evaluateElevatorEscalatorAsmeA17RescueVoice2026Guard(input: {
   };
 }
 
+export interface VoiceAi2026FullDuplexBreakthroughsEvaluation {
+  policyCode: "VOICE-AI-2026-FULL-DUPLEX-BREAKTHROUGHS-01";
+  nativeS2sFullDuplexStreamingAndToolExecutionAuthorized: boolean;
+  prematureBargeInCutoffOrStaleToolWriteBlocked: boolean;
+  deterministicSsmlCascadeFallbackOrBiometricLockPreempted: boolean;
+}
+
+/**
+ * Deterministic 2026 Voice & Multimodal AI Capability Breakthroughs (<35ms Edge Acoustic-Semantic Turn-Taking & Backchannel Immunity, Full-Duplex Parallel Tool-Calling Turn-Epoch Fence + item.truncate Sync, 0ms Regulated SSML Cascade Hot-Switch & Biometric Voice-Clone Lock) Guard (`VOICE-AI-2026-FULL-DUPLEX-BREAKTHROUGHS-01`).
+ */
+export function evaluateVoiceAi2026FullDuplexBreakthroughsGuard(input: {
+  acousticSemanticJointTurnTakingAndBackchannelHoldVerified: boolean;
+  parallelToolCallTurnEpochFenceAndZeroDeadAirFillerActive: boolean;
+  regulatedFinancialMedicalClauseOrUnconsentedVoiceCloneDetected: boolean;
+}): VoiceAi2026FullDuplexBreakthroughsEvaluation {
+  return {
+    policyCode: "VOICE-AI-2026-FULL-DUPLEX-BREAKTHROUGHS-01",
+    nativeS2sFullDuplexStreamingAndToolExecutionAuthorized:
+      input.acousticSemanticJointTurnTakingAndBackchannelHoldVerified &&
+      input.parallelToolCallTurnEpochFenceAndZeroDeadAirFillerActive &&
+      !input.regulatedFinancialMedicalClauseOrUnconsentedVoiceCloneDetected,
+    prematureBargeInCutoffOrStaleToolWriteBlocked:
+      !input.acousticSemanticJointTurnTakingAndBackchannelHoldVerified ||
+      !input.parallelToolCallTurnEpochFenceAndZeroDeadAirFillerActive ||
+      input.regulatedFinancialMedicalClauseOrUnconsentedVoiceCloneDetected,
+    deterministicSsmlCascadeFallbackOrBiometricLockPreempted:
+      input.regulatedFinancialMedicalClauseOrUnconsentedVoiceCloneDetected,
+  };
+}
+
+
 
 
 

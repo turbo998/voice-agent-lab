@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 481 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 481 Guides](#-2-481-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 482 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 482 Guides](#-2-482-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 481 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 482 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (458 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (459 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -555,6 +555,7 @@ flowchart LR
 479. **Healthcare Linen & Commercial Industrial Laundry, HLAC / OSHA 1910.1030 Sharps, Telemetry Recovery & Chlorine-Gas Lock Voice AI Selection Guide: 130ms UHF-RFID Pre-Press Cardiac Telemetry & Surgical Tray Intercept (-88.6% Crushed Gear Claims, -$194k/10k Calls), Zero Bleach+Acid Chlorine Gas (Cl2) & <100°F Oily-Towel Cool-Down Fire Lock, AAMI 75-Wash Gown Cap & <100ms Needlestick <2h PEP / Hospital Trace**: [EN](./docs/healthcare-linen-commercial-laundry-hlac-osha-1910-1030-sharps-voice-selection-faq.en.md) | [中文](./docs/healthcare-linen-commercial-laundry-hlac-osha-1910-1030-sharps-voice-selection-faq.md)
 480. **Cold-Storage & Blast-Freezer Warehousing, IIAR Ammonia PSM, FDA FSMA Pulp-Temp Gate & -25°F Freezer Entrapment Voice AI Selection Guide: FDA FSMA 21 CFR § 1.908 Core Pulp-Temp & Rite-Hite Dok-Lok Gate (0 Thawed-Load Claims), Hands-Free -25°F Voice Picking (-92.4% Catch-Weight Errors, -$226k/10k Sessions), CA Room >=19.5% O2 Lock & <100ms IIAR Ammonia King-Valve / Upwind Evacuation**: [EN](./docs/cold-storage-reefer-warehouse-iiar-ammonia-leak-fda-fsma-voice-selection-faq.en.md) | [中文](./docs/cold-storage-reefer-warehouse-iiar-ammonia-leak-fda-fsma-voice-selection-faq.md)
 481. **Elevator & Escalator Cabin Intercom, ASME A17.1 Entrapment Triage, Zero Door-Prying Lock & Fire-Rescue Voice AI Selection Guide: ASME A17.4 Zero Door-Prying/Roof-Hatch & Drop-Key LOTO Lock (0 Hoistway Shear Fatalities), 120ms Otis ONE/KONE 24/7 IoT & ASME A17.1-2022 Deaf Touchscreen/Video Gate (-64.8% False $320 Truck Rolls, -$218k/10k Calls) & <100ms Medical Entrapment / Escalator Comb-Plate Brake Stop**: [EN](./docs/elevator-escalator-dispatch-asme-a17-cabin-entrapment-fire-recall-voice-selection-faq.en.md) | [中文](./docs/elevator-escalator-dispatch-asme-a17-cabin-entrapment-fire-recall-voice-selection-faq.md)
+482. **2026 Real-Time Voice & Multimodal AI Capability Breakthroughs: Full-Duplex Parallel Tool-Calling, Sub-35ms Acoustic-Semantic Turn-Taking (Smart-Turn v2) & Hybrid Dual-Track Selection Guide: <35ms Prosody+Syntax Turn-Taking (-89.4% False Cutoffs & 100% Backchannel Immunity), Turn-Epoch Monotonic Write Fence + item.truncate Sync (0% Stale Tool Commits), T+600ms Zero-Dead-Air Pacing (-79.6% Hang-Ups), and In-Call S2S ↔ Locked-SSML Switch + 3-Turn Audio Pruning (-63.8% Long-Call Token TCO, -$264k/10k Hrs)**: [EN](./docs/voice-ai-2026-breakthroughs-full-duplex-tool-calling-edge-turn-taking-selection-faq.en.md) | [中文](./docs/voice-ai-2026-breakthroughs-full-duplex-tool-calling-edge-turn-taking-selection-faq.md)
 
 ---
 
