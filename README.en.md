@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 512 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 512 Guides](#-2-512-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 513 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 513 Guides](#-2-513-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 512 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 513 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (489 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (490 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -586,6 +586,7 @@ flowchart LR
 510. **Enterprise Outbound Voice AI Guide (<650ms Dual-Stage AMD, Branded Caller ID & TCPA / FCC Compliance): <650ms Dual-Stage Acoustic AMD (98.9% Accuracy, -74% Voicemail LLM Token Burn), STIR/SHAKEN Level-A + Branded RCD + T-60s SMS (24.0% → 64.8% Answer Rate), Area-Code ∩ Zip-Code Curfew Lock & 0ms Zero-Rebuttal Global DNC Gate (-$405k/10k Hrs)**: [EN](./docs/enterprise-outbound-voice-ai-amd-voicemail-detection-tcpa-carrier-reputation-selection-faq.en.md) | [中文](./docs/enterprise-outbound-voice-ai-amd-voicemail-detection-tcpa-carrier-reputation-selection-faq.md)
 511. **Enterprise PCI-DSS v4.0 Voice Payment, Edge DTMF Clamping & Tokenized In-Call Wallet Checkout Guide: Edge SBC Media Clamping (100% PCI SAQ-A De-Scoping, 0.00% PAN in AI), <15ms Blurted-PAN Recorder Pause & 8s Ring Scrub (Req 3.3.2), 11s In-Call Apple/Google Pay Push (66.0% → 96.4% Completion, 78s → 11s AHT) & Idempotent Settlement (-$360k/10k Hrs)**: [EN](./docs/enterprise-pci-dss-v4-voice-payment-dtmf-masking-tokenization-selection-faq.en.md) | [中文](./docs/enterprise-pci-dss-v4-voice-payment-dtmf-masking-tokenization-selection-faq.md)
 512. **Real Estate & Multifamily Property Management Voice AI Guide (24/7 Yardi Leasing, 2 AM Flood Triage & Fair Housing Lock): 24/7 Yardi/AppFolio Unit Sync + Biometric SmartRent Tour Lock (39.0% → 82.6% Conversion), <15s Floorplan Shutoff-Valve Coaching (-$8.5k Flood Loss) + Video Triage (-61.5% $240 Overtime Callouts) & Fair Housing Act Anti-Steering Firewall (-$330k/10k Hrs)**: [EN](./docs/real-estate-property-management-leasing-emergency-maintenance-voice-selection-faq.en.md) | [中文](./docs/real-estate-property-management-leasing-emergency-maintenance-voice-selection-faq.md)
+513. **Enterprise Omnichannel Voice + Visual Co-Browsing, 9s Alphanumeric Slot Capture & Seamless SMS/WhatsApp Handoff Guide: In-Call 180s PKCE Visual Micro-Card (31.0% → 0.2% Email/VIN Error, 95s → 9s Capture), <200ms Bi-Directional CAS Screen-Voice Sync & <400ms Zero-Amnesia Voice-to-WhatsApp Handoff (-$315k/10k Hrs)**: [EN](./docs/enterprise-omnichannel-voice-sms-whatsapp-visual-cobrowsing-handoff-selection-faq.en.md) | [中文](./docs/enterprise-omnichannel-voice-sms-whatsapp-visual-cobrowsing-handoff-selection-faq.md)
 
 ---
 

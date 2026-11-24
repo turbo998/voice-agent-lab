@@ -14155,6 +14155,37 @@ export function evaluateRealEstatePropertyLeasingMaintenanceVoice2026Guard(input
   };
 }
 
+export interface EnterpriseOmnichannelVoiceVisualCobrowsing2026Evaluation {
+  policyCode: "ENTERPRISE-OMNICHANNEL-VOICE-VISUAL-COBROWSING-2026-01";
+  synchronizedOmnichannelSlotAndHandoffAuthorized: boolean;
+  unboundVisualLinkHijackOrCasStateVersionConflictBlocked: boolean;
+  visualMicroCardPushOrLosslessWhatsAppHandoffTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Omnichannel Voice + Visual Co-Browsing (9s Visual Slot Capture Sheet, <200ms Bi-Directional CAS State Bus, DOM PII Masking, <400ms Voice-to-WhatsApp/SMS Handoff & 180s Call-Bound PKCE Token Lock) Guard (`ENTERPRISE-OMNICHANNEL-VOICE-VISUAL-COBROWSING-2026-01`).
+ */
+export function evaluateEnterpriseOmnichannelVoiceVisualCobrowsing2026Guard(input: {
+  callBoundPkceTokenAndMonotonicCasStateVersionVerified: boolean;
+  domPiiMaskingAndSharedOmnichannelGraphActive: boolean;
+  highEntropySlotDetectedOrForwardedExpiredLinkAttempted: boolean;
+}): EnterpriseOmnichannelVoiceVisualCobrowsing2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-OMNICHANNEL-VOICE-VISUAL-COBROWSING-2026-01",
+    synchronizedOmnichannelSlotAndHandoffAuthorized:
+      input.callBoundPkceTokenAndMonotonicCasStateVersionVerified &&
+      input.domPiiMaskingAndSharedOmnichannelGraphActive &&
+      !input.highEntropySlotDetectedOrForwardedExpiredLinkAttempted,
+    unboundVisualLinkHijackOrCasStateVersionConflictBlocked:
+      !input.callBoundPkceTokenAndMonotonicCasStateVersionVerified ||
+      !input.domPiiMaskingAndSharedOmnichannelGraphActive ||
+      input.highEntropySlotDetectedOrForwardedExpiredLinkAttempted,
+    visualMicroCardPushOrLosslessWhatsAppHandoffTriggered:
+      input.highEntropySlotDetectedOrForwardedExpiredLinkAttempted,
+  };
+}
+
+
 
 
 

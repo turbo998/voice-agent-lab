@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **512 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **513 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (512 Bilingual Guides)
+## 3. Solution Architect Selection Guides (513 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (489 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (490 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -556,3 +556,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 510. **Enterprise Outbound Voice AI Guide (<650ms Dual-Stage AMD, Branded Caller ID & TCPA / FCC Compliance): <650ms Dual-Stage Acoustic AMD (98.9% Accuracy, -74% Voicemail LLM Token Burn), STIR/SHAKEN Level-A + Branded RCD + T-60s SMS (24.0% → 64.8% Answer Rate), Area-Code ∩ Zip-Code Curfew Lock & 0ms Zero-Rebuttal Global DNC Gate (-$405k/10k Hrs)**: [EN](./enterprise-outbound-voice-ai-amd-voicemail-detection-tcpa-carrier-reputation-selection-faq.en.md) | [中文](./enterprise-outbound-voice-ai-amd-voicemail-detection-tcpa-carrier-reputation-selection-faq.md)
 511. **Enterprise PCI-DSS v4.0 Voice Payment, Edge DTMF Clamping & Tokenized In-Call Wallet Checkout Guide: Edge SBC Media Clamping (100% PCI SAQ-A De-Scoping, 0.00% PAN in AI), <15ms Blurted-PAN Recorder Pause & 8s Ring Scrub (Req 3.3.2), 11s In-Call Apple/Google Pay Push (66.0% → 96.4% Completion, 78s → 11s AHT) & Idempotent Settlement (-$360k/10k Hrs)**: [EN](./enterprise-pci-dss-v4-voice-payment-dtmf-masking-tokenization-selection-faq.en.md) | [中文](./enterprise-pci-dss-v4-voice-payment-dtmf-masking-tokenization-selection-faq.md)
 512. **Real Estate & Multifamily Property Management Voice AI Guide (24/7 Yardi Leasing, 2 AM Flood Triage & Fair Housing Lock): 24/7 Yardi/AppFolio Unit Sync + Biometric SmartRent Tour Lock (39.0% → 82.6% Conversion), <15s Floorplan Shutoff-Valve Coaching (-$8.5k Flood Loss) + Video Triage (-61.5% $240 Overtime Callouts) & Fair Housing Act Anti-Steering Firewall (-$330k/10k Hrs)**: [EN](./real-estate-property-management-leasing-emergency-maintenance-voice-selection-faq.en.md) | [中文](./real-estate-property-management-leasing-emergency-maintenance-voice-selection-faq.md)
+513. **Enterprise Omnichannel Voice + Visual Co-Browsing, 9s Alphanumeric Slot Capture & Seamless SMS/WhatsApp Handoff Guide: In-Call 180s PKCE Visual Micro-Card (31.0% → 0.2% Email/VIN Error, 95s → 9s Capture), <200ms Bi-Directional CAS Screen-Voice Sync & <400ms Zero-Amnesia Voice-to-WhatsApp Handoff (-$315k/10k Hrs)**: [EN](./enterprise-omnichannel-voice-sms-whatsapp-visual-cobrowsing-handoff-selection-faq.en.md) | [中文](./enterprise-omnichannel-voice-sms-whatsapp-visual-cobrowsing-handoff-selection-faq.md)
