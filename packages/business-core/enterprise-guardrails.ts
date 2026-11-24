@@ -13765,6 +13765,37 @@ export function evaluateVoiceAiSecurityJailbreakDeepfakeGuardrails2026Guard(inpu
   };
 }
 
+export interface VoiceAiEvalopsAutomatedRegressionObservability2026Evaluation {
+  policyCode: "VOICE-AI-EVALOPS-AUTOMATED-REGRESSION-OBSERVABILITY-2026-01";
+  productionVoiceReleaseAndObservabilityAuthorized: boolean;
+  untestedAcousticRegressionOrUngroundedCallSlippageBlocked: boolean;
+  ciReleaseBlockAndGoldenDatasetAutoIngestionTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice AI EvalOps, 500-Call Acoustic CI/CD Regression, 7-Hop W3C OpenTelemetry Observability & 100% Post-Call Groundedness QA Guard (`VOICE-AI-EVALOPS-AUTOMATED-REGRESSION-OBSERVABILITY-2026-01`).
+ */
+export function evaluateVoiceAiEvalopsAutomatedRegressionObservability2026Guard(input: {
+  fiveHundredCallAcousticCiGateAndSevenHopOtelActive: boolean;
+  fullPostCallGroundednessDiffAndTtsabilityVerified: boolean;
+  acousticRegressionBelow99PctOrRepeatedCallerLoopDetected: boolean;
+}): VoiceAiEvalopsAutomatedRegressionObservability2026Evaluation {
+  return {
+    policyCode: "VOICE-AI-EVALOPS-AUTOMATED-REGRESSION-OBSERVABILITY-2026-01",
+    productionVoiceReleaseAndObservabilityAuthorized:
+      input.fiveHundredCallAcousticCiGateAndSevenHopOtelActive &&
+      input.fullPostCallGroundednessDiffAndTtsabilityVerified &&
+      !input.acousticRegressionBelow99PctOrRepeatedCallerLoopDetected,
+    untestedAcousticRegressionOrUngroundedCallSlippageBlocked:
+      !input.fiveHundredCallAcousticCiGateAndSevenHopOtelActive ||
+      !input.fullPostCallGroundednessDiffAndTtsabilityVerified ||
+      input.acousticRegressionBelow99PctOrRepeatedCallerLoopDetected,
+    ciReleaseBlockAndGoldenDatasetAutoIngestionTriggered:
+      input.acousticRegressionBelow99PctOrRepeatedCallerLoopDetected,
+  };
+}
+
+
 
 
 
