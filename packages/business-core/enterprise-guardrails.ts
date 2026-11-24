@@ -14455,6 +14455,37 @@ export function evaluateEnterpriseVoiceAi2026MasterBlueprintPlaybookGuard(input:
   };
 }
 
+export interface WealthPortfolioSuitabilityAndWashSale2026Evaluation {
+  policyCode: "WEALTH-PORTFOLIO-REVIEW-REG-BI-MIFID-SUITABILITY-VOICE-2026-01";
+  attributionReadoutAndUnsolicitedOrderAuthorized: boolean;
+  ipsRiskCapBreachOrPromissoryYieldOrWashSaleBlocked: boolean;
+  cfpSuitabilityReviewTaskOrFido2WireStepUpTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Wealth Management & Private Banking (<250ms Sealed Aladdin/Tamarac Zero-Arithmetic Attribution, 0ms SEC Reg BI / MiFID II IPS Risk-Cap & Promissory-Yield Firewall, Household ±30d IRS Sec. 1091 Wash-Sale & >$10k FIDO2 Wire Lock) Guard (`WEALTH-PORTFOLIO-REVIEW-REG-BI-MIFID-SUITABILITY-VOICE-2026-01`).
+ */
+export function evaluateWealthPortfolioSuitabilityAndWashSaleGuard(input: {
+  sealedAladdinAttributionUsedAndAssetRiskWithinSignedIps: boolean;
+  household30DayWashSaleClearedAndPromissoryWordsScrubbed: boolean;
+  aboveIpsRiskTradeOrOver10kWithdrawalOrNewWirePayeeRequested: boolean;
+}): WealthPortfolioSuitabilityAndWashSale2026Evaluation {
+  return {
+    policyCode: "WEALTH-PORTFOLIO-REVIEW-REG-BI-MIFID-SUITABILITY-VOICE-2026-01",
+    attributionReadoutAndUnsolicitedOrderAuthorized:
+      input.sealedAladdinAttributionUsedAndAssetRiskWithinSignedIps &&
+      input.household30DayWashSaleClearedAndPromissoryWordsScrubbed &&
+      !input.aboveIpsRiskTradeOrOver10kWithdrawalOrNewWirePayeeRequested,
+    ipsRiskCapBreachOrPromissoryYieldOrWashSaleBlocked:
+      !input.sealedAladdinAttributionUsedAndAssetRiskWithinSignedIps ||
+      !input.household30DayWashSaleClearedAndPromissoryWordsScrubbed ||
+      input.aboveIpsRiskTradeOrOver10kWithdrawalOrNewWirePayeeRequested,
+    cfpSuitabilityReviewTaskOrFido2WireStepUpTriggered:
+      input.aboveIpsRiskTradeOrOver10kWithdrawalOrNewWirePayeeRequested,
+  };
+}
+
+
 
 
 
