@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 502 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 502 Guides](#-2-502-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 503 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 503 Guides](#-2-503-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 502 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 503 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (479 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (480 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -576,6 +576,7 @@ flowchart LR
 500. **Enterprise Voice AI EvalOps, 500-Call Acoustic CI/CD Regression, 7-Hop OpenTelemetry Observability & 100% Post-Call QA Guide: <4m 500-Call 12-Persona Acoustic CI Gate (18% → 96.8% Bug Catch), 7-Hop W3C traceparent Voice Flamegraph (4.5h → <10s MTTR), $0.004/Call 100% Post-Call Groundedness QA & Auto-Curated Golden Flywheel (-$310k/10k Hrs)**: [EN](./docs/enterprise-voice-ai-evalops-automated-regression-post-call-qa-observability-selection-faq.en.md) | [中文](./docs/enterprise-voice-ai-evalops-automated-regression-post-call-qa-observability-selection-faq.md)
 501. **Enterprise Telecom & ISP Voice AI Guide (Broadband Remote Self-Healing, Bill-Shock Re-Rating & Anti-SIM-Swap Lock): <150ms Ringback ONT Probe + 8s Reboot Pacing + Camera LED Vision (-64.2% $180 Truck Rolls), Deterministic BSS Invoice Diff & Retroactive Roaming Pass Re-Rating (41% → 89.2% Churn Save) & Zero-Trust FIDO2 Anti-SIM-Swap Lock (0.00% Voice Hijack, -$395k/10k Hrs)**: [EN](./docs/telco-isp-broadband-self-healing-bill-dispute-sim-swap-voice-selection-faq.en.md) | [中文](./docs/telco-isp-broadband-self-healing-bill-dispute-sim-swap-voice-selection-faq.md)
 502. **Enterprise Logistics, Last-Mile Delivery & Fleet Dispatch Hands-Free Voice AI Guide: Dimension-Checked Smart-Locker Bay Lock + <800ms Zebra PDA Sync (81.0% → 95.6% First-Attempt Delivery), 75dB Speed-Gated Driver Dock Re-Slotting Copilot (-71.0% Detention Fees) & <=500m Geofence / Direct-Signature OTP Lock (0.00% Parcel Diversion, -$340k/10k Hrs)**: [EN](./docs/logistics-last-mile-delivery-fleet-dispatch-handsfree-pod-voice-selection-faq.en.md) | [中文](./docs/logistics-last-mile-delivery-fleet-dispatch-handsfree-pod-voice-selection-faq.md)
+503. **Enterprise Meeting Intelligence, Live Teams/Zoom Voice Copilot & Zero-Hallucination CRM/Jira Sync Guide: Explicit "@Atlas" Wake Gate + <4.5s Spoken Brevity Cap (0.0% Uninvited Interrupts), Live Attendee ACL Intersection (0.00% External Guest Leaks), Hybrid Room Enrolled Voiceprint Diarization (61.0% → 98.6% Attribution) & Staged Adaptive-Card CRM Approval (-$295k/10k Hrs)**: [EN](./docs/enterprise-meeting-intelligence-teams-zoom-live-voice-agent-crm-sync-selection-faq.en.md) | [中文](./docs/enterprise-meeting-intelligence-teams-zoom-live-voice-agent-crm-sync-selection-faq.md)
 
 ---
 

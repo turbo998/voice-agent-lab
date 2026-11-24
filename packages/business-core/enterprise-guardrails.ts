@@ -13855,6 +13855,37 @@ export function evaluateLogisticsLastMileFleetDispatchVoice2026Guard(input: {
   };
 }
 
+export interface EnterpriseMeetingVoiceAgentCrmSync2026Evaluation {
+  policyCode: "ENTERPRISE-MEETING-VOICE-AGENT-CRM-SYNC-2026-01";
+  meetingVoiceResponseAndStagedCrmSyncAuthorized: boolean;
+  externalGuestAudioLeakOrUnapprovedBrainstormCrmWriteBlocked: boolean;
+  privateHostWhisperCardOrStagedApprovalCardTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Meeting Intelligence, Live Teams/Zoom Voice Copilot (Explicit Wake-Gate + <4.5s Spoken Cap, Attendee ACL Intersection & Hybrid Room Enrolled Voiceprint Diarization) & Staged CRM/Jira Approval Guard (`ENTERPRISE-MEETING-VOICE-AGENT-CRM-SYNC-2026-01`).
+ */
+export function evaluateEnterpriseMeetingVoiceAgentCrmSync2026Guard(input: {
+  explicitWakeWordAndAttendeeAclIntersectionVerified: boolean;
+  enrolledRoomVoiceprintAndStagedHostCardApproved: boolean;
+  externalGuestInternalDataQueryOrUnapprovedBrainstormWriteAttempted: boolean;
+}): EnterpriseMeetingVoiceAgentCrmSync2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-MEETING-VOICE-AGENT-CRM-SYNC-2026-01",
+    meetingVoiceResponseAndStagedCrmSyncAuthorized:
+      input.explicitWakeWordAndAttendeeAclIntersectionVerified &&
+      input.enrolledRoomVoiceprintAndStagedHostCardApproved &&
+      !input.externalGuestInternalDataQueryOrUnapprovedBrainstormWriteAttempted,
+    externalGuestAudioLeakOrUnapprovedBrainstormCrmWriteBlocked:
+      !input.explicitWakeWordAndAttendeeAclIntersectionVerified ||
+      !input.enrolledRoomVoiceprintAndStagedHostCardApproved ||
+      input.externalGuestInternalDataQueryOrUnapprovedBrainstormWriteAttempted,
+    privateHostWhisperCardOrStagedApprovalCardTriggered:
+      input.externalGuestInternalDataQueryOrUnapprovedBrainstormWriteAttempted,
+  };
+}
+
+
 
 
 

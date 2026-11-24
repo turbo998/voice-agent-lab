@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg503" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070b14"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad503" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad503" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amberGrad503" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad503" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <style>
+      .title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 21px; font-weight: 800; fill: #f8fafc; }
+      .subtitle { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .card-title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13.5px; font-weight: 700; fill: #f1f5f9; }
+      .body-text { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .mono { font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 10.5px; fill: #38bdf8; }
+      .badge { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 10.5px; font-weight: 700; fill: #ffffff; }
+      .kpi-num { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 18px; font-weight: 800; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg503)" rx="14"/>
+
+  <!-- Header -->
+  <rect x="24" y="18" width="1152" height="64" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.5"/>
+  <rect x="38" y="30" width="142" height="24" rx="6" fill="url(#purpleGrad503)"/>
+  <text x="109" y="46" text-anchor="middle" class="badge">MEETING AI · #503</text>
+  <text x="194" y="44" class="title">Enterprise Meeting Voice AI: Live Teams/Zoom Participant Bot &amp; Grounded CRM/Jira Sync</text>
+  <text x="194" y="65" class="subtitle">Explicit Wake-Gate (&lt;4.5s Spoken + Adaptive Card) + Hybrid Room Diarization (98.6% Attribution) + Staged CRM Approval (-$295k/10k Hrs)</text>
+
+  <!-- Column 1: Live Teams / Zoom Media Ingress & Explicit Wake Gate -->
+  <g transform="translate(24, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#cyanGrad503)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">1. Teams / Zoom Ingress &amp; Wake Discipline</text>
+
+    <rect x="14" y="48" width="340" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#38bdf8">ACS Teams Interop / Native Media Bot SDK</text>
+    <text x="26" y="86" class="body-text">• Subscribes to unmixed per-participant RTP audio</text>
+    <text x="26" y="102" class="body-text">  streams + active-speaker metadata via Graph API</text>
+    <text x="26" y="122" class="mono">Zero Virtual-Webcam Screen-Scraping Fragility</text>
+
+    <rect x="14" y="148" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="168" class="card-title" fill="#34d399">Explicit Wake-Phrase &amp; &lt;4.5s Spoken Cap</text>
+    <text x="26" y="186" class="body-text">• Never interrupts group discussions uninvited!</text>
+    <text x="26" y="202" class="body-text">• Speaks ONLY on "@Atlas" wake or hand-raise</text>
+    <text x="26" y="222" class="mono" fill="#6ee7b7">1-Sentence Audio (&lt;4.5s) + Full Chart in Chat Card</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#fbbf24">Meeting-Scoped ACL Intersection (RBAC)</text>
+    <text x="26" y="288" class="body-text">• Computes intersection of all attendees' Entra ID</text>
+    <text x="26" y="304" class="body-text">  permissions; if external guest is present, blocks</text>
+    <text x="26" y="322" class="mono" fill="#fde68a">internal margin/roadmap read-outs automatically!</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="366" class="card-title" fill="#6ee7b7">Private AE Deal-Coach Whisper Card</text>
+    <text x="26" y="384" class="body-text">Sends private battlecards to the host's screen</text>
+    <text x="26" y="400" class="mono" fill="#a7f3d0">without speaking confidential tactics aloud</text>
+  </g>
+
+  <!-- Column 2: Hybrid Conference Room Diarization & Consent -->
+  <g transform="translate(416, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#purpleGrad503)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">2. Hybrid Room Attribution &amp; Consent</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#a78bfa" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#c4b5fd">Hybrid Room Array + Enrolled Voiceprint</text>
+    <text x="26" y="86" class="body-text">• Solves "5 executives on 1 conference room mic"</text>
+    <text x="26" y="102" class="body-text">• Fuses Teams Room beamforming + Azure Enrolled</text>
+    <text x="26" y="122" class="mono" fill="#ddd6fe">Voice Profiles -> 61% to 98.6% Speaker Attribution</text>
+
+    <rect x="14" y="150" width="340" height="92" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#38bdf8">Two-Party Jurisdiction Recording Consent</text>
+    <text x="26" y="188" class="body-text">• Detects EU/CA/DE external attendees via domain/IP</text>
+    <text x="26" y="204" class="body-text">• Buffers audio in RAM-only until recording banner</text>
+    <text x="26" y="224" class="mono">&amp; explicit participant opt-in are confirmed</text>
+
+    <rect x="14" y="252" width="340" height="86" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="272" class="card-title" fill="#34d399">"Off-the-Record" Instant Redaction Command</text>
+    <text x="26" y="290" class="body-text">• Host can say "Pause note-taking for 5 minutes"</text>
+    <text x="26" y="306" class="body-text">• Purges rolling audio/transcript buffer with</text>
+    <text x="26" y="324" class="mono" fill="#6ee7b7">cryptographic erasure receipt in meeting log</text>
+
+    <rect x="14" y="348" width="340" height="66" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="368" class="card-title" fill="#6ee7b7">Timestamped Audio Citation Anchors</text>
+    <text x="26" y="386" class="body-text">Every extracted decision links to exact [mm:ss]</text>
+    <text x="26" y="402" class="mono" fill="#a7f3d0">utterance &amp; speaker ID for 1-click verification</text>
+  </g>
+
+  <!-- Column 3: Zero-Hallucination CRM / Jira Staged Sync -->
+  <g transform="translate(808, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#059669" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#emeraldGrad503)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">3. Staged CRM / Jira Action-Item Gate</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#34d399">Brainstorm vs. Firm Commitment Classifier</text>
+    <text x="26" y="86" class="body-text">• Distinguishes "What if we offered 15% off?" from</text>
+    <text x="26" y="102" class="body-text">  "I will send the revised $120k quote by Tuesday"</text>
+    <text x="26" y="122" class="mono" fill="#6ee7b7">Eliminates 94.8% of Speculative False Action Items</text>
+
+    <rect x="14" y="150" width="340" height="90" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#fbbf24">Staged Adaptive Card Approval Before Write</text>
+    <text x="26" y="188" class="body-text">• Never auto-mutates Salesforce / D365 / Jira!</text>
+    <text x="26" y="204" class="body-text">• Posts pre-filled MEDDIC / Jira draft card to host</text>
+    <text x="26" y="222" class="mono" fill="#fde68a">for 1-click review &amp; commit within 30s of call end</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#38bdf8">Idempotent Entity Resolution (Account/Issue)</text>
+    <text x="26" y="288" class="body-text">• Maps spoken project names to canonical Jira keys</text>
+    <text x="26" y="304" class="body-text">  &amp; CRM Opportunity IDs; blocks duplicate tickets</text>
+    <text x="26" y="322" class="mono">Saves 18 Mins of Manual Admin Work per Meeting</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#1e1b4b" stroke="#34d399" stroke-width="1.2"/>
+    <text x="26" y="366" class="card-title" fill="#6ee7b7">Guardrail: MEETING-VOICE-AI-2026-01</text>
+    <text x="26" y="384" class="mono" fill="#f8fafc">evaluateEnterpriseMeetingVoiceAgentCrmSyncGuard</text>
+    <text x="26" y="402" class="body-text">0 External Guest Leaks · -$295k/10k Hrs Saved</text>
+  </g>
+
+  <!-- Bottom KPI Bar -->
+  <rect x="24" y="542" width="1152" height="118" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="44" y="568" class="card-title" fill="#38bdf8">Enterprise Meeting Voice AI &amp; CRM/Jira Sync Benchmarks (per 10,000 Meeting Hours)</text>
+
+  <g transform="translate(44, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Hybrid Room Speaker Attribution</text>
+    <text x="16" y="50" class="kpi-num" fill="#a78bfa">61.0% → 98.6% (Voiceprint)</text>
+  </g>
+  <g transform="translate(324, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Uninvited Meeting Bot Interrupts</text>
+    <text x="16" y="50" class="kpi-num" fill="#38bdf8">0.0% (Explicit Wake + &lt;4.5s)</text>
+  </g>
+  <g transform="translate(604, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">External Guest ACL Data Leak</text>
+    <text x="16" y="50" class="kpi-num" fill="#34d399">0.00% (Attendee ACL Intersect)</text>
+  </g>
+  <g transform="translate(884, 582)">
+    <rect width="272" height="62" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="16" y="24" class="body-text">Productivity &amp; CRM Hygiene Gain</text>
+    <text x="16" y="50" class="kpi-num" fill="#6ee7b7">-$295,000 / 10k Hours</text>
+  </g>
+</svg>
