@@ -14245,6 +14245,37 @@ export function evaluateEnterpriseFieldServiceTechnicianVoice2026Guard(input: {
   };
 }
 
+export interface EdtechLanguageTutorPronunciationCoppaVoice2026Evaluation {
+  policyCode: "EDTECH-LANGUAGE-TUTOR-PRONUNCIATION-COPPA-VOICE-2026-01";
+  phonemeGopCoachingAndSocraticTurnAuthorized: boolean;
+  transcriptOnlyBlindnessAnswerSpoilerOrChildAudioStorageBlocked: boolean;
+  socraticHintLadderOrCoppaRamZeroingAndCrisisAlertTriggered: boolean;
+}
+
+/**
+ * Deterministic EdTech AI Spoken Language Tutor (Parallel Phoneme GOP Forced Alignment, 1,800ms L2 Word-Search Pause Gate, 3-Step Socratic Anti-Spoiler State Machine & FTC Amended COPPA RAM-Only Zero Child Voice Retention) Guard (`EDTECH-LANGUAGE-TUTOR-PRONUNCIATION-COPPA-VOICE-2026-01`).
+ */
+export function evaluateEdtechLanguageTutorPronunciationCoppaVoice2026Guard(input: {
+  parallelPhonemeGopSidecarAnd1800msL2PauseActive: boolean;
+  coppaParentalVpcAndRamOnlyAudioZeroingVerified: boolean;
+  directAnswerSpoilerRequestedOrChildCrisisSignalDetected: boolean;
+}): EdtechLanguageTutorPronunciationCoppaVoice2026Evaluation {
+  return {
+    policyCode: "EDTECH-LANGUAGE-TUTOR-PRONUNCIATION-COPPA-VOICE-2026-01",
+    phonemeGopCoachingAndSocraticTurnAuthorized:
+      input.parallelPhonemeGopSidecarAnd1800msL2PauseActive &&
+      input.coppaParentalVpcAndRamOnlyAudioZeroingVerified &&
+      !input.directAnswerSpoilerRequestedOrChildCrisisSignalDetected,
+    transcriptOnlyBlindnessAnswerSpoilerOrChildAudioStorageBlocked:
+      !input.parallelPhonemeGopSidecarAnd1800msL2PauseActive ||
+      !input.coppaParentalVpcAndRamOnlyAudioZeroingVerified ||
+      input.directAnswerSpoilerRequestedOrChildCrisisSignalDetected,
+    socraticHintLadderOrCoppaRamZeroingAndCrisisAlertTriggered:
+      input.directAnswerSpoilerRequestedOrChildCrisisSignalDetected,
+  };
+}
+
+
 
 
 

@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg516" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070b14"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad516" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad516" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amberGrad516" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad516" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <style>
+      .title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 21px; font-weight: 800; fill: #f8fafc; }
+      .subtitle { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .card-title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13.5px; font-weight: 700; fill: #f1f5f9; }
+      .body-text { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .mono { font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 10.5px; fill: #38bdf8; }
+      .badge { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 10.5px; font-weight: 700; fill: #ffffff; }
+      .kpi-num { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 18px; font-weight: 800; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg516)" rx="14"/>
+
+  <!-- Header -->
+  <rect x="24" y="18" width="1152" height="64" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.5"/>
+  <rect x="38" y="30" width="142" height="24" rx="6" fill="url(#cyanGrad516)"/>
+  <text x="109" y="46" text-anchor="middle" class="badge">EDTECH VOICE · #516</text>
+  <text x="194" y="44" class="title">EdTech AI Language Tutor: Phoneme GOP Assessment, Socratic Scaffolding &amp; COPPA</text>
+  <text x="194" y="65" class="subtitle">Parallel Phoneme GOP Forced Alignment (97.8% Error Detection) + L2 1.8s Word-Search Pause Gate + Socratic &amp; COPPA Child Lock</text>
+
+  <!-- Column 1: Parallel Phoneme GOP & L2 Patient Turn-Taking -->
+  <g transform="translate(24, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#cyanGrad516)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">1. Parallel Phoneme GOP &amp; L2 Turn-Taking</text>
+
+    <rect x="14" y="48" width="340" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#38bdf8">Fixes ASR "Silent Auto-Correction" Blindness</text>
+    <text x="26" y="86" class="body-text">• Standard ASR auto-corrects "I sink so" to "I think</text>
+    <text x="26" y="102" class="body-text">  so", blinding the LLM tutor to /θ/ → /s/ errors!</text>
+    <text x="26" y="122" class="mono">Parallel Azure Pronunciation Assessment (GOP)</text>
+
+    <rect x="14" y="148" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="168" class="card-title" fill="#34d399">IPA Phoneme, Stress &amp; Liaison Telemetry</text>
+    <text x="26" y="186" class="body-text">• Injects per-phoneme GOP scores, syllable stress,</text>
+    <text x="26" y="202" class="body-text">  and prosody rhythm JSON into the tutor prompt</text>
+    <text x="26" y="222" class="mono" fill="#6ee7b7">97.8% Phoneme Error Catch + Articulation Coaching</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#fbbf24">L2 Learner 1,800ms Word-Search Pause Gate</text>
+    <text x="26" y="288" class="body-text">• L2 learners pause 1.5s mid-sentence to recall</text>
+    <text x="26" y="304" class="body-text">  vocabulary; holds turn open on incomplete clauses</text>
+    <text x="26" y="322" class="mono" fill="#fde68a">&amp; offers gentle L1/L2 lexical hint after 2.2s</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="366" class="card-title" fill="#6ee7b7">CEFR-Adaptive Speech Speed (A1 0.78x → C1 1.05x)</text>
+    <text x="26" y="384" class="body-text">Dynamically scales vocabulary &amp; TTS speaking rate</text>
+    <text x="26" y="400" class="mono" fill="#a7f3d0">to match learner's CEFR level (A1/A2/B1/B2/C1)</text>
+  </g>
+
+  <!-- Column 2: Socratic Scaffolding & Delayed Recast Pedagogy -->
+  <g transform="translate(416, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#059669" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#emeraldGrad516)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">2. Socratic Scaffolding &amp; Recast Pedagogy</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#34d399">Anti-Answer-Spoiling Socratic State Machine</text>
+    <text x="26" y="86" class="body-text">• Blocks direct homework answer dumps ("Just tell</text>
+    <text x="26" y="102" class="body-text">  me the answer!") via 3-step Hint Ladder:</text>
+    <text x="26" y="122" class="mono" fill="#6ee7b7">1.Concept Cue → 2.Sub-Question → 3.Guided Solve</text>
+
+    <rect x="14" y="150" width="340" height="92" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#38bdf8">Non-Shaming Conversational Recast vs. Drill</text>
+    <text x="26" y="188" class="body-text">• During free roleplay, uses natural Recast ("Oh,</text>
+    <text x="26" y="204" class="body-text">  you WENT to the park yesterday?") and saves</text>
+    <text x="26" y="224" class="mono">explicit phoneme drills for end-of-turn cards</text>
+
+    <rect x="14" y="252" width="340" height="86" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="272" class="card-title" fill="#fbbf24">Spaced-Repetition Error Graph (FSRS)</text>
+    <text x="26" y="290" class="body-text">• Logs mispronounced words &amp; grammar slips into</text>
+    <text x="26" y="306" class="body-text">  learner's FSRS memory graph; weaves those target</text>
+    <text x="26" y="324" class="mono" fill="#fde68a">words naturally into tomorrow's roleplay scenario</text>
+
+    <rect x="14" y="348" width="340" height="66" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="368" class="card-title" fill="#6ee7b7">2.4x Faster IELTS / TOEFL Speaking Band Gain</text>
+    <text x="26" y="386" class="body-text">Increases learner active speaking time (STT ratio)</text>
+    <text x="26" y="402" class="mono" fill="#a7f3d0">from 22% in group classes to 68% in 1-on-1 AI</text>
+  </g>
+
+  <!-- Column 3: COPPA / FERPA Minor Biometric Lock & Safeguarding -->
+  <g transform="translate(808, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#purpleGrad516)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">3. COPPA / FERPA Minor Voice &amp; Safety Lock</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#a78bfa" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#c4b5fd">FTC Amended COPPA Biometric Voice Rule</text>
+    <text x="26" y="86" class="body-text">• Child voiceprints are regulated biometric data!</text>
+    <text x="26" y="102" class="body-text">• Enforces Verifiable Parental Consent (VPC), RAM-</text>
+    <text x="26" y="122" class="mono" fill="#ddd6fe">only audio scoring &amp; 0% model-training retention</text>
+
+    <rect x="14" y="150" width="340" height="90" rx="8" fill="#1e293b" stroke="#fb7185" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#fb7185">&lt;5s Child Safeguarding &amp; Crisis Escalation</text>
+    <text x="26" y="188" class="body-text">• Detects bullying, abuse, or self-harm distress;</text>
+    <text x="26" y="204" class="body-text">  halts lesson in &lt;5s, speaks age-appropriate</text>
+    <text x="26" y="222" class="mono" fill="#fda4af">support &amp; alerts school counselor / parent portal</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#34d399">Age-Scoped Topic &amp; Persona Sandbox</text>
+    <text x="26" y="288" class="body-text">• Restricts K-12 conversations strictly to approved</text>
+    <text x="26" y="304" class="body-text">  curriculum topics; blocks parasocial emotional</text>
+    <text x="26" y="322" class="mono" fill="#6ee7b7">dependency ("I'm your AI learning tool, not human")</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#1e1b4b" stroke="#a78bfa" stroke-width="1.2"/>
+    <text x="26" y="366" class="card-title" fill="#c4b5fd">Guardrail: EDTECH-TUTOR-VOICE-2026-01</text>
+    <text x="26" y="384" class="mono" fill="#f8fafc">evaluateEdtechLanguageTutorPronunciationGuard</text>
+    <text x="26" y="402" class="body-text">97.8% Phoneme Catch · -$295k/10k Hrs Tutor Scale</text>
+  </g>
+
+  <!-- Bottom KPI Bar -->
+  <rect x="24" y="542" width="1152" height="118" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="44" y="568" class="card-title" fill="#38bdf8">EdTech AI Language Tutor &amp; Pronunciation Assessment Benchmarks (per 10,000 Learning Hours)</text>
+
+  <g transform="translate(44, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Phoneme Pronunciation Catch</text>
+    <text x="16" y="50" class="kpi-num" fill="#38bdf8">34.0% → 97.8% (Parallel GOP)</text>
+  </g>
+  <g transform="translate(324, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Premature L2 Pause Cutoffs</text>
+    <text x="16" y="50" class="kpi-num" fill="#34d399">41.0% → 1.8% (1.8s L2 Gate)</text>
+  </g>
+  <g transform="translate(604, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">COPPA Child Voice Retention</text>
+    <text x="16" y="50" class="kpi-num" fill="#a78bfa">0.00% (RAM-Only + VPC Lock)</text>
+  </g>
+  <g transform="translate(884, 582)">
+    <rect width="272" height="62" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="16" y="24" class="body-text">1-on-1 Tutoring Cost Savings</text>
+    <text x="16" y="50" class="kpi-num" fill="#6ee7b7">-$295,000 / 10k Hours</text>
+  </g>
+</svg>
