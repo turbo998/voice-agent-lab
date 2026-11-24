@@ -14485,6 +14485,37 @@ export function evaluateWealthPortfolioSuitabilityAndWashSaleGuard(input: {
   };
 }
 
+export interface B2bSaasBillingOverageFtcRetentionVoice2026Evaluation {
+  policyCode: "B2B-SAAS-BILLING-OVERAGE-SEAT-PROVISIONING-FTC-VOICE-2026-01";
+  overageUpgradeWaiverAndSeatSyncAuthorized: boolean;
+  nonAdminSeatAddOrFtcDarkPatternOrCooldownDiscountBlocked: boolean;
+  unconditional0msCancelOrEnterpriseCsmBridgeTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise B2B SaaS Billing & Retention (<300ms Pre-Computed Zuora/Stripe Usage Diff & Overage-to-Upgrade Waiver, Billing-Admin RBAC/PO# Gate, FTC Click-to-Cancel 1-Offer Cap & 365-Day Discount Cooldown) Guard (`B2B-SAAS-BILLING-OVERAGE-SEAT-PROVISIONING-FTC-VOICE-2026-01`).
+ */
+export function evaluateB2bSaasBillingOverageFtcRetentionVoice2026Guard(input: {
+  preComputedUsageDiffUsedAndBillingAdminRbacVerified: boolean;
+  ftcSingleOfferCapAnd365DayPromoCooldownRespected: boolean;
+  callerDemandsImmediateCancelOrEnterpriseArrOver50kEscalation: boolean;
+}): B2bSaasBillingOverageFtcRetentionVoice2026Evaluation {
+  return {
+    policyCode: "B2B-SAAS-BILLING-OVERAGE-SEAT-PROVISIONING-FTC-VOICE-2026-01",
+    overageUpgradeWaiverAndSeatSyncAuthorized:
+      input.preComputedUsageDiffUsedAndBillingAdminRbacVerified &&
+      input.ftcSingleOfferCapAnd365DayPromoCooldownRespected &&
+      !input.callerDemandsImmediateCancelOrEnterpriseArrOver50kEscalation,
+    nonAdminSeatAddOrFtcDarkPatternOrCooldownDiscountBlocked:
+      !input.preComputedUsageDiffUsedAndBillingAdminRbacVerified ||
+      !input.ftcSingleOfferCapAnd365DayPromoCooldownRespected ||
+      input.callerDemandsImmediateCancelOrEnterpriseArrOver50kEscalation,
+    unconditional0msCancelOrEnterpriseCsmBridgeTriggered:
+      input.callerDemandsImmediateCancelOrEnterpriseArrOver50kEscalation,
+  };
+}
+
+
 
 
 
