@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 521 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 521 Guides](#-2-521-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 522 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 522 Guides](#-2-522-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 521 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 522 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (498 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (499 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -595,6 +595,7 @@ flowchart LR
 519. **Corporate Travel & Expense (SAP Concur / Navan) Voice Concierge & FCPA Anti-Bribery Guide: <75s Job-Band Policy Rebooking + Unused Airline Credit Auto-Redemption (48.0% → 94.2% Recovery, -86.4% $38 TMC Fees), 15m GDS Hold + Manager Teams Waiver, 20s Hotel Folio Minibar Carve-Out & FCPA Public-Official Hospitality Lock (-$310k/10k Hrs)**: [EN](./docs/corporate-travel-expense-concur-navan-policy-vip-concierge-voice-selection-faq.en.md) | [中文](./docs/corporate-travel-expense-concur-navan-policy-vip-concierge-voice-selection-faq.md)
 520. **Enterprise Procurement & Accounts Payable (AP) Helpdesk Voice AI Guide (3-Way Match Diff, Anti-BEC Lock & PO Expediting): <350ms SAP Ariba/Coupa 3-Way Match Variance Explainer (31.0% → 83.5% AP Deflection), 0ms Anti-BEC Read-Only Bank-Master Lock (0.00% Wire Fraud), Dynamic Early-Payment Discounting (14%+ Treasury Yield) & T-5 Day PO Expediting (62.0% → 95.4% ASN Capture, -$350k/10k Hrs)**: [EN](./docs/enterprise-procurement-ap-helpdesk-ariba-coupa-three-way-match-bec-voice-selection-faq.en.md) | [中文](./docs/enterprise-procurement-ap-helpdesk-ariba-coupa-three-way-match-bec-voice-selection-faq.md)
 521. **Retail Pharmacy & PBM Voice AI Guide (RxNorm Phonetic Refill, NCPDP Prior-Auth Triage & OBRA '90 Pharmacist Gate): Profile-Scoped RxNorm Brand↔Generic Matcher + ISMP LASA 3-Factor Readback (49.0% → 91.6% Refill Completion), NCPDP Prior-Auth & <3-Mi Sister-Store Transfer (-74.2% Store Calls), 0ms OBRA '90 Licensed Pharmacist DDI Gate & DEA Schedule II Lock (-$365k/10k Hrs)**: [EN](./docs/pharmacy-pbm-prescription-refill-prior-auth-pharmacist-ddi-voice-selection-faq.en.md) | [中文](./docs/pharmacy-pbm-prescription-refill-prior-auth-pharmacist-ddi-voice-selection-faq.md)
+522. **2026 Enterprise Voice AI Master Architecture Playbook (4 Core Paradigms, 7 Production Guardrails & 12-Industry Matrix): 30-Second Paradigm Selector (Pure S2S vs. Hybrid Supervisor vs. Streaming Cascade vs. Sovereign On-Prem GPU), 7 Mandatory Guardrails (turnEpoch Fence, P65 PTU/PAYGO -$0.039/min, JWT Sandbox, Edge SAQ-A PCI, 650ms HA & 500-Call Acoustic CI) & 12-Industry ROI Matrix**: [EN](./docs/enterprise-voice-ai-2026-master-architecture-playbook-industry-matrix-selection-faq.en.md) | [中文](./docs/enterprise-voice-ai-2026-master-architecture-playbook-industry-matrix-selection-faq.md)
 
 ---
 

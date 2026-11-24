@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **521 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **522 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (521 Bilingual Guides)
+## 3. Solution Architect Selection Guides (522 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (498 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (499 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -565,3 +565,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 519. **Corporate Travel & Expense (SAP Concur / Navan) Voice Concierge & FCPA Anti-Bribery Guide: <75s Job-Band Policy Rebooking + Unused Airline Credit Auto-Redemption (48.0% → 94.2% Recovery, -86.4% $38 TMC Fees), 15m GDS Hold + Manager Teams Waiver, 20s Hotel Folio Minibar Carve-Out & FCPA Public-Official Hospitality Lock (-$310k/10k Hrs)**: [EN](./corporate-travel-expense-concur-navan-policy-vip-concierge-voice-selection-faq.en.md) | [中文](./corporate-travel-expense-concur-navan-policy-vip-concierge-voice-selection-faq.md)
 520. **Enterprise Procurement & Accounts Payable (AP) Helpdesk Voice AI Guide (3-Way Match Diff, Anti-BEC Lock & PO Expediting): <350ms SAP Ariba/Coupa 3-Way Match Variance Explainer (31.0% → 83.5% AP Deflection), 0ms Anti-BEC Read-Only Bank-Master Lock (0.00% Wire Fraud), Dynamic Early-Payment Discounting (14%+ Treasury Yield) & T-5 Day PO Expediting (62.0% → 95.4% ASN Capture, -$350k/10k Hrs)**: [EN](./enterprise-procurement-ap-helpdesk-ariba-coupa-three-way-match-bec-voice-selection-faq.en.md) | [中文](./enterprise-procurement-ap-helpdesk-ariba-coupa-three-way-match-bec-voice-selection-faq.md)
 521. **Retail Pharmacy & PBM Voice AI Guide (RxNorm Phonetic Refill, NCPDP Prior-Auth Triage & OBRA '90 Pharmacist Gate): Profile-Scoped RxNorm Brand↔Generic Matcher + ISMP LASA 3-Factor Readback (49.0% → 91.6% Refill Completion), NCPDP Prior-Auth & <3-Mi Sister-Store Transfer (-74.2% Store Calls), 0ms OBRA '90 Licensed Pharmacist DDI Gate & DEA Schedule II Lock (-$365k/10k Hrs)**: [EN](./pharmacy-pbm-prescription-refill-prior-auth-pharmacist-ddi-voice-selection-faq.en.md) | [中文](./pharmacy-pbm-prescription-refill-prior-auth-pharmacist-ddi-voice-selection-faq.md)
+522. **2026 Enterprise Voice AI Master Architecture Playbook (4 Core Paradigms, 7 Production Guardrails & 12-Industry Matrix): 30-Second Paradigm Selector (Pure S2S vs. Hybrid Supervisor vs. Streaming Cascade vs. Sovereign On-Prem GPU), 7 Mandatory Guardrails (turnEpoch Fence, P65 PTU/PAYGO -$0.039/min, JWT Sandbox, Edge SAQ-A PCI, 650ms HA & 500-Call Acoustic CI) & 12-Industry ROI Matrix**: [EN](./enterprise-voice-ai-2026-master-architecture-playbook-industry-matrix-selection-faq.en.md) | [中文](./enterprise-voice-ai-2026-master-architecture-playbook-industry-matrix-selection-faq.md)
