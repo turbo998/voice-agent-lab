@@ -13435,6 +13435,37 @@ export function evaluateEnterpriseItHelpdeskHrVoiceCopilot2026Guard(input: {
   };
 }
 
+export interface RetailShowroomVoiceAvatarConcierge2026Evaluation {
+  policyCode: "RETAIL-SHOWROOM-VOICE-AVATAR-CONCIERGE-2026-01";
+  avatarSpokenPitchAndProductCardPushAuthorized: boolean;
+  adLawViolationOrFloorPriceBreachOrFalseWakeBlocked: boolean;
+  danmakuQuarantineOrWalkAway3sPiiSessionWipeTriggered: boolean;
+}
+
+/**
+ * Deterministic E-Commerce Livestream & Retail Showroom Interactive Voice + Avatar Concierge (<15ms Redis SKU Stock & Price-Floor Lock + Pre-TTS Ad-Law Superlative Filter, <=45ms Viseme Lip-Sync & ToF/Gaze Wake Gate, 0ms Danmaku Prompt-Injection Quarantine & 3s Walk-Away PII Session Wipe) Guard (`RETAIL-SHOWROOM-VOICE-AVATAR-CONCIERGE-2026-01`).
+ */
+export function evaluateRetailShowroomVoiceAvatarConcierge2026Guard(input: {
+  redisSkuStockAndFloorPriceVerifiedAndAdLawSuperlativeCleared: boolean;
+  lipSyncVisemeSkewUnder45msAndGazeToFWakeConfirmed: boolean;
+  danmakuPromptInjectionOrBelowCostDiscountOrShopperWalkAwayDetected: boolean;
+}): RetailShowroomVoiceAvatarConcierge2026Evaluation {
+  return {
+    policyCode: "RETAIL-SHOWROOM-VOICE-AVATAR-CONCIERGE-2026-01",
+    avatarSpokenPitchAndProductCardPushAuthorized:
+      input.redisSkuStockAndFloorPriceVerifiedAndAdLawSuperlativeCleared &&
+      input.lipSyncVisemeSkewUnder45msAndGazeToFWakeConfirmed &&
+      !input.danmakuPromptInjectionOrBelowCostDiscountOrShopperWalkAwayDetected,
+    adLawViolationOrFloorPriceBreachOrFalseWakeBlocked:
+      !input.redisSkuStockAndFloorPriceVerifiedAndAdLawSuperlativeCleared ||
+      !input.lipSyncVisemeSkewUnder45msAndGazeToFWakeConfirmed ||
+      input.danmakuPromptInjectionOrBelowCostDiscountOrShopperWalkAwayDetected,
+    danmakuQuarantineOrWalkAway3sPiiSessionWipeTriggered:
+      input.danmakuPromptInjectionOrBelowCostDiscountOrShopperWalkAwayDetected,
+  };
+}
+
+
 
 
 

@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg489a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070e1a"/>
+      <stop offset="50%" stop-color="#0d1e32"/>
+      <stop offset="100%" stop-color="#071222"/>
+    </linearGradient>
+    <linearGradient id="cyan489a" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emerald489a" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="rose489a" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg489a)"/>
+  <rect x="24" y="20" width="1152" height="640" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="1112" height="72" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="68" font-family="Segoe UI, Inter, sans-serif" font-size="19.5" font-weight="700" fill="#f8fafc">
+    E-Commerce Livestream &amp; Retail Showroom Voice + Digital Human Avatar Concierge (2026)
+  </text>
+  <text x="68" y="94" font-family="Segoe UI, Inter, sans-serif" font-size="13" fill="#94a3b8">
+    Azure Avatar vs HeyGen vs 22ms Client Viseme • &lt;15ms Redis Price-Floor &amp; Ad-Law Lock • ToF Gaze Wake &amp; 3s Walk-Away Wipe
+  </text>
+  <rect x="896" y="52" width="240" height="36" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1016" y="75" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700" fill="#a7f3d0">
+    VOICE-AVATAR-RETAIL-2026
+  </text>
+
+  <!-- Column 1: Avatar Rendering Selection (Cloud Video vs Client Viseme) -->
+  <rect x="44" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#0284c7" stroke-width="1.5"/>
+  <rect x="44" y="128" width="356" height="40" rx="12" fill="url(#cyan489a)"/>
+  <text x="222" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    1. Avatar Stack: Cloud RTC vs. Client Viseme
+  </text>
+
+  <rect x="62" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="76" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">22ms Client-Side Viseme 3D/Live2D ($0.016/m)</text>
+  <text x="76" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Streams Azure TTS audio + phoneme Viseme ID</text>
+  <text x="76" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  events; renders 60fps avatar on local GPU/WebGL</text>
+  <text x="76" y="264" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• &lt;=22ms audio-lip skew &amp; 92.7% lower cost vs</text>
+  <text x="76" y="281" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">  cloud pixel-streaming ($0.016 vs $0.22/min)</text>
+
+  <rect x="62" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">80/20 Hybrid Livestream &amp; Push/Pop VIP Q&amp;A</text>
+  <text x="76" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• 80% pre-rendered 4K product pitch clips ($0</text>
+  <text x="76" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  GPU burn) + 20% live WebRTC interruption</text>
+  <text x="76" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  when VIP buyer asks sizing/stock question</text>
+  <text x="76" y="405" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#38bdf8">• Lifts off-peak 12AM–7AM GMV by +39.4%</text>
+
+  <rect x="62" y="432" width="320" height="100" rx="8" fill="#0c4a6e" stroke="#0284c7"/>
+  <text x="76" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#7dd3fc">&lt;=30ms Voice + Gesture + SKU Card Sync</text>
+  <text x="76" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">• Embeds SSML bookmark tags to trigger pointing</text>
+  <text x="76" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">  gestures &amp; pop exact product spec cards</text>
+  <text x="76" y="512" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#7dd3fc">• $2.15/hr all-in vs $35/hr overnight human host</text>
+
+  <!-- Column 2: Ad-Law, Danmaku Injection & Redis Price-Floor Guard -->
+  <rect x="422" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#e11d48" stroke-width="1.5"/>
+  <rect x="422" y="128" width="356" height="40" rx="12" fill="url(#rose489a)"/>
+  <text x="600" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    2. Ad-Law, Price-Floor &amp; Danmaku Firewall
+  </text>
+
+  <rect x="440" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+  <text x="454" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fb7185">Ad-Law Superlative &amp; Medical Claim Filter</text>
+  <text x="454" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Pre-TTS regex + AST blocks banned superlatives</text>
+  <text x="454" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  ("100% cure / #1 medical effect / 国家级最佳")</text>
+  <text x="454" y="264" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Prevents TikTok Shop / Douyin / Taobao live</text>
+  <text x="454" y="281" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#fb7185">  stream room bans &amp; FTC deceptive-ad fines</text>
+
+  <rect x="440" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">&lt;15ms Redis Live Stock &amp; Price-Floor Lock</text>
+  <text x="454" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Binds spoken prices &amp; coupon codes strictly</text>
+  <text x="454" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  to signed Redis SKU catalog (min_margin_price)</text>
+  <text x="454" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Blocks "$1 iPhone" prompt-injection tricks</text>
+  <text x="454" y="405" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">• Auto-pivots pitch when SKU stock hits 0</text>
+
+  <rect x="440" y="432" width="320" height="100" rx="8" fill="#4c0519" stroke="#f43f5e"/>
+  <text x="454" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fda4af">Danmaku / Live-Chat Injection Quarantine</text>
+  <text x="454" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">• Treats viewer comments as untrusted data;</text>
+  <text x="454" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">  strips jailbreak strings before LLM ingest</text>
+  <text x="454" y="512" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#fda4af">• 0% livestream hijacking or brand embarrassment</text>
+
+  <!-- Column 3: Smart Showroom Kiosk ToF Wake & OMO Handover -->
+  <rect x="800" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#059669" stroke-width="1.5"/>
+  <rect x="800" y="128" width="356" height="40" rx="12" fill="url(#emerald489a)"/>
+  <text x="978" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    3. Showroom Kiosk ToF Wake &amp; OMO Cart
+  </text>
+
+  <rect x="818" y="184" width="320" height="114" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#34d399">ToF Distance (&lt;1.5m) + Gaze-Engaged Wake</text>
+  <text x="832" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Combines 3D Time-of-Flight depth sensor with</text>
+  <text x="832" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  face gaze orientation &amp; directional beamforming</text>
+  <text x="832" y="264" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Ignores mall passersby walking past kiosk</text>
+  <text x="832" y="283" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">• Cuts false kiosk wake-ups to &lt;0.5%</text>
+
+  <rect x="818" y="312" width="320" height="106" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="334" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">3-Second Walk-Away PII &amp; Cart Session Wipe</text>
+  <text x="832" y="354" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• When ToF sensor detects shopper stepped &gt;2m</text>
+  <text x="832" y="373" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  away for 3 seconds: purges screen, cart &amp;</text>
+  <text x="832" y="392" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">  conversation memory (0 next-shopper PII leak)</text>
+
+  <rect x="818" y="432" width="320" height="100" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="832" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#6ee7b7">NFC / QR Mobile Cart &amp; Store Associate Alert</text>
+  <text x="832" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">• Transfers curated outfit/spec sheet to phone</text>
+  <text x="832" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">  via 1-tap QR/NFC &amp; pings floor SA for VIP</text>
+  <text x="832" y="512" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#6ee7b7">• Delivers +$278,000 net value per 10k sessions</text>
+
+  <!-- Bottom Telemetry Bar -->
+  <rect x="44" y="564" width="1112" height="76" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#38bdf8">
+    Benchmark &amp; Retail Voice Avatar ROI (per 10,000 Showroom &amp; Livestream Hours):
+  </text>
+  <text x="555" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="600" fill="#34d399">
+    Avatar Render TCO: -92.7% • Off-Peak GMV: +39.4% • Room Bans: 0 (-$278k/10k Hrs)
+  </text>
+  <text x="68" y="618" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" fill="#94a3b8">
+    Guardrail ID: evaluateRetailShowroomVoiceAvatarConcierge2026Guard • Policy: RETAIL-SHOWROOM-VOICE-AVATAR-CONCIERGE-2026-01
+  </text>
+</svg>
