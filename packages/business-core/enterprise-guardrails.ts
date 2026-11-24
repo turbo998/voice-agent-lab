@@ -13585,6 +13585,37 @@ export function evaluateAirlineIrropsHotelPmsVoiceConcierge2026Guard(input: {
   };
 }
 
+export interface EcommerceRetailWismoRmaReturnsVoice2026Evaluation {
+  policyCode: "ECOMMERCE-RETAIL-WISMO-RMA-RETURNS-VOICE-2026-01";
+  automatedWismoRmaAndInstantExchangeAuthorized: boolean;
+  overRefundExploitOrAlternativeCardCashoutBlocked: boolean;
+  hazmatAirReturnBlockOrFraudInspectionHoldTriggered: boolean;
+}
+
+/**
+ * Deterministic Retail & E-Commerce WISMO Order Tracking, Instant RMA Returns & Exchange-Save Voice (Net-Paid Refund Ceiling + Original-Tender Idempotency Lock, 44.6% Return-to-Exchange Fit Coach + Returnless COGS Math, 0ms Swollen Lithium-Battery IATA Air-Return Block & Wardrobing Fraud Hold) Guard (`ECOMMERCE-RETAIL-WISMO-RMA-RETURNS-VOICE-2026-01`).
+ */
+export function evaluateEcommerceRetailWismoRmaReturnsVoice2026Guard(input: {
+  netPaidRefundCapAndOriginalTenderIdempotencyVerified: boolean;
+  returnToExchangeFitCoachAndReturnlessCogsMathChecked: boolean;
+  swollenLithiumBatteryReturnOrSerialWardrobingFraudDetected: boolean;
+}): EcommerceRetailWismoRmaReturnsVoice2026Evaluation {
+  return {
+    policyCode: "ECOMMERCE-RETAIL-WISMO-RMA-RETURNS-VOICE-2026-01",
+    automatedWismoRmaAndInstantExchangeAuthorized:
+      input.netPaidRefundCapAndOriginalTenderIdempotencyVerified &&
+      input.returnToExchangeFitCoachAndReturnlessCogsMathChecked &&
+      !input.swollenLithiumBatteryReturnOrSerialWardrobingFraudDetected,
+    overRefundExploitOrAlternativeCardCashoutBlocked:
+      !input.netPaidRefundCapAndOriginalTenderIdempotencyVerified ||
+      !input.returnToExchangeFitCoachAndReturnlessCogsMathChecked ||
+      input.swollenLithiumBatteryReturnOrSerialWardrobingFraudDetected,
+    hazmatAirReturnBlockOrFraudInspectionHoldTriggered:
+      input.swollenLithiumBatteryReturnOrSerialWardrobingFraudDetected,
+  };
+}
+
+
 
 
 
