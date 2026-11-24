@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **505 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **506 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (505 Bilingual Guides)
+## 3. Solution Architect Selection Guides (506 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (482 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (483 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -549,3 +549,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 503. **Enterprise Meeting Intelligence, Live Teams/Zoom Voice Copilot & Zero-Hallucination CRM/Jira Sync Guide: Explicit "@Atlas" Wake Gate + <4.5s Spoken Brevity Cap (0.0% Uninvited Interrupts), Live Attendee ACL Intersection (0.00% External Guest Leaks), Hybrid Room Enrolled Voiceprint Diarization (61.0% → 98.6% Attribution) & Staged Adaptive-Card CRM Approval (-$295k/10k Hrs)**: [EN](./enterprise-meeting-intelligence-teams-zoom-live-voice-agent-crm-sync-selection-faq.en.md) | [中文](./enterprise-meeting-intelligence-teams-zoom-live-voice-agent-crm-sync-selection-faq.md)
 504. **Automotive Dealership DMS Service Booking, Connected-VIN Roadside Triage & Test-Drive Voice AI Guide: 4-Constraint DMS Bay/Tech/Part/Loaner Lock (19.4% → 0.0% Missing-Part Visits), 8s Connected-VIN Roadside Triage (-58.4% $220 Flatbed Tows, 100% EV Flatbed Lock) & <30s Test-Drive Callback (42.0% → 79.5% Show-Up, -$385k/10k Hrs)**: [EN](./automotive-dealership-dms-service-booking-roadside-triage-test-drive-voice-selection-faq.en.md) | [中文](./automotive-dealership-dms-service-booking-roadside-triage-test-drive-voice-selection-faq.md)
 505. **Enterprise Multi-Region Voice AI High Availability, <650ms S2S-to-Cascade Failover & Zero-Drop Session Continuity Guide: Decoupled Edge Media SFU (100% → 0.06% Fault Call Drop, 99.994% Survival), <12ms Per-Turn Redis Checkpoint + Idempotent Tool Outbox (0.0% Context Amnesia / Double Charge), 650ms Watchdog Geo-Sovereign Failover & 3-Tier Same-Voice Degradation (-$370k/10k Hrs)**: [EN](./enterprise-voice-ai-multi-region-ha-s2s-cascade-failover-session-continuity-selection-faq.en.md) | [中文](./enterprise-voice-ai-multi-region-ha-s2s-cascade-failover-session-continuity-selection-faq.md)
+506. **QSR Drive-Thru & Restaurant Voice Ordering Guide (80dB Beamforming, Modifier DAG & Live POS 86 Sync): 80dB Driver-Window Acoustic Cone + Qty <=6 Sanity Lock (0.0% Runaway Carts), Deterministic Modifier DAG + Live Toast/NCR 86-Item Sync (92.4% → 99.2% Order Accuracy, -22s Lane Time) & 1-Shot <=3.5s Upsell (+14.2% AOV, -$325k/10k Hrs)**: [EN](./qsr-drive-thru-restaurant-voice-ordering-modifier-upsell-pos-sync-selection-faq.en.md) | [中文](./qsr-drive-thru-restaurant-voice-ordering-modifier-upsell-pos-sync-selection-faq.md)

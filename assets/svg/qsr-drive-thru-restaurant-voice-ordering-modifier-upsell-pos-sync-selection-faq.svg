@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg506" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070b14"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad506" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad506" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amberGrad506" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="roseGrad506" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+    <style>
+      .title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 21px; font-weight: 800; fill: #f8fafc; }
+      .subtitle { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .card-title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13.5px; font-weight: 700; fill: #f1f5f9; }
+      .body-text { font-family: 'Segoe UI', system-ui, sans-serif; sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .mono { font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 10.5px; fill: #38bdf8; }
+      .badge { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 10.5px; font-weight: 700; fill: #ffffff; }
+      .kpi-num { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 18px; font-weight: 800; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg506)" rx="14"/>
+
+  <!-- Header -->
+  <rect x="24" y="18" width="1152" height="64" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.5"/>
+  <rect x="38" y="30" width="142" height="24" rx="6" fill="url(#amberGrad506)"/>
+  <text x="109" y="46" text-anchor="middle" class="badge">QSR &amp; POS · #506</text>
+  <text x="194" y="44" class="title">QSR Drive-Thru &amp; Restaurant Voice AI: 80dB Beamforming, Modifier DAG &amp; POS Sync</text>
+  <text x="194" y="65" class="subtitle">Driver-Window Acoustic Cone + Deterministic Modifier &amp; 86-Item POS Sync (Toast/NCR) + Quantity Sanity Cap (+14.2% AOV, -$325k/10k Hrs)</text>
+
+  <!-- Column 1: 80dB Drive-Thru Acoustic Cone & Quantity Cap -->
+  <g transform="translate(24, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#d97706" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#amberGrad506)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">1. 80dB Drive-Thru Cone &amp; Quantity Cap</text>
+
+    <rect x="14" y="48" width="340" height="90" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#fbbf24">Driver-Window Acoustic Beamforming Cone</text>
+    <text x="26" y="86" class="body-text">• Suppresses 80dB diesel engine rumble, wind, and</text>
+    <text x="26" y="102" class="body-text">  backseat passenger chatter ("Mom I want candy!")</text>
+    <text x="26" y="122" class="mono" fill="#fde68a">Locks onto Primary Driver Voice (+19dB SNR Gain)</text>
+
+    <rect x="14" y="148" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="168" class="card-title" fill="#34d399">Anti-"180 Nuggets" Quantity Sanity Lock</text>
+    <text x="26" y="186" class="body-text">• Prevents viral ASR hallucinations from adding</text>
+    <text x="26" y="202" class="body-text">  50 waters or 180 nuggets on background noise</text>
+    <text x="26" y="222" class="mono" fill="#6ee7b7">Qty &gt; 6 or Cart &gt; $85 Requires Explicit Verbal Yes</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#38bdf8">&lt;250ms Live Order Confirmation Board</text>
+    <text x="26" y="288" class="body-text">• Streams partial item &amp; modifier updates onto the</text>
+    <text x="26" y="304" class="body-text">  outdoor Digital Menu Board (ODMB) as spoken</text>
+    <text x="26" y="322" class="mono">Visual Feedback Cuts Verbal Re-Reads by 68%</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="366" class="card-title" fill="#6ee7b7">Crew Headset Instant Whisper Override</text>
+    <text x="26" y="384" class="body-text">Store crew hears live stream &amp; can tap headset</text>
+    <text x="26" y="400" class="mono" fill="#a7f3d0">to take over in &lt;100ms without resetting cart</text>
+  </g>
+
+  <!-- Column 2: Deterministic Modifier DAG & Real-Time POS 86 Sync -->
+  <g transform="translate(416, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#cyanGrad506)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">2. Nested Modifier DAG &amp; POS 86-Item Sync</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#38bdf8">Nested Combo &amp; Modifier State Machine</text>
+    <text x="26" y="86" class="body-text">• Handles mid-sentence mind changes ("Swap the</text>
+    <text x="26" y="102" class="body-text">  fries on the #2 combo to onion rings, no mayo")</text>
+    <text x="26" y="122" class="mono">Validates Required Slots (Size / Drink / Temp)</text>
+
+    <rect x="14" y="150" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#34d399">Real-Time POS "86'd Item" Out-of-Stock Lock</text>
+    <text x="26" y="188" class="body-text">• Subscribes to Toast / NCR Aloha / Simphony KDS</text>
+    <text x="26" y="204" class="body-text">  inventory webhook; blocks selling sold-out items</text>
+    <text x="26" y="224" class="mono" fill="#6ee7b7">0.0% Out-of-Stock Window Refunds &amp; Delays</text>
+
+    <rect x="14" y="252" width="340" height="86" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="272" class="card-title" fill="#fbbf24">&lt;500ms Kitchen Display System (KDS) Pre-Fire</text>
+    <text x="26" y="290" class="body-text">• Streams grill/fry items to kitchen KDS screen</text>
+    <text x="26" y="306" class="body-text">  while guest is still selecting drinks at the post</text>
+    <text x="26" y="324" class="mono" fill="#fde68a">Shaves 22 Seconds Off Total Lane Drive-Thru Time</text>
+
+    <rect x="14" y="348" width="340" height="66" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="368" class="card-title" fill="#6ee7b7">99.2% Order Line-Item Accuracy</text>
+    <text x="26" y="386" class="body-text">Outperforms human headset order-takers (92.4%)</text>
+    <text x="26" y="402" class="mono" fill="#a7f3d0">across complex customizations &amp; regional accents</text>
+  </g>
+
+  <!-- Column 3: Allergen Safety Lock & Single-Question Smart Upsell -->
+  <g transform="translate(808, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#059669" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#emeraldGrad506)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">3. Allergen Safety &amp; 1-Shot Smart Upsell</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#fb7185" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#fb7185">Zero-Hallucination Allergen Matrix Lock</text>
+    <text x="26" y="86" class="body-text">• Never let the LLM guess peanut/gluten/dairy safety!</text>
+    <text x="26" y="102" class="body-text">• Queries certified POS allergen table + reads</text>
+    <text x="26" y="122" class="mono" fill="#fda4af">shared-fryer cross-contact warning &amp; tags KDS</text>
+
+    <rect x="14" y="150" width="340" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#34d399">1-Shot Margin-Aware Contextual Upsell</text>
+    <text x="26" y="188" class="body-text">• Humans skip upselling 65% of the time during rush</text>
+    <text x="26" y="204" class="body-text">• AI asks exactly 1 contextual question (&lt;=3.5s):</text>
+    <text x="26" y="222" class="mono" fill="#6ee7b7">"Make that a large combo or add a warm cookie?"</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#38bdf8">Loyalty QR / License-Plate Recognition Sync</text>
+    <text x="26" y="288" class="body-text">• Pre-loads guest's "Usual Order" &amp; reward points</text>
+    <text x="26" y="304" class="body-text">  in &lt;300ms when loyalty code is scanned at post</text>
+    <text x="26" y="322" class="mono">Lifts Average Order Value (AOV) by +14.2%</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#1e1b4b" stroke="#34d399" stroke-width="1.2"/>
+    <text x="26" y="366" class="card-title" fill="#6ee7b7">Guardrail: QSR-POS-VOICE-2026-01</text>
+    <text x="26" y="384" class="mono" fill="#f8fafc">evaluateQsrDriveThruRestaurantPosVoice2026Guard</text>
+    <text x="26" y="402" class="body-text">99.2% Cart Accuracy · -$325k/10k Hrs Store Value</text>
+  </g>
+
+  <!-- Bottom KPI Bar -->
+  <rect x="24" y="542" width="1152" height="118" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="44" y="568" class="card-title" fill="#38bdf8">QSR Drive-Thru &amp; Restaurant Voice Ordering Benchmarks (per 10,000 Store Operating Hours)</text>
+
+  <g transform="translate(44, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Order Line-Item Accuracy</text>
+    <text x="16" y="50" class="kpi-num" fill="#34d399">92.4% → 99.2% (Modifier DAG)</text>
+  </g>
+  <g transform="translate(324, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Average Check Size (AOV Lift)</text>
+    <text x="16" y="50" class="kpi-num" fill="#38bdf8">+14.2% (100% 1-Shot Upsell)</text>
+  </g>
+  <g transform="translate(604, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Runaway Cart / Allergen Error</text>
+    <text x="16" y="50" class="kpi-num" fill="#fbbf24">0.00% (Qty &lt;=6 &amp; POS Lock)</text>
+  </g>
+  <g transform="translate(884, 582)">
+    <rect width="272" height="62" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="16" y="24" class="body-text">Net Labor Savings &amp; AOV Lift</text>
+    <text x="16" y="50" class="kpi-num" fill="#6ee7b7">-$325,000 / 10k Hours</text>
+  </g>
+</svg>

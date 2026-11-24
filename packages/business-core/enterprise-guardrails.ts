@@ -13945,6 +13945,37 @@ export function evaluateVoiceAiMultiRegionHaGracefulDegradation2026Guard(input: 
   };
 }
 
+export interface QsrDriveThruRestaurantPosVoice2026Evaluation {
+  policyCode: "QSR-DRIVE-THRU-RESTAURANT-POS-VOICE-2026-01";
+  posCartCommitAndKdsPreFireAuthorized: boolean;
+  runawayCartQuantitySoldOut86ItemOrFreeformAllergenBlocked: boolean;
+  explicitQuantityConfirmationOrCrewHeadsetTakeoverTriggered: boolean;
+}
+
+/**
+ * Deterministic QSR Drive-Thru & Restaurant Voice Ordering (80dB Driver-Window Acoustic Cone, Quantity <=6 / $85 Sanity Cap, Real-Time POS 86-Item Sync + Modifier DAG & Certified Allergen Matrix) Guard (`QSR-DRIVE-THRU-RESTAURANT-POS-VOICE-2026-01`).
+ */
+export function evaluateQsrDriveThruRestaurantPosVoice2026Guard(input: {
+  driverWindowConeAndPos86LiveStockVerified: boolean;
+  certifiedAllergenMatrixAndSingleUpsellCapEnforced: boolean;
+  itemQuantityExceeds6OrUnconfirmedCartOver85Detected: boolean;
+}): QsrDriveThruRestaurantPosVoice2026Evaluation {
+  return {
+    policyCode: "QSR-DRIVE-THRU-RESTAURANT-POS-VOICE-2026-01",
+    posCartCommitAndKdsPreFireAuthorized:
+      input.driverWindowConeAndPos86LiveStockVerified &&
+      input.certifiedAllergenMatrixAndSingleUpsellCapEnforced &&
+      !input.itemQuantityExceeds6OrUnconfirmedCartOver85Detected,
+    runawayCartQuantitySoldOut86ItemOrFreeformAllergenBlocked:
+      !input.driverWindowConeAndPos86LiveStockVerified ||
+      !input.certifiedAllergenMatrixAndSingleUpsellCapEnforced ||
+      input.itemQuantityExceeds6OrUnconfirmedCartOver85Detected,
+    explicitQuantityConfirmationOrCrewHeadsetTakeoverTriggered:
+      input.itemQuantityExceeds6OrUnconfirmedCartOver85Detected,
+  };
+}
+
+
 
 
 
