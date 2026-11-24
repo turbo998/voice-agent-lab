@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **517 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **518 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (517 Bilingual Guides)
+## 3. Solution Architect Selection Guides (518 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (494 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (495 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -561,3 +561,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 515. **Enterprise Field Service Management (FSM) Hands-Free Voice Copilot Guide (OSHA LOTO Gate, Peer-Van Part Sync & 0-Bar Offline): Mandatory OSHA 1910.147 LOTO Zero-Energy Verbal Gate (0.00% Safety Skips), Serial-Pinned BOM + 15-Min Peer-Van Part Transfer (74.0% → 92.8% FTFR), 0-Bar Basement Offline Voice Bundle & 30s Spoken Closeout (42m → 6.5m/Day Admin, -$345k/10k Hrs)**: [EN](./enterprise-field-service-technician-handsfree-copilot-loto-parts-sync-selection-faq.en.md) | [中文](./enterprise-field-service-technician-handsfree-copilot-loto-parts-sync-selection-faq.md)
 516. **EdTech AI Spoken Language Tutor Guide (Parallel Phoneme GOP, Socratic Scaffolding & COPPA Child Lock): Parallel Azure Pronunciation Assessment GOP Forced Alignment (34.0% → 97.8% Phoneme Error Detection), 1,800ms L2 Word-Search Pause Gate (41.0% → 1.8% False Cutoffs), 3-Step Socratic Anti-Spoiler Ladder & FTC COPPA RAM-Only Zero Voice Retention (-$295k/10k Hrs)**: [EN](./edtech-language-tutor-pronunciation-gop-socratic-coppa-voice-selection-faq.en.md) | [中文](./edtech-language-tutor-pronunciation-gop-socratic-coppa-voice-selection-faq.md)
 517. **Sovereign Cloud & On-Premises Air-Gapped Voice AI GPU Sizing Guide (Disaggregated 2:4:2 vLLM FP8, XGrammar & eBPF Lock): 2:4:2 STT/vLLM/TTS GPU Pool Isolation (24 → 160 Streams / 8x L40S at 395ms P95 TTFA, $0.011/min), XGrammar Token-Mask FSM (100.0% Valid Tool JSON), 88% KV-Cache Watermark Admission Gate (0.00% OOM Drops) & Cilium eBPF Air-Gap Lock (-$380k/10k Hrs)**: [EN](./sovereign-cloud-on-prem-air-gapped-voice-ai-vllm-gpu-sizing-selection-faq.en.md) | [中文](./sovereign-cloud-on-prem-air-gapped-voice-ai-vllm-gpu-sizing-selection-faq.md)
+518. **Legal Intake & Law Firm Voice AI Guide (Stage-0 Conflict Check, UPL Firewall & SOL Escalation): Stage-0 ABA Rule 1.18 Adverse-Party Conflict Gate in Clio/Intapp (0.00% Existing-Client Conflict Taint), Zero-UPL Legal Advice Firewall (ABA Rule 5.5), Deterministic Statute of Limitations (SOL <= 30 Days) Radar & 24/7 Retainer Capture (52.0% → 86.8%, -$375k/10k Hrs)**: [EN](./legal-intake-law-firm-conflict-check-upl-guardrail-voice-selection-faq.en.md) | [中文](./legal-intake-law-firm-conflict-check-upl-guardrail-voice-selection-faq.md)

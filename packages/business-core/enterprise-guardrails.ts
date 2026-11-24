@@ -14305,6 +14305,37 @@ export function evaluateSovereignOnPremAirGappedVoiceGpu2026Guard(input: {
   };
 }
 
+export interface LegalIntakeConflictCheckUplVoice2026Evaluation {
+  policyCode: "LEGAL-INTAKE-CONFLICT-CHECK-UPL-VOICE-2026-01";
+  stageOneFactIntakeAndAttorneyBookingAuthorized: boolean;
+  preConflictFactTaintOrUnauthorizedLegalAdviceBlocked: boolean;
+  ethicsWallSealOrUrgentSolAttorneyPageTriggered: boolean;
+}
+
+/**
+ * Deterministic Legal Intake & Law Firm Voice AI (Stage-0 ABA Rule 1.18 Adverse-Party Conflict Check via Clio/Intapp, Zero-UPL ABA Rule 5.5 Legal Advice Firewall, Statute of Limitations SOL <=30-Day Radar & ABA Rule 1.6 Privileged Vault) Guard (`LEGAL-INTAKE-CONFLICT-CHECK-UPL-VOICE-2026-01`).
+ */
+export function evaluateLegalIntakeConflictCheckUplVoice2026Guard(input: {
+  stageZeroConflictClearedBeforeCaseFactIntake: boolean;
+  nonEngagementDisclaimerAndZeroUplAdviceEnforced: boolean;
+  adverseClientConflictHitOrSolUnder30DaysDetected: boolean;
+}): LegalIntakeConflictCheckUplVoice2026Evaluation {
+  return {
+    policyCode: "LEGAL-INTAKE-CONFLICT-CHECK-UPL-VOICE-2026-01",
+    stageOneFactIntakeAndAttorneyBookingAuthorized:
+      input.stageZeroConflictClearedBeforeCaseFactIntake &&
+      input.nonEngagementDisclaimerAndZeroUplAdviceEnforced &&
+      !input.adverseClientConflictHitOrSolUnder30DaysDetected,
+    preConflictFactTaintOrUnauthorizedLegalAdviceBlocked:
+      !input.stageZeroConflictClearedBeforeCaseFactIntake ||
+      !input.nonEngagementDisclaimerAndZeroUplAdviceEnforced ||
+      input.adverseClientConflictHitOrSolUnder30DaysDetected,
+    ethicsWallSealOrUrgentSolAttorneyPageTriggered:
+      input.adverseClientConflictHitOrSolUnder30DaysDetected,
+  };
+}
+
+
 
 
 
