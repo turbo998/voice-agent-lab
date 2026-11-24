@@ -13705,6 +13705,37 @@ export function evaluateVoiceNativeRagPhoneticPrefetch2026Guard(input: {
   };
 }
 
+export interface VoiceAiFinopsPtuPaygoCompaction2026Evaluation {
+  policyCode: "VOICE-AI-FINOPS-PTU-PAYGO-COMPACTION-2026-01";
+  costOptimizedVoiceSessionExecutionAuthorized: boolean;
+  unprunedQuadraticAudioBurnOrP100IdlePtuWasteBlocked: boolean;
+  zombieCallCircuitBreakerDisconnectOrPaygoSpilloverTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice AI FinOps & Capacity Sizing (P65 Base-Load PTU + 0ms APIM PAYGO Spillover, 3-Turn Rolling Audio-to-Text Compaction + 94.6% Prefix Cache Lock, 18s Zombie-Call Silence Breaker & $2.50 Per-Call Wallet Cap) Guard (`VOICE-AI-FINOPS-PTU-PAYGO-COMPACTION-2026-01`).
+ */
+export function evaluateVoiceAiFinopsPtuPaygoCompaction2026Guard(input: {
+  p65BasePtuAndZeroMsPaygoSpilloverConfigured: boolean;
+  threeTurnRollingAudioToTextCompactionAndPrefixCacheActive: boolean;
+  zombieCallSilenceExceeds18sOrPerCallWalletCap2Point50Exceeded: boolean;
+}): VoiceAiFinopsPtuPaygoCompaction2026Evaluation {
+  return {
+    policyCode: "VOICE-AI-FINOPS-PTU-PAYGO-COMPACTION-2026-01",
+    costOptimizedVoiceSessionExecutionAuthorized:
+      input.p65BasePtuAndZeroMsPaygoSpilloverConfigured &&
+      input.threeTurnRollingAudioToTextCompactionAndPrefixCacheActive &&
+      !input.zombieCallSilenceExceeds18sOrPerCallWalletCap2Point50Exceeded,
+    unprunedQuadraticAudioBurnOrP100IdlePtuWasteBlocked:
+      !input.p65BasePtuAndZeroMsPaygoSpilloverConfigured ||
+      !input.threeTurnRollingAudioToTextCompactionAndPrefixCacheActive ||
+      input.zombieCallSilenceExceeds18sOrPerCallWalletCap2Point50Exceeded,
+    zombieCallCircuitBreakerDisconnectOrPaygoSpilloverTriggered:
+      input.zombieCallSilenceExceeds18sOrPerCallWalletCap2Point50Exceeded,
+  };
+}
+
+
 
 
 
