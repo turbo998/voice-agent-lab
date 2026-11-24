@@ -14035,6 +14035,37 @@ export function evaluateEnterpriseLongTermVoiceMemoryGraphGdpr2026Guard(input: {
   };
 }
 
+export interface Government311UtilityOutageCitizenVoice2026Evaluation {
+  policyCode: "GOVERNMENT-311-UTILITY-OUTAGE-CITIZEN-VOICE-2026-01";
+  civicWorkOrderAndStormSurgeDeflectionAuthorized: boolean;
+  delayedGasHazardIntakeOrAutomatedBenefitDenialBlocked: boolean;
+  zeroMsEmergencyDispatchBridgeOrMedicalBaselinePriorityTriggered: boolean;
+}
+
+/**
+ * Deterministic Citizen 311 / 12345 Hotline & Utility Outage Storm Surge (<120ms OMS/GIS Feeder Edge Audio Cache, <10s Gas-Odor / Downed-Wire Evacuation Gate, 100m Spatial Work-Order Deduplication & 0.85x Senior Dialect / Statutory Human Due-Process Gate) Guard (`GOVERNMENT-311-UTILITY-OUTAGE-CITIZEN-VOICE-2026-01`).
+ */
+export function evaluateGovernment311UtilityOutageCitizenVoice2026Guard(input: {
+  ringbackOmsFeederCacheAnd100mSpatialDedupVerified: boolean;
+  seniorDialectPacingAndHumanBenefitDueProcessEnforced: boolean;
+  gasOdorDownedWireOrMedicalBaselineEmergencyDetected: boolean;
+}): Government311UtilityOutageCitizenVoice2026Evaluation {
+  return {
+    policyCode: "GOVERNMENT-311-UTILITY-OUTAGE-CITIZEN-VOICE-2026-01",
+    civicWorkOrderAndStormSurgeDeflectionAuthorized:
+      input.ringbackOmsFeederCacheAnd100mSpatialDedupVerified &&
+      input.seniorDialectPacingAndHumanBenefitDueProcessEnforced &&
+      !input.gasOdorDownedWireOrMedicalBaselineEmergencyDetected,
+    delayedGasHazardIntakeOrAutomatedBenefitDenialBlocked:
+      !input.ringbackOmsFeederCacheAnd100mSpatialDedupVerified ||
+      !input.seniorDialectPacingAndHumanBenefitDueProcessEnforced ||
+      input.gasOdorDownedWireOrMedicalBaselineEmergencyDetected,
+    zeroMsEmergencyDispatchBridgeOrMedicalBaselinePriorityTriggered:
+      input.gasOdorDownedWireOrMedicalBaselineEmergencyDetected,
+  };
+}
+
+
 
 
 
