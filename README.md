@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 489 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 489 篇选型指南](#-二489-篇企业级语音架构选型指南中英双语) |
+| **🧭 490 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 490 篇选型指南](#-二490-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、489 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、490 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（466 篇）
+### 3.3 高价值企业行业解决方案蓝图（467 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -563,6 +563,7 @@ flowchart LR
 487. **跨国企业 28 语种实时语音客服、全球全员大会（Global Town Hall）同声传译与结构化会议纪要架构选型指南（`1.2s` 免按键自动语种检测 + 句内中英粤混说 5,000 热词锁与二线专家实时双语桥砍掉 `82.4%` 小语种 BPO 空置成本、日/韩/德 `SOV` 语序动态 `Wait-k` 防否定词极性反转 + “万/亿 ↔ Million/Billion” AST 确定性换算实现 `0%` 财报数字错译、以及 `1.9% DER` 声纹分离 + 附录音时间戳引用的 Jira 待办审批与 `0ms` 闭门会议内存清零每万小时省 `$34.2万`）方案**：[中文](./docs/multinational-multilingual-voice-customer-service-live-interpreter-meeting-minutes-selection-faq.md) | [EN](./docs/multinational-multilingual-voice-customer-service-live-interpreter-meeting-minutes-selection-faq.en.md)
 488. **企业内部 IT 服务台（ServiceNow ITSM / Microsoft Entra ID）与 HR 员工共享中心（Workday / SAP SuccessFactors）语音工单助手架构选型指南（`Entra Verified ID` 3D 人脸活体核验 + 特权管理员角色 `100%` 禁电话重置免疫 `Scattered Spider` 语音钓鱼、`54秒` 下发 `SHA-256` 预签名 `Intune/Nexthink DEX` 自愈脚本分流 `72.4%` `$22` L1 工单、薪资卡 `48小时` 冷静期锁 + 病假诊断对直属主管 `100%` 屏蔽与丢失电脑 `<100ms` EDR 断网隔离每万通省 `$18.4万`）方案**：[中文](./docs/enterprise-it-helpdesk-servicenow-hr-workday-voice-ticket-copilot-selection-faq.md) | [EN](./docs/enterprise-it-helpdesk-servicenow-hr-workday-voice-ticket-copilot-selection-faq.en.md)
 489. **品牌电商直播、智慧门店大屏与线下展厅实时语音数字人（Interactive Voice + Avatar Shopping Concierge）架构选型指南（端侧 `22ms` `Viseme` 视素渲染将数字人算力从 `$0.22/min` 降至 `$0.016/min` 省 `92.7%`、80/20 预渲染切片 + `Push/Pop` 实时 VIP 问答栈提闲时 GMV `+39.4%`、`<15ms` Redis 底价库存锁 + 广告法极限词与弹幕注入防火墙实现 `0` 封号、以及门店 `ToF <1.5m + 正视` 唤醒与离场 `3秒` 隐私清零每万小时增效 `$27.8万`）方案**：[中文](./docs/retail-ecommerce-showroom-interactive-voice-avatar-shopping-concierge-selection-faq.md) | [EN](./docs/retail-ecommerce-showroom-interactive-voice-avatar-shopping-concierge-selection-faq.en.md)
+490. **智能汽车座舱多音区与智能穿戴/家居硬件（In-Cabin Cockpit & Smart Hardware / AI Glasses）端云协同多模态语音助手架构选型指南（座舱端侧 NPU `155ms` 离线卸载 `78%` 车控指令 + 隧道 `>350ms` 零感降级实现 `100%` 离线可用、四音区波束成形后排儿童沙盒锁 + `ISO 26262` 行车挂挡防火墙实现 `0%` 行驶误开后备箱/后视镜、以及 AI 眼镜指代词事件触发 `80KB` 单帧抓拍省电 `84%` 将续航从 `38分钟` 提至 `8.5小时` 每万台省 `$31.8万`）方案**：[中文](./docs/in-cabin-cockpit-smart-hardware-edge-cloud-multimodal-voice-concierge-selection-faq.md) | [EN](./docs/in-cabin-cockpit-smart-hardware-edge-cloud-multimodal-voice-concierge-selection-faq.en.md)
 
 ---
 

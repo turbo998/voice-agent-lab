@@ -13465,6 +13465,37 @@ export function evaluateRetailShowroomVoiceAvatarConcierge2026Guard(input: {
   };
 }
 
+export interface InCabinSmartHardwareEdgeCloudVoice2026Evaluation {
+  policyCode: "IN-CABIN-SMART-HARDWARE-EDGE-CLOUD-VOICE-2026-01";
+  inCabinVehicleControlAndSmartHardwareMultimodalAuthorized: boolean;
+  inMotionUnsafeActuationOrRearChildOverrideBlocked: boolean;
+  ngEcallCrashRescueOrDmsWakeAlertOrCameraHardwareCutTriggered: boolean;
+}
+
+/**
+ * Deterministic Automotive In-Cabin Cockpit & Smart Hardware Edge-Cloud Multimodal Voice (ISO 26262 Speed/Gear CAN-Bus Firewall + 4-Zone Child RBAC Lock, 155ms Edge-NPU Offline Fallback + Deictic 80KB Keyframe Burst, 0ms NG-eCall Crash / DMS Microsleep Preemption & Privacy-LED Camera Cut) Guard (`IN-CABIN-SMART-HARDWARE-EDGE-CLOUD-VOICE-2026-01`).
+ */
+export function evaluateInCabinSmartHardwareEdgeCloudVoice2026Guard(input: {
+  iso26262DriveGearSafetyAndFourZoneChildRbacVerified: boolean;
+  edgeNpuOfflineFallbackAndDeictic80KbKeyframeBurstActive: boolean;
+  airbagEcallCrashOrDriverMicrosleepOrPrivacyLedTamperDetected: boolean;
+}): InCabinSmartHardwareEdgeCloudVoice2026Evaluation {
+  return {
+    policyCode: "IN-CABIN-SMART-HARDWARE-EDGE-CLOUD-VOICE-2026-01",
+    inCabinVehicleControlAndSmartHardwareMultimodalAuthorized:
+      input.iso26262DriveGearSafetyAndFourZoneChildRbacVerified &&
+      input.edgeNpuOfflineFallbackAndDeictic80KbKeyframeBurstActive &&
+      !input.airbagEcallCrashOrDriverMicrosleepOrPrivacyLedTamperDetected,
+    inMotionUnsafeActuationOrRearChildOverrideBlocked:
+      !input.iso26262DriveGearSafetyAndFourZoneChildRbacVerified ||
+      !input.edgeNpuOfflineFallbackAndDeictic80KbKeyframeBurstActive ||
+      input.airbagEcallCrashOrDriverMicrosleepOrPrivacyLedTamperDetected,
+    ngEcallCrashRescueOrDmsWakeAlertOrCameraHardwareCutTriggered:
+      input.airbagEcallCrashOrDriverMicrosleepOrPrivacyLedTamperDetected,
+  };
+}
+
+
 
 
 
