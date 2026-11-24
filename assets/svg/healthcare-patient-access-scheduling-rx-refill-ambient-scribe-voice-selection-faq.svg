@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg495h" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070e1a"/>
+      <stop offset="50%" stop-color="#0d1e32"/>
+      <stop offset="100%" stop-color="#071222"/>
+    </linearGradient>
+    <linearGradient id="cyan495h" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emerald495h" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="rose495h" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg495h)"/>
+  <rect x="24" y="20" width="1152" height="640" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Header -->
+  <rect x="44" y="38" width="1112" height="72" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="68" font-family="Segoe UI, Inter, sans-serif" font-size="19.5" font-weight="700" fill="#f8fafc">
+    Healthcare Patient Access (Epic FHIR), Rx Refill &amp; Ambient Clinical Scribe Architecture (2026)
+  </text>
+  <text x="68" y="94" font-family="Segoe UI, Inter, sans-serif" font-size="13" fill="#94a3b8">
+    0.4% Sub-Specialty Slot Mismatch • DEA Schedule-II &amp; Lab-Window Rx Lock • Zero Unspoken Exam Fabrication (-2.1h/Day EHR)
+  </text>
+  <rect x="896" y="52" width="240" height="36" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1016" y="75" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" font-weight="700" fill="#a7f3d0">
+    HEALTHCARE-SCRIBE-2026-01
+  </text>
+
+  <!-- Column 1: Patient Access Triage & Epic Cadence Scheduling -->
+  <rect x="44" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#0284c7" stroke-width="1.5"/>
+  <rect x="44" y="128" width="356" height="40" rx="12" fill="url(#cyan495h)"/>
+  <text x="222" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    1. Patient Access &amp; Epic FHIR Scheduling
+  </text>
+
+  <rect x="62" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="76" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">Schmitt-Thompson Sub-Specialty Slot Match</text>
+  <text x="76" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Maps chief complaint + imaging history to</text>
+  <text x="76" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  exact sub-specialty &amp; visit duration in Epic</text>
+  <text x="76" y="264" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  Cadence / Oracle Health FHIR R4</text>
+  <text x="76" y="281" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#34d399">• Cuts specialty booking mismatch: 14% → 0.4%</text>
+
+  <rect x="62" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="76" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">15s Automated Waitlist Backfill (86.5% Fill)</text>
+  <text x="76" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• When a patient calls to cancel a next-day</text>
+  <text x="76" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  MRI or specialist slot: triggers instant</text>
+  <text x="76" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  waitlist outreach &amp; fills 86.5% of canceled</text>
+  <text x="76" y="405" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#38bdf8">  slots (reclaiming $280+/slot clinic revenue)</text>
+
+  <rect x="62" y="432" width="320" height="100" rx="8" fill="#0c4a6e" stroke="#0284c7"/>
+  <text x="76" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#7dd3fc">0ms Red-Flag ACS / Stroke / 988 Preemption</text>
+  <text x="76" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">• Crushing chest pain, FAST stroke signs, or</text>
+  <text x="76" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#e0f2fe">  suicidal ideation halts routine booking in 0ms</text>
+  <text x="76" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#7dd3fc">• Bridges Triage RN / 911 EMS / 988 Lifeline</text>
+
+  <!-- Column 2: Rx Refill Guardrails & Chronic Care RPM -->
+  <rect x="422" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#e11d48" stroke-width="1.5"/>
+  <rect x="422" y="128" width="356" height="40" rx="12" fill="url(#rose495h)"/>
+  <text x="600" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    2. Rx Refill Gate &amp; Post-Discharge RPM
+  </text>
+
+  <rect x="440" y="184" width="320" height="108" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+  <text x="454" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fb7185">DEA Schedule-II &amp; Lab-Window Refill Lock</text>
+  <text x="454" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• 100% blocks auto-refills on DEA Schedule-II</text>
+  <text x="454" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  opioids/stimulants &amp; meds with expired renal</text>
+  <text x="454" y="264" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  / potassium / INR lab monitoring windows</text>
+  <text x="454" y="281" font-family="Segoe UI, Inter, sans-serif" fill="#fb7185">• Auto-orders prerequisite lab panel first!</text>
+
+  <rect x="440" y="306" width="320" height="112" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="454" y="328" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">ISMP Sound-Alike (LASA) Drug Readback</text>
+  <text x="454" y="348" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Disambiguates Hydroxyzine vs Hydralazine</text>
+  <text x="454" y="367" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  by cross-checking active Epic MedicationRequest</text>
+  <text x="454" y="386" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  list + indication &amp; mg strength readback</text>
+  <text x="454" y="405" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• 0% wrong-drug refill requests queued to MD</text>
+
+  <rect x="440" y="432" width="320" height="100" rx="8" fill="#4c0519" stroke="#f43f5e"/>
+  <text x="454" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fda4af">CHF / COPD Post-Discharge RPM (-32.4% Readmit)</text>
+  <text x="454" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">• Daily morning voice check-in catches &gt;2 lb/day</text>
+  <text x="454" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#ffe4e6">  weight gain early for outpatient diuretic adjustment</text>
+  <text x="454" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#fda4af">• Cuts 30-day hospital readmissions by 32.4%</text>
+
+  <!-- Column 3: Ambient Clinical Scribe (SOAP & Zero Fabrication) -->
+  <rect x="800" y="128" width="356" height="420" rx="12" fill="#111827" stroke="#059669" stroke-width="1.5"/>
+  <rect x="800" y="128" width="356" height="40" rx="12" fill="url(#emerald495h)"/>
+  <text x="978" y="153" text-anchor="middle" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">
+    3. Ambient Clinical Scribe &amp; Anti-Hallucination
+  </text>
+
+  <rect x="818" y="184" width="320" height="114" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="206" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#34d399">Zero Unspoken Physical-Exam Fabrication Lock</text>
+  <text x="832" y="226" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">• Generic LLMs auto-fill normal physical exam</text>
+  <text x="832" y="245" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  findings ("lungs clear, abdomen soft") even</text>
+  <text x="832" y="264" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#cbd5e1">  when never verbalized (False Claims Act risk!)</text>
+  <text x="832" y="283" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">• Includes ONLY findings explicitly spoken in room</text>
+
+  <rect x="818" y="312" width="320" height="106" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="832" y="334" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Enrolled Physician Voiceprint (1.6% DER)</text>
+  <text x="832" y="354" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">• Separates Doctor, Patient &amp; Family Member</text>
+  <text x="832" y="373" font-family="Segoe UI, Inter, sans-serif" fill="#cbd5e1">  voices in exam room; never records family</text>
+  <text x="832" y="392" font-family="Segoe UI, Inter, sans-serif" fill="#34d399">  speculation as physician clinical assessment</text>
+
+  <rect x="818" y="432" width="320" height="100" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="832" y="454" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="700" fill="#6ee7b7">Reclaims 2.1 Hours/Day of Physician "Pajama Time"</text>
+  <text x="832" y="474" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">• Drafts structured HPI, ROS, PE &amp; ICD-10/CPT</text>
+  <text x="832" y="493" font-family="Segoe UI, Inter, sans-serif" font-size="11.5" fill="#d1fae5">  orders into Epic NoteReader for MD sign-off</text>
+  <text x="832" y="512" font-family="Segoe UI, Inter, sans-serif" fill="#6ee7b7">• Saves $372,000 per 10,000 clinical encounters</text>
+
+  <!-- Bottom Telemetry Bar -->
+  <rect x="44" y="564" width="1112" height="76" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="68" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="14" font-weight="700" fill="#38bdf8">
+    Benchmark &amp; Healthcare ROI (per 10,000 Patient Calls &amp; Clinic Encounters):
+  </text>
+  <text x="545" y="592" font-family="Segoe UI, Inter, sans-serif" font-size="13" font-weight="600" fill="#34d399">
+    Specialty Mismatch: 0.4% • MD Pajama Time: -2.1h/day • 30d Readmit: -32.4% (-$372k/10k)
+  </text>
+  <text x="68" y="618" font-family="Segoe UI, Inter, sans-serif" font-size="12.5" fill="#94a3b8">
+    Guardrail ID: evaluateHealthcarePatientAccessAmbientScribeVoice2026Guard • Policy: HEALTHCARE-PATIENT-ACCESS-AMBIENT-SCRIBE-VOICE-2026-01
+  </text>
+</svg>

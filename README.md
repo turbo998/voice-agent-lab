@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 494 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 494 篇选型指南](#-二494-篇企业级语音架构选型指南中英双语) |
+| **🧭 495 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 495 篇选型指南](#-二495-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、494 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、495 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（471 篇）
+### 3.3 高价值企业行业解决方案蓝图（472 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -568,6 +568,7 @@ flowchart LR
 492. **2026 主流流式语音识别（STT）、超自然语音合成（TTS）与品牌音色克隆平台横向评测与选型指南：Azure AI Speech vs. Deepgram Nova-3/Aura-2 vs. ElevenLabs Flash v2.5 vs. Cartesia Sonic-2 vs. 开源 Whisper/CosyVoice 2/VoxCPM2（`<2ms` `SSML IPA` 发音词典锁实现金融多音字与品牌词 `99.9%` 零错读、Silero VAD + 压缩比门控 `100%` 消灭开源 Whisper 电话静音底噪幻觉、发音人活体授权令牌 `SpeakerConsentToken` + `C2PA` 水印防侵权、以及 VIP/强监管/海量 48kHz GPU 池三级路由在每千万分钟省 `$31.4万` 降本 `64.8%`）方案**：[中文](./docs/enterprise-stt-tts-brand-voice-cloning-azure-deepgram-elevenlabs-cartesia-voxcpm2-selection-faq.md) | [EN](./docs/enterprise-stt-tts-brand-voice-cloning-azure-deepgram-elevenlabs-cartesia-voxcpm2-selection-faq.en.md)
 493. **航司大面积航班延误改签（Airline Mass IRROPS Rebooking）与全球连锁酒店多语种 AI 礼宾（Hotel Opera PMS）实时语音架构选型指南（开口播报前 `120秒` GDS 座位原子软锁将抢票高峰改签提交率从 `61%` 提至 `99.5%` 且等待从 `140分钟` 缩至 `65秒`、机场 `MCT`+行李+过境签校验与延误码 `WX vs MX` `EU261` 锁、无陪儿童 `UMNR` `0ms` 转专席、以及酒店外线零房号披露锁与红眼航延自动同步 `Opera PMS` 免夜审 `No-Show` 保房每万通省 `$33.4万`）方案**：[中文](./docs/airline-mass-irrops-rebooking-global-hotel-pms-multilingual-voice-concierge-selection-faq.md) | [EN](./docs/airline-mass-irrops-rebooking-global-hotel-pms-multilingual-voice-concierge-selection-faq.en.md)
 494. **零售与电商客服（Shopify Plus / Salesforce Commerce / SAP OMS）查物流（WISMO）、退换货挽留（Return-to-Exchange Save）与反欺诈秒退实时语音架构选型指南（`110ms` 查件 + 签收实景图推送分流 `81.4%` WISMO 并砍掉 `54.2%` 假丢件重发、尺码智能推荐将 `44.6%` 退货转化为免运费换货每万通保住 `+$15.2万` GMV、实付净额上限与原支付卡强绑定锁实现 `$0` 超退套现、以及逆向运费 `> COGS` 免寄回精算与鼓包锂电池 `0ms` 禁寄每万通增效 `$29.6万`）方案**：[中文](./docs/ecommerce-retail-wismo-order-tracking-rma-returns-exchange-save-voice-selection-faq.md) | [EN](./docs/ecommerce-retail-wismo-order-tracking-rma-returns-exchange-save-voice-selection-faq.en.md)
+495. **智慧医疗院前预约导诊（Patient Access & Epic FHIR Scheduling）、处方续配（Rx Refill）与诊室环境病历自动生成（Ambient Clinical Scribe）实时语音架构选型指南（胸痛/卒中红旗 `<100ms` 熔断排期直连急诊护士、`Schmitt-Thompson` 亚专科匹配将挂错号率从 `14%` 压至 `0.4%` 且退号 `15秒` 自动回填 `86.5%`、`DEA Schedule-II` 管制药与化验窗口续配硬锁、以及诊室医生声纹分离 `1.6% DER` + 零未口述查体编造锁每天省医生 `2.1小时` 病历时间每万次增效 `$37.2万`）方案**：[中文](./docs/healthcare-patient-access-scheduling-rx-refill-ambient-scribe-voice-selection-faq.md) | [EN](./docs/healthcare-patient-access-scheduling-rx-refill-ambient-scribe-voice-selection-faq.en.md)
 
 ---
 

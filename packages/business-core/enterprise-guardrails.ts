@@ -13615,6 +13615,37 @@ export function evaluateEcommerceRetailWismoRmaReturnsVoice2026Guard(input: {
   };
 }
 
+export interface HealthcarePatientAccessAmbientScribeVoice2026Evaluation {
+  policyCode: "HEALTHCARE-PATIENT-ACCESS-AMBIENT-SCRIBE-VOICE-2026-01";
+  epicFhirSchedulingRxRefillAndSoapNoteDraftAuthorized: boolean;
+  specialtySlotMismatchOrUnspokenPhysicalExamHallucinationBlocked: boolean;
+  triageRn911Or988CrisisLifelinePreempted: boolean;
+}
+
+/**
+ * Deterministic Healthcare Patient Access Scheduling (Epic FHIR), Prescription Refill & Ambient Clinical Scribe Voice (Schmitt-Thompson Sub-Specialty Slot Match + DEA Schedule-II / Lab-Window Refill Gate, Enrolled Physician Voiceprint 1.6% DER + Zero Unspoken Physical-Exam Fabrication Lock, 0ms Red-Flag Chest-Pain/Stroke RN & 988 Crisis Preemption) Guard (`HEALTHCARE-PATIENT-ACCESS-AMBIENT-SCRIBE-VOICE-2026-01`).
+ */
+export function evaluateHealthcarePatientAccessAmbientScribeVoice2026Guard(input: {
+  schmittThompsonSlotMatchAndDeaSchedule2LabGateVerified: boolean;
+  enrolledPhysicianVoiceprintAndZeroUnspokenExamFabricationEnforced: boolean;
+  acuteChestPainStrokeRedFlagOrSuicidalIdeation988Detected: boolean;
+}): HealthcarePatientAccessAmbientScribeVoice2026Evaluation {
+  return {
+    policyCode: "HEALTHCARE-PATIENT-ACCESS-AMBIENT-SCRIBE-VOICE-2026-01",
+    epicFhirSchedulingRxRefillAndSoapNoteDraftAuthorized:
+      input.schmittThompsonSlotMatchAndDeaSchedule2LabGateVerified &&
+      input.enrolledPhysicianVoiceprintAndZeroUnspokenExamFabricationEnforced &&
+      !input.acuteChestPainStrokeRedFlagOrSuicidalIdeation988Detected,
+    specialtySlotMismatchOrUnspokenPhysicalExamHallucinationBlocked:
+      !input.schmittThompsonSlotMatchAndDeaSchedule2LabGateVerified ||
+      !input.enrolledPhysicianVoiceprintAndZeroUnspokenExamFabricationEnforced ||
+      input.acuteChestPainStrokeRedFlagOrSuicidalIdeation988Detected,
+    triageRn911Or988CrisisLifelinePreempted:
+      input.acuteChestPainStrokeRedFlagOrSuicidalIdeation988Detected,
+  };
+}
+
+
 
 
 
