@@ -14125,6 +14125,37 @@ export function evaluateEnterprisePciDssV4VoicePaymentTokenization2026Guard(inpu
   };
 }
 
+export interface RealEstatePropertyLeasingMaintenanceVoice2026Evaluation {
+  policyCode: "REAL-ESTATE-PROPERTY-LEASING-MAINTENANCE-VOICE-2026-01";
+  leasingTourAndMaintenanceWorkOrderAuthorized: boolean;
+  fhaSteeringUnverifiedSmartLockOrFloodDelayBlocked: boolean;
+  shutoffValveFirstAidP1PagerOrFhaNeutralPivotTriggered: boolean;
+}
+
+/**
+ * Deterministic Real Estate & Multifamily Property Management (24/7 Yardi/AppFolio Tour Lock + Biometric SmartRent Access, <15s Floorplan Shutoff-Valve Flood Coaching + Video Leak Triage & Fair Housing Act Anti-Steering Firewall) Guard (`REAL-ESTATE-PROPERTY-LEASING-MAINTENANCE-VOICE-2026-01`).
+ */
+export function evaluateRealEstatePropertyLeasingMaintenanceVoice2026Guard(input: {
+  biometricIdVerifiedBeforeSmartLockAndFhaNeutralEnforced: boolean;
+  floorplanShutoffMapAndPermissionToEnterCaptured: boolean;
+  fhaSteeringQueryOrActiveFloodWithoutValveCoachingDetected: boolean;
+}): RealEstatePropertyLeasingMaintenanceVoice2026Evaluation {
+  return {
+    policyCode: "REAL-ESTATE-PROPERTY-LEASING-MAINTENANCE-VOICE-2026-01",
+    leasingTourAndMaintenanceWorkOrderAuthorized:
+      input.biometricIdVerifiedBeforeSmartLockAndFhaNeutralEnforced &&
+      input.floorplanShutoffMapAndPermissionToEnterCaptured &&
+      !input.fhaSteeringQueryOrActiveFloodWithoutValveCoachingDetected,
+    fhaSteeringUnverifiedSmartLockOrFloodDelayBlocked:
+      !input.biometricIdVerifiedBeforeSmartLockAndFhaNeutralEnforced ||
+      !input.floorplanShutoffMapAndPermissionToEnterCaptured ||
+      input.fhaSteeringQueryOrActiveFloodWithoutValveCoachingDetected,
+    shutoffValveFirstAidP1PagerOrFhaNeutralPivotTriggered:
+      input.fhaSteeringQueryOrActiveFloodWithoutValveCoachingDetected,
+  };
+}
+
+
 
 
 
