@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 495 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 495 Guides](#-2-495-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 496 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 496 Guides](#-2-496-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 495 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 496 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (472 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (473 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -569,6 +569,7 @@ flowchart LR
 493. **Airline Mass IRROPS Rebooking (Amadeus / Sabre) & Global Hotel PMS (Oracle Opera) Multilingual Voice Concierge Selection Guide: Pre-Speech 120s Atomic Seat Soft-Lock (61% → 99.5% Commit Rate, 140m → 65s Resolution), Airport MCT/Baggage & IOC Delay-Code (WX vs MX) EU261 Gate, 0ms SSR UMNR/WCHC Escalation & Hotel Zero Outside Room-Disclosure + Late-Arrival Night-Audit Shield (-$334k/10k Calls)**: [EN](./docs/airline-mass-irrops-rebooking-global-hotel-pms-multilingual-voice-concierge-selection-faq.en.md) | [中文](./docs/airline-mass-irrops-rebooking-global-hotel-pms-multilingual-voice-concierge-selection-faq.md)
 494. **Retail & E-Commerce WISMO Order Tracking, Instant RMA Returns & Exchange-Save Voice AI Selection Guide: 110ms OMS Lookup & POD Photo Push (81.4% WISMO Deflection, -54.2% False DNR Reships), 44.6% Return-to-Exchange Fit Coach (+$152k Retained GMV/10k Calls), Net-Paid Ceiling & Original-Tender Lock ($0 Over-Refunds), Returnless COGS Math (-29.4% Reverse Freight) & 0ms Swollen-Battery Block (-$296k/10k Calls)**: [EN](./docs/ecommerce-retail-wismo-order-tracking-rma-returns-exchange-save-voice-selection-faq.en.md) | [中文](./docs/ecommerce-retail-wismo-order-tracking-rma-returns-exchange-save-voice-selection-faq.md)
 495. **Healthcare Patient Access Scheduling (Epic FHIR), Prescription Refill & Ambient Clinical Scribe Voice AI Selection Guide: <100ms Red-Flag RN/911/988 Preemption, Schmitt-Thompson Sub-Specialty Match (14% → 0.4% Mismatch) & 15s Waitlist Backfill (86.5% Fill), DEA Schedule-II & Lab-Window Refill Lock (-32.4% CHF Readmissions), and 1.6% DER Physician Voiceprint + Zero Unspoken Exam Fabrication Lock (-2.1h/Day EHR Time, -$372k/10k Encounters)**: [EN](./docs/healthcare-patient-access-scheduling-rx-refill-ambient-scribe-voice-selection-faq.en.md) | [中文](./docs/healthcare-patient-access-scheduling-rx-refill-ambient-scribe-voice-selection-faq.md)
+496. **Enterprise Multi-Agent Voice Swarm & Sub-Agent Handoff Graph (LiveKit Agents / Pipecat Flows / LangGraph) Selection Guide: Scoped Specialist Nodes <=6 Tools (61% → 97.6% Tool Accuracy, -58.4% Prompt Token Burn), 42ms In-Process Silent Single-Persona Handoff, Prerequisite Auth Contract Gate (0% Auth Bypass), Compound Multi-Intent Stack (94.8% Completion) & <=2-Hop Anti-Ping-Pong Breaker (-$268k/10k Calls)**: [EN](./docs/enterprise-multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-selection-faq.en.md) | [中文](./docs/enterprise-multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-selection-faq.md)
 
 ---
 

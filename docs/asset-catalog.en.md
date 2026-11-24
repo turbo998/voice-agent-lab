@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **495 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **496 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (495 Bilingual Guides)
+## 3. Solution Architect Selection Guides (496 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (472 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (473 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -539,3 +539,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 493. **Airline Mass IRROPS Rebooking (Amadeus / Sabre) & Global Hotel PMS (Oracle Opera) Multilingual Voice Concierge Selection Guide: Pre-Speech 120s Atomic Seat Soft-Lock (61% → 99.5% Commit Rate, 140m → 65s Resolution), Airport MCT/Baggage & IOC Delay-Code (WX vs MX) EU261 Gate, 0ms SSR UMNR/WCHC Escalation & Hotel Zero Outside Room-Disclosure + Late-Arrival Night-Audit Shield (-$334k/10k Calls)**: [EN](./airline-mass-irrops-rebooking-global-hotel-pms-multilingual-voice-concierge-selection-faq.en.md) | [中文](./airline-mass-irrops-rebooking-global-hotel-pms-multilingual-voice-concierge-selection-faq.md)
 494. **Retail & E-Commerce WISMO Order Tracking, Instant RMA Returns & Exchange-Save Voice AI Selection Guide: 110ms OMS Lookup & POD Photo Push (81.4% WISMO Deflection, -54.2% False DNR Reships), 44.6% Return-to-Exchange Fit Coach (+$152k Retained GMV/10k Calls), Net-Paid Ceiling & Original-Tender Lock ($0 Over-Refunds), Returnless COGS Math (-29.4% Reverse Freight) & 0ms Swollen-Battery Block (-$296k/10k Calls)**: [EN](./ecommerce-retail-wismo-order-tracking-rma-returns-exchange-save-voice-selection-faq.en.md) | [中文](./ecommerce-retail-wismo-order-tracking-rma-returns-exchange-save-voice-selection-faq.md)
 495. **Healthcare Patient Access Scheduling (Epic FHIR), Prescription Refill & Ambient Clinical Scribe Voice AI Selection Guide: <100ms Red-Flag RN/911/988 Preemption, Schmitt-Thompson Sub-Specialty Match (14% → 0.4% Mismatch) & 15s Waitlist Backfill (86.5% Fill), DEA Schedule-II & Lab-Window Refill Lock (-32.4% CHF Readmissions), and 1.6% DER Physician Voiceprint + Zero Unspoken Exam Fabrication Lock (-2.1h/Day EHR Time, -$372k/10k Encounters)**: [EN](./healthcare-patient-access-scheduling-rx-refill-ambient-scribe-voice-selection-faq.en.md) | [中文](./healthcare-patient-access-scheduling-rx-refill-ambient-scribe-voice-selection-faq.md)
+496. **Enterprise Multi-Agent Voice Swarm & Sub-Agent Handoff Graph (LiveKit Agents / Pipecat Flows / LangGraph) Selection Guide: Scoped Specialist Nodes <=6 Tools (61% → 97.6% Tool Accuracy, -58.4% Prompt Token Burn), 42ms In-Process Silent Single-Persona Handoff, Prerequisite Auth Contract Gate (0% Auth Bypass), Compound Multi-Intent Stack (94.8% Completion) & <=2-Hop Anti-Ping-Pong Breaker (-$268k/10k Calls)**: [EN](./enterprise-multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-selection-faq.en.md) | [中文](./enterprise-multi-agent-voice-handoff-graph-livekit-pipecat-langgraph-selection-faq.md)

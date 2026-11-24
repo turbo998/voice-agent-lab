@@ -13645,6 +13645,37 @@ export function evaluateHealthcarePatientAccessAmbientScribeVoice2026Guard(input
   };
 }
 
+export interface MultiAgentVoiceSwarmOrchestration2026Evaluation {
+  policyCode: "MULTI-AGENT-VOICE-SWARM-ORCHESTRATION-2026-01";
+  scopedSubAgentExecutionAndSilentHandoffAuthorized: boolean;
+  monolithicToolOverloadOrUnauthenticatedSubAgentBlocked: boolean;
+  antiPingPongLoopBreakerAndHumanSupervisorEscalated: boolean;
+}
+
+/**
+ * Deterministic Enterprise Multi-Agent Voice Swarm & Sub-Agent Handoff Graph (<=6 Tools per Specialist Node + Prerequisite Auth Contract Lock, 42ms Silent Single-Persona Handoff + Shared Blackboard Multi-Intent Stack, <=2-Hop Anti-Ping-Pong Loop Breaker & Supervisor Escalation) Guard (`MULTI-AGENT-VOICE-SWARM-ORCHESTRATION-2026-01`).
+ */
+export function evaluateMultiAgentVoiceSwarmOrchestration2026Guard(input: {
+  subAgentToolCountUnder6AndPrerequisiteAuthContractVerified: boolean;
+  silentSinglePersonaHandoffUnder45msAndSharedSessionMemoryActive: boolean;
+  subAgentPingPongLoopExceeds2HopsOrUnauthorizedScopeDetected: boolean;
+}): MultiAgentVoiceSwarmOrchestration2026Evaluation {
+  return {
+    policyCode: "MULTI-AGENT-VOICE-SWARM-ORCHESTRATION-2026-01",
+    scopedSubAgentExecutionAndSilentHandoffAuthorized:
+      input.subAgentToolCountUnder6AndPrerequisiteAuthContractVerified &&
+      input.silentSinglePersonaHandoffUnder45msAndSharedSessionMemoryActive &&
+      !input.subAgentPingPongLoopExceeds2HopsOrUnauthorizedScopeDetected,
+    monolithicToolOverloadOrUnauthenticatedSubAgentBlocked:
+      !input.subAgentToolCountUnder6AndPrerequisiteAuthContractVerified ||
+      !input.silentSinglePersonaHandoffUnder45msAndSharedSessionMemoryActive ||
+      input.subAgentPingPongLoopExceeds2HopsOrUnauthorizedScopeDetected,
+    antiPingPongLoopBreakerAndHumanSupervisorEscalated:
+      input.subAgentPingPongLoopExceeds2HopsOrUnauthorizedScopeDetected,
+  };
+}
+
+
 
 
 
