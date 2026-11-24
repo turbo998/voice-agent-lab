@@ -14275,6 +14275,37 @@ export function evaluateEdtechLanguageTutorPronunciationCoppaVoice2026Guard(inpu
   };
 }
 
+export interface SovereignOnPremAirGappedVoiceGpu2026Evaluation {
+  policyCode: "SOVEREIGN-ON-PREM-AIR-GAPPED-VOICE-GPU-2026-01";
+  sovereignVoiceGpuTurnAdmissionAuthorized: boolean;
+  colocatedCudaStarvationOomOrExternalEgressBlocked: boolean;
+  compactSlmOverflowRoutingOrSocAirGapAlertTriggered: boolean;
+}
+
+/**
+ * Deterministic Sovereign Cloud & On-Prem Air-Gapped Voice AI (Disaggregated 2:4:2 STT/vLLM/TTS GPU Pools, FP8 KV-Cache + Chunked Prefill, XGrammar Guided JSON Decoding, 88% KV-Cache Watermark Admission Gate & Cilium eBPF Zero-Egress Lock) Guard (`SOVEREIGN-ON-PREM-AIR-GAPPED-VOICE-GPU-2026-01`).
+ */
+export function evaluateSovereignOnPremAirGappedVoiceGpu2026Guard(input: {
+  disaggregatedThreePoolGpuAndXGrammarJsonActive: boolean;
+  ebpfZeroEgressAndSha256ModelWeightsVerified: boolean;
+  kvCacheExceeds88PctOrExternalEgressAttempted: boolean;
+}): SovereignOnPremAirGappedVoiceGpu2026Evaluation {
+  return {
+    policyCode: "SOVEREIGN-ON-PREM-AIR-GAPPED-VOICE-GPU-2026-01",
+    sovereignVoiceGpuTurnAdmissionAuthorized:
+      input.disaggregatedThreePoolGpuAndXGrammarJsonActive &&
+      input.ebpfZeroEgressAndSha256ModelWeightsVerified &&
+      !input.kvCacheExceeds88PctOrExternalEgressAttempted,
+    colocatedCudaStarvationOomOrExternalEgressBlocked:
+      !input.disaggregatedThreePoolGpuAndXGrammarJsonActive ||
+      !input.ebpfZeroEgressAndSha256ModelWeightsVerified ||
+      input.kvCacheExceeds88PctOrExternalEgressAttempted,
+    compactSlmOverflowRoutingOrSocAirGapAlertTriggered:
+      input.kvCacheExceeds88PctOrExternalEgressAttempted,
+  };
+}
+
+
 
 
 
