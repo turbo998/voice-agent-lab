@@ -13405,6 +13405,37 @@ export function evaluateMultinationalMultilingualLiveInterpreterVoice2026Guard(i
   };
 }
 
+export interface EnterpriseItHelpdeskHrVoiceCopilot2026Evaluation {
+  policyCode: "ENTERPRISE-IT-HELPDESK-HR-VOICE-COPILOT-2026-01";
+  dexSelfHealingAndPasswordMfaResetAuthorized: boolean;
+  vishingSocialEngineeringOrInstantPayrollDiversionBlocked: boolean;
+  socDeviceQuarantineOrZeroLogEapEthicsBridgePreempted: boolean;
+}
+
+/**
+ * Deterministic Enterprise IT Helpdesk (ServiceNow / Entra ID) & HR Shared Services (Workday) Voice Ticket Copilot (Entra Verified ID Biometric Liveness + Privileged-Role Phone Reset Lock, Pre-Signed DEX Runbook + 48h Anti-Payroll-Diversion & HIPAA Manager Diagnosis Masking, 0ms Stolen-Device EDR Quarantine & Zero-Log EAP/Ethics Bridge) Guard (`ENTERPRISE-IT-HELPDESK-HR-VOICE-COPILOT-2026-01`).
+ */
+export function evaluateEnterpriseItHelpdeskHrVoiceCopilot2026Guard(input: {
+  entraVerifiedIdBiometricLivenessAndNonPrivilegedRoleConfirmed: boolean;
+  payrollDirectDeposit48hHoldAndHipaaManagerMaskingEnforced: boolean;
+  compromisedEdrHostOrStolenDeviceOrEmployeeHarassmentCrisisDetected: boolean;
+}): EnterpriseItHelpdeskHrVoiceCopilot2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-IT-HELPDESK-HR-VOICE-COPILOT-2026-01",
+    dexSelfHealingAndPasswordMfaResetAuthorized:
+      input.entraVerifiedIdBiometricLivenessAndNonPrivilegedRoleConfirmed &&
+      input.payrollDirectDeposit48hHoldAndHipaaManagerMaskingEnforced &&
+      !input.compromisedEdrHostOrStolenDeviceOrEmployeeHarassmentCrisisDetected,
+    vishingSocialEngineeringOrInstantPayrollDiversionBlocked:
+      !input.entraVerifiedIdBiometricLivenessAndNonPrivilegedRoleConfirmed ||
+      !input.payrollDirectDeposit48hHoldAndHipaaManagerMaskingEnforced ||
+      input.compromisedEdrHostOrStolenDeviceOrEmployeeHarassmentCrisisDetected,
+    socDeviceQuarantineOrZeroLogEapEthicsBridgePreempted:
+      input.compromisedEdrHostOrStolenDeviceOrEmployeeHarassmentCrisisDetected,
+  };
+}
+
+
 
 
 

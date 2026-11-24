@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **487 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **488 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (487 Bilingual Guides)
+## 3. Solution Architect Selection Guides (488 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (464 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (465 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -531,3 +531,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 485. **End-to-End Enterprise Real-Time Voice Reference Architecture Blueprint (WebRTC/ACS Ingress → Stream Gateway → S2S/Cascade → Two-Phase CRM Tools → 7-Hop OpenTelemetry & Post-Call QA): Primary-Speaker Isolation (-93.6% Bystander Cutoffs) + 15s ICE Continuity (98.4% Recovery), Zero-LLM-Identity JWT Binding (0% IDOR) + Two-Phase Prepare→Confirm CRM Saga (0% Duplicate Writes), <2ms Pre-TTS Sanitizer & 7-Hop OTel (45s MTTR, -$294k/10k Hrs)**: [EN](./end-to-end-enterprise-voice-reference-architecture-webrtc-acs-s2s-crm-observability-selection-faq.en.md) | [中文](./end-to-end-enterprise-voice-reference-architecture-webrtc-acs-s2s-crm-observability-selection-faq.md)
 486. **BFSI Banking, Wealth Dual-Recording (双录), Insurance Multimodal FNOL Claims & Compliant Outbound Voice AI Selection Guide: S2S + 0ms SHA-256 Locked-SSML & 20s Checkpoint Replay (64% → 99.7% Dual-Recording QA), Anti-Estoppel Zero Coverage-Promise Lock + Anti-Hydrolock & In-Call WebRTC Video Guidewire STP (18.5m → 3.1m FNOL, 69.2% STP, -76.7% LAE) & <380ms Speculative AMD + AreaCode∩Zip TCPA/FDCPA Lock (-$368k/10k Calls)**: [EN](./bfsi-banking-insurance-fnol-claims-compliant-outbound-hybrid-voice-selection-faq.en.md) | [中文](./bfsi-banking-insurance-fnol-claims-compliant-outbound-hybrid-voice-selection-faq.md)
 487. **Multinational 28-Language Real-Time Voice Customer Support, Live Simultaneous Interpretation & Meeting Minutes Selection Guide: 1.2s Auto-LID + Intra-Sentence Code-Switching 5k Hotwords & Live Bilingual Expert Bridge (-82.4% Rare-Lang BPO Cost), SOV Dynamic Wait-k Polarity Lock + Wan/Yi/Oku ↔ Million/Billion AST Verifier (0% Scale/Negation Errors), 1.9% DER Diarization + Timestamped Jira Gate & 0ms Off-the-Record RAM Purge (-$342k/10k Hrs)**: [EN](./multinational-multilingual-voice-customer-service-live-interpreter-meeting-minutes-selection-faq.en.md) | [中文](./multinational-multilingual-voice-customer-service-live-interpreter-meeting-minutes-selection-faq.md)
+488. **Enterprise IT Service Desk (ServiceNow / Entra ID) & HR Shared Services (Workday) Zero-Trust Voice Ticket Copilot Selection Guide: Entra Verified ID 3D Liveness & Privileged-Role Phone Reset Lock (0% Scattered Spider Vishing Breaches), 54s Pre-Signed Intune/Nexthink DEX Self-Healing (72.4% L1 Deflection, $22 → $0.11), 48h Anti-Payroll-Diversion Hold + HIPAA Manager Diagnosis Masking & <100ms Stolen-Device EDR Quarantine (-$184k/10k Calls)**: [EN](./enterprise-it-helpdesk-servicenow-hr-workday-voice-ticket-copilot-selection-faq.en.md) | [中文](./enterprise-it-helpdesk-servicenow-hr-workday-voice-ticket-copilot-selection-faq.md)
