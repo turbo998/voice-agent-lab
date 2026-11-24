@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg504" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070b14"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad504" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad504" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="amberGrad504" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="roseGrad504" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+    <style>
+      .title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 21px; font-weight: 800; fill: #f8fafc; }
+      .subtitle { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 12px; fill: #94a3b8; }
+      .card-title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13.5px; font-weight: 700; fill: #f1f5f9; }
+      .body-text { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .mono { font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 10.5px; fill: #38bdf8; }
+      .badge { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 10.5px; font-weight: 700; fill: #ffffff; }
+      .kpi-num { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 18px; font-weight: 800; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg504)" rx="14"/>
+
+  <!-- Header -->
+  <rect x="24" y="18" width="1152" height="64" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.5"/>
+  <rect x="38" y="30" width="142" height="24" rx="6" fill="url(#cyanGrad504)"/>
+  <text x="109" y="46" text-anchor="middle" class="badge">AUTO DMS · #504</text>
+  <text x="194" y="44" class="title">Automotive Dealership DMS Service Booking, Roadside Triage &amp; Test-Drive Voice AI</text>
+  <text x="194" y="65" class="subtitle">4-Constraint DMS Bay/Part/Tech/Loaner Lock (CDK/Tekion) + Connected-VIN Roadside Triage (-58.4% Flatbed Tows) + &lt;30s Test-Drive Concierge</text>
+
+  <!-- Column 1: 4-Constraint DMS Service Bay & Recall Booking -->
+  <g transform="translate(24, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#cyanGrad504)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">1. 4-Constraint DMS Service &amp; Recall Booking</text>
+
+    <rect x="14" y="48" width="340" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#38bdf8">Auto VIN Recall &amp; Maintenance Lookup</text>
+    <text x="26" y="86" class="body-text">• Maps caller ANI to VIN in CDK Global / Tekion /</text>
+    <text x="26" y="102" class="body-text">  Reynolds DMS; checks open OEM safety recalls</text>
+    <text x="26" y="122" class="mono">Proactively Bundles Open Recall Into Visit (+28% RO)</text>
+
+    <rect x="14" y="148" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="168" class="card-title" fill="#34d399">4-Constraint Atomic Slot Reservation</text>
+    <text x="26" y="186" class="body-text">• Never books a blind calendar slot! Intersects:</text>
+    <text x="26" y="202" class="body-text">  1.Lift Bay + 2.HV-EV Tech Cert + 3.Part Stock +</text>
+    <text x="26" y="222" class="mono" fill="#6ee7b7">4.Loaner Car / Shuttle -> 0% Missing-Part Visits</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#fbbf24">Live Workshop Status &amp; Video MPI Upsell</text>
+    <text x="26" y="288" class="body-text">• Handles "Is my car ready yet?" by reading DMS</text>
+    <text x="26" y="304" class="body-text">  Repair Order (RO) stage &amp; technician video link</text>
+    <text x="26" y="322" class="mono" fill="#fde68a">Deflects 81% of Service Advisor Status Calls</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="366" class="card-title" fill="#6ee7b7">Captures 100% of Monday 8 AM Call Surges</text>
+    <text x="26" y="384" class="body-text">Eliminates the 32% missed-call drop rate in dealer</text>
+    <text x="26" y="400" class="mono" fill="#a7f3d0">service BDCs without adding headcount</text>
+  </g>
+
+  <!-- Column 2: Highway Roadside Safety & Connected-VIN Triage -->
+  <g transform="translate(416, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#e11d48" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#roseGrad504)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">2. Connected-VIN Roadside &amp; Safety Triage</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#fb7185" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#fb7185">&lt;15s Highway Lane Hazard Safety Gate</text>
+    <text x="26" y="86" class="body-text">• First question is ALWAYS caller physical safety:</text>
+    <text x="26" y="102" class="body-text">  if stranded in active highway lane or airbag</text>
+    <text x="26" y="122" class="mono" fill="#fda4af">deployed -> 0ms Priority Police/eCall Conference!</text>
+
+    <rect x="14" y="150" width="340" height="92" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#38bdf8">Connected-Vehicle Telematics Pre-Fetch (8s)</text>
+    <text x="26" y="188" class="body-text">• Pulls live VIN GPS lat/long, HV SoC%, 12V battery</text>
+    <text x="26" y="204" class="body-text">  voltage, tire pressure, and OBD-II DTC fault codes</text>
+    <text x="26" y="224" class="mono">Cuts Location &amp; Fault Intake from 95s to 8s</text>
+
+    <rect x="14" y="252" width="340" height="86" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="272" class="card-title" fill="#34d399">$65 Mobile Van vs. $220 Flatbed Tow Triage</text>
+    <text x="26" y="290" class="body-text">• Distinguishes 12V auxiliary battery drain / OTA</text>
+    <text x="26" y="306" class="body-text">  charge-port lock release from HV drivetrain fault</text>
+    <text x="26" y="324" class="mono" fill="#6ee7b7">Cuts Unnecessary $220 Flatbed Tows by 58.4%</text>
+
+    <rect x="14" y="348" width="340" height="66" rx="8" fill="#4c0519" stroke="#f43f5e" stroke-width="1"/>
+    <text x="26" y="368" class="card-title" fill="#fda4af">AWD / EV Flatbed-Only Dispatch Lock</text>
+    <text x="26" y="386" class="body-text">Forbids wheel-lift dolly tows on dual-motor EVs</text>
+    <text x="26" y="402" class="mono" fill="#fda4af">(100% Prevents $12,000 Rear-Motor Tow Damage)</text>
+  </g>
+
+  <!-- Column 3: <30s Speed-to-Lead Test-Drive & Trade-In Concierge -->
+  <g transform="translate(808, 96)">
+    <rect width="368" height="430" rx="10" fill="#0f172a" stroke="#059669" stroke-width="1.5"/>
+    <rect width="368" height="36" rx="10" fill="url(#emeraldGrad504)"/>
+    <text x="184" y="23" text-anchor="middle" class="card-title">3. &lt;30s Test-Drive &amp; Trade-In Concierge</text>
+
+    <rect x="14" y="48" width="340" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+    <text x="26" y="68" class="card-title" fill="#34d399">&lt;30s Speed-to-Lead Outbound Voice Callback</text>
+    <text x="26" y="86" class="body-text">• Calls web/TikTok/AutoTrader test-drive leads</text>
+    <text x="26" y="102" class="body-text">  within 30 seconds of form submission (TCPA opt-in)</text>
+    <text x="26" y="122" class="mono" fill="#6ee7b7">3.4x Higher Lead-to-Appointment Conversion</text>
+
+    <rect x="14" y="150" width="340" height="90" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+    <text x="26" y="170" class="card-title" fill="#fbbf24">Demo Fleet Trim Lock &amp; License Pre-Check</text>
+    <text x="26" y="188" class="body-text">• Reserves exact demo VIN trim/color on dealer lot</text>
+    <text x="26" y="204" class="body-text">• Texts 1-tap driver's license scan &amp; Wallet Pass</text>
+    <text x="26" y="222" class="mono" fill="#fde68a">Lifts Showroom Show-Up Rate from 42% to 79.5%</text>
+
+    <rect x="14" y="250" width="340" height="86" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="26" y="270" class="card-title" fill="#38bdf8">Non-Binding Trade-In Range Guardrail</text>
+    <text x="26" y="288" class="body-text">• Quotes Black Book / KBB trade-in range strictly</text>
+    <text x="26" y="304" class="body-text">  as "subject to in-store physical inspection"</text>
+    <text x="26" y="322" class="mono">Zero Binding Verbal Financing / APR Commitments</text>
+
+    <rect x="14" y="346" width="340" height="68" rx="8" fill="#1e1b4b" stroke="#34d399" stroke-width="1.2"/>
+    <text x="26" y="366" class="card-title" fill="#6ee7b7">Guardrail: AUTO-DMS-VOICE-2026-01</text>
+    <text x="26" y="384" class="mono" fill="#f8fafc">evaluateAutomotiveDealershipDmsRoadsideVoiceGuard</text>
+    <text x="26" y="402" class="body-text">-58.4% Flatbed Tows · +$385k/10k Hrs Dealer Value</text>
+  </g>
+
+  <!-- Bottom KPI Bar -->
+  <rect x="24" y="542" width="1152" height="118" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="44" y="568" class="card-title" fill="#38bdf8">Automotive Dealership DMS, Roadside Triage &amp; Test-Drive Voice Benchmarks (per 10,000 Hours)</text>
+
+  <g transform="translate(44, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Missing-Part / Tech Bay Mismatch</text>
+    <text x="16" y="50" class="kpi-num" fill="#38bdf8">19.4% → 0.0% (4-Way Lock)</text>
+  </g>
+  <g transform="translate(324, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Unnecessary $220 Flatbed Tows</text>
+    <text x="16" y="50" class="kpi-num" fill="#fb7185">-58.4% (VIN Telematics)</text>
+  </g>
+  <g transform="translate(604, 582)">
+    <rect width="260" height="62" rx="8" fill="#1e293b"/>
+    <text x="16" y="24" class="body-text">Test-Drive Showroom Show-Up</text>
+    <text x="16" y="50" class="kpi-num" fill="#34d399">42.0% → 79.5% (&lt;30s Call)</text>
+  </g>
+  <g transform="translate(884, 582)">
+    <rect width="272" height="62" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="16" y="24" class="body-text">Net Savings &amp; RO Revenue Gain</text>
+    <text x="16" y="50" class="kpi-num" fill="#6ee7b7">-$385,000 / 10k Hours</text>
+  </g>
+</svg>

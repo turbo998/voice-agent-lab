@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **503 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **504 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (503 Bilingual Guides)
+## 3. Solution Architect Selection Guides (504 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (480 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (481 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -547,3 +547,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 501. **Enterprise Telecom & ISP Voice AI Guide (Broadband Remote Self-Healing, Bill-Shock Re-Rating & Anti-SIM-Swap Lock): <150ms Ringback ONT Probe + 8s Reboot Pacing + Camera LED Vision (-64.2% $180 Truck Rolls), Deterministic BSS Invoice Diff & Retroactive Roaming Pass Re-Rating (41% → 89.2% Churn Save) & Zero-Trust FIDO2 Anti-SIM-Swap Lock (0.00% Voice Hijack, -$395k/10k Hrs)**: [EN](./telco-isp-broadband-self-healing-bill-dispute-sim-swap-voice-selection-faq.en.md) | [中文](./telco-isp-broadband-self-healing-bill-dispute-sim-swap-voice-selection-faq.md)
 502. **Enterprise Logistics, Last-Mile Delivery & Fleet Dispatch Hands-Free Voice AI Guide: Dimension-Checked Smart-Locker Bay Lock + <800ms Zebra PDA Sync (81.0% → 95.6% First-Attempt Delivery), 75dB Speed-Gated Driver Dock Re-Slotting Copilot (-71.0% Detention Fees) & <=500m Geofence / Direct-Signature OTP Lock (0.00% Parcel Diversion, -$340k/10k Hrs)**: [EN](./logistics-last-mile-delivery-fleet-dispatch-handsfree-pod-voice-selection-faq.en.md) | [中文](./logistics-last-mile-delivery-fleet-dispatch-handsfree-pod-voice-selection-faq.md)
 503. **Enterprise Meeting Intelligence, Live Teams/Zoom Voice Copilot & Zero-Hallucination CRM/Jira Sync Guide: Explicit "@Atlas" Wake Gate + <4.5s Spoken Brevity Cap (0.0% Uninvited Interrupts), Live Attendee ACL Intersection (0.00% External Guest Leaks), Hybrid Room Enrolled Voiceprint Diarization (61.0% → 98.6% Attribution) & Staged Adaptive-Card CRM Approval (-$295k/10k Hrs)**: [EN](./enterprise-meeting-intelligence-teams-zoom-live-voice-agent-crm-sync-selection-faq.en.md) | [中文](./enterprise-meeting-intelligence-teams-zoom-live-voice-agent-crm-sync-selection-faq.md)
+504. **Automotive Dealership DMS Service Booking, Connected-VIN Roadside Triage & Test-Drive Voice AI Guide: 4-Constraint DMS Bay/Tech/Part/Loaner Lock (19.4% → 0.0% Missing-Part Visits), 8s Connected-VIN Roadside Triage (-58.4% $220 Flatbed Tows, 100% EV Flatbed Lock) & <30s Test-Drive Callback (42.0% → 79.5% Show-Up, -$385k/10k Hrs)**: [EN](./automotive-dealership-dms-service-booking-roadside-triage-test-drive-voice-selection-faq.en.md) | [中文](./automotive-dealership-dms-service-booking-roadside-triage-test-drive-voice-selection-faq.md)

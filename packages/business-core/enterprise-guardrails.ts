@@ -13885,6 +13885,37 @@ export function evaluateEnterpriseMeetingVoiceAgentCrmSync2026Guard(input: {
   };
 }
 
+export interface AutomotiveDealershipDmsRoadsideVoice2026Evaluation {
+  policyCode: "AUTOMOTIVE-DEALERSHIP-DMS-ROADSIDE-VOICE-2026-01";
+  dmsServiceBookingAndRoadsideDispatchAuthorized: boolean;
+  missingPartBayMismatchOrWheelLiftEvTowBlocked: boolean;
+  emergencyECallTransferOrFlatbedTowLockTriggered: boolean;
+}
+
+/**
+ * Deterministic Automotive Dealership DMS 4-Constraint Service Booking (Bay + HV Tech + Part Stock + Loaner), <15s Highway Safety & Connected-VIN Roadside Triage (EV/AWD Flatbed-Only Lock) & Non-Binding Trade-In Range Guard (`AUTOMOTIVE-DEALERSHIP-DMS-ROADSIDE-VOICE-2026-01`).
+ */
+export function evaluateAutomotiveDealershipDmsRoadsideVoice2026Guard(input: {
+  fourConstraintDmsBayTechPartLoanerAndNonBindingRangeVerified: boolean;
+  connectedVinTelematicsAndEvFlatbedOnlyTowLocked: boolean;
+  activeHighwayLaneHazardOrWheelLiftEvTowAttempted: boolean;
+}): AutomotiveDealershipDmsRoadsideVoice2026Evaluation {
+  return {
+    policyCode: "AUTOMOTIVE-DEALERSHIP-DMS-ROADSIDE-VOICE-2026-01",
+    dmsServiceBookingAndRoadsideDispatchAuthorized:
+      input.fourConstraintDmsBayTechPartLoanerAndNonBindingRangeVerified &&
+      input.connectedVinTelematicsAndEvFlatbedOnlyTowLocked &&
+      !input.activeHighwayLaneHazardOrWheelLiftEvTowAttempted,
+    missingPartBayMismatchOrWheelLiftEvTowBlocked:
+      !input.fourConstraintDmsBayTechPartLoanerAndNonBindingRangeVerified ||
+      !input.connectedVinTelematicsAndEvFlatbedOnlyTowLocked ||
+      input.activeHighwayLaneHazardOrWheelLiftEvTowAttempted,
+    emergencyECallTransferOrFlatbedTowLockTriggered:
+      input.activeHighwayLaneHazardOrWheelLiftEvTowAttempted,
+  };
+}
+
+
 
 
 
