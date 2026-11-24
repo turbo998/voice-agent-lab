@@ -13555,6 +13555,37 @@ export function evaluateEnterpriseSttTtsBrandVoiceCloning2026Guard(input: {
   };
 }
 
+export interface AirlineIrropsHotelPmsVoiceConcierge2026Evaluation {
+  policyCode: "AIRLINE-IRROPS-HOTEL-PMS-VOICE-CONCIERGE-2026-01";
+  automatedFlightRebookingAndHotelPmsServiceAuthorized: boolean;
+  phantomSeatRaceConditionOrGuestRoomStalkerLeakBlocked: boolean;
+  specialAssistanceDeskOrHotelSecurityEmsPreempted: boolean;
+}
+
+/**
+ * Deterministic Airline Mass IRROPS Rebooking (Amadeus/Sabre) & Global Hotel PMS (Oracle Opera) Voice Concierge (Pre-Speech 120s Atomic Seat Soft-Lock + Airport MCT/Baggage/Timatic Gate, Zero Outside Guest-Room Disclosure + Late-Arrival Night-Audit Shield, 0ms SSR UMNR/WCHC Special Assistance & Hotel Emergency Preemption) Guard (`AIRLINE-IRROPS-HOTEL-PMS-VOICE-CONCIERGE-2026-01`).
+ */
+export function evaluateAirlineIrropsHotelPmsVoiceConcierge2026Guard(input: {
+  preSpeech120sSeatSoftLockAndAirportMctBaggageVerified: boolean;
+  zeroOutsideRoomNumberDisclosureAndLateArrivalPmsHoldActive: boolean;
+  unaccompaniedMinorOrWheelchairWchcOrHotelMedicalEmergencyDetected: boolean;
+}): AirlineIrropsHotelPmsVoiceConcierge2026Evaluation {
+  return {
+    policyCode: "AIRLINE-IRROPS-HOTEL-PMS-VOICE-CONCIERGE-2026-01",
+    automatedFlightRebookingAndHotelPmsServiceAuthorized:
+      input.preSpeech120sSeatSoftLockAndAirportMctBaggageVerified &&
+      input.zeroOutsideRoomNumberDisclosureAndLateArrivalPmsHoldActive &&
+      !input.unaccompaniedMinorOrWheelchairWchcOrHotelMedicalEmergencyDetected,
+    phantomSeatRaceConditionOrGuestRoomStalkerLeakBlocked:
+      !input.preSpeech120sSeatSoftLockAndAirportMctBaggageVerified ||
+      !input.zeroOutsideRoomNumberDisclosureAndLateArrivalPmsHoldActive ||
+      input.unaccompaniedMinorOrWheelchairWchcOrHotelMedicalEmergencyDetected,
+    specialAssistanceDeskOrHotelSecurityEmsPreempted:
+      input.unaccompaniedMinorOrWheelchairWchcOrHotelMedicalEmergencyDetected,
+  };
+}
+
+
 
 
 
