@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg528" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent528" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg528)"/>
+  <rect x="24" y="24" width="1152" height="632" rx="16" fill="none" stroke="#1e293b" stroke-width="2"/>
+  <rect x="44" y="42" width="1112" height="58" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+  <text x="64" y="70" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Commercial Insurance Brokerage &amp; P&amp;C (Applied Epic / Guidewire) Voice AI Reference Architecture</text>
+  <text x="64" y="91" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13">&lt;15s ACORD 25 COI Issuance · Blanket AI &amp; Policy-Limit Gate · Known-Loss Anti-Estoppel &amp; OSHA 8h/24h FROI Lock (COMMERCIAL-INSURANCE-BROKERAGE-ACORD25-COI-VOICE-2026-01)</text>
+
+  <!-- Column 1: <15s ACORD 25 COI Engine -->
+  <rect x="44" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="44" y="120" width="356" height="40" rx="12" fill="#064e3b"/>
+  <text x="62" y="145" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. &lt;15s ACORD 25 COI Automation</text>
+
+  <rect x="62" y="176" width="320" height="106" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="76" y="198" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Applied Epic / AMS360 Policy-Limit Check</text>
+  <text x="76" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Verifies General Liability + Umbrella limits</text>
+  <text x="76" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Checks CG 20 10 / 20 37 Blanket AI endorsement</text>
+  <text x="76" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks COI if requested limit &gt; active policy</text>
+  <text x="76" y="272" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 83.8% Job-Site COI Call Deflection</text>
+
+  <rect x="62" y="296" width="320" height="114" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="318" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">9s PKCE Certificate-Holder Capture</text>
+  <text x="76" y="338" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Pushes visual micro-card for Holder Name/Email</text>
+  <text x="76" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Eliminates spelling errors on LLC legal names</text>
+  <text x="76" y="374" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Dispatches signed ACORD 25 PDF in &lt;15s</text>
+  <text x="76" y="392" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• Unblocks Contractor Job-Site Entry</text>
+
+  <rect x="62" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Zero Custom-Wording E&amp;O Shield</text>
+  <text x="76" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Locks Description of Operations to ISO templates</text>
+  <text x="76" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks unapproved manuscript COI text</text>
+  <text x="76" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Routes Scheduled AI requests to Account Exec</text>
+  <text x="76" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Brokerage E&amp;O COI Liability</text>
+
+  <!-- Column 2: Anti-Estoppel & Mid-Term Endorsement -->
+  <rect x="422" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="422" y="120" width="356" height="40" rx="12" fill="#78350f"/>
+  <text x="440" y="145" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. Anti-Estoppel &amp; Endorsement Lock</text>
+
+  <rect x="440" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+  <text x="454" y="198" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms Known-Loss Backdating Firewall</text>
+  <text x="454" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Detects existing accident / damage disclosure</text>
+  <text x="454" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks autonomous vehicle/equipment addition</text>
+  <text x="454" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Records verbatim Statement of No Loss (SONL)</text>
+  <text x="454" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Post-Loss Coverage Binding</text>
+
+  <rect x="440" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Anti-Estoppel Non-Binding Vocabulary</text>
+  <text x="454" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Scrubs 'you are covered / bound immediately'</text>
+  <text x="454" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Uses 'request staged pending carrier bind'</text>
+  <text x="454" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Validates 17-char VIN + NHTSA check digit</text>
+  <text x="454" y="398" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100% Carrier Binding Authority Compliance</text>
+
+  <rect x="440" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Premium Audit &amp; Payroll Classification</text>
+  <text x="454" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Explains NCCI class-code payroll audit diffs</text>
+  <text x="454" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Collects subcontractor COI exemption proof</text>
+  <text x="454" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Prevents uninsured-sub surcharge shocks</text>
+  <text x="454" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 79.4% Premium-Audit Call Resolution</text>
+
+  <!-- Column 3: OSHA Workers' Comp & Commercial FNOL -->
+  <rect x="800" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="800" y="120" width="356" height="40" rx="12" fill="#1e3a8a"/>
+  <text x="818" y="145" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. OSHA Workers' Comp &amp; FROI Gate</text>
+
+  <rect x="818" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="832" y="198" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">OSHA 29 CFR 1904.39 8h/24h Clock Gate</text>
+  <text x="832" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Detects inpatient admission, amputation, eye loss</text>
+  <text x="832" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Triggers 24h OSHA / 8h fatality statutory alert</text>
+  <text x="832" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Bridges Occupational Triage RN in &lt;400ms</text>
+  <text x="832" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100% On-Time OSHA Form 300/301 Compliance</text>
+
+  <rect x="818" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">MPN Clinic Routing &amp; Nurse Triage</text>
+  <text x="832" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Directs non-critical strains to in-network MPN</text>
+  <text x="832" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Generates First Fill pharmacy card via SMS</text>
+  <text x="832" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Cuts unnecessary ER visits on minor sprains</text>
+  <text x="832" y="398" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• -34.6% Workers' Comp Claim Severity</text>
+
+  <rect x="818" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Subrogation &amp; Dashcam Evidence Lock</text>
+  <text x="832" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Captures third-party fault carrier &amp; plate</text>
+  <text x="832" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Triggers Samsara/Motive dashcam clip preservation</text>
+  <text x="832" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Auto-files Guidewire ClaimCenter FNOL packet</text>
+  <text x="832" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• $0.047/min Blended Brokerage Cost</text>
+
+  <!-- Footer KPI Bar -->
+  <rect x="44" y="568" width="1112" height="68" rx="10" fill="#0f172a" stroke="url(#accent528)" stroke-width="1.5"/>
+  <text x="68" y="595" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Validated Commercial Insurance Brokerage &amp; P&amp;C Benchmark:</text>
+  <text x="68" y="618" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13">ACORD 25 COI Issuance: 24h → 14s (83.8% Self-Serve)  |  E&amp;O Estoppel Breaches: 0.00%  |  OSHA 8h/24h Catch: 100%  |  Cost: $0.047/min</text>
+</svg>

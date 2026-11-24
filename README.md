@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 527 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 527 篇选型指南](#-二527-篇企业级语音架构选型指南中英双语) |
+| **🧭 528 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 528 篇选型指南](#-二528-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、527 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、528 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（504 篇）
+### 3.3 高价值企业行业解决方案蓝图（505 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -601,6 +601,7 @@ flowchart LR
 525. **房贷按揭进件、转按揭锁息与贷后服务（Mortgage Origination & Servicing：ICE Encompass / Black Knight MSP）实时语音架构选型指南（`SAFE Act` 持牌锁息边界 + `Reg Z True APR` 强制同播、`CFPB TRID` `5-of-6` 六要素预审门禁实现 `0.00%` 3 工作日 `Loan Estimate` 超期违例、通话内 `180s PKCE` 核保补件卡将放款周期缩短 `4.2天`、以及 `<250ms` 托管差额拆解分流 `78.6%` 贷后查询与 `Reg X SPOC` 纾困直连每万小时净省 `$36.5万`）方案**：[中文](./docs/mortgage-origination-refinance-encompass-trid-servicing-loss-mitigation-voice-selection-faq.md) | [EN](./docs/mortgage-origination-refinance-encompass-trid-servicing-loss-mitigation-voice-selection-faq.en.md)
 526. **企业安全运营中心（SOC）与重大故障应急指挥桥（PagerDuty / ServiceNow MIM / CrowdStrike Falcon）实时语音架构选型指南（`<15s` 口语认知唤醒挑战将凌晨 3 点睡梦假确认率从 `22.4%` 压至 `0.0%` 并将 `Sev-1 MTTA` 从 `19.5分钟` 缩至 `1.8分钟`、`ServiceNow CMDB Tier-0` 域控/核心库双人四眼 `FIDO2` 联署隔离锁实现 `0.00%` 生产误断网、特权管理员语音 `MFA` 重置物理熔断、以及异常登录 `10s` 外呼核实与 `12s` 会话断流每万小时净省 `$39.0万`）方案**：[中文](./docs/cybersecurity-soc-incident-bridge-pagerduty-servicenow-tier0-containment-voice-selection-faq.md) | [EN](./docs/cybersecurity-soc-incident-bridge-pagerduty-servicenow-tier0-containment-voice-selection-faq.en.md)
 527. **对公银行、企业司库与全球现金管理（Commercial Banking & Corporate Treasury：SWIFT gpi / Kyriba / SAP Treasury）实时语音架构选型指南（`<200ms` `SWIFT gpi UETR` 代理行全跳数直读与 `ISO 20022 pacs.008` 水单推送将 3 天跨境查单缩至 `18秒`（自助率 `86.2%`）、物理锁定生效 `>30天` `SSI` 白名单模板与 `Maker-Checker` 双人 `FIDO2` 联署、`0ms` 拦截深伪 CEO“保密并购跳签”电诈、以及 `15:00` 截单前 `Positive Pay` 支票声画快审每万小时净省 `$41.0万`）方案**：[中文](./docs/commercial-banking-corporate-treasury-swift-gpi-maker-checker-anti-bec-voice-selection-faq.md) | [EN](./docs/commercial-banking-corporate-treasury-swift-gpi-maker-checker-anti-bec-voice-selection-faq.en.md)
+528. **商业保险经纪与企财险/工伤险（Commercial Insurance Brokerage & P&C：Applied Epic / Guidewire / Duck Creek）实时语音架构选型指南（`<200ms` 在效保额与 `CG 20 10 / 20 37 Blanket AI` 批单校验配 `9s PKCE` 抬头卡将 `ACORD 25 COI` 开证从 `24小时` 缩至 `14秒`（自助率 `83.8%`）、期中批改强制录制《无已知损失声明 SONL》与反弃权词汇锁实现 `0.00%` 带病加保与 `E&O` 误承诺、以及 `OSHA 29 CFR 1904.39` 8h/24h 重伤红旗 `0ms` 桥接分诊护士每万小时净省 `$35.5万`）方案**：[中文](./docs/commercial-insurance-brokerage-acord25-coi-midterm-endorsement-workers-comp-voice-selection-faq.md) | [EN](./docs/commercial-insurance-brokerage-acord25-coi-midterm-endorsement-workers-comp-voice-selection-faq.en.md)
 
 ---
 

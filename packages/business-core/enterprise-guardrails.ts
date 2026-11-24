@@ -14605,6 +14605,37 @@ export function evaluateCommercialBankingTreasurySwiftGpiVoice2026Guard(input: {
   };
 }
 
+export interface CommercialInsuranceBrokerageAcord25Voice2026Evaluation {
+  policyCode: "COMMERCIAL-INSURANCE-BROKERAGE-ACORD25-COI-VOICE-2026-01";
+  acord25CoiIssuanceAndEndorsementStagingAuthorized: boolean;
+  overLimitCoiOrKnownLossBackdateOrEstoppelPromiseBlocked: boolean;
+  oshaSevereInjuryRnBridgeOrAccountExecEscalationTriggered: boolean;
+}
+
+/**
+ * Deterministic Commercial Insurance Brokerage & P&C (<15s ACORD 25 COI Issuance within Active Limit & Blanket AI, 0ms Known-Loss Anti-Backdating & Anti-Estoppel Phrasing Lock, OSHA 29 CFR 1904.39 8h/24h Severe-Injury Nurse Triage) Guard (`COMMERCIAL-INSURANCE-BROKERAGE-ACORD25-COI-VOICE-2026-01`).
+ */
+export function evaluateCommercialInsuranceBrokerageAcord25Voice2026Guard(input: {
+  requestedCoiWithinActiveLimitAndBlanketAiVerified: boolean;
+  statementOfNoLossRecordedAndZeroVerbalBindPromise: boolean;
+  priorKnownLossDisclosedOrOshaHospitalizationAmputationFatality: boolean;
+}): CommercialInsuranceBrokerageAcord25Voice2026Evaluation {
+  return {
+    policyCode: "COMMERCIAL-INSURANCE-BROKERAGE-ACORD25-COI-VOICE-2026-01",
+    acord25CoiIssuanceAndEndorsementStagingAuthorized:
+      input.requestedCoiWithinActiveLimitAndBlanketAiVerified &&
+      input.statementOfNoLossRecordedAndZeroVerbalBindPromise &&
+      !input.priorKnownLossDisclosedOrOshaHospitalizationAmputationFatality,
+    overLimitCoiOrKnownLossBackdateOrEstoppelPromiseBlocked:
+      !input.requestedCoiWithinActiveLimitAndBlanketAiVerified ||
+      !input.statementOfNoLossRecordedAndZeroVerbalBindPromise ||
+      input.priorKnownLossDisclosedOrOshaHospitalizationAmputationFatality,
+    oshaSevereInjuryRnBridgeOrAccountExecEscalationTriggered:
+      input.priorKnownLossDisclosedOrOshaHospitalizationAmputationFatality,
+  };
+}
+
+
 
 
 

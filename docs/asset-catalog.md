@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **527 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **528 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（527 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（528 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -66,7 +66,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（504 篇）
+### 3.3 高价值企业行业解决方案蓝图（505 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -571,3 +571,4 @@
 525. **房贷按揭进件、转按揭锁息与贷后服务（Mortgage Origination & Servicing：ICE Encompass / Black Knight MSP）实时语音架构选型指南（`SAFE Act` 持牌锁息边界 + `Reg Z True APR` 强制同播、`CFPB TRID` `5-of-6` 六要素预审门禁实现 `0.00%` 3 工作日 `Loan Estimate` 超期违例、通话内 `180s PKCE` 核保补件卡将放款周期缩短 `4.2天`、以及 `<250ms` 托管差额拆解分流 `78.6%` 贷后查询与 `Reg X SPOC` 纾困直连每万小时净省 `$36.5万`）方案**：[中文](./mortgage-origination-refinance-encompass-trid-servicing-loss-mitigation-voice-selection-faq.md) | [EN](./mortgage-origination-refinance-encompass-trid-servicing-loss-mitigation-voice-selection-faq.en.md)
 526. **企业安全运营中心（SOC）与重大故障应急指挥桥（PagerDuty / ServiceNow MIM / CrowdStrike Falcon）实时语音架构选型指南（`<15s` 口语认知唤醒挑战将凌晨 3 点睡梦假确认率从 `22.4%` 压至 `0.0%` 并将 `Sev-1 MTTA` 从 `19.5分钟` 缩至 `1.8分钟`、`ServiceNow CMDB Tier-0` 域控/核心库双人四眼 `FIDO2` 联署隔离锁实现 `0.00%` 生产误断网、特权管理员语音 `MFA` 重置物理熔断、以及异常登录 `10s` 外呼核实与 `12s` 会话断流每万小时净省 `$39.0万`）方案**：[中文](./cybersecurity-soc-incident-bridge-pagerduty-servicenow-tier0-containment-voice-selection-faq.md) | [EN](./cybersecurity-soc-incident-bridge-pagerduty-servicenow-tier0-containment-voice-selection-faq.en.md)
 527. **对公银行、企业司库与全球现金管理（Commercial Banking & Corporate Treasury：SWIFT gpi / Kyriba / SAP Treasury）实时语音架构选型指南（`<200ms` `SWIFT gpi UETR` 代理行全跳数直读与 `ISO 20022 pacs.008` 水单推送将 3 天跨境查单缩至 `18秒`（自助率 `86.2%`）、物理锁定生效 `>30天` `SSI` 白名单模板与 `Maker-Checker` 双人 `FIDO2` 联署、`0ms` 拦截深伪 CEO“保密并购跳签”电诈、以及 `15:00` 截单前 `Positive Pay` 支票声画快审每万小时净省 `$41.0万`）方案**：[中文](./commercial-banking-corporate-treasury-swift-gpi-maker-checker-anti-bec-voice-selection-faq.md) | [EN](./commercial-banking-corporate-treasury-swift-gpi-maker-checker-anti-bec-voice-selection-faq.en.md)
+528. **商业保险经纪与企财险/工伤险（Commercial Insurance Brokerage & P&C：Applied Epic / Guidewire / Duck Creek）实时语音架构选型指南（`<200ms` 在效保额与 `CG 20 10 / 20 37 Blanket AI` 批单校验配 `9s PKCE` 抬头卡将 `ACORD 25 COI` 开证从 `24小时` 缩至 `14秒`（自助率 `83.8%`）、期中批改强制录制《无已知损失声明 SONL》与反弃权词汇锁实现 `0.00%` 带病加保与 `E&O` 误承诺、以及 `OSHA 29 CFR 1904.39` 8h/24h 重伤红旗 `0ms` 桥接分诊护士每万小时净省 `$35.5万`）方案**：[中文](./commercial-insurance-brokerage-acord25-coi-midterm-endorsement-workers-comp-voice-selection-faq.md) | [EN](./commercial-insurance-brokerage-acord25-coi-midterm-endorsement-workers-comp-voice-selection-faq.en.md)
