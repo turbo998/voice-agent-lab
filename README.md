@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 520 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 520 篇选型指南](#-二520-篇企业级语音架构选型指南中英双语) |
+| **🧭 521 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 521 篇选型指南](#-二521-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、520 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、521 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（497 篇）
+### 3.3 高价值企业行业解决方案蓝图（498 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -594,6 +594,7 @@ flowchart LR
 518. **律所与企业法务智能案源初筛（Legal Intake Voice AI）、前置利益冲突核查（ABA Rule 1.18 Conflict Check）、诉讼时效预警与严禁非法执业（UPL）架构选型指南（Stage-0 仅收相对方名称并通过 `Clio/Intapp` `<300ms` 前置核查实现 `0.00%` 现有大客户冲突污染（`ABA Rule 1.18`）、零法律建议防火墙彻底阻断非法执业（`UPL / ABA Rule 5.5`）、确定性诉讼时效 `SOL <= 30天` 值班合伙人 `0ms` 强呼、以及 24/7 秒接将案源签约率从 `52.0%` 提至 `86.8%` 每万小时创效 `$37.5万`）方案**：[中文](./docs/legal-intake-law-firm-conflict-check-upl-guardrail-voice-selection-faq.md) | [EN](./docs/legal-intake-law-firm-conflict-check-upl-guardrail-voice-selection-faq.en.md)
 519. **企业差旅与费用报销管理（Corporate Travel & Expense：SAP Concur / Navan / Amex GBT）7×24 改签礼宾、差标自动审批与 FCPA 反舞弊语音核销架构选型指南（`<75s` 职级差标校验与未用航司退票抵用券自动冲抵将退票券回收率从 `48.0%` 提至 `94.2%` 并免除 `$38/通` TMC 夜间服务费、超标 `15m` GDS 锁座配主管 `Teams` 一键秒批、`20s` 酒店水单自动剥离个人迷你吧消费、以及 `FCPA` 公职人员招待红线锁每万小时净省 `$31.0万`）方案**：[中文](./docs/corporate-travel-expense-concur-navan-policy-vip-concierge-voice-selection-faq.md) | [EN](./docs/corporate-travel-expense-concur-navan-policy-vip-concierge-voice-selection-faq.en.md)
 520. **企业采购寻源、供应商协同与应付账款热线（Procurement & AP Helpdesk：SAP Ariba / Coupa / Oracle ERP）三单匹配差额解析、防收款账户篡改诈骗（BEC）与智能催货架构选型指南（`<350ms` 三单匹配【PO×收货单×发票】差异拆解与一键贷项凭证自愈将供应商查账自助完结率从 `31.0%` 提至 `83.5%`、语音通道对银行主数据物理只读锁实现 `0.00%` `BEC/IBAN` 汇款掉包诈骗、司库动态提前付款贴现（`14%+` 年化收益）、以及 `T-5天` 自动外呼催货将准时 `ASN` 捕获率提至 `95.4%` 每万小时创效 `$35.0万`）方案**：[中文](./docs/enterprise-procurement-ap-helpdesk-ariba-coupa-three-way-match-bec-voice-selection-faq.md) | [EN](./docs/enterprise-procurement-ap-helpdesk-ariba-coupa-three-way-match-bec-voice-selection-faq.en.md)
+521. **连锁药房与处方药福利管理（Pharmacy & PBM：慢病续方、医保事先授权 Prior Auth 与药师用药安全）实时语音 Agent 架构选型指南（个人在档处方集 `RxNorm` 商品名⇄通用名音素映射与 `ISMP LASA` 三要素复诵将免处方号自助续方完结率从 `49.0%` 提至 `91.6%`、`NCPDP Reject 75` 医保事先授权进度白话解析与 `<3英里` 邻店一键调配砍掉 `74.2%` 柜台催单电话、`0ms` `OBRA '90` 药物相互作用执业药师强转接锁、以及 `DEA Schedule II` 精麻药库存保密锁每万小时净省 `$36.5万`）方案**：[中文](./docs/pharmacy-pbm-prescription-refill-prior-auth-pharmacist-ddi-voice-selection-faq.md) | [EN](./docs/pharmacy-pbm-prescription-refill-prior-auth-pharmacist-ddi-voice-selection-faq.en.md)
 
 ---
 

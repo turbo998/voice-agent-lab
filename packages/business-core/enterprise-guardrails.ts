@@ -14395,6 +14395,37 @@ export function evaluateEnterpriseProcurementApHelpdeskBecVoice2026Guard(input: 
   };
 }
 
+export interface PharmacyPbmRefillPriorAuthPharmacistVoice2026Evaluation {
+  policyCode: "PHARMACY-PBM-REFILL-PRIOR-AUTH-PHARMACIST-VOICE-2026-01";
+  automatedRefillAndPriorAuthStatusAuthorized: boolean;
+  unlicensedDdiAdviceLasaMixupOrDeaC2VaultLeakBlocked: boolean;
+  obra90PharmacistWarmTransferOrSisterStoreTransferTriggered: boolean;
+}
+
+/**
+ * Deterministic Retail Pharmacy & PBM Voice AI (Profile-Scoped RxNorm Brand/Generic Matcher + ISMP LASA 3-Factor Readback, NCPDP Prior-Auth Triage, DEA Schedule II Vault Secrecy & 0ms OBRA '90 Licensed Pharmacist DDI Counseling Gate) Guard (`PHARMACY-PBM-REFILL-PRIOR-AUTH-PHARMACIST-VOICE-2026-01`).
+ */
+export function evaluatePharmacyPbmRefillPriorAuthPharmacistVoice2026Guard(input: {
+  profileScopedRxNormAndLasaThreeFactorReadbackVerified: boolean;
+  deaSchedule2EarliestFillAndVaultSecrecyEnforced: boolean;
+  clinicalDdiCounselingRequestedOrLocalStoreStockoutDetected: boolean;
+}): PharmacyPbmRefillPriorAuthPharmacistVoice2026Evaluation {
+  return {
+    policyCode: "PHARMACY-PBM-REFILL-PRIOR-AUTH-PHARMACIST-VOICE-2026-01",
+    automatedRefillAndPriorAuthStatusAuthorized:
+      input.profileScopedRxNormAndLasaThreeFactorReadbackVerified &&
+      input.deaSchedule2EarliestFillAndVaultSecrecyEnforced &&
+      !input.clinicalDdiCounselingRequestedOrLocalStoreStockoutDetected,
+    unlicensedDdiAdviceLasaMixupOrDeaC2VaultLeakBlocked:
+      !input.profileScopedRxNormAndLasaThreeFactorReadbackVerified ||
+      !input.deaSchedule2EarliestFillAndVaultSecrecyEnforced ||
+      input.clinicalDdiCounselingRequestedOrLocalStoreStockoutDetected,
+    obra90PharmacistWarmTransferOrSisterStoreTransferTriggered:
+      input.clinicalDdiCounselingRequestedOrLocalStoreStockoutDetected,
+  };
+}
+
+
 
 
 
