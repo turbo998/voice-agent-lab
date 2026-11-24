@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg527" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent527" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg527)"/>
+  <rect x="24" y="24" width="1152" height="632" rx="16" fill="none" stroke="#1e293b" stroke-width="2"/>
+  <rect x="44" y="42" width="1112" height="58" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5"/>
+  <text x="64" y="70" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Commercial Banking &amp; Corporate Treasury (SWIFT gpi / Kyriba) Voice AI Reference Architecture</text>
+  <text x="64" y="91" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13">&lt;200ms SWIFT gpi UETR Tracker · Four-Eyes Maker-Checker SSI Lock · 0ms Anti-Deepfake M&amp;A BEC &amp; Positive Pay Gate (COMMERCIAL-BANKING-TREASURY-SWIFT-GPI-MAKER-CHECKER-VOICE-2026-01)</text>
+
+  <!-- Column 1: SWIFT gpi UETR & ISO 20022 Tracker -->
+  <rect x="44" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#0284c7" stroke-width="1.5"/>
+  <rect x="44" y="120" width="356" height="40" rx="12" fill="#0c4a6e"/>
+  <text x="62" y="145" fill="#bae6fd" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. &lt;200ms SWIFT gpi UETR Tracker</text>
+
+  <rect x="62" y="176" width="320" height="106" rx="8" fill="#0f172a" stroke="#0284c7" stroke-width="1"/>
+  <text x="76" y="198" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Real-Time Intermediary Bank Hop Trace</text>
+  <text x="76" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Queries SWIFT gpi UETR in &lt;200ms</text>
+  <text x="76" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Pinpoints exact correspondent bank BIC hold</text>
+  <text x="76" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Explains BEN/SHA/OUR lifting fees &amp; FX rate</text>
+  <text x="76" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 86.2% Cross-Border Trace Containment</text>
+
+  <rect x="62" y="296" width="320" height="114" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="318" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">ISO 20022 pacs.008 / MT103 Proof Push</text>
+  <text x="76" y="338" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Generates signed pacs.008 payment receipt</text>
+  <text x="76" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Automates pacs.004 / camt.056 recall draft</text>
+  <text x="76" y="374" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Resolves missing beneficiary RFI fields</text>
+  <text x="76" y="392" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• Cuts Wire Trace Time from 3 Days to 18s</text>
+
+  <rect x="62" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Intraday ZBA &amp; Revolving Credit Status</text>
+  <text x="76" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Reads real-time Kyriba / SAP cash positions</text>
+  <text x="76" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Checks Fedwire / TARGET2 cutoff countdown</text>
+  <text x="76" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Stages overnight repo / MMF sweep preview</text>
+  <text x="76" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• Zero Daylight-Overdraft Penalties</text>
+
+  <!-- Column 2: Four-Eyes Maker-Checker SSI Gate -->
+  <rect x="422" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="422" y="120" width="356" height="40" rx="12" fill="#78350f"/>
+  <text x="440" y="145" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. Four-Eyes Maker-Checker SSI Lock</text>
+
+  <rect x="440" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+  <text x="454" y="198" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Pre-Approved SSI Template Enforcement</text>
+  <text x="454" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Restricts voice sweeps to seasoned (&gt;30d) SSIs</text>
+  <text x="454" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks ad-hoc freeform IBAN/ABA dictation</text>
+  <text x="454" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Enforces Board Resolution signer tier limits</text>
+  <text x="454" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Unregistered Beneficiary Outflow</text>
+
+  <rect x="440" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Dual-Officer Hardware FIDO2 Co-Sign</text>
+  <text x="454" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Maker stages transfer; Checker co-signs OOB</text>
+  <text x="454" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Distinct voiceprint + FIDO2 token verification</text>
+  <text x="454" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Binds FX forward hedge to underlying ERP PO</text>
+  <text x="454" y="398" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100% SOX 404 Segregation of Duties</text>
+
+  <rect x="440" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">15-Second RFQ FX Hedge Readback</text>
+  <text x="454" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Streams live 15s locked spot/forward quote</text>
+  <text x="454" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Reads Pair + Notional + Value Date + All-In Rate</text>
+  <text x="454" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Captures Dodd-Frank / EMIR WORM voice log</text>
+  <text x="454" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• Zero Stale-Quote Slippage Disputes</text>
+
+  <!-- Column 3: Anti-BEC M&A Firewall & Positive Pay -->
+  <rect x="800" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#ef4444" stroke-width="1.5"/>
+  <rect x="800" y="120" width="356" height="40" rx="12" fill="#7f1d1d"/>
+  <text x="818" y="145" fill="#fecaca" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Anti-BEC M&amp;A Lock &amp; Positive Pay</text>
+
+  <rect x="818" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#ef4444" stroke-width="1"/>
+  <text x="832" y="198" fill="#f87171" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms 'Secret M&amp;A Bypass' Fraud Freeze</text>
+  <text x="832" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Detects 'confidential deal / skip dual control'</text>
+  <text x="832" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Defeats deepfake CEO / M&amp;A counsel vishing</text>
+  <text x="832" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Freezes wire queue &amp; alerts Group Treasurer</text>
+  <text x="832" y="272" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Executive Impersonation Wire Loss</text>
+
+  <rect x="818" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Check &amp; ACH Positive Pay Exception Desk</text>
+  <text x="832" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Calls AP controller on mismatched check/ACH</text>
+  <text x="832" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Pushes check image &amp; payee diff via 180s PKCE</text>
+  <text x="832" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Captures Pay vs. Return decision before 15:00</text>
+  <text x="832" y="398" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 94.8% Pre-Cutoff Positive Pay Resolution</text>
+
+  <rect x="818" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">OFAC / Sanctions &amp; UCC Article 4A Log</text>
+  <text x="832" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Real-time OFAC SDN screening on all parties</text>
+  <text x="832" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Satisfies UCC 4A-202 commercially reasonable security</text>
+  <text x="832" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 7-Year immutable WORM treasury audit trail</text>
+  <text x="832" y="520" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• $0.054/min Blended Treasury Desk Cost</text>
+
+  <!-- Footer KPI Bar -->
+  <rect x="44" y="568" width="1112" height="68" rx="10" fill="#0f172a" stroke="url(#accent527)" stroke-width="1.5"/>
+  <text x="68" y="595" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Validated Commercial Banking &amp; Corporate Treasury Benchmark:</text>
+  <text x="68" y="618" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13">SWIFT Trace Time: 3d → 18s (86.2% Self-Serve)  |  Positive Pay Pre-Cutoff: 94.8%  |  Deepfake BEC Loss: $0  |  Cost: $0.054/min</text>
+</svg>

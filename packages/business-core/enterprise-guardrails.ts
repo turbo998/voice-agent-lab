@@ -14575,6 +14575,37 @@ export function evaluateCybersecuritySocIncidentBridgePagerdutyVoice2026Guard(in
   };
 }
 
+export interface CommercialBankingTreasurySwiftGpiVoice2026Evaluation {
+  policyCode: "COMMERCIAL-BANKING-TREASURY-SWIFT-GPI-MAKER-CHECKER-VOICE-2026-01";
+  swiftGpiTraceAndSeasonedSsiSweepAuthorized: boolean;
+  adHocIbanOrSingleSignerOrSecretMnaBypassBlocked: boolean;
+  groupTreasurerFraudFreezeOrCheckerFido2Triggered: boolean;
+}
+
+/**
+ * Deterministic Commercial Banking & Corporate Treasury (<200ms SWIFT gpi UETR Hop Tracker, >30-Day Seasoned SSI-Only Template Lock, Four-Eyes Maker-Checker FIDO2 Co-Sign & 0ms Anti-Deepfake CEO 'Secret M&A' BEC Freeze) Guard (`COMMERCIAL-BANKING-TREASURY-SWIFT-GPI-MAKER-CHECKER-VOICE-2026-01`).
+ */
+export function evaluateCommercialBankingTreasurySwiftGpiVoice2026Guard(input: {
+  beneficiaryMatchesSeasoned30DaySsiTemplate: boolean;
+  fourEyesMakerCheckerFido2CoSigned: boolean;
+  secretMnaBypassOrAdHocUnregisteredIbanAttempted: boolean;
+}): CommercialBankingTreasurySwiftGpiVoice2026Evaluation {
+  return {
+    policyCode: "COMMERCIAL-BANKING-TREASURY-SWIFT-GPI-MAKER-CHECKER-VOICE-2026-01",
+    swiftGpiTraceAndSeasonedSsiSweepAuthorized:
+      input.beneficiaryMatchesSeasoned30DaySsiTemplate &&
+      input.fourEyesMakerCheckerFido2CoSigned &&
+      !input.secretMnaBypassOrAdHocUnregisteredIbanAttempted,
+    adHocIbanOrSingleSignerOrSecretMnaBypassBlocked:
+      !input.beneficiaryMatchesSeasoned30DaySsiTemplate ||
+      !input.fourEyesMakerCheckerFido2CoSigned ||
+      input.secretMnaBypassOrAdHocUnregisteredIbanAttempted,
+    groupTreasurerFraudFreezeOrCheckerFido2Triggered:
+      input.secretMnaBypassOrAdHocUnregisteredIbanAttempted,
+  };
+}
+
+
 
 
 

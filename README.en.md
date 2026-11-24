@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 526 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 526 Guides](#-2-526-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 527 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 527 Guides](#-2-527-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 526 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 527 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (503 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (504 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -600,6 +600,7 @@ flowchart LR
 524. **Enterprise B2B SaaS Billing, Overage Explainer, Seat Provisioning & FTC Renewal Save Voice AI Guide: <300ms Pre-Computed Zuora/Stripe Usage Diff (21.4% → 0.00% Proration Error, 84.6% Billing Deflection), 1st-Time Overage-to-Tier-Upgrade Waiver (87.4% Expansion Conversion), Billing Admin RBAC/PO# Gate & FTC Max-1-Offer / 365-Day Discount Cooldown Lock (-$340k/10k Hrs)**: [EN](./docs/b2b-saas-subscription-billing-overage-seat-provisioning-ftc-retention-voice-selection-faq.en.md) | [中文](./docs/b2b-saas-subscription-billing-overage-seat-provisioning-ftc-retention-voice-selection-faq.md)
 525. **Enterprise Mortgage Origination, Refinance Lock Desk & Loan Servicing (ICE Encompass / Black Knight MSP) Voice AI Guide: SAFE Act NMLS Rate-Lock Boundary + Reg Z True APR, CFPB TRID 5-of-6 LE Clock Gate (0.00% 3-Day LE Breaches), In-Call PKCE Stip Upload (-4.2 Days Clear-to-Close), <250ms MSP Escrow Diff (78.6% Servicing Containment) & Reg X Hardship SPOC Bridge (-$365k/10k Hrs)**: [EN](./docs/mortgage-origination-refinance-encompass-trid-servicing-loss-mitigation-voice-selection-faq.en.md) | [中文](./docs/mortgage-origination-refinance-encompass-trid-servicing-loss-mitigation-voice-selection-faq.md)
 526. **Enterprise Cybersecurity SOC & IT Major Incident Bridge (PagerDuty / ServiceNow / CrowdStrike) Voice AI Guide: <15s Spoken Cognitive Wake-Up Challenge (22.4% → 0.0% 3 AM Sleep-Ack, 19.5m → 1.8m Sev-1 MTTA), ServiceNow CMDB Tier-0 Four-Eyes FIDO2 Containment Gate (0.00% Self-Outages), 0ms Privileged-Admin Voice MFA Lockout & 12s MFA-Fatigue Session Kill (-$390k/10k Hrs)**: [EN](./docs/cybersecurity-soc-incident-bridge-pagerduty-servicenow-tier0-containment-voice-selection-faq.en.md) | [中文](./docs/cybersecurity-soc-incident-bridge-pagerduty-servicenow-tier0-containment-voice-selection-faq.md)
+527. **Commercial Banking & Corporate Treasury (SWIFT gpi / Kyriba / SAP Treasury) Voice AI Guide: <200ms SWIFT gpi UETR Hop Tracker & ISO 20022 pacs.008 Push (3d → 18s Trace, 86.2% Containment), Seasoned SSI-Only Template Lock + Four-Eyes Maker-Checker FIDO2 Co-Sign (UCC 4A-202), 0ms Anti-Deepfake CEO 'Secret M&A' Freeze & Pre-15:00 Positive Pay Visual Gate (-$410k/10k Hrs)**: [EN](./docs/commercial-banking-corporate-treasury-swift-gpi-maker-checker-anti-bec-voice-selection-faq.en.md) | [中文](./docs/commercial-banking-corporate-treasury-swift-gpi-maker-checker-anti-bec-voice-selection-faq.md)
 
 ---
 
