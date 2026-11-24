@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **514 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **515 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (514 Bilingual Guides)
+## 3. Solution Architect Selection Guides (515 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (491 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (492 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -558,3 +558,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 512. **Real Estate & Multifamily Property Management Voice AI Guide (24/7 Yardi Leasing, 2 AM Flood Triage & Fair Housing Lock): 24/7 Yardi/AppFolio Unit Sync + Biometric SmartRent Tour Lock (39.0% → 82.6% Conversion), <15s Floorplan Shutoff-Valve Coaching (-$8.5k Flood Loss) + Video Triage (-61.5% $240 Overtime Callouts) & Fair Housing Act Anti-Steering Firewall (-$330k/10k Hrs)**: [EN](./real-estate-property-management-leasing-emergency-maintenance-voice-selection-faq.en.md) | [中文](./real-estate-property-management-leasing-emergency-maintenance-voice-selection-faq.md)
 513. **Enterprise Omnichannel Voice + Visual Co-Browsing, 9s Alphanumeric Slot Capture & Seamless SMS/WhatsApp Handoff Guide: In-Call 180s PKCE Visual Micro-Card (31.0% → 0.2% Email/VIN Error, 95s → 9s Capture), <200ms Bi-Directional CAS Screen-Voice Sync & <400ms Zero-Amnesia Voice-to-WhatsApp Handoff (-$315k/10k Hrs)**: [EN](./enterprise-omnichannel-voice-sms-whatsapp-visual-cobrowsing-handoff-selection-faq.en.md) | [中文](./enterprise-omnichannel-voice-sms-whatsapp-visual-cobrowsing-handoff-selection-faq.md)
 514. **Enterprise Voice-Native Model Context Protocol (MCP) Gateway Guide (<45ms Pool, <=120-Token Projection & OAuth 2.1 OBO): <45ms Warm Streamable-HTTP Pool + <=6 Tools/Node Pruning (68.0% → 98.9% Tool Accuracy), <=120-Token Spoken Response Projection (-89.2% 15KB JSON Bloat), Bi-Directional progress/cancelled Barge-In Bridge & OAuth 2.1 OBO + SHA-256 Pinning (-$305k/10k Hrs)**: [EN](./enterprise-voice-mcp-model-context-protocol-streaming-tool-gateway-selection-faq.en.md) | [中文](./enterprise-voice-mcp-model-context-protocol-streaming-tool-gateway-selection-faq.md)
+515. **Enterprise Field Service Management (FSM) Hands-Free Voice Copilot Guide (OSHA LOTO Gate, Peer-Van Part Sync & 0-Bar Offline): Mandatory OSHA 1910.147 LOTO Zero-Energy Verbal Gate (0.00% Safety Skips), Serial-Pinned BOM + 15-Min Peer-Van Part Transfer (74.0% → 92.8% FTFR), 0-Bar Basement Offline Voice Bundle & 30s Spoken Closeout (42m → 6.5m/Day Admin, -$345k/10k Hrs)**: [EN](./enterprise-field-service-technician-handsfree-copilot-loto-parts-sync-selection-faq.en.md) | [中文](./enterprise-field-service-technician-handsfree-copilot-loto-parts-sync-selection-faq.md)

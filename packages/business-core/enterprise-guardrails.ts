@@ -14215,6 +14215,37 @@ export function evaluateEnterpriseVoiceMcpStreamingToolGateway2026Guard(input: {
   };
 }
 
+export interface EnterpriseFieldServiceTechnicianVoice2026Evaluation {
+  policyCode: "ENTERPRISE-FIELD-SERVICE-TECHNICIAN-VOICE-2026-01";
+  handsFreeRepairStepAndVanStockCloseoutAuthorized: boolean;
+  unverifiedLotoDisassemblyOrCrossModelSpecMixupBlocked: boolean;
+  lotoZeroEnergyReadbackOrOfflineSqliteOutboxTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Field Service Management (FSM) Hands-Free Voice Copilot (Mandatory OSHA 1910.147 LOTO Zero-Energy Verbal Gate, Serial-Pinned BOM + 15-Min Peer-Van Part Transfer & 0-Bar Basement Offline SQLite Outbox) Guard (`ENTERPRISE-FIELD-SERVICE-TECHNICIAN-VOICE-2026-01`).
+ */
+export function evaluateEnterpriseFieldServiceTechnicianVoice2026Guard(input: {
+  oshaLotoZeroEnergyReadbackAndSerialRevisionVerified: boolean;
+  vanTrunkStockDecrementAndOfflineOutboxConfigured: boolean;
+  energizedDisassemblyWithoutLotoOrZeroBarDropAttempted: boolean;
+}): EnterpriseFieldServiceTechnicianVoice2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-FIELD-SERVICE-TECHNICIAN-VOICE-2026-01",
+    handsFreeRepairStepAndVanStockCloseoutAuthorized:
+      input.oshaLotoZeroEnergyReadbackAndSerialRevisionVerified &&
+      input.vanTrunkStockDecrementAndOfflineOutboxConfigured &&
+      !input.energizedDisassemblyWithoutLotoOrZeroBarDropAttempted,
+    unverifiedLotoDisassemblyOrCrossModelSpecMixupBlocked:
+      !input.oshaLotoZeroEnergyReadbackAndSerialRevisionVerified ||
+      !input.vanTrunkStockDecrementAndOfflineOutboxConfigured ||
+      input.energizedDisassemblyWithoutLotoOrZeroBarDropAttempted,
+    lotoZeroEnergyReadbackOrOfflineSqliteOutboxTriggered:
+      input.energizedDisassemblyWithoutLotoOrZeroBarDropAttempted,
+  };
+}
+
+
 
 
 

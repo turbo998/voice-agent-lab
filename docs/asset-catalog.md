@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **514 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **515 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（514 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（515 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -66,7 +66,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（491 篇）
+### 3.3 高价值企业行业解决方案蓝图（492 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -558,3 +558,4 @@
 512. **商业地产、长租公寓与智慧园区（Real Estate、Multifamily Property Management & Smart Campus）7×24 招租看房预约、凌晨爆管抢修分级与门禁对讲实时语音 Agent 架构选型指南（7×24 实时对接 `Yardi/AppFolio` 房态与证件活体核验自助看房门锁将夜间看房转化率从 `39.0%` 提至 `82.6%`、`<15s` 户型图总水阀位置播报先行止损（免除 `$8,500+` 泡水损失）+ 手机视频漏水分级砍掉 `61.5%` 无效 `$240` 夜间加班出车、以及《公平住房法 FHA》零引导歧视锁每万小时净创效 `$33.0万`）方案**：[中文](./real-estate-property-management-leasing-emergency-maintenance-voice-selection-faq.md) | [EN](./real-estate-property-management-leasing-emergency-maintenance-voice-selection-faq.en.md)
 513. **企业全渠道声画协同（Omnichannel Voice + Visual Co-Browsing）、复杂邮箱/车架号 9 秒视觉采集与通话转微信/WhatsApp 无缝接力架构选型指南（通话内不断线推送 `180s` `PKCE` 绑定微卡片将长邮箱/17位 `VIN` 采集错误率从 `31.0%` 压至 `0.2%`（耗时 `95s→9s`）、`<200ms` WebSocket `CAS` 双向声画同步实现点击屏幕即刻触发语音确认、以及 `<400ms` 语音⇄WhatsApp/短信零失忆模态热迁移每万小时净省 `$31.5万`）方案**：[中文](./enterprise-omnichannel-voice-sms-whatsapp-visual-cobrowsing-handoff-selection-faq.md) | [EN](./enterprise-omnichannel-voice-sms-whatsapp-visual-cobrowsing-handoff-selection-faq.en.md)
 514. **企业实时语音大模型工具协议（Voice-Native Model Context Protocol / MCP Gateway）、`<45ms` 连接池、返回结果精简投影与 OAuth 2.1 OBO 零信任架构选型指南（`<45ms` `Streamable-HTTP` 热连接池 + 按节点动态裁剪至 `<=6` 个精简 Schema 将语音工具选择准确率从 `68.0%` 提至 `98.9%`、`<=120 Token` 口语响应投影器砍掉 `89.2%` `15KB` 原始 JSON 上下文浪费、MCP `progress/cancelled` 与语音安抚/打断双向桥接、以及 `OAuth 2.1 OBO` 客户级令牌与 `SHA-256` 描述哈希锁每万小时净省 `$30.5万`）方案**：[中文](./enterprise-voice-mcp-model-context-protocol-streaming-tool-gateway-selection-faq.md) | [EN](./enterprise-voice-mcp-model-context-protocol-streaming-tool-gateway-selection-faq.en.md)
+515. **企业现场服务与设备维保工程师（Field Service Management / FSM）免提语音 Copilot、LOTO 上锁挂牌安全门禁、随车备件调拨与地下室离线同步架构选型指南（强制 `OSHA 1910.147 LOTO` 零能量口头复诵锁实现 `0.00%` 违章跳步拆机、序列号级精确 BOM 与 `15分钟` 半径同事服务车备件互调将首次修复率 `FTFR` 从 `74.0%` 提至 `92.8%`、地下室 `0格信号` 端侧离线语音包、以及 `30秒` 边走边说结单砍掉 `84.2%` 文书工时每万小时净创效 `$34.5万`）方案**：[中文](./enterprise-field-service-technician-handsfree-copilot-loto-parts-sync-selection-faq.md) | [EN](./enterprise-field-service-technician-handsfree-copilot-loto-parts-sync-selection-faq.en.md)
