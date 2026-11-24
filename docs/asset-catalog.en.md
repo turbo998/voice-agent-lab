@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **524 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **525 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (524 Bilingual Guides)
+## 3. Solution Architect Selection Guides (525 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (501 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (502 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -568,3 +568,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 522. **2026 Enterprise Voice AI Master Architecture Playbook (4 Core Paradigms, 7 Production Guardrails & 12-Industry Matrix): 30-Second Paradigm Selector (Pure S2S vs. Hybrid Supervisor vs. Streaming Cascade vs. Sovereign On-Prem GPU), 7 Mandatory Guardrails (turnEpoch Fence, P65 PTU/PAYGO -$0.039/min, JWT Sandbox, Edge SAQ-A PCI, 650ms HA & 500-Call Acoustic CI) & 12-Industry ROI Matrix**: [EN](./enterprise-voice-ai-2026-master-architecture-playbook-industry-matrix-selection-faq.en.md) | [中文](./enterprise-voice-ai-2026-master-architecture-playbook-industry-matrix-selection-faq.md)
 523. **Enterprise Wealth Management & Private Banking Voice AI Guide (BlackRock Aladdin Attribution, SEC Reg BI / MiFID II Suitability & Wash-Sale Lock): <250ms Sealed Attribution Readout (18.4% → 0.00% Return Math Error, 19.0% → 81.4% Selloff Surge Containment), 0ms IPS Risk-Cap & Promissory-Yield Firewall (0.00% Reg BI Breaches), Household ±30d IRS Sec. 1091 Wash-Sale Scanner & >$10k FIDO2 Biometric Wire Lock (-$385k/10k Hrs)**: [EN](./wealth-management-portfolio-review-market-volatility-reg-bi-mifid-suitability-voice-selection-faq.en.md) | [中文](./wealth-management-portfolio-review-market-volatility-reg-bi-mifid-suitability-voice-selection-faq.md)
 524. **Enterprise B2B SaaS Billing, Overage Explainer, Seat Provisioning & FTC Renewal Save Voice AI Guide: <300ms Pre-Computed Zuora/Stripe Usage Diff (21.4% → 0.00% Proration Error, 84.6% Billing Deflection), 1st-Time Overage-to-Tier-Upgrade Waiver (87.4% Expansion Conversion), Billing Admin RBAC/PO# Gate & FTC Max-1-Offer / 365-Day Discount Cooldown Lock (-$340k/10k Hrs)**: [EN](./b2b-saas-subscription-billing-overage-seat-provisioning-ftc-retention-voice-selection-faq.en.md) | [中文](./b2b-saas-subscription-billing-overage-seat-provisioning-ftc-retention-voice-selection-faq.md)
+525. **Enterprise Mortgage Origination, Refinance Lock Desk & Loan Servicing (ICE Encompass / Black Knight MSP) Voice AI Guide: SAFE Act NMLS Rate-Lock Boundary + Reg Z True APR, CFPB TRID 5-of-6 LE Clock Gate (0.00% 3-Day LE Breaches), In-Call PKCE Stip Upload (-4.2 Days Clear-to-Close), <250ms MSP Escrow Diff (78.6% Servicing Containment) & Reg X Hardship SPOC Bridge (-$365k/10k Hrs)**: [EN](./mortgage-origination-refinance-encompass-trid-servicing-loss-mitigation-voice-selection-faq.en.md) | [中文](./mortgage-origination-refinance-encompass-trid-servicing-loss-mitigation-voice-selection-faq.md)

@@ -14515,6 +14515,37 @@ export function evaluateB2bSaasBillingOverageFtcRetentionVoice2026Guard(input: {
   };
 }
 
+export interface MortgageOriginationEncompassTridServicingVoice2026Evaluation {
+  policyCode: "MORTGAGE-ORIGINATION-ENCOMPASS-TRID-SERVICING-VOICE-2026-01";
+  preQualQuoteAndStipUploadAuthorized: boolean;
+  unlicensedRateLockOrUnarmedTrid6thPieceOrWireChangeBlocked: boolean;
+  stateLicensedMloOrRegXSpocOrWireFraudHoldTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Mortgage Origination & Servicing (SAFE Act NMLS Rate-Lock Boundary & Reg Z True APR, CFPB TRID 5-of-6 LE Clock Gate, Encompass PKCE Stip Collector, 0ms Closing Wire-Fraud Shield & CFPB Reg X SPOC) Guard (`MORTGAGE-ORIGINATION-ENCOMPASS-TRID-SERVICING-VOICE-2026-01`).
+ */
+export function evaluateMortgageOriginationEncompassTridServicingVoice2026Guard(input: {
+  tridFiveOfSixCapOrEncompassLeArmedWithTrueApr: boolean;
+  zeroUnlicensedRateLockAndZeroEcoaProtectedProbing: boolean;
+  closingWireChangeAttemptedOrRegXHardshipOrRateLockRequested: boolean;
+}): MortgageOriginationEncompassTridServicingVoice2026Evaluation {
+  return {
+    policyCode: "MORTGAGE-ORIGINATION-ENCOMPASS-TRID-SERVICING-VOICE-2026-01",
+    preQualQuoteAndStipUploadAuthorized:
+      input.tridFiveOfSixCapOrEncompassLeArmedWithTrueApr &&
+      input.zeroUnlicensedRateLockAndZeroEcoaProtectedProbing &&
+      !input.closingWireChangeAttemptedOrRegXHardshipOrRateLockRequested,
+    unlicensedRateLockOrUnarmedTrid6thPieceOrWireChangeBlocked:
+      !input.tridFiveOfSixCapOrEncompassLeArmedWithTrueApr ||
+      !input.zeroUnlicensedRateLockAndZeroEcoaProtectedProbing ||
+      input.closingWireChangeAttemptedOrRegXHardshipOrRateLockRequested,
+    stateLicensedMloOrRegXSpocOrWireFraudHoldTriggered:
+      input.closingWireChangeAttemptedOrRegXHardshipOrRateLockRequested,
+  };
+}
+
+
 
 
 

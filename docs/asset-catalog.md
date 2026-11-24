@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **524 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **525 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（524 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（525 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -66,7 +66,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（501 篇）
+### 3.3 高价值企业行业解决方案蓝图（502 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -568,3 +568,4 @@
 522. **2026 企业实时语音与多模态智能体架构师总纲（Enterprise Voice AI Master Playbook）：四大架构范式、七大生产护栏与十二大高价值行业选型全景图（30 秒拍板纯 S2S / 混合双脑 / 流式级联 / 私有化三池 GPU 四大范式、一站式贯穿 `turnEpoch` 防脏写 + `P65 PTU/PAYGO` 降本 `73.1%`（`$0.039/min`）+ 会话 `JWT` 零信任工具沙箱 + 边缘 `SAQ-A` 支付剥离 + `650ms` 跨区容灾 + 500 路声学 CI 门禁、以及 12 大主流行业北极星指标与 ROI 速查矩阵）方案**：[中文](./enterprise-voice-ai-2026-master-architecture-playbook-industry-matrix-selection-faq.md) | [EN](./enterprise-voice-ai-2026-master-architecture-playbook-industry-matrix-selection-faq.en.md)
 523. **财富管理与私人银行（Wealth Management & Private Banking：BlackRock Aladdin / Tamarac / Salesforce FSC）市场异动组合归因安抚、`SEC Reg BI / MiFID II` 适当性零幻觉防火墙与税务损耗收割实时语音架构选型指南（`<250ms` 预计算归因卡直读消除 `18.4%` LLM 收益率心算幻觉并将暴跌日自助安抚率从 `19.0%` 提至 `81.4%`、`0ms` `IPS` 风险等级硬比对与承诺收益词清洗实现 `0.00%` 越权荐股违例、跨账户 `±30天` `IRS Sec. 1091` 洗售扫描、以及 `>$10k` `FIDO2` 生物识别防盗汇锁每万小时净省 `$38.5万`）方案**：[中文](./wealth-management-portfolio-review-market-volatility-reg-bi-mifid-suitability-voice-selection-faq.md) | [EN](./wealth-management-portfolio-review-market-volatility-reg-bi-mifid-suitability-voice-selection-faq.en.md)
 524. **企业级 B2B SaaS 客户成功、按量计费超额解析、自助席位扩容与 `FTC Click-to-Cancel` 续费挽留（Stripe / Zuora / Chargebee / Gainsight）实时语音架构选型指南（`<300ms` 预计算用量与折算差异卡消除 `21.4%` 期中算术幻觉并将账单自助完结率提至 `84.6%`、首次超额绑定套餐升档追溯免罚将 `87.4%` 退款投诉转化为 Expansion ARR、`Billing Admin RBAC` 与 `PO#` 门禁、以及 `FTC` 单次挽留上限 + `365天` 折扣冷却锁每万小时净省 `$34.0万`）方案**：[中文](./b2b-saas-subscription-billing-overage-seat-provisioning-ftc-retention-voice-selection-faq.md) | [EN](./b2b-saas-subscription-billing-overage-seat-provisioning-ftc-retention-voice-selection-faq.en.md)
+525. **房贷按揭进件、转按揭锁息与贷后服务（Mortgage Origination & Servicing：ICE Encompass / Black Knight MSP）实时语音架构选型指南（`SAFE Act` 持牌锁息边界 + `Reg Z True APR` 强制同播、`CFPB TRID` `5-of-6` 六要素预审门禁实现 `0.00%` 3 工作日 `Loan Estimate` 超期违例、通话内 `180s PKCE` 核保补件卡将放款周期缩短 `4.2天`、以及 `<250ms` 托管差额拆解分流 `78.6%` 贷后查询与 `Reg X SPOC` 纾困直连每万小时净省 `$36.5万`）方案**：[中文](./mortgage-origination-refinance-encompass-trid-servicing-loss-mitigation-voice-selection-faq.md) | [EN](./mortgage-origination-refinance-encompass-trid-servicing-loss-mitigation-voice-selection-faq.en.md)

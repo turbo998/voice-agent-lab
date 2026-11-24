@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg525" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1120"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent525" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg525)"/>
+  <rect x="24" y="24" width="1152" height="632" rx="16" fill="none" stroke="#1e293b" stroke-width="2"/>
+  <rect x="44" y="42" width="1112" height="58" rx="10" fill="#0f172a" stroke="#0ea5e9" stroke-width="1.5"/>
+  <text x="64" y="70" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Enterprise Mortgage Origination, TRID Gate &amp; Loan Servicing (ICE Encompass / MSP) Voice AI</text>
+  <text x="64" y="91" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13">SAFE Act NMLS Rate-Lock Boundary · CFPB TRID 6-Piece LE Clock Gate · Escrow Diff &amp; Reg X Hardship SPOC (MORTGAGE-ORIGINATION-ENCOMPASS-TRID-SERVICING-VOICE-2026-01)</text>
+
+  <!-- Column 1: SAFE Act & TRID 6-Piece Gate -->
+  <rect x="44" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#0ea5e9" stroke-width="1.5"/>
+  <rect x="44" y="120" width="356" height="40" rx="12" fill="#0c4a6e"/>
+  <text x="62" y="145" fill="#bae6fd" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. SAFE Act &amp; TRID 6-Piece Clock</text>
+
+  <rect x="62" y="176" width="320" height="106" rx="8" fill="#0f172a" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="76" y="198" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">5-of-6 TRID Pre-Qual State Machine</text>
+  <text x="76" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Tracks Name, Income, SSN, Address, Value, Loan</text>
+  <text x="76" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Gates 6th piece until Encompass LE workflow armed</text>
+  <text x="76" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Auto-starts 3-business-day Loan Estimate timer</text>
+  <text x="76" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Unintended TRID LE Clock Breaches</text>
+
+  <rect x="62" y="296" width="320" height="114" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="318" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">SAFE Act NMLS Licensing Boundary</text>
+  <text x="76" y="338" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Quotes published par sheet + True APR &amp; points</text>
+  <text x="76" y="356" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks unlicensed custom rate-lock binding</text>
+  <text x="76" y="374" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Transfers state-licensed NMLS MLO in &lt;400ms</text>
+  <text x="76" y="392" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100% 12 CFR 1008 SAFE Act Compliance</text>
+
+  <rect x="62" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">ECOA Reg B Fair-Lending Firewall</text>
+  <text x="76" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks marital/family-planning probing</text>
+  <text x="76" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Treats child-support/disability income neutrally</text>
+  <text x="76" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Logs HMDA demographic disclosures cleanly</text>
+  <text x="76" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Fair-Lending Disparate Treatment</text>
+
+  <!-- Column 2: Underwriting Stip & Closing Shield -->
+  <rect x="422" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="422" y="120" width="356" height="40" rx="12" fill="#78350f"/>
+  <text x="440" y="145" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. Encompass Stip &amp; Closing Shield</text>
+
+  <rect x="440" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+  <text x="454" y="198" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Proactive Underwriting Stip Collector</text>
+  <text x="454" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Explains Encompass open conditions in plain speech</text>
+  <text x="454" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Pushes 180s PKCE upload card for W-2 / Bank LOX</text>
+  <text x="454" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Validates page count &amp; account-number match</text>
+  <text x="454" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• Cuts Clear-to-Close (CTC) by 4.2 Days</text>
+
+  <rect x="440" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms Closing Wire-Fraud Lockdown</text>
+  <text x="454" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Never reads or changes ABA/wire routing on voice</text>
+  <text x="454" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Directs borrower to encrypted Closing Portal</text>
+  <text x="454" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Flags spoofed title-company email wire alerts</text>
+  <text x="454" y="398" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• $0 Closing Cash-to-Close Wire Hijacks</text>
+
+  <rect x="440" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">3-Day Closing Disclosure (CD) Clock</text>
+  <text x="454" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Verifies CD e-signature &gt;= 3 business days prior</text>
+  <text x="454" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Syncs mobile notary &amp; title signing calendar</text>
+  <text x="454" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Alerts processor on APR &gt;0.125% re-disclosure</text>
+  <text x="454" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 99.6% On-Time Closing Execution</text>
+
+  <!-- Column 3: Servicing Escrow & Reg X SPOC -->
+  <rect x="800" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#22c55e" stroke-width="1.5"/>
+  <rect x="800" y="120" width="356" height="40" rx="12" fill="#14532d"/>
+  <text x="818" y="145" fill="#bbf7d0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Escrow Diff &amp; Reg X Hardship SPOC</text>
+
+  <rect x="818" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+  <text x="832" y="198" fill="#4ade80" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">&lt;250ms MSP Escrow Shortage Explainer</text>
+  <text x="832" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Diffs county tax + hazard insurance increase</text>
+  <text x="832" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Offers lump-sum vs. 12-month shortage spread</text>
+  <text x="832" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Automates PMI removal LTV &lt;=80% appraisal check</text>
+  <text x="832" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 78.6% Servicing Call Containment</text>
+
+  <rect x="818" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">CFPB Reg X Loss-Mitigation SPOC Bridge</text>
+  <text x="832" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Detects job-loss, disaster, or &gt;30d delinquency</text>
+  <text x="832" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Routes to assigned Single Point of Contact (SPOC)</text>
+  <text x="832" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Halts dual-tracking foreclosure action on file</text>
+  <text x="832" y="398" fill="#4ade80" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100% 12 CFR 1024.40/41 Reg X Compliance</text>
+
+  <rect x="818" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Payoff Quote &amp; Lien-Release Automation</text>
+  <text x="832" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Generates per-diem payoff statement to portal</text>
+  <text x="832" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Tracks county recorder lien-release status</text>
+  <text x="832" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Verifies hazard-loss draft endorsement rules</text>
+  <text x="832" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• $0.049/min Blended Servicing Cost</text>
+
+  <!-- Footer KPI Bar -->
+  <rect x="44" y="568" width="1112" height="68" rx="10" fill="#0f172a" stroke="url(#accent525)" stroke-width="1.5"/>
+  <text x="68" y="595" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Validated Mortgage Origination &amp; Servicing Benchmark:</text>
+  <text x="68" y="618" fill="#7dd3fc" font-family="Segoe UI, Arial, sans-serif" font-size="13">Servicing Deflection: 29% → 78.6%  |  Clear-to-Close: -4.2 Days  |  SAFE Act / TRID / Reg X Breaches: 0.00%  |  Blended Cost: $0.049/min</text>
+</svg>
