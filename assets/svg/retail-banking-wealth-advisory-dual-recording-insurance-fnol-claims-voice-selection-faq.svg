@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg534" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent534" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg534)"/>
+  <rect x="24" y="24" width="1152" height="632" rx="16" fill="none" stroke="#1e293b" stroke-width="2"/>
+  <rect x="44" y="42" width="1112" height="58" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+  <text x="64" y="70" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Retail Banking, Wealth Dual-Recording (双录) &amp; Insurance Multimodal FNOL Voice AI Architecture</text>
+  <text x="64" y="91" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13">99.7% 1st-Pass Dual-Recording (20s Checkpoint Replay) · 3.1m WebRTC Video FNOL (69.2% STP) · FINRA 2165 Elder Shield (RETAIL-BANKING-WEALTH-DUAL-RECORDING-FNOL-VOICE-2026-01)</text>
+
+  <!-- Column 1: Wealth Management Smart Dual-Recording -->
+  <rect x="44" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="44" y="120" width="356" height="40" rx="12" fill="#064e3b"/>
+  <text x="62" y="145" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. Wealth Smart Dual-Recording (双录)</text>
+
+  <rect x="62" y="176" width="320" height="108" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="76" y="198" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">R1–R5 Suitability &amp; SHA-256 Locked SSML</text>
+  <text x="76" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks R4/R5 product sales to R1/R2 customers</text>
+  <text x="76" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Switches from S2S Q&amp;A to locked SSML on clauses</text>
+  <text x="76" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Seals audio/video hash to WORM compliance vault</text>
+  <text x="76" y="272" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Suitability Mismatch or Script Drift</text>
+
+  <rect x="62" y="298" width="320" height="112" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="320" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">20-Second Clause Checkpoint Replay</text>
+  <text x="76" y="340" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Verifies face-in-frame &amp; unambiguous 'Yes' per clause</text>
+  <text x="76" y="358" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Re-records only the failed 20s segment (not full 6m)</text>
+  <text x="76" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Eliminates post-audit rejection &amp; customer drop-off</text>
+  <text x="76" y="394" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 64.0% → 99.7% First-Pass Dual-Recording QA</text>
+
+  <rect x="62" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Zero Promissory-Yield Output Firewall</text>
+  <text x="76" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks 'guaranteed principal / risk-free return'</text>
+  <text x="76" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Answers fee/lockup questions via S2S mid-flow</text>
+  <text x="76" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Resumes exact statutory clause checkpoint</text>
+  <text x="76" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100% Regulatory Audit &amp; SEC Reg BI Readiness</text>
+
+  <!-- Column 2: 3.1m Insurance Multimodal FNOL Claims -->
+  <rect x="422" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="422" y="120" width="356" height="40" rx="12" fill="#1e3a8a"/>
+  <text x="440" y="145" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. 3.1m Multimodal Insurance FNOL</text>
+
+  <rect x="440" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="454" y="198" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">In-Call WebRTC Live Video Damage Triage</text>
+  <text x="454" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Pushes zero-app WebRTC camera link during call</text>
+  <text x="454" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Guides caller to scan 17-char VIN &amp; bumper damage</text>
+  <text x="454" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Verifies live GPS/EXIF metadata against old photos</text>
+  <text x="454" y="272" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 18.5m → 3.1m FNOL &amp; 69.2% Minor-Claim STP</text>
+
+  <rect x="440" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Anti-Estoppel Reservation of Rights Lock</text>
+  <text x="454" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Never promises coverage before policy/deductible check</text>
+  <text x="454" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Syncs structured loss packet to Guidewire / Duck Creek</text>
+  <text x="454" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Books certified repair shop &amp; rental car in 15s</text>
+  <text x="454" y="398" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• -76.7% Loss Adjustment Expense (LAE to $9.80)</text>
+
+  <rect x="440" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms Bodily-Injury &amp; Total-Loss Escalation</text>
+  <text x="454" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Detects airbag deployment, ambulance or injury</text>
+  <text x="454" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Preempts self-service flow to bridge Bodily-Injury Adjuster</text>
+  <text x="454" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Preserves third-party subrogation witness details</text>
+  <text x="454" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100% High-Severity Claim Specialist Routing</text>
+
+  <!-- Column 3: Retail Banking Anti-Scam & Reg E Disputes -->
+  <rect x="800" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="800" y="120" width="356" height="40" rx="12" fill="#78350f"/>
+  <text x="818" y="145" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Anti-Scam &amp; Reg E Card Disputes</text>
+
+  <rect x="818" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+  <text x="832" y="198" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">FINRA Rule 2165 Senior Anti-Scam Shield</text>
+  <text x="832" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Detects 3rd-party background coaching &amp; vocal stress</text>
+  <text x="832" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Places temporary protective hold on high-risk wire</text>
+  <text x="832" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Alerts enrolled Trusted Contact &amp; Fraud Specialist</text>
+  <text x="832" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 99.4% Elder Authorised-Push-Payment Scam Block</text>
+
+  <rect x="818" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">&lt;200ms Reg E Card Dispute &amp; Token Re-Issue</text>
+  <text x="832" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Freezes compromised PAN &amp; pushes new Apple/Google Pay</text>
+  <text x="832" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Preserves recurring merchant subscriptions automatically</text>
+  <text x="832" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Auto-calculates 10-day Reg E provisional credit</text>
+  <text x="832" y="398" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 85.6% Card-Fraud Call Self-Service Resolution</text>
+
+  <rect x="818" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">BFSI Omnichannel FinOps &amp; Audit</text>
+  <text x="832" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• PCI-DSS v4.0 Edge DTMF clamping (zero PAN in logs)</text>
+  <text x="832" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Eliminates 140-minute storm/market-drop hold queues</text>
+  <text x="832" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Saves $395,000 per 10,000 BFSI contact hours</text>
+  <text x="832" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• $0.046/min Blended Banking &amp; Insurance Cost</text>
+
+  <!-- Footer KPI Bar -->
+  <rect x="44" y="568" width="1112" height="68" rx="10" fill="#0f172a" stroke="url(#accent534)" stroke-width="1.5"/>
+  <text x="68" y="595" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Validated Retail Banking, Wealth Dual-Recording &amp; Insurance FNOL Benchmark:</text>
+  <text x="68" y="618" fill="#6ee7b7" font-family="Segoe UI, Arial, sans-serif" font-size="13">Dual-Recording 1st-Pass QA: 64% → 99.7%  |  FNOL Time: 18.5m → 3.1m (69.2% STP)  |  Suitability / Estoppel Breaches: 0.00%  |  Cost: $0.046/min</text>
+</svg>

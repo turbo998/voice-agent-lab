@@ -14785,6 +14785,36 @@ export function evaluateMultinationalOmnichannelVoiceTranslation2026Guard(input:
   };
 }
 
+export interface RetailBankingWealthDualRecordingFnolVoice2026Evaluation {
+  policyCode: "RETAIL-BANKING-WEALTH-DUAL-RECORDING-FNOL-VOICE-2026-01";
+  dualRecordingWormSealAndWebrtcFnolStpAuthorized: boolean;
+  suitabilityMismatchOrEstoppelPromiseOrStaticGalleryUploadBlocked: boolean;
+  finra2165ElderHoldOrBodilyInjuryAdjusterBridgeTriggered: boolean;
+}
+
+/**
+ * Deterministic Retail Banking, Wealth Dual-Recording & Insurance Multimodal FNOL (R1-R5 Suitability + SHA-256 Locked-SSML 20s Checkpoint Replay, In-Call Live WebRTC FNOL & Anti-Estoppel Lock, FINRA Rule 2165 Elder Anti-Scam Shield) Guard (`RETAIL-BANKING-WEALTH-DUAL-RECORDING-FNOL-VOICE-2026-01`).
+ */
+export function evaluateRetailBankingWealthDualRecordingFnolVoice2026Guard(input: {
+  r1ToR5SuitabilityMatchedAndLockedSsmlAffirmativeVerified: boolean;
+  liveWebrtcVinVerifiedAndZeroCoverageEstoppelPromise: boolean;
+  elderBackgroundCoachingDetectedOrBodilyInjuryReported: boolean;
+}): RetailBankingWealthDualRecordingFnolVoice2026Evaluation {
+  return {
+    policyCode: "RETAIL-BANKING-WEALTH-DUAL-RECORDING-FNOL-VOICE-2026-01",
+    dualRecordingWormSealAndWebrtcFnolStpAuthorized:
+      input.r1ToR5SuitabilityMatchedAndLockedSsmlAffirmativeVerified &&
+      input.liveWebrtcVinVerifiedAndZeroCoverageEstoppelPromise &&
+      !input.elderBackgroundCoachingDetectedOrBodilyInjuryReported,
+    suitabilityMismatchOrEstoppelPromiseOrStaticGalleryUploadBlocked:
+      !input.r1ToR5SuitabilityMatchedAndLockedSsmlAffirmativeVerified ||
+      !input.liveWebrtcVinVerifiedAndZeroCoverageEstoppelPromise ||
+      input.elderBackgroundCoachingDetectedOrBodilyInjuryReported,
+    finra2165ElderHoldOrBodilyInjuryAdjusterBridgeTriggered:
+      input.elderBackgroundCoachingDetectedOrBodilyInjuryReported,
+  };
+}
+
 
 
 
