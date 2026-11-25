@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 531 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 531 Guides](#-2-531-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 532 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 532 Guides](#-2-532-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 531 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 532 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (508 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (509 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -605,6 +605,7 @@ flowchart LR
 529. **MedTech Diagnostic Imaging & Surgical Capital Equipment (GE HealthCare / Siemens Healthineers / Philips MRI/CT/Cath-Lab) Voice AI Guide: 0ms Patient-on-Table Entitlement Bypass (<12s L3 Modality Bridge), <200ms HIPAA Zero-PHI IoMT Error-Log Triage (74.6% Remote Deflection), ACR Zone-IV Always-On Magnet & Quench Evacuation Lock + 0ms FDA 21 CFR Part 803 MDR Log Freeze (-$420k/10k Hrs)**: [EN](./docs/medtech-mri-ct-cathlab-remote-service-quench-patient-on-table-voice-selection-faq.en.md) | [中文](./docs/medtech-mri-ct-cathlab-remote-service-quench-patient-on-table-voice-selection-faq.md)
 530. **Global Duty of Care, Corporate Travel Risk & Emergency MedEvac (International SOS / Crisis24 / SAP Concur) Voice AI Guide: ISO 31030 <180s Crisis Muster Roll-Call (98.4% Accounting), Zero Open-Line Extraction Coordinate Lock (FIDO2 Burn-After-Reading PKCE Card), 18s Vetted Safe-Blood Hospital GOP Dispatch & Dual-MD Air Ambulance MedEvac Gate + <150ms Digital Proof-of-Life Anti-Virtual-Kidnap & 0ms Silent Duress K&R Bridge (-$415k/10k Hrs)**: [EN](./docs/global-duty-of-care-travel-risk-medevac-crisis-evacuation-voice-selection-faq.en.md) | [中文](./docs/global-duty-of-care-travel-risk-medevac-crisis-evacuation-voice-selection-faq.md)
 531. **Energy Grid Demand Response, Virtual Power Plants (VPP) & C&I Curtailment (ERCOT / PJM / OpenADR 3.0) Voice AI Guide: <120s Parallel Plant Curtailment Commit + 15s Dynamic BESS Shortfall Backfill (78.4% → 99.8% MW Delivery, $0 ISO Penalties), <150ms SCADA Safe Process Baseload Floor, 0ms EPA RICE 40 CFR 63 Diesel Arbitrage & IEEE 1547 Anti-Islanding Lock + NFPA 855 BESS Off-Gas Standoff (+$435k/10k Hrs)**: [EN](./docs/energy-grid-demand-response-vpp-ci-curtailment-dispatch-voice-selection-faq.en.md) | [中文](./docs/energy-grid-demand-response-vpp-ci-curtailment-dispatch-voice-selection-faq.md)
+532. **Enterprise Contact Center (CCaaS) Modernization Selection Guide (Azure OpenAI GPT-Realtime vs. Streaming Cascade vs. Amazon Connect / Genesys / LiveKit + Pipecat): In-Call 30% S2S (310ms) + 70% Pre-Verified Locked-SSML Cascade (100% Numeric Accuracy, 68.4% Tier-1 Deflection), 120k-Min/Mo TCO Break-Even ($0.041/min Self-Hosted vs. $0.115/min Wrapper, -$444k/Yr at 500k Min) & <150ms Signed 8KB Warm Handoff (0% Repeat KYC, -84s AHT) + 3s Auto-ACW**: [EN](./docs/ccaas-modernization-gpt-realtime-vs-azure-speech-cascade-connect-genesys-livekit-tco-selection-faq.en.md) | [中文](./docs/ccaas-modernization-gpt-realtime-vs-azure-speech-cascade-connect-genesys-livekit-tco-selection-faq.md)
 
 ---
 

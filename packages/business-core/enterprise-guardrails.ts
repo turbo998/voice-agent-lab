@@ -14725,6 +14725,36 @@ export function evaluateEnergyGridDemandResponseVppVoice2026Guard(input: {
   };
 }
 
+export interface CcaasModernizationGptRealtimeCascadeLivekit2026Evaluation {
+  policyCode: "CCAAS-MODERNIZATION-GPT-REALTIME-CASCADE-LIVEKIT-2026-01";
+  hybridS2sCascadeTurnAndIdempotentCrmWriteAuthorized: boolean;
+  unverifiedNumericSpeechOrStaleBargeInEpochWriteBlocked: boolean;
+  zeroRepeatSignedKycWarmHandoffAndAutoAcwTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise CCaaS Modernization (30% S2S Empathy + 70% Pre-Verified Locked-SSML Cascade, Monotonic Turn-Epoch Write Fence, <150ms Signed KYC Warm Handoff & 3s Auto-ACW) Guard (`CCAAS-MODERNIZATION-GPT-REALTIME-CASCADE-LIVEKIT-2026-01`).
+ */
+export function evaluateCcaasModernizationGptRealtimeCascadeLivekit2026Guard(input: {
+  preTtsNumericRegexMatchedAndTurnEpochCurrent: boolean;
+  threeTurnAudioPrunedAndUnifiedBrandVoiceLocked: boolean;
+  complexDisputeOrVipSupervisorWarmHandoffRequested: boolean;
+}): CcaasModernizationGptRealtimeCascadeLivekit2026Evaluation {
+  return {
+    policyCode: "CCAAS-MODERNIZATION-GPT-REALTIME-CASCADE-LIVEKIT-2026-01",
+    hybridS2sCascadeTurnAndIdempotentCrmWriteAuthorized:
+      input.preTtsNumericRegexMatchedAndTurnEpochCurrent &&
+      input.threeTurnAudioPrunedAndUnifiedBrandVoiceLocked &&
+      !input.complexDisputeOrVipSupervisorWarmHandoffRequested,
+    unverifiedNumericSpeechOrStaleBargeInEpochWriteBlocked:
+      !input.preTtsNumericRegexMatchedAndTurnEpochCurrent ||
+      !input.threeTurnAudioPrunedAndUnifiedBrandVoiceLocked ||
+      input.complexDisputeOrVipSupervisorWarmHandoffRequested,
+    zeroRepeatSignedKycWarmHandoffAndAutoAcwTriggered:
+      input.complexDisputeOrVipSupervisorWarmHandoffRequested,
+  };
+}
+
 
 
 

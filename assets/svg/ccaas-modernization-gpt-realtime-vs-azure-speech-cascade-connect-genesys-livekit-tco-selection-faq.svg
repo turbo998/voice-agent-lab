@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg532" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent532" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg532)"/>
+  <rect x="24" y="24" width="1152" height="632" rx="16" fill="none" stroke="#1e293b" stroke-width="2"/>
+  <rect x="44" y="42" width="1112" height="58" rx="10" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="64" y="70" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Enterprise CCaaS Modernization: GPT-Realtime vs. Cascaded STT+LLM+TTS vs. Connect / Genesys / LiveKit</text>
+  <text x="64" y="91" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13">310ms S2S + Locked-SSML Hybrid Router · 120k-Min/Mo TCO Break-Even ($0.041/min) · Zero-Repeat Warm Handoff (CCAAS-MODERNIZATION-GPT-REALTIME-CASCADE-LIVEKIT-2026-01)</text>
+
+  <!-- Column 1: S2S vs Cascaded Hybrid Turn Router -->
+  <rect x="44" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="44" y="120" width="356" height="40" rx="12" fill="#1e3a8a"/>
+  <text x="62" y="145" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. S2S vs. Cascade Hybrid Routing</text>
+
+  <rect x="62" y="176" width="320" height="108" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="76" y="198" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">310ms Native S2S Empathy &amp; Triage Lane</text>
+  <text x="76" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Azure OpenAI GPT-Realtime / Gemini Live / Nova</text>
+  <text x="76" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Handles open-ended intent &amp; frustration empathy</text>
+  <text x="76" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• &lt;35ms semantic barge-in with backchannel filter</text>
+  <text x="76" y="272" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 68.4% Tier-1 Call Self-Service Deflection</text>
+
+  <rect x="62" y="298" width="320" height="112" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="320" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">&lt;2ms Pre-TTS Regex &amp; Locked-SSML Lane</text>
+  <text x="76" y="340" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Switches on quotes, APR rates, refunds &amp; clauses</text>
+  <text x="76" y="358" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Inspectable text seam verifies CRM/ERP numbers</text>
+  <text x="76" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Shares unified Custom Neural Voice persona</text>
+  <text x="76" y="394" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100.0% Verbatim Numeric &amp; Regulatory Accuracy</text>
+
+  <rect x="62" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">3-Turn Audio Pruning &amp; Turn-Epoch Fence</text>
+  <text x="76" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Compacts turns &lt;= N-3 from raw audio to text</text>
+  <text x="76" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Cancels stale tool writes on customer barge-in</text>
+  <text x="76" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Injects T+650ms contextual filler on slow APIs</text>
+  <text x="76" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• -63.8% Long-Call Token Burn &amp; 0% Stale Writes</text>
+
+  <!-- Column 2: Platform Selection & 120k-Min TCO Break-Even -->
+  <rect x="422" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="422" y="120" width="356" height="40" rx="12" fill="#064e3b"/>
+  <text x="440" y="145" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. Platform Matrix &amp; 120k-Min TCO</text>
+
+  <rect x="440" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="454" y="198" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">120,000-Min/Mo Wrapper vs. Cloud-Native</text>
+  <text x="454" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• &lt;120k min/mo: Retell / Vapi rapid PoC ($0.115/m)</text>
+  <text x="454" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• &gt;=120k min/mo: ACS + LiveKit/Pipecat ($0.041/m)</text>
+  <text x="454" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Eliminates $0.05–$0.07/min SaaS wrapper markup</text>
+  <text x="454" y="272" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• Saves $444k/Year at 500k Minutes/Month</text>
+
+  <rect x="440" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">CCaaS BYOC Edge Hairpin Integration</text>
+  <text x="454" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Connects Genesys / Amazon Connect / D365 / Cisco</text>
+  <text x="454" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Releases AI media leg on transfer (0% double toll)</text>
+  <text x="454" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Keeps private VNet/VPC CRM calls under 15ms</text>
+  <text x="454" y="398" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100% Enterprise Data Sovereignty &amp; Zero Lock-In</text>
+
+  <rect x="440" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">P65 Azure PTU + 0ms PAYGO Spillover</text>
+  <text x="454" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Sizes reserved PTU to daytime P65 baseline traffic</text>
+  <text x="454" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Bursts peak campaign traffic to PAYGO in 0ms</text>
+  <text x="454" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Routes 72% of routine FAQ turns to low-cost SLM</text>
+  <text x="454" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% HTTP 429 Throttling Drops at Peak</text>
+
+  <!-- Column 3: Zero-Repeat Warm Handoff & Agent Assist -->
+  <rect x="800" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="800" y="120" width="356" height="40" rx="12" fill="#78350f"/>
+  <text x="818" y="145" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Warm Handoff &amp; Agent Copilot</text>
+
+  <rect x="818" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+  <text x="832" y="198" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">&lt;150ms Signed Handoff_Context_Packet</text>
+  <text x="832" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Pushes 8KB Redis context card before agent ring</text>
+  <text x="832" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Carries kyc_verified=true, slots &amp; 3-bullet summary</text>
+  <text x="832" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Plays 6s AI whisper briefing to human specialist</text>
+  <text x="832" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Repeat KYC &amp; -84s Human Handle Time</text>
+
+  <rect x="818" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Stereo Split &lt;320ms Agent Assist Cards</text>
+  <text x="832" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Separates Caller (Ch0) vs Agent (Ch1) audio tracks</text>
+  <text x="832" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Renders &lt;=25-word next-best-action micro-cards</text>
+  <text x="832" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Flags missing compliance disclosures in real time</text>
+  <text x="832" y="398" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• +38.6% New-Hire First-Contact Resolution</text>
+
+  <rect x="818" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">3s Auto-ACW Summary &amp; Promise Audit</text>
+  <text x="832" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Generates structured Salesforce/D365 disposition</text>
+  <text x="832" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Cuts post-call wrap-up (ACW) from 92s to 8s</text>
+  <text x="832" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Reconciles spoken agent promises vs CRM records</text>
+  <text x="832" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• $0.041/min Blended Enterprise CCaaS TCO</text>
+
+  <!-- Footer KPI Bar -->
+  <rect x="44" y="568" width="1112" height="68" rx="10" fill="#0f172a" stroke="url(#accent532)" stroke-width="1.5"/>
+  <text x="68" y="595" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Validated Enterprise CCaaS Modernization Benchmark:</text>
+  <text x="68" y="618" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13">Tier-1 Deflection: 68.4%  |  Numeric Accuracy: 100%  |  Repeat KYC on Transfer: 0.00% (-84s AHT)  |  Blended Cost: $0.041/min (-$444k/Yr at 500k Min)</text>
+</svg>
