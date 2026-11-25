@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg547" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue547" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen547" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple547" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber547" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 22px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg547)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">企业实时语音评测工程（Voice EvalOps）、7 跳 OpenTelemetry 火焰图与灰度熔断架构 (#547)</text>
+  <text x="48" y="74" class="subtitle">Enterprise Voice EvalOps: 500-Call Acoustic Regression CI/CD (4.2 min) · 7-Hop W3C TraceContext Flamegraph · Sticky Canary &amp; &lt;15s LKG Auto-Rollback</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue547)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">EVALOPS-OTEL-CANARY-2026</text>
+
+  <!-- Plane 1: Pre-Merge 500-Call Acoustic Simulation CI/CD -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue547)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① 上线前 500 通声学仿真 CI/CD (Acoustic Eval)</text>
+
+  <rect x="46" y="158" width="319" height="84" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">500 路对抗性语音 Persona 并发压测 (4.2 min)</text>
+  <text x="60" y="200" class="node-sub">• 8kHz G.711 窄带压缩 + 5dB SNR 地铁/咖啡厅底噪</text>
+  <text x="60" y="218" class="node-sub">• 句中犹豫/改口 ("呃…不对改成50") + 强打断压测</text>
+  <text x="60" y="234" class="node-sub">• 兼容 Coval / Cekura / Roark / Pipecat + Foundry Eval</text>
+
+  <rect x="46" y="256" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="278" class="node-title">双轨确定性断言 (Audio + Transcript Judges)</text>
+  <text x="60" y="298" class="node-sub">• 工具参数精确匹配: 金额/日期/订单号 AST 100% 一致</text>
+  <text x="60" y="316" class="node-sub">• 声学指标门禁: 打断停播 &lt;=220ms · 零 800ms 抢话</text>
+  <text x="60" y="334" class="node-sub">• 发现纯文本评测漏检的 23.4% 真实声学故障</text>
+
+  <rect x="46" y="360" width="319" height="86" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="382" class="node-title">GitHub Actions PR 准入红线 (Release Gate)</text>
+  <text x="60" y="402" class="node-sub">• 任务达成率 (TSR) &gt;=96.0% 且合规违例 = 0.00%</text>
+  <text x="60" y="420" class="node-sub">• 端到端 P95 轮次延迟回归 &lt;= +50ms 方可合并</text>
+  <text x="60" y="436" class="node-sub">• 单次 500 通回归成本仅 $18.50 (替代 $4,200 人工)</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">生产坏例自动回流 (Failure-to-Fixture Loop)</text>
+  <text x="60" y="500" class="node-sub">• 线上转人工/用户挂断通话自动脱敏切片入库</text>
+  <text x="60" y="518" class="node-sub">• 次日自动转化为 CI 必测回归音频集防二次复发</text>
+
+  <!-- Plane 2: 7-Hop OpenTelemetry Per-Turn Flamegraph -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple547)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② 7 跳 OpenTelemetry 轮次延迟火焰图 (W3C Trace)</text>
+
+  <rect x="421" y="158" width="358" height="106" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">统一 `voice.turn.id` 7 跳全链路分布式追踪</text>
+  <text x="435" y="200" class="node-sub">• Hop 1: SBC/WebRTC Jitter (22ms) → Hop 2: VAD EoU (180ms)</text>
+  <text x="435" y="218" class="node-sub">• Hop 3: STT Final (115ms) → Hop 4: RAG/MCP Tool (140ms)</text>
+  <text x="435" y="236" class="node-sub">• Hop 5: LLM TTFT (245ms) → Hop 6: TTS First-Byte (95ms)</text>
+  <text x="435" y="252" class="node-sub">• Hop 7: Downlink RTP (28ms) ⇒ Total P50 = 825ms</text>
+
+  <rect x="421" y="278" width="358" height="86" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="300" class="node-title">用户感知延迟 (Perceived Latency) 精准刻度</text>
+  <text x="435" y="320" class="node-sub">• 区分网络 TTFT 与真实首包可听帧 (Audio-to-Audio)</text>
+  <text x="435" y="338" class="node-sub">• 自动扣除渐进安抚微话术已覆盖的外部 API 耗时</text>
+  <text x="435" y="354" class="node-sub">• 实时输出 Azure Monitor / Arize Phoenix / Langfuse</text>
+
+  <rect x="421" y="378" width="358" height="84" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="400" class="node-title">声学质量与情绪退化遥测 (Acoustic Telemetry)</text>
+  <text x="435" y="420" class="node-sub">• 逐轮采集 STT 词置信度、背景 SNR 与能量暴涨比</text>
+  <text x="435" y="438" class="node-sub">• 实时标记用户重复提问 ("我刚说了!") 与焦躁打断</text>
+
+  <rect x="421" y="474" width="358" height="66" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="496" class="node-title">故障定界从 4.5 小时压缩至 90 秒 (MTTR -96.7%)</text>
+  <text x="435" y="516" class="node-sub">• 单击慢通话即展开 7 跳火焰图与同步双轨录音切片</text>
+
+  <!-- Plane 3: Sticky Canary Rollout & <15s Auto-Rollback -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen547)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ 会话粘性灰度发布与 &lt;15s 自动熔断回滚</text>
+
+  <rect x="835" y="158" width="319" height="86" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">Call-ID 会话级粘性金丝雀 (1% → 10% → 50%)</text>
+  <text x="849" y="200" class="node-sub">• 入呼振铃期按 Call-ID 哈希锁定 Prompt/Model/TTS 版本</text>
+  <text x="849" y="218" class="node-sub">• 严禁通话中途切换模型快照，确保单通音色与逻辑一致</text>
+  <text x="849" y="234" class="node-sub">• 支持 Shadow Mode 旁路静音重放验证新模型 Tool 准确率</text>
+
+  <rect x="835" y="258" width="319" height="92" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="280" class="node-title">三维声学异常自动熔断器 (Auto-Rollback Breaker)</text>
+  <text x="849" y="300" class="node-sub">• 触发项 1: 用户重复口述率 (Repeat Rate) &gt; 12.0%</text>
+  <text x="849" y="318" class="node-sub">• 触发项 2: 焦躁打断率 &gt; 28% 或 P95 延迟 &gt; 1,350ms</text>
+  <text x="849" y="336" class="node-sub">• 触发项 3: 异常转人工率较基线暴涨 &gt; +4.0%</text>
+
+  <rect x="835" y="364" width="319" height="82" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">&lt;15 秒切回 LKG 稳定快照 (Zero-Drop Drain)</text>
+  <text x="849" y="406" class="node-sub">• 新进呼叫 0ms 切回 Last-Known-Good (LKG) 版本</text>
+  <text x="849" y="424" class="node-sub">• 在途异常灰度通话平滑降级至级联保底或优先转人工</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (ENTERPRISE-VOICE-EVALOPS-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 未过 500 通声学 CI 或缺 7 跳 OTel 埋点律禁发版</text>
+  <text x="849" y="518" class="node-sub">• 灰度指标越界自动触发 &lt;15s LKG 回滚与告警封存</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 企业实时语音 EvalOps 与灰度可观测平台实测基准 (10,000,000 分钟/月 · 500 通声学回归套件)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">4.2 min / $18.50</text>
+  <text x="64" y="666" class="metric-lbl">500 通声学并发回归 (vs 人工 3 天 / $4,200)</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">4.5 hr → 90 sec</text>
+  <text x="344" y="666" class="metric-lbl">7 跳 OTel 火焰图慢通话根因定位 MTTR (-96.7%)</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">&lt; 15s 自动回滚</text>
+  <text x="624" y="666" class="metric-lbl">粘性金丝雀异常秒级切回 LKG (生产事故率 -94%)</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">省 $24.6万 / 季</text>
+  <text x="904" y="666" class="metric-lbl">消除人工听测积压与发版回滚客诉赔偿净收益</text>
+</svg>

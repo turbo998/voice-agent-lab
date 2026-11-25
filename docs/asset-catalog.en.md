@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **546 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **547 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (546 Bilingual Guides)
+## 3. Solution Architect Selection Guides (547 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (523 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (524 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -590,3 +590,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 544. **Enterprise Voice AI Security, Anti-Deepfake PAD, PCI-DSS v4.0 Payment Descoping & 100% Automated Post-Call QA Guide: <80ms ISO 30107-3 Vocoder Liveness PAD (99.6% Clone Block) & <24ms Dual-Plane Prompt Shield, Edge SBC DTMF Clamping & Pre-Storage In-RAM PAN/CVV Zeroing (100% PCI SAQ-A Descoping, 11s Apple/Google Pay 96.4% Completion) + 30s Spoken-Promise vs. CRM Reconciler ($0.004/Call QA)**: [EN](./enterprise-voice-security-anti-deepfake-pci-dss-v4-compliance-recording-qa-selection-faq.en.md) | [中文](./enterprise-voice-security-anti-deepfake-pci-dss-v4-compliance-recording-qa-selection-faq.md)
 545. **Enterprise Meeting Intelligence, Live Simultaneous Interpretation & Grounded Jira/CRM Sync Guide: Azure Live Interpreter + Personal Voice ($16.80/hr vs $4,500/hr Booth, -99.6% TCO), SOV Dynamic Wait-k Polarity Lock & Scale AST Verifier (0.00% Negation Flips), Explicit '@Atlas' Wake + Attendee ACL Intersection (0.00% Guest Leaks) & 1.9% DER Hybrid Room Diarization + Staged Adaptive-Card Sync (-$342k/10k Hrs)**: [EN](./enterprise-meeting-intelligence-teams-zoom-live-interpreter-action-item-crm-sync-selection-faq.en.md) | [中文](./enterprise-meeting-intelligence-teams-zoom-live-interpreter-action-item-crm-sync-selection-faq.md)
 546. **Enterprise Multi-Agent Voice Swarm (LiveKit Agents / Pipecat Flows / LangGraph) & Bitemporal Memory Graph (Zep / Mem0) Guide: Scoped <=6-Tool Specialist Nodes (61.0% → 97.6% Tool Accuracy, -58.4% Prompt Burn), 42ms Silent Single-Persona Handoff + Compound Intent Stack & <=2-Hop Anti-Ping-Pong Breaker + <5ms Ringback <=250-Token Bitemporal Memory Card (99.4% Temporal Accuracy, -$280k/10k Calls)**: [EN](./enterprise-multi-agent-voice-swarm-subagent-handoff-memory-graph-selection-faq.en.md) | [中文](./enterprise-multi-agent-voice-swarm-subagent-handoff-memory-graph-selection-faq.md)
+547. **Enterprise Voice EvalOps (Coval / Cekura / Roark / Foundry Eval), 7-Hop OpenTelemetry Flamegraph & Sticky Canary Rollout Guide: 500-Call Noisy Acoustic Simulation CI in 4.2m/$18.50 (-96.9% Escaped Voice Bugs), Unified `voice.turn.id` 7-Hop Trace Flamegraph (4.5h → 90s MTTR) & Call-ID Sticky Canary + <15s 3-Metric LKG Auto-Rollback (-$246k/Qtr)**: [EN](./enterprise-voice-evalops-acoustic-ci-opentelemetry-canary-rollout-selection-faq.en.md) | [中文](./enterprise-voice-evalops-acoustic-ci-opentelemetry-canary-rollout-selection-faq.md)

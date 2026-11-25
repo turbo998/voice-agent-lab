@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 546 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 546 篇选型指南](#-二546-篇企业级语音架构选型指南中英双语) |
+| **🧭 547 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 547 篇选型指南](#-二547-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、546 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、547 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（523 篇）
+### 3.3 高价值企业行业解决方案蓝图（524 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -620,6 +620,7 @@ flowchart LR
 544. **企业级实时语音安全、防深伪活体检测（Anti-Deepfake PAD）、`PCI-DSS v4.0` 免坐席收款与 100% 自动化话后质检（Post-Call QA）选型指南（前 `1.2s` `<80ms` 声码器伪影活体检测拦截 `99.6%` 3 秒 AI 克隆音与 `<24ms` 双平面越狱护盾、边缘 SBC `DTMF` 剥离与落盘前 8 秒内存环形缓冲 `PAN/CVV` 清零实现 `100% PCI SAQ-A` 豁免年省 `$24万`、通话内 `11秒` `Apple/Google Pay` 推送提完成率至 `96.4%`、以及双声道分轨挂机 `30秒` 自动核对口头承诺 vs CRM 数据库 `100%` 抓出漏建单）方案**：[中文](./docs/enterprise-voice-security-anti-deepfake-pci-dss-v4-compliance-recording-qa-selection-faq.md) | [EN](./docs/enterprise-voice-security-anti-deepfake-pci-dss-v4-compliance-recording-qa-selection-faq.en.md)
 545. **跨国企业实时会议同声传译（Live Simultaneous Interpretation）、`Teams / Zoom` 参会语音 Agent 与 `Jira / CRM` 零幻觉纪要选型指南（`Azure Live Interpreter + Personal Voice` 将 6 语种同传从 `$4,500/h` 压至 `$16.80/h` 降本 `99.6%`、日/德/韩 `SOV` 句尾否定词动态 `Wait-k` 闭合锁与万/亿量纲 AST 校验实现 `0.00%` 极性反转、`"@Atlas"` 显式唤醒配参会人最小权限交集锁实现外部来宾在场 `0.00%` 底价外泄、以及 `1.9% DER` 混合会议室声纹归因与两阶段 `Adaptive Card` 审批写库每万小时省 `$34.2万`）方案**：[中文](./docs/enterprise-meeting-intelligence-teams-zoom-live-interpreter-action-item-crm-sync-selection-faq.md) | [EN](./docs/enterprise-meeting-intelligence-teams-zoom-live-interpreter-action-item-crm-sync-selection-faq.en.md)
 546. **企业多智能体实时语音协同（Multi-Agent Voice Swarm：LiveKit / Pipecat / LangGraph）与跨会话长期记忆图谱（`Zep / Mem0`）选型指南（将万字巨型 Prompt 拆解为单专家节点 `<=6` 工具使调用准确率从 `61.0%` 提至 `97.6%` 并省 `58.4%` Token、`42ms` 进程内同音色静默交接 + 复合意图压栈与 `<=2跳` 防乒乓死循环熔断、振铃期 `<5ms` 预热 `<=250 Token` 双时态记忆卡消除每轮 `680ms` 延迟并将事实准确率提至 `99.4%`、以及验身前家庭共号隐私隔离每万通省 `$28.0万`）方案**：[中文](./docs/enterprise-multi-agent-voice-swarm-subagent-handoff-memory-graph-selection-faq.md) | [EN](./docs/enterprise-multi-agent-voice-swarm-subagent-handoff-memory-graph-selection-faq.en.md)
+547. **企业实时语音 AI 评测工程（Voice EvalOps：Coval / Cekura / Roark / Foundry Eval）、7 跳 OpenTelemetry 延迟火焰图与金丝雀灰度发布选型指南（`500通` 并发带 `5dB SNR` 底噪与打断声学仿真在 `4.2分钟 / $18.50` 内拦截 `96.9%` 纯文本漏检故障、统一 `voice.turn.id` 7 跳 OTel 火焰图将慢通话排障 MTTR 从 `4.5小时` 压至 `90秒`、以及 `Call-ID` 会话粘性金丝雀配三维声学异常 `<15s` 自动回滚 LKG 每季省 `$24.6万`）方案**：[中文](./docs/enterprise-voice-evalops-acoustic-ci-opentelemetry-canary-rollout-selection-faq.md) | [EN](./docs/enterprise-voice-evalops-acoustic-ci-opentelemetry-canary-rollout-selection-faq.en.md)
 
 ---
 

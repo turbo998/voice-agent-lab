@@ -15175,6 +15175,36 @@ export function evaluateEnterpriseMultiAgentSwarmMemoryGraph2026Guard(input: {
   };
 }
 
+export interface EnterpriseVoiceEvalopsAcousticCiOtelCanary2026Evaluation {
+  policyCode: "ENTERPRISE-VOICE-EVALOPS-ACOUSTIC-CI-OTEL-CANARY-2026-01";
+  canaryTrafficRolloutAndBundlePinningAuthorized: boolean;
+  unverifiedAcousticCiOrMidCallSwitchOrDegradedCanaryBlocked: boolean;
+  instant15sLkgAutoRollbackAndFailureFixtureExportTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice EvalOps (500-Call Noisy Acoustic Simulation CI Gate, 7-Hop OpenTelemetry `voice.turn.id` Spans, Call-ID Sticky Canary Pinning & <15s 3-Metric Acoustic LKG Auto-Rollback) Guard (`ENTERPRISE-VOICE-EVALOPS-ACOUSTIC-CI-OTEL-CANARY-2026-01`).
+ */
+export function evaluateEnterpriseVoiceEvalopsAcousticCiOtelCanary2026Guard(input: {
+  acoustic500CallCiPassedAnd7HopOtelSpansEnabled: boolean;
+  callIdStickyBundlePinnedWithoutMidCallSwitch: boolean;
+  repeatUtteranceOver12PctOrTransferSpikeOver4PctDetected: boolean;
+}): EnterpriseVoiceEvalopsAcousticCiOtelCanary2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-VOICE-EVALOPS-ACOUSTIC-CI-OTEL-CANARY-2026-01",
+    canaryTrafficRolloutAndBundlePinningAuthorized:
+      input.acoustic500CallCiPassedAnd7HopOtelSpansEnabled &&
+      input.callIdStickyBundlePinnedWithoutMidCallSwitch &&
+      !input.repeatUtteranceOver12PctOrTransferSpikeOver4PctDetected,
+    unverifiedAcousticCiOrMidCallSwitchOrDegradedCanaryBlocked:
+      !input.acoustic500CallCiPassedAnd7HopOtelSpansEnabled ||
+      !input.callIdStickyBundlePinnedWithoutMidCallSwitch ||
+      input.repeatUtteranceOver12PctOrTransferSpikeOver4PctDetected,
+    instant15sLkgAutoRollbackAndFailureFixtureExportTriggered:
+      input.repeatUtteranceOver12PctOrTransferSpikeOver4PctDetected,
+  };
+}
+
 
 
 
