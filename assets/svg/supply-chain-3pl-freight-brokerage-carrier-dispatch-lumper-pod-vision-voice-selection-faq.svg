@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg553" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue553" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen553" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple553" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber553" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg553)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">现代物流、3PL 与数字货运代理：防转包核验、动态议价与签收单 POD 多模态架构 (#553)</text>
+  <text x="48" y="74" class="subtitle">Supply Chain &amp; 3PL Freight Voice + Vision AI: FMCSA/Highway Vetting · 3-Step Rate Negotiation · ELD Exception Check-Calls · 3.2s BOL/POD OCR</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue553)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">LOGISTICS-3PL-POD-2026</text>
+
+  <!-- Plane 1: Carrier Vetting & 3-Step Rate Negotiation -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue553)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① 承运商防转包核验与三阶运价谈判状态机</text>
+
+  <rect x="46" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">&lt;120ms FMCSA / Highway 资质与防转包拦截</text>
+  <text x="60" y="200" class="node-sub">• 报价前强制核验 MC/DOT 号、货运险保额与运营年限 (&gt;=90天)</text>
+  <text x="60" y="218" class="node-sub">• 比对主叫号码 (ANI) 与官方备案调度电话，防黑客冒充接单</text>
+  <text x="60" y="236" class="node-sub">• 100% 拦截恶意二道贩子转包 (Double-Brokering Fraud)</text>
+
+  <rect x="46" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="282" class="node-title">三阶确定性运价谈判锁 (Rate Negotiation Gate)</text>
+  <text x="60" y="302" class="node-sub">• 严禁大模型首轮吐露底牌最高价 (Hard Ceiling $2,350)</text>
+  <text x="60" y="320" class="node-sub">• 先核实空车位置与提货时间 → 锚定目标价 ($2,100) 阶梯博弈</text>
+  <text x="60" y="338" class="node-sub">• 锁死绝对价格上限，平均每车多保住 $145 毛利空间</text>
+
+  <rect x="46" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="386" class="node-title">电子派车单 (Rate Con) 双通道签发闭环</text>
+  <text x="60" y="406" class="node-sub">• 达成运价后自动生成含车牌/VIN 绑定的电子确认函</text>
+  <text x="60" y="424" class="node-sub">• 仅发送至承运商备案官方邮箱，杜绝中途改发陌生邮箱</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">找车撮合耗时从 28 分钟缩至 95 秒</text>
+  <text x="60" y="500" class="node-sub">• 高峰期 100% 接起找车询价来电，零漏单流失</text>
+  <text x="60" y="518" class="node-sub">• 阻断 Prompt 注入套取内部货主合同价与最高加价权限</text>
+
+  <!-- Plane 2: ELD Exception Check-Calls & Highway Cab Noise -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple553)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② ELD 异常触发式在途跟单与驾驶室降噪</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">ELD / GPS 遥测前置过滤 76% 无效催单电话</text>
+  <text x="435" y="200" class="node-sub">• 对接 Samsara / Motive / Project44 实时车辆 GPS 与电子日志</text>
+  <text x="435" y="218" class="node-sub">• 车辆正常行驶且准点时零电话打扰，保障长途行车安全</text>
+  <text x="435" y="236" class="node-sub">• 仅在偏航、异常驻留 &gt;45m 或电子围栏延误 &gt;30m 时触发外呼</text>
+
+  <rect x="421" y="264" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">78dB 重卡驾驶室抗噪与 &lt;45 秒极简免提交互</text>
+  <text x="435" y="306" class="node-sub">• 针对柴油机低频轰鸣与蓝牙耳机风噪定制 Deepgram/Azure 降噪</text>
+  <text x="435" y="324" class="node-sub">• 严禁让驾驶中司机按键或查单号，支持纯口语一句话报异常</text>
+  <text x="435" y="342" class="node-sub">• 自动换算剩余法定驾驶时长 (HOS) 并同步更新客户TMS ETA</text>
+
+  <rect x="421" y="370" width="358" height="84" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="392" class="node-title">收货仓预约时段 (Dock Appointment) 自动改签</text>
+  <text x="435" y="412" class="node-sub">• 确认高速堵车延误 2 小时后，AI 自动联动仓库调度系统</text>
+  <text x="435" y="430" class="node-sub">• 秒级锁定新卸货月台时段，免除 $250 迟到罚款</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">支持英/西/俄/中多语种卡车司机无缝切换</text>
+  <text x="435" y="510" class="node-sub">• 北美/欧洲跨境车队西语/东欧语司机母语级接单与报备</text>
+
+  <!-- Plane 3: Multimodal Lumper Receipt, Detention & POD Vision -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen553)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ 卸货费收据、压车费与 POD 签收单视觉核验</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">3.2 秒卸货费 (Lumper) 拍照秒发付款码</text>
+  <text x="849" y="200" class="node-sub">• 司机在月台申请 $220 卸货费时，短信推送 H5 拍照上传</text>
+  <text x="849" y="218" class="node-sub">• Azure Document Intelligence + Vision 校验运单号、仓库章与金额</text>
+  <text x="849" y="236" class="node-sub">• &lt;=$300 合规收据 3.2 秒自动签发 EFS/Comcheck 付款码</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">签收单 (BOL/POD) 完整性与货损 (OS&amp;D) 视觉审计</text>
+  <text x="849" y="302" class="node-sub">• 司机离场前拍照上传 POD，实时检测收货人签字与缺损批注</text>
+  <text x="849" y="320" class="node-sub">• 若照片模糊或缺第 2 页，当场语音提醒司机在月台重拍</text>
+  <text x="849" y="338" class="node-sub">• 发现破损/短少 ("2 pallets damaged") 立即建理赔单拉人工介入</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">电子围栏时间戳交叉校验压车费 (Detention)</text>
+  <text x="849" y="406" class="node-sub">• 比对 BOL 手写进出仓时间与 ELD 电子围栏真实驻留记录</text>
+  <text x="849" y="424" class="node-sub">• 100% 拦截虚报等待时长骗取 $75/h 压车补贴行为</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (SUPPLY-CHAIN-3PL-POD-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截未过 FMCSA 核验派单、突破最高运价上限与无收据放款</text>
+  <text x="849" y="518" class="node-sub">• 账期结算周期从 14 天压缩至交货后 2 分钟即时入账</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 现代物流与 3PL 数字货代实时语音+多模态架构实测基准 (每 10,000 车次干线整车运输)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">0.00% 恶意转包</text>
+  <text x="64" y="666" fill="#94a3b8" class="metric-lbl">FMCSA/Highway 主叫比对拦截套牌车队</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">+$145 / 车毛利</text>
+  <text x="344" y="666" fill="#94a3b8" class="metric-lbl">三阶确定性议价锁死底牌上限保住利差</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">14 天 → 2 分钟</text>
+  <text x="624" y="666" fill="#94a3b8" class="metric-lbl">月台实时 POD/卸货收据多模态核验放款</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">省 $48.6万 / 万车</text>
+  <text x="904" y="666" fill="#94a3b8" class="metric-lbl">运价保利+防转包盗货+省去 76% 人工跟单</text>
+</svg>

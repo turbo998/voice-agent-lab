@@ -15355,6 +15355,36 @@ export function evaluateEdtechLanguageTutoringGopPhonemeSocraticK122026Guard(inp
   };
 }
 
+export interface SupplyChain3plFreightBrokeragePodVision2026Evaluation {
+  policyCode: "SUPPLY-CHAIN-3PL-FREIGHT-BROKERAGE-POD-VISION-2026-01";
+  rateConDispatchAndInstantLumperCodeAuthorized: boolean;
+  doubleBrokeringSpoofOrCeilingLeakOrUnverifiedPodBlocked: boolean;
+  registeredEmailOnlyLockOrOsdClaimEscalationTriggered: boolean;
+}
+
+/**
+ * Deterministic Supply Chain, 3PL & Digital Freight Brokerage (<120ms FMCSA/Highway + Caller-ANI Vetting, Zero-Prompt-Leak 3-Step Rate FSM, ELD Geofence Detention Audit & 3.2s POD/Lumper Vision) Guard (`SUPPLY-CHAIN-3PL-FREIGHT-BROKERAGE-POD-VISION-2026-01`).
+ */
+export function evaluateSupplyChain3plFreightBrokeragePodVision2026Guard(input: {
+  fmcsaAuthorityAndCallerAniMatchedRegisteredCarrier: boolean;
+  rateWithin3StepFsmAndPodSignatureGeofenceVerified: boolean;
+  chameleonSpoofOrOsdCargoDamageOrOver300LumperDetected: boolean;
+}): SupplyChain3plFreightBrokeragePodVision2026Evaluation {
+  return {
+    policyCode: "SUPPLY-CHAIN-3PL-FREIGHT-BROKERAGE-POD-VISION-2026-01",
+    rateConDispatchAndInstantLumperCodeAuthorized:
+      input.fmcsaAuthorityAndCallerAniMatchedRegisteredCarrier &&
+      input.rateWithin3StepFsmAndPodSignatureGeofenceVerified &&
+      !input.chameleonSpoofOrOsdCargoDamageOrOver300LumperDetected,
+    doubleBrokeringSpoofOrCeilingLeakOrUnverifiedPodBlocked:
+      !input.fmcsaAuthorityAndCallerAniMatchedRegisteredCarrier ||
+      !input.rateWithin3StepFsmAndPodSignatureGeofenceVerified ||
+      input.chameleonSpoofOrOsdCargoDamageOrOver300LumperDetected,
+    registeredEmailOnlyLockOrOsdClaimEscalationTriggered:
+      input.chameleonSpoofOrOsdCargoDamageOrOver300LumperDetected,
+  };
+}
+
 
 
 

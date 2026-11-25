@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **552 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **553 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (552 Bilingual Guides)
+## 3. Solution Architect Selection Guides (553 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (529 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (530 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -596,3 +596,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 550. **Telecom & Broadband ISP Customer Care (Automated ONT Self-Healing / Roaming Bill-Shock Resolution / Anti-SIM-Swap Guard) Guide: <120ms Ringback Telemetry + 15s Camera Router Vision + 45s Reboot Survival Callback (34.0% → 14.8% Truck Rolls), Deterministic BSS Bill-Diff + Retroactive Roaming Re-Rate (94.2% Retention) & Zero-Trust Anti-SIM-Swap Lock (-$364k/10k Calls)**: [EN](./telecom-isp-broadband-self-healing-bill-dispute-anti-sim-swap-voice-selection-faq.en.md) | [中文](./telecom-isp-broadband-self-healing-bill-dispute-anti-sim-swap-voice-selection-faq.md)
 551. **Enterprise B2B SaaS & Cloud Technical Support (WebRTC Screen Co-Browsing / P1 Incident Log Triage / Entitlement SLA Routing) Guide: In-App WebRTC Voice + <100ms Sanitized HAR/Request-ID Sideband + Read-Only Visual Spotlight (28.0% → 74.0% Tier-1 FCR, 4.2h → 11m MTTR), Client-Side Pre-Capture DOM Secret Masking (0.00% Key Leaks) & <15s Sev-1 PagerDuty War-Room Bridge (-$418k/10k Sessions)**: [EN](./enterprise-saas-b2b-technical-support-webrtc-cobrowsing-log-bundle-sla-routing-voice-selection-faq.en.md) | [中文](./enterprise-saas-b2b-technical-support-webrtc-cobrowsing-log-bundle-sla-routing-voice-selection-faq.md)
 552. **EdTech Language Tutoring & Socratic Coaching (Phoneme-Level Pronunciation Assessment GOP / Socratic Anti-Spoiler Scaffolding / K-12 COPPA Guardrails) Guide: Parallel Azure Speech GOP (<140ms, 42.0% → 96.8% Phoneme Error Detection, r=0.94 Examiner Correlation), CEFR-Adaptive 1,800ms Patience VAD (-88.5% Beginner Cutoffs) & 3-Step Socratic Anti-Spoiler + COPPA Ephemeral RAM ($18.00 → $0.68/Lesson, -$270k/10k Lessons)**: [EN](./edtech-language-tutoring-pronunciation-gop-phoneme-scoring-socratic-k12-guard-voice-selection-faq.en.md) | [中文](./edtech-language-tutoring-pronunciation-gop-phoneme-scoring-socratic-k12-guard-voice-selection-faq.md)
+553. **Supply Chain, 3PL & Digital Freight Brokerage (FMCSA Carrier Vetting / Hands-Free Driver Check-Calls / Detention & POD Vision Verification) Guide: <120ms FMCSA/Highway + Caller-ANI Gate (0.00% Double-Brokering), Zero-Prompt-Leak 3-Step Rate FSM (+$145/Load Margin), ELD Pre-Emption (-76% Check-Calls, 3.6% WER @ 78dB Cab Noise) & 3.2s Lumper/POD Vision Settlement (-$558k/10k Loads)**: [EN](./supply-chain-3pl-freight-brokerage-carrier-dispatch-lumper-pod-vision-voice-selection-faq.en.md) | [中文](./supply-chain-3pl-freight-brokerage-carrier-dispatch-lumper-pod-vision-voice-selection-faq.md)
