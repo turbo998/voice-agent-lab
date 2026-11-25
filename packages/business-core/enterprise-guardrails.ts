@@ -14965,6 +14965,36 @@ export function evaluateEnterpriseSalesRoleplayInterviewerActorCritic2026Guard(i
   };
 }
 
+export interface AirlineIrropsRebookingHotelPmsConcierge2026Evaluation {
+  policyCode: "AIRLINE-IRROPS-REBOOKING-HOTEL-PMS-CONCIERGE-2026-01";
+  atomicGdsRebookingAndOperaLateArrivalHoldAuthorized: boolean;
+  unheldSeatSpeechOrWeatherEu261PromiseOrOutsideRoomLeakBlocked: boolean;
+  ssrUmnrSpecialistBridgeOrFrontDeskEscalationTriggered: boolean;
+}
+
+/**
+ * Deterministic Airline Mass IRROPS Rebooking & Hotel Opera PMS Concierge (Pre-Speech 120s Atomic GDS Seat Soft-Lock + MCT/Visa Gate, Official IOC Delay-Code EU261 Lock, 0ms SSR UMNR Bridge & Zero Outside Hotel Room Disclosure) Guard (`AIRLINE-IRROPS-REBOOKING-HOTEL-PMS-CONCIERGE-2026-01`).
+ */
+export function evaluateAirlineIrropsRebookingHotelPmsConcierge2026Guard(input: {
+  preSpeech120sGdsSeatSoftLockedAndMctVisaVerified: boolean;
+  iocDelayCodeBoundAndZeroOutsidePstnRoomDisclosure: boolean;
+  ssrUnaccompaniedMinorOrOutsideCallerProbingGuestRoom: boolean;
+}): AirlineIrropsRebookingHotelPmsConcierge2026Evaluation {
+  return {
+    policyCode: "AIRLINE-IRROPS-REBOOKING-HOTEL-PMS-CONCIERGE-2026-01",
+    atomicGdsRebookingAndOperaLateArrivalHoldAuthorized:
+      input.preSpeech120sGdsSeatSoftLockedAndMctVisaVerified &&
+      input.iocDelayCodeBoundAndZeroOutsidePstnRoomDisclosure &&
+      !input.ssrUnaccompaniedMinorOrOutsideCallerProbingGuestRoom,
+    unheldSeatSpeechOrWeatherEu261PromiseOrOutsideRoomLeakBlocked:
+      !input.preSpeech120sGdsSeatSoftLockedAndMctVisaVerified ||
+      !input.iocDelayCodeBoundAndZeroOutsidePstnRoomDisclosure ||
+      input.ssrUnaccompaniedMinorOrOutsideCallerProbingGuestRoom,
+    ssrUmnrSpecialistBridgeOrFrontDeskEscalationTriggered:
+      input.ssrUnaccompaniedMinorOrOutsideCallerProbingGuestRoom,
+  };
+}
+
 
 
 

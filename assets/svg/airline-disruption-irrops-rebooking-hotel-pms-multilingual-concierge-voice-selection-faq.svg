@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg540" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent540" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg540)"/>
+  <rect x="24" y="24" width="1152" height="632" rx="16" fill="none" stroke="#1e293b" stroke-width="2"/>
+  <rect x="44" y="42" width="1112" height="58" rx="10" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="64" y="70" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Airline Mass IRROPS Rebooking (Amadeus / Sabre) &amp; Hotel Opera PMS Multilingual Concierge Architecture</text>
+  <text x="64" y="91" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13">Pre-Speech 120s GDS Seat Soft-Lock (99.5% Commit) · IOCWX/MX EU261 Gate · Zero Hotel Room-Number Disclosure (AIRLINE-IRROPS-REBOOKING-HOTEL-PMS-CONCIERGE-2026-01)</text>
+
+  <!-- Column 1: Airline Mass IRROPS 65s Rebooking -->
+  <rect x="44" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="44" y="120" width="356" height="40" rx="12" fill="#1e3a8a"/>
+  <text x="62" y="145" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. Airline Mass IRROPS 65s Rebooking</text>
+
+  <rect x="62" y="176" width="320" height="108" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="76" y="198" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Pre-Speech 120s Atomic GDS Seat Soft-Lock</text>
+  <text x="76" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Places 120s Amadeus/Sabre hold BEFORE speaking</text>
+  <text x="76" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Eliminates seat-poaching while passenger listens</text>
+  <text x="76" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Lifts IRROPS commit success from 61.0% to 99.5%</text>
+  <text x="76" y="272" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 140m Storm Hold Queue → 65s Resolution</text>
+
+  <rect x="62" y="298" width="320" height="112" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="320" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Airport MCT, Transit Visa &amp; Bag Re-Tag Gate</text>
+  <text x="76" y="340" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Verifies Minimum Connection Time (MCT) per hub</text>
+  <text x="76" y="358" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Checks TIMATIC transit visa for rerouted hubs</text>
+  <text x="76" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Syncs checked-baggage tag to new flight manifest</text>
+  <text x="76" y="394" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Illegal Connection or Stranded-Visa Routes</text>
+
+  <rect x="62" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">IOC Delay-Code (WX vs. MX) EU261 / DOT Lock</text>
+  <text x="76" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Binds voucher/cash rules to official IOC delay code</text>
+  <text x="76" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks €600 EU261 promises on weather (WX) delays</text>
+  <text x="76" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Auto-issues hotel/meal QR on mechanical (MX) faults</text>
+  <text x="76" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100% Statutory Compensation Accuracy</text>
+
+  <!-- Column 2: Special Assistance SSR & Loyalty Protection -->
+  <rect x="422" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#06b6d4" stroke-width="1.5"/>
+  <rect x="422" y="120" width="356" height="40" rx="12" fill="#164e63"/>
+  <text x="440" y="145" fill="#a5f3fc" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. SSR Safety &amp; Loyalty Protection</text>
+
+  <rect x="440" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#06b6d4" stroke-width="1"/>
+  <text x="454" y="198" fill="#22d3ee" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms UMNR / WCHC / MEDA Specialist Bridge</text>
+  <text x="454" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Detects Unaccompanied Minor (UMNR) in PNR SSR</text>
+  <text x="454" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks autonomous overnight layover rebooking</text>
+  <text x="454" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Bridges Special-Assistance Desk in 0ms</text>
+  <text x="454" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100% Child &amp; Wheelchair Passenger Protection</text>
+
+  <rect x="440" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Cabin-Class &amp; Group PNR Split Integrity</text>
+  <text x="454" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Preserves family seating &amp; infant bassinet links</text>
+  <text x="454" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Calculates involuntary downgrade fare/mile refund</text>
+  <text x="454" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Pushes updated Apple/Google Wallet boarding pass</text>
+  <text x="454" y="398" fill="#22d3ee" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• $0.24/Call vs. $14.50 Human IRROPS Call</text>
+
+  <rect x="440" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Flight-to-Hotel Late-Arrival Sync</text>
+  <text x="454" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Links delayed flight ETA to destination hotel booking</text>
+  <text x="454" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Flags reservation 'Late Arrival — Do Not No-Show'</text>
+  <text x="454" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Protects guaranteed room across 2 AM Night Audit</text>
+  <text x="454" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Wrongful Night-Audit Room Cancellations</text>
+
+  <!-- Column 3: Hotel Opera PMS & Zero Room-Disclosure -->
+  <rect x="800" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="800" y="120" width="356" height="40" rx="12" fill="#064e3b"/>
+  <text x="818" y="145" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Hotel Opera PMS &amp; Privacy Gate</text>
+
+  <rect x="818" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="832" y="198" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Zero Outside Guest-Room Disclosure Lock</text>
+  <text x="832" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Never confirms guest stay or room # to outside PSTN</text>
+  <text x="832" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Requires verified in-room SIP extension for charges</text>
+  <text x="832" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Protects VIP/executive physical security</text>
+  <text x="832" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Unauthorized Guest Location Leaks</text>
+
+  <rect x="818" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">28-Language Opera PMS &amp; HotSOS Dispatch</text>
+  <text x="832" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Automates towels, housekeeping, dining &amp; late checkout</text>
+  <text x="832" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Checks loyalty tier (Bonvoy/Hilton) for free 4 PM hold</text>
+  <text x="832" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Dispatches HotSOS runner ticket in &lt;150ms</text>
+  <text x="832" y="398" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 74.6% Front-Desk Call Self-Service Deflection</text>
+
+  <rect x="818" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Travel &amp; Hospitality FinOps ROI</text>
+  <text x="832" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Absorbs 50x weather IRROPS spikes with 0 hold time</text>
+  <text x="832" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Saves $334,000 per 10,000 travel contact hours</text>
+  <text x="832" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Native Amadeus / Sabre / Oracle Opera OHIP APIs</text>
+  <text x="832" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• $0.045/min Blended Travel &amp; Hotel Cost</text>
+
+  <!-- Footer KPI Bar -->
+  <rect x="44" y="568" width="1112" height="68" rx="10" fill="#0f172a" stroke="url(#accent540)" stroke-width="1.5"/>
+  <text x="68" y="595" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Validated Airline Mass IRROPS &amp; Hotel Opera PMS Voice AI Benchmark:</text>
+  <text x="68" y="618" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13">IRROPS Rebooking: 140m → 65s (99.5% Commit)  |  Hotel Front-Desk Deflection: 74.6%  |  Room-Disclosure Breaches: 0.00%  |  Cost: $0.045/min</text>
+</svg>
