@@ -15655,6 +15655,36 @@ export function evaluateHomeServicesHvacPlumbingServicetitanVision2026Guard(inpu
   };
 }
 
+export interface SeniorLivingHomeHealthEvvPresbycusisVoice2026Evaluation {
+  policyCode: "SENIOR-LIVING-HOME-HEALTH-EVV-PRESBYCUSIS-VOICE-2026-01";
+  landlineEvvCheckInAndSeniorDailyCheckAuthorized: boolean;
+  offSiteMobileEvvSpoofOrDismissedAnticoagulantFallOrHighPitchBgmBlocked: boolean;
+  zeroMs911FamilyBridgeOrChfRnDiureticAlertTriggered: boolean;
+}
+
+/**
+ * Deterministic Senior Living, Home Health & Post-Acute Care (Presbycusis <2kHz Formant EQ + Zero BGM + 115 WPM + 2,400ms VAD, Cures Act Landline-ANI EVV Lock, CHF >=2-lb Weight Alert & Anticoagulant Fall/Stroke 911 Gate) Guard (`SENIOR-LIVING-HOME-HEALTH-EVV-PRESBYCUSIS-VOICE-2026-01`).
+ */
+export function evaluateSeniorLivingHomeHealthEvvPresbycusisVoice2026Guard(input: {
+  presbycusisDry115WpmAudioAnd2400msVadEnabled: boolean;
+  callerAniMatchedRegisteredPatientLandlineForEvv: boolean;
+  anticoagulantFallOrSlurredSpeechOrChf2LbGainDetected: boolean;
+}): SeniorLivingHomeHealthEvvPresbycusisVoice2026Evaluation {
+  return {
+    policyCode: "SENIOR-LIVING-HOME-HEALTH-EVV-PRESBYCUSIS-VOICE-2026-01",
+    landlineEvvCheckInAndSeniorDailyCheckAuthorized:
+      input.presbycusisDry115WpmAudioAnd2400msVadEnabled &&
+      input.callerAniMatchedRegisteredPatientLandlineForEvv &&
+      !input.anticoagulantFallOrSlurredSpeechOrChf2LbGainDetected,
+    offSiteMobileEvvSpoofOrDismissedAnticoagulantFallOrHighPitchBgmBlocked:
+      !input.presbycusisDry115WpmAudioAnd2400msVadEnabled ||
+      !input.callerAniMatchedRegisteredPatientLandlineForEvv ||
+      input.anticoagulantFallOrSlurredSpeechOrChf2LbGainDetected,
+    zeroMs911FamilyBridgeOrChfRnDiureticAlertTriggered:
+      input.anticoagulantFallOrSlurredSpeechOrChf2LbGainDetected,
+  };
+}
+
 
 
 

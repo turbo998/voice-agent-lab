@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg563" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue563" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen563" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple563" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber563" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg563)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">居家养老、长者照护与家庭护理：老年性耳聋声学优化、EVV 防伪打卡与跌倒卒中分诊 (#563)</text>
+  <text x="48" y="74" class="subtitle">Senior Living &amp; Home Health Voice + Vision AI: Presbycusis &lt;2kHz EQ &amp; 115 WPM · Cures Act EVV ANI Lock · CHF Weight Alert &amp; Stroke/Fall 911 Gate</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue563)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">SENIOR-HOMEHEALTH-2026</text>
+
+  <!-- Plane 1: Presbycusis Acoustic Engineering & Cognitive Accessibility -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue563)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① 老年性耳聋 (Presbycusis) 声学与认知适老化</text>
+
+  <rect x="46" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">破解 &gt;2,000Hz 高频听力丧失与助听器啸叫</text>
+  <text x="60" y="200" class="node-sub">• 80 岁长者普遍丧失 &gt;2kHz 高频听力，尖锐女声听如电流杂音</text>
+  <text x="60" y="218" class="node-sub">• 锁定 140Hz–210Hz 温暖中低频音色 + 1kHz–2kHz 辅音共振峰增强</text>
+  <text x="60" y="236" class="node-sub">• 100% 剔除背景垫乐 (BGM) 与高频提示音，防助听器反馈失真</text>
+
+  <rect x="46" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="282" class="node-title">115 WPM 慢速节律与 2,400ms 轻度认知耐性窗</text>
+  <text x="60" y="302" class="node-sub">• 语速从标准 165 WPM 降至 115 WPM，句间增加 350ms 消化停顿</text>
+  <text x="60" y="320" class="node-sub">• 针对高龄找词停顿将 VAD 容忍窗口拉长至 2,400ms</text>
+  <text x="60" y="338" class="node-sub">• 每次仅问单一是非题/二选一，长者完单率从 44% 跃升至 91.8%</text>
+
+  <rect x="46" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="386" class="node-title">温和重复与家属授权联系网 (Care Circle)</text>
+  <text x="60" y="406" class="node-sub">• 长者连续 2 次听不清时自动提高增益并换用更简短生活化词汇</text>
+  <text x="60" y="424" class="node-sub">• 重要医嘱与护理变更实时同步抄送子女微信/短信卡片</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">防养老诈骗反欺诈白名单播报</text>
+  <text x="60" y="500" class="node-sub">• 固定医院/护理站认证来电显示，绝不在电话中索要社保卡密码</text>
+  <text x="60" y="518" class="node-sub">• 支持粤语/闽南语/西语等高龄母语方言无缝交互</text>
+
+  <!-- Plane 2: Cures Act Telephony EVV & 15-Min Caregiver No-Show Backfill -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple563)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② 护工 EVV 固话防伪打卡与 15m 爽约紧急替补</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">21 世纪治愈法案 (Cures Act) 固话 EVV 强校验</text>
+  <text x="435" y="200" class="node-sub">• 护工在无手机信号地下室/偏远老人家使用固话语音打卡 (Telephony EVV)</text>
+  <text x="435" y="218" class="node-sub">• 硬性比对主叫号码 (ANI) == 老人建档家庭固话 (拦截异地用手机代打)</text>
+  <text x="435" y="236" class="node-sub">• 签退时 45 秒语音逐项勾选今日完成的助浴、翻身与喂药任务 (ADL)</text>
+
+  <rect x="421" y="264" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">护工迟到 &gt;15 分钟自动追呼与替补调度</text>
+  <text x="435" y="306" class="node-sub">• 痛点: 失能老人独自在家若护工临时爽约将引发脱水或坠床事故</text>
+  <text x="435" y="324" class="node-sub">• 排班开始 15m 未打卡即自动外呼护工确认在途状态</text>
+  <text x="435" y="342" class="node-sub">• 确认爽约后立即按 5 英里半径并发呼叫机动护工池 (18m 内派替补)</text>
+
+  <rect x="421" y="370" width="358" height="84" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="392" class="node-title">消除 12.4% 医保/长护险 EVV 审计拒付扣款</text>
+  <text x="435" y="412" class="node-sub">• 实时同步 HHAeXchange / Sandata / WellSky / AxisCare 状态</text>
+  <text x="435" y="430" class="node-sub">• 漏签退后 10 分钟自动追呼补录，手工改单率压降至 1.2%</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">失能长者零断档守护率达 99.6%</text>
+  <text x="435" y="510" class="node-sub">• 替补护工接单同时向老人与家属电话播报新护工姓名与到达时间</text>
+
+  <!-- Plane 3: Post-Discharge CHF Weight Check & Fall/Stroke 911 Gate -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen563)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ 出院随访心衰预警、跌倒抗凝与卒中 911 门禁</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">心衰 (CHF) 单日体重暴涨 &gt;=2 磅早筛防再入院</text>
+  <text x="849" y="200" class="node-sub">• 每日晨间关怀电话采集体重/血压 (支持口述或 1.5s 拍电子秤屏幕)</text>
+  <text x="849" y="218" class="node-sub">• 检出 24h 体重增加 &gt;=2–3 磅或脚踝水肿 (肺水肿先兆!) 立即预警</text>
+  <text x="849" y="236" class="node-sub">• 当日联动专科护士调整利尿剂，30 天再入院率降低 41.2%</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">长者跌倒“撞头+服用抗凝药”强制急救锁</text>
+  <text x="849" y="302" class="node-sub">• 老人报称滑倒但说“我没事不想去医院”时严禁草率挂机!</text>
+  <text x="849" y="320" class="node-sub">• 自动核查用药清单是否含抗凝药 (`Eliquis / Warfarin / 华法林`)</text>
+  <text x="849" y="338" class="node-sub">• 撞击头部或服用抗凝药跌倒存在迟发颅内出血风险 → 0ms 呼急救+家属</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">言语含糊突变 (BE-FAST 卒中声学哨兵)</text>
+  <text x="849" y="406" class="node-sub">• 比对老人历史语音基线，检出突发构音障碍 (大舌头) 或单侧麻木</text>
+  <text x="849" y="424" class="node-sub">• &lt;2 秒启动卒中绿色通道桥接 911/120 与紧急联系人</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (SENIOR-HOMEHEALTH-EVV-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截非老人固话 ANI 违规打卡、抗凝药跌倒漏报与高频刺耳音色</text>
+  <text x="849" y="518" class="node-sub">• 全面符合 CMS HRRP、21st Century Cures Act 与 HIPAA</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 居家养老与家庭护理机构实时语音+视觉 AI 实测基准 (每 10,000 次长者随访与护工排班)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">44% → 91.8%</text>
+  <text x="64" y="666" class="metric-lbl">&lt;2kHz 适老频响 + 115 WPM 慢速长者完单率</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">-89% EVV 拒付</text>
+  <text x="344" y="666" class="metric-lbl">固话 ANI 防伪打卡 + 15m 爽约自动派替补</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">-41.2% 再入院率</text>
+  <text x="624" y="666" class="metric-lbl">心衰体重 +2 磅早筛预警与抗凝药跌倒急救锁</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">省 $43.5万 / 万次</text>
+  <text x="904" y="666" class="metric-lbl">免除 CMS 再入院罚金 + 保住医保长护险结算款</text>
+</svg>

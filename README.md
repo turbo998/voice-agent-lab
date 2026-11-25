@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 562 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 562 篇选型指南](#-二562-篇企业级语音架构选型指南中英双语) |
+| **🧭 563 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 563 篇选型指南](#-二563-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、562 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、563 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（539 篇）
+### 3.3 高价值企业行业解决方案蓝图（540 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -636,6 +636,7 @@ flowchart LR
 560. **律所案源接待与集体诉讼（Legal Intake & Mass Tort：`ABA Rule 1.18` 利益冲突前置防火墙 / 50 州诉讼时效 `SOL` 引擎 / 通话内 `DocuSign` 陪签）语音与多模态选型指南（Phase 1 物理隔离案情并在 `<100ms` 完成 `Clio/Intapp` 相对方冲突检索实现 `0.00%` 现有大客户代理资格污染、50 州+市政车辆 `180天` 诉讼时效确定性精算配拒接案自动发送书面《Non-Engagement Letter》消除执业失职索赔、以及 `2.0秒` 交警单视觉提取配通话内不断线陪签委托书将签约率从 `31.0%` 提至 `74.8%` 每万通创效 `$74.2万`）方案**：[中文](./docs/legal-intake-mass-tort-personal-injury-statute-of-limitations-conflict-check-aba-voice-selection-faq.md) | [EN](./docs/legal-intake-mass-tort-personal-injury-statute-of-limitations-conflict-check-aba-voice-selection-faq.en.md)
 561. **连锁口腔集团（DSO）与正畸专科诊所（`Open Dental/Dentrix` 医助 `[A-D-A]` 双轨牙椅排班 / `CDT` 牙科医保频次核验 / 口内闪光灯急症视觉）语音与多模态选型指南（原生解析 10 分钟医助交错单元块配临期退约 `22分钟` 自动替补填满 `78.2%` 空椅并将牙椅满负荷率从 `71.4%` 拉升至 `93.8%`、`<2.5s` `Vyne/Zuub` 核查 `6个月零1天` 洗牙频次锁与 `$1,500` 年度剩余封顶实现 `0.00%` 频次拒付、以及路德维希咽峡炎气道锁与 `<60分钟` 恒牙脱位牛奶保活指导每万通创效 `$49.6万`）方案**：[中文](./docs/dental-orthodontics-dso-chairfill-cdt-insurance-breakdown-opendental-voice-selection-faq.md) | [EN](./docs/dental-orthodontics-dso-chairfill-cdt-insurance-breakdown-opendental-voice-selection-faq.en.md)
 562. **家庭上门维修与暖通水电服务（`ServiceTitan` 机龄与片区排程 / 室外机铭牌 `1.8s` 视觉解码 / 产权核验与 `$199` 会员转化）语音与多模态选型指南（`1.8秒` 拍摄外机风化金属铭牌从序列号解码出厂年份、吨位与备件型号将首次修复率从 `71.0%` 提至 `92.6%`、机龄 `>=12年` 高价值换新自动分流王牌技师配“共同产权决策人同在场”排期使单均产值提升 `+$215`、市政产权库拦截租客无授权逃单、以及免本次 `$99` 上门费顺带转化 `38.4%` 年度会员每万通创效 `$58.2万`）方案**：[中文](./docs/home-services-hvac-plumbing-servicetitan-membership-dispatch-nameplate-vision-voice-selection-faq.md) | [EN](./docs/home-services-hvac-plumbing-servicetitan-membership-dispatch-nameplate-vision-voice-selection-faq.en.md)
+563. **居家养老、长者照护与家庭护理机构（老年性耳聋 `<2kHz` 声学优化 / `Cures Act` 护工固话 `EVV` 防伪打卡 / 心衰体重与跌倒抗凝急救门禁）语音与多模态选型指南（`135–195Hz` 温暖干声 + `1–2kHz` 共振峰增强 + `115 WPM` 慢速 + `2,400ms` 耐性窗将 80+ 岁长者通话完单率从 `44.0%` 提至 `91.8%`、住宅固话 `ANI` 强绑定 `EVV` 打卡配 `15m` 爽约自动派替补将医保拒付率压降 `89.9%`、以及心衰 `+2磅` 体重早筛与服用抗凝药跌倒 `0ms` 急救锁将 30 天再入院率降低 `41.2%` 每万次服务创效 `$43.5万`）方案**：[中文](./docs/senior-living-home-health-caregiver-evv-fall-triage-medication-reminder-voice-selection-faq.md) | [EN](./docs/senior-living-home-health-caregiver-evv-fall-triage-medication-reminder-voice-selection-faq.en.md)
 
 ---
 
