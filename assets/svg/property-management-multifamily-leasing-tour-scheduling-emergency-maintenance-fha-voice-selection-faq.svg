@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg556" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue556" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen556" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple556" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber556" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg556)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">商业地产与长租公寓物业管理：FHA 公平住房合规招租、夜间急修视觉止损与账务架构 (#556)</text>
+  <text x="48" y="74" class="subtitle">Multifamily &amp; Property Management Voice + Vision AI: FHA Zero-Steering Leasing · Smart-Lock Tour · 2 AM Leak Vision Shutoff · Yardi/AppFolio Sync</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue556)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">PROPTECH-FHA-2026</text>
+
+  <!-- Plane 1: 24/7 Leasing, Smart-Lock Tours & FHA Compliance -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue556)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① 7x24 智能招租、自助看房与 FHA 合规锁</text>
+
+  <rect x="46" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">挽回 48% 下班/周末漏接招租来电 (Zero Missed Leads)</text>
+  <text x="60" y="200" class="node-sub">• 实时查询 Yardi / RealPage / AppFolio 空置房源与动态租金</text>
+  <text x="60" y="218" class="node-sub">• 支持户型面积、宠物政策、车位费用与免租期优惠精准解答</text>
+  <text x="60" y="236" class="node-sub">• 看房预约转化率从传统留言信箱的 19% 跃升至 64.5%</text>
+
+  <rect x="46" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="282" class="node-title">HUD 公平住房法 (FHA) 零诱导硬护栏</text>
+  <text x="60" y="302" class="node-sub">• 严禁评价社区治安好坏、学区优劣、居民种族/家庭结构 (7类保护)</text>
+  <text x="60" y="320" class="node-sub">• 提问“这栋楼适合带小孩住吗？”触发标准客观中立答复</text>
+  <text x="60" y="338" class="node-sub">• 100% 规避 HUD 钓鱼审计与单案 $100k+ 歧视诱导诉讼</text>
+
+  <rect x="46" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="386" class="node-title">自助看房智能门锁核身 (SmartRent / Latch)</text>
+  <text x="60" y="406" class="node-sub">• 下发看房临时密码前强制完成身份证件活体核验与信用卡预授信</text>
+  <text x="60" y="424" class="node-sub">• 仅限预约时段内单次有效，杜绝空置房被非法霸占 (Squatters)</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">ESA 情感支持动物免收宠物押金合规路由</text>
+  <text x="60" y="500" class="node-sub">• 自动识别残障服务犬/ESA 请求，严禁违规拒租或乱收宠物费</text>
+  <text x="60" y="518" class="node-sub">• 自动推送 HUD 合规医疗证明上传通道</text>
+
+  <!-- Plane 2: 24/7 Emergency Maintenance Vision Triage & Valve Shutoff -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple556)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② 凌晨爆管/断电多模态视觉止损与精准派工</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">凌晨 2 点爆管 30 秒视觉指导关角阀 (Flood Stop)</text>
+  <text x="435" y="200" class="node-sub">• 租客哭诉漏水时，秒发免安装短信 H5 相机链接查看现场</text>
+  <text x="435" y="218" class="node-sub">• 识别马桶/洗碗机高压软管爆裂后，屏幕红圈标出墙角止水角阀</text>
+  <text x="435" y="236" class="node-sub">• 语音指导顺时针拧紧止水，单次避免 $8,500 楼下泡水天花板坍塌</text>
+
+  <rect x="421" y="264" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">拦截 36% 夜间 $280 双倍加班费伪急修</text>
+  <text x="435" y="306" class="node-sub">• 区分真紧急 (爆管/燃气异味/酷暑断空调/一氧化碳报警)</text>
+  <text x="435" y="324" class="node-sub">• 视觉指导租客自行按下厨房 GFCI 防漏电复位键或重启垃圾处理器</text>
+  <text x="435" y="342" class="node-sub">• 非紧急滴水自动排入次日早 9 点常规工单，省下 $280 外勤费</text>
+
+  <rect x="421" y="370" width="358" height="84" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="392" class="node-title">家电铭牌 OCR 识别实现“首次上门即修好”</text>
+  <text x="435" y="412" class="node-sub">• 拍照自动提取热水器/冰箱品牌型号 (Model/Serial) 与故障灯</text>
+  <text x="435" y="430" class="node-sub">• 维修师傅首次上门带齐对应备件，二次返工率降低 54%</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">入户维修授权 (Permission to Enter) 录音存证</text>
+  <text x="435" y="510" class="node-sub">• 自动确认“租客不在家时是否允许带钥匙入户”及宠物关笼提醒</text>
+
+  <!-- Plane 3: Resident Ledger, Split Payment Plans & Lease Renewal -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen556)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ 租金账单查核、合规分期与续租留存</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">Yardi / RealPage 住户总账 (Ledger) 确定性拆解</text>
+  <text x="849" y="200" class="node-sub">• 逐项解释基础房租、水电分摊 (RUBS)、垃圾费与滞纳金</text>
+  <text x="849" y="218" class="node-sub">• 支持首次忘交自动申请豁免 $75 滞纳金 (需绑定 ACH 自动扣款)</text>
+  <text x="849" y="236" class="node-sub">• 严禁大模型自由口头承诺减免房租本金</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">温和合规租金提醒与 &lt;=30 天分期协议</text>
+  <text x="849" y="302" class="node-sub">• 严格遵守州租客保护法与 FDCPA 披露话术，杜绝骚扰式催收</text>
+  <text x="849" y="320" class="node-sub">• 针对短期周转困难租客自动签署 2 期结构化承诺付款计划</text>
+  <text x="849" y="338" class="node-sub">• 当月租金按时回款率从 88.4% 提升至 96.2%</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">租约到期前 90 天主动续租沟通</text>
+  <text x="849" y="406" class="node-sub">• 在授权阶梯内提供续租激励 (如免费深度保洁或车位折扣)</text>
+  <text x="849" y="424" class="node-sub">• 减少每套房 $3,800 的退租翻新空置损失 (Turnover Cost)</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (PROPTECH-FHA-MAINT-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截 FHA 社区/人群主观评价、未核身发门锁码与违规拒收 ESA</text>
+  <text x="849" y="518" class="node-sub">• 燃气/一氧化碳/爆管强制触发 0ms 安全撤离或关阀指引</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 商业地产与长租公寓语音+视觉 AI 实测基准 (10,000 套公寓资产包 · Yardi/AppFolio 实测)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">19% → 64.5%</text>
+  <text x="64" y="666" class="metric-lbl">7x24 招租来电转看房预约转化率 (0 FHA 违例)</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">-36% 夜间急修派单</text>
+  <text x="344" y="666" class="metric-lbl">视觉看漏水/复位 GFCI 省下 $280/单加班外勤</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">避免 $8,500/次泡水</text>
+  <text x="624" y="666" class="metric-lbl">凌晨爆管 30 秒手机视觉红圈指导拧紧止水阀</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">创效 $46.8万 / 万通</text>
+  <text x="904" y="666" class="metric-lbl">新增签约租金 + 免除夜间伪急修与泡水物业损失</text>
+</svg>

@@ -15445,6 +15445,36 @@ export function evaluatePharmacyPbmPrescriptionLasaPaPharmacist2026Guard(input: 
   };
 }
 
+export interface PropertyManagementMultifamilyFhaMaintenance2026Evaluation {
+  policyCode: "PROPERTY-MANAGEMENT-MULTIFAMILY-FHA-MAINTENANCE-2026-01";
+  smartLockTourPinAndWorkOrderDispatchAuthorized: boolean;
+  fhaDemographicSteeringOrUnverifiedLockCodeOrEsaPetFeeBlocked: boolean;
+  gasEvacuation911Or30sWaterValveCameraShutoffTriggered: boolean;
+}
+
+/**
+ * Deterministic Property Management & Multifamily Leasing (HUD Fair Housing Act Zero-Steering Gate, ID-Verified SmartRent/Latch Tour PINs, ESA Fee Waiver & 30s Burst-Pipe Valve Camera Shutoff) Guard (`PROPERTY-MANAGEMENT-MULTIFAMILY-FHA-MAINTENANCE-2026-01`).
+ */
+export function evaluatePropertyManagementMultifamilyFhaMaintenance2026Guard(input: {
+  fhaNeutralityVerifiedAndEsaExemptedFromPetFees: boolean;
+  governmentId3dLivenessVerifiedBeforeSmartLockPin: boolean;
+  activeGasLeakOrWaterPipeBurstDetected: boolean;
+}): PropertyManagementMultifamilyFhaMaintenance2026Evaluation {
+  return {
+    policyCode: "PROPERTY-MANAGEMENT-MULTIFAMILY-FHA-MAINTENANCE-2026-01",
+    smartLockTourPinAndWorkOrderDispatchAuthorized:
+      input.fhaNeutralityVerifiedAndEsaExemptedFromPetFees &&
+      input.governmentId3dLivenessVerifiedBeforeSmartLockPin &&
+      !input.activeGasLeakOrWaterPipeBurstDetected,
+    fhaDemographicSteeringOrUnverifiedLockCodeOrEsaPetFeeBlocked:
+      !input.fhaNeutralityVerifiedAndEsaExemptedFromPetFees ||
+      !input.governmentId3dLivenessVerifiedBeforeSmartLockPin ||
+      input.activeGasLeakOrWaterPipeBurstDetected,
+    gasEvacuation911Or30sWaterValveCameraShutoffTriggered:
+      input.activeGasLeakOrWaterPipeBurstDetected,
+  };
+}
+
 
 
 

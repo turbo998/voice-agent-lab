@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **555 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **556 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (555 Bilingual Guides)
+## 3. Solution Architect Selection Guides (556 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (532 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (533 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -599,3 +599,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 553. **Supply Chain, 3PL & Digital Freight Brokerage (FMCSA Carrier Vetting / Hands-Free Driver Check-Calls / Detention & POD Vision Verification) Guide: <120ms FMCSA/Highway + Caller-ANI Gate (0.00% Double-Brokering), Zero-Prompt-Leak 3-Step Rate FSM (+$145/Load Margin), ELD Pre-Emption (-76% Check-Calls, 3.6% WER @ 78dB Cab Noise) & 3.2s Lumper/POD Vision Settlement (-$558k/10k Loads)**: [EN](./supply-chain-3pl-freight-brokerage-carrier-dispatch-lumper-pod-vision-voice-selection-faq.en.md) | [中文](./supply-chain-3pl-freight-brokerage-carrier-dispatch-lumper-pod-vision-voice-selection-faq.md)
 554. **QSR Drive-Thru & Restaurant Phone Ordering (Dual-Mic Beamforming Noise Cancellation / Modifier Menu DAG / Real-Time POS 86-Item Sync) Guide: Driver-Window Beamforming @ 82dB (97.4% Back-Seat Cross-Talk Rejection), <15ms Deterministic Menu DAG + 0ms POS 86-Stockout Sync (6.8% → 0.9% Error Rate), <120ms OCB Visual Sync (-24s/Car), Queue-Gated +$1.35 Upsell & <300ms Crew Headset Takeover (+$392k/10k Orders)**: [EN](./qsr-drive-thru-restaurant-pos-modifier-menu-dag-ambient-noise-voice-selection-faq.en.md) | [中文](./qsr-drive-thru-restaurant-pos-modifier-menu-dag-ambient-noise-voice-selection-faq.md)
 555. **Retail Pharmacy, PBM & Prescription Management (Look-Alike/Sound-Alike Drug Disambiguation / Prior Authorization PA Status / Clinical Pharmacist Escalation) Guide: <80ms Active-Rx Profile Intersection + 1.8s Pill-Bottle NDC-11 Scan (0.00% LASA Confusion, 38.0% → 86.4% Self-Service), PBM Reject 75/79 + Copay Card Rescue (29.0% → 9.4% Rx Abandonment) & OBRA '90 RPh / DEA C-II Guardrails (+$442k/10k Calls)**: [EN](./pharmacy-pbm-prescription-refill-prior-authorization-drug-interaction-hipaa-voice-selection-faq.en.md) | [中文](./pharmacy-pbm-prescription-refill-prior-authorization-drug-interaction-hipaa-voice-selection-faq.md)
+556. **Property Management & Multifamily Leasing (Fair Housing Act FHA Guardrails / 24x7 Emergency Maintenance Vision Triage / Yardi & AppFolio Sync) Guide: 24/7 After-Hours Leasing Capture (19.0% → 64.5% Tour Conversion), Deterministic FHA Zero-Steering + ID-Gated SmartRent/Latch PINs (0.00% Violations/Squatters) & 28s Burst-Pipe Valve Camera Shutoff (-36% Midnight Dispatches, +$468k/10k Calls)**: [EN](./property-management-multifamily-leasing-tour-scheduling-emergency-maintenance-fha-voice-selection-faq.en.md) | [中文](./property-management-multifamily-leasing-tour-scheduling-emergency-maintenance-fha-voice-selection-faq.md)
