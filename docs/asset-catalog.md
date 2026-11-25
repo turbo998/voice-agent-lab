@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **553 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **554 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（553 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（554 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -66,7 +66,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（530 篇）
+### 3.3 高价值企业行业解决方案蓝图（531 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -597,3 +597,4 @@
 551. **企业级 B2B SaaS 与云平台技术支持（`WebRTC 实时屏幕同屏 / P1 故障日志诊断 / SLA 分级路由`）语音与多模态选型指南（控制台内嵌 WebRTC 语音 + `<100ms` DataChannel 脱敏 HAR/Request-ID 旁路直传 + 只读视觉激光笔高亮引导将一线解决率从 `28.0%` 提至 `74.0%` 且 MTTR 从 `4.2小时` 压至 `11分钟`、浏览器端截图前 DOM 密钥硬涂黑实现 `0.00%` API Key 外泄、以及合同 SLA 交叉校验 `<15s` 直通 PagerDuty 战情室每万单省 `$41.8万`）方案**：[中文](./enterprise-saas-b2b-technical-support-webrtc-cobrowsing-log-bundle-sla-routing-voice-selection-faq.md) | [EN](./enterprise-saas-b2b-technical-support-webrtc-cobrowsing-log-bundle-sla-routing-voice-selection-faq.en.md)
 552. **在线教育与语言陪练 AI（`音素级发音评估 GOP / 苏格拉底启发式辅导 / K-12 未成年人安全护栏`）实时语音与多模态选型指南（并行 `Azure Speech Pronunciation Assessment GOP` 帧级音素对齐将错音检出率从纯大模型的 `42.0%` 提至 `96.8%` 且与雅思考官相关性达 `r=0.94`、CEFR 等级自适应 `1,800ms` 耐性 VAD 配 1,000ms 屏幕静默提示卡将初学者误打断率降 `88.5%`、以及三步苏格拉底防抄作业锁与 COPPA 儿童声纹零落盘将单节课从 `$18.00` 压至 `$0.68` 每万节省 `$27.0万`）方案**：[中文](./edtech-language-tutoring-pronunciation-gop-phoneme-scoring-socratic-k12-guard-voice-selection-faq.md) | [EN](./edtech-language-tutoring-pronunciation-gop-phoneme-scoring-socratic-k12-guard-voice-selection-faq.en.md)
 553. **现代物流、3PL 与数字货运代理（`FMCSA 承运商防转包核验 / 在途司机抗噪免提跟单 / 卸货费与签收单 POD 视觉核验`）语音与多模态选型指南（`<120ms` FMCSA/Highway 资质与主叫 ANI 强核验实现 `0.00%` 恶意转包盗货、物理隔离底牌的三阶确定性运价状态机每车多保住 `$145` 毛利、ELD 遥测过滤 `76%` 无效催单电话配 `78dB` 重卡驾驶室降噪、以及 `3.2秒` 短信拍照审核 Lumper 收据与签字 POD 每万车次净省 `$55.8万`）方案**：[中文](./supply-chain-3pl-freight-brokerage-carrier-dispatch-lumper-pod-vision-voice-selection-faq.md) | [EN](./supply-chain-3pl-freight-brokerage-carrier-dispatch-lumper-pod-vision-voice-selection-faq.en.md)
+554. **连锁餐饮得来速（QSR Drive-Thru）与门店电话订餐（`户外双麦克风波束成形降噪 / 复杂口味定制 Menu DAG / POS 库存实时联动`）语音与多模态选型指南（主驾车窗窄波束抑制 `82dB` 柴油轰鸣并拦截 `97.4%` 后排乘客串音误加购、`<15ms` 确定性 `Menu DAG` 配 POS `86-List` 实时沽清同步将错单率从 `6.8%` 压至 `0.9%`、`<120ms` 户外电子屏视觉同步单车省时 `24秒`、以及排队 `<4车` 智能加购每单增收 `+$1.35` 配 `<300ms` 店员耳麦无感接管每万单创效 `$39.2万`）方案**：[中文](./qsr-drive-thru-restaurant-pos-modifier-menu-dag-ambient-noise-voice-selection-faq.md) | [EN](./qsr-drive-thru-restaurant-pos-modifier-menu-dag-ambient-noise-voice-selection-faq.en.md)

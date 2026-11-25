@@ -15385,6 +15385,36 @@ export function evaluateSupplyChain3plFreightBrokeragePodVision2026Guard(input: 
   };
 }
 
+export interface QsrDriveThruRestaurantPosMenuDagVoice2026Evaluation {
+  policyCode: "QSR-DRIVE-THRU-RESTAURANT-POS-MENU-DAG-VOICE-2026-01";
+  posOrderCommitAndQueueGatedUpsellAuthorized: boolean;
+  outOfStock86ItemOrBackSeatSideTalkOrFreeformAllergyClaimBlocked: boolean;
+  kdsAllergyAlertBannerOr300msCrewHeadsetTakeoverTriggered: boolean;
+}
+
+/**
+ * Deterministic QSR Drive-Thru & Restaurant Phone Ordering (Driver-Window Dual-Mic Beamforming, <15ms Menu Modifier DAG + Live POS 86-Stockout Sync, Severe Allergy Gate & <300ms Crew Headset Takeover) Guard (`QSR-DRIVE-THRU-RESTAURANT-POS-MENU-DAG-VOICE-2026-01`).
+ */
+export function evaluateQsrDriveThruRestaurantPosMenuDagVoice2026Guard(input: {
+  driverWindowBeamformingAndMenuDag86StockVerified: boolean;
+  requiredComboSlotsCompleteAndOcb120msSynced: boolean;
+  severeAllergyMentionedOrTwoLowConfidenceTurnsDetected: boolean;
+}): QsrDriveThruRestaurantPosMenuDagVoice2026Evaluation {
+  return {
+    policyCode: "QSR-DRIVE-THRU-RESTAURANT-POS-MENU-DAG-VOICE-2026-01",
+    posOrderCommitAndQueueGatedUpsellAuthorized:
+      input.driverWindowBeamformingAndMenuDag86StockVerified &&
+      input.requiredComboSlotsCompleteAndOcb120msSynced &&
+      !input.severeAllergyMentionedOrTwoLowConfidenceTurnsDetected,
+    outOfStock86ItemOrBackSeatSideTalkOrFreeformAllergyClaimBlocked:
+      !input.driverWindowBeamformingAndMenuDag86StockVerified ||
+      !input.requiredComboSlotsCompleteAndOcb120msSynced ||
+      input.severeAllergyMentionedOrTwoLowConfidenceTurnsDetected,
+    kdsAllergyAlertBannerOr300msCrewHeadsetTakeoverTriggered:
+      input.severeAllergyMentionedOrTwoLowConfidenceTurnsDetected,
+  };
+}
+
 
 
 

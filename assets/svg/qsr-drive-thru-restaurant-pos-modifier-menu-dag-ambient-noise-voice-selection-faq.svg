@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg554" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue554" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen554" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple554" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber554" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg554)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">连锁餐饮得来速（QSR Drive-Thru）与电话订餐：主驾波束降噪、Menu DAG 与 POS 联动架构 (#554)</text>
+  <text x="48" y="74" class="subtitle">QSR Drive-Thru &amp; Phone Ordering AI: Driver-Window Beamforming (82dB) · Deterministic Menu DAG + 86-Item Sync · Allergy Gate · &lt;300ms Crew Headset Takeover</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue554)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">QSR-DRIVETHRU-POS-2026</text>
+
+  <!-- Plane 1: Driver-Window Beamforming & <120ms Visual Order Board -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue554)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① 82dB 户外点餐柱波束降噪与后排防串音</text>
+
+  <rect x="46" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">主驾车窗窄波束锁定 (Driver-Zone Beamforming)</text>
+  <text x="60" y="200" class="node-sub">• 户外点餐柱面临 82dB 皮卡柴油机、雨声与后排儿童吵闹</text>
+  <text x="60" y="218" class="node-sub">• 双麦克风阵列波束锁定主驾车窗 + 近场能量门限过滤</text>
+  <text x="60" y="236" class="node-sub">• 拦截 97.4% 后排乘客闲聊 ("我要吃冰淇淋") 误加购事故</text>
+
+  <rect x="46" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="282" class="node-title">&lt;120ms 户外电子屏流式同步 (Digital Menu Board)</text>
+  <text x="60" y="302" class="node-sub">• 顾客每报出一个餐品，屏幕在 120ms 内实时跳出图文条目</text>
+  <text x="60" y="320" class="node-sub">• 视觉即时确认使AI无需冗长复述整单，单车点餐省时 24 秒</text>
+  <text x="60" y="338" class="node-sub">• 听觉+视觉双通道反馈将顾客重复喊话率压降至 2.3%</text>
+
+  <rect x="46" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="386" class="node-title">餐饮缩略语与口音专属声学增强</text>
+  <text x="60" y="406" class="node-sub">• 针对 "unsweet tea" vs "sweet tea"、"no ice" 定制热词权重</text>
+  <text x="60" y="424" class="node-sub">• 餐品与口味修饰词识别准确率从 84.5% 提升至 98.7%</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">电感线圈触发迎宾 (Loop Detector Wake-Up)</text>
+  <text x="60" y="500" class="node-sub">• 车轮压过地面线圈 + 摄像头确认摇下车窗后再开口问候</text>
+  <text x="60" y="518" class="node-sub">• 避免顾客还在关窗找钱包时 AI 空喊抢话</text>
+
+  <!-- Plane 2: Deterministic Menu DAG, 86-Sync & Dynamic Queue Upsell -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple554)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② 复杂口味 Menu DAG 校验与 POS 沽清实时同步</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">&lt;15ms 确定性菜单有向无环图 (Menu Modifier DAG)</text>
+  <text x="435" y="200" class="node-sub">• 严禁大模型自由拼造不存在的套餐组合或算错加料差价</text>
+  <text x="435" y="218" class="node-sub">• 支持复杂嵌套改单:“两份辣堡套餐，第1份去酱换奶昔，退掉第2份”</text>
+  <text x="435" y="236" class="node-sub">• 漏选必选槽位 (如未报饮料/杯型) 时精准追问单一缺失项</text>
+
+  <rect x="421" y="264" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">POS 实时沽清同步 (Real-Time 86-Item Sync)</text>
+  <text x="435" y="306" class="node-sub">• 秒级订阅 NCR Aloha / Oracle Simphony / Toast 门店库存事件</text>
+  <text x="435" y="324" class="node-sub">• 冰淇淋机清洗或草莓派售罄时 0ms 从可点菜单树摘除</text>
+  <text x="435" y="342" class="node-sub">• 当场推荐同价位可售替代品，消除付款窗退单重做</text>
+
+  <rect x="421" y="370" width="358" height="84" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="392" class="node-title">车道排队长度感知的弹性加购 (Queue-Aware Upsell)</text>
+  <text x="435" y="412" class="node-sub">• 排队 &lt;4 辆车时：自然推荐高毛利加购 (+$1.35 客单价提升)</text>
+  <text x="435" y="430" class="node-sub">• 高峰期排队 &gt;=4 辆车：自动关闭加购话术，全力保通行速度</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">分时段菜单自动切换 (Daypart Breakfast→Lunch)</text>
+  <text x="435" y="510" class="node-sub">• 10:30 AM 早餐切正餐窗口支持 5 分钟柔性过渡库存核查</text>
+
+  <!-- Plane 3: Severe Allergy Safety Gate & <300ms Crew Headset Takeover -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen554)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ 严重过敏原红线与 &lt;300ms 店员耳麦无感接管</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">严重食物过敏原零幻觉红线 (Allergy Safety Gate)</text>
+  <text x="849" y="200" class="node-sub">• 识别到花生/坚果/海鲜/乳制品/麸质过敏提问时严禁自由发挥</text>
+  <text x="849" y="218" class="node-sub">• 仅播报官方认证过敏原成分表 + 共用油锅交叉接触免责声明</text>
+  <text x="849" y="236" class="node-sub">• 自动在后厨 KDS 屏幕打上红色闪烁 `ALLERGY_ALERT` 换手套标记</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">&lt;300ms 店员无线耳麦无感接管 (Crew Whisper Takeover)</text>
+  <text x="849" y="302" class="node-sub">• 连续 2 次低置信度或特制非标要求时，店员耳麦响起轻柔提示音</text>
+  <text x="849" y="320" class="node-sub">• 已点餐品 100% 保留在 POS 屏幕，店员按住耳麦直接接着聊</text>
+  <text x="849" y="338" class="node-sub">• 顾客甚至察觉不到已切人工，彻底消灭“请重说一遍”</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">会员车牌/扫码秒级识别与历史常点推荐</text>
+  <text x="849" y="406" class="node-sub">• 识别会员码后首句问候:“还是老规矩冰美式加双份浓缩吗？”</text>
+  <text x="849" y="424" class="node-sub">• 常客点餐时长从 52 秒缩短至 14 秒</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (QSR-DRIVE-THRU-POS-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截售罄 86 菜品下单、未认证过敏原保证与后排串音加购</text>
+  <text x="849" y="518" class="node-sub">• 连续 2 次纠结强制触发 &lt;300ms 店员耳麦热接管</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 连锁餐饮 QSR 得来速与门店电话订餐 AI 实测基准 (100 家门店连锁 · 月均 150 万单)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">94.6% 全自动完单</text>
+  <text x="64" y="666" class="metric-lbl">主驾波束降噪 + Menu DAG (单车省时 24 秒)</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">+$1.35 / 单客单价</text>
+  <text x="344" y="666" class="metric-lbl">排队感知智能加购 (100% 一致率 vs 人工 21%)</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">&lt; 300ms 耳麦接管</text>
+  <text x="624" y="666" class="metric-lbl">POS 购物车零丢失无缝切店员 (0 重复点单)</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">增收节支 $39.2万</text>
+  <text x="904" y="666" class="metric-lbl">每万单加购增收 + 错单报废减少 + 释放点餐人手</text>
+</svg>
