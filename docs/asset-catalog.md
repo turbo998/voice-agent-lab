@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **550 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **551 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（550 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（551 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -66,7 +66,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（527 篇）
+### 3.3 高价值企业行业解决方案蓝图（528 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -594,3 +594,4 @@
 548. **存量呼叫中心与办公电话网（`Cisco UCCE / Avaya Aura / Genesys Cloud / Amazon Connect / Teams Phone`）零携号转网接入语音 AI 选型指南（企业 SBC 旁路 SIP Trunk 直连 2 周上线且 `<35ms` 单次转码将数字识别 WER 从 `11.4%` 压至 `3.1%`、带内 `36-Byte UUID` + 带外 `<10ms` Redis CTI 弹屏桥破除 `128B UUI` 截断每通省 `48秒` 重复盘问、转人工媒体重锚定 0ms 销毁 AI 空转计费、以及 `<50ms` SBC Fail-Open 硬件级逃生每万通省 `$31.2万`）方案**：[中文](./legacy-pbx-ccaas-cisco-avaya-genesys-teams-sbc-voice-integration-selection-faq.md) | [EN](./legacy-pbx-ccaas-cisco-avaya-genesys-teams-sbc-voice-integration-selection-faq.en.md)
 549. **政务/央行/军工级私有化与主权云实时语音 AI（`Azure Disconnected Containers / Private Link ZDR / 本地 8 卡 GPU 集群`）`2:4:2` 算力配比与选型指南（三级数据主权边界选型避免 `<30路` 场景盲目自建、单台 8 卡节点 `2:4:2` 物理隔离将 120 路并发 P95 延迟从混部 `2,100ms` 压至 `540ms` 且单分钟摊销仅 `$0.019`、以及 `XGrammar` 100% 合法 JSON 工具解码配 `<1ms` 流式口语净化每年净省 `$38.0万`）方案**：[中文](./sovereign-cloud-private-vpc-on-prem-voice-ai-vllm-gpu-sizing-selection-faq.md) | [EN](./sovereign-cloud-private-vpc-on-prem-voice-ai-vllm-gpu-sizing-selection-faq.en.md)
 550. **电信运营商与宽带 ISP 智能客服（`光猫远程自愈 / 漫游账单争议拆解 / 防 SIM 卡劫持过户`）实时语音与视觉协同选型指南（振铃期 `<120ms` 遥测预检 + 按需 15s 手机相机看灯 + 45 秒重启生存回呼锁将 `$120` 装维上门派单率从 `34.0%` 压至 `14.8%`、BSS 双月账单确定性 Diff + 漫游包追溯重算实现 `94.2%` 客户留存、以及原卡在线冲突检测 + 硬件 Passkey + 24h 冷静锁实现 `0.00%` SIM 劫持每万通省 `$36.4万`）方案**：[中文](./telecom-isp-broadband-self-healing-bill-dispute-anti-sim-swap-voice-selection-faq.md) | [EN](./telecom-isp-broadband-self-healing-bill-dispute-anti-sim-swap-voice-selection-faq.en.md)
+551. **企业级 B2B SaaS 与云平台技术支持（`WebRTC 实时屏幕同屏 / P1 故障日志诊断 / SLA 分级路由`）语音与多模态选型指南（控制台内嵌 WebRTC 语音 + `<100ms` DataChannel 脱敏 HAR/Request-ID 旁路直传 + 只读视觉激光笔高亮引导将一线解决率从 `28.0%` 提至 `74.0%` 且 MTTR 从 `4.2小时` 压至 `11分钟`、浏览器端截图前 DOM 密钥硬涂黑实现 `0.00%` API Key 外泄、以及合同 SLA 交叉校验 `<15s` 直通 PagerDuty 战情室每万单省 `$41.8万`）方案**：[中文](./enterprise-saas-b2b-technical-support-webrtc-cobrowsing-log-bundle-sla-routing-voice-selection-faq.md) | [EN](./enterprise-saas-b2b-technical-support-webrtc-cobrowsing-log-bundle-sla-routing-voice-selection-faq.en.md)

@@ -15295,6 +15295,36 @@ export function evaluateTelecomIspBroadbandSelfHealingAntiSimSwap2026Guard(input
   };
 }
 
+export interface EnterpriseSaasB2bSupportCobrowsingSla2026Evaluation {
+  policyCode: "ENTERPRISE-SAAS-B2B-SUPPORT-COBROWSING-SLA-2026-01";
+  readOnlySpotlightCoBrowsingAndTenantLogLookupAuthorized: boolean;
+  unmaskedSecretCaptureOrAiDestructiveClickOrCrossTenantQueryBlocked: boolean;
+  instant15sSev1PagerDutyWarRoomBridgeTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise B2B SaaS & Cloud Technical Support (In-App WebRTC Co-Browsing, Client-Side Pre-Capture DOM Secret Masking, Read-Only Visual Spotlight & <15s Sev-1 PagerDuty War-Room Bridge) Guard (`ENTERPRISE-SAAS-B2B-SUPPORT-COBROWSING-SLA-2026-01`).
+ */
+export function evaluateEnterpriseSaasB2bSupportCobrowsingSla2026Guard(input: {
+  clientSideDomSecretsMaskedAndJwtTenantPinned: boolean;
+  coBrowsingRestrictedToReadOnlySpotlightWithoutAiClicks: boolean;
+  enterpriseSev1OutageDetectedOrUnmaskedSecretPresent: boolean;
+}): EnterpriseSaasB2bSupportCobrowsingSla2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-SAAS-B2B-SUPPORT-COBROWSING-SLA-2026-01",
+    readOnlySpotlightCoBrowsingAndTenantLogLookupAuthorized:
+      input.clientSideDomSecretsMaskedAndJwtTenantPinned &&
+      input.coBrowsingRestrictedToReadOnlySpotlightWithoutAiClicks &&
+      !input.enterpriseSev1OutageDetectedOrUnmaskedSecretPresent,
+    unmaskedSecretCaptureOrAiDestructiveClickOrCrossTenantQueryBlocked:
+      !input.clientSideDomSecretsMaskedAndJwtTenantPinned ||
+      !input.coBrowsingRestrictedToReadOnlySpotlightWithoutAiClicks ||
+      input.enterpriseSev1OutageDetectedOrUnmaskedSecretPresent,
+    instant15sSev1PagerDutyWarRoomBridgeTriggered:
+      input.enterpriseSev1OutageDetectedOrUnmaskedSecretPresent,
+  };
+}
+
 
 
 

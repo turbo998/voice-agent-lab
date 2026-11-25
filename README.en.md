@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 550 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 550 Guides](#-2-550-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 551 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 551 Guides](#-2-551-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 550 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 551 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (527 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (528 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -624,6 +624,7 @@ flowchart LR
 548. **Legacy PBX & CCaaS (Cisco UCCE / Avaya Aura / Genesys Cloud / Amazon Connect / Teams Phone) Zero-Downtime Voice AI Integration Guide: 2-Week Zero-LNP Enterprise SBC Sidecar (<35ms Bridge, 11.4% → 3.1% Digit WER), 36B UUID + <10ms Out-of-Band Redis CTI Screen-Pop (0.00% 128B UUI Truncation, -48s AHT), Anti-Trombone Media Re-Anchor & <50ms SBC Fail-Open (-$312k/10k Calls)**: [EN](./docs/legacy-pbx-ccaas-cisco-avaya-genesys-teams-sbc-voice-integration-selection-faq.en.md) | [中文](./docs/legacy-pbx-ccaas-cisco-avaya-genesys-teams-sbc-voice-integration-selection-faq.md)
 549. **Sovereign Cloud, Private VPC & Air-Gapped On-Premises Real-Time Voice AI (Azure Disconnected Containers / vLLM FP8 / TensorRT-LLM) Guide: 3-Tier Sovereign Right-Sizing, Disaggregated `2:4:2` 8-GPU Allocation (2,100ms → 540ms P95 @ 120 Calls, $0.019/min) & XGrammar 100% Valid Tool JSON + <1ms Speech Normalizer (-$380k/Yr)**: [EN](./docs/sovereign-cloud-private-vpc-on-prem-voice-ai-vllm-gpu-sizing-selection-faq.en.md) | [中文](./docs/sovereign-cloud-private-vpc-on-prem-voice-ai-vllm-gpu-sizing-selection-faq.md)
 550. **Telecom & Broadband ISP Customer Care (Automated ONT Self-Healing / Roaming Bill-Shock Resolution / Anti-SIM-Swap Guard) Guide: <120ms Ringback Telemetry + 15s Camera Router Vision + 45s Reboot Survival Callback (34.0% → 14.8% Truck Rolls), Deterministic BSS Bill-Diff + Retroactive Roaming Re-Rate (94.2% Retention) & Zero-Trust Anti-SIM-Swap Lock (-$364k/10k Calls)**: [EN](./docs/telecom-isp-broadband-self-healing-bill-dispute-anti-sim-swap-voice-selection-faq.en.md) | [中文](./docs/telecom-isp-broadband-self-healing-bill-dispute-anti-sim-swap-voice-selection-faq.md)
+551. **Enterprise B2B SaaS & Cloud Technical Support (WebRTC Screen Co-Browsing / P1 Incident Log Triage / Entitlement SLA Routing) Guide: In-App WebRTC Voice + <100ms Sanitized HAR/Request-ID Sideband + Read-Only Visual Spotlight (28.0% → 74.0% Tier-1 FCR, 4.2h → 11m MTTR), Client-Side Pre-Capture DOM Secret Masking (0.00% Key Leaks) & <15s Sev-1 PagerDuty War-Room Bridge (-$418k/10k Sessions)**: [EN](./docs/enterprise-saas-b2b-technical-support-webrtc-cobrowsing-log-bundle-sla-routing-voice-selection-faq.en.md) | [中文](./docs/enterprise-saas-b2b-technical-support-webrtc-cobrowsing-log-bundle-sla-routing-voice-selection-faq.md)
 
 ---
 

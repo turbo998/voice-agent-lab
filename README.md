@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 550 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 550 篇选型指南](#-二550-篇企业级语音架构选型指南中英双语) |
+| **🧭 551 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 551 篇选型指南](#-二551-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、550 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、551 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（527 篇）
+### 3.3 高价值企业行业解决方案蓝图（528 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -624,6 +624,7 @@ flowchart LR
 548. **存量呼叫中心与办公电话网（`Cisco UCCE / Avaya Aura / Genesys Cloud / Amazon Connect / Teams Phone`）零携号转网接入语音 AI 选型指南（企业 SBC 旁路 SIP Trunk 直连 2 周上线且 `<35ms` 单次转码将数字识别 WER 从 `11.4%` 压至 `3.1%`、带内 `36-Byte UUID` + 带外 `<10ms` Redis CTI 弹屏桥破除 `128B UUI` 截断每通省 `48秒` 重复盘问、转人工媒体重锚定 0ms 销毁 AI 空转计费、以及 `<50ms` SBC Fail-Open 硬件级逃生每万通省 `$31.2万`）方案**：[中文](./docs/legacy-pbx-ccaas-cisco-avaya-genesys-teams-sbc-voice-integration-selection-faq.md) | [EN](./docs/legacy-pbx-ccaas-cisco-avaya-genesys-teams-sbc-voice-integration-selection-faq.en.md)
 549. **政务/央行/军工级私有化与主权云实时语音 AI（`Azure Disconnected Containers / Private Link ZDR / 本地 8 卡 GPU 集群`）`2:4:2` 算力配比与选型指南（三级数据主权边界选型避免 `<30路` 场景盲目自建、单台 8 卡节点 `2:4:2` 物理隔离将 120 路并发 P95 延迟从混部 `2,100ms` 压至 `540ms` 且单分钟摊销仅 `$0.019`、以及 `XGrammar` 100% 合法 JSON 工具解码配 `<1ms` 流式口语净化每年净省 `$38.0万`）方案**：[中文](./docs/sovereign-cloud-private-vpc-on-prem-voice-ai-vllm-gpu-sizing-selection-faq.md) | [EN](./docs/sovereign-cloud-private-vpc-on-prem-voice-ai-vllm-gpu-sizing-selection-faq.en.md)
 550. **电信运营商与宽带 ISP 智能客服（`光猫远程自愈 / 漫游账单争议拆解 / 防 SIM 卡劫持过户`）实时语音与视觉协同选型指南（振铃期 `<120ms` 遥测预检 + 按需 15s 手机相机看灯 + 45 秒重启生存回呼锁将 `$120` 装维上门派单率从 `34.0%` 压至 `14.8%`、BSS 双月账单确定性 Diff + 漫游包追溯重算实现 `94.2%` 客户留存、以及原卡在线冲突检测 + 硬件 Passkey + 24h 冷静锁实现 `0.00%` SIM 劫持每万通省 `$36.4万`）方案**：[中文](./docs/telecom-isp-broadband-self-healing-bill-dispute-anti-sim-swap-voice-selection-faq.md) | [EN](./docs/telecom-isp-broadband-self-healing-bill-dispute-anti-sim-swap-voice-selection-faq.en.md)
+551. **企业级 B2B SaaS 与云平台技术支持（`WebRTC 实时屏幕同屏 / P1 故障日志诊断 / SLA 分级路由`）语音与多模态选型指南（控制台内嵌 WebRTC 语音 + `<100ms` DataChannel 脱敏 HAR/Request-ID 旁路直传 + 只读视觉激光笔高亮引导将一线解决率从 `28.0%` 提至 `74.0%` 且 MTTR 从 `4.2小时` 压至 `11分钟`、浏览器端截图前 DOM 密钥硬涂黑实现 `0.00%` API Key 外泄、以及合同 SLA 交叉校验 `<15s` 直通 PagerDuty 战情室每万单省 `$41.8万`）方案**：[中文](./docs/enterprise-saas-b2b-technical-support-webrtc-cobrowsing-log-bundle-sla-routing-voice-selection-faq.md) | [EN](./docs/enterprise-saas-b2b-technical-support-webrtc-cobrowsing-log-bundle-sla-routing-voice-selection-faq.en.md)
 
 ---
 
