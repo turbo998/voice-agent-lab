@@ -15325,6 +15325,36 @@ export function evaluateEnterpriseSaasB2bSupportCobrowsingSla2026Guard(input: {
   };
 }
 
+export interface EdtechLanguageTutoringGopPhonemeSocraticK122026Evaluation {
+  policyCode: "EDTECH-LANGUAGE-TUTORING-GOP-PHONEME-SOCRATIC-K12-2026-01";
+  parallelPhonemeGopRecastAndSocraticHintAuthorized: boolean;
+  directHomeworkAnswerSpoilerOrChildAudioPersistenceOrPrematureCutoffBlocked: boolean;
+  coppaEphemeralRamPurgeOrSafeHarborGuardianAlertTriggered: boolean;
+}
+
+/**
+ * Deterministic EdTech Language Tutoring & Socratic Coaching (Parallel Phoneme-Level GOP Assessment, CEFR-Adaptive 1,800ms Patience VAD, 3-Step Socratic Anti-Spoiler Gate & COPPA Ephemeral Child Audio Guard) (`EDTECH-LANGUAGE-TUTORING-GOP-PHONEME-SOCRATIC-K12-2026-01`).
+ */
+export function evaluateEdtechLanguageTutoringGopPhonemeSocraticK122026Guard(input: {
+  parallel24khzPhonemeGopAndCefr1800msVadEnabled: boolean;
+  threeStepSocraticFilterAndCoppaEphemeralRamVerified: boolean;
+  directHomeworkSpoilerAttemptedOrChildSafetyDistressDetected: boolean;
+}): EdtechLanguageTutoringGopPhonemeSocraticK122026Evaluation {
+  return {
+    policyCode: "EDTECH-LANGUAGE-TUTORING-GOP-PHONEME-SOCRATIC-K12-2026-01",
+    parallelPhonemeGopRecastAndSocraticHintAuthorized:
+      input.parallel24khzPhonemeGopAndCefr1800msVadEnabled &&
+      input.threeStepSocraticFilterAndCoppaEphemeralRamVerified &&
+      !input.directHomeworkSpoilerAttemptedOrChildSafetyDistressDetected,
+    directHomeworkAnswerSpoilerOrChildAudioPersistenceOrPrematureCutoffBlocked:
+      !input.parallel24khzPhonemeGopAndCefr1800msVadEnabled ||
+      !input.threeStepSocraticFilterAndCoppaEphemeralRamVerified ||
+      input.directHomeworkSpoilerAttemptedOrChildSafetyDistressDetected,
+    coppaEphemeralRamPurgeOrSafeHarborGuardianAlertTriggered:
+      input.directHomeworkSpoilerAttemptedOrChildSafetyDistressDetected,
+  };
+}
+
 
 
 

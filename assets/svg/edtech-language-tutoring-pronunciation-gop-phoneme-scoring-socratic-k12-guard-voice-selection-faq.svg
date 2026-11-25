@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg552" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue552" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen552" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple552" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber552" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg552)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">在线教育与语言陪练 AI：音素级 GOP 发音评估、苏格拉底启发与 K-12 安全架构 (#552)</text>
+  <text x="48" y="74" class="subtitle">EdTech Voice &amp; Multimodal AI: Parallel Phoneme GOP + GPT-Realtime · CEFR-Adaptive VAD (1,800ms) · 3-Step Socratic Scaffolding · COPPA Guard</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue552)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">EDTECH-GOP-K12-2026</text>
+
+  <!-- Plane 1: Dual-Stream Phoneme GOP + Conversational AI -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue552)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① 双轨音素级发音评估 (Phoneme GOP + LLM)</text>
+
+  <rect x="46" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">破解通用 STT“自动纠错掩盖发音错误”痛点</text>
+  <text x="60" y="200" class="node-sub">• 学员把 "think (/θ/)" 读成 "sink (/s/)" 会被通用 STT 自动修正</text>
+  <text x="60" y="218" class="node-sub">• 旁路并行调用 Azure Speech Pronunciation Assessment</text>
+  <text x="60" y="236" class="node-sub">• &lt;140ms 输出音素级 GOP 分数、重音偏移、流利度与韵律</text>
+
+  <rect x="46" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="282" class="node-title">非打断式微纠错注入 (Non-Intrusive Recast)</text>
+  <text x="60" y="302" class="node-sub">• GOP &gt;=65 分时不打断对话流，记入课后音素热力图报告</text>
+  <text x="60" y="320" class="node-sub">• GOP &lt;45 分且影响语义时，将 `{phoneme: θ-&gt;s}` 注入 LLM</text>
+  <text x="60" y="338" class="node-sub">• 外教音色自然接话并示范咬舌发音 + 屏幕口腔动图演示</text>
+
+  <rect x="46" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="386" class="node-title">雅思/托福/剑桥口语与考官级评分对齐</text>
+  <text x="60" y="406" class="node-sub">• 发音、词汇、语法、流利度四维评分与真考官相关系数 r=0.94</text>
+  <text x="60" y="424" class="node-sub">• 单节 25 分钟 1v1 外教成本从 $18.00 压至 $0.68 (-96.2%)</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">L1 母语负迁移专属声学词典</text>
+  <text x="60" y="500" class="node-sub">• 针对中日韩/西语/阿语母语者高频混淆音素定制纠音策略</text>
+  <text x="60" y="518" class="node-sub">• 音素错读检出率从纯大模型的 42% 跃升至 96.8%</text>
+
+  <!-- Plane 2: CEFR-Adaptive VAD & 3-Step Socratic Scaffolding -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple552)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② CEFR 动态耐性 VAD 与苏格拉底启发状态机</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">CEFR 等级自适应停顿窗口 (Adaptive Learner VAD)</text>
+  <text x="435" y="200" class="node-sub">• 痛点: 客服级 500ms VAD 会频繁掐断正在想词的初学者</text>
+  <text x="435" y="218" class="node-sub">• A1/A2 初学者: 句未完停顿延长至 1,800ms + 屏幕静默提示词卡</text>
+  <text x="435" y="236" class="node-sub">• C1/C2 高阶商务辩论: 切换至 550ms 高强度快节奏追问</text>
+
+  <rect x="421" y="264" width="358" height="94" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">三步苏格拉底防抄作业锁 (Anti-Spoiler Scaffolding)</text>
+  <text x="435" y="306" class="node-sub">• 严禁直接报出数学/编程/阅读题最终答案 (0.00% 直接泄题)</text>
+  <text x="435" y="324" class="node-sub">• Step 1: 反问已知条件 → Step 2: 拆解子步骤/给公式线索</text>
+  <text x="435" y="342" class="node-sub">• Step 3: 结合共享画板 (Whiteboard Canvas) 圈出错误计算行</text>
+
+  <rect x="421" y="372" width="358" height="82" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="394" class="node-title">多模态草稿纸与解题画板同步 (Vision Whiteboard)</text>
+  <text x="435" y="414" class="node-sub">• 实时识别 iPad 手写笔迹或书本拍照，定位第 2 行移项符号错误</text>
+  <text x="435" y="432" class="node-sub">• 语音温柔引导:“仔细看看第二行等号右边的负号去哪啦？”</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">学员开口时长占比 (Student Talk Time) &gt;= 68%</text>
+  <text x="435" y="510" class="node-sub">• 强制限制 AI 单轮回复 &lt;=2 句话，把开口机会留给学员</text>
+
+  <!-- Plane 3: K-12 COPPA / Minor Safety & Zero Biometric Retention -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen552)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ K-12 未成年人 COPPA 合规与心理安全护栏</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">COPPA / GDPR-K 儿童声纹零留存与零训练</text>
+  <text x="849" y="200" class="node-sub">• 未成年人音频流仅在内存完成 GOP 评分后即刻销毁</text>
+  <text x="849" y="218" class="node-sub">• 100% 禁止提取儿童声纹向量或将录音用于大模型再训练</text>
+  <text x="849" y="236" class="node-sub">• 自动拦截并打码孩子无意说出的家庭住址、学校与家长电话</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">校园霸凌/自伤危机毫秒级强制守护 (Safe-Harbor)</text>
+  <text x="849" y="302" class="node-sub">• 双层内容安全护栏 (Azure AI Content Safety + 教育分类器)</text>
+  <text x="849" y="320" class="node-sub">• 阻断成人/暴力/越狱话题，温和拉回课程主题</text>
+  <text x="849" y="338" class="node-sub">• 一旦检测到自伤或受侵害倾诉，立即切入标准关怀话术并告警</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">艾宾浩斯错音与薄弱知识点跨课记忆卡</text>
+  <text x="849" y="406" class="node-sub">• 仅保存非隐私结构化学习画像 (`weak_phonemes: [/θ/, /v/]`) </text>
+  <text x="849" y="424" class="node-sub">• 在第 1/3/7 天对话中自然编入含 `/θ/` 的词汇检验巩固成果</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (EDTECH-GOP-SOCRATIC-K12-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截直接给出作业答案、500ms 抢话截断初学者与儿童录音落盘</text>
+  <text x="849" y="518" class="node-sub">• 强制并行注入音素级 GOP 评分与 K-12 安全过滤</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 在线教育与语言陪练实时语音 AI 实测基准 (10,000 节 25 分钟 1v1 陪练课 · K-12 &amp; 成人雅思)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">42% → 96.8%</text>
+  <text x="64" y="666" class="metric-lbl">并行音素 GOP 引擎错音检出率 (r=0.94 考官对齐)</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">-88.5% 误打断率</text>
+  <text x="344" y="666" class="metric-lbl">CEFR 自适应 1,800ms 耐性 VAD 保护初学者开口</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">0.00% 直接泄题</text>
+  <text x="624" y="666" class="metric-lbl">三步苏格拉底启发锁 + COPPA 儿童声纹零落盘</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">$18.00 → $0.68/节</text>
+  <text x="904" y="666" class="metric-lbl">25 分钟 1v1 陪练课成本直降 96.2% (省 $17.3万/万节)</text>
+</svg>
