@@ -15535,6 +15535,36 @@ export function evaluateAutomotiveDealershipServiceVinRecallMpi2026Guard(input: 
   };
 }
 
+export interface MortgageOriginationRefinanceTridSafeNmls2026Evaluation {
+  policyCode: "MORTGAGE-ORIGINATION-REFINANCE-TRID-SAFE-NMLS-2026-01";
+  preQualRateReadbackAndStipAcceptanceAuthorized: boolean;
+  unpairedRateWithoutAprOrUnlogged6PieceTridOrMissingPageBlocked: boolean;
+  stateLicensedNmlsMloTransferOrEncompass3DayLeClockTriggered: boolean;
+}
+
+/**
+ * Deterministic Mortgage Origination & Refinance (CFPB Reg Z Rate+APR Pairing, TRID 5-of-6 Pre-Qual Bitmap Gate, SAFE Act Subject-Property State NMLS Routing & 2.1s Stip Page-Continuity Vision) Guard (`MORTGAGE-ORIGINATION-REFINANCE-TRID-SAFE-NMLS-2026-01`).
+ */
+export function evaluateMortgageOriginationRefinanceTridSafeNmls2026Guard(input: {
+  ratePairedWithAprAndTridCappedAt5Of6OrEncompassLeStarted: boolean;
+  stipDocumentAllPages1ToNAndOfficialHeaderVerified: boolean;
+  individualizedPointsCounselingOrRateLockRequested: boolean;
+}): MortgageOriginationRefinanceTridSafeNmls2026Evaluation {
+  return {
+    policyCode: "MORTGAGE-ORIGINATION-REFINANCE-TRID-SAFE-NMLS-2026-01",
+    preQualRateReadbackAndStipAcceptanceAuthorized:
+      input.ratePairedWithAprAndTridCappedAt5Of6OrEncompassLeStarted &&
+      input.stipDocumentAllPages1ToNAndOfficialHeaderVerified &&
+      !input.individualizedPointsCounselingOrRateLockRequested,
+    unpairedRateWithoutAprOrUnlogged6PieceTridOrMissingPageBlocked:
+      !input.ratePairedWithAprAndTridCappedAt5Of6OrEncompassLeStarted ||
+      !input.stipDocumentAllPages1ToNAndOfficialHeaderVerified ||
+      input.individualizedPointsCounselingOrRateLockRequested,
+    stateLicensedNmlsMloTransferOrEncompass3DayLeClockTriggered:
+      input.individualizedPointsCounselingOrRateLockRequested,
+  };
+}
+
 
 
 

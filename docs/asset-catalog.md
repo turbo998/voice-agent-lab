@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **558 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **559 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（558 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（559 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -66,7 +66,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（535 篇）
+### 3.3 高价值企业行业解决方案蓝图（536 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -602,3 +602,4 @@
 556. **商业地产与长租公寓物业管理（`FHA 公平住房合规招租 / 凌晨爆管视觉止损与急修分流 / Yardi 租金账单催缴`）语音与多模态选型指南（7x24 秒接挽回 `48%` 晚间漏接招租来电并将看房转化率从 `19.0%` 提至 `64.5%`、确定性 FHA 中立锁与证件活体看房门锁核身实现 `0.00%` 歧视诱导与霸房、以及凌晨爆管 30 秒手机视觉红圈指导关角阀避免 `$8,500` 泡水并过滤 `36%` `$280` 夜间伪急修每万通创效 `$46.8万`）方案**：[中文](./property-management-multifamily-leasing-tour-scheduling-emergency-maintenance-fha-voice-selection-faq.md) | [EN](./property-management-multifamily-leasing-tour-scheduling-emergency-maintenance-fha-voice-selection-faq.en.md)
 557. **政务 12345 / 市政 311 市民热线与公共福利申领（`<2秒` 911 紧急警情直通 / `50米` PostGIS 空间去重 / Title VI 60+ 语种与 ADA 无障碍）语音与多模态选型指南（`<2.0秒` 并行生命安全哨兵将误拨入的电线打火/急症零延误带 GPS 直通 `911/110`、`<50ms` PostGIS `50米` 空间半径去重配设施铭牌视觉识别砍掉 `78.4%` 重复派车并将首次派单准确率从 `64%` 提至 `96.8%`、60+ 语种将口译成本从 `$1.85/min` 压至 `$0.042/min`、以及 `OPA` 确定性福利规则引擎实现 `0.00%` 自动拒批每万通净省 `$38.4万`）方案**：[中文](./public-sector-311-municipal-hotline-benefits-eligibility-wcag-multilingual-voice-selection-faq.md) | [EN](./public-sector-311-municipal-hotline-benefits-eligibility-wcag-multilingual-voice-selection-faq.en.md)
 558. **汽车经销商集团（4S 店）售后维保预约、VIN 召回联查与车间多点检测（MPI）视频增项语音与多模态选型指南（早高峰零漏接 + `ISO 3779` VIN 模 11 校验与 NHTSA/OEM 未完成召回联查顺带锁定 `+$310/单` 保修产值并将进店转化率从 `51%` 提至 `87.2%`、`技师技能 × 召回备件现货 × 代步车` 三约束排程实现 `0.00%` 缺件白跑、以及车间 MPI 视频 20m 未读主动外呼配 BAR 含税签批将举升机等待从 `78m` 压至 `9m` 每万通创效 `$52.4万`）方案**：[中文](./automotive-dealership-service-lane-vin-recall-appointment-mpi-upsell-voice-selection-faq.md) | [EN](./automotive-dealership-service-lane-vin-recall-appointment-mpi-upsell-voice-selection-faq.en.md)
+559. **住房按揭贷款与再融资（Mortgage & Refinance：`TRID` 六要素合规进件 / `SAFE Act` 持牌信贷员 NMLS 边界 / 核保材料视觉核验）语音与多模态选型指南（`<15s` 降息线索极速外呼将转化率提升 `3.9倍`、强制 `Rate + APR` 同句成对播报与按房产所在州 `<500ms` 匹配持牌 `NMLS MLO`、`TRID 5/6` 预审位图锁隔离口述 SSN 免除 `$3,200/笔` 3 日 LE 超期赔付、以及通话中 `2.1秒` 银行流水缺页视觉拦截将放款周期缩短 `7.5天` 每万笔创效 `$68.5万`）方案**：[中文](./mortgage-origination-refinance-trid-rate-lock-tila-respa-loan-officer-voice-selection-faq.md) | [EN](./mortgage-origination-refinance-trid-rate-lock-tila-respa-loan-officer-voice-selection-faq.en.md)
