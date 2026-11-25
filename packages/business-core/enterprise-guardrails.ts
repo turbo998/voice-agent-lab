@@ -14665,6 +14665,36 @@ export function evaluateMedtechMriCtCathlabRemoteServiceVoice2026Guard(input: {
   };
 }
 
+export interface GlobalDutyOfCareTravelRiskMedevacVoice2026Evaluation {
+  policyCode: "GLOBAL-DUTY-OF-CARE-TRAVEL-RISK-MEDEVAC-VOICE-2026-01";
+  vettedHospitalGopAndPkceExtractionCardAuthorized: boolean;
+  openLineExtractionCoordOrUnapprovedAirAmbulanceOrRansomPledgeBlocked: boolean;
+  silentDuressKrConsultantOrFlightPhysicianBridgeTriggered: boolean;
+}
+
+/**
+ * Deterministic Global Duty of Care, Travel Risk & MedEvac (ISO 31030 <180s Muster Roll-Call, Zero Open-Line Extraction Coordinate Lock, 18s Vetted Safe-Blood Hospital GOP, Flight-Physician MedEvac Gate & 0ms Silent Duress K&R Bridge) Guard (`GLOBAL-DUTY-OF-CARE-TRAVEL-RISK-MEDEVAC-VOICE-2026-01`).
+ */
+export function evaluateGlobalDutyOfCareTravelRiskMedevacVoice2026Guard(input: {
+  hospitalVettedSafeBloodAndZeroOpenLineExtractionCoords: boolean;
+  airAmbulanceDualMdClearedOrStandardErGopWithinCap: boolean;
+  covertDuressCodewordOrActiveKidnapDetentionOrMedevacRequested: boolean;
+}): GlobalDutyOfCareTravelRiskMedevacVoice2026Evaluation {
+  return {
+    policyCode: "GLOBAL-DUTY-OF-CARE-TRAVEL-RISK-MEDEVAC-VOICE-2026-01",
+    vettedHospitalGopAndPkceExtractionCardAuthorized:
+      input.hospitalVettedSafeBloodAndZeroOpenLineExtractionCoords &&
+      input.airAmbulanceDualMdClearedOrStandardErGopWithinCap &&
+      !input.covertDuressCodewordOrActiveKidnapDetentionOrMedevacRequested,
+    openLineExtractionCoordOrUnapprovedAirAmbulanceOrRansomPledgeBlocked:
+      !input.hospitalVettedSafeBloodAndZeroOpenLineExtractionCoords ||
+      !input.airAmbulanceDualMdClearedOrStandardErGopWithinCap ||
+      input.covertDuressCodewordOrActiveKidnapDetentionOrMedevacRequested,
+    silentDuressKrConsultantOrFlightPhysicianBridgeTriggered:
+      input.covertDuressCodewordOrActiveKidnapDetentionOrMedevacRequested,
+  };
+}
+
 
 
 
