@@ -15595,6 +15595,36 @@ export function evaluateLegalIntakeMassTortAbaConflictSol2026Guard(input: {
   };
 }
 
+export interface DentalOrthodonticsDsoCdtChairfillVoice2026Evaluation {
+  policyCode: "DENTAL-ORTHODONTICS-DSO-CDT-CHAIRFILL-VOICE-2026-01";
+  staggeredOperatoryBookingAndCopayEstimateAuthorized: boolean;
+  prematureCdtFrequencyDenialOrWrongHygieneChairOrDelayedAirwayBlocked: boolean;
+  ludwigsAnginaErTransferOr60mAvulsedToothMilkProtocolTriggered: boolean;
+}
+
+/**
+ * Deterministic Dental Service Organizations (DSO) & Orthodontics (Staggered `[A-D-A]` 10-Min Unit Solver, <2.5s CDT 184-Day Frequency & Annual-Max Check, Ludwig's Angina Airway Gate & <60m Avulsed Tooth Milk Protocol) Guard (`DENTAL-ORTHODONTICS-DSO-CDT-CHAIRFILL-VOICE-2026-01`).
+ */
+export function evaluateDentalOrthodonticsDsoCdtChairfillVoice2026Guard(input: {
+  staggeredDoctorAssistantUnitsMatchedAndCdt184DayEligible: boolean;
+  annualMaxRemainingAndWaitingPeriodVerified: boolean;
+  floorOfMouthAirwaySwellingOrAvulsedPermanentToothDetected: boolean;
+}): DentalOrthodonticsDsoCdtChairfillVoice2026Evaluation {
+  return {
+    policyCode: "DENTAL-ORTHODONTICS-DSO-CDT-CHAIRFILL-VOICE-2026-01",
+    staggeredOperatoryBookingAndCopayEstimateAuthorized:
+      input.staggeredDoctorAssistantUnitsMatchedAndCdt184DayEligible &&
+      input.annualMaxRemainingAndWaitingPeriodVerified &&
+      !input.floorOfMouthAirwaySwellingOrAvulsedPermanentToothDetected,
+    prematureCdtFrequencyDenialOrWrongHygieneChairOrDelayedAirwayBlocked:
+      !input.staggeredDoctorAssistantUnitsMatchedAndCdt184DayEligible ||
+      !input.annualMaxRemainingAndWaitingPeriodVerified ||
+      input.floorOfMouthAirwaySwellingOrAvulsedPermanentToothDetected,
+    ludwigsAnginaErTransferOr60mAvulsedToothMilkProtocolTriggered:
+      input.floorOfMouthAirwaySwellingOrAvulsedPermanentToothDetected,
+  };
+}
+
 
 
 

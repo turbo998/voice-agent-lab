@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 560 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 560 Guides](#-2-560-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 561 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 561 Guides](#-2-561-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 560 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 561 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (537 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (538 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -634,6 +634,7 @@ flowchart LR
 558. **Automotive Dealership Service Lane (VIN Recall & Warranty Lookup / Bay & Loaner-Car Scheduling / MPI Video Upsell) Guide: <90ms DMS Garage + ISO-3779 VIN Modulo-11 + NHTSA Recall Bundling (+$310/RO OEM Warranty, 51% → 87.2% Booking Rate), 3-Constraint DMS Solver (Tech Skill × Recall Part Stock × Loaner Fleet = 0.00% Wasted Trips) & 20m Proactive MPI Video Follow-Up (78m → 9m Lift Hold, +$524k/10k Calls)**: [EN](./docs/automotive-dealership-service-lane-vin-recall-appointment-mpi-upsell-voice-selection-faq.en.md) | [中文](./docs/automotive-dealership-service-lane-vin-recall-appointment-mpi-upsell-voice-selection-faq.md)
 559. **Mortgage Origination & Refinance (TRID 6-Piece Application Trigger / SAFE Act NMLS Licensing Boundary / Income & Title Document Vision) Guide: <15s Speed-to-Lead Refi Capture (3.9x Conversion), Mandatory Reg Z Rate+APR Pair + <500ms Subject-Property State NMLS Routing, TRID 5-of-6 Bitmap Gate (0.00% $3,200 3-Day LE Cures) & In-Call 2.1s Stip Page-Continuity Vision (42d → 34.5d Close, +$685k/10k Apps)**: [EN](./docs/mortgage-origination-refinance-trid-rate-lock-tila-respa-loan-officer-voice-selection-faq.en.md) | [中文](./docs/mortgage-origination-refinance-trid-rate-lock-tila-respa-loan-officer-voice-selection-faq.md)
 560. **Legal Intake, Personal Injury & Mass Tort (ABA Rule 1.18 Conflict Check / Statute of Limitations SOL Gate / In-Call Retainer e-Sign & Evidence Vision) Guide: 2-Phase Pre-Fact Conflict Firewall (<100ms Intapp/Clio Check = 0.00% Firm Disqualification), Zero-UPL + 50-State/180-Day Municipal SOL Engine + Auto Non-Engagement Letter & 2.0s Police Report Vision + Guided In-Call DocuSign (31.0% → 74.8% Signed, +$742k/10k Calls)**: [EN](./docs/legal-intake-mass-tort-personal-injury-statute-of-limitations-conflict-check-aba-voice-selection-faq.en.md) | [中文](./docs/legal-intake-mass-tort-personal-injury-statute-of-limitations-conflict-check-aba-voice-selection-faq.md)
+561. **Dental Service Organizations (DSO) & Orthodontics (CDT Code Insurance Breakdown / Provider-Chair Dual-Column Scheduling / Post-Op Emergency Vision) Guide: Staggered `[A-D-A]` 10-Min Unit Solver + 22m ASAP Backfill (78.2% Cancelled Chair Recovery, 71.4% → 93.8% Utilization), <2.5s Vyne/Zuub 184-Day CDT Frequency & Annual-Max Check (0.00% Frequency Denials) & <60m Avulsed Tooth / Ludwig's Angina Vision Gate (+$496k/10k Calls)**: [EN](./docs/dental-orthodontics-dso-chairfill-cdt-insurance-breakdown-opendental-voice-selection-faq.en.md) | [中文](./docs/dental-orthodontics-dso-chairfill-cdt-insurance-breakdown-opendental-voice-selection-faq.md)
 
 ---
 

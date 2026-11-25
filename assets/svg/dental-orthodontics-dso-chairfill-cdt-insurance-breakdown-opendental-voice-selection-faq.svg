@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg561" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue561" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen561" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple561" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber561" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg561)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">连锁口腔集团（DSO）与正畸诊所：医助双轨椅位排班、CDT 医保精算与急症视觉架构 (#561)</text>
+  <text x="48" y="74" class="subtitle">Dental DSO &amp; Orthodontics Voice + Vision AI: Doctor×Assistant Operatory Block Solver · CDT Frequency &amp; Annual Max Check · Intraoral Vision Triage</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue561)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">DENTAL-DSO-CDT-2026</text>
+
+  <!-- Plane 1: Doctor×Assistant Operatory Block Scheduling & Waitlist Fill -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue561)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① 牙医×助理双轨牙椅排班与爽约秒级替补</text>
+
+  <rect x="46" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">破解 Dentrix / Open Dental“医助时间块错位”</text>
+  <text x="60" y="200" class="node-sub">• 牙冠备牙 (`D2740`) 需: 10m 助理麻药 → 40m 牙医车牙 → 20m 助理取模</text>
+  <text x="60" y="218" class="node-sub">• 支持同一牙医在 Chair 1 与 Chair 2 交错操作 (Staggered Blocks)</text>
+  <text x="60" y="236" class="node-sub">• 严禁把根管/种牙塞进洗牙师 (Hygienist) 专属牙椅</text>
+
+  <rect x="46" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="282" class="node-title">临期退约 22 分钟自动外呼替补 (78.2% 填满率)</text>
+  <text x="60" y="302" class="node-sub">• 患者临时取消明日 $1,200 牙冠或洗牙号源时</text>
+  <text x="60" y="320" class="node-sub">• 自动筛选 ASAP 候补池中已过医保核验、距诊所 &lt;15m 患者</text>
+  <text x="60" y="338" class="node-sub">• 并发语音+短信邀约，22 分钟内填满空置牙椅免损 $450/h</text>
+
+  <rect x="46" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="386" class="node-title">未完成治疗计划 (Unscheduled Tx) 温和召回</text>
+  <text x="60" y="406" class="node-sub">• 针对拍完片确诊需做嵌体/种植却未约时间的沉睡患者</text>
+  <text x="60" y="424" class="node-sub">• 年底前主动提醒“您今年牙科医保还剩 $850 额度12月31日清零”</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">挽回前台漏接的 32% 新客种牙/正畸询盘</text>
+  <text x="60" y="500" class="node-sub">• 单颗种植牙 LTV 高达 $4,500，7x24 秒接锁死免费 CT 初诊</text>
+  <text x="60" y="518" class="node-sub">• 牙椅综合利用率从 71.4% 跃升至 93.8%</text>
+
+  <!-- Plane 2: CDT Code Insurance Frequency, Waiting Period & Annual Max -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple561)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② CDT 牙科医保编码频次、等待期与封顶精算</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">&lt;2.5s 牙科医保 CDT 专项条款核验 (EDI 270/271)</text>
+  <text x="435" y="200" class="node-sub">• 牙科保单不同于普通医保！存在严苛频次锁 (`6个月零1天` 才可洗牙)</text>
+  <text x="435" y="218" class="node-sub">• 实时调用 Vyne / Zuub 核查: 1.年度剩余封顶额 ($1,500 Cap)</text>
+  <text x="435" y="236" class="node-sub">• 2.大项修复 12 个月等待期 (`D2740` 牙冠) · 3.缺牙免责条款</text>
+
+  <rect x="421" y="264" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">提前 1 天洗牙拒付风险拦截 (Frequency Gate)</text>
+  <text x="435" y="306" class="node-sub">• 发现患者距上次洗牙 (`D1110`) 仅 178 天，差 3 天才满 6 个月</text>
+  <text x="435" y="324" class="node-sub">• 自动拦截本周预约并顺延至下周二，免除患者 $135 全额自付客诉</text>
+  <text x="435" y="342" class="node-sub">• 支持短信拍照 1.5s 识别 Delta Dental / Cigna 医保卡并写入 PMS</text>
+
+  <rect x="421" y="370" width="358" height="84" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="392" class="node-title">CareCredit / Sunbit 种植正畸分期秒级预批</text>
+  <text x="435" y="412" class="node-sub">• 针对隐适美 ($5,800) 或全口种植自付部分，通话中推送软征信分期</text>
+  <text x="435" y="430" class="node-sub">• 将月供压至 $149/月，高值方案接受率提升 44%</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">消除前台每天 3.5 小时打保险公司电话排队</text>
+  <text x="435" y="510" class="node-sub">• 到店前 100% 自动生成患者签名版自付估价单</text>
+
+  <!-- Plane 3: Post-Op Emergency & Orthodontic Intraoral Vision Triage -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen561)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ 术后肿胀/脱位牙急症与正畸托槽视觉分诊</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">路德维希咽峡炎与恒牙脱位 &lt;60m 黄金急救锁</text>
+  <text x="849" y="200" class="node-sub">• 识别到口底剧烈肿胀伴呼吸/吞咽困难 (气道窒息风险!) → 0ms 转急诊</text>
+  <text x="849" y="218" class="node-sub">• 儿童跌倒恒牙整颗磕掉 (Avulsed Tooth): 黄金再植窗口仅 60 分钟!</text>
+  <text x="849" y="236" class="node-sub">• 立即语音指导“捏牙冠勿碰牙根、泡入冷牛奶”并唤醒值班牙医</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">正畸托槽脱落与扎嘴弓丝手机拍照分流</text>
+  <text x="849" y="302" class="node-sub">• 短信推送口内闪光灯拍照指南，2.0s 识别弓丝滑出 vs 附件脱落</text>
+  <text x="849" y="320" class="node-sub">• 指导涂抹正畸保护蜡止痛，并精准匹配次日 15m 助理剪丝号源</text>
+  <text x="849" y="338" class="node-sub">• 拦截 68% 不必要的周末夜间正畸医生急诊加号</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">拔智齿后干槽症 (Dry Socket) vs 正常渗血鉴别</text>
+  <text x="849" y="406" class="node-sub">• 结合拔牙天数 (第 3–5 天剧痛放射至耳部) 与创口照片精准分诊</text>
+  <text x="849" y="424" class="node-sub">• 正常微量血丝指导咬紧纱布袋，消除患者恐慌</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (DENTAL-DSO-CDT-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截未满 6 个月频次洗牙预约、医助时间块冲突与 AI 乱开抗生素</text>
+  <text x="849" y="518" class="node-sub">• 气道肿胀与恒牙磕落 0ms 触发急诊/60分钟牛奶保活再植指令</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 连锁口腔集团（DSO）与正畸诊所实时语音+视觉 AI 实测基准 (50 家门诊 DSO · 每 10,000 通患者来电)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">78.2% 爽约填满</text>
+  <text x="64" y="666" class="metric-lbl">临期退约 22 分钟自动外呼替补空置牙椅</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">0.00% 频次拒付</text>
+  <text x="344" y="666" class="metric-lbl">CDT 编码 6 个月零 1 天频次与封顶额前置校验</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">71.4% → 93.8%</text>
+  <text x="624" y="666" class="metric-lbl">牙医×助理双轨交错排班拉升牙椅满负荷率</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">创效 $49.6万 / 万通</text>
+  <text x="904" y="666" class="metric-lbl">挽回种植/正畸新客 + 年末清零额度激活 + 填满爽约椅</text>
+</svg>
