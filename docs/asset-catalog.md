@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **541 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **542 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（541 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（542 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -66,7 +66,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（518 篇）
+### 3.3 高价值企业行业解决方案蓝图（519 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -585,3 +585,4 @@
 539. **企业 AI 金牌销售实战对练（Sales Roleplay）、客服高压陪练与批量结构化语音面试官（AI Voice Interviewer）选型指南（前台 `350ms` 快脑 `S2S Actor` + 后台异步慢脑 `Critic` 解耦与抗讨好异议锁将过早妥协率从 `68.0%` 压至 `0.0%`、金融保本/医药超适应症钓鱼诱饵 `<100ms` 红牌吹哨中断、附 `[mm:ss]` 原音引用的 `BARS` 量表评分达 `0.94 Kappa`（单场 `$0.38` 较真人经理省 `99.1%`）、以及 `EEOC / EU AI Act` 100% 口音盲测语义评分与受保护特征禁问锁每万场净省 `$32.6万`）方案**：[中文](./enterprise-sales-enablement-roleplay-sparring-ai-interviewer-actor-critic-voice-selection-faq.md) | [EN](./enterprise-sales-enablement-roleplay-sparring-ai-interviewer-actor-critic-voice-selection-faq.en.md)
 540. **航司大面积航延改签（Amadeus / Sabre IRROPS）与全球连锁酒店多语种 AI 礼宾（Oracle Opera PMS）语音选型指南（开口播报前 `<150ms` 先挂 `120秒` `GDS` 座位原子软锁配机场 `MCT`/过境签校验将抢票改签提交率从 `61.0%` 提至 `99.5%`（耗时从 `140分钟` 缩至 `65秒`）、强制绑定运控 `IOC` 延误码 `WX vs MX` 与无陪儿童 `UMNR` `0ms` 专席桥接、以及酒店外线零房号披露锁与航延自动同步 `Opera` 免夜审 `No-Show` 保房每万小时净省 `$33.4万`）方案**：[中文](./airline-disruption-irrops-rebooking-hotel-pms-multilingual-concierge-voice-selection-faq.md) | [EN](./airline-disruption-irrops-rebooking-hotel-pms-multilingual-concierge-voice-selection-faq.en.md)
 541. **智能汽车座舱（Smart Cockpit）多音区与智能穿戴硬件（AI 眼镜 / 随身助手）端云协同多模态语音选型指南（端侧 NPU `155ms` 离线卸载 `78%` 车控指令保障隧道/地库 `100%` 可用并为百万台设备年省 `$1,188万` 云成本、四音区波束成形后排儿童权限沙箱与 `ISO 26262` 非驻车挡安全互锁实现 `0.00%` 行车越权误动作、以及 AI 眼镜指代词事件触发 `80KB` 单帧抽拍省电 `84.0%` 将续航从 `38分钟` 提至 `8.5小时`）方案**：[中文](./automotive-smart-cockpit-wearables-edge-cloud-multimodal-voice-assistant-selection-faq.md) | [EN](./automotive-smart-cockpit-wearables-edge-cloud-multimodal-voice-assistant-selection-faq.en.md)
+542. **企业实时语音知识库检索（Voice-Native RAG）、慢速 API 零冷场垫音（Zero-Dead-Air）与 `MCP` 工具网关选型指南（`T-300ms` 流式 `Partial-ASR` 投机预检索配 `<=35字` 预编译口语卡将句末净增延迟从 `1,850ms` 压至 `85ms`、向量+BM25+拼音音素三路 RRF 将同音错字召回率从 `64.0%` 提至 `98.2%`、`T+650ms` 动态安抚垫音压降 `79.2%` 等待挂机且 `Turn-Epoch` 写栅栏实现改口 `0.00%` 脏写、以及单节点 `<=6` 工具与服务端 `JWT` 绑定实现 `98.9%` 工具准确率与 `0%` `IDOR` 越权）方案**：[中文](./enterprise-voice-rag-knowledge-base-mcp-tool-orchestration-zero-dead-air-selection-faq.md) | [EN](./enterprise-voice-rag-knowledge-base-mcp-tool-orchestration-zero-dead-air-selection-faq.en.md)

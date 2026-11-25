@@ -15025,6 +15025,36 @@ export function evaluateAutomotiveCockpitWearablesEdgeCloudVoice2026Guard(input:
   };
 }
 
+export interface EnterpriseVoiceRagMcpZeroDeadAir2026Evaluation {
+  policyCode: "ENTERPRISE-VOICE-RAG-MCP-ZERO-DEAD-AIR-2026-01";
+  speculativeSpokenCardAndJwtScopedMcpWriteAuthorized: boolean;
+  staleTurnEpochWriteOrLlmUserIdInjectionOrLowScoreRagBlocked: boolean;
+  contextual650MsFillerOrHonestAbstentionTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice-Native RAG, Slow-API Zero-Dead-Air Pacing & Zero-Trust MCP Gateway (T-300ms Speculative Phonetic Pre-Fetch + <=35-Word Cards, Monotonic Turn-Epoch Write Fence, T+650ms Filler & Server-JWT Identity Lock) Guard (`ENTERPRISE-VOICE-RAG-MCP-ZERO-DEAD-AIR-2026-01`).
+ */
+export function evaluateEnterpriseVoiceRagMcpZeroDeadAir2026Guard(input: {
+  turnEpochMatchesCurrentAndUserIdBoundFromServerJwt: boolean;
+  ragSimilarityAtLeast078AndProjectedUnder120Tokens: boolean;
+  slowApiExceeded650MsOrCustomerBargedInMidTool: boolean;
+}): EnterpriseVoiceRagMcpZeroDeadAir2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-VOICE-RAG-MCP-ZERO-DEAD-AIR-2026-01",
+    speculativeSpokenCardAndJwtScopedMcpWriteAuthorized:
+      input.turnEpochMatchesCurrentAndUserIdBoundFromServerJwt &&
+      input.ragSimilarityAtLeast078AndProjectedUnder120Tokens &&
+      !input.slowApiExceeded650MsOrCustomerBargedInMidTool,
+    staleTurnEpochWriteOrLlmUserIdInjectionOrLowScoreRagBlocked:
+      !input.turnEpochMatchesCurrentAndUserIdBoundFromServerJwt ||
+      !input.ragSimilarityAtLeast078AndProjectedUnder120Tokens ||
+      input.slowApiExceeded650MsOrCustomerBargedInMidTool,
+    contextual650MsFillerOrHonestAbstentionTriggered:
+      input.slowApiExceeded650MsOrCustomerBargedInMidTool,
+  };
+}
+
 
 
 
