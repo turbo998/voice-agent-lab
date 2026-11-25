@@ -14755,6 +14755,36 @@ export function evaluateCcaasModernizationGptRealtimeCascadeLivekit2026Guard(inp
   };
 }
 
+export interface MultinationalOmnichannelVoiceTranslation2026Evaluation {
+  policyCode: "MULTINATIONAL-OMNICHANNEL-VOICE-TRANSLATION-CONTINUITY-2026-01";
+  multilingualRefundAndWhatsappCoBrowsingAuthorized: boolean;
+  currencyScaleMismatchOrCrossBorderPiiLeakBlocked: boolean;
+  liveInterpreterTier2BridgeOrWhatsappContinuityTriggered: boolean;
+}
+
+/**
+ * Deterministic Multinational 28-Language Omnichannel Customer Care (1.2s Auto-LID, <500ms Azure Live Interpreter Tier-2 Bridge, 9s WhatsApp PKCE Co-Browsing, ISO 4217 Currency/Scale AST Lock & EU Data Boundary) Guard (`MULTINATIONAL-OMNICHANNEL-VOICE-TRANSLATION-CONTINUITY-2026-01`).
+ */
+export function evaluateMultinationalOmnichannelVoiceTranslation2026Guard(input: {
+  originalIso4217CurrencyAndScaleAstVerifiedWithinNetPaid: boolean;
+  regionalDataResidencyPinnedAndWhatsappPkceSynced: boolean;
+  rareLanguageTier2EscalationOrCallDroppedToWhatsapp: boolean;
+}): MultinationalOmnichannelVoiceTranslation2026Evaluation {
+  return {
+    policyCode: "MULTINATIONAL-OMNICHANNEL-VOICE-TRANSLATION-CONTINUITY-2026-01",
+    multilingualRefundAndWhatsappCoBrowsingAuthorized:
+      input.originalIso4217CurrencyAndScaleAstVerifiedWithinNetPaid &&
+      input.regionalDataResidencyPinnedAndWhatsappPkceSynced &&
+      !input.rareLanguageTier2EscalationOrCallDroppedToWhatsapp,
+    currencyScaleMismatchOrCrossBorderPiiLeakBlocked:
+      !input.originalIso4217CurrencyAndScaleAstVerifiedWithinNetPaid ||
+      !input.regionalDataResidencyPinnedAndWhatsappPkceSynced ||
+      input.rareLanguageTier2EscalationOrCallDroppedToWhatsapp,
+    liveInterpreterTier2BridgeOrWhatsappContinuityTriggered:
+      input.rareLanguageTier2EscalationOrCallDroppedToWhatsapp,
+  };
+}
+
 
 
 

@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 532 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 532 篇选型指南](#-二532-篇企业级语音架构选型指南中英双语) |
+| **🧭 533 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 533 篇选型指南](#-二533-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、532 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、533 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（509 篇）
+### 3.3 高价值企业行业解决方案蓝图（510 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -606,6 +606,7 @@ flowchart LR
 530. **跨国企业全球差旅安全、外派员工应急救援与医疗转运（Global Duty of Care & MedEvac：International SOS / Crisis24 / SAP Concur）实时语音架构选型指南（`ISO 31030` 灾区围栏 `<180s` 并发语音+卫星短信清点 `98.4%` 员工生死状态、公网语音物理禁播秘密撤离集合点 `Extraction Point` 坐标改推 `FIDO2` 阅后即焚卡、`<200ms` 白名单安全血源医院核验后 `18秒` 直发 `GOP` 急诊担保函与 `$95k` 航空医疗专机双医师适航锁、以及 `<150ms` 数字心跳识破 AI 克隆虚拟绑架与静默胁迫暗语 `0ms` 桥接 `K&R` 顾问每万小时净省 `$41.5万`）方案**：[中文](./docs/global-duty-of-care-travel-risk-medevac-crisis-evacuation-voice-selection-faq.md) | [EN](./docs/global-duty-of-care-travel-risk-medevac-crisis-evacuation-voice-selection-faq.en.md)
 531. **能源电力调度、虚拟电厂（VPP）与工商业大用户需求响应（Energy Grid Demand Response & C&I Curtailment：ERCOT / PJM / OpenADR 3.0）实时语音架构选型指南（`<120s` 并发厂长语音削峰确认 + 弃权缺口 `15秒` 自动调动区域 `BESS` 电池储能全额补位将兆瓦履约率从 `78.4%` 提至 `99.8%` 免除 `$9,000/MWh` 罚单、`<150ms` 校验厂区 `SCADA` 最低安全工艺基荷与冷库 `-18°C` 保冷底线、`0ms` 拦截非 `Tier-4` 应急柴油机违规商业套利（`EPA RICE NESHAP`）与 `IEEE 1547` 防反送电闭锁、以及储能柜 `H2` 报警 `NFPA 855` 禁开门撤离每万小时创效 `$43.5万`）方案**：[中文](./docs/energy-grid-demand-response-vpp-ci-curtailment-dispatch-voice-selection-faq.md) | [EN](./docs/energy-grid-demand-response-vpp-ci-curtailment-dispatch-voice-selection-faq.en.md)
 532. **企业级智能客服中心（CCaaS）现代化改造选型指南：`Azure OpenAI GPT-Realtime` vs. 流式级联（`STT+LLM+TTS`）vs. `Amazon Connect / Genesys / LiveKit + Pipecat` 延迟、打断与 `12万分钟` TCO 拐点对比（同通电话 `30%` 自由安抚轮走 `310ms` 原生 `S2S` + `70%` 报价/退款/条款轮 `<15ms` 切入发声前 `<2ms` 正则校验级联实现 `100%` 数字准确、确立月通话 `12万分钟` 自建 `ACS BYOC + LiveKit/Pipecat` 拐点将单价从 `$0.115/min` 压至 `$0.041/min` 年省 `$44.4万`、以及 `<150ms` `8KB` 签名上下文弹屏实现 `0.00%` 重复核身并缩减坐席 `AHT 84秒` + `3秒` `Auto-ACW`）方案**：[中文](./docs/ccaas-modernization-gpt-realtime-vs-azure-speech-cascade-connect-genesys-livekit-tco-selection-faq.md) | [EN](./docs/ccaas-modernization-gpt-realtime-vs-azure-speech-cascade-connect-genesys-livekit-tco-selection-faq.en.md)
+533. **跨国企业 28 语种全渠道智能客服、实时双向语音同传与 `Voice ⇄ WhatsApp/短信` 协同选型指南（`1.2秒` 免按键连续语种识别 `Auto-LID` + `5,000` 品牌热词支持句内混说、二线总部专家通过 `<500ms` `Azure Live Interpreter` 实时双向同传直接服务 28 语种客户砍掉 `82.4%` 小语种外包空置成本、通话不断线推送 `WhatsApp` 微卡将复杂邮箱/IBAN/破损图采集从 `95秒` 缩至 `9秒`（错误率 `0.2%`）、以及原币种 `ISO 4217` 锁与 `GDPR` 区域数据驻留每万小时净省 `$38.0万`）方案**：[中文](./docs/multinational-omnichannel-customer-care-live-translation-whatsapp-voice-continuity-selection-faq.md) | [EN](./docs/multinational-omnichannel-customer-care-live-translation-whatsapp-voice-continuity-selection-faq.en.md)
 
 ---
 
