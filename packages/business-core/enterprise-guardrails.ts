@@ -15055,6 +15055,36 @@ export function evaluateEnterpriseVoiceRagMcpZeroDeadAir2026Guard(input: {
   };
 }
 
+export interface EnterpriseVoiceFinopsPtuPaygoSlm2026Evaluation {
+  policyCode: "ENTERPRISE-VOICE-FINOPS-PTU-PAYGO-SLM-2026-01";
+  compactedPtuOrSlmTurnExecutionAuthorized: boolean;
+  unprunedQuadraticAudioOrOver250UsdWalletOrZombieCallBlocked: boolean;
+  zeroMsPaygoSpilloverOr18sZombieDisconnectTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice AI FinOps (3-Turn Rolling Audio-to-Text Compaction, 94.6% Prefix Cache Pinning, P65 Azure PTU + >=92% 0ms PAYGO Spillover, 72% SLM Tiering & 18s Zombie / $2.50 Wallet Breaker) Guard (`ENTERPRISE-VOICE-FINOPS-PTU-PAYGO-SLM-2026-01`).
+ */
+export function evaluateEnterpriseVoiceFinopsPtuPaygoSlm2026Guard(input: {
+  threeTurnAudioCompactedAndPrefixCachePinned: boolean;
+  callSpendUnder250UsdAndEdgeSilenceGated: boolean;
+  ptuLoadAtLeast92PctOr18sZombieNoiseDetected: boolean;
+}): EnterpriseVoiceFinopsPtuPaygoSlm2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-VOICE-FINOPS-PTU-PAYGO-SLM-2026-01",
+    compactedPtuOrSlmTurnExecutionAuthorized:
+      input.threeTurnAudioCompactedAndPrefixCachePinned &&
+      input.callSpendUnder250UsdAndEdgeSilenceGated &&
+      !input.ptuLoadAtLeast92PctOr18sZombieNoiseDetected,
+    unprunedQuadraticAudioOrOver250UsdWalletOrZombieCallBlocked:
+      !input.threeTurnAudioCompactedAndPrefixCachePinned ||
+      !input.callSpendUnder250UsdAndEdgeSilenceGated ||
+      input.ptuLoadAtLeast92PctOr18sZombieNoiseDetected,
+    zeroMsPaygoSpilloverOr18sZombieDisconnectTriggered:
+      input.ptuLoadAtLeast92PctOr18sZombieNoiseDetected,
+  };
+}
+
 
 
 

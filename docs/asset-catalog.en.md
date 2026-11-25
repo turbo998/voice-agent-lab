@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **542 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **543 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (542 Bilingual Guides)
+## 3. Solution Architect Selection Guides (543 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (519 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (520 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -586,3 +586,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 540. **Airline Mass IRROPS Rebooking (Amadeus / Sabre GDS) & Global Hotel Oracle Opera PMS Multilingual Concierge Guide: Pre-Speech <150ms 120s Atomic GDS Seat Soft-Lock + MCT/Visa Gate (61.0% → 99.5% Commit Rate, 140m → 65s Rebooking), Authoritative IOC Delay-Code (WX vs MX) & 0ms SSR UMNR Bridge + Hotel Zero Outside Room-Disclosure Lock & Opera Night-Audit Shield (-$334k/10k Hrs)**: [EN](./airline-disruption-irrops-rebooking-hotel-pms-multilingual-concierge-voice-selection-faq.en.md) | [中文](./airline-disruption-irrops-rebooking-hotel-pms-multilingual-concierge-voice-selection-faq.md)
 541. **Automotive Smart Cockpit (4-Zone) & Wearable Smart Hardware (AI Glasses) Edge-Cloud Multimodal Voice AI Guide: 155ms Edge-NPU 78% Control Offload & <350ms Tunnel Failover (100% Offline Uptime, -$11.88M/Yr/1M Units), 4-Zone Child RBAC & ISO 26262 Drive-Gear Lock (0.00% Unsafe In-Motion Actuation) + Deictic 80KB Keyframe Burst (-84.0% Power, 38m → 8.5h Runtime, -$318k/10k Hrs)**: [EN](./automotive-smart-cockpit-wearables-edge-cloud-multimodal-voice-assistant-selection-faq.en.md) | [中文](./automotive-smart-cockpit-wearables-edge-cloud-multimodal-voice-assistant-selection-faq.md)
 542. **Enterprise Voice-Native RAG, Slow-API Zero-Dead-Air Pacing & Zero-Trust MCP Tool Gateway Selection Guide: T-300ms Speculative Partial-ASR Pre-Fetch + <=35-Word Spoken Cards (1,850ms → 85ms Net Lag), 3-Way Phonetic RRF (64.0% → 98.2% Homophone Recall), T+650ms Slow-API Pacer (-79.2% Hang-Ups) & Monotonic Turn-Epoch Fence (0.00% Stale Writes) + State-Scoped <=6-Tool JWT-Bound MCP Gateway (-$305k/10k Hrs)**: [EN](./enterprise-voice-rag-knowledge-base-mcp-tool-orchestration-zero-dead-air-selection-faq.en.md) | [中文](./enterprise-voice-rag-knowledge-base-mcp-tool-orchestration-zero-dead-air-selection-faq.md)
+543. **Enterprise Voice AI FinOps & Capacity Planning Guide (Azure PTU vs. PAYGO Spillover, 3-Turn Audio Token Compaction & SLM Tiered Routing): 3-Turn Rolling Audio-to-Text Compaction (-63.8% Long-Call Burn) + 94.6% Prefix Cache Pinning, P65 Base PTU + >=92% 0ms PAYGO Spillover (88.4% PTU Util, 0.00% HTTP 429 Drops), 72% SLM Tiering & 18s Zombie-Call Breaker ($0.145/min → $0.039/min, -$1.06M/10M Min)**: [EN](./enterprise-voice-finops-ptu-paygo-capacity-token-compaction-slm-routing-selection-faq.en.md) | [中文](./enterprise-voice-finops-ptu-paygo-capacity-token-compaction-slm-routing-selection-faq.md)
