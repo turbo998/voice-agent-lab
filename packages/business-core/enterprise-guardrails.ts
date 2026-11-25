@@ -15145,6 +15145,36 @@ export function evaluateEnterpriseMeetingIntelligenceTeamsZoomCrm2026Guard(input
   };
 }
 
+export interface EnterpriseMultiAgentSwarmMemoryGraph2026Evaluation {
+  policyCode: "ENTERPRISE-MULTI-AGENT-SWARM-MEMORY-GRAPH-2026-01";
+  silentSubAgentHandoffAndBitemporalMemoryReadAuthorized: boolean;
+  unauthedNodeJumpOrPreAuthHouseholdMemoryLeakOrPingPongLoopBlocked: boolean;
+  authSubAgentStepUpOr2HopHumanEscalationTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Multi-Agent Voice Swarm & Bitemporal Memory Graph (Scoped <=6-Tool Specialist Nodes, 42ms Silent Single-Persona Handoff, Prerequisite KYC Contract Gate, <=2-Hop Anti-Ping-Pong Breaker & <5ms Ringback Bitemporal Memory Card) Guard (`ENTERPRISE-MULTI-AGENT-SWARM-MEMORY-GRAPH-2026-01`).
+ */
+export function evaluateEnterpriseMultiAgentSwarmMemoryGraph2026Guard(input: {
+  kycVerifiedForSensitiveSubAgentAndTier1Memory: boolean;
+  bitemporalValidUntilFilteredAndToolsScopedUnder6: boolean;
+  unproductiveSubAgentHopCountExceeded2OrAuthMissing: boolean;
+}): EnterpriseMultiAgentSwarmMemoryGraph2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-MULTI-AGENT-SWARM-MEMORY-GRAPH-2026-01",
+    silentSubAgentHandoffAndBitemporalMemoryReadAuthorized:
+      input.kycVerifiedForSensitiveSubAgentAndTier1Memory &&
+      input.bitemporalValidUntilFilteredAndToolsScopedUnder6 &&
+      !input.unproductiveSubAgentHopCountExceeded2OrAuthMissing,
+    unauthedNodeJumpOrPreAuthHouseholdMemoryLeakOrPingPongLoopBlocked:
+      !input.kycVerifiedForSensitiveSubAgentAndTier1Memory ||
+      !input.bitemporalValidUntilFilteredAndToolsScopedUnder6 ||
+      input.unproductiveSubAgentHopCountExceeded2OrAuthMissing,
+    authSubAgentStepUpOr2HopHumanEscalationTriggered:
+      input.unproductiveSubAgentHopCountExceeded2OrAuthMissing,
+  };
+}
+
 
 
 
