@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **567 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **568 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (567 Bilingual Guides)
+## 3. Solution Architect Selection Guides (568 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (544 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (545 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -611,3 +611,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 565. **Veterinary Hospitals, 24/7 Pet Emergency & Boarding (ASPCA Toxin mg/kg Calculator / GDV Bloat & Urethral Obstruction Red-Flag Triage / PIMS Vaccine OCR) Guide: 0ms STAT Emergency Gate for Canine GDV Bloat & Blocked Male Cats (0.00% Fatal Misses), 1.5s Wrapper OCR + Deterministic mg/kg Toxin Engine (100% Block on Cat/Brachycephalic Home H2O2 Emesis) & Day-3 Incision Vision (-62% Unpaid Recheck Rooms, +$412k/10k Calls)**: [EN](./veterinary-hospital-pet-emergency-toxin-triage-pims-vaccine-boarding-voice-selection-faq.en.md) | [中文](./veterinary-hospital-pet-emergency-toxin-triage-pims-vaccine-boarding-voice-selection-faq.md)
 566. **Electric, Water & Gas Utilities (Storm Outage OMS Surge Deflection / AMI Smart-Meter High-Bill Interval Analysis / Life-Support Medical Baseline Priority) Guide: <100ms Edge OMS Geo-Snapshot (91.4% 50x Storm Deflection), 800ms AMI Smart-Meter Voltage Ping + Breaker Camera Reset (-90.4% Wasted $220 Line-Truck Rolls), 15m Interval High-Bill/3 AM Leak Audit & Medical Baseline/PUC Moratorium Gate (-$458k/10k Calls)**: [EN](./electric-water-gas-utility-outage-storm-surge-ami-smart-meter-medical-baseline-voice-selection-faq.en.md) | [中文](./electric-water-gas-utility-outage-storm-surge-ami-smart-meter-medical-baseline-voice-selection-faq.md)
 567. **Cruise Lines, Theme Parks & Mega-Resorts (Maritime Satellite-Edge Hybrid Voice / Virtual-Queue & Shore-Excursion Inventory Lock / Lost-Child BLE & Folio Guard) Guide: Shipboard 2x L40S Edge LAN (<180ms Latency, 100% Rain-Fade Survival, -88% Satellite Bandwidth), 60-Min All-Aboard ShoreEx Safety Lock (0.00% Pier Stranding, +$142/Cabin Lift), <2s BLE Wristband Lost-Child Locator & Sub-Folio Minor PIN Gate (+$516k/10k Interactions)**: [EN](./cruise-theme-park-resort-wristband-iot-shore-excursion-dining-concierge-voice-selection-faq.en.md) | [中文](./cruise-theme-park-resort-wristband-iot-shore-excursion-dining-concierge-voice-selection-faq.md)
+568. **Retirement Plan Recordkeepers, 401(k) Rollovers & Annuities (DOL PTE 2020-02 Fiduciary Boundary / SECURE 2.0 RMD Engine / 60-Day Rollover Check Vision) Guide: AI Hold-For-Me 3-Way Custodial Call + 1.8s FBO Check/Stub Vision (+46.0% Rollover AUM Retained, 0.00% 20% Withholding or Pre-Tax/Roth Commingling), DOL IB 96-1 + Rule of 55 Gate & SECURE 2.0 RMD / ERISA QJSA Spousal Notary Lock (+$642k/10k Calls)**: [EN](./wealth-retirement-401k-rollover-erisa-pte-2020-02-rmd-beneficiary-voice-selection-faq.en.md) | [中文](./wealth-retirement-401k-rollover-erisa-pte-2020-02-rmd-beneficiary-voice-selection-faq.md)

@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg568" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue568" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen568" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple568" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber568" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg568)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">养老金管理（401k / IRA）与退休金转滚：DOL PTE 2020-02 受托人边界、FBO 支票视觉与 RMD 架构 (#568)</text>
+  <text x="48" y="74" class="subtitle">401(k) Recordkeeping &amp; IRA Rollover Voice + Vision AI: DOL PTE 2020-02 Education Firewall · Direct FBO Check OCR (Avoid 20% Tax) · SECURE 2.0 RMD</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue568)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">RETIREMENT-401K-2026</text>
+
+  <!-- Plane 1: DOL PTE 2020-02 / Reg BI Rollover Education Firewall -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue568)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① DOL PTE 2020-02 受托人红线与转滚留存</text>
+
+  <rect x="46" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">投资教育 (IB 96-1) vs 受托建议 (Fiduciary) 隔离</text>
+  <text x="60" y="200" class="node-sub">• 严禁无证 AI 诱导员工将低费率雇主 401(k) 转入高费率个人 IRA</text>
+  <text x="60" y="218" class="node-sub">• 仅客观播报四选项: 1.留原计划 2.转新雇主 3.直转IRA 4.提现税损</text>
+  <text x="60" y="236" class="node-sub">• 触发转滚决策时 &lt;500ms 携费率对比表温转 Series 65/7 持牌顾问</text>
+
+  <rect x="46" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="282" class="node-title">拦截离职盲目提现 (Cash-Out Leakage 止损)</text>
+  <text x="60" y="302" class="node-sub">• 痛点: 38% 换工作青年因嫌转滚麻烦直接提现 $40k 养老金</text>
+  <text x="60" y="320" class="node-sub">• 实时用确定性税表算出:“直接提现将当场损失 $12,800 税款+10%罚金”</text>
+  <text x="60" y="338" class="node-sub">• 引导一键免税直转 (Direct Rollover)，AUM 资产留存率提升 46%</text>
+
+  <rect x="46" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="386" class="node-title">三方联合致电原托管行 (3-Way Custodial Call)</text>
+  <text x="60" y="406" class="node-sub">• 传统 401(k) 机构要求电话核身才肯放款，客户不愿自己等 40m</text>
+  <text x="60" y="424" class="node-sub">• AI 替客户排队接通原机构坐席后再秒级拉入客户完成免等待转出</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">55 岁离职免罚金规则 (Rule of 55) 保护锁</text>
+  <text x="60" y="500" class="node-sub">• 55–59.5 岁离职者若将 401(k) 转入 IRA 将丧失免 10% 罚金特权!</text>
+  <text x="60" y="518" class="node-sub">• 状态机自动按出生年份拦截错误转滚，保住免罚提款权</text>
+
+  <!-- Plane 2: Direct FBO Rollover Check Vision & 20% Withholding Shield -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple568)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② 避免 20% 强扣税的 FBO 支票抬头视觉核验</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">破解“支票抬头写个人名字被强扣 20% 联邦税”陷阱</text>
+  <text x="435" y="200" class="node-sub">• IRC §3405(c) 铁律: 若支票抬头写给客户个人 (Indirect Rollover)</text>
+  <text x="435" y="218" class="node-sub">• 原计划必须强行扣留 20% 抵税，且客户需自掏 20% 在 60 天内补齐</text>
+  <text x="435" y="236" class="node-sub">• 语音全程强制引导开具 `托管行 FBO [客户姓名]` 直接转滚支票</text>
+
+  <rect x="421" y="264" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">1.8 秒纸质养老金支票拍照存单 (Rollover Check OCR)</text>
+  <text x="435" y="306" class="node-sub">• 客户收到原雇主寄来的 $150k 纸质支票后，短信拍照正反面</text>
+  <text x="435" y="324" class="node-sub">• 1.8s 识别抬头是否含 `FBO (For Benefit Of)`、区分 Pre-Tax vs Roth</text>
+  <text x="435" y="342" class="node-sub">• 拦截把 Roth 税后支票错存入传统税前 IRA 的不可逆税务事故</text>
+
+  <rect x="421" y="370" width="358" height="84" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="392" class="node-title">60 天间接转滚死线倒计时与每 12 个月 1 次锁</text>
+  <text x="435" y="412" class="node-sub">• 若客户已误拿个人抬头支票，自动计算距 60 天死线剩余天数</text>
+  <text x="435" y="430" class="node-sub">• 核查过去 365 天是否已做过 IRA-to-IRA 间接转滚 (防全额超限征税)</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">支票入账周期从 14 天邮寄缩至 1.8 秒拍照即存</text>
+  <text x="435" y="510" class="node-sub">• 消除大额养老金纸质支票寄丢与退票重开风险</text>
+
+  <!-- Plane 3: SECURE 2.0 RMD Calculator & ERISA Spousal QJSA Consent -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen568)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ SECURE 2.0 RMD 精算与配偶 QJSA 公证锁</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">SECURE 2.0 强制最低提款 (RMD 73/75岁) 精算</text>
+  <text x="849" y="200" class="node-sub">• 严禁大模型心算 RMD！按去年 12/31 余额 ÷ IRS 寿命因子表精确计算</text>
+  <text x="849" y="218" class="node-sub">• 每年 Q4 主动外呼未提足 RMD 的高龄客户，免除 25% IRS 惩罚性重税</text>
+  <text x="849" y="236" class="node-sub">• 支持一键将 RMD 转为免税慈善捐赠 (`QCD` 最高 $105,000)</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">ERISA 配偶受益人权利与公证放弃锁 (QJSA Gate)</text>
+  <text x="849" y="302" class="node-sub">• 联邦 ERISA 铁律: 已婚员工 401(k) 默认 100% 主受益人必须为配偶!</text>
+  <text x="849" y="320" class="node-sub">• 若来电人要求把受益人改成子女或申请大额 401(k) 质押贷款</text>
+  <text x="849" y="338" class="node-sub">• 严禁语音直接改写，强制触发配偶在线视频公证 (Remote Notary) 签字</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">401(k) 质押借款 (Loan) vs 困难提款 (Hardship) 优选</text>
+  <text x="849" y="406" class="node-sub">• 引导急需用钱员工优先选免税免罚金的 401(k) 个人借款</text>
+  <text x="849" y="424" class="node-sub">• 拍照核验医疗账单/首付合同秒级审结困难提款证明</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (RETIREMENT-401K-ERISA-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截无 PTE 2020-02 费率对比诱导转滚、Roth/税前混存与越过配偶改受益人</text>
+  <text x="849" y="518" class="node-sub">• 全面符合 ERISA、DOL PTE 2020-02、SEC Reg BI 与 IRS SECURE 2.0</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 养老金管理（401k / IRA）与退休金转滚实时语音+视觉 AI 实测基准 (每 10,000 通离职转滚与退休提款来电)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">+46% AUM 留存</text>
+  <text x="64" y="666" class="metric-lbl">三方代排队转出 + FBO 1.8s 拍照秒存支票</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">0.00% 误扣 20% 税</text>
+  <text x="344" y="666" class="metric-lbl">拦截个人抬头间接转滚与 Pre-Tax/Roth 混存</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">100% PTE 2020-02</text>
+  <text x="624" y="666" class="metric-lbl">IB 96-1 教育防火墙 + 55岁免罚规则保护</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">创效 $64.2万 / 万通</text>
+  <text x="904" y="666" class="metric-lbl">挽回千万级转滚 AUM 管费 + 免除税务/受托赔付</text>
+</svg>

@@ -15805,6 +15805,36 @@ export function evaluateCruiseThemeParkResortMaritimeEdgeVoice2026Guard(input: {
   };
 }
 
+export interface WealthRetirement401kErisaPteRmd2026Evaluation {
+  policyCode: "WEALTH-RETIREMENT-401K-ERISA-PTE-RMD-2026-01";
+  directFboRolloverDepositAndDeterministicRmdAuthorized: boolean;
+  unlicensedRolloverSteeringOrPreTaxRothComminglingOrUnnotarizedQjsaBlocked: boolean;
+  series65AdvisorPte202002TransferOrRonSpousalNotaryTriggered: boolean;
+}
+
+/**
+ * Deterministic Retirement Plan Recordkeepers, 401(k) Rollovers & Annuities (DOL IB 96-1 vs PTE 2020-02 Fiduciary Firewall, Rule of 55 Age Lock, 1.8s FBO Check/Stub Pre-Tax vs Roth Separation, SECURE 2.0 RMD Engine & ERISA QJSA Spousal Notary Gate) Guard (`WEALTH-RETIREMENT-401K-ERISA-PTE-RMD-2026-01`).
+ */
+export function evaluateWealthRetirement401kErisaPteRmd2026Guard(input: {
+  fboPayeeVerifiedAndPreTaxRothBucketsSegregated: boolean;
+  secure20RmdDeterministicallyComputedAndRuleOf55Checked: boolean;
+  fiduciaryRolloverAdviceOrMarriedNonSpouseBeneficiaryRequested: boolean;
+}): WealthRetirement401kErisaPteRmd2026Evaluation {
+  return {
+    policyCode: "WEALTH-RETIREMENT-401K-ERISA-PTE-RMD-2026-01",
+    directFboRolloverDepositAndDeterministicRmdAuthorized:
+      input.fboPayeeVerifiedAndPreTaxRothBucketsSegregated &&
+      input.secure20RmdDeterministicallyComputedAndRuleOf55Checked &&
+      !input.fiduciaryRolloverAdviceOrMarriedNonSpouseBeneficiaryRequested,
+    unlicensedRolloverSteeringOrPreTaxRothComminglingOrUnnotarizedQjsaBlocked:
+      !input.fboPayeeVerifiedAndPreTaxRothBucketsSegregated ||
+      !input.secure20RmdDeterministicallyComputedAndRuleOf55Checked ||
+      input.fiduciaryRolloverAdviceOrMarriedNonSpouseBeneficiaryRequested,
+    series65AdvisorPte202002TransferOrRonSpousalNotaryTriggered:
+      input.fiduciaryRolloverAdviceOrMarriedNonSpouseBeneficiaryRequested,
+  };
+}
+
 
 
 
