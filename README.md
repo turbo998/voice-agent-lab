@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 536 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 536 篇选型指南](#-二536-篇企业级语音架构选型指南中英双语) |
+| **🧭 537 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 537 篇选型指南](#-二537-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、536 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、537 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（513 篇）
+### 3.3 高价值企业行业解决方案蓝图（514 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -610,6 +610,7 @@ flowchart LR
 534. **零售银行、财富管理智能双录（Dual-Recording）与保险 7×24h 多模态报案理赔（FNOL）语音 AI 选型指南（`R1–R5` 风险适当性硬锁 + `SHA-256` 锁定 `SSML` 条款与 `20秒` 段落断点重录将双录一次合格率从 `64.0%` 提至 `99.7%`、通话内免 App `WebRTC` 实时视频查勘核验 `VIN` 与车损将报案从 `18.5分钟` 缩至 `3.1分钟`（小额案 `69.2%` 自动直赔 `STP`，`LAE` 压降 `76.7%`）、以及背景第三人教唆声纹检测触发 `FINRA Rule 2165` 高龄反电诈临时止付每万小时净省 `$39.5万`）方案**：[中文](./docs/retail-banking-wealth-advisory-dual-recording-insurance-fnol-claims-voice-selection-faq.md) | [EN](./docs/retail-banking-wealth-advisory-dual-recording-insurance-fnol-claims-voice-selection-faq.en.md)
 535. **企业内部 IT 服务台（ServiceNow / Entra ID）与 HR 共享服务中心（Workday）语音 Copilot 选型指南：`Copilot Studio` vs. `Azure AI Foundry`、防社工钓鱼与 `54秒` 终端自愈护栏（废除口头生日/工号 `KBA` 强制 `Entra Verified ID` 3D 活体 + 主管 `Teams` 协签且特权管理员 `0ms` 禁电话重置实现 `0.00%` `Scattered Spider` 钓鱼沦陷、`<150ms` 读 `Intune/Nexthink` 遥测并下发 `SHA-256` 预签名脚本 `54秒` 自愈 `72.4%` L1 故障将单价从 `$22` 压至 `$0.11`、以及工资卡语音只读与主管查询 `100%` 剥离 `FMLA` 医疗诊断每万通省 `$28.5万`）方案**：[中文](./docs/enterprise-it-helpdesk-hr-shared-services-copilot-studio-vs-foundry-voice-selection-faq.md) | [EN](./docs/enterprise-it-helpdesk-hr-shared-services-copilot-studio-vs-foundry-voice-selection-faq.en.md)
 536. **B2B 企业合规智能外呼（Outbound SDR / 续费回访）、`<380ms` 投机式信箱检测（Speculative AMD）与防封号（`STIR/SHAKEN + TCPA`）语音 AI 选型指南（官网留资 `<30秒` 极速回拨 + `<380ms` 投机式问候砍掉 `78.4%` 3 秒秒挂并 `<650ms` 卸载语音信箱省 `74.0%` 大模型 Token、`STIR/SHAKEN A级` 品牌来电名片与单号 `<=50通/日` 温控将真人接通率从 `18.0%` 提至 `54.6%`、以及呼前 `TrustedForm` 授权 + 区号∩邮编双时区宵禁锁与口头退订 `0ms` 零挽留全局 `DNC` 熔断每万小时创效 `$40.5万`）方案**：[中文](./docs/b2b-outbound-sdr-lead-qualification-amd-voicemail-tcpa-stir-shaken-voice-selection-faq.md) | [EN](./docs/b2b-outbound-sdr-lead-qualification-amd-voicemail-tcpa-stir-shaken-voice-selection-faq.en.md)
+537. **医疗门诊智能导诊（Patient Access Triage）、`Epic FHIR` 预约排期与诊室环境病历生成（Ambient Clinical Scribe）语音 AI 选型指南（`<100ms` 急性胸痛/卒中红旗抢占直连急诊护士、`Schmitt-Thompson` 循证导诊配 `Epic FHIR R4` 专病标签将亚专科挂错号率从 `14.2%` 压至 `0.4%` 且退号 `15秒` 自动回填 `86.5%`、以及接诊医师预注册声纹分离 `DER=1.6%` 剔除家属闲聊 + “未口述查体项 `0.00%` 编造锁”为医生日省 `2.1小时` 病历时间每万小时净省 `$37.5万`）方案**：[中文](./docs/outpatient-clinical-triage-epic-fhir-scheduling-ambient-scribe-followup-voice-selection-faq.md) | [EN](./docs/outpatient-clinical-triage-epic-fhir-scheduling-ambient-scribe-followup-voice-selection-faq.en.md)
 
 ---
 

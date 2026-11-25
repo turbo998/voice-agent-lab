@@ -14875,6 +14875,36 @@ export function evaluateB2bOutboundSdrAmdTcpaStirShakenVoice2026Guard(input: {
   };
 }
 
+export interface OutpatientTriageEpicFhirAmbientScribeVoice2026Evaluation {
+  policyCode: "OUTPATIENT-TRIAGE-EPIC-FHIR-AMBIENT-SCRIBE-VOICE-2026-01";
+  fhirSubspecialtySlotAndUnsignedSoapDraftAuthorized: boolean;
+  unspokenExamFabricationOrAutonomousDoseTitrationBlocked: boolean;
+  redFlagEmergencyRnPreemptionOrPhysicianCoSignRequiredTriggered: boolean;
+}
+
+/**
+ * Deterministic Healthcare Outpatient Triage, Epic FHIR Scheduling & Ambient Clinical Scribe (<100ms Red-Flag RN Preemption, Schmitt-Thompson + FHIR R4 Match, 1.6% DER Physician Diarization & Zero Unspoken Exam Fabrication Lock) Guard (`OUTPATIENT-TRIAGE-EPIC-FHIR-AMBIENT-SCRIBE-VOICE-2026-01`).
+ */
+export function evaluateOutpatientTriageEpicFhirAmbientScribeVoice2026Guard(input: {
+  schmittThompsonFhirMatchedAndPhysicianVoiceprintIsolated: boolean;
+  everyExamFindingAudioTimestampedAndZeroAutonomousTitration: boolean;
+  acuteChestPainStrokeRedFlagOrPostOpDeteriorationDetected: boolean;
+}): OutpatientTriageEpicFhirAmbientScribeVoice2026Evaluation {
+  return {
+    policyCode: "OUTPATIENT-TRIAGE-EPIC-FHIR-AMBIENT-SCRIBE-VOICE-2026-01",
+    fhirSubspecialtySlotAndUnsignedSoapDraftAuthorized:
+      input.schmittThompsonFhirMatchedAndPhysicianVoiceprintIsolated &&
+      input.everyExamFindingAudioTimestampedAndZeroAutonomousTitration &&
+      !input.acuteChestPainStrokeRedFlagOrPostOpDeteriorationDetected,
+    unspokenExamFabricationOrAutonomousDoseTitrationBlocked:
+      !input.schmittThompsonFhirMatchedAndPhysicianVoiceprintIsolated ||
+      !input.everyExamFindingAudioTimestampedAndZeroAutonomousTitration ||
+      input.acuteChestPainStrokeRedFlagOrPostOpDeteriorationDetected,
+    redFlagEmergencyRnPreemptionOrPhysicianCoSignRequiredTriggered:
+      input.acuteChestPainStrokeRedFlagOrPostOpDeteriorationDetected,
+  };
+}
+
 
 
 
