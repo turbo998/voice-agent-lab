@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 540 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 540 Guides](#-2-540-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 541 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 541 Guides](#-2-541-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 540 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 541 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (517 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (518 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -614,6 +614,7 @@ flowchart LR
 538. **E-Commerce Customer Care, Brand Voice Cloning & Interactive Avatar (Azure AI Speech vs. ElevenLabs / Deepgram / HeyGen vs. Client Viseme) Selection Guide: <22ms Client-Side 55D Viseme Rendering ($0.016/min vs $0.220/min Cloud Video, -92.7% TCO), 80/20 Hybrid Livestream Push/Pop Q&A ($2.15/hr vs $35/hr), 44.6% Return-to-Exchange Fit Coach (+$152k GMV/10k Calls) & <15ms Redis Price-Floor / Ad-Law Lock**: [EN](./docs/ecommerce-order-support-showroom-avatar-azure-vs-elevenlabs-heygen-viseme-selection-faq.en.md) | [中文](./docs/ecommerce-order-support-showroom-avatar-azure-vs-elevenlabs-heygen-viseme-selection-faq.md)
 539. **Enterprise AI Sales Roleplay Sparring, CS Coaching & Bulk Voice Interviewer (Actor-Critic Architecture) Selection Guide: Decoupled 350ms Fast-Actor + Async Slow-Critic & Anti-Sycophancy Lock (68% → 0.0% Premature Capitulation, -46.8% Ramp Time), <100ms Off-Label/Yield Red-Card Halt, Timestamp-Quoted BARS Grader (0.94 Kappa, $0.38 vs $45 Session) & EEOC / EU AI Act Accent-Blind Grader (-$326k/10k Sessions)**: [EN](./docs/enterprise-sales-enablement-roleplay-sparring-ai-interviewer-actor-critic-voice-selection-faq.en.md) | [中文](./docs/enterprise-sales-enablement-roleplay-sparring-ai-interviewer-actor-critic-voice-selection-faq.md)
 540. **Airline Mass IRROPS Rebooking (Amadeus / Sabre GDS) & Global Hotel Oracle Opera PMS Multilingual Concierge Guide: Pre-Speech <150ms 120s Atomic GDS Seat Soft-Lock + MCT/Visa Gate (61.0% → 99.5% Commit Rate, 140m → 65s Rebooking), Authoritative IOC Delay-Code (WX vs MX) & 0ms SSR UMNR Bridge + Hotel Zero Outside Room-Disclosure Lock & Opera Night-Audit Shield (-$334k/10k Hrs)**: [EN](./docs/airline-disruption-irrops-rebooking-hotel-pms-multilingual-concierge-voice-selection-faq.en.md) | [中文](./docs/airline-disruption-irrops-rebooking-hotel-pms-multilingual-concierge-voice-selection-faq.md)
+541. **Automotive Smart Cockpit (4-Zone) & Wearable Smart Hardware (AI Glasses) Edge-Cloud Multimodal Voice AI Guide: 155ms Edge-NPU 78% Control Offload & <350ms Tunnel Failover (100% Offline Uptime, -$11.88M/Yr/1M Units), 4-Zone Child RBAC & ISO 26262 Drive-Gear Lock (0.00% Unsafe In-Motion Actuation) + Deictic 80KB Keyframe Burst (-84.0% Power, 38m → 8.5h Runtime, -$318k/10k Hrs)**: [EN](./docs/automotive-smart-cockpit-wearables-edge-cloud-multimodal-voice-assistant-selection-faq.en.md) | [中文](./docs/automotive-smart-cockpit-wearables-edge-cloud-multimodal-voice-assistant-selection-faq.md)
 
 ---
 

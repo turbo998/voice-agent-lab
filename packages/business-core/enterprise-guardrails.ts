@@ -14995,6 +14995,36 @@ export function evaluateAirlineIrropsRebookingHotelPmsConcierge2026Guard(input: 
   };
 }
 
+export interface AutomotiveCockpitWearablesEdgeCloudVoice2026Evaluation {
+  policyCode: "AUTOMOTIVE-COCKPIT-WEARABLES-EDGE-CLOUD-VOICE-2026-01";
+  edgeNpuCabinControlAndDeicticKeyframeAuthorized: boolean;
+  nonParkTrunkMirrorActuationOrRearChildOverrideBlocked: boolean;
+  crashEcallPreemptionOrTunnelOfflineFallbackTriggered: boolean;
+}
+
+/**
+ * Deterministic Automotive Smart Cockpit & Wearable Smart Hardware (155ms Edge-NPU 78% Offload & <350ms Tunnel Failover, 4-Zone Child RBAC & ISO 26262 Non-Park Drive-Gear Firewall, Deictic 80KB Keyframe Burst & Bystander Blur) Guard (`AUTOMOTIVE-COCKPIT-WEARABLES-EDGE-CLOUD-VOICE-2026-01`).
+ */
+export function evaluateAutomotiveCockpitWearablesEdgeCloudVoice2026Guard(input: {
+  driverSeatZoneAuthorizedAndParkGearVerifiedForBodyOpen: boolean;
+  deicticKeyframeBystanderBlurredAndHardwiredLedActive: boolean;
+  crashEcallTriggeredOrTunnelRttExceeded350Ms: boolean;
+}): AutomotiveCockpitWearablesEdgeCloudVoice2026Evaluation {
+  return {
+    policyCode: "AUTOMOTIVE-COCKPIT-WEARABLES-EDGE-CLOUD-VOICE-2026-01",
+    edgeNpuCabinControlAndDeicticKeyframeAuthorized:
+      input.driverSeatZoneAuthorizedAndParkGearVerifiedForBodyOpen &&
+      input.deicticKeyframeBystanderBlurredAndHardwiredLedActive &&
+      !input.crashEcallTriggeredOrTunnelRttExceeded350Ms,
+    nonParkTrunkMirrorActuationOrRearChildOverrideBlocked:
+      !input.driverSeatZoneAuthorizedAndParkGearVerifiedForBodyOpen ||
+      !input.deicticKeyframeBystanderBlurredAndHardwiredLedActive ||
+      input.crashEcallTriggeredOrTunnelRttExceeded350Ms,
+    crashEcallPreemptionOrTunnelOfflineFallbackTriggered:
+      input.crashEcallTriggeredOrTunnelRttExceeded350Ms,
+  };
+}
+
 
 
 

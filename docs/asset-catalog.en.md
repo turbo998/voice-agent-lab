@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **540 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **541 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (540 Bilingual Guides)
+## 3. Solution Architect Selection Guides (541 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (517 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (518 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -584,3 +584,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 538. **E-Commerce Customer Care, Brand Voice Cloning & Interactive Avatar (Azure AI Speech vs. ElevenLabs / Deepgram / HeyGen vs. Client Viseme) Selection Guide: <22ms Client-Side 55D Viseme Rendering ($0.016/min vs $0.220/min Cloud Video, -92.7% TCO), 80/20 Hybrid Livestream Push/Pop Q&A ($2.15/hr vs $35/hr), 44.6% Return-to-Exchange Fit Coach (+$152k GMV/10k Calls) & <15ms Redis Price-Floor / Ad-Law Lock**: [EN](./ecommerce-order-support-showroom-avatar-azure-vs-elevenlabs-heygen-viseme-selection-faq.en.md) | [中文](./ecommerce-order-support-showroom-avatar-azure-vs-elevenlabs-heygen-viseme-selection-faq.md)
 539. **Enterprise AI Sales Roleplay Sparring, CS Coaching & Bulk Voice Interviewer (Actor-Critic Architecture) Selection Guide: Decoupled 350ms Fast-Actor + Async Slow-Critic & Anti-Sycophancy Lock (68% → 0.0% Premature Capitulation, -46.8% Ramp Time), <100ms Off-Label/Yield Red-Card Halt, Timestamp-Quoted BARS Grader (0.94 Kappa, $0.38 vs $45 Session) & EEOC / EU AI Act Accent-Blind Grader (-$326k/10k Sessions)**: [EN](./enterprise-sales-enablement-roleplay-sparring-ai-interviewer-actor-critic-voice-selection-faq.en.md) | [中文](./enterprise-sales-enablement-roleplay-sparring-ai-interviewer-actor-critic-voice-selection-faq.md)
 540. **Airline Mass IRROPS Rebooking (Amadeus / Sabre GDS) & Global Hotel Oracle Opera PMS Multilingual Concierge Guide: Pre-Speech <150ms 120s Atomic GDS Seat Soft-Lock + MCT/Visa Gate (61.0% → 99.5% Commit Rate, 140m → 65s Rebooking), Authoritative IOC Delay-Code (WX vs MX) & 0ms SSR UMNR Bridge + Hotel Zero Outside Room-Disclosure Lock & Opera Night-Audit Shield (-$334k/10k Hrs)**: [EN](./airline-disruption-irrops-rebooking-hotel-pms-multilingual-concierge-voice-selection-faq.en.md) | [中文](./airline-disruption-irrops-rebooking-hotel-pms-multilingual-concierge-voice-selection-faq.md)
+541. **Automotive Smart Cockpit (4-Zone) & Wearable Smart Hardware (AI Glasses) Edge-Cloud Multimodal Voice AI Guide: 155ms Edge-NPU 78% Control Offload & <350ms Tunnel Failover (100% Offline Uptime, -$11.88M/Yr/1M Units), 4-Zone Child RBAC & ISO 26262 Drive-Gear Lock (0.00% Unsafe In-Motion Actuation) + Deictic 80KB Keyframe Burst (-84.0% Power, 38m → 8.5h Runtime, -$318k/10k Hrs)**: [EN](./automotive-smart-cockpit-wearables-edge-cloud-multimodal-voice-assistant-selection-faq.en.md) | [中文](./automotive-smart-cockpit-wearables-edge-cloud-multimodal-voice-assistant-selection-faq.md)
