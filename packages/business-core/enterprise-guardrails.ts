@@ -15565,6 +15565,36 @@ export function evaluateMortgageOriginationRefinanceTridSafeNmls2026Guard(input:
   };
 }
 
+export interface LegalIntakeMassTortAbaConflictSol2026Evaluation {
+  policyCode: "LEGAL-INTAKE-MASS-TORT-ABA-CONFLICT-SOL-2026-01";
+  phase2FactIntakeAndInCallRetainerEsignAuthorized: boolean;
+  preConflictFactLoggingOrUplValuationPromiseOrRule42PoachingBlocked: boolean;
+  zeroMsRamWipeOnConflictOrWrittenNonEngagementLetterTriggered: boolean;
+}
+
+/**
+ * Deterministic Legal Intake, Personal Injury & Mass Tort (ABA Rule 1.18 2-Phase Pre-Fact Conflict Firewall, Zero-UPL Valuation Filter, 50-State/180-Day Municipal SOL Engine & Mandatory Non-Engagement Letter) Guard (`LEGAL-INTAKE-MASS-TORT-ABA-CONFLICT-SOL-2026-01`).
+ */
+export function evaluateLegalIntakeMassTortAbaConflictSol2026Guard(input: {
+  abaRule118ConflictClearedBeforeFactIngestionAndNoPriorAttorney: boolean;
+  zeroUplDisclaimerDeliveredAndStateSolVerified: boolean;
+  adversePartyConflictHitOrLeadDeclinedRequiringNonEngagementLetter: boolean;
+}): LegalIntakeMassTortAbaConflictSol2026Evaluation {
+  return {
+    policyCode: "LEGAL-INTAKE-MASS-TORT-ABA-CONFLICT-SOL-2026-01",
+    phase2FactIntakeAndInCallRetainerEsignAuthorized:
+      input.abaRule118ConflictClearedBeforeFactIngestionAndNoPriorAttorney &&
+      input.zeroUplDisclaimerDeliveredAndStateSolVerified &&
+      !input.adversePartyConflictHitOrLeadDeclinedRequiringNonEngagementLetter,
+    preConflictFactLoggingOrUplValuationPromiseOrRule42PoachingBlocked:
+      !input.abaRule118ConflictClearedBeforeFactIngestionAndNoPriorAttorney ||
+      !input.zeroUplDisclaimerDeliveredAndStateSolVerified ||
+      input.adversePartyConflictHitOrLeadDeclinedRequiringNonEngagementLetter,
+    zeroMsRamWipeOnConflictOrWrittenNonEngagementLetterTriggered:
+      input.adversePartyConflictHitOrLeadDeclinedRequiringNonEngagementLetter,
+  };
+}
+
 
 
 

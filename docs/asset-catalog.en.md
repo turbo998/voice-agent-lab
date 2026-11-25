@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **559 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **560 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (559 Bilingual Guides)
+## 3. Solution Architect Selection Guides (560 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (536 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (537 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -603,3 +603,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 557. **Public Sector 311 / 12345 Municipal Hotline & Benefits Eligibility (<2s 911 Emergency Pre-Emption / Title VI 60-Language Access / Geo-Tagged Civic Issue Vision) Guide: <2.0s Parallel 911 PSAP Bridge (0.00% Emergency Queue Delay), <50ms PostGIS 50m Spatial Dedup + Camera Asset OCR (-78.4% Duplicate Crew Rolls, 64% → 96.8% Agency Routing), $0.042/min 60+ Lang + ADA/RTT & OPA Zero-Auto-Denial Engine (-$384k/10k Calls)**: [EN](./public-sector-311-municipal-hotline-benefits-eligibility-wcag-multilingual-voice-selection-faq.en.md) | [中文](./public-sector-311-municipal-hotline-benefits-eligibility-wcag-multilingual-voice-selection-faq.md)
 558. **Automotive Dealership Service Lane (VIN Recall & Warranty Lookup / Bay & Loaner-Car Scheduling / MPI Video Upsell) Guide: <90ms DMS Garage + ISO-3779 VIN Modulo-11 + NHTSA Recall Bundling (+$310/RO OEM Warranty, 51% → 87.2% Booking Rate), 3-Constraint DMS Solver (Tech Skill × Recall Part Stock × Loaner Fleet = 0.00% Wasted Trips) & 20m Proactive MPI Video Follow-Up (78m → 9m Lift Hold, +$524k/10k Calls)**: [EN](./automotive-dealership-service-lane-vin-recall-appointment-mpi-upsell-voice-selection-faq.en.md) | [中文](./automotive-dealership-service-lane-vin-recall-appointment-mpi-upsell-voice-selection-faq.md)
 559. **Mortgage Origination & Refinance (TRID 6-Piece Application Trigger / SAFE Act NMLS Licensing Boundary / Income & Title Document Vision) Guide: <15s Speed-to-Lead Refi Capture (3.9x Conversion), Mandatory Reg Z Rate+APR Pair + <500ms Subject-Property State NMLS Routing, TRID 5-of-6 Bitmap Gate (0.00% $3,200 3-Day LE Cures) & In-Call 2.1s Stip Page-Continuity Vision (42d → 34.5d Close, +$685k/10k Apps)**: [EN](./mortgage-origination-refinance-trid-rate-lock-tila-respa-loan-officer-voice-selection-faq.en.md) | [中文](./mortgage-origination-refinance-trid-rate-lock-tila-respa-loan-officer-voice-selection-faq.md)
+560. **Legal Intake, Personal Injury & Mass Tort (ABA Rule 1.18 Conflict Check / Statute of Limitations SOL Gate / In-Call Retainer e-Sign & Evidence Vision) Guide: 2-Phase Pre-Fact Conflict Firewall (<100ms Intapp/Clio Check = 0.00% Firm Disqualification), Zero-UPL + 50-State/180-Day Municipal SOL Engine + Auto Non-Engagement Letter & 2.0s Police Report Vision + Guided In-Call DocuSign (31.0% → 74.8% Signed, +$742k/10k Calls)**: [EN](./legal-intake-mass-tort-personal-injury-statute-of-limitations-conflict-check-aba-voice-selection-faq.en.md) | [中文](./legal-intake-mass-tort-personal-injury-statute-of-limitations-conflict-check-aba-voice-selection-faq.md)

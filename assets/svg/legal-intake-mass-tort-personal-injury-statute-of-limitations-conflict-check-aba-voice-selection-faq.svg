@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg560" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue560" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen560" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple560" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber560" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg560)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">律所案源接待与人身伤害/集体诉讼：ABA 利益冲突前置锁、诉讼时效与通话内签约架构 (#560)</text>
+  <text x="48" y="74" class="subtitle">Legal Intake &amp; Mass Tort Voice + Vision AI: ABA Rule 1.18 Pre-Fact Conflict Gate · Zero UPL · State SOL Calculator · In-Call Retainer e-Sign</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue560)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">LEGAL-INTAKE-ABA-2026</text>
+
+  <!-- Plane 1: ABA Rule 1.18 Pre-Fact Conflict Check & Zero UPL -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue560)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① ABA Rule 1.18 利益冲突前置防火墙与零 UPL</text>
+
+  <rect x="46" y="158" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">倾听案情前必过“相对方利益冲突核查”</text>
+  <text x="60" y="200" class="node-sub">• 痛点: 若先听取原告机密案情才发现被告是律所现有大客户</text>
+  <text x="60" y="218" class="node-sub">• 按 ABA Rule 1.18 整家律所将被取消代理资格 (污染现有客户)</text>
+  <text x="60" y="236" class="node-sub">• Phase 1 仅问姓名+对方当事人，&lt;100ms 查 Clio/Intapp 无冲突才放行</text>
+
+  <rect x="46" y="262" width="319" height="88" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="284" class="node-title">严禁非法执业 (Zero UPL) 与赔偿金额承诺</text>
+  <text x="60" y="304" class="node-sub">• 严禁 AI 评估胜诉率、提供法律意见或承诺“肯定能赔 50 万”</text>
+  <text x="60" y="322" class="node-sub">• 开场明确披露:“我是事实信息采集助手，正式委托关系以签署为准”</text>
+  <text x="60" y="340" class="node-sub">• 100% 符合全美各州律师协会 (State Bar) 道德审查</text>
+
+  <rect x="46" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="386" class="node-title">律师-当事人特权加密归档 (Attorney-Client Privilege)</text>
+  <text x="60" y="406" class="node-sub">• 进件录音与转写全程租户级密钥加密且开启模型零留存 (ZDR)</text>
+  <text x="60" y="424" class="node-sub">• 防止对方律师在证据开示 (Discovery) 阶段调取第三方云日志</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">挽回 $800/条的高价法律广告晚间漏接线索</text>
+  <text x="60" y="500" class="node-sub">• 车祸/工伤受害者 39% 在急诊室或夜间致电，7x24 秒级温和接待</text>
+  <text x="60" y="518" class="node-sub">• 支持英/西双语创伤关怀语调，零催促耐性倾听</text>
+
+  <!-- Plane 2: Deterministic Statute of Limitations (SOL) & Case Scoring -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple560)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② 州诉讼时效 (SOL) 确定性计算与案源价值分级</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">50 州诉讼时效 (SOL) 与政府索赔 6 个月硬计算</text>
+  <text x="435" y="200" class="node-sub">• 严禁大模型估算时效！由确定性法规表按“事发州+案由+事发日”精算</text>
+  <text x="435" y="218" class="node-sub">• 识别市政公交/警车事故自动切换为 180 天政府索赔通知期 (Tort Claim)</text>
+  <text x="435" y="236" class="node-sub">• 距时效届满 &lt;90 天的临期案件 0ms 强制唤醒值班合伙人紧急立案</text>
+
+  <rect x="421" y="264" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">确定性撤案与婉拒防失职锁 (Non-Engagement Gate)</text>
+  <text x="435" y="306" class="node-sub">• 若已过诉讼时效或不符合接案标准，严禁含糊挂机留隐患</text>
+  <text x="435" y="324" class="node-sub">• 自动触发法务审定的标准《不予代理告知书》(Non-Engagement Letter)</text>
+  <text x="435" y="342" class="node-sub">• 明确建议立即咨询其他律师，100% 免除律所执业失职索赔 (Malpractice)</text>
+
+  <rect x="421" y="370" width="358" height="84" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="392" class="node-title">人身伤害与集体诉讼 (Mass Tort) 结构化分级</text>
+  <text x="435" y="412" class="node-sub">• 核查四要素: 1.责任清晰度 2.商业保单额度 3.急诊/手术记录 4.无其他代理</text>
+  <text x="435" y="430" class="node-sub">• 重伤商用卡车追尾 (Tier-1) 秒级直通金牌出庭律师</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">严禁挖角已有代理律师案件 (Anti-Poaching Gate)</text>
+  <text x="435" y="510" class="node-sub">• 确认原告已签其他律所时立即礼貌终止，严守 ABA Rule 4.2</text>
+
+  <!-- Plane 3: 2.0s Police Report Vision & In-Call Retainer e-Sign -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen560)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ 事故认定书 2.0s 视觉提取与通话内即时签约</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">交警事故报告与急诊单 2.0s 拍照提取</text>
+  <text x="849" y="200" class="node-sub">• 短信推送免安装相机链接，拍交警事故回执与车损现场照</text>
+  <text x="849" y="218" class="node-sub">• 自动提取肇事方商业保险公司、保单号、车牌与 ICD-10 诊断码</text>
+  <text x="849" y="236" class="node-sub">• 自动写入 Filevine / Litify / Clio 案卷并生成保函草稿</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">不断线通话内陪签委托书 (In-Call Retainer e-Sign)</text>
+  <text x="849" y="302" class="node-sub">• 痛点: 挂断电话发邮件签委托合同，52% 客户半小时内被竞品抢走</text>
+  <text x="849" y="320" class="node-sub">• 符合 Tier-1/Tier-2 标准案件当场推送短信 DocuSign/PandaDoc</text>
+  <text x="849" y="338" class="node-sub">• AI 保持在线逐段朗读风险代理条款陪同签字，签约率从 31% 升至 74.8%</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">HIPAA 医疗档案调取授权书 (HITECH Auth) 联签</text>
+  <text x="849" y="406" class="node-sub">• 签完委托合同顺手一键签署医院病历调取授权书</text>
+  <text x="849" y="424" class="node-sub">• 立案调档启动时间提前 11 天</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (LEGAL-INTAKE-ABA-SOL-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截未查冲突先听机密、AI 承诺赔偿额、漏算政府 6 个月时效</text>
+  <text x="849" y="518" class="node-sub">• 命中利益冲突 0ms 物理隔离阻断并转交合规外部转介</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 律所案源接待（Personal Injury / Mass Tort）实时语音+视觉 AI 实测基准 (每 10,000 通高意向案源来电)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">31% → 74.8%</text>
+  <text x="64" y="666" class="metric-lbl">通话内不断线陪签委托合同 (Retainer) 转化率</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">0.00% 冲突污染</text>
+  <text x="344" y="666" class="metric-lbl">ABA Rule 1.18 前置冲突防火墙保护现有客户</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">100% SOL 精准</text>
+  <text x="624" y="666" class="metric-lbl">确定性 50 州+市政 180 天时效锁与临期报警</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">创效 $74.2万 / 万通</text>
+  <text x="904" y="666" class="metric-lbl">挽回 $800/条广告费打水漂 + 免除执业失职险赔付</text>
+</svg>
