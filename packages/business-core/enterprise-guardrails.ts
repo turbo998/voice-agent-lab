@@ -15745,6 +15745,36 @@ export function evaluateVeterinaryHospitalPetToxinGdvPims2026Guard(input: {
   };
 }
 
+export interface ElectricWaterGasUtilityOmsAmiMedical2026Evaluation {
+  policyCode: "ELECTRIC-WATER-GAS-UTILITY-OMS-AMI-MEDICAL-2026-01";
+  singlePremiseTroubleTicketAndRateSwitchAuthorized: boolean;
+  energizedMeterTruckRollOrMoratoriumLifeSupportShutoffBlocked: boolean;
+  zeroMsGasWireEvacuationOrP1LifeSupportBatteryDispatchTriggered: boolean;
+}
+
+/**
+ * Deterministic Electric, Water & Gas Utilities (<100ms Edge OMS + 800ms AMI Smart-Meter Voltage Ping, 0ms Gas-Odor/Downed-Wire Pre-Emption, Medical Baseline Life-Support Priority & PUC Extreme-Weather Shutoff Moratorium Gate) Guard (`ELECTRIC-WATER-GAS-UTILITY-OMS-AMI-MEDICAL-2026-01`).
+ */
+export function evaluateElectricWaterGasUtilityOmsAmiMedical2026Guard(input: {
+  amiMeterPingConfirmedDeadBeforeSinglePremiseTruckRoll: boolean;
+  noWeatherMoratoriumOrLifeSupportMedicalBaselineActiveForDisconnect: boolean;
+  gasOdorDownedWireOrVentilatorOutageDetected: boolean;
+}): ElectricWaterGasUtilityOmsAmiMedical2026Evaluation {
+  return {
+    policyCode: "ELECTRIC-WATER-GAS-UTILITY-OMS-AMI-MEDICAL-2026-01",
+    singlePremiseTroubleTicketAndRateSwitchAuthorized:
+      input.amiMeterPingConfirmedDeadBeforeSinglePremiseTruckRoll &&
+      input.noWeatherMoratoriumOrLifeSupportMedicalBaselineActiveForDisconnect &&
+      !input.gasOdorDownedWireOrVentilatorOutageDetected,
+    energizedMeterTruckRollOrMoratoriumLifeSupportShutoffBlocked:
+      !input.amiMeterPingConfirmedDeadBeforeSinglePremiseTruckRoll ||
+      !input.noWeatherMoratoriumOrLifeSupportMedicalBaselineActiveForDisconnect ||
+      input.gasOdorDownedWireOrVentilatorOutageDetected,
+    zeroMsGasWireEvacuationOrP1LifeSupportBatteryDispatchTriggered:
+      input.gasOdorDownedWireOrVentilatorOutageDetected,
+  };
+}
+
 
 
 

@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg566" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue566" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen566" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple566" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber566" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg566)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">电力、水务与燃气公用事业：50倍停电洪峰 OMS 分流、AMI 智能表拆解与生命维持保障 (#566)</text>
+  <text x="48" y="74" class="subtitle">Electric, Water &amp; Gas Utility Voice + Vision AI: &lt;100ms OMS + AMI Meter Ping · Life-Support Medical Baseline Gate · 15m Interval Bill Analysis</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue566)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">UTILITY-OMS-AMI-2026</text>
+
+  <!-- Plane 1: 50x Storm Outage Deflection & AMI Smart-Meter Ping -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue566)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① 50 倍风暴停电洪峰与 AMI 智能电表实时探测</text>
+
+  <rect x="46" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">振铃期 &lt;100ms 联查 OMS 停电图与电表遗言</text>
+  <text x="60" y="200" class="node-sub">• 台风/暴雪致 25 万户停电，每小时涌入 80,000 通报修来电</text>
+  <text x="60" y="218" class="node-sub">• 接通前按手机号匹配变压器拓扑与 AMI 电表 Last-Gasp 状态</text>
+  <text x="60" y="236" class="node-sub">• 首句 18 秒直接播报馈线抢修进度与预计复电时间 (ETR)</text>
+
+  <rect x="46" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="282" class="node-title">实时 Ping 电表拦截 26%“自家总闸跳闸”白跑</text>
+  <text x="60" y="302" class="node-sub">• 住户报停电，但实时 Ping 智能电表返回 240V 供电正常!</text>
+  <text x="60" y="320" class="node-sub">• 说明外网有电，系户内主空气开关跳闸 → 发短信相机看配电箱</text>
+  <text x="60" y="338" class="node-sub">• 30 秒指导合闸复电，单次省下 $220 抢修工程车空跑费</text>
+
+  <rect x="46" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="386" class="node-title">燃气臭鸡蛋味与落地高压线 0ms 紧急抢险锁</text>
+  <text x="60" y="406" class="node-sub">• 识别到硫醇燃气味、嘶嘶漏气声或电线杆打火倒塌</text>
+  <text x="60" y="424" class="node-sub">• 0ms 指令撤离室外禁碰开关并直通 24h 燃气/电网应急调度台</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">风暴洪峰自助分流率高达 91.4%</text>
+  <text x="60" y="500" class="node-sub">• 10,000 路云端弹性并发消除忙音，复电自动触发短信/语音回告</text>
+  <text x="60" y="518" class="node-sub">• 满足各州公用事业委员会 (PUC) 30 秒接通率监管考核</text>
+
+  <!-- Plane 2: 15-Minute AMI Interval High-Bill Analysis & Leak Credit -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple566)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② 15 分钟级 AMI 负荷拆解与暗漏退费视觉审计</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">终结“盛夏电费翻倍怀疑电表走快了”争吵</text>
+  <text x="435" y="200" class="node-sub">• 对接 Oracle Opower / Bidgely 15 分钟级智能电表负荷曲线</text>
+  <text x="435" y="218" class="node-sub">• 确定性拆解: 酷暑降温日度增加 (+$82) + 晚峰 16–21 点充电桩 (+$54)</text>
+  <text x="435" y="236" class="node-sub">• 当场测算切换“分时电价 (TOU 夜间谷电)”每年可省 $420 并一键改签</text>
+
+  <rect x="421" y="264" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">凌晨 3 点连续水流检测与水工收据拍照减免</text>
+  <text x="435" y="306" class="node-sub">• 水费暴涨时调取智能水表夜间 2:00–4:00 AM 基底流量 (&gt;0.4 GPM)</text>
+  <text x="435" y="324" class="node-sub">• 精准定位马桶止水皮碗老化暗漏或院子灌溉管渗水</text>
+  <text x="435" y="342" class="node-sub">• 住户修好后短信拍水工收据，2.0s 核验通过自动核减 50% 漏水超额费</text>
+
+  <rect x="421" y="370" width="358" height="84" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="392" class="node-title">老旧机械表/燃气表盘 1.8s 拍照自报读数</text>
+  <text x="435" y="412" class="node-sub">• 针对估算账单 (Estimated Bill) 过高争议，短信拍表盘指针/滚轮</text>
+  <text x="435" y="430" class="node-sub">• 1.8s OCR 读取真实千瓦时/立方米数，当场重算精确账单免派抄表员</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">取消 68% 不必要的“校验电表/水表”上门工单</text>
+  <text x="435" y="510" class="node-sub">• 用可视化 15 分钟负荷卡片让住户心服口服</text>
+
+  <!-- Plane 3: Medical Baseline Life-Support & PUC Shutoff Moratorium Gate -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen566)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ 生命维持设备优先权与 PUC 禁断电红线</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">呼吸机/制氧机/透析家庭 (Medical Baseline) 优先锁</text>
+  <text x="849" y="200" class="node-sub">• 停电来电命中 `Life-Support Registry` 或口述家有呼吸机患者</text>
+  <text x="849" y="218" class="node-sub">• 立即升级为 P1 生命保障工单，调派移动储能电源车或应急备用电池</text>
+  <text x="849" y="236" class="node-sub">• 若停电预计超 4 小时，同步协助联系非紧急医疗转运</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">极端高温/严寒与医疗证明绝对禁止欠费拉闸!</text>
+  <text x="849" y="302" class="node-sub">• 遵守 CPUC / NYPSC / 各州公用事业法规: 气温 &gt;35°C 或 &lt;0°C 期间</text>
+  <text x="849" y="320" class="node-sub">• 或住户提交医生开具的重病不能断电证明 (Medical Certificate)</text>
+  <text x="849" y="338" class="node-sub">• 0ms 撤回远程智能电表拉闸指令 (Cancel Remote Disconnect) 并设 30 天保护</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">LIHEAP 政府能源补贴与 12 期平摊付款计划</text>
+  <text x="849" y="406" class="node-sub">• 针对困难欠费家庭自动核查 LIHEAP 补助资格并办理预算平摊 (Budget Billing)</text>
+  <text x="849" y="424" class="node-sub">• 首付 15% 即可在 3 分钟内自动远程合闸复电</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (UTILITY-OMS-AMI-MEDICAL-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截高温/严寒/生命维持户违规拉闸、AMI 在线却派外线抢修车</text>
+  <text x="849" y="518" class="node-sub">• 燃气泄漏与落地电线 0ms 强制撤离直通应急抢险台</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 电力、水务与燃气公用事业实时语音+视觉 AI 实测基准 (200 万户省级/州级电网水司 · 每 10,000 通来电)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">91.4% 洪峰分流</text>
+  <text x="64" y="666" class="metric-lbl">&lt;100ms OMS+AMI 联查 18 秒播报精准 ETR</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">-26% 抢修车空跑</text>
+  <text x="344" y="666" class="metric-lbl">Ping 电表在线+相机看配电箱拦截户内跳闸</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">0.00% 违规断电</text>
+  <text x="624" y="666" class="metric-lbl">呼吸机生命维持户与高温严寒禁断电硬护栏</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">省 $45.8万 / 万通</text>
+  <text x="904" y="666" class="metric-lbl">省去 $220/次电网抢修白跑 + 抄表核查 + PUC 罚金</text>
+</svg>

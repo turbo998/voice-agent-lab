@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **565 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **566 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（565 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（566 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -66,7 +66,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（542 篇）
+### 3.3 高价值企业行业解决方案蓝图（543 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -609,3 +609,4 @@
 563. **居家养老、长者照护与家庭护理机构（老年性耳聋 `<2kHz` 声学优化 / `Cures Act` 护工固话 `EVV` 防伪打卡 / 心衰体重与跌倒抗凝急救门禁）语音与多模态选型指南（`135–195Hz` 温暖干声 + `1–2kHz` 共振峰增强 + `115 WPM` 慢速 + `2,400ms` 耐性窗将 80+ 岁长者通话完单率从 `44.0%` 提至 `91.8%`、住宅固话 `ANI` 强绑定 `EVV` 打卡配 `15m` 爽约自动派替补将医保拒付率压降 `89.9%`、以及心衰 `+2磅` 体重早筛与服用抗凝药跌倒 `0ms` 急救锁将 30 天再入院率降低 `41.2%` 每万次服务创效 `$43.5万`）方案**：[中文](./senior-living-home-health-caregiver-evv-fall-triage-medication-reminder-voice-selection-faq.md) | [EN](./senior-living-home-health-caregiver-evv-fall-triage-medication-reminder-voice-selection-faq.en.md)
 564. **财税事务所（CPA）、税务筹划与企业代账（`IRS 26 U.S.C. § 7216` 刑事隐私锁 / `W-2/1099/K-1` 缺件视觉催收 / `Form 8879` 双人 KBA 陪签）语音与多模态选型指南（通话中 `1.9秒` 视觉拦截误传去年旧税表、草稿水印与 `K-1 Box 20` 缺页释放 `$350/h` 注册会计师 `76%` 催资料工时、境内主权 ZDR 零训练与独立书面《`§ 7216` 同意书》门禁 100% 阻断违规跨业推销理财、以及截止前 48h 陪同完成夫妻双人 `Form 8879` KBA 签名按期申报率达 `98.4%` 每万户创效 `$61.5万`）方案**：[中文](./wealth-tax-cpa-accounting-irs-26-usc-7216-k1-w2-document-chasing-voice-selection-faq.md) | [EN](./wealth-tax-cpa-accounting-irs-26-usc-7216-k1-w2-document-chasing-voice-selection-faq.en.md)
 565. **连锁宠物医院、24 小时动物急诊与寄养中心（`GDV` 胃扭转与公猫闭尿 `0ms` 急诊锁 / `1.5s` 误食毒物 `mg/kg` 精算 / `ezyVet` 疫苗与术后刀口视觉）语音与多模态选型指南（品种×性别×症状矩阵 100% 捕获大型犬胃扭转与公猫尿道闭锁并提前 18m 唤醒 ICU 备台、`1.5秒` 拍食品包装袋配确定性 `mg/kg` 毒理公式且 100% 拦截给猫/法斗居家灌双氧水催吐、以及术后刀口拍照免到店复查释放 `62%` 免费占座并核验 `VCPR` 自动续订驱虫药每万通创效 `$41.2万`）方案**：[中文](./veterinary-hospital-pet-emergency-toxin-triage-pims-vaccine-boarding-voice-selection-faq.md) | [EN](./veterinary-hospital-pet-emergency-toxin-triage-pims-vaccine-boarding-voice-selection-faq.en.md)
+566. **电力、水务与燃气公用事业客服（50 倍风暴停电洪峰 `OMS` 分流 / `800ms AMI` 智能电表实时 Ping / 呼吸机生命维持户优先保电）语音与多模态选型指南（边缘 Redis 停电快照零数据库负载分流 `91.4%` 洪峰来电、实时 Ping 电表确认 `240V` 在线配相机指导合室内总闸砍掉 `90.4%` 的 `$220` 工程车白跑、15 分钟级 `AMI` 负荷拆解与凌晨 3 点暗漏检测取消 `68%` 上门校表、以及呼吸机生命维持与高温/严寒禁断电护栏每万通净省 `$45.8万`）方案**：[中文](./electric-water-gas-utility-outage-storm-surge-ami-smart-meter-medical-baseline-voice-selection-faq.md) | [EN](./electric-water-gas-utility-outage-storm-surge-ami-smart-meter-medical-baseline-voice-selection-faq.en.md)
