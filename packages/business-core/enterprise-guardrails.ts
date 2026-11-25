@@ -14695,6 +14695,36 @@ export function evaluateGlobalDutyOfCareTravelRiskMedevacVoice2026Guard(input: {
   };
 }
 
+export interface EnergyGridDemandResponseVppVoice2026Evaluation {
+  policyCode: "ENERGY-GRID-DEMAND-RESPONSE-VPP-CURTAILMENT-VOICE-2026-01";
+  curtailmentDispatchAndDynamicBessBackfillAuthorized: boolean;
+  belowProcessFloorOrUnpermittedEpaDieselOrUnsafeBackfeedBlocked: boolean;
+  nfpa855BessEvacuationOrQseTradingDeskBridgeTriggered: boolean;
+}
+
+/**
+ * Deterministic Energy Grid Demand Response, VPP & C&I Curtailment (<120s Curtailment Commit & 15s BESS Backfill, SCADA Safe Process Baseload Floor, EPA RICE 40 CFR 63 Diesel & IEEE 1547 Anti-Islanding Gate, NFPA 855 BESS Off-Gas Lock) Guard (`ENERGY-GRID-DEMAND-RESPONSE-VPP-CURTAILMENT-VOICE-2026-01`).
+ */
+export function evaluateEnergyGridDemandResponseVppVoice2026Guard(input: {
+  shedAboveScadaFirmLoadFloorAndFreezerTempSafe: boolean;
+  epaRiceTier4OrEea2EmergencyAndIeee1547RelayVerified: boolean;
+  bessHydrogenOffGasSmokeOrHighVoltageArcDetected: boolean;
+}): EnergyGridDemandResponseVppVoice2026Evaluation {
+  return {
+    policyCode: "ENERGY-GRID-DEMAND-RESPONSE-VPP-CURTAILMENT-VOICE-2026-01",
+    curtailmentDispatchAndDynamicBessBackfillAuthorized:
+      input.shedAboveScadaFirmLoadFloorAndFreezerTempSafe &&
+      input.epaRiceTier4OrEea2EmergencyAndIeee1547RelayVerified &&
+      !input.bessHydrogenOffGasSmokeOrHighVoltageArcDetected,
+    belowProcessFloorOrUnpermittedEpaDieselOrUnsafeBackfeedBlocked:
+      !input.shedAboveScadaFirmLoadFloorAndFreezerTempSafe ||
+      !input.epaRiceTier4OrEea2EmergencyAndIeee1547RelayVerified ||
+      input.bessHydrogenOffGasSmokeOrHighVoltageArcDetected,
+    nfpa855BessEvacuationOrQseTradingDeskBridgeTriggered:
+      input.bessHydrogenOffGasSmokeOrHighVoltageArcDetected,
+  };
+}
+
 
 
 

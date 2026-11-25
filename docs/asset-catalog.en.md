@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **530 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **531 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (530 Bilingual Guides)
+## 3. Solution Architect Selection Guides (531 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (507 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (508 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -574,3 +574,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 528. **Commercial Insurance Brokerage & P&C (Applied Epic / Guidewire / Duck Creek) Voice AI Guide: <200ms Policy-Limit & Blanket AI Gate + 9s PKCE Holder Card (24h → 14s ACORD 25 COI Issuance, 83.8% Self-Serve), 0ms Known-Loss & Anti-Estoppel Endorsement Lock (0.00% E&O Breaches) & OSHA 29 CFR 1904.39 8h/24h Severe-Injury Nurse Triage (-$355k/10k Hrs)**: [EN](./commercial-insurance-brokerage-acord25-coi-midterm-endorsement-workers-comp-voice-selection-faq.en.md) | [中文](./commercial-insurance-brokerage-acord25-coi-midterm-endorsement-workers-comp-voice-selection-faq.md)
 529. **MedTech Diagnostic Imaging & Surgical Capital Equipment (GE HealthCare / Siemens Healthineers / Philips MRI/CT/Cath-Lab) Voice AI Guide: 0ms Patient-on-Table Entitlement Bypass (<12s L3 Modality Bridge), <200ms HIPAA Zero-PHI IoMT Error-Log Triage (74.6% Remote Deflection), ACR Zone-IV Always-On Magnet & Quench Evacuation Lock + 0ms FDA 21 CFR Part 803 MDR Log Freeze (-$420k/10k Hrs)**: [EN](./medtech-mri-ct-cathlab-remote-service-quench-patient-on-table-voice-selection-faq.en.md) | [中文](./medtech-mri-ct-cathlab-remote-service-quench-patient-on-table-voice-selection-faq.md)
 530. **Global Duty of Care, Corporate Travel Risk & Emergency MedEvac (International SOS / Crisis24 / SAP Concur) Voice AI Guide: ISO 31030 <180s Crisis Muster Roll-Call (98.4% Accounting), Zero Open-Line Extraction Coordinate Lock (FIDO2 Burn-After-Reading PKCE Card), 18s Vetted Safe-Blood Hospital GOP Dispatch & Dual-MD Air Ambulance MedEvac Gate + <150ms Digital Proof-of-Life Anti-Virtual-Kidnap & 0ms Silent Duress K&R Bridge (-$415k/10k Hrs)**: [EN](./global-duty-of-care-travel-risk-medevac-crisis-evacuation-voice-selection-faq.en.md) | [中文](./global-duty-of-care-travel-risk-medevac-crisis-evacuation-voice-selection-faq.md)
+531. **Energy Grid Demand Response, Virtual Power Plants (VPP) & C&I Curtailment (ERCOT / PJM / OpenADR 3.0) Voice AI Guide: <120s Parallel Plant Curtailment Commit + 15s Dynamic BESS Shortfall Backfill (78.4% → 99.8% MW Delivery, $0 ISO Penalties), <150ms SCADA Safe Process Baseload Floor, 0ms EPA RICE 40 CFR 63 Diesel Arbitrage & IEEE 1547 Anti-Islanding Lock + NFPA 855 BESS Off-Gas Standoff (+$435k/10k Hrs)**: [EN](./energy-grid-demand-response-vpp-ci-curtailment-dispatch-voice-selection-faq.en.md) | [中文](./energy-grid-demand-response-vpp-ci-curtailment-dispatch-voice-selection-faq.md)

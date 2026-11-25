@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **530 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **531 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（530 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（531 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -66,7 +66,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（507 篇）
+### 3.3 高价值企业行业解决方案蓝图（508 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -574,3 +574,4 @@
 528. **商业保险经纪与企财险/工伤险（Commercial Insurance Brokerage & P&C：Applied Epic / Guidewire / Duck Creek）实时语音架构选型指南（`<200ms` 在效保额与 `CG 20 10 / 20 37 Blanket AI` 批单校验配 `9s PKCE` 抬头卡将 `ACORD 25 COI` 开证从 `24小时` 缩至 `14秒`（自助率 `83.8%`）、期中批改强制录制《无已知损失声明 SONL》与反弃权词汇锁实现 `0.00%` 带病加保与 `E&O` 误承诺、以及 `OSHA 29 CFR 1904.39` 8h/24h 重伤红旗 `0ms` 桥接分诊护士每万小时净省 `$35.5万`）方案**：[中文](./commercial-insurance-brokerage-acord25-coi-midterm-endorsement-workers-comp-voice-selection-faq.md) | [EN](./commercial-insurance-brokerage-acord25-coi-midterm-endorsement-workers-comp-voice-selection-faq.en.md)
 529. **高端医疗器械与大型医学影像设备（MedTech Capital Equipment：GE HealthCare / Siemens Healthineers / Philips MRI/CT/Cath-Lab）实时语音架构选型指南（`0ms` 识别患者在手术台 `Patient-on-Table` 豁免合同/PO 盘问 `<12s` 直通 L3 模态专家、`<200ms` `HIPAA Zero-PHI` 拉取 `IoMT` 报错日志指导院内 `BMET` 60 秒自愈分流 `74.6%` 现场派工、`ACR Zone-IV` 超导核磁断电不消磁无磁工具锁与液氦失超 `Quench` 排风撤离令、以及 `FDA 21 CFR Part 803 MDR` 不良事件 `0ms` 锁日志立案每万小时净省 `$42.0万`）方案**：[中文](./medtech-mri-ct-cathlab-remote-service-quench-patient-on-table-voice-selection-faq.md) | [EN](./medtech-mri-ct-cathlab-remote-service-quench-patient-on-table-voice-selection-faq.en.md)
 530. **跨国企业全球差旅安全、外派员工应急救援与医疗转运（Global Duty of Care & MedEvac：International SOS / Crisis24 / SAP Concur）实时语音架构选型指南（`ISO 31030` 灾区围栏 `<180s` 并发语音+卫星短信清点 `98.4%` 员工生死状态、公网语音物理禁播秘密撤离集合点 `Extraction Point` 坐标改推 `FIDO2` 阅后即焚卡、`<200ms` 白名单安全血源医院核验后 `18秒` 直发 `GOP` 急诊担保函与 `$95k` 航空医疗专机双医师适航锁、以及 `<150ms` 数字心跳识破 AI 克隆虚拟绑架与静默胁迫暗语 `0ms` 桥接 `K&R` 顾问每万小时净省 `$41.5万`）方案**：[中文](./global-duty-of-care-travel-risk-medevac-crisis-evacuation-voice-selection-faq.md) | [EN](./global-duty-of-care-travel-risk-medevac-crisis-evacuation-voice-selection-faq.en.md)
+531. **能源电力调度、虚拟电厂（VPP）与工商业大用户需求响应（Energy Grid Demand Response & C&I Curtailment：ERCOT / PJM / OpenADR 3.0）实时语音架构选型指南（`<120s` 并发厂长语音削峰确认 + 弃权缺口 `15秒` 自动调动区域 `BESS` 电池储能全额补位将兆瓦履约率从 `78.4%` 提至 `99.8%` 免除 `$9,000/MWh` 罚单、`<150ms` 校验厂区 `SCADA` 最低安全工艺基荷与冷库 `-18°C` 保冷底线、`0ms` 拦截非 `Tier-4` 应急柴油机违规商业套利（`EPA RICE NESHAP`）与 `IEEE 1547` 防反送电闭锁、以及储能柜 `H2` 报警 `NFPA 855` 禁开门撤离每万小时创效 `$43.5万`）方案**：[中文](./energy-grid-demand-response-vpp-ci-curtailment-dispatch-voice-selection-faq.md) | [EN](./energy-grid-demand-response-vpp-ci-curtailment-dispatch-voice-selection-faq.en.md)
