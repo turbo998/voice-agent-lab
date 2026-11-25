@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg557" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue557" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen557" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple557" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber557" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg557)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">政务 12345 / 市政 311 市民热线：&lt;2s 紧急警情直通、GIS 空间去重与 60 语种无障碍架构 (#557)</text>
+  <text x="48" y="74" class="subtitle">Public Sector 311 / 12345 Voice + Vision AI: &lt;2s 911 Life-Safety Pre-Emption · 50m PostGIS Spatial Dedup · Title VI 60-Lang + RTT · OPA Benefits Engine</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue557)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">CIVIC-311-12345-2026</text>
+
+  <!-- Plane 1: <2s 911 Emergency Pre-Emption & Title VI/ADA Access -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue557)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① &lt;2s 911/110 紧急警情直通与 60 语种无障碍</text>
+
+  <rect x="46" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">&lt;2 秒危及生命警情强制劫持直通 (911 Pre-Emption)</text>
+  <text x="60" y="200" class="node-sub">• 市民常误拨 311/12345 报告高压线打火、燃气泄漏或家暴胸痛</text>
+  <text x="60" y="218" class="node-sub">• 全程并行运行声学求救+高危词哨兵，&lt;2s 打断普通建单流程</text>
+  <text x="60" y="236" class="node-sub">• 携带主叫 ANI/ALI 与 GPS 坐标直通 911/110 调度台 (0 延误)</text>
+
+  <rect x="46" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="282" class="node-title">Title VI 60+ 语种与方言零等待平权服务</text>
+  <text x="60" y="302" class="node-sub">• 传统电话口译 (LanguageLine) 需等 3 分钟且高达 $1.85/min</text>
+  <text x="60" y="320" class="node-sub">• 首句 3 秒自动识别西语/粤语/阿语/越语等 60+ 语种 ($0.042/min)</text>
+  <text x="60" y="338" class="node-sub">• 政务专有名词词表保障移民与少数族裔 100% 准确办事</text>
+
+  <rect x="46" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="386" class="node-title">ADA / Section 508 听障与老年认知无障碍</text>
+  <text x="60" y="406" class="node-sub">• 原生兼容实时文本 (RTT/TTY) 与高龄长者 0.8x 慢速清晰语音</text>
+  <text x="60" y="424" class="node-sub">• 失语症/口吃市民自动延长停顿容忍窗口至 2,200ms</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">极端天气/停水停电洪峰 10,000 路弹性扩容</text>
+  <text x="60" y="500" class="node-sub">• 台风/暴雪期间排队等待从 42 分钟压降至 0 秒秒接</text>
+  <text x="60" y="518" class="node-sub">• 口译与话务综合成本直降 94.2%</text>
+
+  <!-- Plane 2: Geo-Tagged Civic Vision & 50m PostGIS Spatial Dedup -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple557)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② 市政隐患手机拍照与 50 米 GIS 空间去重</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">&lt;50ms PostGIS / ArcGIS 50 米半径重复工单合并</text>
+  <text x="435" y="200" class="node-sub">• 痛点: 暴风雨后 300 位市民打爆热线报同一棵倒伏大树</text>
+  <text x="435" y="218" class="node-sub">• 实时检索坐标 50 米半径内过去 24h 同类未结工单 (`#311-8842`)</text>
+  <text x="435" y="236" class="node-sub">• 主播报抢修车队 ETA 并将来电人加入短信进度订阅 (去重 78.4%)</text>
+
+  <rect x="421" y="264" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">手机拍照多模态定级与责任局委精准分拨</text>
+  <text x="435" y="306" class="node-sub">• 短信推送免安装 H5 拍照+GPS 定位链接 (坑洞/井盖缺失/违停)</text>
+  <text x="435" y="324" class="node-sub">• 视觉识别坑洞深度/危险等级与路灯杆编号，准确率达 96.8%</text>
+  <text x="435" y="342" class="node-sub">• 精确区分市政路政局 vs 电力公司权属，跨部门退单率降 82%</text>
+
+  <rect x="421" y="370" width="358" height="84" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="392" class="node-title">图片车牌与路人人脸边缘自动打码 (Privacy Blur)</text>
+  <text x="435" y="412" class="node-sub">• 市民上传的街景照片在入库前自动模糊无关路人人脸</text>
+  <text x="435" y="430" class="node-sub">• 符合政府阳光法案 (FOIA) 公开工单地图的隐私保护要求</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">市政抢修车队无效重复出车减少 78.4%</text>
+  <text x="435" y="510" class="node-sub">• 每次免除重复派车直接节省 $180 市政工程车队外勤费</text>
+
+  <!-- Plane 3: Deterministic Benefits Eligibility & Due-Process Guard -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen557)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ 民生福利资格确定性预审与行政正当程序</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">严禁大模型自由裁量民生补贴与低保资格!</text>
+  <text x="849" y="200" class="node-sub">• 涉及医保 (Medicaid)、食品券 (SNAP)、取暖补贴或失业金时</text>
+  <text x="849" y="218" class="node-sub">• 100% 调用 OPA / 政策规则引擎按家庭人口与收入表确定性计算</text>
+  <text x="849" y="236" class="node-sub">• 每一句答复绑定具体政策法条编号，实现 0.00% 政策幻觉</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">行政正当程序锁 (Zero Automated Benefit Denial)</text>
+  <text x="849" y="302" class="node-sub">• AI 仅做材料预审与缺件提醒 (如拍照补交工资单/水电账单)</text>
+  <text x="849" y="320" class="node-sub">• 严禁 AI 直接驳回市民申请！边缘或疑难个案 100% 转专员复核</text>
+  <text x="849" y="338" class="node-sub">• 自动告知法定申诉权利 (Right to Appeal / Fair Hearing)</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">房产税 / 罚单 / 营业执照语音自助办理</text>
+  <text x="849" y="406" class="node-sub">• 支持市政水费与停车罚单查询、首次违停减免申请与分期</text>
+  <text x="849" y="424" class="node-sub">• 办结满意度从 68% 提升至 93.5%</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (PUBLIC-SECTOR-311-911-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截把 911 危急警情当普通工单、50m 内重复派车与 AI 拒批福利</text>
+  <text x="849" y="518" class="node-sub">• 全面符合 FedRAMP / 等保三级 / Section 508 与 Title VI</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 政务 12345 / 市政 311 市民热线语音+多模态 AI 实测基准 (每 10,000 通市民来电)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">&lt; 2.0s 911 劫持</text>
+  <text x="64" y="666" class="metric-lbl">生命危急警情 100% 秒级带定位直通急救台</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">-78.4% 重复派工</text>
+  <text x="344" y="666" class="metric-lbl">50 米 GIS 空间去重合并同一路面隐患工单</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">$1.85 → $0.042/m</text>
+  <text x="624" y="666" class="metric-lbl">60+ 语种实时语音平权服务替代昂贵人工口译</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">省 $38.4万 / 万通</text>
+  <text x="904" y="666" class="metric-lbl">免除市政工程车重复外勤 + 口译费 + 跨局退单</text>
+</svg>

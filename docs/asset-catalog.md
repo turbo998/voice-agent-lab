@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **556 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **557 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（556 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（557 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -66,7 +66,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（533 篇）
+### 3.3 高价值企业行业解决方案蓝图（534 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -600,3 +600,4 @@
 554. **连锁餐饮得来速（QSR Drive-Thru）与门店电话订餐（`户外双麦克风波束成形降噪 / 复杂口味定制 Menu DAG / POS 库存实时联动`）语音与多模态选型指南（主驾车窗窄波束抑制 `82dB` 柴油轰鸣并拦截 `97.4%` 后排乘客串音误加购、`<15ms` 确定性 `Menu DAG` 配 POS `86-List` 实时沽清同步将错单率从 `6.8%` 压至 `0.9%`、`<120ms` 户外电子屏视觉同步单车省时 `24秒`、以及排队 `<4车` 智能加购每单增收 `+$1.35` 配 `<300ms` 店员耳麦无感接管每万单创效 `$39.2万`）方案**：[中文](./qsr-drive-thru-restaurant-pos-modifier-menu-dag-ambient-noise-voice-selection-faq.md) | [EN](./qsr-drive-thru-restaurant-pos-modifier-menu-dag-ambient-noise-voice-selection-faq.en.md)
 555. **连锁药房、PBM 与数字慢病药事服务（`LASA 听音相似药名消歧 / 医保事先授权 PA 追踪 / OBRA '90 执业药师转接`）语音与多模态选型指南（`<80ms` 锁定患者在用处方集交集 + `1.8秒` 药瓶 `NDC-11` 条码拍照实现 `0.00%` LASA 相似药名串药并将自助续药率从 `38.0%` 提至 `86.4%`、PBM `Reject 75/79` 转译配药企 Copay 优惠卡自动抵扣将弃药率从 `29.0%` 压至 `9.4%`、以及严重药物相互作用与 `DEA C-II` 精麻合规门禁每万通创效 `$44.2万`）方案**：[中文](./pharmacy-pbm-prescription-refill-prior-authorization-drug-interaction-hipaa-voice-selection-faq.md) | [EN](./pharmacy-pbm-prescription-refill-prior-authorization-drug-interaction-hipaa-voice-selection-faq.en.md)
 556. **商业地产与长租公寓物业管理（`FHA 公平住房合规招租 / 凌晨爆管视觉止损与急修分流 / Yardi 租金账单催缴`）语音与多模态选型指南（7x24 秒接挽回 `48%` 晚间漏接招租来电并将看房转化率从 `19.0%` 提至 `64.5%`、确定性 FHA 中立锁与证件活体看房门锁核身实现 `0.00%` 歧视诱导与霸房、以及凌晨爆管 30 秒手机视觉红圈指导关角阀避免 `$8,500` 泡水并过滤 `36%` `$280` 夜间伪急修每万通创效 `$46.8万`）方案**：[中文](./property-management-multifamily-leasing-tour-scheduling-emergency-maintenance-fha-voice-selection-faq.md) | [EN](./property-management-multifamily-leasing-tour-scheduling-emergency-maintenance-fha-voice-selection-faq.en.md)
+557. **政务 12345 / 市政 311 市民热线与公共福利申领（`<2秒` 911 紧急警情直通 / `50米` PostGIS 空间去重 / Title VI 60+ 语种与 ADA 无障碍）语音与多模态选型指南（`<2.0秒` 并行生命安全哨兵将误拨入的电线打火/急症零延误带 GPS 直通 `911/110`、`<50ms` PostGIS `50米` 空间半径去重配设施铭牌视觉识别砍掉 `78.4%` 重复派车并将首次派单准确率从 `64%` 提至 `96.8%`、60+ 语种将口译成本从 `$1.85/min` 压至 `$0.042/min`、以及 `OPA` 确定性福利规则引擎实现 `0.00%` 自动拒批每万通净省 `$38.4万`）方案**：[中文](./public-sector-311-municipal-hotline-benefits-eligibility-wcag-multilingual-voice-selection-faq.md) | [EN](./public-sector-311-municipal-hotline-benefits-eligibility-wcag-multilingual-voice-selection-faq.en.md)

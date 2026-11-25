@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 556 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 556 Guides](#-2-556-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 557 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 557 Guides](#-2-557-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 556 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 557 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (533 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (534 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -630,6 +630,7 @@ flowchart LR
 554. **QSR Drive-Thru & Restaurant Phone Ordering (Dual-Mic Beamforming Noise Cancellation / Modifier Menu DAG / Real-Time POS 86-Item Sync) Guide: Driver-Window Beamforming @ 82dB (97.4% Back-Seat Cross-Talk Rejection), <15ms Deterministic Menu DAG + 0ms POS 86-Stockout Sync (6.8% → 0.9% Error Rate), <120ms OCB Visual Sync (-24s/Car), Queue-Gated +$1.35 Upsell & <300ms Crew Headset Takeover (+$392k/10k Orders)**: [EN](./docs/qsr-drive-thru-restaurant-pos-modifier-menu-dag-ambient-noise-voice-selection-faq.en.md) | [中文](./docs/qsr-drive-thru-restaurant-pos-modifier-menu-dag-ambient-noise-voice-selection-faq.md)
 555. **Retail Pharmacy, PBM & Prescription Management (Look-Alike/Sound-Alike Drug Disambiguation / Prior Authorization PA Status / Clinical Pharmacist Escalation) Guide: <80ms Active-Rx Profile Intersection + 1.8s Pill-Bottle NDC-11 Scan (0.00% LASA Confusion, 38.0% → 86.4% Self-Service), PBM Reject 75/79 + Copay Card Rescue (29.0% → 9.4% Rx Abandonment) & OBRA '90 RPh / DEA C-II Guardrails (+$442k/10k Calls)**: [EN](./docs/pharmacy-pbm-prescription-refill-prior-authorization-drug-interaction-hipaa-voice-selection-faq.en.md) | [中文](./docs/pharmacy-pbm-prescription-refill-prior-authorization-drug-interaction-hipaa-voice-selection-faq.md)
 556. **Property Management & Multifamily Leasing (Fair Housing Act FHA Guardrails / 24x7 Emergency Maintenance Vision Triage / Yardi & AppFolio Sync) Guide: 24/7 After-Hours Leasing Capture (19.0% → 64.5% Tour Conversion), Deterministic FHA Zero-Steering + ID-Gated SmartRent/Latch PINs (0.00% Violations/Squatters) & 28s Burst-Pipe Valve Camera Shutoff (-36% Midnight Dispatches, +$468k/10k Calls)**: [EN](./docs/property-management-multifamily-leasing-tour-scheduling-emergency-maintenance-fha-voice-selection-faq.en.md) | [中文](./docs/property-management-multifamily-leasing-tour-scheduling-emergency-maintenance-fha-voice-selection-faq.md)
+557. **Public Sector 311 / 12345 Municipal Hotline & Benefits Eligibility (<2s 911 Emergency Pre-Emption / Title VI 60-Language Access / Geo-Tagged Civic Issue Vision) Guide: <2.0s Parallel 911 PSAP Bridge (0.00% Emergency Queue Delay), <50ms PostGIS 50m Spatial Dedup + Camera Asset OCR (-78.4% Duplicate Crew Rolls, 64% → 96.8% Agency Routing), $0.042/min 60+ Lang + ADA/RTT & OPA Zero-Auto-Denial Engine (-$384k/10k Calls)**: [EN](./docs/public-sector-311-municipal-hotline-benefits-eligibility-wcag-multilingual-voice-selection-faq.en.md) | [中文](./docs/public-sector-311-municipal-hotline-benefits-eligibility-wcag-multilingual-voice-selection-faq.md)
 
 ---
 

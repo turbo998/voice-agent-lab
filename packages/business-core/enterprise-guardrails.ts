@@ -15475,6 +15475,36 @@ export function evaluatePropertyManagementMultifamilyFhaMaintenance2026Guard(inp
   };
 }
 
+export interface PublicSector311Municipal911PreemptionWcag2026Evaluation {
+  policyCode: "PUBLIC-SECTOR-311-MUNICIPAL-911-PREEMPTION-WCAG-2026-01";
+  civicTicketDispatchAndOpaBenefitsPreScreenAuthorized: boolean;
+  emergency911QueuedAs311OrDuplicate50mDispatchOrAutoDenialBlocked: boolean;
+  instant2s911PsapBridgeOrMasterTicketMergeTriggered: boolean;
+}
+
+/**
+ * Deterministic Public Sector 311 / 12345 Municipal Hotline & Benefits Eligibility (<2.0s Parallel 911 Life-Safety Pre-Emption, <50ms PostGIS 50m Spatial Dedup, Edge FOIA Privacy Blur & OPA Zero Automated Denial) Guard (`PUBLIC-SECTOR-311-MUNICIPAL-911-PREEMPTION-WCAG-2026-01`).
+ */
+export function evaluatePublicSector311Municipal911PreemptionWcag2026Guard(input: {
+  postgis50mCheckedAndEdgeFoiaFacePlateBlurred: boolean;
+  opaDeterministicRulesUsedWithZeroAutoBenefitDenial: boolean;
+  lifeSafety911EmergencyOrExisting50mMasterTicketDetected: boolean;
+}): PublicSector311Municipal911PreemptionWcag2026Evaluation {
+  return {
+    policyCode: "PUBLIC-SECTOR-311-MUNICIPAL-911-PREEMPTION-WCAG-2026-01",
+    civicTicketDispatchAndOpaBenefitsPreScreenAuthorized:
+      input.postgis50mCheckedAndEdgeFoiaFacePlateBlurred &&
+      input.opaDeterministicRulesUsedWithZeroAutoBenefitDenial &&
+      !input.lifeSafety911EmergencyOrExisting50mMasterTicketDetected,
+    emergency911QueuedAs311OrDuplicate50mDispatchOrAutoDenialBlocked:
+      !input.postgis50mCheckedAndEdgeFoiaFacePlateBlurred ||
+      !input.opaDeterministicRulesUsedWithZeroAutoBenefitDenial ||
+      input.lifeSafety911EmergencyOrExisting50mMasterTicketDetected,
+    instant2s911PsapBridgeOrMasterTicketMergeTriggered:
+      input.lifeSafety911EmergencyOrExisting50mMasterTicketDetected,
+  };
+}
+
 
 
 
