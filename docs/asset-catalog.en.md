@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **538 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **539 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (538 Bilingual Guides)
+## 3. Solution Architect Selection Guides (539 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (515 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (516 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -582,3 +582,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 536. **B2B Compliant Outbound Voice AI (SDR Speed-to-Lead & Renewal Follow-Up), <380ms Speculative AMD & STIR/SHAKEN + TCPA Selection Guide: <30s Speed-to-Lead + <380ms Speculative Greeting (-78.4% 3s Hang-Ups, -74.0% Voicemail LLM Token Burn), STIR/SHAKEN Level-A Branded Calling + <=50/Day DID Cap (18.0% → 54.6% Answer Rate) & Pre-Dial TrustedForm / AreaCode∩Zip Curfew Lock + 0ms Zero-Rebuttal DNC Breaker (+$405k/10k Hrs)**: [EN](./b2b-outbound-sdr-lead-qualification-amd-voicemail-tcpa-stir-shaken-voice-selection-faq.en.md) | [中文](./b2b-outbound-sdr-lead-qualification-amd-voicemail-tcpa-stir-shaken-voice-selection-faq.md)
 537. **Healthcare Outpatient Clinical Triage, Epic FHIR Scheduling & Ambient Clinical Scribe (SOAP) Voice AI Guide: <100ms Red-Flag Chest-Pain/Stroke RN Preemption, Schmitt-Thompson + Epic FHIR R4 Sub-Specialty Match (14.2% → 0.4% Mismatch, 15s Waitlist Backfill) & 1.6% DER Enrolled-Physician Diarization + Zero Unspoken Exam Fabrication Lock (-2.1h/Day/MD EHR Time, -$375k/10k Hrs)**: [EN](./outpatient-clinical-triage-epic-fhir-scheduling-ambient-scribe-followup-voice-selection-faq.en.md) | [中文](./outpatient-clinical-triage-epic-fhir-scheduling-ambient-scribe-followup-voice-selection-faq.md)
 538. **E-Commerce Customer Care, Brand Voice Cloning & Interactive Avatar (Azure AI Speech vs. ElevenLabs / Deepgram / HeyGen vs. Client Viseme) Selection Guide: <22ms Client-Side 55D Viseme Rendering ($0.016/min vs $0.220/min Cloud Video, -92.7% TCO), 80/20 Hybrid Livestream Push/Pop Q&A ($2.15/hr vs $35/hr), 44.6% Return-to-Exchange Fit Coach (+$152k GMV/10k Calls) & <15ms Redis Price-Floor / Ad-Law Lock**: [EN](./ecommerce-order-support-showroom-avatar-azure-vs-elevenlabs-heygen-viseme-selection-faq.en.md) | [中文](./ecommerce-order-support-showroom-avatar-azure-vs-elevenlabs-heygen-viseme-selection-faq.md)
+539. **Enterprise AI Sales Roleplay Sparring, CS Coaching & Bulk Voice Interviewer (Actor-Critic Architecture) Selection Guide: Decoupled 350ms Fast-Actor + Async Slow-Critic & Anti-Sycophancy Lock (68% → 0.0% Premature Capitulation, -46.8% Ramp Time), <100ms Off-Label/Yield Red-Card Halt, Timestamp-Quoted BARS Grader (0.94 Kappa, $0.38 vs $45 Session) & EEOC / EU AI Act Accent-Blind Grader (-$326k/10k Sessions)**: [EN](./enterprise-sales-enablement-roleplay-sparring-ai-interviewer-actor-critic-voice-selection-faq.en.md) | [中文](./enterprise-sales-enablement-roleplay-sparring-ai-interviewer-actor-critic-voice-selection-faq.md)

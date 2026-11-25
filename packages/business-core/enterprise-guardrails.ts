@@ -14935,6 +14935,36 @@ export function evaluateEcommerceAvatarAzureElevenlabsVisemeVoice2026Guard(input
   };
 }
 
+export interface EnterpriseSalesRoleplayInterviewerActorCritic2026Evaluation {
+  policyCode: "ENTERPRISE-SALES-ROLEPLAY-INTERVIEWER-ACTOR-CRITIC-2026-01";
+  objectionProgressionAndTimestampedBarsScoreAuthorized: boolean;
+  prematureSycophancyOrAcousticAccentBiasOrProtectedQuestionBlocked: boolean;
+  redCardComplianceWhistleOrAntiTeleprompterProbeTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise AI Sales Roleplay & Bulk Voice Interviewer (350ms Fast-Actor + Async Slow-Critic, Anti-Sycophancy Lock, <100ms Regulatory Bait Red-Card Halt, Timestamp-Quoted BARS & EEOC Accent-Blind Grader) Guard (`ENTERPRISE-SALES-ROLEPLAY-INTERVIEWER-ACTOR-CRITIC-2026-01`).
+ */
+export function evaluateEnterpriseSalesRoleplayInterviewerActorCritic2026Guard(input: {
+  meddicProofPointsVerifiedAndBarsTimestampQuoted: boolean;
+  acousticAccentStrippedAndZeroProtectedClassQuestions: boolean;
+  offLabelOrGuaranteedYieldBaitTakenOrTeleprompterDetected: boolean;
+}): EnterpriseSalesRoleplayInterviewerActorCritic2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-SALES-ROLEPLAY-INTERVIEWER-ACTOR-CRITIC-2026-01",
+    objectionProgressionAndTimestampedBarsScoreAuthorized:
+      input.meddicProofPointsVerifiedAndBarsTimestampQuoted &&
+      input.acousticAccentStrippedAndZeroProtectedClassQuestions &&
+      !input.offLabelOrGuaranteedYieldBaitTakenOrTeleprompterDetected,
+    prematureSycophancyOrAcousticAccentBiasOrProtectedQuestionBlocked:
+      !input.meddicProofPointsVerifiedAndBarsTimestampQuoted ||
+      !input.acousticAccentStrippedAndZeroProtectedClassQuestions ||
+      input.offLabelOrGuaranteedYieldBaitTakenOrTeleprompterDetected,
+    redCardComplianceWhistleOrAntiTeleprompterProbeTriggered:
+      input.offLabelOrGuaranteedYieldBaitTakenOrTeleprompterDetected,
+  };
+}
+
 
 
 

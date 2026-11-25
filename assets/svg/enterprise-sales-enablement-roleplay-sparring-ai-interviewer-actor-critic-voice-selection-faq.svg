@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg539" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent539" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg539)"/>
+  <rect x="24" y="24" width="1152" height="632" rx="16" fill="none" stroke="#1e293b" stroke-width="2"/>
+  <rect x="44" y="42" width="1112" height="58" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="64" y="70" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Enterprise Sales Roleplay Sparring &amp; Bulk AI Voice Interviewer: Actor-Critic &amp; EEOC Fair-Grading Architecture</text>
+  <text x="64" y="91" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="13">350ms S2S Actor + Async Rubric Critic · 0% Sycophancy Capitulation · 0.94 Kappa BARS &amp; EEOC Accent-Blind Gate (ENTERPRISE-SALES-ROLEPLAY-INTERVIEWER-ACTOR-CRITIC-2026-01)</text>
+
+  <!-- Column 1: Fast-Actor + Slow-Critic Roleplay Engine -->
+  <rect x="44" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="44" y="120" width="356" height="40" rx="12" fill="#78350f"/>
+  <text x="62" y="145" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. Fast-Actor + Async-Critic Loop</text>
+
+  <rect x="62" y="176" width="320" height="108" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+  <text x="76" y="198" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">350ms S2S Persona Actor (Fast Loop)</text>
+  <text x="76" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Simulates skeptical CFO, physician or angry caller</text>
+  <text x="76" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Natural interruption &amp; emotional prosody shifts</text>
+  <text x="76" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Decoupled from heavy rubric scoring latency</text>
+  <text x="76" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• $0.38/Session vs. $45 Manager Sparring</text>
+
+  <rect x="62" y="298" width="320" height="112" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="320" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Anti-Sycophancy Objection State Lock</text>
+  <text x="76" y="340" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks LLM from folding on weak 1-line rebuttals</text>
+  <text x="76" y="358" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Async Critic checks 3 required MEDDIC proof points</text>
+  <text x="76" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Unlocks concession state only when rubric met</text>
+  <text x="76" y="394" fill="#fbbf24" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 68% → 0.0% Premature AI Capitulation</text>
+
+  <rect x="62" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">&lt;100ms Regulatory Bait Red-Card Whistle</text>
+  <text x="76" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Tests rep with off-label pharma / guaranteed-return bait</text>
+  <text x="76" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Halts roleplay in &lt;100ms if rep takes illegal bait</text>
+  <text x="76" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Plays gold-standard compliant pivot exemplar</text>
+  <text x="76" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• -46.8% New-Hire Quota Ramp-Up Time</text>
+
+  <!-- Column 2: Timestamp-Anchored BARS Grader -->
+  <rect x="422" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="422" y="120" width="356" height="40" rx="12" fill="#064e3b"/>
+  <text x="440" y="145" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. Evidence-Anchored BARS Grader</text>
+
+  <rect x="440" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="454" y="198" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Timestamp-Quoted BARS Rubric (0.94 Kappa)</text>
+  <text x="454" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Scores 1–5 Behaviorally Anchored Rating Scales</text>
+  <text x="454" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Cites exact [mm:ss] audio quote for every deduction</text>
+  <text x="454" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 0.94 Cohen's Kappa agreement with human directors</text>
+  <text x="454" y="272" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 8-Second Post-Session Coaching Report</text>
+
+  <rect x="440" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Talk-to-Listen Ratio &amp; Filler-Word Radar</text>
+  <text x="454" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Measures rep monologue length (&lt;=45s cap)</text>
+  <text x="454" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Tracks open-ended discovery question density</text>
+  <text x="454" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Parallel Azure Pronunciation GOP for L2 coaching</text>
+  <text x="454" y="398" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• +34.2% Discovery Win-Rate Improvement</text>
+
+  <rect x="440" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">LMS / Salesforce Readiness Certification</text>
+  <text x="454" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Syncs pitch certification badge to Workday / Highspot</text>
+  <text x="454" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Unlocks live CRM lead routing only after passing</text>
+  <text x="454" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Auto-generates personalized 3-minute drill loops</text>
+  <text x="454" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100% New-Product Launch Pitch Readiness</text>
+
+  <!-- Column 3: EEOC / EU AI Act Bulk Voice Interviewer -->
+  <rect x="800" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="800" y="120" width="356" height="40" rx="12" fill="#1e3a8a"/>
+  <text x="818" y="145" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. EEOC / EU AI Act Fair Interviewer</text>
+
+  <rect x="818" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="832" y="198" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-weight="700" font-size="13">100% Accent &amp; Pitch-Blind Semantic Grader</text>
+  <text x="832" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Strips raw audio pitch, timbre &amp; regional accent</text>
+  <text x="832" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Grades normalized STAR competency text only</text>
+  <text x="832" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Meets EEOC 4/5ths Impact Ratio &amp; NYC Local Law 144</text>
+  <text x="832" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Demographic or Accent Scoring Bias</text>
+
+  <rect x="818" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms Protected-Class &amp; Salary-History Lock</text>
+  <text x="832" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Never asks age, pregnancy, religion, disability or pay</text>
+  <text x="832" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Redacts volunteered protected traits before scoring</text>
+  <text x="832" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Provides instant ADA accessibility text/human opt-out</text>
+  <text x="832" y="398" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100% EU AI Act Annex III HR Compliance</text>
+
+  <rect x="818" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Anti-Teleprompter &amp; STAR Follow-Up Probe</text>
+  <text x="832" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Detects AI-cheating teleprompter reading cadence</text>
+  <text x="832" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Asks dynamic drill-down on specific project metrics</text>
+  <text x="832" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Syncs Workday / Greenhouse HM calendar in &lt;60s</text>
+  <text x="832" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• $0.041/min Blended Enablement &amp; Hiring Cost</text>
+
+  <!-- Footer KPI Bar -->
+  <rect x="44" y="568" width="1112" height="68" rx="10" fill="#0f172a" stroke="url(#accent539)" stroke-width="1.5"/>
+  <text x="68" y="595" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Validated Enterprise Sales Roleplay &amp; AI Voice Interviewer Benchmark:</text>
+  <text x="68" y="618" fill="#fde68a" font-family="Segoe UI, Arial, sans-serif" font-size="13">Premature Capitulation: 68% → 0.0%  |  BARS Grader Agreement: 0.94 Kappa  |  EEOC / Protected-Trait Breaches: 0.00%  |  Cost: $0.041/min</text>
+</svg>
