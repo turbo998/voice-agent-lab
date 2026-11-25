@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 548 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 548 篇选型指南](#-二548-篇企业级语音架构选型指南中英双语) |
+| **🧭 549 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 549 篇选型指南](#-二549-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、548 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、549 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（525 篇）
+### 3.3 高价值企业行业解决方案蓝图（526 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -622,6 +622,7 @@ flowchart LR
 546. **企业多智能体实时语音协同（Multi-Agent Voice Swarm：LiveKit / Pipecat / LangGraph）与跨会话长期记忆图谱（`Zep / Mem0`）选型指南（将万字巨型 Prompt 拆解为单专家节点 `<=6` 工具使调用准确率从 `61.0%` 提至 `97.6%` 并省 `58.4%` Token、`42ms` 进程内同音色静默交接 + 复合意图压栈与 `<=2跳` 防乒乓死循环熔断、振铃期 `<5ms` 预热 `<=250 Token` 双时态记忆卡消除每轮 `680ms` 延迟并将事实准确率提至 `99.4%`、以及验身前家庭共号隐私隔离每万通省 `$28.0万`）方案**：[中文](./docs/enterprise-multi-agent-voice-swarm-subagent-handoff-memory-graph-selection-faq.md) | [EN](./docs/enterprise-multi-agent-voice-swarm-subagent-handoff-memory-graph-selection-faq.en.md)
 547. **企业实时语音 AI 评测工程（Voice EvalOps：Coval / Cekura / Roark / Foundry Eval）、7 跳 OpenTelemetry 延迟火焰图与金丝雀灰度发布选型指南（`500通` 并发带 `5dB SNR` 底噪与打断声学仿真在 `4.2分钟 / $18.50` 内拦截 `96.9%` 纯文本漏检故障、统一 `voice.turn.id` 7 跳 OTel 火焰图将慢通话排障 MTTR 从 `4.5小时` 压至 `90秒`、以及 `Call-ID` 会话粘性金丝雀配三维声学异常 `<15s` 自动回滚 LKG 每季省 `$24.6万`）方案**：[中文](./docs/enterprise-voice-evalops-acoustic-ci-opentelemetry-canary-rollout-selection-faq.md) | [EN](./docs/enterprise-voice-evalops-acoustic-ci-opentelemetry-canary-rollout-selection-faq.en.md)
 548. **存量呼叫中心与办公电话网（`Cisco UCCE / Avaya Aura / Genesys Cloud / Amazon Connect / Teams Phone`）零携号转网接入语音 AI 选型指南（企业 SBC 旁路 SIP Trunk 直连 2 周上线且 `<35ms` 单次转码将数字识别 WER 从 `11.4%` 压至 `3.1%`、带内 `36-Byte UUID` + 带外 `<10ms` Redis CTI 弹屏桥破除 `128B UUI` 截断每通省 `48秒` 重复盘问、转人工媒体重锚定 0ms 销毁 AI 空转计费、以及 `<50ms` SBC Fail-Open 硬件级逃生每万通省 `$31.2万`）方案**：[中文](./docs/legacy-pbx-ccaas-cisco-avaya-genesys-teams-sbc-voice-integration-selection-faq.md) | [EN](./docs/legacy-pbx-ccaas-cisco-avaya-genesys-teams-sbc-voice-integration-selection-faq.en.md)
+549. **政务/央行/军工级私有化与主权云实时语音 AI（`Azure Disconnected Containers / Private Link ZDR / 本地 8 卡 GPU 集群`）`2:4:2` 算力配比与选型指南（三级数据主权边界选型避免 `<30路` 场景盲目自建、单台 8 卡节点 `2:4:2` 物理隔离将 120 路并发 P95 延迟从混部 `2,100ms` 压至 `540ms` 且单分钟摊销仅 `$0.019`、以及 `XGrammar` 100% 合法 JSON 工具解码配 `<1ms` 流式口语净化每年净省 `$38.0万`）方案**：[中文](./docs/sovereign-cloud-private-vpc-on-prem-voice-ai-vllm-gpu-sizing-selection-faq.md) | [EN](./docs/sovereign-cloud-private-vpc-on-prem-voice-ai-vllm-gpu-sizing-selection-faq.en.md)
 
 ---
 

@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **548 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **549 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (548 Bilingual Guides)
+## 3. Solution Architect Selection Guides (549 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (525 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (526 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -592,3 +592,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 546. **Enterprise Multi-Agent Voice Swarm (LiveKit Agents / Pipecat Flows / LangGraph) & Bitemporal Memory Graph (Zep / Mem0) Guide: Scoped <=6-Tool Specialist Nodes (61.0% → 97.6% Tool Accuracy, -58.4% Prompt Burn), 42ms Silent Single-Persona Handoff + Compound Intent Stack & <=2-Hop Anti-Ping-Pong Breaker + <5ms Ringback <=250-Token Bitemporal Memory Card (99.4% Temporal Accuracy, -$280k/10k Calls)**: [EN](./enterprise-multi-agent-voice-swarm-subagent-handoff-memory-graph-selection-faq.en.md) | [中文](./enterprise-multi-agent-voice-swarm-subagent-handoff-memory-graph-selection-faq.md)
 547. **Enterprise Voice EvalOps (Coval / Cekura / Roark / Foundry Eval), 7-Hop OpenTelemetry Flamegraph & Sticky Canary Rollout Guide: 500-Call Noisy Acoustic Simulation CI in 4.2m/$18.50 (-96.9% Escaped Voice Bugs), Unified `voice.turn.id` 7-Hop Trace Flamegraph (4.5h → 90s MTTR) & Call-ID Sticky Canary + <15s 3-Metric LKG Auto-Rollback (-$246k/Qtr)**: [EN](./enterprise-voice-evalops-acoustic-ci-opentelemetry-canary-rollout-selection-faq.en.md) | [中文](./enterprise-voice-evalops-acoustic-ci-opentelemetry-canary-rollout-selection-faq.md)
 548. **Legacy PBX & CCaaS (Cisco UCCE / Avaya Aura / Genesys Cloud / Amazon Connect / Teams Phone) Zero-Downtime Voice AI Integration Guide: 2-Week Zero-LNP Enterprise SBC Sidecar (<35ms Bridge, 11.4% → 3.1% Digit WER), 36B UUID + <10ms Out-of-Band Redis CTI Screen-Pop (0.00% 128B UUI Truncation, -48s AHT), Anti-Trombone Media Re-Anchor & <50ms SBC Fail-Open (-$312k/10k Calls)**: [EN](./legacy-pbx-ccaas-cisco-avaya-genesys-teams-sbc-voice-integration-selection-faq.en.md) | [中文](./legacy-pbx-ccaas-cisco-avaya-genesys-teams-sbc-voice-integration-selection-faq.md)
+549. **Sovereign Cloud, Private VPC & Air-Gapped On-Premises Real-Time Voice AI (Azure Disconnected Containers / vLLM FP8 / TensorRT-LLM) Guide: 3-Tier Sovereign Right-Sizing, Disaggregated `2:4:2` 8-GPU Allocation (2,100ms → 540ms P95 @ 120 Calls, $0.019/min) & XGrammar 100% Valid Tool JSON + <1ms Speech Normalizer (-$380k/Yr)**: [EN](./sovereign-cloud-private-vpc-on-prem-voice-ai-vllm-gpu-sizing-selection-faq.en.md) | [中文](./sovereign-cloud-private-vpc-on-prem-voice-ai-vllm-gpu-sizing-selection-faq.md)

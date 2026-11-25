@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg549" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue549" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen549" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple549" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber549" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg549)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">政务/金融主权云与私有化实时语音 AI：三级主权边界与 2:4:2 GPU 算力配比架构 (#549)</text>
+  <text x="48" y="74" class="subtitle">Sovereign &amp; Air-Gapped Voice AI: Private Link ZDR vs Azure Disconnected Containers vs On-Prem 2:4:2 GPU Split (vLLM FP8 + XGrammar)</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue549)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">SOVEREIGN-GPU-2026</text>
+
+  <!-- Plane 1: Three Sovereign Boundary Tiers -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue549)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① 三级数据主权与部署边界选型 (3 Sovereign Tiers)</text>
+
+  <rect x="46" y="158" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">Tier 1: 专有网络零留存云 (Private Link + ZDR)</text>
+  <text x="60" y="200" class="node-sub">• ExpressRoute 专线 + Azure Private Endpoint 不经公网</text>
+  <text x="60" y="218" class="node-sub">• 开启 Abuse Monitoring 豁免实现零录音/零文本落盘</text>
+  <text x="60" y="236" class="node-sub">• 满足 85% 商业银行与跨国药企合规 ($0.048/min)</text>
+
+  <rect x="46" y="262" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="284" class="node-title">Tier 2: 混合边缘主权容器 (Disconnected Containers)</text>
+  <text x="60" y="304" class="node-sub">• Azure AI Speech STT/TTS 离线容器跑在机房本地 K8s</text>
+  <text x="60" y="322" class="node-sub">• 原始声纹 100% 不出机房，仅脱敏文本经专线调云端 LLM</text>
+  <text x="60" y="340" class="node-sub">• 兼顾官方 Custom Neural Voice 音质与声纹不出域</text>
+
+  <rect x="46" y="366" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="388" class="node-title">Tier 3: 100% 物理隔离机房 (Full Air-Gapped GPU)</text>
+  <text x="60" y="408" class="node-sub">• SenseVoice/Whisper TensorRT + vLLM FP8 + CosyVoice2</text>
+  <text x="60" y="426" class="node-sub">• 零外网连接，单节点 8x L40S/H100 支撑 100–160 路并发</text>
+  <text x="60" y="444" class="node-sub">• 高水位利用率 (&gt;60%) 下成本压至 $0.019/min</text>
+
+  <rect x="46" y="468" width="319" height="72" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="490" class="node-title">离线 License 与模型权重防篡改签名</text>
+  <text x="60" y="510" class="node-sub">• 离线授信令牌 + SHA-256 模型镜像签名校验</text>
+
+  <!-- Plane 2: 2:4:2 Disaggregated GPU Sizing & Zero Contention -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple549)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② 8 卡节点 `2:4:2` 算力物理隔离与并发测算</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">为什么严禁 STT/LLM/TTS 混部同一张 GPU？</text>
+  <text x="435" y="200" class="node-sub">• LLM 长上下文 Prefill 会瞬间占满 100% SM 算力核心</text>
+  <text x="435" y="218" class="node-sub">• 同卡 TTS 流式解码被抢占，引发 2,100ms 尾延迟与爆音</text>
+  <text x="435" y="236" class="node-sub">• 必须按 `2 : 4 : 2` 独立显卡或 NVIDIA MIG 硬件切分</text>
+
+  <rect x="421" y="264" width="358" height="96" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">单台 8x L40S (48GB) / H100 支撑 120 路并发配比</text>
+  <text x="435" y="306" class="node-sub">• GPU 0–1 (2 卡): TensorRT 流式 STT + Silero VAD (&lt;85ms)</text>
+  <text x="435" y="324" class="node-sub">• GPU 2–5 (4 卡): vLLM Qwen-2.5-32B/Llama-70B FP8 (TTFT 210ms)</text>
+  <text x="435" y="342" class="node-sub">• GPU 6–7 (2 卡): 流式 Neural TTS 专属池 (TTFB 锁定 &lt;=75ms)</text>
+
+  <rect x="421" y="374" width="358" height="82" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="396" class="node-title">APC 前缀缓存 + KV Cache FP8 量化扩容 2.4 倍</text>
+  <text x="435" y="416" class="node-sub">• 开启 Automatic Prefix Caching 复用多轮会话历史</text>
+  <text x="435" y="434" class="node-sub">• KV Cache FP8 将单节点并发容量从 50 路提升至 120 路</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">N+1 双机房热备与 85% 显存水位准入控制</text>
+  <text x="435" y="510" class="node-sub">• KV Cache &gt;85% 自动将新入呼平滑降级至轻量 8B 模型</text>
+
+  <!-- Plane 3: XGrammar Structured Decoding & Speech Normalization -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen549)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ 开源模型 100% 工具受控与口语韵律对齐</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">XGrammar / Outlines 零开销有限状态机解码</text>
+  <text x="849" y="200" class="node-sub">• 将 MCP Tool JSON Schema 编译为字节级 PDA 掩码</text>
+  <text x="849" y="218" class="node-sub">• 消除开源模型 14.2% 的 JSON 括号缺失与字段拼写错误</text>
+  <text x="849" y="236" class="node-sub">• 解码开销 &lt;1.5ms/token，实现 100.0% 语法合法率</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">口语化输出强约束 (Zero-Markdown Speech Filter)</text>
+  <text x="849" y="302" class="node-sub">• 阻断开源模型输出 `**星号**`、`# 标题`、列表序号与括号</text>
+  <text x="849" y="320" class="node-sub">• 内置金融/政务数字、日期、缩写词自动转写口语读法</text>
+  <text x="849" y="338" class="node-sub">• 避免 TTS 朗读“星号星号您的余额星号星号”尴尬事故</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="386" class="node-title">机房内存零残留擦除 (Zero-Disk Ephemeral RAM)</text>
+  <text x="849" y="406" class="node-sub">• 音频 PCM 缓冲区与 KV Cache 全部驻留加密 tmpfs 内存</text>
+  <text x="849" y="424" class="node-sub">• 挂机瞬间清零显存槽位，满足涉密与央行等保四级审计</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (SOVEREIGN-VOICE-GPU-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截 STT/LLM/TTS 同卡混部与无 XGrammar 裸调工具</text>
+  <text x="849" y="518" class="node-sub">• 外网未物理阻断或显存水位 &gt;85% 自动触发保护</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 主权云与私有化实时语音 AI 实测基准 (8x L40S/H100 单节点 · 120 路并发 · 2:4:2 算力隔离)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">2,100ms → 540ms</text>
+  <text x="64" y="666" class="metric-lbl">2:4:2 显卡物理隔离消除 Prefill 抢占尾延迟</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">100.0% JSON 合规</text>
+  <text x="344" y="666" class="metric-lbl">XGrammar 有限状态机解码 (vs 裸模型 85.8%)</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">$0.019 / 分钟</text>
+  <text x="624" y="666" class="metric-lbl">60%+ 利用率下 8 卡节点三年折旧摊销单价</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">100% 物理不出域</text>
+  <text x="904" y="666" class="metric-lbl">支持零外网 Air-Gapped 央行/政务机房验收</text>
+</svg>

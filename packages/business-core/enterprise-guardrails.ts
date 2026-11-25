@@ -15235,6 +15235,36 @@ export function evaluateLegacyPbxCcaasCiscoAvayaGenesysTeamsSbc2026Guard(input: 
   };
 }
 
+export interface SovereignCloudPrivateVpcOnPremVoiceGpu2026Evaluation {
+  policyCode: "SOVEREIGN-CLOUD-PRIVATE-VPC-ON-PREM-VOICE-GPU-2026-01";
+  sovereignVoiceExecutionAndToolCallAuthorized: boolean;
+  sharedGpuContentionOrUnconstrainedJsonOrDiskWriteBlocked: boolean;
+  xgrammarFsmMaskAnd85PctKvAdmissionFallbackTriggered: boolean;
+}
+
+/**
+ * Deterministic Sovereign Cloud & Air-Gapped On-Premises Real-Time Voice AI (`2:4:2` Physical GPU Disaggregation, XGrammar 100% Constrained Tool JSON, <1ms Speech Normalizer & Ephemeral tmpfs RAM) Guard (`SOVEREIGN-CLOUD-PRIVATE-VPC-ON-PREM-VOICE-GPU-2026-01`).
+ */
+export function evaluateSovereignCloudPrivateVpcOnPremVoiceGpu2026Guard(input: {
+  gpuDisaggregated242AndEphemeralTmpfsRamVerified: boolean;
+  xgrammarFsmAndSpeechNormalizerEnabled: boolean;
+  sharedGpuCoLocationOrKvCacheOver85PctDetected: boolean;
+}): SovereignCloudPrivateVpcOnPremVoiceGpu2026Evaluation {
+  return {
+    policyCode: "SOVEREIGN-CLOUD-PRIVATE-VPC-ON-PREM-VOICE-GPU-2026-01",
+    sovereignVoiceExecutionAndToolCallAuthorized:
+      input.gpuDisaggregated242AndEphemeralTmpfsRamVerified &&
+      input.xgrammarFsmAndSpeechNormalizerEnabled &&
+      !input.sharedGpuCoLocationOrKvCacheOver85PctDetected,
+    sharedGpuContentionOrUnconstrainedJsonOrDiskWriteBlocked:
+      !input.gpuDisaggregated242AndEphemeralTmpfsRamVerified ||
+      !input.xgrammarFsmAndSpeechNormalizerEnabled ||
+      input.sharedGpuCoLocationOrKvCacheOver85PctDetected,
+    xgrammarFsmMaskAnd85PctKvAdmissionFallbackTriggered:
+      input.sharedGpuCoLocationOrKvCacheOver85PctDetected,
+  };
+}
+
 
 
 
