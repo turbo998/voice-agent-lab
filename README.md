@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 544 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 544 篇选型指南](#-二544-篇企业级语音架构选型指南中英双语) |
+| **🧭 545 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 545 篇选型指南](#-二545-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、544 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、545 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（521 篇）
+### 3.3 高价值企业行业解决方案蓝图（522 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -618,6 +618,7 @@ flowchart LR
 542. **企业实时语音知识库检索（Voice-Native RAG）、慢速 API 零冷场垫音（Zero-Dead-Air）与 `MCP` 工具网关选型指南（`T-300ms` 流式 `Partial-ASR` 投机预检索配 `<=35字` 预编译口语卡将句末净增延迟从 `1,850ms` 压至 `85ms`、向量+BM25+拼音音素三路 RRF 将同音错字召回率从 `64.0%` 提至 `98.2%`、`T+650ms` 动态安抚垫音压降 `79.2%` 等待挂机且 `Turn-Epoch` 写栅栏实现改口 `0.00%` 脏写、以及单节点 `<=6` 工具与服务端 `JWT` 绑定实现 `98.9%` 工具准确率与 `0%` `IDOR` 越权）方案**：[中文](./docs/enterprise-voice-rag-knowledge-base-mcp-tool-orchestration-zero-dead-air-selection-faq.md) | [EN](./docs/enterprise-voice-rag-knowledge-base-mcp-tool-orchestration-zero-dead-air-selection-faq.en.md)
 543. **企业级实时语音 AI 成本精算与容量规划（Voice AI FinOps）：`Azure PTU` vs. `PAYGO` 弹性溢流、3 轮音频滑动压缩与小模型（`SLM`）分层路由选型指南（3 轮滑动音频转文本蒸馏消除 `$O(N^2)$` 二次方膨胀砍掉 `63.8%` 长通话 Token 并锁定 `94.6%` 前缀缓存、日间 `P65` 基荷采购 `PTU` 配合 `>=92%` 水位 `0ms` 溢流 `PAYGO` 实现 `88.4%` 利用率与 `0.00%` 429 掉线、`72%` 常规轮次卸载至 `SLM` 加 `18秒` 僵尸死话熔断将全栈单价从 `$0.145/min` 压至 `$0.039/min` 每千万分钟净省 `$106万`）方案**：[中文](./docs/enterprise-voice-finops-ptu-paygo-capacity-token-compaction-slm-routing-selection-faq.md) | [EN](./docs/enterprise-voice-finops-ptu-paygo-capacity-token-compaction-slm-routing-selection-faq.en.md)
 544. **企业级实时语音安全、防深伪活体检测（Anti-Deepfake PAD）、`PCI-DSS v4.0` 免坐席收款与 100% 自动化话后质检（Post-Call QA）选型指南（前 `1.2s` `<80ms` 声码器伪影活体检测拦截 `99.6%` 3 秒 AI 克隆音与 `<24ms` 双平面越狱护盾、边缘 SBC `DTMF` 剥离与落盘前 8 秒内存环形缓冲 `PAN/CVV` 清零实现 `100% PCI SAQ-A` 豁免年省 `$24万`、通话内 `11秒` `Apple/Google Pay` 推送提完成率至 `96.4%`、以及双声道分轨挂机 `30秒` 自动核对口头承诺 vs CRM 数据库 `100%` 抓出漏建单）方案**：[中文](./docs/enterprise-voice-security-anti-deepfake-pci-dss-v4-compliance-recording-qa-selection-faq.md) | [EN](./docs/enterprise-voice-security-anti-deepfake-pci-dss-v4-compliance-recording-qa-selection-faq.en.md)
+545. **跨国企业实时会议同声传译（Live Simultaneous Interpretation）、`Teams / Zoom` 参会语音 Agent 与 `Jira / CRM` 零幻觉纪要选型指南（`Azure Live Interpreter + Personal Voice` 将 6 语种同传从 `$4,500/h` 压至 `$16.80/h` 降本 `99.6%`、日/德/韩 `SOV` 句尾否定词动态 `Wait-k` 闭合锁与万/亿量纲 AST 校验实现 `0.00%` 极性反转、`"@Atlas"` 显式唤醒配参会人最小权限交集锁实现外部来宾在场 `0.00%` 底价外泄、以及 `1.9% DER` 混合会议室声纹归因与两阶段 `Adaptive Card` 审批写库每万小时省 `$34.2万`）方案**：[中文](./docs/enterprise-meeting-intelligence-teams-zoom-live-interpreter-action-item-crm-sync-selection-faq.md) | [EN](./docs/enterprise-meeting-intelligence-teams-zoom-live-interpreter-action-item-crm-sync-selection-faq.en.md)
 
 ---
 

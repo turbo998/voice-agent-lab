@@ -15115,6 +15115,36 @@ export function evaluateEnterpriseVoiceSecurityPciDssQa2026Guard(input: {
   };
 }
 
+export interface EnterpriseMeetingIntelligenceTeamsZoomCrm2026Evaluation {
+  policyCode: "ENTERPRISE-MEETING-INTELLIGENCE-TEAMS-ZOOM-CRM-2026-01";
+  liveInterpretationAndStagedAdaptiveCardSyncAuthorized: boolean;
+  sovNegationFlipOrExternalGuestMarginLeakOrUnapprovedJiraWriteBlocked: boolean;
+  privateDmCardRouteOrZeroMsOffTheRecordRamPurgeTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Meeting Intelligence, Live Simultaneous Interpretation & Grounded CRM/Jira Sync (SOV Dynamic Wait-k Polarity Lock & Scale AST Verifier, Explicit @Atlas Wake + Attendee ACL Intersection, 1.9% DER Diarization & Two-Stage Adaptive Card Sign-Off) Guard (`ENTERPRISE-MEETING-INTELLIGENCE-TEAMS-ZOOM-CRM-2026-01`).
+ */
+export function evaluateEnterpriseMeetingIntelligenceTeamsZoomCrm2026Guard(input: {
+  sovVerbPolarityClosedAndFinancialScaleAstVerified: boolean;
+  attendeeAclIntersectionClearedAndAdaptiveCardHumanApproved: boolean;
+  externalGuestPresentOnConfidentialQueryOrOffTheRecordDeclared: boolean;
+}): EnterpriseMeetingIntelligenceTeamsZoomCrm2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-MEETING-INTELLIGENCE-TEAMS-ZOOM-CRM-2026-01",
+    liveInterpretationAndStagedAdaptiveCardSyncAuthorized:
+      input.sovVerbPolarityClosedAndFinancialScaleAstVerified &&
+      input.attendeeAclIntersectionClearedAndAdaptiveCardHumanApproved &&
+      !input.externalGuestPresentOnConfidentialQueryOrOffTheRecordDeclared,
+    sovNegationFlipOrExternalGuestMarginLeakOrUnapprovedJiraWriteBlocked:
+      !input.sovVerbPolarityClosedAndFinancialScaleAstVerified ||
+      !input.attendeeAclIntersectionClearedAndAdaptiveCardHumanApproved ||
+      input.externalGuestPresentOnConfidentialQueryOrOffTheRecordDeclared,
+    privateDmCardRouteOrZeroMsOffTheRecordRamPurgeTriggered:
+      input.externalGuestPresentOnConfidentialQueryOrOffTheRecordDeclared,
+  };
+}
+
 
 
 

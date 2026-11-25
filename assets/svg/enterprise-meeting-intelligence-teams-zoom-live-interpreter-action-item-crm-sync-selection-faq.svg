@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg545" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent545" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg545)"/>
+  <rect x="24" y="24" width="1152" height="632" rx="16" fill="none" stroke="#1e293b" stroke-width="2"/>
+  <rect x="44" y="42" width="1112" height="58" rx="10" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="64" y="70" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Enterprise Meeting Intelligence, Live Simultaneous Interpretation &amp; Grounded CRM/Jira Sync</text>
+  <text x="64" y="91" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13">$16.80/Hr Live Interpreter (-99.6% vs Booth) · SOV Wait-k Polarity Lock · Attendee ACL Intersection &amp; 1.9% DER (ENTERPRISE-MEETING-INTELLIGENCE-TEAMS-ZOOM-CRM-2026-01)</text>
+
+  <!-- Column 1: Live Simultaneous Interpretation -->
+  <rect x="44" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#8b5cf6" stroke-width="1.5"/>
+  <rect x="44" y="120" width="356" height="40" rx="12" fill="#4c1d95"/>
+  <text x="62" y="145" fill="#ddd6fe" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. Live Simultaneous Interpretation</text>
+
+  <rect x="62" y="176" width="320" height="108" rx="8" fill="#0f172a" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="76" y="198" fill="#a78bfa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Azure Live Interpreter + Personal Voice</text>
+  <text x="76" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Preserves executive vocal timbre across 70+ langs</text>
+  <text x="76" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Replaces $4,500/hr 6-booth human interpreter setup</text>
+  <text x="76" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Streams isolated multi-language audio tracks</text>
+  <text x="76" y="272" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• $16.80/Hr for 6 Languages (-99.6% TCO)</text>
+
+  <rect x="62" y="298" width="320" height="112" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="320" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">SOV Dynamic Wait-k Polarity Lock</text>
+  <text x="76" y="340" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Buffers DE/JP/KR verb-final clause until polarity known</text>
+  <text x="76" y="358" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Prevents translating 'not approved' as 'approved'</text>
+  <text x="76" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Deterministic Wan/Yi/Oku ↔ Million/Billion AST</text>
+  <text x="76" y="394" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Negation Flip or Financial Scale Error</text>
+
+  <rect x="62" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms Off-the-Record RAM Purge</text>
+  <text x="76" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Chair says 'Pause recording / Executive session'</text>
+  <text x="76" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Suspends media ingestion &amp; wipes RAM buffer in 0ms</text>
+  <text x="76" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Protects M&amp;A / legal privilege discussions</text>
+  <text x="76" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100% Boardroom Privilege Isolation</text>
+
+  <!-- Column 2: Live Teams/Zoom Voice Participant -->
+  <rect x="422" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#06b6d4" stroke-width="1.5"/>
+  <rect x="422" y="120" width="356" height="40" rx="12" fill="#164e63"/>
+  <text x="440" y="145" fill="#a5f3fc" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. Live Meeting Voice Participant</text>
+
+  <rect x="440" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#06b6d4" stroke-width="1"/>
+  <text x="454" y="198" fill="#22d3ee" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Explicit '@Atlas' Wake &amp; &lt;=4.5s Brevity Cap</text>
+  <text x="454" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Stays 100% silent unless explicitly addressed</text>
+  <text x="454" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Caps spoken meeting reply to 1 sentence (&lt;=4.5s)</text>
+  <text x="454" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Pushes detailed charts/tables via Adaptive Card</text>
+  <text x="454" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Uninvited Meeting Interruptions</text>
+
+  <rect x="440" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Attendee ACL Intersection Security Lock</text>
+  <text x="454" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Computes min permission across ALL roster guests</text>
+  <text x="454" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks internal margin/salary readout if vendor in call</text>
+  <text x="454" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Sends sensitive answer privately to employee DM</text>
+  <text x="454" y="398" fill="#22d3ee" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% External Guest Confidential Leaks</text>
+
+  <rect x="440" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">1.9% DER Hybrid Conference Room Diarization</text>
+  <text x="454" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Fuses Teams Rooms mic array DOA + voiceprints</text>
+  <text x="454" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Separates 8+ in-room speakers sharing 1 table mic</text>
+  <text x="454" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Lifts speaker attribution from 61.0% to 98.6%</text>
+  <text x="454" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• Accurate Owner Binding for Action Items</text>
+
+  <!-- Column 3: Grounded Jira / Salesforce Sync -->
+  <rect x="800" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="800" y="120" width="356" height="40" rx="12" fill="#064e3b"/>
+  <text x="818" y="145" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Grounded Jira &amp; CRM Action Sync</text>
+
+  <rect x="818" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="832" y="198" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Brainstorm Filter &amp; Timestamped Drafts</text>
+  <text x="832" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Rejects hypothetical jokes ('what if we cut price')</text>
+  <text x="832" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Requires explicit Owner + Deliverable + Due Date</text>
+  <text x="832" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Links every draft ticket to [mm:ss] audio quote</text>
+  <text x="832" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Unapproved Junk Jira/CRM Tickets</text>
+
+  <rect x="818" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Two-Stage Adaptive-Card Human Sign-Off</text>
+  <text x="832" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Posts staged action card in Teams / Slack post-call</text>
+  <text x="832" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Commits to Jira / Salesforce / ADO only on 1-click</text>
+  <text x="832" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Saves 42 minutes of post-meeting PM admin work</text>
+  <text x="832" y="398" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 94.8% Action-Item Follow-Through Rate</text>
+
+  <rect x="818" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Enterprise Collaboration ROI</text>
+  <text x="832" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Supports 10,000-attendee global town halls</text>
+  <text x="832" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Saves $342,000 per 10,000 meeting hours</text>
+  <text x="832" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Native Microsoft Graph / Zoom RTMS / Jira APIs</text>
+  <text x="832" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• $0.044/min Blended Meeting AI Cost</text>
+
+  <!-- Footer KPI Bar -->
+  <rect x="44" y="568" width="1112" height="68" rx="10" fill="#0f172a" stroke="url(#accent545)" stroke-width="1.5"/>
+  <text x="68" y="595" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Validated Enterprise Meeting Intelligence &amp; Simultaneous Interpretation Benchmark:</text>
+  <text x="68" y="618" fill="#c4b5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13">6-Lang Town Hall: $4,500 → $16.80/Hr (-99.6%)  |  Speaker Attribution: 98.6% (1.9% DER)  |  Guest ACL Leaks: 0.00%  |  Cost: $0.044/min</text>
+</svg>
