@@ -15265,6 +15265,36 @@ export function evaluateSovereignCloudPrivateVpcOnPremVoiceGpu2026Guard(input: {
   };
 }
 
+export interface TelecomIspBroadbandSelfHealingAntiSimSwap2026Evaluation {
+  policyCode: "TELECOM-ISP-BROADBAND-SELF-HEALING-ANTI-SIM-SWAP-2026-01";
+  remoteOntRebootAndRetroactiveRoamingRerateAuthorized: boolean;
+  verbalPiiSimSwapOrUnscheduledRebootOrOver50CreditBlocked: boolean;
+  cellular45sSurvivalCallbackOr24hSimCoolingLockTriggered: boolean;
+}
+
+/**
+ * Deterministic Telecom & Broadband ISP Customer Care (<120ms Ringback Telemetry, 45s Reboot Survival Callback Loop, Deterministic BSS Bill-Diff + <=$50 Cap & Zero-Trust Anti-SIM-Swap Passkey/24h Lock) Guard (`TELECOM-ISP-BROADBAND-SELF-HEALING-ANTI-SIM-SWAP-2026-01`).
+ */
+export function evaluateTelecomIspBroadbandSelfHealingAntiSimSwap2026Guard(input: {
+  cellular45sCallbackRegisteredBeforeOntReboot: boolean;
+  deterministicBssBillDiffVerifiedAndCreditUnder50Usd: boolean;
+  verbalPiiSimSwapRequestedOrOriginalSimActiveConflict: boolean;
+}): TelecomIspBroadbandSelfHealingAntiSimSwap2026Evaluation {
+  return {
+    policyCode: "TELECOM-ISP-BROADBAND-SELF-HEALING-ANTI-SIM-SWAP-2026-01",
+    remoteOntRebootAndRetroactiveRoamingRerateAuthorized:
+      input.cellular45sCallbackRegisteredBeforeOntReboot &&
+      input.deterministicBssBillDiffVerifiedAndCreditUnder50Usd &&
+      !input.verbalPiiSimSwapRequestedOrOriginalSimActiveConflict,
+    verbalPiiSimSwapOrUnscheduledRebootOrOver50CreditBlocked:
+      !input.cellular45sCallbackRegisteredBeforeOntReboot ||
+      !input.deterministicBssBillDiffVerifiedAndCreditUnder50Usd ||
+      input.verbalPiiSimSwapRequestedOrOriginalSimActiveConflict,
+    cellular45sSurvivalCallbackOr24hSimCoolingLockTriggered:
+      input.verbalPiiSimSwapRequestedOrOriginalSimActiveConflict,
+  };
+}
+
 
 
 
