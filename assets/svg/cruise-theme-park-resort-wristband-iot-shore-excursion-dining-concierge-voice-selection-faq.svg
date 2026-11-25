@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg567" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue567" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen567" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple567" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber567" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg567)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">邮轮度假村与大型主题乐园：远洋船端边缘自治、岸上观光返船锁与手环寻人架构 (#567)</text>
+  <text x="48" y="74" class="subtitle">Cruise Lines &amp; Theme Parks Voice + Multimodal AI: Shipboard Edge LAN (&lt;180ms) · 60m All-Aboard Gangway Lock · BLE Wristband Child Locator</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue567)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">CRUISE-THEMEPARK-2026</text>
+
+  <!-- Plane 1: Shipboard / Park Edge LAN Autonomy & Satellite Resilience -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue567)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① 远洋船端边缘自治与卫星雨衰 100% 不断服</text>
+
+  <rect x="46" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">破解公海卫星 650ms 抖动与峡湾断网盲区</text>
+  <text x="60" y="200" class="node-sub">• 6,000 人邮轮过热带暴雨或挪威峡湾时卫星带宽骤降甚至中断</text>
+  <text x="60" y="218" class="node-sub">• 船端机房部署 2x L40S 边缘集群，客舱电话走船内千兆局域网</text>
+  <text x="60" y="236" class="node-sub">• 端到端语音延迟死死锁定 &lt;180ms，公海断网 100% 正常订餐报修</text>
+
+  <rect x="46" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="282" class="node-title">消除宾客服务台 (Purser's Desk) 45 分钟排长队</text>
+  <text x="60" y="302" class="node-sub">• 登船首日与下船前夜，总台被查账单/连不上 Wi-Fi 游客挤爆</text>
+  <text x="60" y="320" class="node-sub">• 客舱座机与船内免流量 App 语音 24h 秒接 (支持 16 语种)</text>
+  <text x="60" y="338" class="node-sub">• 直连 Oracle Fidelio Cruise / Otalio 实时处理客房送餐与空调调节</text>
+
+  <rect x="46" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="386" class="node-title">省下 88% 昂贵的远洋卫星上行音频带宽</text>
+  <text x="60" y="406" class="node-sub">• 音频流 100% 在船端机房本地消化，绝不占用 Mbps 级卫星带宽</text>
+  <text x="60" y="424" class="node-sub">• 把宝贵的 Starlink 海洋卫星带宽留给付费高速上网游客</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">船员多语种无线电翻译桥 (Crew Radio Bridge)</text>
+  <text x="60" y="500" class="node-sub">• 客房/工程部 40 国籍船员母语报修工单秒级转译下发</text>
+  <text x="60" y="518" class="node-sub">• 客舱报修响应速度从 55 分钟缩短至 11 分钟</text>
+
+  <!-- Plane 2: Shore Excursion All-Aboard Lock & Virtual-Queue Dining -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple567)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② 岸上观光“最晚登船锁”与乐园排队/餐厅抢座</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">岸上观光 (ShoreEx) 60 分钟返船安全死线锁</text>
+  <text x="435" y="200" class="node-sub">• 痛点: 游客改签靠港行程若晚于拔锚开船时间将被遗弃在异国码头!</text>
+  <text x="435" y="218" class="node-sub">• 硬校验 `Excursion_Return_Time &lt;= Ship_All_Aboard_Time - 60m`</text>
+  <text x="435" y="236" class="node-sub">• 天气取消水上项目时 3 分钟内自动语音改签全船 800 名受影响游客</text>
+
+  <rect x="421" y="264" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">主题乐园虚拟排队 (Virtual Queue) 与暴雨改签</text>
+  <text x="435" y="306" class="node-sub">• 户外过山车因雷暴临时停运时，数万游客同时涌入改签</text>
+  <text x="435" y="324" class="node-sub">• 自动发放全园通用闪电通道代用券 (Multi-Experience Pass)</text>
+  <text x="435" y="342" class="node-sub">• 结合全园热力图智能引导分流至室内剧场与冷门游乐区</text>
+
+  <rect x="421" y="370" width="358" height="84" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="392" class="node-title">特色牛排馆/主厨餐桌 120s 原子锁位增收</text>
+  <text x="435" y="412" class="node-sub">• Redis 120 秒分布式库存锁防止高并发抢座超卖</text>
+  <text x="435" y="430" class="node-sub">• 自动关联全家同行手环 (Linked Party) 与食物过敏档案</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">游乐设施身高/孕期/心脏病硬性安全门禁</text>
+  <text x="435" y="510" class="node-sub">• 预约深潜/高G力过山车前强制核对儿童身高与健康禁忌</text>
+
+  <!-- Plane 3: Wearable BLE Lost-Child Locator & Cabin Folio PIN Lock -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen567)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ 智能手环走失儿童秒级定位与客舱消费限额</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">走失儿童/老人 BLE 手环信标 &lt;2 秒定位与安保桥</text>
+  <text x="849" y="200" class="node-sub">• 家长惊慌呼入报告孩子在乐园或甲板走散时 0ms 最高优响应</text>
+  <text x="849" y="218" class="node-sub">• 实时检索儿童智能手环 (Medallion / MagicBand) 最近蓝牙网关坐标</text>
+  <text x="849" y="236" class="node-sub">• 秒级锁定所在甲板/园区摄像头并直通最近巡逻安保员对讲机</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">海事救生紧急代码 (Code Alpha / Oscar) 0ms 直通</text>
+  <text x="849" y="302" class="node-sub">• 识别到落水 (Man Overboard)、舱房烟雾或胸痛晕厥呼叫</text>
+  <text x="849" y="320" class="node-sub">• 0ms 强插驾驶台 (Bridge) 与船医中心并自动定位分机客舱号</text>
+  <text x="849" y="338" class="node-sub">• 急性肠胃炎 (诺如病毒 Norovirus) 自动触发隔离送餐与感控上报</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">同舱室多住客分账与未成年人挂账锁 (Folio Lock)</text>
+  <text x="849" y="406" class="node-sub">• 拦截熊孩子在舱内用语音乱订 $400 龙虾香槟或付费岸上游</text>
+  <text x="849" y="424" class="node-sub">• 校验主卡持有人语音 PIN 码与单日消费限额，下船零账单争吵</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (CRUISE-THEMEPARK-EDGE-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截晚于开船前60m的岸上游预订、未成年越权挂账与走失延误</text>
+  <text x="849" y="518" class="node-sub">• 卫星断网自动 0ms 无感运行船端边缘大模型集群</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 邮轮度假村与大型主题乐园实时语音+多模态 AI 实测基准 (6,000 人旗舰邮轮 &amp; 8万人乐园 · 每万次交互)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">&lt; 180ms 船端边缘</text>
+  <text x="64" y="666" class="metric-lbl">100% 免疫远洋卫星雨衰断网 (省 88% 卫星带宽)</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">0.00% 误船滞留</text>
+  <text x="344" y="666" class="metric-lbl">岸上观光 60 分钟最晚登船时间硬校验锁</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">+$142 / 舱二消</text>
+  <text x="624" y="666" class="metric-lbl">特色餐饮/水疗/岸上游 24h 秒级改签与增购</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">创效 $51.6万 / 万次</text>
+  <text x="904" y="666" class="metric-lbl">船上高毛利二消增收 + 省卫星流量 + 零总台拥堵</text>
+</svg>

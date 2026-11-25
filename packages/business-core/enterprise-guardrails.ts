@@ -15775,6 +15775,36 @@ export function evaluateElectricWaterGasUtilityOmsAmiMedical2026Guard(input: {
   };
 }
 
+export interface CruiseThemeParkResortMaritimeEdgeVoice2026Evaluation {
+  policyCode: "CRUISE-THEME-PARK-RESORT-MARITIME-EDGE-VOICE-2026-01";
+  shoreExAndSpecialtyDiningBookingAuthorized: boolean;
+  gangwayBufferUnder60MinOrUnauthedMinorFolioChargeBlocked: boolean;
+  zeroMsBridgeCodeOscarOr2sBleChildLocatorOrVspGiIsolationTriggered: boolean;
+}
+
+/**
+ * Deterministic Cruise Lines, Theme Parks & Mega-Resorts (Shipboard Edge LAN <180ms Autonomy, 60-Min All-Aboard ShoreEx Safety Gate, <2s BLE Wristband Lost-Child Locator, VSP Norovirus Isolation & Sub-Folio PIN Lock) Guard (`CRUISE-THEME-PARK-RESORT-MARITIME-EDGE-VOICE-2026-01`).
+ */
+export function evaluateCruiseThemeParkResortMaritimeEdgeVoice2026Guard(input: {
+  shoreExReturnAtLeast60MinBeforeAllAboardAndSafetyRulesMet: boolean;
+  subFolioPinVerifiedAndWithinMinorSpendingCap: boolean;
+  codeOscarAlphaOrLostChildBleOrAcuteGiSymptomsDetected: boolean;
+}): CruiseThemeParkResortMaritimeEdgeVoice2026Evaluation {
+  return {
+    policyCode: "CRUISE-THEME-PARK-RESORT-MARITIME-EDGE-VOICE-2026-01",
+    shoreExAndSpecialtyDiningBookingAuthorized:
+      input.shoreExReturnAtLeast60MinBeforeAllAboardAndSafetyRulesMet &&
+      input.subFolioPinVerifiedAndWithinMinorSpendingCap &&
+      !input.codeOscarAlphaOrLostChildBleOrAcuteGiSymptomsDetected,
+    gangwayBufferUnder60MinOrUnauthedMinorFolioChargeBlocked:
+      !input.shoreExReturnAtLeast60MinBeforeAllAboardAndSafetyRulesMet ||
+      !input.subFolioPinVerifiedAndWithinMinorSpendingCap ||
+      input.codeOscarAlphaOrLostChildBleOrAcuteGiSymptomsDetected,
+    zeroMsBridgeCodeOscarOr2sBleChildLocatorOrVspGiIsolationTriggered:
+      input.codeOscarAlphaOrLostChildBleOrAcuteGiSymptomsDetected,
+  };
+}
+
 
 
 

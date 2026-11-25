@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 566 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 566 篇选型指南](#-二566-篇企业级语音架构选型指南中英双语) |
+| **🧭 567 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 567 篇选型指南](#-二567-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、566 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、567 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（543 篇）
+### 3.3 高价值企业行业解决方案蓝图（544 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -640,6 +640,7 @@ flowchart LR
 564. **财税事务所（CPA）、税务筹划与企业代账（`IRS 26 U.S.C. § 7216` 刑事隐私锁 / `W-2/1099/K-1` 缺件视觉催收 / `Form 8879` 双人 KBA 陪签）语音与多模态选型指南（通话中 `1.9秒` 视觉拦截误传去年旧税表、草稿水印与 `K-1 Box 20` 缺页释放 `$350/h` 注册会计师 `76%` 催资料工时、境内主权 ZDR 零训练与独立书面《`§ 7216` 同意书》门禁 100% 阻断违规跨业推销理财、以及截止前 48h 陪同完成夫妻双人 `Form 8879` KBA 签名按期申报率达 `98.4%` 每万户创效 `$61.5万`）方案**：[中文](./docs/wealth-tax-cpa-accounting-irs-26-usc-7216-k1-w2-document-chasing-voice-selection-faq.md) | [EN](./docs/wealth-tax-cpa-accounting-irs-26-usc-7216-k1-w2-document-chasing-voice-selection-faq.en.md)
 565. **连锁宠物医院、24 小时动物急诊与寄养中心（`GDV` 胃扭转与公猫闭尿 `0ms` 急诊锁 / `1.5s` 误食毒物 `mg/kg` 精算 / `ezyVet` 疫苗与术后刀口视觉）语音与多模态选型指南（品种×性别×症状矩阵 100% 捕获大型犬胃扭转与公猫尿道闭锁并提前 18m 唤醒 ICU 备台、`1.5秒` 拍食品包装袋配确定性 `mg/kg` 毒理公式且 100% 拦截给猫/法斗居家灌双氧水催吐、以及术后刀口拍照免到店复查释放 `62%` 免费占座并核验 `VCPR` 自动续订驱虫药每万通创效 `$41.2万`）方案**：[中文](./docs/veterinary-hospital-pet-emergency-toxin-triage-pims-vaccine-boarding-voice-selection-faq.md) | [EN](./docs/veterinary-hospital-pet-emergency-toxin-triage-pims-vaccine-boarding-voice-selection-faq.en.md)
 566. **电力、水务与燃气公用事业客服（50 倍风暴停电洪峰 `OMS` 分流 / `800ms AMI` 智能电表实时 Ping / 呼吸机生命维持户优先保电）语音与多模态选型指南（边缘 Redis 停电快照零数据库负载分流 `91.4%` 洪峰来电、实时 Ping 电表确认 `240V` 在线配相机指导合室内总闸砍掉 `90.4%` 的 `$220` 工程车白跑、15 分钟级 `AMI` 负荷拆解与凌晨 3 点暗漏检测取消 `68%` 上门校表、以及呼吸机生命维持与高温/严寒禁断电护栏每万通净省 `$45.8万`）方案**：[中文](./docs/electric-water-gas-utility-outage-storm-surge-ami-smart-meter-medical-baseline-voice-selection-faq.md) | [EN](./docs/electric-water-gas-utility-outage-storm-surge-ami-smart-meter-medical-baseline-voice-selection-faq.en.md)
+567. **邮轮度假村与大型主题乐园（船端 `2x L40S` 边缘自治 / 岸上观光 `60m` 最晚登船锁 / 智能手环 `BLE` 走失儿童定位）语音与多模态选型指南（船底机房局域网 `<180ms` 闭环 100% 免疫卫星雨衰断网并节省 `88%` 昂贵卫星带宽、硬校验岸上游返港早于开船前 `60分钟` 实现 `0.00%` 异国码头滞留并拉升每舱 `+$142` 二消、穿戴手环 `<2秒` 锁定走失儿童所在甲板、以及同舱未成年消费 PIN 锁与诺如病毒隔离门禁每万次交互创效 `$51.6万`）方案**：[中文](./docs/cruise-theme-park-resort-wristband-iot-shore-excursion-dining-concierge-voice-selection-faq.md) | [EN](./docs/cruise-theme-park-resort-wristband-iot-shore-excursion-dining-concierge-voice-selection-faq.en.md)
 
 ---
 
