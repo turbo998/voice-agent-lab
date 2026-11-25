@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg565" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue565" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen565" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple565" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber565" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg565)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">连锁宠物医院与 24h 动物急诊：胃扭转/公猫闭尿红线、毒物 mg/kg 精算与 PIMS 架构 (#565)</text>
+  <text x="48" y="74" class="subtitle">Veterinary Hospital &amp; Pet ER Voice + Vision AI: GDV Bloat &amp; Blocked-Cat 0ms ER Gate · Toxin mg/kg + Wrapper OCR · ezyVet/Cornerstone Vaccine Sync</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue565)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">VET-HOSPITAL-ER-2026</text>
+
+  <!-- Plane 1: Life-Threatening GDV Bloat, Blocked Cat & Gum-Color Vision -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue565)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① 致命胃扭转 (GDV) 与公猫闭尿 0ms 急诊锁</text>
+
+  <rect x="46" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">大型犬干呕腹胀 (GDV 胃扭转) 2 小时生死抢救</text>
+  <text x="60" y="200" class="node-sub">• 识别大丹/德牧/金毛“频繁干呕吐不出、腹部鼓胀紧绷、焦躁流涎”</text>
+  <text x="60" y="218" class="node-sub">• 严禁当普通肠胃炎排明日门诊！0ms 指令立即送 24h 急诊医院</text>
+  <text x="60" y="236" class="node-sub">• 宠主在途时自动向急诊手术室下发“准备胃减压与拍片”预备单</text>
+
+  <rect x="46" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="282" class="node-title">公猫频繁蹲猫砂盆无尿 (尿道闭锁高血钾致死锁)</text>
+  <text x="60" y="302" class="node-sub">• 宠主误以为“公猫便秘蹲盆惨叫”，实为急性下泌尿道闭锁 (UO)</text>
+  <text x="60" y="320" class="node-sub">• 24h 内即可因急性肾衰与高血钾心脏骤停死亡</text>
+  <text x="60" y="338" class="node-sub">• 确定性拦截“喂化毛膏观察”误导，100% 强制急诊导尿</text>
+
+  <rect x="46" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="386" class="node-title">牙龈粘膜颜色与腹式呼吸手机视频分诊</text>
+  <text x="60" y="406" class="node-sub">• 短信推送相机链接拍摄翻开上唇牙龈颜色与胸腹起伏视频</text>
+  <text x="60" y="424" class="node-sub">• 识别苍白/发紫牙龈或猫张口呼吸，秒级拉响吸氧抢救箱警报</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">急诊分诊危重漏判率降至 0.00%</text>
+  <text x="60" y="500" class="node-sub">• 急诊团队提前 18 分钟备好急救车，抢救存活率提升 29%</text>
+  <text x="60" y="518" class="node-sub">• 拦截 54% 非紧急软便/耳螨半夜涌入挤占急诊台</text>
+
+  <!-- Plane 2: Deterministic Pet Toxin mg/kg Calculator & Wrapper OCR -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple565)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② 宠物误食毒物 mg/kg 精算与包装配料表视觉</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">1.5s 食品包装袋拍照识读木糖醇/可可浓度</text>
+  <text x="435" y="200" class="node-sub">• 宠主哭诉狗偷吃了口香糖/花生酱/巧克力时，一键短信拍配料表</text>
+  <text x="435" y="218" class="node-sub">• 识别隐藏木糖醇代称 (`Birch Bark Extract / 桦树皮提取物`)</text>
+  <text x="435" y="236" class="node-sub">• 精确区分牛奶巧克力 (2.4mg/g) vs 85% 黑巧 (14mg/g 可可碱)</text>
+
+  <rect x="421" y="264" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">确定性毒理剂量公式 (`摄入毫克 / 宠物体重 kg`)</text>
+  <text x="435" y="306" class="node-sub">• 调取 PIMS 档案最新体重 (如 8.2kg 法斗)，严禁大模型自由心算</text>
+  <text x="435" y="324" class="node-sub">• 可可碱 &gt;=20mg/kg (呕吐) / &gt;=40mg/kg (心律失常) / &gt;=60mg/kg (抽搐)</text>
+  <text x="435" y="342" class="node-sub">• 葡萄/百合花(对猫剧毒)/布洛芬实行“零安全阈值”100% 强制催吐送医</text>
+
+  <rect x="421" y="370" width="358" height="84" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="392" class="node-title">严禁指导猫咪或短鼻犬居家喂双氧水催吐!</text>
+  <text x="435" y="412" class="node-sub">• 猫喂双氧水会导致致命出血性胃炎；法斗/巴哥易引发吸入性肺炎</text>
+  <text x="435" y="430" class="node-sub">• 硬护栏 100% 阻断AI输出居家催吐偏方，直接安排到院阿扑吗啡催吐</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">无缝对接 ASPCA APCC 毒理中心案件号</text>
+  <text x="435" y="510" class="node-sub">• 复合农药/人用处方药误食自动建立毒理档案同步值班兽医</text>
+
+  <!-- Plane 3: PIMS Vaccine OCR, Boarding Gate & Post-Op Incision Vision -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen565)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ 寄养疫苗本 OCR 强校验与绝育刀口视觉复查</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">寄养/美容前疫苗有效期 1.8s 拍照核验</text>
+  <text x="849" y="200" class="node-sub">• 预约寄养/日托/洗美前强制核查: 狂犬 (Rabies)、犬窝咳 (Bordetella)</text>
+  <text x="849" y="218" class="node-sub">• 短信拍照上传外院免疫本，1.8s 提取到期日写入 ezyVet / Cornerstone</text>
+  <text x="849" y="236" class="node-sub">• 过期自动顺带预约到店补打，实现寄养中心 0.00% 犬窝咳交叉爆发</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">绝育/骨科术后第 3 天刀口拍照免到店复查</text>
+  <text x="849" y="302" class="node-sub">• 主动语音随访 + 短信拍腹部缝合刀口照片</text>
+  <text x="849" y="320" class="node-sub">• 区分正常愈合结痂 vs 舔咬崩线 (Dehiscence) 或化脓渗出</text>
+  <text x="849" y="338" class="node-sub">• 减少 62% 不收费的术后常规看一眼复诊，腾出诊室接新诊</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">慢病处方粮与心丝虫/驱虫药自动续订</text>
+  <text x="849" y="406" class="node-sub">• 核验近 12 个月心丝虫阴性检测记录后自动放行 NexGard/Heartgard</text>
+  <text x="849" y="424" class="node-sub">• 挽回流向电商平台的 38% 处方药与处方粮复购收入</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (VET-HOSPITAL-TOXIN-GDV-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截猫/短鼻犬居家双氧水催吐、GDV/闭尿排普通门诊与无疫苗寄养</text>
+  <text x="849" y="518" class="node-sub">• 全面符合 AVMA 兽医远程分诊与 VCPR 执业规范</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 连锁宠物医院与 24h 动物急诊实时语音+视觉 AI 实测基准 (30 家分院宠物医疗集团 · 每 10,000 通来电)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">0.00% 致命漏诊</text>
+  <text x="64" y="666" class="metric-lbl">GDV 胃扭转、公猫闭尿与百合中毒 0ms 急诊锁</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">100% 毒理精算</text>
+  <text x="344" y="666" class="metric-lbl">1.5s 配料表拍照 + 确定性 mg/kg 剂量公式</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">-62% 免收费复诊</text>
+  <text x="624" y="666" class="metric-lbl">术后刀口拍照远程核验腾出诊室接高值新客</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">创效 $41.2万 / 万通</text>
+  <text x="904" y="666" class="metric-lbl">夜间急诊手术锁单 + 疫苗/驱虫续订 + 释放兽医</text>
+</svg>

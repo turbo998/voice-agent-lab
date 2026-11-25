@@ -15715,6 +15715,36 @@ export function evaluateWealthTaxCpaIrs7216K1DocumentVision2026Guard(input: {
   };
 }
 
+export interface VeterinaryHospitalPetToxinGdvPims2026Evaluation {
+  policyCode: "VETERINARY-HOSPITAL-PET-TOXIN-GDV-PIMS-2026-01";
+  gpAppointmentAndVcprRxRefillAuthorized: boolean;
+  homeHydrogenPeroxideForCatBrachycephalicOrMissedGdvBlockedCatBlocked: boolean;
+  zeroMsErSmartflowCrashCartAlertTriggered: boolean;
+}
+
+/**
+ * Deterministic Veterinary Hospitals, 24/7 Pet Emergency & Boarding (0ms STAT Emergency Gate for Canine GDV Bloat & Blocked Male Cat, Deterministic mg/kg Toxin Engine, Cat/Brachycephalic H2O2 Emesis Block & 365-Day VCPR Rx Gate) Guard (`VETERINARY-HOSPITAL-PET-TOXIN-GDV-PIMS-2026-01`).
+ */
+export function evaluateVeterinaryHospitalPetToxinGdvPims2026Guard(input: {
+  deterministicMgPerKgToxinCalculatedWithoutCatBrachyH2o2: boolean;
+  active365DayVcprAndRabiesBordetellaVaccinesVerified: boolean;
+  canineGdvBloatOrBlockedMaleCatOrLilyXylitolDetected: boolean;
+}): VeterinaryHospitalPetToxinGdvPims2026Evaluation {
+  return {
+    policyCode: "VETERINARY-HOSPITAL-PET-TOXIN-GDV-PIMS-2026-01",
+    gpAppointmentAndVcprRxRefillAuthorized:
+      input.deterministicMgPerKgToxinCalculatedWithoutCatBrachyH2o2 &&
+      input.active365DayVcprAndRabiesBordetellaVaccinesVerified &&
+      !input.canineGdvBloatOrBlockedMaleCatOrLilyXylitolDetected,
+    homeHydrogenPeroxideForCatBrachycephalicOrMissedGdvBlockedCatBlocked:
+      !input.deterministicMgPerKgToxinCalculatedWithoutCatBrachyH2o2 ||
+      !input.active365DayVcprAndRabiesBordetellaVaccinesVerified ||
+      input.canineGdvBloatOrBlockedMaleCatOrLilyXylitolDetected,
+    zeroMsErSmartflowCrashCartAlertTriggered:
+      input.canineGdvBloatOrBlockedMaleCatOrLilyXylitolDetected,
+  };
+}
+
 
 
 
