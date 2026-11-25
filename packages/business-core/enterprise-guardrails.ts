@@ -14635,6 +14635,36 @@ export function evaluateCommercialInsuranceBrokerageAcord25Voice2026Guard(input:
   };
 }
 
+export interface MedtechMriCtCathlabRemoteServiceVoice2026Evaluation {
+  policyCode: "MEDTECH-MRI-CT-CATHLAB-REMOTE-SERVICE-VOICE-2026-01";
+  remoteIomtSelfHealingAndPartDispatchAuthorized: boolean;
+  zoneIvFerromagneticOrInterlockBypassOrFalseQuenchBlocked: boolean;
+  patientOnTableL3BridgeOrFdaPart803MdrLogFreezeTriggered: boolean;
+}
+
+/**
+ * Deterministic MedTech Diagnostic Imaging & Cath-Lab (0ms Patient-on-Table L3 Preemption, <200ms HIPAA Zero-PHI IoMT Triage, ACR Zone-IV Always-On Magnet & Quench Lock, FDA 21 CFR Part 803 MDR Log Freeze) Guard (`MEDTECH-MRI-CT-CATHLAB-REMOTE-SERVICE-VOICE-2026-01`).
+ */
+export function evaluateMedtechMriCtCathlabRemoteServiceVoice2026Guard(input: {
+  dicomPhiStrippedAndNonMagneticZoneIvToolsVerified: boolean;
+  radiationInterlockIntactAndNoUnauthorizedManualQuench: boolean;
+  patientOnTableEmergencyOrFdaMdrInjuryOrActiveQuench: boolean;
+}): MedtechMriCtCathlabRemoteServiceVoice2026Evaluation {
+  return {
+    policyCode: "MEDTECH-MRI-CT-CATHLAB-REMOTE-SERVICE-VOICE-2026-01",
+    remoteIomtSelfHealingAndPartDispatchAuthorized:
+      input.dicomPhiStrippedAndNonMagneticZoneIvToolsVerified &&
+      input.radiationInterlockIntactAndNoUnauthorizedManualQuench &&
+      !input.patientOnTableEmergencyOrFdaMdrInjuryOrActiveQuench,
+    zoneIvFerromagneticOrInterlockBypassOrFalseQuenchBlocked:
+      !input.dicomPhiStrippedAndNonMagneticZoneIvToolsVerified ||
+      !input.radiationInterlockIntactAndNoUnauthorizedManualQuench ||
+      input.patientOnTableEmergencyOrFdaMdrInjuryOrActiveQuench,
+    patientOnTableL3BridgeOrFdaPart803MdrLogFreezeTriggered:
+      input.patientOnTableEmergencyOrFdaMdrInjuryOrActiveQuench,
+  };
+}
+
 
 
 

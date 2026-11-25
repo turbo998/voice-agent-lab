@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **528 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **529 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (528 Bilingual Guides)
+## 3. Solution Architect Selection Guides (529 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (505 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (506 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -572,3 +572,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 526. **Enterprise Cybersecurity SOC & IT Major Incident Bridge (PagerDuty / ServiceNow / CrowdStrike) Voice AI Guide: <15s Spoken Cognitive Wake-Up Challenge (22.4% → 0.0% 3 AM Sleep-Ack, 19.5m → 1.8m Sev-1 MTTA), ServiceNow CMDB Tier-0 Four-Eyes FIDO2 Containment Gate (0.00% Self-Outages), 0ms Privileged-Admin Voice MFA Lockout & 12s MFA-Fatigue Session Kill (-$390k/10k Hrs)**: [EN](./cybersecurity-soc-incident-bridge-pagerduty-servicenow-tier0-containment-voice-selection-faq.en.md) | [中文](./cybersecurity-soc-incident-bridge-pagerduty-servicenow-tier0-containment-voice-selection-faq.md)
 527. **Commercial Banking & Corporate Treasury (SWIFT gpi / Kyriba / SAP Treasury) Voice AI Guide: <200ms SWIFT gpi UETR Hop Tracker & ISO 20022 pacs.008 Push (3d → 18s Trace, 86.2% Containment), Seasoned SSI-Only Template Lock + Four-Eyes Maker-Checker FIDO2 Co-Sign (UCC 4A-202), 0ms Anti-Deepfake CEO 'Secret M&A' Freeze & Pre-15:00 Positive Pay Visual Gate (-$410k/10k Hrs)**: [EN](./commercial-banking-corporate-treasury-swift-gpi-maker-checker-anti-bec-voice-selection-faq.en.md) | [中文](./commercial-banking-corporate-treasury-swift-gpi-maker-checker-anti-bec-voice-selection-faq.md)
 528. **Commercial Insurance Brokerage & P&C (Applied Epic / Guidewire / Duck Creek) Voice AI Guide: <200ms Policy-Limit & Blanket AI Gate + 9s PKCE Holder Card (24h → 14s ACORD 25 COI Issuance, 83.8% Self-Serve), 0ms Known-Loss & Anti-Estoppel Endorsement Lock (0.00% E&O Breaches) & OSHA 29 CFR 1904.39 8h/24h Severe-Injury Nurse Triage (-$355k/10k Hrs)**: [EN](./commercial-insurance-brokerage-acord25-coi-midterm-endorsement-workers-comp-voice-selection-faq.en.md) | [中文](./commercial-insurance-brokerage-acord25-coi-midterm-endorsement-workers-comp-voice-selection-faq.md)
+529. **MedTech Diagnostic Imaging & Surgical Capital Equipment (GE HealthCare / Siemens Healthineers / Philips MRI/CT/Cath-Lab) Voice AI Guide: 0ms Patient-on-Table Entitlement Bypass (<12s L3 Modality Bridge), <200ms HIPAA Zero-PHI IoMT Error-Log Triage (74.6% Remote Deflection), ACR Zone-IV Always-On Magnet & Quench Evacuation Lock + 0ms FDA 21 CFR Part 803 MDR Log Freeze (-$420k/10k Hrs)**: [EN](./medtech-mri-ct-cathlab-remote-service-quench-patient-on-table-voice-selection-faq.en.md) | [中文](./medtech-mri-ct-cathlab-remote-service-quench-patient-on-table-voice-selection-faq.md)
