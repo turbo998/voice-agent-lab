@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 568 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 568 Guides](#-2-568-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 569 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 569 Guides](#-2-569-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 568 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 569 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (545 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (546 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -642,6 +642,7 @@ flowchart LR
 566. **Electric, Water & Gas Utilities (Storm Outage OMS Surge Deflection / AMI Smart-Meter High-Bill Interval Analysis / Life-Support Medical Baseline Priority) Guide: <100ms Edge OMS Geo-Snapshot (91.4% 50x Storm Deflection), 800ms AMI Smart-Meter Voltage Ping + Breaker Camera Reset (-90.4% Wasted $220 Line-Truck Rolls), 15m Interval High-Bill/3 AM Leak Audit & Medical Baseline/PUC Moratorium Gate (-$458k/10k Calls)**: [EN](./docs/electric-water-gas-utility-outage-storm-surge-ami-smart-meter-medical-baseline-voice-selection-faq.en.md) | [中文](./docs/electric-water-gas-utility-outage-storm-surge-ami-smart-meter-medical-baseline-voice-selection-faq.md)
 567. **Cruise Lines, Theme Parks & Mega-Resorts (Maritime Satellite-Edge Hybrid Voice / Virtual-Queue & Shore-Excursion Inventory Lock / Lost-Child BLE & Folio Guard) Guide: Shipboard 2x L40S Edge LAN (<180ms Latency, 100% Rain-Fade Survival, -88% Satellite Bandwidth), 60-Min All-Aboard ShoreEx Safety Lock (0.00% Pier Stranding, +$142/Cabin Lift), <2s BLE Wristband Lost-Child Locator & Sub-Folio Minor PIN Gate (+$516k/10k Interactions)**: [EN](./docs/cruise-theme-park-resort-wristband-iot-shore-excursion-dining-concierge-voice-selection-faq.en.md) | [中文](./docs/cruise-theme-park-resort-wristband-iot-shore-excursion-dining-concierge-voice-selection-faq.md)
 568. **Retirement Plan Recordkeepers, 401(k) Rollovers & Annuities (DOL PTE 2020-02 Fiduciary Boundary / SECURE 2.0 RMD Engine / 60-Day Rollover Check Vision) Guide: AI Hold-For-Me 3-Way Custodial Call + 1.8s FBO Check/Stub Vision (+46.0% Rollover AUM Retained, 0.00% 20% Withholding or Pre-Tax/Roth Commingling), DOL IB 96-1 + Rule of 55 Gate & SECURE 2.0 RMD / ERISA QJSA Spousal Notary Lock (+$642k/10k Calls)**: [EN](./docs/wealth-retirement-401k-rollover-erisa-pte-2020-02-rmd-beneficiary-voice-selection-faq.en.md) | [中文](./docs/wealth-retirement-401k-rollover-erisa-pte-2020-02-rmd-beneficiary-voice-selection-faq.md)
+569. **Higher Education, University Enrollment & Financial Aid (FERPA Parent-Disclosure Gate / FAFSA Verification Vision / Course Prerequisite DAG & 988 Crisis Bridge) Guide: 24/7 Multilingual + 2.0s FAFSA/Vaccine Vision Hold Release (-38.4% Summer Melt), Granular FERPA Scope Bitmap + 4-Digit PIN (0.00% Parent Grade Leaks), 12-Credit Full-Time F-1 SEVIS/Pell Lock & <1.5s CAPS/988 Bridge (+$560k/10k Calls)**: [EN](./docs/higher-education-university-enrollment-fafsa-ferpa-campus-crisis-counseling-voice-selection-faq.en.md) | [中文](./docs/higher-education-university-enrollment-fafsa-ferpa-campus-crisis-counseling-voice-selection-faq.md)
 
 ---
 

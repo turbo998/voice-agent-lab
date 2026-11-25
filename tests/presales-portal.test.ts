@@ -531,6 +531,7 @@ import {
   evaluateEnterpriseVoiceRagMcpZeroDeadAir2026Guard,
   evaluateEnterpriseVoiceSecurityPciDssQa2026Guard,
   evaluateGlobalDutyOfCareTravelRiskMedevacVoice2026Guard,
+  evaluateHigherEdUniversityFerpaFafsa988Voice2026Guard,
   evaluateMedtechMriCtCathlabRemoteServiceVoice2026Guard,
   evaluateMortgageOriginationEncompassTridServicingVoice2026Guard,
   evaluateMultinationalOmnichannelVoiceTranslation2026Guard,
@@ -556,11 +557,11 @@ test("bilingual READMEs, asset catalogs, and core SA whitepapers exist with clea
     },
     {
       relPath: "docs/asset-catalog.md",
-      mustContain: ["568 篇", "solution-architecture.md", "azure-speech-diarization-poc.md", "benchmark-cards.html", "voxcpm2-benchmark-cards.zh-CN.html", "voxcpm2-workbench.html"],
+      mustContain: ["569 篇", "solution-architecture.md", "azure-speech-diarization-poc.md", "benchmark-cards.html", "voxcpm2-benchmark-cards.zh-CN.html", "voxcpm2-workbench.html"],
     },
     {
       relPath: "docs/asset-catalog.en.md",
-      mustContain: ["568 Bilingual Guides", "solution-architecture.en.md", "azure-speech-diarization-poc.en.md", "benchmark-cards.html", "voxcpm2-benchmark-cards.html", "voxcpm2-workbench.html"],
+      mustContain: ["569 Bilingual Guides", "solution-architecture.en.md", "azure-speech-diarization-poc.en.md", "benchmark-cards.html", "voxcpm2-benchmark-cards.html", "voxcpm2-workbench.html"],
     },
     {
       relPath: "docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md",
@@ -620,13 +621,13 @@ test("bilingual READMEs, asset catalogs, and core SA whitepapers exist with clea
   }
 });
 
-test("568 Enterprise Voice AI selection guides maintain 1:1 zh-CN/en parity and exclude narrow RFC bloat", async () => {
+test("569 Enterprise Voice AI selection guides maintain 1:1 zh-CN/en parity and exclude narrow RFC bloat", async () => {
   const docEntries = await readdir(resolve(repoRoot, "docs"));
   const zhFaqFiles = docEntries.filter((f) => f.endsWith("-faq.md")).sort();
   const enFaqFiles = docEntries.filter((f) => f.endsWith("-faq.en.md")).sort();
 
-  assert.equal(zhFaqFiles.length, 568, `Expected 568 curated zh-CN selection guides, found ${zhFaqFiles.length}`);
-  assert.equal(enFaqFiles.length, 568, `Expected 568 curated English selection guides, found ${enFaqFiles.length}`);
+  assert.equal(zhFaqFiles.length, 569, `Expected 569 curated zh-CN selection guides, found ${zhFaqFiles.length}`);
+  assert.equal(enFaqFiles.length, 569, `Expected 569 curated English selection guides, found ${enFaqFiles.length}`);
 
   for (const zhFile of zhFaqFiles) {
     const expectedEn = zhFile.replace(/-faq\.md$/, "-faq.en.md");
@@ -6449,6 +6450,25 @@ test("deterministic enterprise guardrails enforce vertical industry safety (coho
   );
   assert.equal(
     wealthRetirement401kErisaPteRmd2026Guard.series65AdvisorPte202002TransferOrRonSpousalNotaryTriggered,
+    true
+  );
+
+  const higherEdUniversityFerpaFafsa988Voice2026Guard =
+    evaluateHigherEdUniversityFerpaFafsa988Voice2026Guard({
+      ferpaStudentOrAuthorizedProxyPinAndDomainScopeVerified: false,
+      courseChangeMaintainsAtLeast12CreditsAndPrerequisitesMet: false,
+      campusMentalHealth988DistressOrTitleIxSafetyPreemption: true,
+    });
+  assert.equal(
+    higherEdUniversityFerpaFafsa988Voice2026Guard.fafsaHoldReleaseAndScopedRecordAccessAuthorized,
+    false
+  );
+  assert.equal(
+    higherEdUniversityFerpaFafsa988Voice2026Guard.unconsentedParentGradeLeakOrUnder12CreditF1DropBlocked,
+    true
+  );
+  assert.equal(
+    higherEdUniversityFerpaFafsa988Voice2026Guard.zeroHoldCaps988BridgeOrDsoReducedCourseLoadTriggered,
     true
   );
 });

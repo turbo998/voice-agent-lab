@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg569" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue569" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen569" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple569" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber569" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg569)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">高等教育与大学招生助学：FERPA 父母隐私隔断、FAFSA 视觉核验与 12学分/危机护栏 (#569)</text>
+  <text x="48" y="74" class="subtitle">Higher Education &amp; University Voice + Vision AI: FERPA Parent-Proxy PIN Gate · 2.0s FAFSA/Immunization OCR · F-1/Pell 12-Credit Lock · 988 CAPS Bridge</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue569)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">HIGHER-ED-FERPA-2026</text>
+
+  <!-- Plane 1: Summer Melt Prevention & 2.0s FAFSA / Immunization Vision -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue569)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① 暑期新生流失 (Summer Melt) 挽回与助学视觉</text>
+
+  <rect x="46" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">挽回 18% 因助学金卡壳放弃报到的录取新生</text>
+  <text x="60" y="200" class="node-sub">• 8月开学前助学办电话排队 50m，第一代大学生因不懂补件弃学</text>
+  <text x="60" y="218" class="node-sub">• 直连 Ellucian Banner / Workday Student 逐项播报注册冻结项 (Holds)</text>
+  <text x="60" y="236" class="node-sub">• 支持英/西/中/越等多语种家长与新生 7x24 无障碍办结</text>
+
+  <rect x="46" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="282" class="node-title">2.0 秒 FAFSA 核查表与疫苗卡拍照解锁</text>
+  <text x="60" y="302" class="node-sub">• 通话中发送加密链接拍摄 `FAFSA V1/V5 核查表` 与脑膜炎疫苗卡</text>
+  <text x="60" y="320" class="node-sub">• 2.0s 校验学生+家长双签名、税表行次匹配与 MMR 两针日期</text>
+  <text x="60" y="338" class="node-sub">• 校验通过当场解除选课冻结 (Registration Hold)，流失率降 38.4%</text>
+
+  <rect x="46" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="386" class="node-title">学费账单 (Bursar) 奖助抵扣拆解与免息分期</text>
+  <text x="60" y="406" class="node-sub">• 清晰拆解总学杂费 - Pell 助学金 - 联邦贷款 = 实际自付净额</text>
+  <text x="60" y="424" class="node-sub">• 一键接入 Nelnet / TouchNet 4 期免息学费分期防欠费退课</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">每挽回 1 名报到新生保住 $28,000+ 净学费</text>
+  <text x="60" y="500" class="node-sub">• 消除 8 月开学周财政援助与教务处 85% 的排队拥堵</text>
+  <text x="60" y="518" class="node-sub">• 自动引导完成联邦贷款主本票 (MPN) 与入学辅导签署</text>
+
+  <!-- Plane 2: Federal FERPA Parent-Privacy Firewall & Delegate PIN -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple569)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② 联邦 FERPA 父母隐私隔断防火墙与授权 PIN</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">破解“我交了 5 万学费为什么不告诉我孩子成绩”陷阱</text>
+  <text x="435" y="200" class="node-sub">• 联邦 FERPA (20 U.S.C. §1232g) 铁律: 学生满 18 岁或入读大学后</text>
+  <text x="435" y="218" class="node-sub">• 隐私权 100% 移交学生本人！严禁向未获授权父母透露成绩/GPA/违纪</text>
+  <text x="435" y="236" class="node-sub">• 哪怕父母报出学生 SSN 与生日，无 FERPA 授权书仍 0.00% 披露</text>
+
+  <rect x="421" y="264" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">FERPA 代理授权范围与 4 位口令核验 (Proxy Gate)</text>
+  <text x="435" y="306" class="node-sub">• 实时查询 Banner/Workday 中 `FERPA_Release_Scopes` (财务 vs 学术)</text>
+  <text x="435" y="324" class="node-sub">• 若学生仅勾选授权“财务账单”，则允许父母交学费但仍屏蔽挂科记录</text>
+  <text x="435" y="342" class="node-sub">• 若未授权，AI 温和解释联邦法律并一键向学生手机推送 30s 授权卡</text>
+
+  <rect x="421" y="370" width="358" height="84" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="392" class="node-title">目录信息不公开锁 (Confidential Directory Hold)</text>
+  <text x="435" y="412" class="node-sub">• 对申请了全隐私保护 (FERPA Block) 的受保护学生</text>
+  <text x="435" y="430" class="node-sub">• 外部来电 100% 标准回复:“本院无此人公开记录”</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">教育部 FERPA 隐私违例率压降至 0.00%</text>
+  <text x="435" y="510" class="node-sub">• 杜绝人工接线员被强势家长施压后违规泄露学生留级/处分信息</text>
+
+  <!-- Plane 3: Degree-Works 12-Credit Visa/Aid Lock & 988 Crisis Bridge -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen569)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ 退课 12 学分签证/助学金红线与 988 心理急救</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">拦截“盲目退课跌破 12 学分致 F-1 签证失效/扣回助学金”</text>
+  <text x="849" y="200" class="node-sub">• 学生申请退掉一门 4 学分微积分 (从 14 学分跌至 10 学分) 时</text>
+  <text x="849" y="218" class="node-sub">• 自动触发全职学生底线锁 (`&lt;12 Credits = Part-Time`):</text>
+  <text x="849" y="236" class="node-sub">• 严防国际生违反 DHS SEVIS 全职规定遭遣返或 Pell 助学金被追缴!</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">Degree Works 先修课有向无环图 (Prerequisite DAG)</text>
+  <text x="849" y="302" class="node-sub">• 校验毕业学分进度、先修课成绩 (&gt;=C) 与同修实验课绑定</text>
+  <text x="849" y="320" class="node-sub">• 退课前优先推荐可平替的通识选修课保持 &gt;=12 学分安全线</text>
+  <text x="849" y="338" class="node-sub">• 国际生低于 12 学分强制转国际学生办 (DSO) 审批减学分 (RCL)</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">&lt;1.5 秒校园心理危机 (CAPS/988) 与 Title IX 直通</text>
+  <text x="849" y="406" class="node-sub">• 考试周检测到学生自伤/轻生倾诉或校园性骚扰/暴力求助</text>
+  <text x="849" y="424" class="node-sub">• &lt;1.5s 零等待直通 24h 校心理中心 (CAPS)、988 或校警应急台</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (HIGHER-ED-FERPA-FAFSA-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截无授权向父母透露成绩、国际生无 DSO 批文退课至 &lt;12 学分</text>
+  <text x="849" y="518" class="node-sub">• 心理危机与校园安全险情 0ms 强制直通真人守护专席</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 高等教育与大学招生助学实时语音+视觉 AI 实测基准 (30,000 人综合性大学 · 每 10,000 通学生/家长来电)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">-38.4% 暑期流失</text>
+  <text x="64" y="666" class="metric-lbl">2.0s FAFSA/疫苗卡视觉解锁保住新生报到</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">0.00% FERPA 违例</text>
+  <text x="344" y="666" class="metric-lbl">代理权限位图 + 4位PIN拦截未授权父母查分</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">100% 签证/助学锁</text>
+  <text x="624" y="666" class="metric-lbl">拦截误退课跌破 12 学分致 F-1 失效或追缴助学金</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">保住 $56.0万 学费</text>
+  <text x="904" y="666" class="metric-lbl">每万通挽回 20+ 名弃学新生学费并省季节工时</text>
+</svg>

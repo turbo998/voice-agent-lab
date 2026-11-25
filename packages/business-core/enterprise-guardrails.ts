@@ -15835,6 +15835,36 @@ export function evaluateWealthRetirement401kErisaPteRmd2026Guard(input: {
   };
 }
 
+export interface HigherEdUniversityFerpaFafsa988Voice2026Evaluation {
+  policyCode: "HIGHER-ED-UNIVERSITY-FERPA-FAFSA-988-VOICE-2026-01";
+  fafsaHoldReleaseAndScopedRecordAccessAuthorized: boolean;
+  unconsentedParentGradeLeakOrUnder12CreditF1DropBlocked: boolean;
+  zeroHoldCaps988BridgeOrDsoReducedCourseLoadTriggered: boolean;
+}
+
+/**
+ * Deterministic Higher Education, University Enrollment & Financial Aid (Federal FERPA 20 USC 1232g Parent-Proxy Scope Bitmap + 4-Digit PIN Gate, 2.0s FAFSA Verification & Immunization Card Vision Hold Release, 12-Credit Full-Time F-1 SEVIS/Pell Lock & <1.5s CAPS/988 Crisis Pre-Emption) Guard (`HIGHER-ED-UNIVERSITY-FERPA-FAFSA-988-VOICE-2026-01`).
+ */
+export function evaluateHigherEdUniversityFerpaFafsa988Voice2026Guard(input: {
+  ferpaStudentOrAuthorizedProxyPinAndDomainScopeVerified: boolean;
+  courseChangeMaintainsAtLeast12CreditsAndPrerequisitesMet: boolean;
+  campusMentalHealth988DistressOrTitleIxSafetyPreemption: boolean;
+}): HigherEdUniversityFerpaFafsa988Voice2026Evaluation {
+  return {
+    policyCode: "HIGHER-ED-UNIVERSITY-FERPA-FAFSA-988-VOICE-2026-01",
+    fafsaHoldReleaseAndScopedRecordAccessAuthorized:
+      input.ferpaStudentOrAuthorizedProxyPinAndDomainScopeVerified &&
+      input.courseChangeMaintainsAtLeast12CreditsAndPrerequisitesMet &&
+      !input.campusMentalHealth988DistressOrTitleIxSafetyPreemption,
+    unconsentedParentGradeLeakOrUnder12CreditF1DropBlocked:
+      !input.ferpaStudentOrAuthorizedProxyPinAndDomainScopeVerified ||
+      !input.courseChangeMaintainsAtLeast12CreditsAndPrerequisitesMet ||
+      input.campusMentalHealth988DistressOrTitleIxSafetyPreemption,
+    zeroHoldCaps988BridgeOrDsoReducedCourseLoadTriggered:
+      input.campusMentalHealth988DistressOrTitleIxSafetyPreemption,
+  };
+}
+
 
 
 
