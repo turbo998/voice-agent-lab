@@ -15205,6 +15205,36 @@ export function evaluateEnterpriseVoiceEvalopsAcousticCiOtelCanary2026Guard(inpu
   };
 }
 
+export interface LegacyPbxCcaasCiscoAvayaGenesysTeamsSbc2026Evaluation {
+  policyCode: "LEGACY-PBX-CCAAS-CISCO-AVAYA-GENESYS-TEAMS-SBC-2026-01";
+  sbcSidecarWarmTransferAndOutOfBandScreenPopAuthorized: boolean;
+  inBandUuiOver128BytesOrTromboneIdleAiLoopBlocked: boolean;
+  sbc50msFailOpenBypassOrMediaReAnchorTriggered: boolean;
+}
+
+/**
+ * Deterministic Legacy PBX & CCaaS Sidecar Integration (Enterprise SBC Direct SIP Trunk, 36-Byte UUID + <10ms Out-of-Band Redis CTI Screen-Pop, Anti-Trombone Media Re-Anchoring & <50ms SBC Fail-Open Bypass) Guard (`LEGACY-PBX-CCAAS-CISCO-AVAYA-GENESYS-TEAMS-SBC-2026-01`).
+ */
+export function evaluateLegacyPbxCcaasCiscoAvayaGenesysTeamsSbc2026Guard(input: {
+  inBandSignalingCappedTo36ByteUuidAndOutOfBandRedisHydrated: boolean;
+  sbcMediaReAnchoredOnHumanTransferWithoutTromboneLoop: boolean;
+  cloudAiGatewayTimeoutOrMultiTranscodeCascadeDetected: boolean;
+}): LegacyPbxCcaasCiscoAvayaGenesysTeamsSbc2026Evaluation {
+  return {
+    policyCode: "LEGACY-PBX-CCAAS-CISCO-AVAYA-GENESYS-TEAMS-SBC-2026-01",
+    sbcSidecarWarmTransferAndOutOfBandScreenPopAuthorized:
+      input.inBandSignalingCappedTo36ByteUuidAndOutOfBandRedisHydrated &&
+      input.sbcMediaReAnchoredOnHumanTransferWithoutTromboneLoop &&
+      !input.cloudAiGatewayTimeoutOrMultiTranscodeCascadeDetected,
+    inBandUuiOver128BytesOrTromboneIdleAiLoopBlocked:
+      !input.inBandSignalingCappedTo36ByteUuidAndOutOfBandRedisHydrated ||
+      !input.sbcMediaReAnchoredOnHumanTransferWithoutTromboneLoop ||
+      input.cloudAiGatewayTimeoutOrMultiTranscodeCascadeDetected,
+    sbc50msFailOpenBypassOrMediaReAnchorTriggered:
+      input.cloudAiGatewayTimeoutOrMultiTranscodeCascadeDetected,
+  };
+}
+
 
 
 

@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 547 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 547 Guides](#-2-547-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 548 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 548 Guides](#-2-548-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 547 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 548 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (524 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (525 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -621,6 +621,7 @@ flowchart LR
 545. **Enterprise Meeting Intelligence, Live Simultaneous Interpretation & Grounded Jira/CRM Sync Guide: Azure Live Interpreter + Personal Voice ($16.80/hr vs $4,500/hr Booth, -99.6% TCO), SOV Dynamic Wait-k Polarity Lock & Scale AST Verifier (0.00% Negation Flips), Explicit '@Atlas' Wake + Attendee ACL Intersection (0.00% Guest Leaks) & 1.9% DER Hybrid Room Diarization + Staged Adaptive-Card Sync (-$342k/10k Hrs)**: [EN](./docs/enterprise-meeting-intelligence-teams-zoom-live-interpreter-action-item-crm-sync-selection-faq.en.md) | [中文](./docs/enterprise-meeting-intelligence-teams-zoom-live-interpreter-action-item-crm-sync-selection-faq.md)
 546. **Enterprise Multi-Agent Voice Swarm (LiveKit Agents / Pipecat Flows / LangGraph) & Bitemporal Memory Graph (Zep / Mem0) Guide: Scoped <=6-Tool Specialist Nodes (61.0% → 97.6% Tool Accuracy, -58.4% Prompt Burn), 42ms Silent Single-Persona Handoff + Compound Intent Stack & <=2-Hop Anti-Ping-Pong Breaker + <5ms Ringback <=250-Token Bitemporal Memory Card (99.4% Temporal Accuracy, -$280k/10k Calls)**: [EN](./docs/enterprise-multi-agent-voice-swarm-subagent-handoff-memory-graph-selection-faq.en.md) | [中文](./docs/enterprise-multi-agent-voice-swarm-subagent-handoff-memory-graph-selection-faq.md)
 547. **Enterprise Voice EvalOps (Coval / Cekura / Roark / Foundry Eval), 7-Hop OpenTelemetry Flamegraph & Sticky Canary Rollout Guide: 500-Call Noisy Acoustic Simulation CI in 4.2m/$18.50 (-96.9% Escaped Voice Bugs), Unified `voice.turn.id` 7-Hop Trace Flamegraph (4.5h → 90s MTTR) & Call-ID Sticky Canary + <15s 3-Metric LKG Auto-Rollback (-$246k/Qtr)**: [EN](./docs/enterprise-voice-evalops-acoustic-ci-opentelemetry-canary-rollout-selection-faq.en.md) | [中文](./docs/enterprise-voice-evalops-acoustic-ci-opentelemetry-canary-rollout-selection-faq.md)
+548. **Legacy PBX & CCaaS (Cisco UCCE / Avaya Aura / Genesys Cloud / Amazon Connect / Teams Phone) Zero-Downtime Voice AI Integration Guide: 2-Week Zero-LNP Enterprise SBC Sidecar (<35ms Bridge, 11.4% → 3.1% Digit WER), 36B UUID + <10ms Out-of-Band Redis CTI Screen-Pop (0.00% 128B UUI Truncation, -48s AHT), Anti-Trombone Media Re-Anchor & <50ms SBC Fail-Open (-$312k/10k Calls)**: [EN](./docs/legacy-pbx-ccaas-cisco-avaya-genesys-teams-sbc-voice-integration-selection-faq.en.md) | [中文](./docs/legacy-pbx-ccaas-cisco-avaya-genesys-teams-sbc-voice-integration-selection-faq.md)
 
 ---
 

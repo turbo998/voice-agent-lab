@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **547 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **548 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（547 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（548 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -66,7 +66,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（524 篇）
+### 3.3 高价值企业行业解决方案蓝图（525 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -591,3 +591,4 @@
 545. **跨国企业实时会议同声传译（Live Simultaneous Interpretation）、`Teams / Zoom` 参会语音 Agent 与 `Jira / CRM` 零幻觉纪要选型指南（`Azure Live Interpreter + Personal Voice` 将 6 语种同传从 `$4,500/h` 压至 `$16.80/h` 降本 `99.6%`、日/德/韩 `SOV` 句尾否定词动态 `Wait-k` 闭合锁与万/亿量纲 AST 校验实现 `0.00%` 极性反转、`"@Atlas"` 显式唤醒配参会人最小权限交集锁实现外部来宾在场 `0.00%` 底价外泄、以及 `1.9% DER` 混合会议室声纹归因与两阶段 `Adaptive Card` 审批写库每万小时省 `$34.2万`）方案**：[中文](./enterprise-meeting-intelligence-teams-zoom-live-interpreter-action-item-crm-sync-selection-faq.md) | [EN](./enterprise-meeting-intelligence-teams-zoom-live-interpreter-action-item-crm-sync-selection-faq.en.md)
 546. **企业多智能体实时语音协同（Multi-Agent Voice Swarm：LiveKit / Pipecat / LangGraph）与跨会话长期记忆图谱（`Zep / Mem0`）选型指南（将万字巨型 Prompt 拆解为单专家节点 `<=6` 工具使调用准确率从 `61.0%` 提至 `97.6%` 并省 `58.4%` Token、`42ms` 进程内同音色静默交接 + 复合意图压栈与 `<=2跳` 防乒乓死循环熔断、振铃期 `<5ms` 预热 `<=250 Token` 双时态记忆卡消除每轮 `680ms` 延迟并将事实准确率提至 `99.4%`、以及验身前家庭共号隐私隔离每万通省 `$28.0万`）方案**：[中文](./enterprise-multi-agent-voice-swarm-subagent-handoff-memory-graph-selection-faq.md) | [EN](./enterprise-multi-agent-voice-swarm-subagent-handoff-memory-graph-selection-faq.en.md)
 547. **企业实时语音 AI 评测工程（Voice EvalOps：Coval / Cekura / Roark / Foundry Eval）、7 跳 OpenTelemetry 延迟火焰图与金丝雀灰度发布选型指南（`500通` 并发带 `5dB SNR` 底噪与打断声学仿真在 `4.2分钟 / $18.50` 内拦截 `96.9%` 纯文本漏检故障、统一 `voice.turn.id` 7 跳 OTel 火焰图将慢通话排障 MTTR 从 `4.5小时` 压至 `90秒`、以及 `Call-ID` 会话粘性金丝雀配三维声学异常 `<15s` 自动回滚 LKG 每季省 `$24.6万`）方案**：[中文](./enterprise-voice-evalops-acoustic-ci-opentelemetry-canary-rollout-selection-faq.md) | [EN](./enterprise-voice-evalops-acoustic-ci-opentelemetry-canary-rollout-selection-faq.en.md)
+548. **存量呼叫中心与办公电话网（`Cisco UCCE / Avaya Aura / Genesys Cloud / Amazon Connect / Teams Phone`）零携号转网接入语音 AI 选型指南（企业 SBC 旁路 SIP Trunk 直连 2 周上线且 `<35ms` 单次转码将数字识别 WER 从 `11.4%` 压至 `3.1%`、带内 `36-Byte UUID` + 带外 `<10ms` Redis CTI 弹屏桥破除 `128B UUI` 截断每通省 `48秒` 重复盘问、转人工媒体重锚定 0ms 销毁 AI 空转计费、以及 `<50ms` SBC Fail-Open 硬件级逃生每万通省 `$31.2万`）方案**：[中文](./legacy-pbx-ccaas-cisco-avaya-genesys-teams-sbc-voice-integration-selection-faq.md) | [EN](./legacy-pbx-ccaas-cisco-avaya-genesys-teams-sbc-voice-integration-selection-faq.en.md)
