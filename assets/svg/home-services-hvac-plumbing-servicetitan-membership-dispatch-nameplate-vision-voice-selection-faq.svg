@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg562" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue562" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen562" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple562" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber562" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg562)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">家庭上门服务（HVAC 暖通/水电/ServiceTitan）：设备铭牌视觉、换新分流与派工架构 (#562)</text>
+  <text x="48" y="74" class="subtitle">Home Services &amp; HVAC Voice + Vision AI: ServiceTitan Zone/Skill Matrix · 1.8s Condenser Nameplate OCR · &gt;12-Yr Replacement Routing · Homeowner Gate</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue562)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">HVAC-SERVICETITAN-2026</text>
+
+  <!-- Plane 1: ServiceTitan Capacity, Equipment Age & Replacement Routing -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue562)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① ServiceTitan 机龄分流与热浪产能动态调优</text>
+
+  <rect x="46" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">&gt;=12 年高龄空调/热水器自动分流王牌技师</text>
+  <text x="60" y="200" class="node-sub">• 接通 &lt;100ms 查 ServiceTitan 历史工单与房产建筑年份/铭牌</text>
+  <text x="60" y="218" class="node-sub">• 识别机龄 &gt;=12 年 (R-22/老旧机组) 故障率高且具 $12,500 换新潜力</text>
+  <text x="60" y="236" class="node-sub">• 自动锁定高转化 Turnover 王牌技师与 Comfort Advisor 档期</text>
+
+  <rect x="46" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="282" class="node-title">酷暑/极寒洪峰动态容量保护 (Surge Capacity)</text>
+  <text x="60" y="302" class="node-sub">• 40°C 热浪来袭时自动收紧常规 $79 保养配额，100% 保急修与换新</text>
+  <text x="60" y="320" class="node-sub">• 按邮政编码片区 (Zone Clustering) 聚合排单，减少技师跨城空驶</text>
+  <text x="60" y="338" class="node-sub">• 挽回晚间与周末漏接的 41% 高优急修电话</text>
+
+  <rect x="46" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="386" class="node-title">$199/年 维保会员卡顺带转化 (Club Membership)</text>
+  <text x="60" y="406" class="node-sub">• “今日上门诊断费 $99，若加入 $199 全年会员可当场免本次上门费”</text>
+  <text x="60" y="424" class="node-sub">• 38.4% 首次报修客户当场转化为高粘性年度复购会员</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">燃气泄漏 / 污水倒灌 0ms 安全红线</text>
+  <text x="60" y="500" class="node-sub">• 闻到臭鸡蛋燃气味或一氧化碳报警立即指令撤离拨打 911</text>
+  <text x="60" y="518" class="node-sub">• 全屋主下水管道反水优先插入当日 Emergency 保留槽位</text>
+
+  <!-- Plane 2: 1.8s Outdoor Condenser Nameplate & Thermostat Error Vision -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple562)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② 1.8s 室外机铭牌解码与温控器报错视觉预诊</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">1.8 秒风化金属铭牌拍照解码 (Serial Age Decoder)</text>
+  <text x="435" y="200" class="node-sub">• 短信推送免安装相机链接，拍室外机金属铭牌与温控器屏幕</text>
+  <text x="435" y="218" class="node-sub">• 自动解码 Carrier/Trane/Lennox 序列号精确出厂年份、吨位与冷媒</text>
+  <text x="435" y="236" class="node-sub">• 自动联查原厂压缩机 10 年保修状态，精准写入 ServiceTitan</text>
+
+  <rect x="421" y="264" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">车载备件前置装车 (71.0% → 92.6% 首次修复率)</text>
+  <text x="435" y="306" class="node-sub">• 痛点: 28% 上门因车上没带特定品牌主板/点火器被迫二次往返</text>
+  <text x="435" y="324" class="node-sub">• 结合温控器错误码 (`Ecobee/Nest E74`) + 铭牌型号预判高概率故障件</text>
+  <text x="435" y="342" class="node-sub">• 早晨发车前仓库自动将该型号主板配入对应技师服务车</text>
+
+  <rect x="421" y="370" width="358" height="84" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="392" class="node-title">过滤 22% 空跑假故障 (Air Filter / Breaker Check)</text>
+  <text x="435" y="412" class="node-sub">• 相机指导查看配电箱空开是否跳闸、温控器是否误设成了 Heat</text>
+  <text x="435" y="430" class="node-sub">• 避免高峰期宝贵的高级技师花 2 小时跑去帮客户合电闸</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">阁楼/地下室狭窄安装空间视觉预勘</text>
+  <text x="435" y="510" class="node-sub">• 换新报价前拍一张内机通道照，提前备好吊装人力</text>
+
+  <!-- Plane 3: Homeowner Deed Check & Two-Decision-Maker Rule -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen562)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ 产权屋主核验与“双决策人到场”成单铁律</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">拦截租客无授权私叫维修拒付账单 (Tenant Gate)</text>
+  <text x="849" y="200" class="node-sub">• 实时比对市政房产税产权登记库 (County Assessor Deed Data)</text>
+  <text x="849" y="218" class="node-sub">• 若来电人为租客或租管物业，强制要求房东短信授权 + 绑卡预授信</text>
+  <text x="849" y="236" class="node-sub">• 100% 消灭技师修完后“租客不付钱、房东不认账”坏账</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">$14,000 整机换新“双决策人同在场”排期锁</text>
+  <text x="849" y="302" class="node-sub">• 行业铁律: 仅一方配偶在场 (One-Legger) 换新签单率仅 14% (双人达 62%)</text>
+  <text x="849" y="320" class="node-sub">• 预约免费整机更换勘测与金融分期方案时，温和确认共同产权人在场时段</text>
+  <text x="849" y="338" class="node-sub">• 将高价值 Comfort Advisor 单次上门成交率提升 2.8 倍</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">技师在途照片简历与 GPS 轨迹主动推送</text>
+  <text x="849" y="406" class="node-sub">• 出发前 30 分钟自动外呼确认屋主在家并发送技师背景认证卡</text>
+  <text x="849" y="424" class="node-sub">• 吃闭门羹空跑率 (No-Show / Not-Home) 降至 0.8%</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (HOME-SERVICES-HVAC-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截租客无房东授权派车、高龄机错派学徒与燃气泄漏延误</text>
+  <text x="849" y="518" class="node-sub">• 派单前强制绑定诊断上门费预授信或会员免单核销</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 家庭上门服务（HVAC 暖通/水电）实时语音+视觉 AI 实测基准 (100 辆服务车队 · 每 10,000 通报修来电)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">71.0% → 92.6%</text>
+  <text x="64" y="666" class="metric-lbl">1.8s 铭牌解码备件预装车拉升首次修复率</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">+$215 / 单产值</text>
+  <text x="344" y="666" class="metric-lbl">&gt;=12 年高龄机精准分流王牌技师与双人换新</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">38.4% 会员转化</text>
+  <text x="624" y="666" class="metric-lbl">免本次 $99 上门费顺带锁定 $199/年维保会员</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">创效 $58.2万 / 万通</text>
+  <text x="904" y="666" class="metric-lbl">整机换新转化 + 砍掉二次往返空跑 + 零租客坏账</text>
+</svg>

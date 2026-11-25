@@ -15625,6 +15625,36 @@ export function evaluateDentalOrthodonticsDsoCdtChairfillVoice2026Guard(input: {
   };
 }
 
+export interface HomeServicesHvacPlumbingServicetitanVision2026Evaluation {
+  policyCode: "HOME-SERVICES-HVAC-PLUMBING-SERVICETITAN-VISION-2026-01";
+  servicetitanTruckDispatchAndPartsPreStageAuthorized: boolean;
+  unapprovedTenantDispatchOrOneLeggerReplacementOrGasDelayBlocked: boolean;
+  zeroMsGasEvacuation911OrTurnoverTechEscalationTriggered: boolean;
+}
+
+/**
+ * Deterministic Home Services, HVAC, Plumbing & Electrical (County Assessor Homeowner/Landlord Gate, 1.8s Nameplate Serial Age Decoder, >=12-Yr Turnover Tech + Two-Decision-Maker Rule & 0ms Gas/CO Evacuation) Guard (`HOME-SERVICES-HVAC-PLUMBING-SERVICETITAN-VISION-2026-01`).
+ */
+export function evaluateHomeServicesHvacPlumbingServicetitanVision2026Guard(input: {
+  homeownerDeedOrLandlordCardHoldVerifiedAndNameplateDecoded: boolean;
+  twoDecisionMakersConfirmedFor12YrReplacementQuote: boolean;
+  gasOdorCoAlarmDetectedOrUnapprovedTenantCall: boolean;
+}): HomeServicesHvacPlumbingServicetitanVision2026Evaluation {
+  return {
+    policyCode: "HOME-SERVICES-HVAC-PLUMBING-SERVICETITAN-VISION-2026-01",
+    servicetitanTruckDispatchAndPartsPreStageAuthorized:
+      input.homeownerDeedOrLandlordCardHoldVerifiedAndNameplateDecoded &&
+      input.twoDecisionMakersConfirmedFor12YrReplacementQuote &&
+      !input.gasOdorCoAlarmDetectedOrUnapprovedTenantCall,
+    unapprovedTenantDispatchOrOneLeggerReplacementOrGasDelayBlocked:
+      !input.homeownerDeedOrLandlordCardHoldVerifiedAndNameplateDecoded ||
+      !input.twoDecisionMakersConfirmedFor12YrReplacementQuote ||
+      input.gasOdorCoAlarmDetectedOrUnapprovedTenantCall,
+    zeroMsGasEvacuation911OrTurnoverTechEscalationTriggered:
+      input.gasOdorCoAlarmDetectedOrUnapprovedTenantCall,
+  };
+}
+
 
 
 
