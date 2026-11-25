@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg538" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent538" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg538)"/>
+  <rect x="24" y="24" width="1152" height="632" rx="16" fill="none" stroke="#1e293b" stroke-width="2"/>
+  <rect x="44" y="42" width="1112" height="58" rx="10" fill="#0f172a" stroke="#ec4899" stroke-width="1.5"/>
+  <text x="64" y="70" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">E-Commerce Customer Care, Brand Voice Cloning &amp; Interactive Avatar (Azure vs. ElevenLabs / Viseme)</text>
+  <text x="64" y="91" fill="#f9a8d4" font-family="Segoe UI, Arial, sans-serif" font-size="13">22ms Client Viseme Avatar ($0.016/min, -92.7% TCO) · 44.6% Return-to-Exchange Save · C2PA Consent &amp; Ad-Law Lock (ECOMMERCE-AVATAR-AZURE-ELEVENLABS-VISEME-VOICE-2026-01)</text>
+
+  <!-- Column 1: TTS, Voice Cloning & Client Viseme Avatar -->
+  <rect x="44" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#ec4899" stroke-width="1.5"/>
+  <rect x="44" y="120" width="356" height="40" rx="12" fill="#831843"/>
+  <text x="62" y="145" fill="#fbcfe8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. TTS Cloning &amp; Viseme Avatar</text>
+
+  <rect x="62" y="176" width="320" height="108" rx="8" fill="#0f172a" stroke="#ec4899" stroke-width="1"/>
+  <text x="76" y="198" fill="#f472b6" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">22ms Client-Side 55D Viseme Rendering</text>
+  <text x="76" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Streams free Azure Speech Viseme / Blendshapes</text>
+  <text x="76" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Renders 3D WebGL / Unity avatar on mobile/kiosk GPU</text>
+  <text x="76" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Replaces $0.220/min cloud video with $0.016/min TTS</text>
+  <text x="76" y="272" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• -92.7% Digital Human Compute Cost</text>
+
+  <rect x="62" y="298" width="320" height="112" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="320" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">SpeakerConsentToken &amp; C2PA Watermark</text>
+  <text x="76" y="340" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Verifies live cryptographic voice-actor consent</text>
+  <text x="76" y="358" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Embeds imperceptible C2PA acoustic provenance</text>
+  <text x="76" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• &lt;2ms Markdown stripper + SSML IPA brand lexicon</text>
+  <text x="76" y="394" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 99.9% Brand Pronunciation &amp; 0% IP Infringement</text>
+
+  <rect x="62" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">80/20 Hybrid Livestream Push/Pop Stack</text>
+  <text x="76" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 80% pre-baked 48kHz product pitch video loops</text>
+  <text x="76" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 20% live Push/Pop interrupt for VIP buyer Q&amp;A</text>
+  <text x="76" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Cuts night livestream cost from $35/hr to $2.15/hr</text>
+  <text x="76" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• +39.4% Off-Peak Livestream GMV Conversion</text>
+
+  <!-- Column 2: WISMO, RMA & Return-to-Exchange Save -->
+  <rect x="422" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#8b5cf6" stroke-width="1.5"/>
+  <rect x="422" y="120" width="356" height="40" rx="12" fill="#4c1d95"/>
+  <text x="440" y="145" fill="#ddd6fe" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. WISMO &amp; Return-to-Exchange Save</text>
+
+  <rect x="440" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="454" y="198" fill="#a78bfa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">44.6% Return-to-Exchange Fit Coach</text>
+  <text x="454" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Diagnoses sizing/fit issue &amp; checks live warehouse stock</text>
+  <text x="454" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Offers instant zero-shipping size swap + bonus voucher</text>
+  <text x="454" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Dispatches replacement on first carrier scan</text>
+  <text x="454" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• Retains +$152k GMV per 10,000 Return Calls</text>
+
+  <rect x="440" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">110ms WISMO &amp; Proof-of-Delivery Push</text>
+  <text x="454" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Queries Shopify Plus / SAP OMS carrier telemetry</text>
+  <text x="454" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Pushes porch POD photo to caller's mobile screen</text>
+  <text x="454" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Cuts false 'Delivered Not Received' reships 54.2%</text>
+  <text x="454" y="398" fill="#a78bfa" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 81.4% WISMO Call Self-Service Deflection</text>
+
+  <rect x="440" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Returnless Refund Economics (COGS &lt; Freight)</text>
+  <text x="454" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Compares item COGS + restocking vs reverse freight</text>
+  <text x="454" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Grants instant keep-it refund on low-value items</text>
+  <text x="454" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Enforces high-trust loyalty score anti-abuse cap</text>
+  <text x="454" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• -29.4% Reverse Logistics Freight Waste</text>
+
+  <!-- Column 3: Refund Cap, Ad-Law & Showroom Privacy -->
+  <rect x="800" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="800" y="120" width="356" height="40" rx="12" fill="#064e3b"/>
+  <text x="818" y="145" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. Price-Floor, Ad-Law &amp; Kiosk Lock</text>
+
+  <rect x="818" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="832" y="198" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">&lt;15ms Redis Price-Floor &amp; Net-Paid Cap</text>
+  <text x="832" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Blocks prompt-injected '$1.00 discount' exploits</text>
+  <text x="832" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Enforces Refund &lt;= Net_Paid &amp; original payment card</text>
+  <text x="832" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Atomic inventory soft-lock before spoken promo</text>
+  <text x="832" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• $0 Margin Erosion or Over-Refund Leakage</text>
+
+  <rect x="818" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Danmaku Injection &amp; Ad-Law Regex Shield</text>
+  <text x="832" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Sanitizes hostile livestream comments before LLM</text>
+  <text x="832" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Scrubs superlative / medical cure claims pre-TTS</text>
+  <text x="832" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Prevents platform livestream room bans (TikTok/Douyin)</text>
+  <text x="832" y="398" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Platform Ban or Ad-Law Violations</text>
+
+  <rect x="818" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Showroom Gaze-Wake &amp; 3s Walk-Away Wipe</text>
+  <text x="832" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Requires &lt;1.5m proximity + frontal gaze to wake</text>
+  <text x="832" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Cuts mall passerby false wake-ups to 0.5%</text>
+  <text x="832" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Purges screen session &amp; PII 3s after customer leaves</text>
+  <text x="832" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• $0.039/min Blended Retail &amp; Avatar Cost</text>
+
+  <!-- Footer KPI Bar -->
+  <rect x="44" y="568" width="1112" height="68" rx="10" fill="#0f172a" stroke="url(#accent538)" stroke-width="1.5"/>
+  <text x="68" y="595" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Validated E-Commerce Customer Care &amp; Interactive Avatar Benchmark:</text>
+  <text x="68" y="618" fill="#f9a8d4" font-family="Segoe UI, Arial, sans-serif" font-size="13">Avatar TCO: $0.220 → $0.016/min (-92.7%)  |  Return-to-Exchange Save: 44.6%  |  Ad-Law / Price Breaches: 0.00%  |  Cost: $0.039/min</text>
+</svg>

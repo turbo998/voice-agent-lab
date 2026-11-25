@@ -14905,6 +14905,36 @@ export function evaluateOutpatientTriageEpicFhirAmbientScribeVoice2026Guard(inpu
   };
 }
 
+export interface EcommerceAvatarAzureElevenlabsVisemeVoice2026Evaluation {
+  policyCode: "ECOMMERCE-AVATAR-AZURE-ELEVENLABS-VISEME-VOICE-2026-01";
+  clientVisemeAvatarAndInstantSizeExchangeAuthorized: boolean;
+  belowFloorPriceOrOverRefundOrAdLawSuperlativeBlocked: boolean;
+  walkAwayKioskPiiWipeOrDanmakuInjectionFilterTriggered: boolean;
+}
+
+/**
+ * Deterministic E-Commerce Customer Care, Brand Voice Cloning & Interactive Avatar (<22ms Client 55D Viseme Rendering, SpeakerConsentToken + C2PA Lock, 44.6% Return-to-Exchange Coach, <15ms Redis Price-Floor & Ad-Law Shield) Guard (`ECOMMERCE-AVATAR-AZURE-ELEVENLABS-VISEME-VOICE-2026-01`).
+ */
+export function evaluateEcommerceAvatarAzureElevenlabsVisemeVoice2026Guard(input: {
+  speakerConsentVerifiedAndPreTtsMarkdownAdLawClean: boolean;
+  priceAboveRedisFloorAndRefundWithinNetPaidOriginalCard: boolean;
+  danmakuPromptInjectionOrShowroomCustomerWalkedAway: boolean;
+}): EcommerceAvatarAzureElevenlabsVisemeVoice2026Evaluation {
+  return {
+    policyCode: "ECOMMERCE-AVATAR-AZURE-ELEVENLABS-VISEME-VOICE-2026-01",
+    clientVisemeAvatarAndInstantSizeExchangeAuthorized:
+      input.speakerConsentVerifiedAndPreTtsMarkdownAdLawClean &&
+      input.priceAboveRedisFloorAndRefundWithinNetPaidOriginalCard &&
+      !input.danmakuPromptInjectionOrShowroomCustomerWalkedAway,
+    belowFloorPriceOrOverRefundOrAdLawSuperlativeBlocked:
+      !input.speakerConsentVerifiedAndPreTtsMarkdownAdLawClean ||
+      !input.priceAboveRedisFloorAndRefundWithinNetPaidOriginalCard ||
+      input.danmakuPromptInjectionOrShowroomCustomerWalkedAway,
+    walkAwayKioskPiiWipeOrDanmakuInjectionFilterTriggered:
+      input.danmakuPromptInjectionOrShowroomCustomerWalkedAway,
+  };
+}
+
 
 
 

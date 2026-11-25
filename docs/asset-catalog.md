@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **537 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **538 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（537 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（538 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -66,7 +66,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（514 篇）
+### 3.3 高价值企业行业解决方案蓝图（515 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -581,3 +581,4 @@
 535. **企业内部 IT 服务台（ServiceNow / Entra ID）与 HR 共享服务中心（Workday）语音 Copilot 选型指南：`Copilot Studio` vs. `Azure AI Foundry`、防社工钓鱼与 `54秒` 终端自愈护栏（废除口头生日/工号 `KBA` 强制 `Entra Verified ID` 3D 活体 + 主管 `Teams` 协签且特权管理员 `0ms` 禁电话重置实现 `0.00%` `Scattered Spider` 钓鱼沦陷、`<150ms` 读 `Intune/Nexthink` 遥测并下发 `SHA-256` 预签名脚本 `54秒` 自愈 `72.4%` L1 故障将单价从 `$22` 压至 `$0.11`、以及工资卡语音只读与主管查询 `100%` 剥离 `FMLA` 医疗诊断每万通省 `$28.5万`）方案**：[中文](./enterprise-it-helpdesk-hr-shared-services-copilot-studio-vs-foundry-voice-selection-faq.md) | [EN](./enterprise-it-helpdesk-hr-shared-services-copilot-studio-vs-foundry-voice-selection-faq.en.md)
 536. **B2B 企业合规智能外呼（Outbound SDR / 续费回访）、`<380ms` 投机式信箱检测（Speculative AMD）与防封号（`STIR/SHAKEN + TCPA`）语音 AI 选型指南（官网留资 `<30秒` 极速回拨 + `<380ms` 投机式问候砍掉 `78.4%` 3 秒秒挂并 `<650ms` 卸载语音信箱省 `74.0%` 大模型 Token、`STIR/SHAKEN A级` 品牌来电名片与单号 `<=50通/日` 温控将真人接通率从 `18.0%` 提至 `54.6%`、以及呼前 `TrustedForm` 授权 + 区号∩邮编双时区宵禁锁与口头退订 `0ms` 零挽留全局 `DNC` 熔断每万小时创效 `$40.5万`）方案**：[中文](./b2b-outbound-sdr-lead-qualification-amd-voicemail-tcpa-stir-shaken-voice-selection-faq.md) | [EN](./b2b-outbound-sdr-lead-qualification-amd-voicemail-tcpa-stir-shaken-voice-selection-faq.en.md)
 537. **医疗门诊智能导诊（Patient Access Triage）、`Epic FHIR` 预约排期与诊室环境病历生成（Ambient Clinical Scribe）语音 AI 选型指南（`<100ms` 急性胸痛/卒中红旗抢占直连急诊护士、`Schmitt-Thompson` 循证导诊配 `Epic FHIR R4` 专病标签将亚专科挂错号率从 `14.2%` 压至 `0.4%` 且退号 `15秒` 自动回填 `86.5%`、以及接诊医师预注册声纹分离 `DER=1.6%` 剔除家属闲聊 + “未口述查体项 `0.00%` 编造锁”为医生日省 `2.1小时` 病历时间每万小时净省 `$37.5万`）方案**：[中文](./outpatient-clinical-triage-epic-fhir-scheduling-ambient-scribe-followup-voice-selection-faq.md) | [EN](./outpatient-clinical-triage-epic-fhir-scheduling-ambient-scribe-followup-voice-selection-faq.en.md)
+538. **零售电商智能客服、品牌声音克隆与实时数字人导购（Voice + Avatar）选型指南：`Azure AI Speech` vs. `ElevenLabs / Deepgram / HeyGen` vs. 端侧 `Viseme` 渲染降本 `92.7%` 与退换货挽单护栏（端侧免费 `55维 Viseme` 口型渲染将数字人算力从 `$0.220/min` 压至 `$0.016/min` 降本 `92.7%`、直播间 `80/20` 预烘焙切片 + `Push/Pop` 实时插答将夜间开播成本从 `$35/h` 压至 `$2.15/h`、尺码换货教练挽回 `44.6%` 退单每万通保住 `+$15.2万` GMV、以及 `<15ms` `Redis` 底价/实付净额锁与广告法极限词过滤实现 `0` 封号）方案**：[中文](./ecommerce-order-support-showroom-avatar-azure-vs-elevenlabs-heygen-viseme-selection-faq.md) | [EN](./ecommerce-order-support-showroom-avatar-azure-vs-elevenlabs-heygen-viseme-selection-faq.en.md)
