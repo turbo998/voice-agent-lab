@@ -2,7 +2,7 @@
 
 > **Language / 语言**: [中文](./asset-catalog.md) | **English** · **Navigation**: [README](../README.en.md)
 
-This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **563 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
+This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Architect** deliverables in `voice-agent-lab`, including **interactive portals & benchmark reports**, **reference architecture whitepapers**, **runnable PoCs**, and **564 bilingual (`zh-CN` / `en`) architecture selection & industry playbooks**.
 
 ![Enterprise Real-Time Voice & Multimodal Architecture Panorama](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 
 ---
 
-## 3. Solution Architect Selection Guides (563 Bilingual Guides)
+## 3. Solution Architect Selection Guides (564 Bilingual Guides)
 
 ### 3.1 Foundation Architecture, Models & Telephony Ingress (11 Guides)
 1. **Cascaded (ASR→LLM→TTS) vs. Native Speech-to-Speech Architecture Selection**: [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md) | [中文](./cascaded-vs-s2s-semantic-turn-faq.md)
@@ -66,7 +66,7 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (540 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (541 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -607,3 +607,4 @@ This catalog indexes all curated **Enterprise Voice & Multimodal AI Solution Arc
 561. **Dental Service Organizations (DSO) & Orthodontics (CDT Code Insurance Breakdown / Provider-Chair Dual-Column Scheduling / Post-Op Emergency Vision) Guide: Staggered `[A-D-A]` 10-Min Unit Solver + 22m ASAP Backfill (78.2% Cancelled Chair Recovery, 71.4% → 93.8% Utilization), <2.5s Vyne/Zuub 184-Day CDT Frequency & Annual-Max Check (0.00% Frequency Denials) & <60m Avulsed Tooth / Ludwig's Angina Vision Gate (+$496k/10k Calls)**: [EN](./dental-orthodontics-dso-chairfill-cdt-insurance-breakdown-opendental-voice-selection-faq.en.md) | [中文](./dental-orthodontics-dso-chairfill-cdt-insurance-breakdown-opendental-voice-selection-faq.md)
 562. **Home Services, HVAC, Plumbing & Electrical (ServiceTitan Capacity & Zone Dispatch / Equipment Nameplate & Error-Code Vision / Membership & Two-Decision-Maker Rule) Guide: 1.8s Condenser Nameplate Serial Decode + Parts Pre-Staging (71.0% → 92.6% FTFR), >=12-Yr Turnover Tech Routing + Two-Decision-Maker Alignment (+$215/Call), County Assessor Tenant Gate (0.00% Bad Debt) & 38.4% $199/Yr Membership Conversion (+$582k/10k Calls)**: [EN](./home-services-hvac-plumbing-servicetitan-membership-dispatch-nameplate-vision-voice-selection-faq.en.md) | [中文](./home-services-hvac-plumbing-servicetitan-membership-dispatch-nameplate-vision-voice-selection-faq.md)
 563. **Senior Living, Home Health & Post-Acute Care (21st Century Cures Act EVV Telephony / Hearing-Aid Presbycusis Prosody / Fall & Stroke Triage) Guide: Presbycusis <2kHz Formant Boost + Zero BGM + 115 WPM + 2,400ms Patience VAD (44.0% → 91.8% Senior Completion), Landline-ANI-Locked Telephony EVV + 15m Float Backfill (-89.9% EVV Denials) & Daily CHF +2-lb Weight Alert + Anticoagulant Fall 911 Gate (-41.2% Readmissions, +$435k/10k Visits)**: [EN](./senior-living-home-health-caregiver-evv-fall-triage-medication-reminder-voice-selection-faq.en.md) | [中文](./senior-living-home-health-caregiver-evv-fall-triage-medication-reminder-voice-selection-faq.md)
+564. **CPA Firms, Tax Preparation & Accounting Services (IRS 26 USC § 7216 Consent / K-1 & 1099 Document Chaser Vision / Tax-Season Surge Triage) Guide: In-Call 1.9s W-2/1099/K-1 Wrong-Year & Missing-Page Vision (-76% $350/hr CPA Chaser Hours), US-Sovereign ZDR + Standalone Signed § 7216 Cross-Sell Gate (100% Criminal Privacy Compliance) & Guided Form 8879 Dual-Spouse KBA e-Sign (98.4% On-Time Filing, +$615k/10k Clients)**: [EN](./wealth-tax-cpa-accounting-irs-26-usc-7216-k1-w2-document-chasing-voice-selection-faq.en.md) | [中文](./wealth-tax-cpa-accounting-irs-26-usc-7216-k1-w2-document-chasing-voice-selection-faq.md)

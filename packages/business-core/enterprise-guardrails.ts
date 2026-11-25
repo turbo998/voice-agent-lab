@@ -15685,6 +15685,36 @@ export function evaluateSeniorLivingHomeHealthEvvPresbycusisVoice2026Guard(input
   };
 }
 
+export interface WealthTaxCpaIrs7216K1DocumentVision2026Evaluation {
+  policyCode: "WEALTH-TAX-CPA-IRS-7216-K1-DOCUMENT-VISION-2026-01";
+  pbcTaxDocCommitAndForm8879EfileAuthorized: boolean;
+  unconsented7216CrossSellOrWrongTaxYearOrCircular230PromiseBlocked: boolean;
+  cpaEnrolledAgentTransferOnCp2000LevyNoticeTriggered: boolean;
+}
+
+/**
+ * Deterministic CPA Firms, Tax Preparation & Accounting Services (IRS 26 U.S.C. § 7216 US-Sovereign ZDR & Standalone Consent Gate, 1.9s W-2/1099/K-1 Active Tax-Year & Page-Continuity Vision, Dual-Spouse Form 8879 KBA & Circular 230 Filter) Guard (`WEALTH-TAX-CPA-IRS-7216-K1-DOCUMENT-VISION-2026-01`).
+ */
+export function evaluateWealthTaxCpaIrs7216K1DocumentVision2026Guard(input: {
+  usSovereignZdrAndStandalone7216ConsentVerifiedForCrossSell: boolean;
+  taxDocMatchesActiveYearWithoutDraftAndDualSpouse8879KbaSigned: boolean;
+  irsCp2000LevyNoticeOrAggressiveWriteOffOpinionRequested: boolean;
+}): WealthTaxCpaIrs7216K1DocumentVision2026Evaluation {
+  return {
+    policyCode: "WEALTH-TAX-CPA-IRS-7216-K1-DOCUMENT-VISION-2026-01",
+    pbcTaxDocCommitAndForm8879EfileAuthorized:
+      input.usSovereignZdrAndStandalone7216ConsentVerifiedForCrossSell &&
+      input.taxDocMatchesActiveYearWithoutDraftAndDualSpouse8879KbaSigned &&
+      !input.irsCp2000LevyNoticeOrAggressiveWriteOffOpinionRequested,
+    unconsented7216CrossSellOrWrongTaxYearOrCircular230PromiseBlocked:
+      !input.usSovereignZdrAndStandalone7216ConsentVerifiedForCrossSell ||
+      !input.taxDocMatchesActiveYearWithoutDraftAndDualSpouse8879KbaSigned ||
+      input.irsCp2000LevyNoticeOrAggressiveWriteOffOpinionRequested,
+    cpaEnrolledAgentTransferOnCp2000LevyNoticeTriggered:
+      input.irsCp2000LevyNoticeOrAggressiveWriteOffOpinionRequested,
+  };
+}
+
 
 
 

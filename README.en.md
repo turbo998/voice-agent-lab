@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 563 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 563 Guides](#-2-563-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 564 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 564 Guides](#-2-564-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 563 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 564 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (540 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (541 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -637,6 +637,7 @@ flowchart LR
 561. **Dental Service Organizations (DSO) & Orthodontics (CDT Code Insurance Breakdown / Provider-Chair Dual-Column Scheduling / Post-Op Emergency Vision) Guide: Staggered `[A-D-A]` 10-Min Unit Solver + 22m ASAP Backfill (78.2% Cancelled Chair Recovery, 71.4% → 93.8% Utilization), <2.5s Vyne/Zuub 184-Day CDT Frequency & Annual-Max Check (0.00% Frequency Denials) & <60m Avulsed Tooth / Ludwig's Angina Vision Gate (+$496k/10k Calls)**: [EN](./docs/dental-orthodontics-dso-chairfill-cdt-insurance-breakdown-opendental-voice-selection-faq.en.md) | [中文](./docs/dental-orthodontics-dso-chairfill-cdt-insurance-breakdown-opendental-voice-selection-faq.md)
 562. **Home Services, HVAC, Plumbing & Electrical (ServiceTitan Capacity & Zone Dispatch / Equipment Nameplate & Error-Code Vision / Membership & Two-Decision-Maker Rule) Guide: 1.8s Condenser Nameplate Serial Decode + Parts Pre-Staging (71.0% → 92.6% FTFR), >=12-Yr Turnover Tech Routing + Two-Decision-Maker Alignment (+$215/Call), County Assessor Tenant Gate (0.00% Bad Debt) & 38.4% $199/Yr Membership Conversion (+$582k/10k Calls)**: [EN](./docs/home-services-hvac-plumbing-servicetitan-membership-dispatch-nameplate-vision-voice-selection-faq.en.md) | [中文](./docs/home-services-hvac-plumbing-servicetitan-membership-dispatch-nameplate-vision-voice-selection-faq.md)
 563. **Senior Living, Home Health & Post-Acute Care (21st Century Cures Act EVV Telephony / Hearing-Aid Presbycusis Prosody / Fall & Stroke Triage) Guide: Presbycusis <2kHz Formant Boost + Zero BGM + 115 WPM + 2,400ms Patience VAD (44.0% → 91.8% Senior Completion), Landline-ANI-Locked Telephony EVV + 15m Float Backfill (-89.9% EVV Denials) & Daily CHF +2-lb Weight Alert + Anticoagulant Fall 911 Gate (-41.2% Readmissions, +$435k/10k Visits)**: [EN](./docs/senior-living-home-health-caregiver-evv-fall-triage-medication-reminder-voice-selection-faq.en.md) | [中文](./docs/senior-living-home-health-caregiver-evv-fall-triage-medication-reminder-voice-selection-faq.md)
+564. **CPA Firms, Tax Preparation & Accounting Services (IRS 26 USC § 7216 Consent / K-1 & 1099 Document Chaser Vision / Tax-Season Surge Triage) Guide: In-Call 1.9s W-2/1099/K-1 Wrong-Year & Missing-Page Vision (-76% $350/hr CPA Chaser Hours), US-Sovereign ZDR + Standalone Signed § 7216 Cross-Sell Gate (100% Criminal Privacy Compliance) & Guided Form 8879 Dual-Spouse KBA e-Sign (98.4% On-Time Filing, +$615k/10k Clients)**: [EN](./docs/wealth-tax-cpa-accounting-irs-26-usc-7216-k1-w2-document-chasing-voice-selection-faq.en.md) | [中文](./docs/wealth-tax-cpa-accounting-irs-26-usc-7216-k1-w2-document-chasing-voice-selection-faq.md)
 
 ---
 

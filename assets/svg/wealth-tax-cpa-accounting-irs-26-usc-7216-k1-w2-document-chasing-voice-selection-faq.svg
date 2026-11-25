@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg564" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue564" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen564" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple564" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber564" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg564)" fill-opacity="1" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">财税事务所（CPA）与税务服务：IRS §7216 刑事隐私锁、K-1/1099 催件视觉与税季架构 (#564)</text>
+  <text x="48" y="74" class="subtitle">CPA &amp; Tax Practice Voice + Vision AI: IRS 26 USC § 7216 Criminal Privacy Gate · 1.9s W-2/1099/K-1 Year &amp; Page Vision · Form 8879 KBA e-Sign</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue564)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">CPA-TAX-7216-2026</text>
+
+  <!-- Plane 1: Tax-Season Surge & 1.9s Missing W-2/1099/K-1 Chaser -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue564)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① 税季洪峰进度自查与 1.9s 税表缺件视觉核验</text>
+
+  <rect x="46" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">解放 $350/h 注册会计师 32% 的催资料时间</text>
+  <text x="60" y="200" class="node-sub">• 4月15日/10月15日税季前夕来电暴涨 10 倍查进度与问缺件</text>
+  <text x="60" y="218" class="node-sub">• 实时对接 CCH Axcess / UltraTax / Canopy 播报报税卡点</text>
+  <text x="60" y="236" class="node-sub">• 精准提示:“您的报税单目前仅差摩根士丹利 1099-B 与合伙企业 K-1”</text>
+
+  <rect x="46" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="282" class="node-title">1.9 秒税表年份、页数与草稿水印视觉拦截</text>
+  <text x="60" y="302" class="node-sub">• 痛点: 客户经常把 2024 年旧 W-2 当成 2025 年传上来，或漏传 K-1 附表</text>
+  <text x="60" y="320" class="node-sub">• 通话中发送加密拍照链接，1.9s 校验税表年份、EIN 与全部页码</text>
+  <text x="60" y="338" class="node-sub">• 发现误传旧年份或券商月度预览草稿 (Draft) 当场语音提醒重传</text>
+
+  <rect x="46" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="386" class="node-title">报税截止前 48 小时 Form 8879 陪签冲刺</text>
+  <text x="60" y="406" class="node-sub">• 报税表编妥后若客户迟迟未签电子授权书 (`IRS Form 8879`)</text>
+  <text x="60" y="424" class="node-sub">• 主动致电陪同完成 KBA 知识问答认证与夫妻双方电子签名</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">自动申请 6 个月延期报税 (Form 4868 / 7004)</text>
+  <text x="60" y="500" class="node-sub">• 针对 4 月 10 日仍未拿到私募 K-1 的客户一键引导办理延期</text>
+  <text x="60" y="518" class="node-sub">• 明确告知:“延期报税不等于延期缴税”，引导完成预估税缴纳</text>
+
+  <!-- Plane 2: IRS 26 U.S.C. § 7216 Criminal Privacy & WISP Guard -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple564)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② IRS §7216 刑事级税务隐私锁与 FTC WISP</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">联邦刑法 26 U.S.C. § 7216 零外泄与零交叉营销</text>
+  <text x="435" y="200" class="node-sub">• 法规: 违规将报税数据用于大模型训练或推销理财/房贷属刑事犯罪!</text>
+  <text x="435" y="218" class="node-sub">• 100% 锁定境内主权节点 + 零数据留存 (ZDR) + 严禁跨业务读取</text>
+  <text x="435" y="236" class="node-sub">• 未签署独立法定格式《§7216 披露同意书》前 0% 权限转介财富顾问</text>
+
+  <rect x="421" y="264" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">IRS Publication 4557 &amp; FTC Safeguards (WISP)</text>
+  <text x="435" y="306" class="node-sub">• 查退税额或 AGI 前强制多因子认证 (MFA + 上年度 AGI 校验)</text>
+  <text x="435" y="324" class="node-sub">• 拦截黑客假冒客户骗取含全套 SSN 的往年 1040 税表 PDF</text>
+  <text x="435" y="342" class="node-sub">• 通话录音与转写自动打码 SSN / EIN / 银行路由号</text>
+
+  <rect x="421" y="370" width="358" height="84" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="392" class="node-title">离岸处理强制书面告知锁 (Offshore Disclosure)</text>
+  <text x="435" y="412" class="node-sub">• 严格限制语音与 OCR 推理全链路位于本国主权机房区域内</text>
+  <text x="435" y="430" class="node-sub">• 规避跨国节点路由触发的 §301.7216-3 违规风险</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">夫妻联合报税 (MFJ) 双人独立签名核验</text>
+  <text x="435" y="510" class="node-sub">• 严禁配偶一方代签另一方的 Form 8879 电子报税授权</text>
+
+  <!-- Plane 3: Circular 230 Tax Opinion Boundary & IRS Audit Notice OCR -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen564)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ Circular 230 税务意见边界与稽查信视觉分流</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">严禁 AI 出具激进避税建议 (Circular 230 Gate)</text>
+  <text x="849" y="200" class="node-sub">• 客户问:“我能把全家夏威夷旅游和私人游艇全抵扣成公司费用吗？”</text>
+  <text x="849" y="218" class="node-sub">• 严禁大模型顺水推舟承诺可抵扣! 仅播报 IRS Pub 463 客观规则</text>
+  <text x="849" y="236" class="node-sub">• 自动记录复杂筹划诉求并预约持证 CPA / EA 专题咨询</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">税务局稽查/追缴信 (IRS CP2000 / Levy) 1.9s 识图</text>
+  <text x="849" y="302" class="node-sub">• 客户惊慌收到税务局信件来电时，短信拍照识别右上角通知代码</text>
+  <text x="849" y="320" class="node-sub">• 区分常规地址核对信 vs `CP2000 少报收入补税` vs `CP504 资产扣押`</text>
+  <text x="849" y="338" class="node-sub">• 自动提取法定 30 天答复截止日，高危稽查信秒级直通税务争议合伙人</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">季度预缴税 (1040-ES) 与企业发薪日自动提醒</text>
+  <text x="849" y="406" class="node-sub">• 4/6/9/1 月四个季度预缴税节点主动外呼个体户与高管缴纳</text>
+  <text x="849" y="424" class="node-sub">• 帮客户免除 IRS 少缴预估税罚息 (Underpayment Penalty)</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (CPA-TAX-IRS-7216-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截无 §7216 签字跨业推销、错误年份税表入库与违规避税承诺</text>
+  <text x="849" y="518" class="node-sub">• CP504/LT11 强制执行扣押信 0ms 直通持证 CPA / EA</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 财税事务所（CPA）与税务服务实时语音+视觉 AI 实测基准 (每 10,000 户个人与企业报税客户)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">-76% 催资料工时</text>
+  <text x="64" y="666" class="metric-lbl">1.9s W-2/1099/K-1 缺件与错年拦截释放 CPA</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">100% §7216 合规</text>
+  <text x="344" y="666" class="metric-lbl">境内零训练隔离 + 独立法定同意书门禁</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">98.4% 按期签 8879</text>
+  <text x="624" y="666" class="metric-lbl">截止日前 48h 主动语音陪同完成 KBA 电子签</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">省 $61.5万 / 万户</text>
+  <text x="904" y="666" class="metric-lbl">释放 $350/h 会计师工时 + 消除错报补税赔付</text>
+</svg>
