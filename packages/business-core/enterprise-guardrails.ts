@@ -15085,6 +15085,36 @@ export function evaluateEnterpriseVoiceFinopsPtuPaygoSlm2026Guard(input: {
   };
 }
 
+export interface EnterpriseVoiceSecurityPciDssQa2026Evaluation {
+  policyCode: "ENTERPRISE-VOICE-SECURITY-PCI-DSS-QA-2026-01";
+  tokenizedPaymentAndWormStereoSealAuthorized: boolean;
+  deepfakeCloneOrAudioJailbreakOrRawPanOnDiskBlocked: boolean;
+  fido2StepUpOr30sMissingCrmTicketAutoRemediationTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise Voice AI Security, Anti-Deepfake PAD, PCI-DSS v4.0 Descoping & 100% Post-Call QA (<80ms ISO 30107-3 Vocoder PAD, <24ms Dual-Plane Prompt Shield, Edge DTMF Clamping & Pre-Storage In-RAM PAN Zeroing, 30s Spoken-Promise vs. CRM Reconciler) Guard (`ENTERPRISE-VOICE-SECURITY-PCI-DSS-QA-2026-01`).
+ */
+export function evaluateEnterpriseVoiceSecurityPciDssQa2026Guard(input: {
+  iso30107VocoderPadPassedAndDualPlaneShieldClean: boolean;
+  edgeDtmfClampedAndInRamPanZeroedBeforeDiskWrite: boolean;
+  deepfakeDetectedOrSpokenPromiseMissingInCrmDb: boolean;
+}): EnterpriseVoiceSecurityPciDssQa2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-VOICE-SECURITY-PCI-DSS-QA-2026-01",
+    tokenizedPaymentAndWormStereoSealAuthorized:
+      input.iso30107VocoderPadPassedAndDualPlaneShieldClean &&
+      input.edgeDtmfClampedAndInRamPanZeroedBeforeDiskWrite &&
+      !input.deepfakeDetectedOrSpokenPromiseMissingInCrmDb,
+    deepfakeCloneOrAudioJailbreakOrRawPanOnDiskBlocked:
+      !input.iso30107VocoderPadPassedAndDualPlaneShieldClean ||
+      !input.edgeDtmfClampedAndInRamPanZeroedBeforeDiskWrite ||
+      input.deepfakeDetectedOrSpokenPromiseMissingInCrmDb,
+    fido2StepUpOr30sMissingCrmTicketAutoRemediationTriggered:
+      input.deepfakeDetectedOrSpokenPromiseMissingInCrmDb,
+  };
+}
+
 
 
 
