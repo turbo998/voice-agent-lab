@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg558" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue558" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen558" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple558" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber558" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg558)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">汽车经销商（4S 店）售后维保：VIN 召回联查、工位/代步车三约束排程与 MPI 视频增项架构 (#558)</text>
+  <text x="48" y="74" class="subtitle">Auto Dealership Service Voice + Vision AI: ISO-3779 VIN + NHTSA Recall Pre-Fetch · Tech-Skill × Parts × Loaner Solver · MPI Video Upsell</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue558)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">AUTO-DEALER-DMS-2026</text>
+
+  <!-- Plane 1: VIN Check-Digit, DMS Garage & NHTSA Open Recall Pre-Fetch -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue558)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① 17 位 VIN 校验与 NHTSA 原厂召回顺带锁单</text>
+
+  <rect x="46" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">挽回早高峰 34% 漏接维保预约来电</text>
+  <text x="60" y="200" class="node-sub">• 7:30–9:30 AM 接车早高峰服务顾问分身乏术漏接电话</text>
+  <text x="60" y="218" class="node-sub">• 振铃期 &lt;90ms 按手机号从 CDK / Tekion / Reynolds 调取爱车档案</text>
+  <text x="60" y="236" class="node-sub">• 新客支持 ISO-3779 第 9 位模 11 校验或 1.5s 拍挡风玻璃 VIN</text>
+
+  <rect x="46" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="282" class="node-title">原厂召回 (Open Recall) 自动顺带转化 (+$310/单)</text>
+  <text x="60" y="302" class="node-sub">• 车主仅预约 $89 常规换机油时，自动联查 NHTSA/主机厂召回库</text>
+  <text x="60" y="320" class="node-sub">• 主动提醒:“查到您爱车有一项主机厂免费软件/气囊召回可顺便做”</text>
+  <text x="60" y="338" class="node-sub">• 车主零自付，4S 店直接向主机厂结算 $310 保修工时费</text>
+
+  <rect x="46" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="386" class="node-title">仪表盘故障灯拍照预诊断 (Dashboard Light Vision)</text>
+  <text x="60" y="406" class="node-sub">• 车主说不清“亮了个黄色像水龙头的灯”时一键短信拍照</text>
+  <text x="60" y="424" class="node-sub">• 区分发动机故障灯常亮 (可开到店) vs 红色机油/水温闪烁 (禁驾拖车)</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">消除 29% 的口述 VIN 字母 (B/D/V) 听错重查</text>
+  <text x="60" y="500" class="node-sub">• 自动剔除 VIN 禁用字母 (I, O, Q) 并执行模 11 数学纠错</text>
+  <text x="60" y="518" class="node-sub">• 预约进店转化率从 51% 跃升至 87.2%</text>
+
+  <!-- Plane 2: 3-Constraint DMS Capacity Solver (Tech Skill × Parts × Loaner) -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple558)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② 技师资质 × 召回备件 × 代步车三约束排程</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">杜绝“周六把变速箱大修约给快保学徒”乱象</text>
+  <text x="435" y="200" class="node-sub">• 区分三类工位配额: 快保换油 (Quick-Lube) / 机电大师 / 高压三电 EV</text>
+  <text x="435" y="218" class="node-sub">• 严禁普通日历机器人无视技师排班盲目塞满周六疑难故障</text>
+  <text x="435" y="236" class="node-sub">• 到店后因无对应技师被退回客诉率降至 0.00%</text>
+
+  <rect x="421" y="264" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">召回/大修专件库存前置核查 (Parts Hold Gate)</text>
+  <text x="435" y="306" class="node-sub">• 预约召回或正时链条更换前，实时查询 DMS 备件库 (`Parts Dept`)</text>
+  <text x="435" y="324" class="node-sub">• 若召回配件在途需 4 天，自动将最早可约时间锁定在到货日之后</text>
+  <text x="435" y="342" class="node-sub">• 同步按 VIN 自动下达专件预留锁 (VIN-Pinned Part Reservation)</text>
+
+  <rect x="421" y="370" width="358" height="84" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="392" class="node-title">代步车 (Loaner Fleet) 与 Uber 接送实时锁定</text>
+  <text x="435" y="412" class="node-sub">• 工时 &gt;=4h 维修才开放免费代步车池，无车时自动改派免费专车接送</text>
+  <text x="435" y="430" class="node-sub">• 消除车主到店后发现“答应好的代步车没了”的激烈争吵</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">按真实里程表匹配厂方保养套餐 (30k/60k Miles)</text>
+  <text x="435" y="510" class="node-sub">• 对接车联网/历史 RO 里程，精准推荐刹车油/火花塞必换项</text>
+
+  <!-- Plane 3: MPI Video Upsell & Legal Repair Estimate Authorization -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen558)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ 车间多点检测 (MPI) 视频增项与法规签批</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">未读车间检测视频 (TruVideo/Xtime) 主动跟进</text>
+  <text x="849" y="200" class="node-sub">• 技师发完刹车片磨损 2mm 红标视频 25 分钟未批复时自动致电</text>
+  <text x="849" y="218" class="node-sub">• 用通俗语言解读红/黄检测项及不换的安全风险与合工时优惠</text>
+  <text x="849" y="236" class="node-sub">• 将车间等待批复停工时长从 78 分钟压缩至 9 分钟</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">汽车维修法 (BAR) 报价合规双录与上限锁</text>
+  <text x="849" y="302" class="node-sub">• 严格播报含工时费、配件费与税费的精确包干总价 ($428.50)</text>
+  <text x="849" y="320" class="node-sub">• 录音存证 + 短信一键电子签名回写 CDK / Tekion 工单 (RO)</text>
+  <text x="849" y="338" class="node-sub">• 严禁在未获车主明确增项授权前通知车间擅自拆装</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">交车进度主动通知与移动支付秒取车</text>
+  <text x="849" y="406" class="node-sub">• 洗车完毕立即外呼/短信推送电子结算单与 Apple Pay 链接</text>
+  <text x="849" y="424" class="node-sub">• 消除傍晚 5 点取车柜台排长队等待结账现象</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (AUTO-DEALER-SERVICE-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截缺件强行约召回、错配快保工位、红色机油灯继续试驾</text>
+  <text x="849" y="518" class="node-sub">• 未获 BAR 含税报价明确授权 100% 禁止下发车间增项施工</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 汽车经销商（4S 店）售后维保语音+视觉 AI 实测基准 (20 家门店经销商集团 · 每 10,000 通售后热线)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">51% → 87.2%</text>
+  <text x="64" y="666" class="metric-lbl">早高峰零漏接 + VIN/召回联查进店转化率</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c088fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">+$168 / RO 产值</text>
+  <text x="344" y="666" class="metric-lbl">原厂召回顺带锁单 + MPI 红黄项视频跟进增项</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">78m → 9m 批复</text>
+  <text x="624" y="666" class="metric-lbl">车间举升机等待车主批复增项空置时长骤降</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">增收节支 $52.4万</text>
+  <text x="904" y="666" class="metric-lbl">每万通挽回早高峰漏单 + 召回保修 + 零错约返工</text>
+</svg>

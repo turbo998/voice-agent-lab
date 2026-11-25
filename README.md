@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech 混合路由与 TCO 工作台** | 交互式企业语音合规路由模拟器、月度 TCO / GPU 池容量精算与 11 组 48kHz 样音 Welch 频谱分析器 | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [选型与实测指南](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.md) |
 | **🏭 出海智能硬件 6 语种语音客服案例** | 25 万 → 75 万台设备全球客服扩容复盘：`$0.08/分钟` 成本、两阶段幂等写入与路由评测 | [`site/case-study.html`](./site/case-study.html) · [中文复盘](./docs/smart-hardware-global-voice-cs-case-study.zh-CN.md) |
 | **🏛️ 核心架构白皮书与可运行 PoC** | 参考架构白皮书、12 大场景 ROI 白皮书、竞品 Battlecards、两周 PoC 手册与实测代码 | [查看白皮书与 PoC](#-一核心架构白皮书与可运行-poc中英双语) |
-| **🧭 557 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 557 篇选型指南](#-二557-篇企业级语音架构选型指南中英双语) |
+| **🧭 558 篇企业级语音架构选型指南** | 系统覆盖“模型与通道接入”、“生产工程/合规/FinOps”与“重点行业解决方案”三大支柱 | [浏览 558 篇选型指南](#-二558-篇企业级语音架构选型指南中英双语) |
 | **🛡️ 确定性生产护栏模块 (TypeScript)** | 零依赖实现打断纪元写栅栏、慢速 ERP 零冷场垫音、高危槽位二次复述与财富双录门控 | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 二、557 篇企业级语音架构选型指南（中英双语）
+## 🧭 二、558 篇企业级语音架构选型指南（中英双语）
 
 > 完整分类说明亦可参阅 [`docs/asset-catalog.md`](./docs/asset-catalog.md)。
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（534 篇）
+### 3.3 高价值企业行业解决方案蓝图（535 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -631,6 +631,7 @@ flowchart LR
 555. **连锁药房、PBM 与数字慢病药事服务（`LASA 听音相似药名消歧 / 医保事先授权 PA 追踪 / OBRA '90 执业药师转接`）语音与多模态选型指南（`<80ms` 锁定患者在用处方集交集 + `1.8秒` 药瓶 `NDC-11` 条码拍照实现 `0.00%` LASA 相似药名串药并将自助续药率从 `38.0%` 提至 `86.4%`、PBM `Reject 75/79` 转译配药企 Copay 优惠卡自动抵扣将弃药率从 `29.0%` 压至 `9.4%`、以及严重药物相互作用与 `DEA C-II` 精麻合规门禁每万通创效 `$44.2万`）方案**：[中文](./docs/pharmacy-pbm-prescription-refill-prior-authorization-drug-interaction-hipaa-voice-selection-faq.md) | [EN](./docs/pharmacy-pbm-prescription-refill-prior-authorization-drug-interaction-hipaa-voice-selection-faq.en.md)
 556. **商业地产与长租公寓物业管理（`FHA 公平住房合规招租 / 凌晨爆管视觉止损与急修分流 / Yardi 租金账单催缴`）语音与多模态选型指南（7x24 秒接挽回 `48%` 晚间漏接招租来电并将看房转化率从 `19.0%` 提至 `64.5%`、确定性 FHA 中立锁与证件活体看房门锁核身实现 `0.00%` 歧视诱导与霸房、以及凌晨爆管 30 秒手机视觉红圈指导关角阀避免 `$8,500` 泡水并过滤 `36%` `$280` 夜间伪急修每万通创效 `$46.8万`）方案**：[中文](./docs/property-management-multifamily-leasing-tour-scheduling-emergency-maintenance-fha-voice-selection-faq.md) | [EN](./docs/property-management-multifamily-leasing-tour-scheduling-emergency-maintenance-fha-voice-selection-faq.en.md)
 557. **政务 12345 / 市政 311 市民热线与公共福利申领（`<2秒` 911 紧急警情直通 / `50米` PostGIS 空间去重 / Title VI 60+ 语种与 ADA 无障碍）语音与多模态选型指南（`<2.0秒` 并行生命安全哨兵将误拨入的电线打火/急症零延误带 GPS 直通 `911/110`、`<50ms` PostGIS `50米` 空间半径去重配设施铭牌视觉识别砍掉 `78.4%` 重复派车并将首次派单准确率从 `64%` 提至 `96.8%`、60+ 语种将口译成本从 `$1.85/min` 压至 `$0.042/min`、以及 `OPA` 确定性福利规则引擎实现 `0.00%` 自动拒批每万通净省 `$38.4万`）方案**：[中文](./docs/public-sector-311-municipal-hotline-benefits-eligibility-wcag-multilingual-voice-selection-faq.md) | [EN](./docs/public-sector-311-municipal-hotline-benefits-eligibility-wcag-multilingual-voice-selection-faq.en.md)
+558. **汽车经销商集团（4S 店）售后维保预约、VIN 召回联查与车间多点检测（MPI）视频增项语音与多模态选型指南（早高峰零漏接 + `ISO 3779` VIN 模 11 校验与 NHTSA/OEM 未完成召回联查顺带锁定 `+$310/单` 保修产值并将进店转化率从 `51%` 提至 `87.2%`、`技师技能 × 召回备件现货 × 代步车` 三约束排程实现 `0.00%` 缺件白跑、以及车间 MPI 视频 20m 未读主动外呼配 BAR 含税签批将举升机等待从 `78m` 压至 `9m` 每万通创效 `$52.4万`）方案**：[中文](./docs/automotive-dealership-service-lane-vin-recall-appointment-mpi-upsell-voice-selection-faq.md) | [EN](./docs/automotive-dealership-service-lane-vin-recall-appointment-mpi-upsell-voice-selection-faq.en.md)
 
 ---
 

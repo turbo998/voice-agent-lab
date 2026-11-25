@@ -15505,6 +15505,36 @@ export function evaluatePublicSector311Municipal911PreemptionWcag2026Guard(input
   };
 }
 
+export interface AutomotiveDealershipServiceVinRecallMpi2026Evaluation {
+  policyCode: "AUTOMOTIVE-DEALERSHIP-SERVICE-VIN-RECALL-MPI-2026-01";
+  dmsServiceBayAndRecallBookingAuthorized: boolean;
+  outOfStockRecallPartOrWrongTechTierOrUnapprovedMpiWorkBlocked: boolean;
+  redLightDoNotDriveTowDispatchOrVinPartSopOrderTriggered: boolean;
+}
+
+/**
+ * Deterministic Automotive Dealership Service Lane (ISO-3779 VIN Modulo-11 + NHTSA Recall Bundling, 3-Constraint Tech×Parts×Loaner DMS Solver, Red-Warning-Light Do-Not-Drive Gate & BAR MPI Estimate Lock) Guard (`AUTOMOTIVE-DEALERSHIP-SERVICE-VIN-RECALL-MPI-2026-01`).
+ */
+export function evaluateAutomotiveDealershipServiceVinRecallMpi2026Guard(input: {
+  iso3779VinVerifiedAnd3ConstraintTechPartsLoanerMatched: boolean;
+  barItemizedEstimateSignedBeforeMpiUpsellWork: boolean;
+  redOilCoolantFlashingMilOrRecallPartOutOfStockDetected: boolean;
+}): AutomotiveDealershipServiceVinRecallMpi2026Evaluation {
+  return {
+    policyCode: "AUTOMOTIVE-DEALERSHIP-SERVICE-VIN-RECALL-MPI-2026-01",
+    dmsServiceBayAndRecallBookingAuthorized:
+      input.iso3779VinVerifiedAnd3ConstraintTechPartsLoanerMatched &&
+      input.barItemizedEstimateSignedBeforeMpiUpsellWork &&
+      !input.redOilCoolantFlashingMilOrRecallPartOutOfStockDetected,
+    outOfStockRecallPartOrWrongTechTierOrUnapprovedMpiWorkBlocked:
+      !input.iso3779VinVerifiedAnd3ConstraintTechPartsLoanerMatched ||
+      !input.barItemizedEstimateSignedBeforeMpiUpsellWork ||
+      input.redOilCoolantFlashingMilOrRecallPartOutOfStockDetected,
+    redLightDoNotDriveTowDispatchOrVinPartSopOrderTriggered:
+      input.redOilCoolantFlashingMilOrRecallPartOutOfStockDetected,
+  };
+}
+
 
 
 
