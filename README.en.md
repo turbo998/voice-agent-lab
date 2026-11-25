@@ -19,7 +19,7 @@
 | **🧮 VoxCPM2 vs. Azure Speech Hybrid Router & TCO Workbench** | Interactive compliance routing simulator, monthly TCO / GPU pool sizer, and 11-WAV 48kHz Welch PSD spectrum explorer | [`site/voxcpm2-workbench.html`](./site/voxcpm2-workbench.html) · [Selection Guide](./docs/voxcpm2-vs-azure-speech-tts-benchmark-selection-faq.en.md) |
 | **🏭 Global 6-Language Voice CS Case Study** | Production case study scaling 250k → 750k smart devices at `$0.08/min` with two-phase idempotent writes | [`site/case-study.html`](./site/case-study.html) · [Markdown](./docs/smart-hardware-global-voice-cs-case-study.md) |
 | **🏛️ Core Whitepapers & Runnable PoCs** | Reference architecture, 12-scenario ROI whitepaper, competitive battlecards, 2-week PoC playbook, and runnable code | [Jump to Whitepapers](#-1-core-architecture-whitepapers--runnable-pocs-bilingual) |
-| **🧭 535 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 535 Guides](#-2-535-enterprise-voice-ai-architecture-selection-guides-bilingual) |
+| **🧭 536 Enterprise Voice AI Selection Guides** | Organized across *Foundation Architecture & Ingress*, *Production Engineering, Compliance & FinOps*, and *Industry Playbooks* | [Jump to 536 Guides](#-2-536-enterprise-voice-ai-architecture-selection-guides-bilingual) |
 | **🛡️ Deterministic Guardrail Modules (TypeScript)** | Zero-dependency modules for Turn-Epoch write fencing, slow-ERP zero-dead-air pacing, slot readback, warm handoff, and dual-recording | [`packages/`](./packages) |
 
 ---
@@ -65,7 +65,7 @@ flowchart LR
 
 ---
 
-## 🧭 2. 535 Enterprise Voice AI Architecture Selection Guides (Bilingual)
+## 🧭 2. 536 Enterprise Voice AI Architecture Selection Guides (Bilingual)
 
 > Also indexed in [`docs/asset-catalog.en.md`](./docs/asset-catalog.en.md).
 
@@ -96,7 +96,7 @@ flowchart LR
 22. **Voice Agent Evaluation, OpenTelemetry Latency Waterfall & Canary Rollout**: [EN](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md) | [中文](./docs/enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md)
 23. **Automated Post-Call QA & Spoken-Promise vs. CRM Ticket Reconciliation**: [EN](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.en.md) | [中文](./docs/voice-postcall-promise-ticket-reconciliation-qa-faq.md)
 
-### 3.3 Enterprise Industry Solution Playbooks (512 Guides)
+### 3.3 Enterprise Industry Solution Playbooks (513 Guides)
 24. **Enterprise Contact Center Copilot: Tier-1 Deflection, Warm Handoff & Agent Assist**: [EN](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md) | [中文](./docs/contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md)
 25. **Telecom 5G New Calling & Multimodal Visual IVR Modernization**: [EN](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md) | [中文](./docs/telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md)
 26. **BFSI Wealth Management Dual-Recording, Suitability & Insurance Claims**: [EN](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md) | [中文](./docs/bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md)
@@ -609,6 +609,7 @@ flowchart LR
 533. **Multinational 28-Language Omnichannel Customer Care, Live Voice Translation & Voice ⇄ WhatsApp Continuity Guide: 1.2s Zero-Touch Auto-LID + 5k Code-Switching PhraseList (98.9% Routing), <500ms Azure Live Interpreter Tier-2 Specialist Bridge (-82.4% Rare-Lang BPO Cost), In-Call 9s WhatsApp PKCE Co-Browsing Card (31.0% → 0.2% Alphanumeric Error) & ISO 4217 Currency/Scale Lock + EU Data Boundary (-$380k/10k Hrs)**: [EN](./docs/multinational-omnichannel-customer-care-live-translation-whatsapp-voice-continuity-selection-faq.en.md) | [中文](./docs/multinational-omnichannel-customer-care-live-translation-whatsapp-voice-continuity-selection-faq.md)
 534. **Retail Banking, Wealth Management Smart Dual-Recording (双录) & Insurance 24/7 Multimodal FNOL Claims Guide: R1–R5 Suitability Gate + SHA-256 Locked-SSML & 20s Clause Checkpoint Replay (64.0% → 99.7% 1st-Pass QA), In-Call Zero-App WebRTC Live Video FNOL (18.5m → 3.1m, 69.2% STP, -76.7% LAE to $9.80) & Background Coaching Detection + FINRA Rule 2165 Elder Protective Hold (-$395k/10k Hrs)**: [EN](./docs/retail-banking-wealth-advisory-dual-recording-insurance-fnol-claims-voice-selection-faq.en.md) | [中文](./docs/retail-banking-wealth-advisory-dual-recording-insurance-fnol-claims-voice-selection-faq.md)
 535. **Enterprise IT Helpdesk (ServiceNow / Entra ID) & HR Shared Services (Workday) Voice Copilot Guide (Copilot Studio vs. Azure AI Foundry): Entra Verified ID 3D Liveness + 0ms Tier-0 Admin Reset Lockout (0.00% Scattered Spider Vishing Breaches), <150ms Intune/Nexthink Probe + 54s SHA-256 Signed Self-Healing (72.4% L1 Deflection, $22 → $0.11/Ticket) & Payroll Read-Only Lock + Manager FMLA Medical Masking (-$285k/10k Calls)**: [EN](./docs/enterprise-it-helpdesk-hr-shared-services-copilot-studio-vs-foundry-voice-selection-faq.en.md) | [中文](./docs/enterprise-it-helpdesk-hr-shared-services-copilot-studio-vs-foundry-voice-selection-faq.md)
+536. **B2B Compliant Outbound Voice AI (SDR Speed-to-Lead & Renewal Follow-Up), <380ms Speculative AMD & STIR/SHAKEN + TCPA Selection Guide: <30s Speed-to-Lead + <380ms Speculative Greeting (-78.4% 3s Hang-Ups, -74.0% Voicemail LLM Token Burn), STIR/SHAKEN Level-A Branded Calling + <=50/Day DID Cap (18.0% → 54.6% Answer Rate) & Pre-Dial TrustedForm / AreaCode∩Zip Curfew Lock + 0ms Zero-Rebuttal DNC Breaker (+$405k/10k Hrs)**: [EN](./docs/b2b-outbound-sdr-lead-qualification-amd-voicemail-tcpa-stir-shaken-voice-selection-faq.en.md) | [中文](./docs/b2b-outbound-sdr-lead-qualification-amd-voicemail-tcpa-stir-shaken-voice-selection-faq.md)
 
 ---
 

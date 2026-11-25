@@ -14845,6 +14845,36 @@ export function evaluateEnterpriseItHrCopilotStudioFoundryVoice2026Guard(input: 
   };
 }
 
+export interface B2bOutboundSdrAmdTcpaStirShakenVoice2026Evaluation {
+  policyCode: "B2B-OUTBOUND-SDR-AMD-TCPA-STIR-SHAKEN-VOICE-2026-01";
+  speculativeGreetingAndCalendarBookingAuthorized: boolean;
+  curfewBreachOrMissingConsentOrOptOutRebuttalBlocked: boolean;
+  zeroMsGlobalDncWriteOrVoicemailS2sOffloadTriggered: boolean;
+}
+
+/**
+ * Deterministic B2B Compliant Outbound SDR (<380ms Speculative AMD & Voicemail S2S Offload, STIR/SHAKEN Level-A & <=50/Day DID Cap, Pre-Dial TrustedForm + AreaCode∩Zip Curfew Lock, 0ms Zero-Rebuttal Global DNC Breaker) Guard (`B2B-OUTBOUND-SDR-AMD-TCPA-STIR-SHAKEN-VOICE-2026-01`).
+ */
+export function evaluateB2bOutboundSdrAmdTcpaStirShakenVoice2026Guard(input: {
+  trustedFormConsentAndDualTimezone8AmTo9PmVerified: boolean;
+  stirShakenLevelAAndDidDailyVelocityUnder50: boolean;
+  verbalOptOutRevocationOrVoicemailCadenceDetected: boolean;
+}): B2bOutboundSdrAmdTcpaStirShakenVoice2026Evaluation {
+  return {
+    policyCode: "B2B-OUTBOUND-SDR-AMD-TCPA-STIR-SHAKEN-VOICE-2026-01",
+    speculativeGreetingAndCalendarBookingAuthorized:
+      input.trustedFormConsentAndDualTimezone8AmTo9PmVerified &&
+      input.stirShakenLevelAAndDidDailyVelocityUnder50 &&
+      !input.verbalOptOutRevocationOrVoicemailCadenceDetected,
+    curfewBreachOrMissingConsentOrOptOutRebuttalBlocked:
+      !input.trustedFormConsentAndDualTimezone8AmTo9PmVerified ||
+      !input.stirShakenLevelAAndDidDailyVelocityUnder50 ||
+      input.verbalOptOutRevocationOrVoicemailCadenceDetected,
+    zeroMsGlobalDncWriteOrVoicemailS2sOffloadTriggered:
+      input.verbalOptOutRevocationOrVoicemailCadenceDetected,
+  };
+}
+
 
 
 

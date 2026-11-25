@@ -2,7 +2,7 @@
 
 > **语言 / Language**: **中文** | [English](./asset-catalog.en.md) · **返回总览**: [README](../README.md)
 
-本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **535 篇中英双语企业级架构选型与行业落地方案指南**。
+本目录汇总 `voice-agent-lab` 面向 **AI Solution Architect（解决方案架构师）** 的核心交付资产，涵盖**交互式门户与评测报告**、**架构与售前白皮书**、**可运行原型（PoC）**以及 **536 篇中英双语企业级架构选型与行业落地方案指南**。
 
 ![企业实时语音与多模态架构全景图](../assets/svg/enterprise-voice-ai-2026-11-18-architecture-panorama.svg)
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 三、架构师核心选型指南（535 篇中英双语专题 FAQ）
+## 三、架构师核心选型指南（536 篇中英双语专题 FAQ）
 
 ### 3.1 基础架构、模型与语音通道接入（11 篇）
 1. **级联架构（ASR→LLM→TTS）vs 原生端到端语音（Native S2S）选型**：[中文](./cascaded-vs-s2s-semantic-turn-faq.md) | [EN](./cascaded-vs-s2s-semantic-turn-faq.en.md)
@@ -66,7 +66,7 @@
 22. **企业语音智能体评测体系、OpenTelemetry 全链路延迟瀑布与灰度发布**：[中文](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.md) | [EN](./enterprise-voice-agent-evaluation-observability-redteaming-selection-faq.en.md)
 23. **话后自动化全量质检（Post-Call QA）与口头承诺 vs CRM 工单对账**：[中文](./voice-postcall-promise-ticket-reconciliation-qa-faq.md) | [EN](./voice-postcall-promise-ticket-reconciliation-qa-faq.en.md)
 
-### 3.3 高价值企业行业解决方案蓝图（512 篇）
+### 3.3 高价值企业行业解决方案蓝图（513 篇）
 24. **企业联络中心 AI Copilot：一线智能分流、人机热交接与实时坐席辅助**：[中文](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.md) | [EN](./contact-center-ai-copilot-tier1-deflection-agent-assist-selection-faq.en.md)
 25. **运营商 5G 新通话与多模态可视化 IVR（Visual IVR）现代化改造**：[中文](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.md) | [EN](./telecom-5g-new-calling-visual-ivr-modernization-selection-faq.en.md)
 26. **银行财富管理智能双录（Dual-Recording）、适当性核验与保险理赔语音方案**：[中文](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.md) | [EN](./bfsi-wealth-dual-recording-claims-compliant-outbound-voice-selection-faq.en.md)
@@ -579,3 +579,4 @@
 533. **跨国企业 28 语种全渠道智能客服、实时双向语音同传与 `Voice ⇄ WhatsApp/短信` 协同选型指南（`1.2秒` 免按键连续语种识别 `Auto-LID` + `5,000` 品牌热词支持句内混说、二线总部专家通过 `<500ms` `Azure Live Interpreter` 实时双向同传直接服务 28 语种客户砍掉 `82.4%` 小语种外包空置成本、通话不断线推送 `WhatsApp` 微卡将复杂邮箱/IBAN/破损图采集从 `95秒` 缩至 `9秒`（错误率 `0.2%`）、以及原币种 `ISO 4217` 锁与 `GDPR` 区域数据驻留每万小时净省 `$38.0万`）方案**：[中文](./multinational-omnichannel-customer-care-live-translation-whatsapp-voice-continuity-selection-faq.md) | [EN](./multinational-omnichannel-customer-care-live-translation-whatsapp-voice-continuity-selection-faq.en.md)
 534. **零售银行、财富管理智能双录（Dual-Recording）与保险 7×24h 多模态报案理赔（FNOL）语音 AI 选型指南（`R1–R5` 风险适当性硬锁 + `SHA-256` 锁定 `SSML` 条款与 `20秒` 段落断点重录将双录一次合格率从 `64.0%` 提至 `99.7%`、通话内免 App `WebRTC` 实时视频查勘核验 `VIN` 与车损将报案从 `18.5分钟` 缩至 `3.1分钟`（小额案 `69.2%` 自动直赔 `STP`，`LAE` 压降 `76.7%`）、以及背景第三人教唆声纹检测触发 `FINRA Rule 2165` 高龄反电诈临时止付每万小时净省 `$39.5万`）方案**：[中文](./retail-banking-wealth-advisory-dual-recording-insurance-fnol-claims-voice-selection-faq.md) | [EN](./retail-banking-wealth-advisory-dual-recording-insurance-fnol-claims-voice-selection-faq.en.md)
 535. **企业内部 IT 服务台（ServiceNow / Entra ID）与 HR 共享服务中心（Workday）语音 Copilot 选型指南：`Copilot Studio` vs. `Azure AI Foundry`、防社工钓鱼与 `54秒` 终端自愈护栏（废除口头生日/工号 `KBA` 强制 `Entra Verified ID` 3D 活体 + 主管 `Teams` 协签且特权管理员 `0ms` 禁电话重置实现 `0.00%` `Scattered Spider` 钓鱼沦陷、`<150ms` 读 `Intune/Nexthink` 遥测并下发 `SHA-256` 预签名脚本 `54秒` 自愈 `72.4%` L1 故障将单价从 `$22` 压至 `$0.11`、以及工资卡语音只读与主管查询 `100%` 剥离 `FMLA` 医疗诊断每万通省 `$28.5万`）方案**：[中文](./enterprise-it-helpdesk-hr-shared-services-copilot-studio-vs-foundry-voice-selection-faq.md) | [EN](./enterprise-it-helpdesk-hr-shared-services-copilot-studio-vs-foundry-voice-selection-faq.en.md)
+536. **B2B 企业合规智能外呼（Outbound SDR / 续费回访）、`<380ms` 投机式信箱检测（Speculative AMD）与防封号（`STIR/SHAKEN + TCPA`）语音 AI 选型指南（官网留资 `<30秒` 极速回拨 + `<380ms` 投机式问候砍掉 `78.4%` 3 秒秒挂并 `<650ms` 卸载语音信箱省 `74.0%` 大模型 Token、`STIR/SHAKEN A级` 品牌来电名片与单号 `<=50通/日` 温控将真人接通率从 `18.0%` 提至 `54.6%`、以及呼前 `TrustedForm` 授权 + 区号∩邮编双时区宵禁锁与口头退订 `0ms` 零挽留全局 `DNC` 熔断每万小时创效 `$40.5万`）方案**：[中文](./b2b-outbound-sdr-lead-qualification-amd-voicemail-tcpa-stir-shaken-voice-selection-faq.md) | [EN](./b2b-outbound-sdr-lead-qualification-amd-voicemail-tcpa-stir-shaken-voice-selection-faq.en.md)
