@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
+  <defs>
+    <linearGradient id="bg535" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent535" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg535)"/>
+  <rect x="24" y="24" width="1152" height="632" rx="16" fill="none" stroke="#1e293b" stroke-width="2"/>
+  <rect x="44" y="42" width="1112" height="58" rx="10" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="64" y="70" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Enterprise IT Helpdesk &amp; HR Shared Services: Copilot Studio vs. Azure AI Foundry Voice Architecture</text>
+  <text x="64" y="91" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13">Anti-Vishing Entra Verified ID Lock · 54s Intune/Nexthink Self-Healing (72.4% Deflection) · HR Payroll &amp; FMLA Privacy (ENTERPRISE-IT-HR-COPILOT-STUDIO-FOUNDRY-VOICE-2026-01)</text>
+
+  <!-- Column 1: Copilot Studio vs Azure AI Foundry Selection -->
+  <rect x="44" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#3b82f6" stroke-width="1.5"/>
+  <rect x="44" y="120" width="356" height="40" rx="12" fill="#1e3a8a"/>
+  <text x="62" y="145" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">1. Copilot Studio vs. Foundry Matrix</text>
+
+  <rect x="62" y="176" width="320" height="108" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1"/>
+  <text x="76" y="198" fill="#60a5fa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Copilot Studio + Teams Phone (Low-Code)</text>
+  <text x="76" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 1,400+ prebuilt connectors (ServiceNow/Workday)</text>
+  <text x="76" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Native Entra ID OAuth 2.1 On-Behalf-Of (OBO)</text>
+  <text x="76" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Ideal for standard PTO, benefits &amp; ticket status</text>
+  <text x="76" y="272" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 2-Week Deployment for Standard Employee FAQ</text>
+
+  <rect x="62" y="298" width="320" height="112" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="320" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Azure AI Foundry + ACS (Pro-Code S2S)</text>
+  <text x="76" y="340" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 310ms GPT-Realtime full-duplex troubleshooting</text>
+  <text x="76" y="358" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Custom Intune/Nexthink DEX telemetry streaming</text>
+  <text x="76" y="376" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• 64% lower per-minute cost above 100k min/mo</text>
+  <text x="76" y="394" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• Best for Complex L1/L2 IT Diagnostics at Scale</text>
+
+  <rect x="62" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="76" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">54s Signed DEX Auto-Healing Execution</text>
+  <text x="76" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Queries endpoint VPN, DNS, print &amp; Outlook logs</text>
+  <text x="76" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Runs SHA-256 pre-signed Intune remediation script</text>
+  <text x="76" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Zero arbitrary LLM shell command generation</text>
+  <text x="76" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 72.4% L1 IT Ticket Deflection ($22 → $0.11)</text>
+
+  <!-- Column 2: Anti-Vishing & Zero-Trust Identity Gate -->
+  <rect x="422" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#8b5cf6" stroke-width="1.5"/>
+  <rect x="422" y="120" width="356" height="40" rx="12" fill="#4c1d95"/>
+  <text x="440" y="145" fill="#ddd6fe" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">2. Zero-Trust Anti-Vishing Gate</text>
+
+  <rect x="440" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="454" y="198" fill="#a78bfa" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Entra Verified ID 3D Liveness + Manager Sign</text>
+  <text x="454" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Abolishes spoken KBA (DOB / SSN / employee ID)</text>
+  <text x="454" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Pushes facial liveness check against HR badge photo</text>
+  <text x="454" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Requires manager Teams card approval on lost MFA</text>
+  <text x="454" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Scattered Spider Social-Engineering Takeover</text>
+
+  <rect x="440" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms Privileged-Admin Voice Reset Lockout</text>
+  <text x="454" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Checks Entra PIM for Global / Domain / Sec Admin</text>
+  <text x="454" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Physically blocks phone-based MFA or TAP issuance</text>
+  <text x="454" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Enforces in-person FIDO2 YubiKey hardware recovery</text>
+  <text x="454" y="398" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 100% Tier-0 Admin Credential Immunity</text>
+
+  <rect x="440" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="454" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Stolen-Laptop &amp; Compromised-Token Kill</text>
+  <text x="454" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Employee reports lost laptop or suspicious MFA push</text>
+  <text x="454" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Revokes Entra refresh tokens &amp; isolates Defender EDR</text>
+  <text x="454" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Triggers BitLocker remote wipe lock in &lt;10 seconds</text>
+  <text x="454" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• &lt;10s Endpoint Containment on Lost Devices</text>
+
+  <!-- Column 3: HR Workday Payroll & FMLA Privacy -->
+  <rect x="800" y="120" width="356" height="430" rx="12" fill="#111827" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="800" y="120" width="356" height="40" rx="12" fill="#064e3b"/>
+  <text x="818" y="145" fill="#a7f3d0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">3. HR Workday &amp; Privacy Guardrails</text>
+
+  <rect x="818" y="176" width="320" height="112" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <text x="832" y="198" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Anti-Payroll-Diversion Direct Deposit Lock</text>
+  <text x="832" y="218" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Prohibits verbal bank routing/account edits on phone</text>
+  <text x="832" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Pushes Workday FIDO2 portal link + 48h cooling hold</text>
+  <text x="832" y="254" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Alerts employee SMS/Email on any bank change</text>
+  <text x="832" y="272" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• $0 Payroll Direct-Deposit Diversion Losses</text>
+
+  <rect x="818" y="302" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="324" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">HIPAA / ADA Manager Medical-Reason Mask</text>
+  <text x="832" y="344" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Manager asks why direct report is on FMLA leave</text>
+  <text x="832" y="362" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Shares approved leave dates &amp; return status ONLY</text>
+  <text x="832" y="380" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Masks ICD-10 diagnosis &amp; clinical accommodation docs</text>
+  <text x="832" y="398" fill="#fde047" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• 0.00% Manager Medical Privacy Leaks</text>
+
+  <rect x="818" y="424" width="320" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="832" y="446" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">0ms Workplace Harassment / EAP Escalation</text>
+  <text x="832" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Detects workplace safety, retaliation or mental crisis</text>
+  <text x="832" y="484" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Bridges Employee Relations / confidential EAP in 0ms</text>
+  <text x="832" y="502" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="12">• Isolates ethics transcript from standard IT/HR logs</text>
+  <text x="832" y="520" fill="#34d399" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700">• $0.043/min Blended Internal IT/HR Cost</text>
+
+  <!-- Footer KPI Bar -->
+  <rect x="44" y="568" width="1112" height="68" rx="10" fill="#0f172a" stroke="url(#accent535)" stroke-width="1.5"/>
+  <text x="68" y="595" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Validated Enterprise IT Helpdesk &amp; HR Shared Services Benchmark:</text>
+  <text x="68" y="618" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="13">L1 IT Self-Healing: 72.4% ($22 → $0.11/Ticket)  |  Vishing / Admin Takeovers: 0.00%  |  FMLA Privacy Leaks: 0.00%  |  Cost: $0.043/min</text>
+</svg>

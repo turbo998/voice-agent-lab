@@ -14815,6 +14815,36 @@ export function evaluateRetailBankingWealthDualRecordingFnolVoice2026Guard(input
   };
 }
 
+export interface EnterpriseItHrCopilotStudioFoundryVoice2026Evaluation {
+  policyCode: "ENTERPRISE-IT-HR-COPILOT-STUDIO-FOUNDRY-VOICE-2026-01";
+  signedDexSelfHealingAndStandardTapAuthorized: boolean;
+  spokenKbaOrTier0AdminResetOrPayrollDiversionBlocked: boolean;
+  socSecurityAlertOrEmployeeRelationsEapBridgeTriggered: boolean;
+}
+
+/**
+ * Deterministic Enterprise IT Helpdesk & HR Shared Services (Entra Verified ID 3D Liveness & 0ms Tier-0 Admin Reset Lockout, 54s SHA-256 Pre-Signed Intune/Nexthink DEX Self-Healing, Payroll Read-Only & HIPAA/FMLA Manager Diagnosis Masking) Guard (`ENTERPRISE-IT-HR-COPILOT-STUDIO-FOUNDRY-VOICE-2026-01`).
+ */
+export function evaluateEnterpriseItHrCopilotStudioFoundryVoice2026Guard(input: {
+  entraVerifiedIdLivenessAndWhitelistedSignedScriptVerified: boolean;
+  payrollReadOnlyAndManagerMedicalDiagnosisMasked: boolean;
+  tier0PrivilegedAdminResetOrStolenLaptopOrEapCrisisDetected: boolean;
+}): EnterpriseItHrCopilotStudioFoundryVoice2026Evaluation {
+  return {
+    policyCode: "ENTERPRISE-IT-HR-COPILOT-STUDIO-FOUNDRY-VOICE-2026-01",
+    signedDexSelfHealingAndStandardTapAuthorized:
+      input.entraVerifiedIdLivenessAndWhitelistedSignedScriptVerified &&
+      input.payrollReadOnlyAndManagerMedicalDiagnosisMasked &&
+      !input.tier0PrivilegedAdminResetOrStolenLaptopOrEapCrisisDetected,
+    spokenKbaOrTier0AdminResetOrPayrollDiversionBlocked:
+      !input.entraVerifiedIdLivenessAndWhitelistedSignedScriptVerified ||
+      !input.payrollReadOnlyAndManagerMedicalDiagnosisMasked ||
+      input.tier0PrivilegedAdminResetOrStolenLaptopOrEapCrisisDetected,
+    socSecurityAlertOrEmployeeRelationsEapBridgeTriggered:
+      input.tier0PrivilegedAdminResetOrStolenLaptopOrEapCrisisDetected,
+  };
+}
+
 
 
 
