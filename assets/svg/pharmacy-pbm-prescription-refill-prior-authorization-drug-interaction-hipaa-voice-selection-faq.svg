@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg555" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d19" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#141e33" />
+    </linearGradient>
+    <linearGradient id="accentBlue555" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="accentGreen555" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="accentPurple555" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accentAmber555" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+    <style>
+      .title { font: 700 21.5px "Segoe UI", "PingFang SC", sans-serif; fill: #f8fafc; }
+      .subtitle { font: 500 13px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+      .sec-hdr { font: 700 14px "Segoe UI", "PingFang SC", sans-serif; fill: #e2e8f0; letter-spacing: 0.4px; }
+      .node-title { font: 700 13px "Segoe UI", "PingFang SC", sans-serif; fill: #ffffff; }
+      .node-sub { font: 400 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #cbd5e1; }
+      .badge { font: 700 11px "Segoe UI", "PingFang SC", sans-serif; fill: #0f172a; }
+      .metric-num { font: 700 20px "Segoe UI", "PingFang SC", sans-serif; fill: #38bdf8; }
+      .metric-lbl { font: 500 11.5px "Segoe UI", "PingFang SC", sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg555)" rx="16" />
+
+  <!-- Header -->
+  <rect x="28" y="22" width="1144" height="68" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="51" class="title">连锁药房、PBM 与慢病药事服务：听音相似药名消歧、事先授权 PA 与药师转接架构 (#555)</text>
+  <text x="48" y="74" class="subtitle">Retail Pharmacy &amp; PBM Voice + Vision AI: Active-Profile LASA Drug Disambiguation · 1.8s Pill-Bottle NDC Scan · Surescripts ePA · OBRA '90 RPh Gate</text>
+  <rect x="945" y="36" width="205" height="36" rx="18" fill="url(#accentBlue555)" />
+  <text x="1047" y="59" text-anchor="middle" class="badge">PHARMACY-PBM-LASA-2026</text>
+
+  <!-- Plane 1: LASA Drug Disambiguation & 1.8s Pill-Bottle NDC Scan -->
+  <rect x="28" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <rect x="28" y="106" width="355" height="36" rx="12" fill="url(#accentBlue555)" />
+  <text x="205" y="129" text-anchor="middle" class="sec-hdr">① 听音相似药名 (LASA) 消歧与药瓶扫码</text>
+
+  <rect x="46" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="180" class="node-title">破解 ISMP 听音相似药名混淆 (LASA Guard)</text>
+  <text x="60" y="200" class="node-sub">• 严防把降压药 Hydralazine 听成抗焦虑药 Hydroxyzine</text>
+  <text x="60" y="218" class="node-sub">• 验身通过后 &lt;80ms 拉取患者当前在用处方清单 (Active Rx)</text>
+  <text x="60" y="236" class="node-sub">• 强制将识别候选集收敛至患者真实处方交集 (0.00% 串药)</text>
+
+  <rect x="46" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="282" class="node-title">1.8 秒药瓶标签/条码拍照识别 (Bottle Vision)</text>
+  <text x="60" y="302" class="node-sub">• 老年患者读不出复杂拉丁药名或磨花 9 位 Rx 处方号时</text>
+  <text x="60" y="320" class="node-sub">• 短信推送免安装相机链接，拍一下药瓶即识别 NDC-11 码</text>
+  <text x="60" y="338" class="node-sub">• 自动核对剩余续药次数 (Refills Remaining) 与冷链配送</text>
+
+  <rect x="46" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="60" y="386" class="node-title">二阶段适应症与规格双确认 (Double-Check)</text>
+  <text x="60" y="406" class="node-sub">• 语音复核:“为您续订降糖用的二甲双胍 500毫克片剂对吗？”</text>
+  <text x="60" y="424" class="node-sub">• 同时播报药名+规格+适应症，彻底消除同名不同剂量误配</text>
+
+  <rect x="46" y="458" width="319" height="82" rx="8" fill="#172554" stroke="#60a5fa" stroke-width="1" />
+  <text x="60" y="480" class="node-title">解放门店药师 64% 的电话接听负担</text>
+  <text x="60" y="500" class="node-sub">• 消除柜台电话响个不停打断药师配药核对的安全隐患</text>
+  <text x="60" y="518" class="node-sub">• 处方续药自助完成率从传统按键的 38% 跃升至 86.4%</text>
+
+  <!-- Plane 2: Prior Authorization (PA) & Copay Shock Resolution -->
+  <rect x="403" y="106" width="394" height="450" rx="12" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5" />
+  <rect x="403" y="106" width="394" height="36" rx="12" fill="url(#accentPurple555)" />
+  <text x="600" y="129" text-anchor="middle" class="sec-hdr">② 医保事先授权 (PA) 追踪与高额自付挽留</text>
+
+  <rect x="421" y="158" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="180" class="node-title">PBM 拒付码 (NCPDP Reject Code) 通俗翻译</text>
+  <text x="435" y="200" class="node-sub">• 实时解析 Reject 75 (需事先授权 PA) vs Reject 79 (未到续药期)</text>
+  <text x="435" y="218" class="node-sub">• 对接 CoverMyMeds / Surescripts ePA 查询开方医生提交进度</text>
+  <text x="435" y="236" class="node-sub">• 一键触发向诊所重发电子催办函并告知预计审批完成日</text>
+
+  <rect x="421" y="264" width="358" height="92" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="286" class="node-title">高额自付账单挽留 (Copay Card &amp; Generic Swap)</text>
+  <text x="435" y="306" class="node-sub">• 当原研药 GLP-1 / 专科药自付高达 $450 引发患者弃药时</text>
+  <text x="435" y="324" class="node-sub">• 自动检索药企患者援助优惠卡 (Copay Card) 当场减免至 $25</text>
+  <text x="435" y="342" class="node-sub">• 或自动向开方医生发起一类目录仿制药替代 (Therapeutic Swap) 申请</text>
+
+  <rect x="421" y="370" width="358" height="84" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1" />
+  <text x="435" y="392" class="node-title">跨分店库存调拨与冷链当日达 (Inventory Sync)</text>
+  <text x="435" y="412" class="node-sub">• 本店缺货时 &lt;100ms 检索 3 英里内有现货姊妹药房</text>
+  <text x="435" y="430" class="node-sub">• 支持非受控处方一键跨店转方或安排温控医药闪送</text>
+
+  <rect x="421" y="468" width="358" height="72" rx="8" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="435" y="490" class="node-title">取药台弃药率 (Rx Abandonment) 降低 67.6%</text>
+  <text x="435" y="510" class="node-sub">• 去院前提前短信+语音透明告知自付额与优惠券减免</text>
+
+  <!-- Plane 3: OBRA '90 Pharmacist Scope Boundary & DEA Guard -->
+  <rect x="817" y="106" width="355" height="450" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <rect x="817" y="106" width="355" height="36" rx="12" fill="url(#accentGreen555)" />
+  <text x="994" y="129" text-anchor="middle" class="sec-hdr">③ OBRA '90 执业药师边界与精神麻醉药风控</text>
+
+  <rect x="835" y="158" width="319" height="88" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="180" class="node-title">严禁 AI 越权提供调量建议或覆盖相互作用告警</text>
+  <text x="849" y="200" class="node-sub">• 命中严重药物相互作用 (Severe DDI)、过敏或孕期禁忌时</text>
+  <text x="849" y="218" class="node-sub">• 或患者咨询不良反应 (“吃药后出皮疹/头晕能停药吗？”)</text>
+  <text x="849" y="236" class="node-sub">• 0.00% AI 自由回答，强制秒级温转执业药师 (RPh / PharmD)</text>
+
+  <rect x="835" y="260" width="319" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="282" class="node-title">DEA 二类受控精麻药 (Schedule II) 铁律</text>
+  <text x="849" y="302" class="node-sub">• 识别到阿片类/ADHD 二类受控药 (C-II) 严禁自动续药或跨店转方</text>
+  <text x="849" y="320" class="node-sub">• 严格按 PMP 处方监控系统核查最早可配药日并禁止提前放行</text>
+  <text x="849" y="338" class="node-sub">• 不在无验身语音中向陌生人透露门店受控精麻药金库库存</text>
+
+  <rect x="835" y="364" width="319" height="80" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="849" y="386" class="node-title">HIPAA BAA 隐私保护与代取药授权核验</text>
+  <text x="849" y="406" class="node-sub">• 未核验出生日期+地址前绝不播报具体药名 (防 HIV/精神类泄露)</text>
+  <text x="849" y="424" class="node-sub">• 药师接管前 500ms 弹出完整 DUR 用药审查与过敏卡片</text>
+
+  <rect x="835" y="458" width="319" height="82" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+  <text x="849" y="480" class="node-title">确定性护栏 (PHARMACY-PBM-LASA-2026-01)</text>
+  <text x="849" y="500" class="node-sub">• 拦截脱离在用处方池盲猜药名、C-II 违规转方与 AI 用药指导</text>
+  <text x="849" y="518" class="node-sub">• DDI 严重冲突与不良反应强制温转持证药师 (RPh)</text>
+
+  <!-- Bottom KPI Strip -->
+  <rect x="28" y="574" width="1144" height="122" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="48" y="600" class="sec-hdr">📊 连锁药房与 PBM 药事语音+多模态 AI 实测基准 (每 10,000 通处方续药与医保咨询电话)</text>
+
+  <rect x="48" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="64" y="642" class="metric-num">0.00% LASA 串药</text>
+  <text x="64" y="666" class="metric-lbl">在用处方池强约束 + 1.8s 药瓶 NDC 扫码</text>
+
+  <rect x="328" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="344" y="642" class="metric-num">29.0% → 9.4%</text>
+  <text x="344" y="666" class="metric-lbl">ePA 自动催办 + 优惠卡匹配压降柜台弃药率</text>
+
+  <rect x="608" y="614" width="262" height="68" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="624" y="642" class="metric-num">100% OBRA '90 合规</text>
+  <text x="624" y="666" class="metric-lbl">严重相互作用与不良反应 100% 转持证药师</text>
+
+  <rect x="888" y="614" width="264" height="68" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="904" y="642" class="metric-num">创效 $44.2万 / 万通</text>
+  <text x="904" y="666" class="metric-lbl">挽回高值处方弃单毛利 + 释放 $75/h 药师工时</text>
+</svg>

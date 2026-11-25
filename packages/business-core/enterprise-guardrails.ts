@@ -15415,6 +15415,36 @@ export function evaluateQsrDriveThruRestaurantPosMenuDagVoice2026Guard(input: {
   };
 }
 
+export interface PharmacyPbmPrescriptionLasaPaPharmacist2026Evaluation {
+  policyCode: "PHARMACY-PBM-PRESCRIPTION-LASA-PA-PHARMACIST-2026-01";
+  activeRxRefillAndCopayCardRescueAuthorized: boolean;
+  openVocabLasaGuessOrAiClinicalAdviceOrCiiStockLeakBlocked: boolean;
+  obra90PharmacistWarmTransferWithDurCardTriggered: boolean;
+}
+
+/**
+ * Deterministic Retail Pharmacy, PBM & Prescription Management (<80ms Active-Rx Profile LASA Disambiguation, 3-Point Name+Dose+Indication Readback, DEA Schedule II Lock & OBRA '90 Pharmacist Escalation) Guard (`PHARMACY-PBM-PRESCRIPTION-LASA-PA-PHARMACIST-2026-01`).
+ */
+export function evaluatePharmacyPbmPrescriptionLasaPaPharmacist2026Guard(input: {
+  hipaaVerifiedAndMatchedPatientActiveRxProfile: boolean;
+  threePointDrugDoseIndicationConfirmedAndNotSchedule2: boolean;
+  severeDdiOrSideEffectQuestionOrUnverifiedCiiInquiryDetected: boolean;
+}): PharmacyPbmPrescriptionLasaPaPharmacist2026Evaluation {
+  return {
+    policyCode: "PHARMACY-PBM-PRESCRIPTION-LASA-PA-PHARMACIST-2026-01",
+    activeRxRefillAndCopayCardRescueAuthorized:
+      input.hipaaVerifiedAndMatchedPatientActiveRxProfile &&
+      input.threePointDrugDoseIndicationConfirmedAndNotSchedule2 &&
+      !input.severeDdiOrSideEffectQuestionOrUnverifiedCiiInquiryDetected,
+    openVocabLasaGuessOrAiClinicalAdviceOrCiiStockLeakBlocked:
+      !input.hipaaVerifiedAndMatchedPatientActiveRxProfile ||
+      !input.threePointDrugDoseIndicationConfirmedAndNotSchedule2 ||
+      input.severeDdiOrSideEffectQuestionOrUnverifiedCiiInquiryDetected,
+    obra90PharmacistWarmTransferWithDurCardTriggered:
+      input.severeDdiOrSideEffectQuestionOrUnverifiedCiiInquiryDetected,
+  };
+}
+
 
 
 
